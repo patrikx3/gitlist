@@ -1,5 +1,5 @@
 {
-    "name": "klaussilveira/gitlist",
+    "name": "gitlist/gitlist",
     "description": "An elegant git repository viewer",
     "require": {
         "silex/silex": "1.*",
