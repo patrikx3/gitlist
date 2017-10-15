@@ -4,7 +4,7 @@
 
 # GitList
 
-This is Klaus Silveira's fork, since he doesn't work on this project anymore.  
+This is Klaus Silveira's fork, with multiple themes, sub-modules and updated to PHP7 only and upgraded all components.
  
 # Release version/update info
 
@@ -73,6 +73,3 @@ If you have Composer in your path, things get easier. But you know the drill.
 
 [Install](INSTALL.md) - here.
 
-
-# Further information
-If you want to know more about customizing GitList, check the [Customization](https://github.com/patrikx3/gitlist/wiki/Customizing) page on the wiki. Also, if you're having problems with GitList, check the [Troubleshooting](https://github.com/patrikx3/gitlist/wiki/Troubleshooting) page. 
