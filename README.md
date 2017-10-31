@@ -1,8 +1,17 @@
-[![Build Status](https://secure.travis-ci.org/patrikx3/gitter.png)](http://travis-ci.org/patrikx3/gitter)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/patrikx3/gitlist/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/patrikx3/resume-web/?branch=master)
-![Code Coverage](https://scrutinizer-ci.com/g/patrikx3/gitlist/badges/coverage.png?b=master)
+[//]: #@corifeus-header
 
-# GitList
+  [![Build Status](https://travis-ci.org/patrikx3/gitlist.svg?branch=master)](https://travis-ci.org/patrikx3/gitlist)  [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/patrikx3/gitlist/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/patrikx3/gitlist/?branch=master)  [![Code Coverage](https://scrutinizer-ci.com/g/patrikx3/gitlist/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/patrikx3/gitlist/?branch=master) 
+
+---
+
+ 
+# P3X Gitlist  
+
+# Description  
+
+
+                        
+[//]: #@corifeus-header:end
 
 This is Klaus Silveira's fork, with multiple themes, sub-modules and updated to PHP7 only and upgraded all components.
  
@@ -12,6 +21,10 @@ This is Klaus Silveira's fork, with multiple themes, sub-modules and updated to 
 Done, just put on your server, nothing to build:   
 https://github.com/patrikx3/gitlist/releases
 
+
+## v0.5.6
+* The Markdown image links were not working. 
+* Missed out the ```package.json``` from the previous release.
 
 ## v0.5.5
 * Fixed PHPUNIT 6
@@ -51,7 +64,7 @@ http://gitlist.patrikx3.com/
 ## Requirements
 For the build on your workstation (themes):
 * ```NodeJs``` >= 7.8
-* ```Bower``` (npm install -g bower)
+* ```Bower``` and ```Grunt``` (npm install -g bower grunt-cli)
 
 In order to run GitList on your server, you'll need:
 
@@ -67,9 +80,23 @@ git clone https://github.com/patrikx3/gitlist.git
 curl -s http://getcomposer.org/installer | php
 php composer.phar install
 bower install
+grunt
 ```
 
 If you have Composer in your path, things get easier. But you know the drill.
 
 [Install](INSTALL.md) - here.
 
+
+[//]: #@corifeus-footer
+
+---
+
+[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v0.5.6 
+
+[![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software) [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=LFRV89WPRMMVE&lc=HU&item_name=Patrik%20Laszlo&item_number=patrikx3&currency_code=HUF&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted) 
+
+
+ 
+
+[//]: #@corifeus-footer:end

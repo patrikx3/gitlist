@@ -24,8 +24,8 @@ cp ./artifacts/config.ini ./
 bower install
 composer install
 
-chown patrikx3:patrikx3 ./cache
-chown patrikx3:patrikx3 ./git-test
-chown patrikx3:patrikx3 ./config.ini
+chown $USER:$USER ./cache
+chown $USER:$USER ./git-test
+chown $USER:$USER ./config.ini
 
 

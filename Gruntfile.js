@@ -56,70 +56,80 @@ var themes = ${JSON.stringify(themeCss, null, 4)}
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-wiredep');
 
-    grunt.initConfig({
-        clean: {
-          themes: [
-              themeDir
-          ],
-          fonts: [
-              'themes/default/fonts'
-          ]
+    const builder = require(`corifeus-builder`);
+    const loader = new builder.loader(grunt);
+    loader.js({
+        replacer: {
+            type: 'p3x',
+            npmio: false,
+            node: false,
         },
-        copy: {
-            bootstrap: {
-                expand: true,
-                cwd: './node_modules/bootstrap/fonts',
-                src: '**',
-                dest: 'themes/default/fonts/',
-            },
-            fontawesome: {
-                expand: true,
-                cwd: './node_modules/font-awesome/fonts',
-                src: '**',
-                dest: 'themes/default/fonts/',
-            },
-        },
-        less: {
-            development: {
-                files: filesLess
-            },
-
-        },
-        wiredep: {
-            target: {
-                src: 'themes/default/twig/layout.twig',
-                ignorePath: '../../..',
-//                overrides: wiredepOverrides,
-  //              exclude: wiredepExclude
-                fileTypes: {
-                    twig: {
-                        block: /(([ \t]*)<!--\s*bower:*(\S*)\s*-->)(\n|\r|.)*?(<!--\s*endbower\s*-->)/gi,
-                        detect: {
-                            js: /<script.*src=['"]([^'"]+)/gi,
-                            css: /<link.*href=['"]([^'"]+)/gi
-                        },
-                        replace: {
-                            js: '<script src="\{\{ app.request.basepath \}\}{{filePath}}"></script>',
-                            css: '<link rel="stylesheet" href="\{\{ app.request.basepath \}\}{{filePath}}" />'
-                        }
+        config:
+            {
+                clean: {
+                    themes: [
+                        themeDir
+                    ],
+                    fonts: [
+                        'themes/default/fonts'
+                    ]
+                },
+                copy: {
+                    bootstrap: {
+                        expand: true,
+                        cwd: './node_modules/bootstrap/fonts',
+                        src: '**',
+                        dest: 'themes/default/fonts/',
+                    },
+                    fontawesome: {
+                        expand: true,
+                        cwd: './node_modules/font-awesome/fonts',
+                        src: '**',
+                        dest: 'themes/default/fonts/',
                     },
                 },
+                less: {
+                    development: {
+                        files: filesLess
+                    },
 
-            }
-        },
-        watch: {
-            scripts: {
-                files: ['themes/default/**/*.*'],
-                tasks: ['less'],
-                options: {
-                    spawn: false,
                 },
-            },
-        }
-    })
+                wiredep: {
+                    target: {
+                        src: 'themes/default/twig/layout.twig',
+                        ignorePath: '../../..',
+//                overrides: wiredepOverrides,
+                        //              exclude: wiredepExclude
+                        fileTypes: {
+                            twig: {
+                                block: /(([ \t]*)<!--\s*bower:*(\S*)\s*-->)(\n|\r|.)*?(<!--\s*endbower\s*-->)/gi,
+                                detect: {
+                                    js: /<script.*src=['"]([^'"]+)/gi,
+                                    css: /<link.*href=['"]([^'"]+)/gi
+                                },
+                                replace: {
+                                    js: '<script src="\{\{ app.request.basepath \}\}{{filePath}}"></script>',
+                                    css: '<link rel="stylesheet" href="\{\{ app.request.basepath \}\}{{filePath}}" />'
+                                }
+                            },
+                        },
+
+                    }
+                },
+                watch: {
+                    scripts: {
+                        files: ['themes/default/**/*.*'],
+                        tasks: ['less'],
+                        options: {
+                            spawn: false,
+                        },
+                    },
+                }
+            }
+    });
 
 
-    grunt.registerTask('default', ['clean','copy', 'build', 'less', 'wiredep']);
+    grunt.registerTask('default', ['clean','copy', 'build', 'less', 'wiredep', 'cory-replace']);
     grunt.registerTask('run', ['default', 'watch']);
 
 

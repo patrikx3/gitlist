@@ -1,3 +1,10 @@
+[//]: #@corifeus-header
+
+## P3X Gitlist
+
+---
+                        
+[//]: #@corifeus-header:end
 # GitList Installation
 * Download GitList from [https://github.com/patrikx3/gitlist/releases](https://github.com/patrikx3/gitlist/releases/) and decompress to your `/var/www/gitlist` folder, or anywhere else you want to place GitList.
 * Rename the `config.example.ini-example` file to `config.ini`.
@@ -6,7 +13,7 @@
 
 ```
 cd /var/www/gitlist
-mkdir cache
+mkdir -p cache
 chmod 777 cache
 ```
 
@@ -95,6 +102,15 @@ UrlToolkit {
 }
 ```
 
-If you're having problems, check the [Troubleshooting](https://github.com/patrikx3/gitlist/wiki/Troubleshooting) page.
+[//]: #@corifeus-footer
+
+---
+
+[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v0.5.6 
+
+[![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software) [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=LFRV89WPRMMVE&lc=HU&item_name=Patrik%20Laszlo&item_number=patrikx3&currency_code=HUF&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted) 
 
 
+ 
+
+[//]: #@corifeus-footer:end

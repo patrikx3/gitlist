@@ -42,7 +42,7 @@ $(function () {
         const result = '<span style="display: block; font-size: 125%; opacity: 0.5">' +
             title +
             '</span>' +
-            '<a href="' + href + '" target="_blank"><img style="max-width: 100%;" src="' + href + '"/></a>' +
+            '<img style="max-width: 100%;" src="' + href + '"/>' +
             '<span style="display: block; text-align: right; opacity: 0.5">' +
             text +
             '</span>'
