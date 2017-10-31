@@ -47,7 +47,7 @@ https://github.com/patrikx3/gitlist/releases
 * Upgraded Phpunit v4 to v6
 * Moved from Showdown to Marked (more features)
 * For building requires (not required for the server):
-  * NodeJs >= 7.8
+  * NodeJs >= 8.9.0
   * Bower
   * Grunt
 
