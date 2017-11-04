@@ -5,7 +5,7 @@
 ---
 
  
-# P3X Gitlist  
+# P3X Gitlist  v0.5.6    
 
 # Description  
 
