@@ -2,10 +2,10 @@
 var themes = {
     "bootstrap-default": "/themes/default/css/bootstrap-default.css",
     "bootstrap-cerulean": "/themes/default/css/bootstrap-cerulean.css",
-    "bootstrap-flatly": "/themes/default/css/bootstrap-flatly.css",
-    "bootstrap-cyborg": "/themes/default/css/bootstrap-cyborg.css",
     "bootstrap-cosmo": "/themes/default/css/bootstrap-cosmo.css",
+    "bootstrap-cyborg": "/themes/default/css/bootstrap-cyborg.css",
     "bootstrap-darkly": "/themes/default/css/bootstrap-darkly.css",
+    "bootstrap-flatly": "/themes/default/css/bootstrap-flatly.css",
     "bootstrap-journal": "/themes/default/css/bootstrap-journal.css",
     "bootstrap-lumen": "/themes/default/css/bootstrap-lumen.css",
     "bootstrap-paper": "/themes/default/css/bootstrap-paper.css",
