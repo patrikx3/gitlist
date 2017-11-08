@@ -14,6 +14,8 @@
 [//]: #@corifeus-header:end
 
 This is Klaus Silveira's fork, with multiple themes, sub-modules and updated to PHP7 only and upgraded all components.
+
+### PHP 7 only
  
 # Release version/update info
 
