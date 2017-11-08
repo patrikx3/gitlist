@@ -8,6 +8,7 @@
         }
     },
     "require": {
+        "php": ">=7.0.0",
         "symfony/filesystem": "^3.2",
         "symfony/twig-bridge": "^3.2",
         "twig/twig": "^2.3",
