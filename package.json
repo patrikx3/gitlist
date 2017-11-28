@@ -6,7 +6,7 @@
         "type": "p3x"
     },
     "description": "P3X Gitlist",
-    "version": "0.5.12-238",
+    "version": "0.5.13-251",
     "main": "index.js",
     "repository": "https://github.com/patrikx3/gitlist",
     "author": "patrikx3 <alabard@gmail.com>",
