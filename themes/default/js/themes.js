@@ -8,13 +8,13 @@ var themes = {
     "bootstrap-flatly": "/themes/default/css/bootstrap-flatly.css",
     "bootstrap-journal": "/themes/default/css/bootstrap-journal.css",
     "bootstrap-lumen": "/themes/default/css/bootstrap-lumen.css",
-    "bootstrap-readable": "/themes/default/css/bootstrap-readable.css",
     "bootstrap-paper": "/themes/default/css/bootstrap-paper.css",
+    "bootstrap-readable": "/themes/default/css/bootstrap-readable.css",
     "bootstrap-sandstone": "/themes/default/css/bootstrap-sandstone.css",
     "bootstrap-simplex": "/themes/default/css/bootstrap-simplex.css",
     "bootstrap-slate": "/themes/default/css/bootstrap-slate.css",
     "bootstrap-spacelab": "/themes/default/css/bootstrap-spacelab.css",
-    "bootstrap-united": "/themes/default/css/bootstrap-united.css",
     "bootstrap-superhero": "/themes/default/css/bootstrap-superhero.css",
+    "bootstrap-united": "/themes/default/css/bootstrap-united.css",
     "bootstrap-yeti": "/themes/default/css/bootstrap-yeti.css"
 }
