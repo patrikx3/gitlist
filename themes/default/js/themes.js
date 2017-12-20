@@ -13,8 +13,8 @@ var themes = {
     "bootstrap-sandstone": "/themes/default/css/bootstrap-sandstone.css",
     "bootstrap-simplex": "/themes/default/css/bootstrap-simplex.css",
     "bootstrap-slate": "/themes/default/css/bootstrap-slate.css",
-    "bootstrap-spacelab": "/themes/default/css/bootstrap-spacelab.css",
     "bootstrap-superhero": "/themes/default/css/bootstrap-superhero.css",
     "bootstrap-united": "/themes/default/css/bootstrap-united.css",
-    "bootstrap-yeti": "/themes/default/css/bootstrap-yeti.css"
+    "bootstrap-yeti": "/themes/default/css/bootstrap-yeti.css",
+    "bootstrap-spacelab": "/themes/default/css/bootstrap-spacelab.css"
 }
