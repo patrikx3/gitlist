@@ -5,7 +5,7 @@
 ---
 
  
-# P3X Gitlist  v0.5.13-251    
+# P3X Gitlist  v1.0.0    
 
 # Description  
 
@@ -22,6 +22,10 @@ This is Klaus Silveira's fork, with multiple themes, sub-modules and updated to 
 ## Package
 Done, just put on your server, nothing to build:   
 https://github.com/patrikx3/gitlist/releases
+
+
+## v1.0.0
+* Works with ```PHP 7.2```
 
 
 ## v0.5.6
@@ -94,7 +98,7 @@ If you have Composer in your path, things get easier. But you know the drill.
 
 ---
 
-[**GITLIST**](https://pages.corifeus.com/gitlist) Build v0.5.13-251 
+[**GITLIST**](https://pages.corifeus.com/gitlist) Build v1.0.0 
 
 [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software) [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=LFRV89WPRMMVE&lc=HU&item_name=Patrik%20Laszlo&item_number=patrikx3&currency_code=HUF&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) 
 
