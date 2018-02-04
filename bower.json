@@ -15,8 +15,8 @@
     "tests"
   ],
   "dependencies": {
-    "marked": "^0.3.6",
-    "jquery": "^3.2.1",
+    "marked": "^0.3.12",
+    "jquery": "^3.3.1",
     "bootstrap": "^3.3.7"
   }
 }
