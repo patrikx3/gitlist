@@ -23,6 +23,8 @@ This is Klaus Silveira's fork, with multiple themes, sub-modules and updated to 
 Done, just put on your server, nothing to build:   
 https://github.com/patrikx3/gitlist/releases
 
+### v1.0.1
+* The minimum PHP version is 7.1
 
 ## v1.0.0
 * Works with ```PHP 7.2```

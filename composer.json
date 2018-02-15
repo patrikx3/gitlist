@@ -8,16 +8,16 @@
         }
     },
     "require": {
-        "php": ">=7.0.0",
+        "php": ">=7.1.0",
         "symfony/filesystem": "^3.2",
         "symfony/twig-bridge": "^3.2",
         "twig/twig": "^2.3",
         "silex/silex": "^2.1",
-        "patrikx3/gitter": "^0.3.5"
+        "patrikx3/gitter": "^1.0.0"
     },
     "require-dev": {
         "symfony/browser-kit": "^3.2",
-        "phpunit/phpunit": "^6.1",
+        "phpunit/phpunit": "^7",
         "symfony/css-selector": "^3.2"
     }
 }
