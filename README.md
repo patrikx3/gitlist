@@ -24,7 +24,7 @@ Done, just put on your server, nothing to build:
 https://github.com/patrikx3/gitlist/releases
 
 ### v1.0.1
-* The minimum PHP version is 7.1
+* The minimum PHP version is 7.1 and PHPUNIT 7.
 
 ## v1.0.0
 * Works with ```PHP 7.2```
