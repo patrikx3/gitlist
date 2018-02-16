@@ -15,7 +15,7 @@
 
 This is Klaus Silveira's fork, with multiple themes, sub-modules and updated to PHP7 only and upgraded all components.
 
-### PHP 7 only
+### PHP > 7.1 only
  
 # Release version/update info
 
