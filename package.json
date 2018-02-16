@@ -14,7 +14,7 @@
   "devDependencies": {
     "bootstrap": "3.3.7 <3.9.9",
     "bootswatch": "3.3.7 <3.9.9",
-    "corifeus-utils": "^1.1.824-287",
+    "corifeus-utils": "^1.1.828-288",
     "font-awesome": "^4.7.0",
     "grunt": "^1.0.2",
     "grunt-contrib-clean": "^1.1.0",
@@ -25,7 +25,7 @@
     "time-grunt": "^1.4.0"
   },
   "dependencies": {
-    "corifeus-builder": "^1.7.1217-307"
+    "corifeus-builder": "^1.7.1221-309"
   },
   "engines": {
     "node": ">=8.9.0"
