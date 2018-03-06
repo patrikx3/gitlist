@@ -20,6 +20,7 @@ chmod 777 cache
 That's it, installation complete!
 
 ## Webserver configuration
+
 Apache is the "default" webserver for GitList. You will find the configuration inside the `.htaccess` file. However, nginx and lighttpd are also supported.
 
 ### nginx server.conf
@@ -46,18 +47,20 @@ server {
         fastcgi_index index.php;
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
 
-        # if you're using php5-fpm via tcp
-        fastcgi_pass 127.0.0.1:9000;
+        # if you're using php7.2-fpm via socket
+        fastcgi_pass unix:/var/run/php7.2-fpm.sock;
 
-        # if you're using php5-fpm via socket
-        #fastcgi_pass unix:/var/run/php5-fpm.sock;
-
-        include /etc/nginx/fastcgi_params;
+        include snippets/fastcgi-php.conf;;
     }
 
-    location / {
-        try_files $uri @gitlist;
+    location ~ \.php$ {
+    	include      snippets/fastcgi-php.conf;
+    	fastcgi_pass $php_listener;
     }
+    
+    location ~ /\.ht {
+     deny all;
+    }	
 
     location ~* \.(js|css|png|jpg|jpeg|gif|ico)$ {
     add_header Vary "Accept-Encoding";
@@ -71,9 +74,7 @@ server {
 #       deny all;
 #   }
 
-    location @gitlist {
-        rewrite ^/.*$ /index.php;
-    }
+ 
 }
 ```
 
@@ -106,7 +107,7 @@ UrlToolkit {
 
 ---
 
-[**GITLIST**](https://pages.corifeus.com/gitlist) Build v1.0.2 
+[**GITLIST**](https://pages.corifeus.com/gitlist) Build v1.0.3 
 
 [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software) [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) 
 
