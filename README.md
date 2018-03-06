@@ -5,7 +5,7 @@
 ---
 
  
-# P3X Gitlist  v1.0.3    
+# P3X Gitlist  v1.0.4-alpha    
 
 # Description  
 
@@ -24,6 +24,12 @@ This is Klaus Silveira's fork, with multiple themes, sub-modules and updated to 
 ## Package
 Done, just put on your server, nothing to build:   
 https://github.com/patrikx3/gitlist/releases
+
+### v1.0.4 - unreleased / in progress
+* Graph time was not using the ```config.ini```
+* Format size was missing space (ugly)
+* Graph is not using Bootstrap
+* Network was not using Bootstrap
 
 ### v1.0.3
 * Total bytes was not working with Twig 2
@@ -109,7 +115,7 @@ If you have Composer in your path, things get easier. But you know the drill.
 
 ---
 
-[**GITLIST**](https://pages.corifeus.com/gitlist) Build v1.0.3 
+[**GITLIST**](https://pages.corifeus.com/gitlist) Build v1.0.4-alpha 
 
 [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software) [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) 
 

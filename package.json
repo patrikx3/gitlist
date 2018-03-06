@@ -1,12 +1,11 @@
 {
   "name": "gitlist",
   "corifeus": {
-    "nodejs": "v9.2.0",
     "publish": false,
     "type": "p3x"
   },
   "description": "P3X Gitlist",
-  "version": "1.0.3",
+  "version": "1.0.4-alpha",
   "main": "index.js",
   "repository": "https://github.com/patrikx3/gitlist",
   "author": "patrikx3 <alabard@gmail.com>",

@@ -32,7 +32,6 @@ class Application extends SilexApplication
 
         $this['debug'] = $config->get('app', 'debug');
         $this['date.format'] = $config->get('date', 'format') ? $config->get('date', 'format') : 'd/m/Y H:i:s';
-
         $this['theme'] = 'default';
 
         $this['title'] = $config->get('app', 'title') ? $config->get('app', 'title') : 'GitList';
@@ -87,6 +86,7 @@ class Application extends SilexApplication
             $pkg = json_decode($string, true);
 
             $twig->addGlobal('version', $pkg['version']);
+            $twig->addGlobal('gitlist_date_format', $this['date.format']);
 
             return $twig;
         });
@@ -124,7 +124,7 @@ class Application extends SilexApplication
         $mod = 1000;
         $units = array('B', 'kB', 'MB', 'GB');
         for($i = 0; $size > $mod; $i++) $size /= $mod;
-        return round($size, 2) . $units[$i];
+        return round($size, 2) . " " . $units[$i];
     }
 
     public function getAvatar($email, $size)

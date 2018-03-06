@@ -30,7 +30,7 @@
                                 <strong> {{ item.branch }} </strong>
                                 <em>{{ item.subject }}</em> by
                                 <span class="author">{{ item.author }} &lt;{{ item.author_email }}&gt;</span>
-                                <span class="time">{{ item.date }}</span>;
+                                <span class="time">{{ item.date | date(gitlist_date_format) }}</span>;
                             {% else %}
                                 <span/>
                             {% endif %}
