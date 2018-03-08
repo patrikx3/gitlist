@@ -26,10 +26,11 @@ Done, just put on your server, nothing to build:
 https://github.com/patrikx3/gitlist/releases
 
 ### v1.0.4 - unreleased / in progress
-* Graph time was not using the ```config.ini```
 * Format size was missing space (ugly)
-* Graph is not using Bootstrap
-* Network was not using Bootstrap
+* Graph time was not using the ```config.ini```
+* In progress
+  * Graph is not using Bootstrap
+  * Network is not using Bootstrap
 
 ### v1.0.3
 * Total bytes was not working with Twig 2
@@ -41,25 +42,25 @@ https://github.com/patrikx3/gitlist/releases
 ### v1.0.1
 * The minimum PHP version is 7.1 and PHPUNIT 7.
 
-## v1.0.0
+### v1.0.0
 * Works with ```PHP 7.2```
 
 
-## v0.5.6
+### v0.5.6
 * The Markdown image links were not working. 
 * Missed out the ```package.json``` from the previous release.
 
-## v0.5.5
+### v0.5.5
 * Fixed PHPUNIT 6
 
-## v0.5.4
+### v0.5.4
 * Different submodule links for Gitlist and Github
 
-## v0.5.3
+### v0.5.3
 * The markdown links are working right
 * Shows submodules
 
-## v0.5.2
+### v0.5.2
 * Added all Bootsswatch themes (https://bootswatch.com/)
 * Removed default theme, kept only Bootstrap (though like over 10 themes now)
 * Removed PHP 5 support, only >= 7
