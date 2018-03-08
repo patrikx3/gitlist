@@ -31,6 +31,7 @@ https://github.com/patrikx3/gitlist/releases
 * In progress
   * Graph is not using Bootstrap
   * Network is not using Bootstrap
+  * Browse tags
 
 ### v1.0.3
 * Total bytes was not working with Twig 2
