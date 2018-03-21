@@ -32,6 +32,13 @@ https://github.com/patrikx3/gitlist/releases
   * Graph is not using Bootstrap
   * Network is not using Bootstrap
   * Browse tags
+  * In submodules, if the "submodule" and "path" is not the same, it chokes (it should work the submodule name and path are not the same)
+    * Works
+      * submodule "path/name"
+      * path path/name
+    * Not working
+      * submodule "path"
+      * path path/name 
 
 ### v1.0.3
 * Total bytes was not working with Twig 2

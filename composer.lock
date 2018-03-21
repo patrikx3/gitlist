@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "81df730ca4bdfc508731d863a2d529c0",
-    "content-hash": "c549fc2af01b991009fe5a61747d837f",
+    "hash": "baa2e69a2d5076002ab7b539be2ff3ec",
+    "content-hash": "6f7c4d76e6e5c2aa0781a4e8b992ba2e",
     "packages": [
         {
             "name": "danielstjules/stringy",
@@ -113,16 +113,16 @@
         },
         {
             "name": "patrikx3/gitter",
-            "version": "1.0.4",
+            "version": "1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/patrikx3/gitter.git",
-                "reference": "1ca285d400f50b5aedaee205638af4fd2e9640f0"
+                "reference": "cbb5858a19aacb57bb770693da517270b47b93df"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/patrikx3/gitter/zipball/1ca285d400f50b5aedaee205638af4fd2e9640f0",
-                "reference": "1ca285d400f50b5aedaee205638af4fd2e9640f0",
+                "url": "https://api.github.com/repos/patrikx3/gitter/zipball/cbb5858a19aacb57bb770693da517270b47b93df",
+                "reference": "cbb5858a19aacb57bb770693da517270b47b93df",
                 "shasum": ""
             },
             "require": {
@@ -165,7 +165,7 @@
                 "git",
                 "vcs"
             ],
-            "time": "2018-02-23 17:16:32"
+            "time": "2018-03-17 19:07:17"
         },
         {
             "name": "pimple/pimple",
@@ -315,16 +315,16 @@
         },
         {
             "name": "silex/silex",
-            "version": "v2.2.3",
+            "version": "v2.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silexphp/Silex.git",
-                "reference": "90c80c3e5ef86c54b8769feca0320154c6e63f7c"
+                "reference": "d2531e5b8099c429b752ad2154e85999c3689057"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silexphp/Silex/zipball/90c80c3e5ef86c54b8769feca0320154c6e63f7c",
-                "reference": "90c80c3e5ef86c54b8769feca0320154c6e63f7c",
+                "url": "https://api.github.com/repos/silexphp/Silex/zipball/d2531e5b8099c429b752ad2154e85999c3689057",
+                "reference": "d2531e5b8099c429b752ad2154e85999c3689057",
                 "shasum": ""
             },
             "require": {
@@ -400,7 +400,7 @@
             "keywords": [
                 "microframework"
             ],
-            "time": "2018-02-25 11:21:42"
+            "time": "2018-03-16 23:34:20"
         },
         {
             "name": "symfony/debug",
@@ -1049,16 +1049,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v2.4.6",
+            "version": "v2.4.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "d2117ec118c1ff3d28ccddca8212d82787a4809f"
+                "reference": "69aacd44dbbaa3199d5afb68605c996d577896fc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/d2117ec118c1ff3d28ccddca8212d82787a4809f",
-                "reference": "d2117ec118c1ff3d28ccddca8212d82787a4809f",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/69aacd44dbbaa3199d5afb68605c996d577896fc",
+                "reference": "69aacd44dbbaa3199d5afb68605c996d577896fc",
                 "shasum": ""
             },
             "require": {
@@ -1067,8 +1067,8 @@
             },
             "require-dev": {
                 "psr/container": "^1.0",
-                "symfony/debug": "~2.7",
-                "symfony/phpunit-bridge": "~3.3@dev"
+                "symfony/debug": "^2.7",
+                "symfony/phpunit-bridge": "^3.3"
             },
             "type": "library",
             "extra": {
@@ -1111,7 +1111,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2018-03-03 16:23:01"
+            "time": "2018-03-20 04:31:17"
         }
     ],
     "packages-dev": [
