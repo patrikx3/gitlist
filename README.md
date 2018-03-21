@@ -37,7 +37,7 @@ https://github.com/patrikx3/gitlist/releases
       * submodule "path/name"
       * path path/name
     * Not working
-      * submodule "path"
+      * submodule "name"
       * path path/name 
 
 ### v1.0.3
