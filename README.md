@@ -102,7 +102,7 @@ In order to run GitList on your server, you'll need:
 
 * ```git```
 * ```Apache``` with ```mod_rewrite``` enabled or ```nginx```
-* ```PHP``` >= 7.0 
+* ```PHP``` >= 7.1 
 
 ## By hand
 If you just want to get the project dependencies, instead of building everything:
