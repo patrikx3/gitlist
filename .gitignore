@@ -19,6 +19,7 @@ Thumbs.db
 node_modules
 /config.ini
 /git-test
+/git-test2
 /bower_components
 .idea/workspace.xml
 .idea/tasks.xml

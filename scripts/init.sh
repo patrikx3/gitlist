@@ -17,6 +17,7 @@ git clone --bare https://github.com/patrikx3/gitlist-workspace
 git clone --bare https://github.com/patrikx3/onenote
 
 
+
 cd ..
 sudo chmod 0777 ./git-test
 cp ./artifacts/config.ini ./
