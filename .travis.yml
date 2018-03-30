@@ -2,16 +2,18 @@ sudo: required
 dist: trusty
 language: php
 php:
-  - '7.1'
-  - '7.2'
-#  - hhvm
-  - nightly
-before_script:
-  composer install
-
+- '7.1'
+- '7.2'
+- nightly
+before_install:
+- composer config --global github-oauth.github.com "$GITHUB_TOKEN"
+before_script: composer install
 notifications:
   email:
     recipients:
-      - alabard@gmail.com
-    on_success: change # default: change
-    on_failure: change # default: always
+    - alabard@gmail.com
+    on_success: change
+    on_failure: change
+env:
+  global:
+    secure: HLP7y7p71YGsPsYuM9WszbmOfQP1q7nRnILEvqAGEMiXuOeSE4GN/IoPKSD1GQb9WlgjrvNPdblhbuQRdwpH+uEain7PLW6AmdrqGWDeg9cp89XtOcqts4Xm+O2ziP9fiDcfUyLTnalExS/iAFwUiZ1/u1NyHGZBYgHjk07wamizKGwT794k8rZ+zcRlAyzsRt/RrmeT53yif2zH1HHbsIPS0Xz0SkkusnRj1XBGnQGLOGPr+JrPseNXyFwG9nTHsoUVKvddghcJGtNRfflaSFTNdcjqXov+3xd2DeanejOLg/hBjWuR8mZyqCiVfXiX35rEFWNz5LqsbdiVDDdMdFoXRf1yIP65LzdzR3grTGWPbAcxqCpNt1vLS3kjqWwCPVNCDX2pP//f/j0sBrqDxnPNh4zdNTAs30zZ66M/qenT+1yCL0qZHlstOqK/kGQXfUqBMmDCTsR2yl2g7SKBo02PAHVxIJhvjJAbyn3hMwBvkeuNULn60cBlm2XBJwRADZ6nLJRtM3ULyTOnmDwRQiEcG3BGpyDY6xWNBcr4CuNI99Au4xuTeVJTDFhWlRN7ajOtWl+0b6ATR/DjhS4RhgOt/mQX99lbJW+AcRxU7nYRUkuIa+7JVxzkfyv9B6i7VAujfBsKxrHNC6e50PwKuv7Fjbv8pSCVwFIx8WJk0zc=
