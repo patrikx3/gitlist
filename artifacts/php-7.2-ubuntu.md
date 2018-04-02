@@ -1,8 +1,7 @@
 [//]: #@corifeus-header
 
-## P3X Gitlist
+# P3X Gitlist
 
----
                         
 [//]: #@corifeus-header:end
 # Install PHP 7.2 on Ubuntu

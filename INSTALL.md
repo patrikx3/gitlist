@@ -1,8 +1,7 @@
 [//]: #@corifeus-header
 
-## P3X Gitlist
+# P3X Gitlist
 
----
                         
 [//]: #@corifeus-header:end
 # GitList Installation
