@@ -4,7 +4,7 @@
     "publish": false,
     "type": "p3x"
   },
-  "description": "P3X Gitlist",
+  "description": "🤖 P3X Gitlist",
   "version": "1.0.4-rc.2",
   "main": "index.js",
   "repository": "https://github.com/patrikx3/gitlist",
