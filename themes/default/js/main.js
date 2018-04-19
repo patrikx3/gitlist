@@ -39,13 +39,14 @@ $(function () {
     markdownRenderer.image = function(href, title, text) {
         title = title || '';
         text = text || '';
-        const result = '<span style="display: block; font-size: 125%; opacity: 0.5">' +
-            title +
-            '</span>' +
-            '<img style="max-width: 100%;" src="' + href + '"/>' +
-            '<span style="display: block; text-align: right; opacity: 0.5">' +
-            text +
-            '</span>'
+        var resultText = title;
+        if (text !== '') {
+            if (title !== '') {
+                resultText += ' - ';
+            }
+            resultText += text;
+        }
+        var result = '<img style="max-width: 100%;" alt="' + htmlEncode(resultText) + '" title="' + htmlEncode(resultText) + '" src="' + href + '"/>';
 
         return result;
     };

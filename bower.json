@@ -17,6 +17,7 @@
   "dependencies": {
     "marked": "^0.3.12",
     "jquery": "^3.3.1",
-    "bootstrap": "^3.3.7"
+    "bootstrap": "^3.3.7",
+    "js-htmlencode": "^0.3.0"
   }
 }
