@@ -5,10 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=yes">
 
         <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="stylesheet" type="text/css" href="{{ app.request.basepath }}/themes/{{ app.theme }}/css/{{  theme  }}.css" id="bootstrap-theme">
-        <link rel="stylesheet" type="text/css" href="{{ app.request.basepath }}/themes/{{ app.theme }}/css/fontawesome.css">
-        <link rel="stylesheet" type="text/css" href="{{ app.request.basepath }}/themes/{{ app.theme }}/css/gitgraph.css">
-        <link rel="shortcut icon" type="image/png" href="{{ app.request.basepath }}/themes/{{ app.theme }}/img/favicon.png" />
+        <link rel="stylesheet" type="text/css" href="{{ app.url_subdir }}/themes/{{ app.theme }}/css/{{  theme  }}.css" id="bootstrap-theme">
+        <link rel="stylesheet" type="text/css" href="{{ app.url_subdir }}/themes/{{ app.theme }}/css/fontawesome.css">
+        <link rel="stylesheet" type="text/css" href="{{ app.url_subdir }}/themes/{{ app.theme }}/css/gitgraph.css">
+        <link rel="shortcut icon" type="image/png" href="{{ app.url_subdir }}/themes/{{ app.theme }}/img/favicon.png" />
     </head>
 
     <body>
@@ -20,29 +20,31 @@
         <!-- endbower -->
 
         <!-- bower:js -->
-        <script src="{{ app.request.basepath }}/bower_components/marked/lib/marked.js"></script>
-        <script src="{{ app.request.basepath }}/bower_components/jquery/dist/jquery.js"></script>
-        <script src="{{ app.request.basepath }}/bower_components/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="{{ app.request.basepath }}/bower_components/js-htmlencode/src/htmlencode.js"></script>
+        <script src="{{ app.url_subdir }}/bower_components/marked/lib/marked.js"></script>
+        <script src="{{ app.url_subdir }}/bower_components/jquery/dist/jquery.js"></script>
+        <script src="{{ app.url_subdir }}/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="{{ app.url_subdir }}/bower_components/js-htmlencode/src/htmlencode.js"></script>
         <!-- endbower -->
 
         <script type="text/javascript">
             const gitlist = {
-                basepath: '{{ app.request.basepath }}',
+                basepath: '{{ app.url_subdir }}',
                 branch: '{{ branch }}',
                 repo: '{{ repo }}'
             }
         </script>
-        <script src="{{ app.request.basepath }}/themes/{{ app.theme }}/js/raphael.js"></script>
-        <script src="{{ app.request.basepath }}/themes/{{ app.theme }}/js/codemirror.js"></script>
-        <script src="{{ app.request.basepath }}/themes/{{ app.theme }}/js/list.min.js"></script>
-        <script src="{{ app.request.basepath }}/themes/{{ app.theme }}/js/main.js"></script>
-        <script src="{{ app.request.basepath }}/themes/{{ app.theme }}/js/networkGraph.js"></script>
-        <script src="{{ app.request.basepath }}/themes/{{ app.theme }}/js/gitgraph.js"></script>
-        <script src="{{ app.request.basepath }}/themes/{{ app.theme }}/js/draw.js"></script>
-        <script src="{{ app.request.basepath }}/themes/{{ app.theme }}/js/themes.js"></script>
-        <script src="{{ app.request.basepath }}/themes/{{ app.theme }}/js/theme-switcher.js"></script>
+        <script src="{{ app.url_subdir }}/themes/{{ app.theme }}/js/raphael.js"></script>
+        <script src="{{ app.url_subdir }}/themes/{{ app.theme }}/js/codemirror.js"></script>
+        <script src="{{ app.url_subdir }}/themes/{{ app.theme }}/js/list.min.js"></script>
+        <script src="{{ app.url_subdir }}/themes/{{ app.theme }}/js/main.js"></script>
+        <script src="{{ app.url_subdir }}/themes/{{ app.theme }}/js/networkGraph.js"></script>
+        <script src="{{ app.url_subdir }}/themes/{{ app.theme }}/js/gitgraph.js"></script>
+        <script src="{{ app.url_subdir }}/themes/{{ app.theme }}/js/draw.js"></script>
+        <script src="{{ app.url_subdir }}/themes/{{ app.theme }}/js/themes.js"></script>
+        <script src="{{ app.url_subdir }}/themes/{{ app.theme }}/js/theme-switcher.js"></script>
         {% endblock %}
+
+
 
     </body>
 </html>
