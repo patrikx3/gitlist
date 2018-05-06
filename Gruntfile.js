@@ -108,8 +108,8 @@ var themes = ${JSON.stringify(themeCss, null, 4)}
                                     css: /<link.*href=['"]([^'"]+)/gi
                                 },
                                 replace: {
-                                    js: '<script src="\{\{ app.request.basepath \}\}{{filePath}}"></script>',
-                                    css: '<link rel="stylesheet" href="\{\{ app.request.basepath \}\}{{filePath}}" />'
+                                    js: '<script src="\{\{ app.url_subdir \}\}{{filePath}}"></script>',
+                                    css: '<link rel="stylesheet" href="\{\{ app.url_subdir \}\}{{filePath}}" />'
                                 }
                             },
                         },

@@ -15,6 +15,6 @@ var themes = {
     "bootstrap-slate": "/themes/default/css/bootstrap-slate.css",
     "bootstrap-spacelab": "/themes/default/css/bootstrap-spacelab.css",
     "bootstrap-superhero": "/themes/default/css/bootstrap-superhero.css",
-    "bootstrap-yeti": "/themes/default/css/bootstrap-yeti.css",
-    "bootstrap-united": "/themes/default/css/bootstrap-united.css"
+    "bootstrap-united": "/themes/default/css/bootstrap-united.css",
+    "bootstrap-yeti": "/themes/default/css/bootstrap-yeti.css"
 }
