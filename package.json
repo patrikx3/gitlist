@@ -6,7 +6,7 @@
     "opencollective": false
   },
   "description": "🤖 P3X Gitlist",
-  "version": "1.0.4-rc.3",
+  "version": "1.0.4-rc.4",
   "main": "index.js",
   "repository": "https://github.com/patrikx3/gitlist",
   "author": "patrikx3 <alabard@gmail.com>",
