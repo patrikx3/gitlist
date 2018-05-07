@@ -38,6 +38,6 @@ $(function(){
         $this.parent().addClass('active');
         var themeurl = themes[$this.attr('data-theme')];
         setCookie('gitlist-bootstrap-theme', $this.attr('data-theme'));
-        themesheet.attr('href',themeurl);
+        themesheet.attr('href', (gitlist.basepath === '/' ? '' : gitlist.basepath) + themeurl);
     });
 });
