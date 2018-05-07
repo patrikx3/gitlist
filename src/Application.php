@@ -29,6 +29,7 @@ class Application extends SilexApplication
         parent::__construct();
         $app = $this;
         $this->path = realpath($root);
+        $this['url_subdir'] = dirname($_SERVER['SCRIPT_NAME']);
 
         $this['debug'] = $config->get('app', 'debug');
         $this['date.format'] = $config->get('date', 'format') ? $config->get('date', 'format') : 'd/m/Y H:i:s';
@@ -42,7 +43,7 @@ class Application extends SilexApplication
         $this['avatar.query'] = $config->get('avatar', 'query');
         $this['show_http_remote'] = $config->get('clone_button', 'show_http_remote');
         $this['use_https'] = $config->get('clone_button', 'use_https');
-        $this['url_subdir'] = $config->get('clone_button', 'url_subdir');
+        $this['clone_url'] = $config->get('clone_button', 'url_subdir');
         $this['http_user'] = $config->get('clone_button', 'http_user_dynamic') ? $_SERVER['PHP_AUTH_USER'] : $config->get('clone_button', 'http_user');
         $this['show_ssh_remote'] = $config->get('clone_button', 'show_ssh_remote');
         $this['ssh_user'] = $config->get('clone_button', 'ssh_user');
