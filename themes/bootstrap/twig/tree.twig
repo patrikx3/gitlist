@@ -1,0 +1,110 @@
+{% extends 'layout_page.twig' %}
+
+{% set page = 'files' %}
+
+{% block title %}GitList{% endblock %}
+
+{% block content %}
+    {% embed 'breadcrumb.twig' with {breadcrumbs: breadcrumbs} %}
+        {% block extra %}
+            <div class="pull-right">
+                <div class="btn-group download-buttons">
+                    {% if app.show_http_remote or app.show_ssh_remote %}
+                    <a type="button" href="#" class="btn btn-default btn-xs" title="Show remotes to clone this repository." id="clone-button-show">Clone</a>
+                    {% endif %}
+                    <a type="button" href="{{ path('archive', {repo: repo, branch: branch, format: 'zip'}) }}" class="btn btn-default btn-xs" title="Download '{{ branch }}' as a ZIP archive">ZIP</a>
+                    <a type="button" href="{{ path('archive', {repo: repo, branch: branch, format: 'tar'}) }}" class="btn btn-default btn-xs" title="Download '{{ branch }}' as a TAR archive">TAR</a>
+                </div>
+		<div class="download-buttons">
+		    <a href="{{ path('rss', {repo: repo, branch: branch}) }}"><span class="fa fa-rss rss-icon"></span></a>
+		</div>
+            </div>
+            {% if app.show_http_remote or app.show_ssh_remote %}
+            <div id="clone-popup">
+                <div id="clone-popup-inner-wrapper">
+                    <button id="clone-button-hide"s style="background-color: rgba(0,0,0,0.5); border-radius: 20px; padding: 5px;" type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <div class="btn-group">
+                        {% if app.show_ssh_remote %}
+                        <button type="button" class="btn btn-default{{ app.show_ssh_remote and app.show_http_remote ? ' active' }}" id="clone-button-ssh">SSH</button>
+                        {% endif %}
+                        {% if app.show_http_remote %}
+                        <button type="button" class="btn btn-default" id="clone-button-http">HTTPS</button>
+                        {% endif %}
+                    </div><br />
+
+                    {% if app.show_ssh_remote %}
+                    <input type="text" class="form-control{{ app.show_ssh_remote ? ' visible' }}" id="clone-input-ssh" value="git clone {{ app.ssh_user }}@{{ global.request.host }}:{{ repo }}">
+                    {% endif %}
+                    {% if app.show_http_remote %}
+                    <input type="text" class="form-control{{ app.show_ssh_remote is empty and app.show_http_remote ? ' visible' }}" id="clone-input-http" value="git clone http{{ app.use_https ? 's' }}://{{ app.http_user }}{{ app.http_user ? '@' }}{{ global.request.host }}/{{ app.clone_subdir }}{{ repo }}">
+                    {% endif %}
+                </div>
+            </div>
+            {% endif %}
+        {% endblock %}
+    {% endembed %}
+
+    {% if files is not empty %}
+    <table class="table tree">
+        <thead>
+            <tr>
+                <th width="80%">Name</th>
+                <th width="10%">Mode</th>
+                <th width="10%">Size</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if parent is not null %}
+            <tr>
+                <td>
+                    {% if not parent %}
+                        <a href="{{ path('branch', {repo: repo, branch: branch}) }}">..</a>
+                    {% else %}
+                        <a href="{{ path('tree', {repo: repo, commitishPath: branch ~ '/' ~ parent}) }}">..</a>
+                    {% endif %}
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+            {% endif %}
+            {% for file in files %}
+            <tr>
+                <td>
+                    <span class="fa {{ file.type == "folder" or file.type == "symlink" or file.type == "module" ? "fa-folder-open" : "fa-file-text-o" }}"></span>
+
+                    {%- if file.type == "folder" or file.type == "symlink" -%}
+                        <a href="{{ path('tree', {repo: repo, commitishPath: branch ~ '/' ~ path ~ (file.type == "symlink" ? file.path : file.name)}) }}">{{ file.name }}</a>
+
+                    {%- elseif file.type == "module"  -%}
+                        <a title="Branch: {{ branch }}" href="{{ file.url }}/tree/{{ branch }}">{{  file.name  }}</a>
+                        @
+                        <a title="Commit: {{ file.hash }}" href="{{ file.url }}/tree/{{ file.hash }}">{{  file.shortHash  }}</a>
+
+                    {%- else -%}
+                         <a href="{{ path('blob', {repo: repo, commitishPath: branch ~ '/' ~ path ~ (file.type == "symlink" ? file.path : file.name)}) }}">{{ file.name }}</a>
+
+                    {%- endif -%}
+                    </a>
+
+
+                </td>
+                <td>{{ file.mode }}</td>
+                <td>{% if file.size %}{{ (file.size / 1024) | number_format }} kb{% endif %}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <p>This repository is empty.</p>
+    {% endif %}
+    {% if readme is defined and readme is not empty %}
+        <div class="readme-view">
+            <div class="md-header">
+                <span class="meta">{{ readme.filename }}</span>
+            </div>
+            <div id="md-content">{{ readme.content }}</div>
+        </div>
+    {% endif %}
+
+
+{% endblock %}

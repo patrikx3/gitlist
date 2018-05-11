@@ -36,7 +36,7 @@ class Application extends SilexApplication
         }
         $this['debug'] = $config->get('app', 'debug');
         $this['date.format'] = $config->get('date', 'format') ? $config->get('date', 'format') : 'd/m/Y H:i:s';
-        $this['theme'] = 'default';
+        $this['theme'] = 'bootstrap';
 
         $this['title'] = $config->get('app', 'title') ? $config->get('app', 'title') : 'GitList';
         $this['filetypes'] = $config->getSection('filetypes');
