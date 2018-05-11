@@ -47,8 +47,8 @@ http://gitlist.patrikx3.com/
 
 ## Requirements
 For the build on your workstation (themes):
-* ```NodeJs``` >= 7.8
-* ```Bower``` and ```Grunt``` (npm install -g bower grunt-cli)
+* ```NodeJs``` >= 10
+* ```Bower``` and ```Grunt``` (npm install -g npm grunt-cli)
 
 In order to run GitList on your server, you'll need:
 
@@ -63,7 +63,7 @@ If you just want to get the project dependencies, instead of building everything
 git clone https://github.com/patrikx3/gitlist.git
 curl -s http://getcomposer.org/installer | php
 php composer.phar install
-npm i -g npm
+sudo npm install -g npm grunt-cli
 npm install
 grunt
 npm run webpack
