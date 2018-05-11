@@ -1,4 +1,3 @@
-const utils = require('corifeus-utils');
 const fs = require('fs');
 const fsExtra = require('fs-extra');
 
@@ -10,6 +9,35 @@ module.exports = function (grunt) {
         'themes/default/css/style.css': 'themes/default/less/style.less',
         'themes/default/css/fontawesome.css': 'themes/default/less/fontawesome.less',
     }
+
+    const wiredepOverrides = {
+        // for jgrowl it requires animate, so slim is not good
+        'jquery': {
+            main: 'dist/jquery.js'
+        },
+        codemirror: {
+            main: [
+                'lib/codemirror.css',
+                'lib/codemirror.js',
+                'addon/mode/simple.js',
+                'addon/mode/multiplex.js',
+                'addon/mode/multiplex.js',
+                'mode/xml/xml.js',
+                'mode/javascript/javascript.js',
+                'mode/css/css.js',
+                'mode/htmlmixed/htmlmixed.js',
+                'mode/handlebars/handlebars.js',
+                'mode/yaml/yaml.js',
+                'mode/sass/sass.js',
+            ]
+        },
+        twemoji: {
+            main: [
+                '2/twemoji.js',
+            ]
+        }
+    };
+
 
     const root = './node_modules/bootswatch';
     const watches = fs.readdirSync(root);
@@ -105,7 +133,7 @@ var themes = ${JSON.stringify(themeCss, null, 4)}
                     target: {
                         src: 'themes/default/twig/layout.twig',
                         ignorePath: '../../..',
-//                overrides: wiredepOverrides,
+                        overrides: wiredepOverrides,
                         //              exclude: wiredepExclude
                         fileTypes: {
                             twig: {

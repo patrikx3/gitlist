@@ -7371,3 +7371,9 @@ a.p3x-gitlist-markdown-heading-link {
 .p3x-gitlist-markdown-image {
   max-width: 100%;
 }
+img.emoji {
+  height: 1em;
+  width: 1em;
+  margin: 0 .05em 0 .1em;
+  vertical-align: -0.1em;
+}

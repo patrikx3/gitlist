@@ -4,7 +4,7 @@
 
 
  
-# 🤖 P3X Gitlist  v1.1.1    
+# 🤖 P3X Gitlist  v1.1.2    
 
 # Description  
 
@@ -24,7 +24,7 @@ This is Klaus Silveira's fork, with multiple themes, sub-modules and updated to 
 Done, just put on your server, nothing to build:   
 https://github.com/patrikx3/gitlist/releases
 
-### v1.1.1 - unreleased / in progress
+### v1.2.0 - unreleased / in progress
 * In submodules, if the "submodule" and "path" is not the same, it chokes (it should work the submodule name and path are not the same)
   * Works
     * submodule "path/name"
@@ -76,7 +76,7 @@ If you have Composer in your path, things get easier. But you know the drill.
 
 ---
 
-[**GITLIST**](https://pages.corifeus.com/gitlist) Build v1.1.1 
+[**GITLIST**](https://pages.corifeus.com/gitlist) Build v1.1.2 
 
 [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software) [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) 
 

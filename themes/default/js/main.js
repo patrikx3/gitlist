@@ -1,4 +1,5 @@
 $(function () {
+
     $('.dropdown-toggle').dropdown();
 
     if ($('#sourcecode').length) {
@@ -14,7 +15,9 @@ $(function () {
             lineWrapping: true,
             readOnly: true,
             mode: mode,
-
+            lineNumberFormatter: function(ln) {
+                return ln;
+            }
         });
     }
 // blob/master
@@ -68,7 +71,10 @@ $(function () {
         var html = marked($('#md-content').text(), {
             renderer: markdownRenderer
         });
-        $('#md-content').html(html);
+        $('#md-content').html(twemoji.parse(html, {
+            folder: 'svg',
+            ext: '.svg',
+        }));
     }
 
     var clonePopup = $('#clone-popup')
@@ -147,3 +153,4 @@ if ($('#branchList').length) {
 $('.search').click(function (e) {
     e.stopPropagation();
 });
+
