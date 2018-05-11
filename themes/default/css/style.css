@@ -120,9 +120,9 @@
   padding: 10px;
   max-width: 100%;
 }
-.blame-view td.blame-line {
+.blame-view td.blame-line pre {
   overflow-x: auto;
-  overflow-y: hidden;
+  white-space: pre-wrap;
 }
 .commits {
   border: 1px solid #e7e7e7;
@@ -225,10 +225,9 @@
   display: inline-block;
   min-width: 80px;
   text-align: right;
-  padding: 2px;
   background-color: #d9edf7;
-  color: #31708f;
-  border: 2px solid #bce8f1;
+  color: #31708f !important;
+  padding-right: 2px;
 }
 .network-view {
   width: 100%;
@@ -278,20 +277,12 @@
 }
 .network-view .network-graph .network-commit-overlay a,
 .network-view .network-graph .network-commit-overlay a:active {
-  display: inline-block;
   background-color: #f8f8f8;
   color: #9d9d9d;
-  padding: 2px;
 }
 .network-view .network-graph .network-commit-overlay img {
   float: left;
-  margin-top: 10px;
-  margin-right: 8px;
-}
-.network-view .network-graph .network-commit-overlay div {
-  background-color: #222;
-  color: #9d9d9d;
-  padding-left: 48px;
+  margin-right: 10px;
 }
 #clone-popup {
   display: none;

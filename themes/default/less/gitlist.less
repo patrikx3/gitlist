@@ -144,8 +144,10 @@
   td.blame-info {
   }
   td.blame-line {
-    overflow-x: auto;
-    overflow-y: hidden;
+    pre {
+      overflow-x: auto;
+      white-space:pre-wrap;
+    }
   }
   tr {
   }
@@ -270,8 +272,7 @@
   display: inline-block;
   min-width: 80px;
   text-align: right;
-  padding: 2px;
   background-color: @alert-info-bg;
-  color: @alert-info-text;
-  border: 2px solid @alert-info-border;
+  color: @alert-info-text !important;
+  padding-right: 2px;
 }

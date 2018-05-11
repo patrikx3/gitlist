@@ -155,7 +155,7 @@
 			messageDisplay = $('<div></div>').appendTo(el),
 			metaDisplay = $('<div></div>').appendTo(el),
 			authorDisplay = $('<a rel="author"></a>').appendTo(metaDisplay),
-			dateDisplay = $('<div></div>').appendTo(metaDisplay),
+			dateDisplay = $('<span  ></span>').appendTo(metaDisplay),
 
 			commit;
 
@@ -174,6 +174,8 @@
 			return '' + input;
 		}
 
+        var fmt = new DateFormatter();
+
 		/**
 		 * Transform a JS Native Date Object to a string, maintaining the same format given in the commit_list view
 		 * 'd/m/Y \\a\\t H:i:s'
@@ -182,12 +184,7 @@
 		 * @returns String
 		 */
 		function getDateString( date )  {
-			return twoDigits( date.getDate() )	+ '/'
-				+ twoDigits( date.getMonth() + 1 ) + '/'
-				+ date.getFullYear() + ' at '
-				+ twoDigits(date.getHours()) + ':'
-				+ twoDigits(date.getMinutes()) + ':'
-				+ twoDigits(date.getSeconds());
+			return fmt.formatDate(date, gitlist.dateFormat)
 		}
 
 		/**

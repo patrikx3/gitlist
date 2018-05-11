@@ -21,18 +21,18 @@
     <table class="table" style="table-layout: fixed;">
         <thead>
             <tr>
-                <th width="20%">Name</th>
-                <th width="80%">Match</th>
+                <th width="30%">Name</th>
+                <th width="70%">Match</th>
             </tr>
         </thead>
         <tbody>
             {% for result in results %}
             <tr>
-                <td>
+                <td width="30%" nowrap>
                     <div style="overflow-y: auto; ">
                         <span class="fa fa-file-text-o"></span> <a href="{{ path('blob', {repo: repo, branch: branch, file: result.file, commitishPath: branch ~ '/' ~ result.file}) }}#L{{ result.line }}">{{ result.file }}</a></td>
                     </div>
-                <td>
+                <td width="70%">
                     <pre style="overflow-y: auto; ">
                         {{ result.match }}
                     </pre>

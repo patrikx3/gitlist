@@ -7297,9 +7297,9 @@ a.list-group-item-danger.active:focus {
   padding: 10px;
   max-width: 100%;
 }
-.blame-view td.blame-line {
+.blame-view td.blame-line pre {
   overflow-x: auto;
-  overflow-y: hidden;
+  white-space: pre-wrap;
 }
 .commits {
   border: 1px solid #2b2e32;
@@ -7402,10 +7402,9 @@ a.list-group-item-danger.active:focus {
   display: inline-block;
   min-width: 80px;
   text-align: right;
-  padding: 2px;
   background-color: #5bc0de;
-  color: #fff;
-  border: 2px solid #3dced8;
+  color: #fff !important;
+  padding-right: 2px;
 }
 .network-view {
   width: 100%;
@@ -7455,20 +7454,12 @@ a.list-group-item-danger.active:focus {
 }
 .network-view .network-graph .network-commit-overlay a,
 .network-view .network-graph .network-commit-overlay a:active {
-  display: inline-block;
   background-color: #3A3F44;
   color: #ccc;
-  padding: 2px;
 }
 .network-view .network-graph .network-commit-overlay img {
   float: left;
-  margin-top: 10px;
-  margin-right: 8px;
-}
-.network-view .network-graph .network-commit-overlay div {
-  background-color: #7A8288;
-  color: #ccc;
-  padding-left: 48px;
+  margin-right: 10px;
 }
 #clone-popup {
   display: none;

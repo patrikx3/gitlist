@@ -6959,9 +6959,9 @@ legend {
   padding: 10px;
   max-width: 100%;
 }
-.blame-view td.blame-line {
+.blame-view td.blame-line pre {
   overflow-x: auto;
-  overflow-y: hidden;
+  white-space: pre-wrap;
 }
 .commits {
   border: 1px solid #ddd;
@@ -7064,10 +7064,9 @@ legend {
   display: inline-block;
   min-width: 80px;
   text-align: right;
-  padding: 2px;
   background-color: #5bc0de;
-  color: #fff;
-  border: 2px solid #5bc0de;
+  color: #fff !important;
+  padding-right: 2px;
 }
 .network-view {
   width: 100%;
@@ -7117,20 +7116,12 @@ legend {
 }
 .network-view .network-graph .network-commit-overlay a,
 .network-view .network-graph .network-commit-overlay a:active {
-  display: inline-block;
   background-color: #fff;
   color: #333333;
-  padding: 2px;
 }
 .network-view .network-graph .network-commit-overlay img {
   float: left;
-  margin-top: 10px;
-  margin-right: 8px;
-}
-.network-view .network-graph .network-commit-overlay div {
-  background-color: #fff;
-  color: #333333;
-  padding-left: 48px;
+  margin-right: 10px;
 }
 #clone-popup {
   display: none;
