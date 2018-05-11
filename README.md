@@ -63,8 +63,10 @@ If you just want to get the project dependencies, instead of building everything
 git clone https://github.com/patrikx3/gitlist.git
 curl -s http://getcomposer.org/installer | php
 php composer.phar install
-bower install
+npm i -g npm
+npm install
 grunt
+npm run webpack
 ```
 
 If you have Composer in your path, things get easier. But you know the drill.

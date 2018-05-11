@@ -6,7 +6,7 @@ pushd $TOP
 composer install
 composer install --no-dev
 composer dump-autoload --optimize
-bower install --allow-root
 npm install
 grunt
+npm run webpack
 popd

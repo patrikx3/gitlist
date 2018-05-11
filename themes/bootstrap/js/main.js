@@ -158,25 +158,51 @@ $(function () {
         $pager.find('.previous').remove();
     }
     paginate();
+
+    var es = document.getElementsByTagName('a')
+    for(var i=0; i<es.length; i++){
+        es[i].addEventListener('click', function(e) {
+            var href = e.target.getAttribute('href');
+            if (href === null) {
+                return;
+            }
+            if (href.startsWith('#')) {
+                e.preventDefault()
+                var el = document.getElementById(href.substring(1));
+                if (el === null) {
+                    return;
+                }
+                el.scrollIntoView({
+                    behavior: 'smooth',
+                    block: "center",
+
+                })
+
+            }
+        })
+    }
+
+    if ($('#repositories').length) {
+        var listOptions = {
+            valueNames: ['name']
+        };
+        var repoList = new global.List('repositories', listOptions);
+    }
+
+    if ($('#branchList').length) {
+        var listBranchOptions = {
+            valueNames: ['item']
+        };
+        var repoList = new global.List('branchList', listBranchOptions);
+    }
+
+    $('.search').click(function (e) {
+        e.stopPropagation();
+    });
+
 });
 
-if ($('#repositories').length) {
-    var listOptions = {
-        valueNames: ['name']
-    };
-    var repoList = new List('repositories', listOptions);
-}
 
-if ($('#branchList').length) {
-    var listBranchOptions = {
-        valueNames: ['item']
-    };
-    var repoList = new List('branchList', listBranchOptions);
-}
-
-$('.search').click(function (e) {
-    e.stopPropagation();
-});
 
 global.gitlist.scrollHash = function(element, event) {
     var url = new URL(element.href)
@@ -203,29 +229,3 @@ global.gitlist.scrollHash = function(element, event) {
     }
     return false;
 }
-
-document.addEventListener('DOMContentLoaded', function(){
-    var es = document.getElementsByTagName('a')
-    for(var i=0; i<es.length; i++){
-        es[i].addEventListener('click', function(e) {
-            var href = e.target.getAttribute('href');
-            if (href === null) {
-                return;
-            }
-            if (href.startsWith('#')) {
-                e.preventDefault()
-                var el = document.getElementById(href.substring(1));
-                if (el === null) {
-                    return;
-                }
-                el.scrollIntoView({
-                    behavior: 'smooth',
-                    block: "center",
-
-                })
-
-            }
-        })
-    }
-
-})

@@ -341,12 +341,13 @@ class Repository extends BaseRepository
 
             preg_match_all('/([\w-._]+):([^:]+):([0-9]+):(.+)/', $result, $matches, PREG_SET_ORDER);
 
-            $data['branch'] = $matches[0][1];
-            $data['file'] = $matches[0][2];
-            $data['line'] = $matches[0][3];
-            $data['match'] = $matches[0][4];
-
-            $searchResults[] = $data;
+            if (isset($matches[0])) {
+                $data['branch'] = $matches[0][1];
+                $data['file'] = $matches[0][2];
+                $data['line'] = $matches[0][3];
+                $data['match'] = $matches[0][4];
+                $searchResults[] = $data;
+            }
         }
 
         return $searchResults;
