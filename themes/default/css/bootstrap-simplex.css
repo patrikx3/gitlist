@@ -5,7 +5,6 @@
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700");
-@import url("//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,700");
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -1073,7 +1072,7 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 body {
-  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 13px;
   line-height: 1.42857143;
   color: #777;
@@ -1174,7 +1173,7 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 300;
   line-height: 1.1;
   color: #444;
@@ -5962,7 +5961,7 @@ button.close {
   position: absolute;
   z-index: 1070;
   display: block;
-  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -6080,7 +6079,7 @@ button.close {
   display: none;
   max-width: 276px;
   padding: 1px;
-  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -6728,7 +6727,7 @@ button.close {
   color: #D9230F;
 }
 .btn {
-  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .btn-default,
 .btn-default:hover {
@@ -6924,101 +6923,71 @@ label {
 }
 .source-view {
   width: 100%;
-  margin-bottom: 18px;
   border: 1px solid #eeeeee;
-}
-.source-view .source-header {
-  background-color: #fff;
-  color: #777;
-  padding: 8px;
-  line-height: 18px;
-  text-align: left;
-  vertical-align: bottom;
-  border-bottom: 1px solid #eeeeee;
-  height: 47px;
+  display: block;
 }
 .source-view .source-header .meta {
-  float: left;
-  padding: 8px 0;
-  font-size: 14px;
-}
-.source-view pre {
-  margin: 0;
-  padding: 12px;
-  border: none;
-}
-.source-view #sourcecode {
-  margin: 0;
-  padding: 0;
-  border: none;
+  font-weight: bold;
+  font-size: 125%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 5px;
   width: 100%;
-  height: 600px;
+  text-align: right;
+}
+.source-view a,
+.source-view a:hover {
+  text-decoration: none !important;
 }
 .source-view .source-diff {
-  background-color: #F8F8F8;
+  max-width: 100%;
+  min-width: 100%;
+  overflow-x: auto;
 }
 .source-view .source-diff pre {
   margin: 0;
   padding: 0 0 0 6px;
   border: none;
   border-radius: 0;
+  overflow: hidden;
 }
 .source-view .source-diff pre:hover {
-  background-color: #ffc;
+  background-color: #d9edf7;
+  color: #3a87ad;
 }
 .source-view .source-diff table td {
   padding: 0;
 }
 .source-view .source-diff .new {
-  background-color: #DFD;
+  background-color: #dff0d8;
+  color: #468847;
 }
 .source-view .source-diff .old {
-  background-color: #FDD;
+  background-color: #f2dede;
+  color: #b94a48;
 }
 .source-view .source-diff .chunk {
-  background-color: #e8e8e8;
-  color: #808080;
+  background-color: #fff;
+  color: #777;
 }
 .source-view .source-diff .lineNo {
-  color: #aaa;
-  background-color: #e8e8e8;
+  background-color: #FCFCFC;
+  color: #D9230F;
   padding: 0 6px;
   text-align: right;
   border-right: 1px solid #ddd;
   font-family: monospace;
 }
-.source-view .image-blob {
-  padding: 10px;
-  max-width: 600px;
-}
-.blame-view {
+.source-view #sourcecode {
   width: 100%;
 }
-.blame-view td {
-  vertical-align: top;
-  padding: 8px;
+.source-view .image-blob {
+  padding: 10px;
+  max-width: 100%;
 }
-.blame-view tr {
-  border-bottom: 1px solid #ddd;
-}
-.blame-view tr:last-child {
-  border-bottom: 0;
-}
-.blame-view .line {
-  font-weight: 700;
-  border-right: 1px solid #ddd;
-}
-.blame-view .commit {
-  background-color: #F8F8F8;
-  font-weight: 700;
-  border-right: 1px solid #ddd;
-}
-.blame-view pre {
-  background-color: transparent;
-  margin: 0;
-  padding: 0;
-  border: none;
-  border-radius: 0;
+.blame-view td.blame-line {
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 .commits {
   border: 1px solid #eeeeee;
@@ -7045,28 +7014,6 @@ label {
 .commits h6 {
   margin-top: 0;
   margin-bottom: 5px;
-}
-.commit-view {
-  width: 100%;
-  margin-bottom: 1.42857143;
-  border: 1px solid #eeeeee;
-  border-radius: 0;
-}
-.commit-view .commit-header {
-  background-color: #fff;
-  color: #777;
-  padding: 8px;
-  line-height: 1.42857143;
-  text-align: left;
-  vertical-align: bottom;
-  border-bottom: 1px solid #eeeeee;
-}
-.commit-view .commit-header h4 {
-  padding: 6px 0;
-  margin: 0;
-}
-.commit-view .commit-body {
-  padding: 8px;
 }
 .commit-list {
   list-style-type: none;
@@ -7139,232 +7086,18 @@ label {
   padding: 14px 16px;
   color: #777;
 }
-.CodeMirror {
-  line-height: 16px;
-  font-family: Consolas, "Liberation Mono", Courier, monospace;
-  font-size: 12px;
-  /* Necessary so the scrollbar can be absolutely positioned within the wrapper on Lion. */
-  position: relative;
-  /* This prevents unwanted scrollbars from showing up on the body and wrapper in IE. */
-  overflow: hidden;
-}
-.CodeMirror-scroll {
-  overflow-x: auto;
-  overflow-y: hidden;
-  height: auto;
-  /* This is needed to prevent an IE[67] bug where the scrolled content
-     is visible outside of the scrolling box. */
-  position: relative;
-  outline: none;
-}
-/* Vertical scrollbar */
-.CodeMirror-scrollbar {
-  float: right;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  /* This corrects for the 1px gap introduced to the left of the scrollbar
-     by the rule for .CodeMirror-scrollbar-inner. */
-  margin-left: -1px;
-}
-.CodeMirror-scrollbar-inner {
-  /* This needs to have a nonzero width in order for the scrollbar to appear
-     in Firefox and IE9. */
-  width: 1px;
-}
-.CodeMirror-scrollbar.cm-sb-overlap {
-  /* Ensure that the scrollbar appears in Lion, and that it overlaps the content
-     rather than sitting to the right of it. */
-  position: absolute;
-  z-index: 1;
-  float: none;
-  right: 0;
-  min-width: 12px;
-}
-.CodeMirror-scrollbar.cm-sb-nonoverlap {
-  min-width: 12px;
-}
-.CodeMirror-scrollbar.cm-sb-ie7 {
-  min-width: 18px;
-}
-.CodeMirror-gutter {
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 10;
-  background-color: #f7f7f7;
-  border-right: 1px solid #eee;
-  min-width: 2em;
-  height: 100%;
-  padding-right: 3px;
-}
-.CodeMirror-gutter-text {
-  color: #aaa;
+.treegraph-button {
+  display: inline-block;
+  min-width: 80px;
   text-align: right;
-  padding: .4em .2em .4em .4em;
-  white-space: pre !important;
-}
-.CodeMirror-lines {
-  padding: .4em;
-  white-space: pre;
-  cursor: text;
-  margin-left: 5px;
-}
-.CodeMirror-lines * {
-  /* Necessary for throw-scrolling to decelerate properly on Safari. */
-  pointer-events: none;
-}
-.CodeMirror pre {
-  -moz-border-radius: 0;
-  -webkit-border-radius: 0;
-  -o-border-radius: 0;
-  border-radius: 0;
-  border-width: 0;
-  background: transparent;
-  font-family: inherit;
-  font-size: inherit;
-  padding: 0;
-  margin: 0;
-  white-space: pre;
-  word-wrap: normal;
-  line-height: inherit;
-  color: inherit;
-}
-.CodeMirror-wrap pre {
-  word-wrap: break-word;
-  white-space: pre-wrap;
-  word-break: normal;
-}
-.CodeMirror-wrap .CodeMirror-scroll {
-  overflow-x: hidden;
-}
-.CodeMirror textarea {
-  outline: none !important;
-}
-.CodeMirror pre.CodeMirror-cursor {
-  z-index: 10;
-  position: absolute;
-  visibility: hidden;
-  border-left: 1px solid black;
-  border-right: none;
-  width: 0;
-}
-.cm-keymap-fat-cursor pre.CodeMirror-cursor {
-  width: auto;
-  border: 0;
-  background: transparent;
-  background: rgba(0, 200, 0, 0.4);
-}
-/* Kludge to turn off filter in ie9+, which also accepts rgba */
-.cm-keymap-fat-cursor pre.CodeMirror-cursor:not(#nonsense_id) {
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
-}
-.CodeMirror-focused pre.CodeMirror-cursor {
-  visibility: visible;
-}
-div.CodeMirror-selected {
-  background: #d9d9d9;
-}
-.CodeMirror-focused div.CodeMirror-selected {
-  background: #d7d4f0;
-}
-.CodeMirror-searching {
-  background: #ffa;
-  background: rgba(255, 255, 0, 0.4);
-}
-/* Default theme */
-.cm-s-default span.cm-keyword {
-  color: #708;
-}
-.cm-s-default span.cm-atom {
-  color: #219;
-}
-.cm-s-default span.cm-number {
-  color: #164;
-}
-.cm-s-default span.cm-def {
-  color: #00f;
-}
-.cm-s-default span.cm-variable {
-  color: black;
-}
-.cm-s-default span.cm-variable-2 {
-  color: #05a;
-}
-.cm-s-default span.cm-variable-3 {
-  color: #085;
-}
-.cm-s-default span.cm-property {
-  color: black;
-}
-.cm-s-default span.cm-operator {
-  color: black;
-}
-.cm-s-default span.cm-comment {
-  color: #a50;
-}
-.cm-s-default span.cm-string {
-  color: #a11;
-}
-.cm-s-default span.cm-string-2 {
-  color: #f50;
-}
-.cm-s-default span.cm-meta {
-  color: #555;
-}
-.cm-s-default span.cm-error {
-  color: #f00;
-}
-.cm-s-default span.cm-qualifier {
-  color: #555;
-}
-.cm-s-default span.cm-builtin {
-  color: #30a;
-}
-.cm-s-default span.cm-bracket {
-  color: #cc7;
-}
-.cm-s-default span.cm-tag {
-  color: #170;
-}
-.cm-s-default span.cm-attribute {
-  color: #00c;
-}
-.cm-s-default span.cm-header {
-  color: blue;
-}
-.cm-s-default span.cm-quote {
-  color: #090;
-}
-.cm-s-default span.cm-hr {
-  color: #999;
-}
-.cm-s-default span.cm-link {
-  color: #00c;
-}
-span.cm-header,
-span.cm-strong {
-  font-weight: bold;
-}
-span.cm-em {
-  font-style: italic;
-}
-span.cm-emstrong {
-  font-style: italic;
-  font-weight: bold;
-}
-span.cm-link {
-  text-decoration: underline;
-}
-div.CodeMirror span.CodeMirror-matchingbracket {
-  color: #0f0;
-}
-div.CodeMirror span.CodeMirror-nonmatchingbracket {
-  color: #f22;
+  padding: 2px;
+  background-color: #d9edf7;
+  color: #3a87ad;
+  border: 2px solid #bce8f1;
 }
 .network-view {
   width: 100%;
   margin-bottom: 1.42857143;
-  border: 1px solid #eeeeee;
   position: relative;
 }
 .network-view.loading-commits:before {
@@ -7380,27 +7113,10 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
   top: 50%;
   margin-left: -100px;
   margin-top: -50px;
-  color: #555;
-  background: rgba(255, 255, 255, 0.8) url("") no-repeat center;
   z-index: 2000;
-  border: 1px solid #eee;
-  border-radius: 8px;
-  box-shadow: 2px 2px 2px #eee;
 }
 .network-view.loading-commits .network-header .meta:after {
   content: " - Loading";
-}
-.network-view .network-header {
-  background-color: #fff;
-  padding: 8px;
-  line-height: 1.42857143;
-  text-align: left;
-  vertical-align: bottom;
-  border-bottom: 1px solid #eeeeee;
-}
-.network-view .network-header h4.meta {
-  padding: 6px 0;
-  margin: 0;
 }
 .network-view pre {
   margin: 0;
@@ -7412,6 +7128,7 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
   overflow: hidden;
   cursor: move;
   position: relative;
+  border: 1px solid #ddd;
 }
 .network-view .network-graph .network-commit-overlay {
   position: absolute;
@@ -7422,17 +7139,23 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
   margin: 0 0 1.42857143;
   list-style: none;
   background-color: #fff;
-  border: 1px solid #ddd;
-  -webkit-box-shadow: 0 1px 0 rgba(255,255,255,0.4), 0 0 10px rgba(0,0,0,0.1);
-  box-shadow: 0 1px 0 rgba(255,255,255,0.4), 0 0 10px rgba(0,0,0,0.1);
+  color: #777;
+}
+.network-view .network-graph .network-commit-overlay a,
+.network-view .network-graph .network-commit-overlay a:active {
+  display: inline-block;
+  background-color: #fff;
+  color: #fac0ba;
+  padding: 2px;
 }
 .network-view .network-graph .network-commit-overlay img {
   float: left;
   margin-top: 10px;
   margin-right: 8px;
 }
-.network-view .network-graph .network-commit-overlay > h4,
-.network-view .network-graph .network-commit-overlay > p {
+.network-view .network-graph .network-commit-overlay div {
+  background-color: #D9230F;
+  color: #fac0ba;
   padding-left: 48px;
 }
 #clone-popup {
@@ -7497,4 +7220,15 @@ span.rss-icon {
 }
 span.rss-icon:hover {
   color: #965b15;
+}
+.p3x-gitlist-markdown-heading-container {
+  position: relative;
+}
+a.p3x-gitlist-markdown-heading-link {
+  display: none;
+  font-size: inherit;
+  text-decoration: none !important;
+}
+.p3x-gitlist-markdown-image {
+  max-width: 100%;
 }

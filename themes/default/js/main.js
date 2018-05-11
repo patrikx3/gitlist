@@ -14,14 +14,25 @@ $(function () {
             lineWrapping: true,
             readOnly: true,
             mode: mode,
-            lineNumberFormatter: function(ln) {
-                return '<a name="L'+ ln +'"></a><a href="#L'+ ln +'">'+ ln +'</a>';
-            }
+
         });
     }
 // blob/master
 
     var markdownRenderer = new marked.Renderer();
+
+    markdownRenderer.heading = function (text, level, raw) {
+        var ref = _.kebabCase(text).replace(/[^\x00-\xFF]/g, "");
+        var id = ref + '-parent';
+        var hover = ' onmouseenter="document.getElementById(\'' + ref + '\').style.display = \'inline\'"  onmouseleave="document.getElementById(\'' + ref + '\').style.display = \'none\'" '
+
+        var element = '<div ' + hover + ' class="p3x-gitlist-markdown-heading-container"><h' + level + ' id="' + id + '" class="p3x-gitlist-markdown-heading">' + text + '&nbsp;<a class="p3x-gitlist-markdown-heading-link" id="' +  ref + '" href="' + location.origin + location.pathname + '#' + ref + '">#</a></h' + level + '></div>';
+
+        return element
+    }
+
+
+
     markdownRenderer.link = function(href, title, text) {
         var a;
         if (href.startsWith('https:/') || href.startsWith('http:/')) {
@@ -46,7 +57,7 @@ $(function () {
             }
             resultText += text;
         }
-        var result = '<img style="max-width: 100%;" alt="' + htmlEncode(resultText) + '" title="' + htmlEncode(resultText) + '" src="' + href + '"/>';
+        var result = '<img class="p3x-gitlist-markdown-image" alt="' + htmlEncode(resultText) + '" title="' + htmlEncode(resultText) + '" src="' + href + '"/>';
 
         return result;
     };

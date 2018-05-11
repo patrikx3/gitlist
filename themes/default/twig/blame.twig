@@ -11,11 +11,11 @@
         <div class="source-header">
             <div class="meta">{{ file }}</div>
         </div>
-        <table class="blame-view">
+        <table class="table blame-view">
         {% for blame in blames %}
             <tr>
-                <td class="commit"><a href="{{ path('commit', {repo: repo, commit: blame.commit}) }}">{{ blame.commitShort }}</a></td>
-                <td><pre>{{ blame.line }}</pre></td>
+                <td clas="blame-info"><a href="{{ path('commit', {repo: repo, commit: blame.commit}) }}">{{ blame.commitShort }}</a></td>
+                <td class="blame-line"><pre>{{ blame.line }}</pre></td>
             </tr>
         {% endfor %}
         </table>

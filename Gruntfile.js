@@ -1,59 +1,64 @@
 const utils = require('corifeus-utils');
-const mz = require('mz');
+const fs = require('fs');
+const fsExtra = require('fs-extra');
 
 module.exports = function (grunt) {
 
     const themeDir = './themes/default/less/theme';
 
     const filesLess = {
-        'themes/default/css/bootstrap-default.css': 'themes/default/less/style.less',
+        'themes/default/css/style.css': 'themes/default/less/style.less',
         'themes/default/css/fontawesome.css': 'themes/default/less/fontawesome.less',
     }
 
+    const root = './node_modules/bootswatch';
+    const watches = fs.readdirSync(root);
+    const themes = ['default'];
+    const excluded = ['fonts'];
+    const themeCss = {
+        'bootstrap-default': '/themes/default/css/bootstrap-default.css',
+    }
 
-    grunt.registerTask('build', async function() {
-        const done = this.async();
-
-        const root = './node_modules/bootswatch';
-        const watches = await mz.fs.readdir(root);
-        const themes = [];
-        const excluded = ['fonts'];
-        const themeCss = {
-            'bootstrap-default': '/themes/default/css/bootstrap-default.css',
+    for(let path of watches) {
+        const stat = fs.statSync(`${root}/${path}`);
+        if (stat.isDirectory() && !excluded.includes(path)) {
+            themes.push(path);
+            themeCss[`bootstrap-${path}`] = `/themes/default/css/bootstrap-${path}.css`;
         }
+    }
+    fsExtra.ensureDirSync(themeDir);
 
-        await watches.forEachAsync(async(path) => {
-            const stat = await mz.fs.stat(`${root}/${path}`);
-            if (stat.isDirectory() && !excluded.includes(path)) {
-                themes.push(path);
-                themeCss[`bootstrap-${path}`] = `/themes/default/css/bootstrap-${path}.css`;
-           }
-        })
-        await utils.fs.ensureDir(themeDir);
+    for(let theme of themes) {
+        const less = `${themeDir}/${theme}.less`;
 
+        if (theme === 'default') {
+            fs.writeFileSync(less, `
+@import "../../../../node_modules/bootstrap/less/bootstrap";
+@import "../default";
+`)
 
-        await themes.forEachAsync(async (theme) => {
-            const less = `${themeDir}/${theme}.less`;
-            await mz.fs.writeFile(less, `
+        } else {
+            fs.writeFileSync(less, `
 @import "../../../../node_modules/bootstrap/less/bootstrap";
 @import "../../../../node_modules/bootswatch/${theme}/variables";
 @import "../../../../node_modules/bootswatch/${theme}/bootswatch";
 @import "../default";
 `)
-            filesLess[`themes/default/css/bootstrap-${theme}.css`] = less;
-        })
-        await mz.fs.writeFile(`./themes/default/js/themes.js`, `
+
+        }
+//        console.log(less)
+        filesLess[`themes/default/css/bootstrap-${theme}.css`] = less;
+
+    }
+
+
+    fs.writeFileSync(`./themes/default/js/themes.js`, `
 var themes = ${JSON.stringify(themeCss, null, 4)}
 `);
-        grunt.log.write(themes);
-        done();
-    })
 
-    require('time-grunt')(grunt);
+//    grunt.log.writeln(JSON.stringify(filesLess, null, 2))
+
     grunt.loadNpmTasks('grunt-contrib-less');
-    grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-contrib-clean')
-    grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-wiredep');
 
     const builder = require(`corifeus-builder`);
@@ -67,12 +72,14 @@ var themes = ${JSON.stringify(themeCss, null, 4)}
         config:
             {
                 clean: {
+                    /*
                     themes: [
                         themeDir
                     ],
                     fonts: [
                         'themes/default/fonts'
                     ]
+                    */
                 },
                 copy: {
                     bootstrap: {
@@ -121,6 +128,7 @@ var themes = ${JSON.stringify(themeCss, null, 4)}
                         files: ['themes/default/**/*.*'],
                         tasks: ['less'],
                         options: {
+                            atBegin: true,
                             spawn: false,
                         },
                     },
@@ -128,10 +136,9 @@ var themes = ${JSON.stringify(themeCss, null, 4)}
             }
     });
 
-
-    grunt.registerTask('default', ['clean','copy', 'build', 'less', 'wiredep', 'cory-replace']);
-    grunt.registerTask('run', ['default', 'watch']);
-
-
+    grunt.registerTask('default', ['clean','copy', 'less', 'wiredep', 'cory-replace']);
+    grunt.registerTask('build', ['default']);
+    grunt.registerTask('run', ['watch:scripts']);
 
 };
+

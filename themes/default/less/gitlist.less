@@ -20,7 +20,7 @@
   .repository-body {
     padding: @padding-base-vertical @padding-base-horizontal;
     background-color: @navbar-default-bg;
-color: @navbar-default-color;
+    color: @navbar-default-color;
 
     p {
       margin: 0;
@@ -34,7 +34,7 @@ color: @navbar-default-color;
 
   > thead > tr > th {
     background-color: @navbar-default-bg;
-color: @navbar-default-color;
+    color: @navbar-default-color;
     padding: 8px;
     line-height: @line-height-computed;;
     text-align: left;
@@ -67,105 +67,95 @@ color: @navbar-default-color;
 
 .source-view {
   width: 100%;
-  margin-bottom: @line-height-computed;
   border: 1px solid @navbar-default-border;
+  display: block;
 
   .source-header {
-    background-color: @navbar-default-bg;
-color: @navbar-default-color;
-    padding: 8px;
-    line-height: @line-height-computed;
-    text-align: left;
-    vertical-align: bottom;
-    border-bottom: 1px solid @navbar-default-border;
-    height: 47px;
-
     .meta {
-      float: left;
-      padding: 8px 0;
-      font-size: 14px;
+      font-weight: bold;
+      font-size: 125%;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      padding-right: 5px;
+      width: 100%;
+      text-align: right;
     }
   }
-  pre {
-    margin: 0;
-    padding: 12px;
-    border: none;
+
+  a, a:hover {
+    text-decoration: none !important;
   }
-  #sourcecode {
-    margin: 0;
-    padding: 0;
-    border: none;
-    width: 100%;
-    height: 600px;
-  }
+
   .source-diff {
-    background-color: #F8F8F8;
+    max-width: 100%;
+    min-width: 100%;
+    overflow-x: auto;
     pre {
       margin: 0;
       padding: 0 0 0 6px;
       border: none;
       border-radius: 0;
+      overflow: hidden;
 
       &:hover {
-        background-color: #ffc;
+        background-color: @alert-info-bg;
+        color: @alert-info-text
       }
+    }
+    table {
     }
     table td {
       padding: 0;
     }
     .new {
-      background-color: #DFD;
+      background-color: @alert-success-bg;
+      color: @alert-success-text
     }
     .old {
-      background-color: #FDD;
+      background-color: @alert-danger-bg;
+      color: @alert-danger-text
     }
     .chunk {
-      background-color: darken(#f5f5f5, 5%);
-      color: @gray-light;
+      background-color: @navbar-default-bg;
+      color: @navbar-default-color;
     }
     .lineNo {
-      color: #aaa;
-      background-color: #e8e8e8;
+      background-color: @body-bg;
+      color: @navbar-inverse-bg;
       padding: 0 6px;
       text-align: right;
       border-right: 1px solid #ddd;
       font-family: monospace;
     }
   }
+
+  #sourcecode {
+    width: 100%;
+  }
+
   .image-blob {
     padding: 10px;
-    max-width: 600px;
+    max-width: 100%;
   }
 }
 
 .blame-view {
-  width: 100%;
 
-  td {
-    vertical-align: top;
-    padding: 8px;
+  td.blame-info {
+  }
+  td.blame-line {
+    overflow-x: auto;
+    overflow-y: hidden;
   }
   tr {
-    border-bottom: 1px solid @gray-lighter;
   }
   tr:last-child {
-    border-bottom: 0
   }
   .line {
-    font-weight: 700;
-    border-right: 1px solid @gray-lighter;
   }
   .commit {
-    background-color: #F8F8F8;
-    font-weight: 700;
-    border-right: 1px solid @gray-lighter;
   }
   pre {
-    background-color: transparent;
-    margin: 0;
-    padding: 0;
-    border: none;
-    border-radius: 0;
   }
 }
 
@@ -175,7 +165,7 @@ color: @navbar-default-color;
 
   > thead > tr > th {
     background-color: @navbar-default-bg;
-color: @navbar-default-color;
+    color: @navbar-default-color;
     padding: 8px;
     line-height: @line-height-computed;;
     text-align: left;
@@ -194,31 +184,6 @@ color: @navbar-default-color;
   h4, h5, h6 {
     margin-top: 0;
     margin-bottom: 5px;
-  }
-}
-
-.commit-view {
-  width: 100%;
-  margin-bottom: @line-height-base;
-  border: 1px solid @navbar-default-border;
-  border-radius: 0;
-
-  .commit-header {
-    background-color: @navbar-default-bg;
-color: @navbar-default-color;
-    padding: 8px;
-    line-height: @line-height-base;
-    text-align: left;
-    vertical-align: bottom;
-    border-bottom: 1px solid @navbar-default-border;
-
-    h4 {
-      padding: 6px 0;
-      margin: 0;
-    }
-  }
-  .commit-body {
-    padding: 8px;
   }
 }
 
@@ -247,7 +212,7 @@ color: @navbar-default-color;
 
   > thead > tr > th {
     background-color: @navbar-default-bg;
-color: @navbar-default-color;
+    color: @navbar-default-color;
     padding: 8px;
     line-height: @line-height-computed;;
     text-align: left;
@@ -301,3 +266,12 @@ color: @navbar-default-color;
   color: @text-color;
 }
 
+.treegraph-button {
+  display: inline-block;
+  min-width: 80px;
+  text-align: right;
+  padding: 2px;
+  background-color: @alert-info-bg;
+  color: @alert-info-text;
+  border: 2px solid @alert-info-border;
+}

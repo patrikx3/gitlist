@@ -18,7 +18,7 @@
     {% endembed %}
 
     {% if results %}
-    <table class="table tree">
+    <table class="table" style="table-layout: fixed;">
         <thead>
             <tr>
                 <th width="20%">Name</th>
@@ -28,8 +28,15 @@
         <tbody>
             {% for result in results %}
             <tr>
-                <td><span class="fa fa-file-text-o"></span> <a href="{{ path('blob', {repo: repo, branch: branch, file: result.file, commitishPath: branch ~ '/' ~ result.file}) }}#L{{ result.line }}">{{ result.file }}</a></td>
-                <td>{{ result.match }}</td>
+                <td>
+                    <div style="overflow-y: auto; ">
+                        <span class="fa fa-file-text-o"></span> <a href="{{ path('blob', {repo: repo, branch: branch, file: result.file, commitishPath: branch ~ '/' ~ result.file}) }}#L{{ result.line }}">{{ result.file }}</a></td>
+                    </div>
+                <td>
+                    <pre style="overflow-y: auto; ">
+                        {{ result.match }}
+                    </pre>
+                </td>
             </tr>
             {% endfor %}
         </tbody>

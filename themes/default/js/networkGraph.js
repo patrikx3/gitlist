@@ -4,6 +4,7 @@
  *
  * @license http://www.opensource.org/licenses/bsd-license.php
  * @author Lukas Domnick <lukx@lukx.de> http://github.com/lukx
+ * @author Patrik Laszlo <alabard@gmail.com> https://github.com/patrikx3/gitlist
  */
 
 ( function( $ ){
@@ -151,10 +152,10 @@
 		var that = {},
 			el = $('<div class="network-commit-overlay"></div>'),
 			imageDisplay = $('<img/>').appendTo(el),
-			messageDisplay = $('<h4></h4>').appendTo(el),
-			metaDisplay = $('<p></p>').appendTo(el),
+			messageDisplay = $('<div></div>').appendTo(el),
+			metaDisplay = $('<div></div>').appendTo(el),
 			authorDisplay = $('<a rel="author"></a>').appendTo(metaDisplay),
-			dateDisplay = $('<span></span>').appendTo(metaDisplay),
+			dateDisplay = $('<div></div>').appendTo(metaDisplay),
 
 			commit;
 

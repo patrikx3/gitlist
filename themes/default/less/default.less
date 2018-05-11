@@ -1,24 +1,21 @@
-// override some Variables
-@import "variables.less";
-
-// GitList Less Modules
 @import "gitlist.less";
-@import "codemirror.less";
 @import "network.less";
 @import "clone-button.less";
-
 
 .header {
   margin-bottom: @line-height-computed;
 }
+
 .breadcrumb {
   padding: @padding-large-vertical @padding-large-horizontal;
   border: 1px solid @navbar-default-border;
   border-radius: @border-radius-base;
 }
+
 .download-buttons {
   display: inline;
 }
+
 .download-buttons .rss-icon {
   padding-left: @padding-large-horizontal;
   font-size: @font-size-h3;
@@ -35,5 +32,19 @@ span.rss-icon {
   &:hover {
     color: darken(@brand-danger, 15%);
   }
+}
+
+.p3x-gitlist-markdown-heading-container {
+  position: relative;
+}
+
+a.p3x-gitlist-markdown-heading-link {
+  display: none;
+  font-size: inherit;
+  text-decoration: none !important;
+}
+
+.p3x-gitlist-markdown-image {
+  max-width: 100%;
 }
 

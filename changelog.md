@@ -5,6 +5,13 @@
                         
 [//]: #@corifeus-header:end
 
+### v1.1.0
+* Format size was missing space (ugly)
+* Graph time was not using the ```config.ini```
+* Fixed images to not show a html block span text and use now real image alt and title attributes in html
+* Graph is not using Bootstrap
+* Network is not using Bootstrap
+
 ### v1.0.3
 * Total bytes was not working with Twig 2
 
@@ -53,7 +60,7 @@
 
 ---
 
-[**GITLIST**](https://pages.corifeus.com/gitlist) Build v1.0.4-rc.3 
+[**GITLIST**](https://pages.corifeus.com/gitlist) Build v1.1.0 
 
 [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software) [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) 
 
