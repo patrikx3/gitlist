@@ -10,7 +10,7 @@
     "watch": "webpack --watch"
   },
   "description": "🤖 P3X Gitlist",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "main": "index.js",
   "repository": "https://github.com/patrikx3/gitlist",
   "author": "patrikx3 <alabard@gmail.com>",
