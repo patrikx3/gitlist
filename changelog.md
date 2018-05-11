@@ -9,8 +9,8 @@
 * Format size was missing space (ugly)
 * Graph time was not using the ```config.ini```
 * Fixed images to not show a html block span text and use now real image alt and title attributes in html
-* Graph is not using Bootstrap
-* Network is not using Bootstrap
+* Graph was not using Bootstrap
+* Network wast not using Bootstrap
 
 ### v1.0.3
 * Total bytes was not working with Twig 2
