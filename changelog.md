@@ -5,7 +5,7 @@
                         
 [//]: #@corifeus-header:end
 
-### v1.1.0
+### v1.1.1
 * Format size was missing space (ugly)
 * Graph time was not using the ```config.ini```
 * Fixed images to not show a html block span text and use now real image alt and title attributes in html
