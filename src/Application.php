@@ -46,7 +46,7 @@ class Application extends SilexApplication
         $this['avatar.query'] = $config->get('avatar', 'query');
         $this['show_http_remote'] = $config->get('clone_button', 'show_http_remote');
         $this['use_https'] = $config->get('clone_button', 'use_https');
-        $this['clone_subdir'] = $config->get('clone_button', 'clone_subdir');
+        $this['git_clone_subdir'] = $config->get('clone_button', 'git_clone_subdir');
         $this['http_user'] = $config->get('clone_button', 'http_user_dynamic') ? $_SERVER['PHP_AUTH_USER'] : $config->get('clone_button', 'http_user');
         $this['show_ssh_remote'] = $config->get('clone_button', 'show_ssh_remote');
         $this['ssh_user'] = $config->get('clone_button', 'ssh_user');

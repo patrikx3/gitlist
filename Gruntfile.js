@@ -106,7 +106,7 @@ module.exports = ${JSON.stringify(themeCss, null, 4)}
 
                 watch: {
                     less: {
-                        files: ['public/assets/less/*.*'],
+                        files: ['public/less/*.*'],
                         tasks: ['less'],
                         options: {
                             atBegin: true,
