@@ -3,7 +3,7 @@ const fsExtra = require('fs-extra');
 
 module.exports = function (grunt) {
 
-    const themeDir = './assets/less/theme';
+    const themeDir = './public/less/theme';
 
     const filesLess = {
     }
@@ -14,14 +14,14 @@ module.exports = function (grunt) {
     const themes = ['default'];
     const excluded = ['fonts'];
     const themeCss = {
-        'bootstrap-default': '/assets/css/bootstrap-default.css',
+        'bootstrap-default': '/css/bootstrap-default.css',
     }
 
     for(let path of watches) {
         const stat = fs.statSync(`${root}/${path}`);
         if (stat.isDirectory() && !excluded.includes(path)) {
             themes.push(path);
-            themeCss[`bootstrap-${path}`] = `/assets/css/bootstrap-${path}.css`;
+            themeCss[`bootstrap-${path}`] = `/css/bootstrap-${path}.css`;
         }
     }
     fsExtra.ensureDirSync(themeDir);
@@ -45,12 +45,12 @@ module.exports = function (grunt) {
 
         }
 //        console.log(less)
-        filesLess[`assets/css/bootstrap-${theme}.css`] = less;
+        filesLess[`public/css/bootstrap-${theme}.css`] = less;
 
     }
 
 
-    fs.writeFileSync(`./assets/js/themes.js`, `
+    fs.writeFileSync(`./public/js/themes.js`, `
 module.exports = ${JSON.stringify(themeCss, null, 4)}
 `);
 
@@ -75,7 +75,7 @@ module.exports = ${JSON.stringify(themeCss, null, 4)}
                         themeDir
                     ],
                     fonts: [
-                        'assets/fonts'
+                        'public/fonts'
                     ]
                     */
                 },
@@ -88,7 +88,7 @@ module.exports = ${JSON.stringify(themeCss, null, 4)}
                                 src: [
                                     '**',
                                 ],
-                                dest: './webpack/assets/twemoji/svg'
+                                dest: './public/webpack/assets/twemoji/svg'
                             },
 
                         ]
@@ -106,7 +106,7 @@ module.exports = ${JSON.stringify(themeCss, null, 4)}
 
                 watch: {
                     less: {
-                        files: ['assets/less/*.*'],
+                        files: ['public/assets/less/*.*'],
                         tasks: ['less'],
                         options: {
                             atBegin: true,

@@ -42,7 +42,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
         $this.parent().addClass('active');
         const themeurl = themes[$this.attr('data-theme')];
         setThemeCookie($this.attr('data-theme'));
-        themesheet.attr('href', (gitlist.basepath === '/' ? '' : gitlist.basepath) + themeurl);
+        const href = (gitlist.basepath === '/' ? '' : gitlist.basepath) + themeurl;
+        themesheet.attr('href', href);
         gitlist.setCodeMirrorTheme(getThemeCookie())
         event.preventDefault();
 

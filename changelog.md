@@ -5,6 +5,9 @@
                         
 [//]: #@corifeus-header:end
 
+### v1.1.6
+* All `PHP` files will be in the `root` and only `index.php`, `images`, `icons`, `svg`, `css`, `js`bundle files will be in the `public` subdir.
+
 ### v1.1.5
 * Removed old `clone` button modal popup, using `Bootstrap` only
 * Double checked, all is using pure `Boostrap`
@@ -73,7 +76,7 @@
 
 ---
 
-[**GITLIST**](https://pages.corifeus.com/gitlist) Build v1.1.5 
+[**GITLIST**](https://pages.corifeus.com/gitlist) Build v1.1.6 
 
 [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software) [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) 
 

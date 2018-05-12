@@ -4,7 +4,7 @@
 
 
  
-# 🤖 P3X Gitlist  v1.1.5    
+# 🤖 P3X Gitlist  v1.1.6    
 
 # Description  
 
@@ -24,7 +24,15 @@ This is Klaus Silveira's fork, with multiple themes, sub-modules and updated to 
 Done, just put on your server, nothing to build:   
 https://github.com/patrikx3/gitlist/releases
 
+## There is a changing break
+Before, everything was in the `root` of the web server.  
+
+Which is not secure.  
+
+For now, you can create a folder eg. `/var/www/gitlist.me.com/` and make sure, that you server does not point to `/var/www/gitlist.me.com/`, but instead, point to `/var/www/gitlist.me.com/public`.
+
 ### v1.2.0 - unreleased / in progress
+
 * In submodules, if the "submodule" and "path" is not the same, it chokes (it should work the submodule name and path are not the same)
   * Works
     * submodule "path/name"
@@ -100,7 +108,7 @@ npm run less-watch
 
 ---
 
-[**GITLIST**](https://pages.corifeus.com/gitlist) Build v1.1.5 
+[**GITLIST**](https://pages.corifeus.com/gitlist) Build v1.1.6 
 
 [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software) [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) 
 

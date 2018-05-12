@@ -15,21 +15,20 @@ npm run webpack
 rm -rf $repo || true
 mkdir -p $repo
 
-for item in "$TOP/cache" "$TOP/src" "$TOP/assets" "$TOP/vendor" "$TOP/webpack"
+for item in "$TOP/cache" "$TOP/src" "$TOP/public" "$TOP/vendor" "$TOP/twig"
 do
     echo $item
     cp -R $item $repo/
 done
 
-for item in "$TOP/INSTALL.md" "$TOP/LICENSE" "$TOP/README.md" "$TOP/boot.php" "$TOP/config.example.ini" "$TOP/index.php" "$TOP/package.json" "$TOP/.htaccess"
+for item in "$TOP/INSTALL.md" "$TOP/LICENSE" "$TOP/README.md" "$TOP/boot.php" "$TOP/config.example.ini" "$TOP/package.json"
 do
     echo $item
     cp $item $repo/
 done
 
-rm -rf $repo/assets/less
-rm -rf $repo/assets/js
-rm -rf $repo/assets/bundle.js
+rm -rf $repo/public/less
+rm -rf $repo/public/js
 
 zipname=$TOP/build/$name.zip
 rm -rf $zipname

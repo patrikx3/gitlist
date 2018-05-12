@@ -102,10 +102,10 @@ module.exports = {
     devtool: devtool,
 
     entry: {
-        bundle: "./assets/js/bundle.js",
+        bundle: "./public/js/bundle.js",
     },
     output: {
-        path: __dirname + '/webpack',
+        path: __dirname + '/public/webpack',
         filename: "[name].js"
     },
     module: {

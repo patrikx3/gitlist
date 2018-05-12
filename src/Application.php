@@ -86,7 +86,7 @@ class Application extends SilexApplication
 
             $twig->addGlobal('theme', !isset($_COOKIE['gitlist-bootstrap-theme']) ? 'bootstrap-cosmo' : $_COOKIE['gitlist-bootstrap-theme']);
 
-            $string = file_get_contents("./package.json");
+            $string = file_get_contents("../package.json");
             $pkg = json_decode($string, true);
 
             $twig->addGlobal('version', $pkg['version']);
@@ -166,8 +166,6 @@ class Application extends SilexApplication
     public function getThemePath($theme)
     {
         return $this->path
-            . DIRECTORY_SEPARATOR
-            . 'assets'
             . DIRECTORY_SEPARATOR
             . 'twig'
             . DIRECTORY_SEPARATOR;

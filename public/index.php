@@ -13,18 +13,19 @@ if (php_sapi_name() == 'cli-server' && file_exists(substr($_SERVER['REQUEST_URI'
     return false;
 }
 
-if (!is_writable(__DIR__ . DIRECTORY_SEPARATOR . 'cache')) {
-    die(sprintf('The "%s" folder must be writable for GitList to run.', __DIR__ . DIRECTORY_SEPARATOR . 'cache'));
+$cacheFolder = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'cache';
+if (!is_writable($cacheFolder)) {
+    die(sprintf('The "%s" folder must be writable for GitList to run.', $cacheFolder));
 }
 
-require 'vendor/autoload.php';
+require '../vendor/autoload.php';
 
-$config = GitList\Config::fromFile('config.ini');
+$config = GitList\Config::fromFile('../config.ini');
 
 if ($config->get('date', 'timezone')) {
     date_default_timezone_set($config->get('date', 'timezone'));
 }
 
-$app = require 'boot.php';
+$app = require '../boot.php';
 $app->run();
 

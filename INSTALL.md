@@ -22,6 +22,9 @@ That's it, installation complete!
 
 Apache is the "default" webserver for GitList. You will find the configuration inside the `.htaccess` file. However, nginx and lighttpd are also supported.
 
+To make it to be more secure:
+All `PHP` files will be in the `root` and only `index.php`, `images`, `icons`, `svg`, `css`, `js`bundle files will be in the `public` subdir.
+
 ### nginx server.conf
 
 ```
@@ -30,7 +33,7 @@ server {
     access_log /var/log/nginx/MYSERVER.access.log combined;
     error_log /var/log/nginx/MYSERVER.error.log error;
 
-    root /var/www/DIR;
+    root /var/www/DIR/public;
     index index.php;
 
 #   auth_basic "Restricted";
@@ -77,10 +80,73 @@ server {
 }
 ```
 
-### lighttpd
+#### Might own NGINX that works with root and subdir as well
+
+```text
+server {
+
+	server_name gitlist.patrikx3.com;
+	root /var/www/gitlist.patrikx3.com/public;
+
+	location / {
+
+		try_files $uri /index.php$is_args$args;
+	}
+
+	location /nested {
+
+		alias /var/www/gitlist.patrikx3.com/public;
+
+		try_files $uri @nested;
+
+		location ~ \.php$ {
+
+			include snippets/fastcgi-php.conf;
+			fastcgi_param SCRIPT_FILENAME $request_filename;
+			fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
+		}
+	}
+
+	location /release {
+
+		alias /var/www/gitlist.patrikx3.com/build/release/public;
+
+		try_files $uri @release;
+
+		location ~ \.php$ {
+
+			include snippets/fastcgi-php.conf;
+			fastcgi_param SCRIPT_FILENAME $request_filename;
+			fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
+		}
+	}
+
+	location @nested {
+
+		rewrite /nested/(.*)$ /nested/index.php?/$1 last;
+	}
+
+
+	location @release {
+
+		rewrite /release/(.*)$ /release/index.php?/$1 last;
+	}
+
+	location ~ \.php$ {
+
+		include snippets/fastcgi-php.conf;
+		fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
+	}
+}
+```
+
+
+### lighthttpd
+
+I do not use `lighthttpd`, but you know what I mean. Make sure only, the `gitlist/public` folder should be enabled.
 
 ```
-# GitList is located in /var/www/gitlist
+# GitList is located in /var/www/gitlist/
 server.document-root        = "/var/www"
 
 url.rewrite-once = (
@@ -91,6 +157,9 @@ url.rewrite-once = (
 ```
 
 ### hiawatha
+
+I do not use `hiawatha`, but you know what I mean. Make sure only, the `gitlist/public` folder should be enabled.
+
 
 ```
 UrlToolkit {
@@ -106,7 +175,7 @@ UrlToolkit {
 
 ---
 
-[**GITLIST**](https://pages.corifeus.com/gitlist) Build v1.1.5 
+[**GITLIST**](https://pages.corifeus.com/gitlist) Build v1.1.6 
 
 [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software) [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) 
 
