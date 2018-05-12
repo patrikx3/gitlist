@@ -12,7 +12,7 @@ pushd $TOP
 composer install --no-dev
 composer dump-autoload --optimize
 #npm install
-npm run webpack
+npm run build
 
 rm -rf $repo || true
 mkdir -p $repo

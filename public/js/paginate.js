@@ -4,10 +4,18 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
         $pager.find('.next a').one('click', function (e) {
             e.preventDefault();
-            $.get(this.href, function (html) {
-                $pager.after(html);
-                $pager.remove();
-                paginate();
+            const url = new URL(this.href);
+            const retrieve = `${location.pathname}${url.search}`
+
+            $.ajax({
+                url: retrieve,
+                type: "GET",
+                cache: false,
+                success: function (html) {
+                    $pager.after(html);
+                    $pager.remove();
+                    paginate();
+                }
             });
         });
 
