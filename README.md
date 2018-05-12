@@ -24,6 +24,9 @@ This is Klaus Silveira's fork, with multiple themes, sub-modules and updated to 
 Done, just put on your server, nothing to build:   
 https://github.com/patrikx3/gitlist/releases
 
+### Web server
+You might need to tune your web server, to only parse the `public/index.php` PHP script, so you can view your `php` files in `P3X GitList`. 
+
 ## There is a changing break
 
 ### First 
@@ -36,8 +39,8 @@ For now, you can create a folder eg. `/var/www/gitlist.me.com/` and make sure, t
 ### Second
 The `config.ini` file with `url_subdir` or later `clone_subdir` variable has been changed to the `git_clone_subdir` variable.
 
+
 ### v1.2.0 - unreleased / in progress
-* `.php` files are not parsed, `not found` error
 * In submodules, if the "submodule" and "path" is not the same, it chokes (it should work the submodule name and path are not the same)
   * Works
     * submodule "path/name"
