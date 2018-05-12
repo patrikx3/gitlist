@@ -13,13 +13,30 @@ global.htmlEncode = require('js-htmlencode')
 global.CodeMirror = require('codemirror');
 require('codemirror/addon/mode/simple');
 require('codemirror/addon/mode/multiplex');
-require('codemirror/mode/xml/xml');
-require('codemirror/mode/javascript/javascript');
+
+require('codemirror/mode/cmake/cmake');
 require('codemirror/mode/css/css');
-require('codemirror/mode/htmlmixed/htmlmixed');
+require('codemirror/mode/dockerfile/dockerfile');
+require('codemirror/mode/go/go');
 require('codemirror/mode/handlebars/handlebars');
-require('codemirror/mode/yaml/yaml');
+require('codemirror/mode/htmlmixed/htmlmixed');
+require('codemirror/mode/javascript/javascript');
+require('codemirror/mode/jsx/jsx');
+require('codemirror/mode/perl/perl');
+require('codemirror/mode/php/php');
+require('codemirror/mode/powershell/powershell');
+require('codemirror/mode/python/python');
+require('codemirror/mode/ruby/ruby');
 require('codemirror/mode/sass/sass');
+require('codemirror/mode/shell/shell');
+require('codemirror/mode/sql/sql');
+require('codemirror/mode/swift/swift');
+require('codemirror/mode/twig/twig');
+require('codemirror/mode/vue/vue');
+require('codemirror/mode/xml/xml');
+require('codemirror/mode/xquery/xquery');
+require('codemirror/mode/yaml/yaml');
+
 require('eve-raphael/eve.js');
 global.Raphael = require('raphael')
 global.twemoji = require('twemoji')

@@ -2,6 +2,8 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 TOP=$DIR/..
 
+set -e
+
 version=$( node -e "console.log(require('$TOP/package.json').version)" )
 name=gitlist-$version
 repo=$TOP/build/$name

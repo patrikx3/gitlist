@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+set -e
 sudo rm -rf ./cache
 mkdir -p ./cache
 touch ./cache/.gitkeep

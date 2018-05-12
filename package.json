@@ -11,7 +11,7 @@
     "less-watch": "grunt watch:less"
   },
   "description": "🤖 P3X Gitlist",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "main": "index.js",
   "repository": "https://github.com/patrikx3/gitlist",
   "author": "patrikx3 <alabard@gmail.com>",

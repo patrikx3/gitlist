@@ -5,6 +5,33 @@
                         
 [//]: #@corifeus-header:end
 
+### v1.1.7
+The following `CodeMirror` syntax highlighting has been added:
+```js
+require('codemirror/mode/cmake/cmake');
+require('codemirror/mode/css/css');
+require('codemirror/mode/dockerfile/dockerfile');
+require('codemirror/mode/go/go');
+require('codemirror/mode/handlebars/handlebars');
+require('codemirror/mode/htmlmixed/htmlmixed');
+require('codemirror/mode/javascript/javascript');
+require('codemirror/mode/jsx/jsx');
+require('codemirror/mode/perl/perl');
+require('codemirror/mode/php/php');
+require('codemirror/mode/powershell/powershell');
+require('codemirror/mode/python/python');
+require('codemirror/mode/ruby/ruby');
+require('codemirror/mode/sass/sass');
+require('codemirror/mode/shell/shell');
+require('codemirror/mode/sql/sql');
+require('codemirror/mode/swift/swift');
+require('codemirror/mode/twig/twig');
+require('codemirror/mode/vue/vue');
+require('codemirror/mode/xml/xml');
+require('codemirror/mode/xquery/xquery');
+require('codemirror/mode/yaml/yaml');
+```
+
 ### v1.1.6
 * All `PHP` files will be in the `root` and only `index.php`, `images`, `icons`, `svg`, `css`, `js`bundle files will be in the `public` subdir.
 
@@ -76,7 +103,7 @@
 
 ---
 
-[**GITLIST**](https://pages.corifeus.com/gitlist) Build v1.1.6 
+[**GITLIST**](https://pages.corifeus.com/gitlist) Build v1.1.7 
 
 [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software) [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) 
 
