@@ -93,21 +93,19 @@ sudo npm install -g npm grunt-cli
 npm install
 
 # if you do not want to create a release
-npm run webpack-watch
-# another terminal
-npm run less-watch
-
-# now you can work in it
+# just work on it
+# now the js and css is built on the fly
+# in the ./public folder
+npm run watch
 
 # if you have bash and want to create a full release
 # and strip all unneeded files,
 # optimize the packagist vendor folder
 # you might need zip from linux
-# this is it:
-./scripts/release.sh
-
 # the files will be in the ./build/release folder
 # and the zip is in the ./build/release/gitlist-a.b.c.zip file
+./scripts/release.sh
+
 ```
 
 [Install](INSTALL.md) - here.
