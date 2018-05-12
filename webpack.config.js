@@ -20,7 +20,7 @@ const plugins = [
 
     /*
     new HtmlWebpackPlugin({
-        template: `./themes/bootstrap/twig/layout.twig`,
+        template: `./public/twig/layout.twig`,
         chunks: ['bundle'],
     }),
     */
@@ -102,7 +102,7 @@ module.exports = {
     devtool: devtool,
 
     entry: {
-        bundle: "./themes/bootstrap/js/bundle.js",
+        bundle: "./assets/js/bundle.js",
     },
     output: {
         path: __dirname + '/webpack',

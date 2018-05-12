@@ -3,7 +3,7 @@ const fsExtra = require('fs-extra');
 
 module.exports = function (grunt) {
 
-    const themeDir = './themes/bootstrap/less/theme';
+    const themeDir = './assets/less/theme';
 
     const filesLess = {
     }
@@ -14,14 +14,14 @@ module.exports = function (grunt) {
     const themes = ['default'];
     const excluded = ['fonts'];
     const themeCss = {
-        'bootstrap-default': '/themes/bootstrap/css/bootstrap-default.css',
+        'bootstrap-default': '/assets/css/bootstrap-default.css',
     }
 
     for(let path of watches) {
         const stat = fs.statSync(`${root}/${path}`);
         if (stat.isDirectory() && !excluded.includes(path)) {
             themes.push(path);
-            themeCss[`bootstrap-${path}`] = `/themes/bootstrap/css/bootstrap-${path}.css`;
+            themeCss[`bootstrap-${path}`] = `/assets/css/bootstrap-${path}.css`;
         }
     }
     fsExtra.ensureDirSync(themeDir);
@@ -31,27 +31,27 @@ module.exports = function (grunt) {
 
         if (theme === 'default') {
             fs.writeFileSync(less, `
-@import "../../../../node_modules/bootstrap/less/bootstrap";
+@import "../../../node_modules/bootstrap/less/bootstrap";
 @import "../default";
 `)
 
         } else {
             fs.writeFileSync(less, `
-@import "../../../../node_modules/bootstrap/less/bootstrap";
-@import "../../../../node_modules/bootswatch/${theme}/variables";
-@import "../../../../node_modules/bootswatch/${theme}/bootswatch";
+@import "../../../node_modules/bootstrap/less/bootstrap";
+@import "../../../node_modules/bootswatch/${theme}/variables";
+@import "../../../node_modules/bootswatch/${theme}/bootswatch";
 @import "../default";
 `)
 
         }
 //        console.log(less)
-        filesLess[`themes/bootstrap/css/bootstrap-${theme}.css`] = less;
+        filesLess[`assets/css/bootstrap-${theme}.css`] = less;
 
     }
 
 
-    fs.writeFileSync(`./themes/bootstrap/js/themes.js`, `
-global.themes = ${JSON.stringify(themeCss, null, 4)}
+    fs.writeFileSync(`./assets/js/themes.js`, `
+module.exports = ${JSON.stringify(themeCss, null, 4)}
 `);
 
 //    grunt.log.writeln(JSON.stringify(filesLess, null, 2))
@@ -75,7 +75,7 @@ global.themes = ${JSON.stringify(themeCss, null, 4)}
                         themeDir
                     ],
                     fonts: [
-                        'themes/bootstrap/fonts'
+                        'assets/fonts'
                     ]
                     */
                 },
@@ -106,7 +106,7 @@ global.themes = ${JSON.stringify(themeCss, null, 4)}
 
                 watch: {
                     less: {
-                        files: ['themes/bootstrap/less/*.*'],
+                        files: ['assets/less/*.*'],
                         tasks: ['less'],
                         options: {
                             atBegin: true,

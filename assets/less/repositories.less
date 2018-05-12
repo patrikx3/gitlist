@@ -1,0 +1,31 @@
+.repository {
+  margin-bottom: @line-height-computed;
+  border: 1px solid @navbar-default-border;
+
+  .repository-header {
+    border-bottom: 1px solid @navbar-default-border;
+    padding: 10px;
+    font-size: @font-size-base;
+    font-weight: 700;
+    background-color: @navbar-default-bg;
+    color: @navbar-default-color;
+
+    a{
+      color: @navbar-default-color !important;
+    }
+
+    span.rss-icon {
+      font-size: @font-size-h3;
+    }
+    > .fa {
+      margin-right: 8px;
+    }
+  }
+  .repository-body {
+    padding: @padding-base-vertical @padding-base-horizontal;
+
+    p {
+      margin: 0;
+    }
+  }
+}

@@ -1,0 +1,66 @@
+@import "../../node_modules/snackbarjs/src/snackbar";
+@import "../../node_modules/snackbarjs/themes-less/material";
+
+.header {
+  margin-bottom: @line-height-computed;
+}
+
+
+
+.space-right {
+  padding: 0 8px 0 0;
+}
+
+span.rss-icon {
+  color: @brand-danger;
+  font-size: @font-size-large;
+
+  &:hover {
+    color: darken(@brand-danger, 15%);
+  }
+}
+
+.p3x-gitlist-markdown-heading-container {
+  position: relative;
+}
+
+a.p3x-gitlist-markdown-heading-link {
+  display: none;
+  font-size: inherit;
+  text-decoration: none !important;
+}
+
+.p3x-gitlist-markdown-image {
+  max-width: 100%;
+}
+
+img.emoji {
+  height: 1em;
+  width: 1em;
+  margin: 0 .05em 0 .1em;
+  vertical-align: -0.1em;
+}
+
+body {
+  font-size: 10pt !important;
+}
+
+.p3x-list-item-header {
+  font-weight: bold !important;
+}
+
+@import "network.less";
+@import "clone-modal.less";
+@import "footer";
+@import "repositories";
+@import "main-tabs";
+@import "breadcrumb";
+@import "branch-list";
+@import "tree";
+@import "source-view";
+@import "commits";
+@import "commit-list";
+@import "stats";
+@import "blame-view";
+@import "markdown";
+@import "table";

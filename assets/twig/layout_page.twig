@@ -1,0 +1,30 @@
+{% extends 'layout.twig' %}
+
+{% block body %}
+    {% include 'navigation.twig' %}
+
+    <div class="container">
+
+
+
+        {% if page in ['commits', 'searchcommits'] %}
+            <form class="form-group" action="{{ app.clone_subdir }}/{{repo}}/commits/{{branch}}/search" method="POST">
+                <input type="search form-control" name="query" class="form-control input-sm" placeholder="Search commits...">
+            </form>
+        {% else %}
+            <form class="form-group" action="{{ app.clone_subdir }}/{{repo}}/tree/{{branch}}/search" method="POST">
+                <input type="search form-control" name="query" class="form-control input-sm" placeholder="Search tree...">
+            </form>
+        {% endif %}
+
+
+
+        {% include 'menu.twig' %}
+
+
+        {% block content %}{% endblock %}
+
+    </div>
+
+    {% include 'footer.twig' %}
+{% endblock %}

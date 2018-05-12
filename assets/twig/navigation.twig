@@ -1,0 +1,33 @@
+<div class="navbar navbar-default navbar-fixed-top" id="p3x-gitlist-navigation" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" id="p3x-gitlist-navigation-menu-button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{{ path('homepage') }}">{{ app.title }}</a>
+        </div>
+        <div class="navbar-collapse collapse" id="p3x-gitlist-navigation-theme">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a target="_blank" href="https://github.com/patrikx3/gitlist/">GitHub</a></li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle p3x-gitlist-navigation-theme-open" data-toggle="dropdown">Themes <b class="caret"></b></a>
+                    <ul class="dropdown-menu" id="theme-list">
+                    </ul>
+                </li>
+
+                {% if branches is defined %}
+                    {% include 'branch_menu.twig' %}
+                {% endif %}
+
+            </ul>
+
+
+
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+<div class="p3x-gitlist-header-height"></div>

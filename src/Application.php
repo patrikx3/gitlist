@@ -167,9 +167,7 @@ class Application extends SilexApplication
     {
         return $this->path
             . DIRECTORY_SEPARATOR
-            . 'themes'
-            . DIRECTORY_SEPARATOR
-            . $theme
+            . 'assets'
             . DIRECTORY_SEPARATOR
             . 'twig'
             . DIRECTORY_SEPARATOR;

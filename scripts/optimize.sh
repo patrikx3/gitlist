@@ -7,6 +7,5 @@ composer install
 composer install --no-dev
 composer dump-autoload --optimize
 npm install
-grunt
 npm run webpack
 popd

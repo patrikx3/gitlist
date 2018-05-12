@@ -1,0 +1,76 @@
+.source-view {
+  width: 100%;
+  border: 1px solid @navbar-default-border;
+  display: block;
+
+  .source-header {
+    .meta {
+      font-weight: bold;
+      font-size: 125%;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      padding-right: 5px;
+      width: 100%;
+      text-align: right;
+    }
+  }
+
+  a, a:hover {
+    text-decoration: none !important;
+  }
+
+  .source-diff {
+    max-width: 100%;
+    min-width: 100%;
+    overflow-x: auto;
+    pre {
+      margin: 0;
+      padding: 0 0 0 6px;
+      border: none;
+      border-radius: 0;
+      overflow: hidden;
+
+      &:hover {
+        background-color: @alert-info-bg;
+        color: @alert-info-text
+      }
+    }
+    table {
+    }
+    table td {
+      padding: 0;
+    }
+    .new {
+      background-color: @alert-success-bg;
+      color: @alert-success-text
+    }
+    .old {
+      background-color: @alert-danger-bg;
+      color: @alert-danger-text
+    }
+    .chunk {
+      background-color: @alert-info-bg;
+      color: @alert-info-text;
+    }
+    .lineNo {
+      background-color: @navbar-default-bg !important;
+      color: @navbar-default-color !important;
+      padding: 0 6px;
+      text-align: right;
+      border-right: 1px solid @navbar-default-border !important;;
+      font-family: monospace;
+    }
+    .lineNo a {
+      color: @navbar-default-color !important;
+    }
+  }
+
+  #sourcecode {
+    width: 100%;
+  }
+
+  .image-blob {
+    padding: 10px;
+    max-width: 100%;
+  }
+}

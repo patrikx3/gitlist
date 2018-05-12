@@ -6,8 +6,9 @@
     "opencollective": false
   },
   "scripts": {
-    "webpack": "webpack --production",
-    "watch": "webpack --watch"
+    "webpack": "grunt && webpack --production",
+    "webpack-watch": "grunt && webpack --watch",
+    "less-watch": "grunt watch:less"
   },
   "description": "🤖 P3X Gitlist",
   "version": "1.1.5",
@@ -47,11 +48,14 @@
   "dependencies": {
     "codemirror": "^5.37.0",
     "jquery": "^3.3.1",
+    "js-cookie": "^2.2.0",
     "js-htmlencode": "^0.3.0",
+    "list.js": "^1.5.0",
     "lodash": "^4.17.10",
     "marked": "^0.3.19",
     "php-date": "^2.1.1",
     "raphael": "^2.2.7",
+    "snackbarjs": "^1.1.0",
     "twemoji": "^2.5.1"
   }
 }

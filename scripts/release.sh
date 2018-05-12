@@ -10,13 +10,12 @@ pushd $TOP
 composer install --no-dev
 composer dump-autoload --optimize
 #npm install
-grunt
-npm run webpack --production
+npm run webpack
 
 rm -rf $repo || true
 mkdir -p $repo
 
-for item in "$TOP/cache" "$TOP/src" "$TOP/themes" "$TOP/vendor" "$TOP/webpack"
+for item in "$TOP/cache" "$TOP/src" "$TOP/assets" "$TOP/vendor" "$TOP/webpack"
 do
     echo $item
     cp -R $item $repo/
@@ -28,8 +27,9 @@ do
     cp $item $repo/
 done
 
-rm -rf $repo/themes/bootstrap/less
-rm -rf $repo/themes/bootstrap/js
+rm -rf $repo/assets/less
+rm -rf $repo/assets/js
+rm -rf $repo/assets/bundle.js
 
 zipname=$TOP/build/$name.zip
 rm -rf $zipname

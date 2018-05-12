@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-
 sudo rm -rf ./cache
 mkdir -p ./cache
 touch ./cache/.gitkeep
@@ -8,21 +7,25 @@ chmod 0777 ./cache
 
 sudo rm -rf ./git-test/
 mkdir -p ./git-test/
-cd ./git-test
-git clone --bare https://github.com/patrikx3/gitlist
-git clone --bare https://github.com/patrikx3/gitter
-git clone --bare https://github.com/patrikx3/corifeus
-git clone --bare https://github.com/patrikx3/corifeus-builder
-git clone --bare https://github.com/patrikx3/gitlist-workspace
-git clone --bare https://github.com/patrikx3/onenote
 
+pushd ./git-test
 
+for repo in "https://github.com/patrikx3/gitlist" "https://github.com/patrikx3/gitter" "https://github.com/patrikx3/corifeus" "https://github.com/patrikx3/corifeus-builder" "https://github.com/patrikx3/gitlist-workspace" "https://github.com/patrikx3/onenote"
+do
+    git clone --bare $repo
+done
 
-cd ..
+find . -name '*description*' |
+while read filename
+do
+    echo "$(dirname ${filename:2}) is a test repository." > $filename
+done
+
+popd
+
 sudo chmod 0777 ./git-test
 cp ./artifacts/config.ini ./
 
-bower install
 composer install
 
 chown $USER:$USER ./cache
