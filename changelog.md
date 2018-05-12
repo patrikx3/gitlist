@@ -9,6 +9,7 @@
 * Removed old `clone` button modal popup, using `Bootstrap` only
 * Double checked, all is using pure `Boostrap`
 * Added `toast` and save the `url` to the clipboard when you click on the `clone` button
+* Added `UglifyJs` and minimize the `css`.
 
 ### v1.1.3
 * Moved to `webpack`
