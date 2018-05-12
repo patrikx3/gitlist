@@ -6,6 +6,24 @@
   right: 20px !important;
 }
 
+@media (max-width: 767px) {
+  #snackbar-container {
+    left: 0px !important;
+    right: 0px !important;
+    width: 100%;
+    .snackbar {
+      min-width: 100%;
+    }
+    [class="snackbar snackbar-opened"] ~ .snackbar.toast {
+      margin-top: 20px;
+    }
+    [class="snackbar snackbar-opened"] {
+      border-radius: 0;
+      margin-bottom: 0;
+    }
+  }
+}
+
 .header {
   margin-bottom: @line-height-computed;
 }

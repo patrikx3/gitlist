@@ -9,7 +9,7 @@
     "build": "grunt && webpack --production",
     "webpack-watch": "grunt && webpack --watch",
     "less-watch": "grunt watch:less",
-    "watch": "concurrently \"webpack --watch\" \"grunt watch:less\""
+    "watch": "grunt && concurrently \"webpack --watch\" \"grunt watch:less\""
   },
   "description": "🤖 P3X Gitlist",
   "version": "1.1.9",

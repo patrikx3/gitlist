@@ -5,6 +5,13 @@
                         
 [//]: #@corifeus-header:end
 
+### v1.1.20
+* in progress
+
+### v1.1.9
+* we automatically load the next commit, when we are on the bottom of the page
+* minor toast fix
+
 ### v1.1.8
 The `config.ini` file with `url_subdir` or later `clone_subdir` variable has been changed to the `git_clone_subdir` variable.
 
@@ -106,7 +113,7 @@ require('codemirror/mode/yaml/yaml');
 
 ---
 
-[**GITLIST**](https://pages.corifeus.com/gitlist) Build v1.1.8 
+[**GITLIST**](https://pages.corifeus.com/gitlist) Build v1.1.9 
 
 [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software) [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) 
 
