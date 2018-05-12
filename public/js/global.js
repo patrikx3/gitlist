@@ -1,4 +1,51 @@
+
+window.gitlist.dark =  [
+    'cyborg',
+    'darkly',
+    'slate',
+    'superhero',
+];
+
+window.gitlist.isDark =(theme) => {
+    for(var i = 0; i < window.gitlist.dark.length; i++ ) {
+        if (window.gitlist.dark[i] === theme) {
+            return true;
+        }
+    }
+    return false;
+}
+
+let $body;
+
+window.gitlist.setTheme = () => {
+    if ($body === undefined) {
+        setTimeout(() => {
+            window.gitlist.setTheme(theme)
+        })
+        return;
+    }
+    const theme = global.gitlist.getThemeCookie()
+    const actualTheme = theme.split('-')[1]
+    if (window.gitlist.isDark(actualTheme)) {
+        $body.addClass('p3x-gitlist-dark')
+        $body.removeClass('p3x-gitlist-light')
+        if (gitlist.viewer !== undefined) {
+            gitlist.viewer.setOption("theme", 'blackboard');
+        }
+    } else {
+        $body.addClass('p3x-gitlist-light')
+        $body.removeClass('p3x-gitlist-dark')
+        if (gitlist.viewer !== undefined) {
+            gitlist.viewer.setOption("theme", 'default');
+        }
+    }
+}
+
+
 $(function () {
+
+    $body = $('body');
+
     const es = document.getElementsByTagName('a')
     for(let i=0; i<es.length; i++){
         es[i].addEventListener('click', function(e) {

@@ -9,6 +9,7 @@
 * in progress
 
 ### v1.1.9
+* markdown dark mode
 * we automatically load the next commit, when we are on the bottom of the page
 * minor toast fix
 

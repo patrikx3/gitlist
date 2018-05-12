@@ -1,16 +1,4 @@
 document.addEventListener("DOMContentLoaded", function(event) {
-    function setCodeMirrorTheme(theme) {
-        if (gitlist.viewer === undefined) {
-            return;
-        }
-        const actualTheme = theme.split('-')[1]
-        if (window.gitlist.isDark(actualTheme)) {
-            gitlist.viewer.setOption("theme", 'blackboard');
-        } else {
-            gitlist.viewer.setOption("theme", 'default');
-        }
-    }
-    window.gitlist.setCodeMirrorTheme = setCodeMirrorTheme;
 
     const sourceCode = $('#sourcecode');
     if (sourceCode.length) {
@@ -31,11 +19,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
         const setCodeMirror = function() {
             if (gitlist.getThemeCookie !== undefined) {
-                setCodeMirrorTheme(gitlist.getThemeCookie())
+                global.gitlist.setTheme()
             } else {
                 setTimeout(function() {
                     setCodeMirror()
-                }, 250)
+                })
             }
         }
         setCodeMirror()

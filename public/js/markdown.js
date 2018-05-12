@@ -1,3 +1,21 @@
+const hljs = require('highlight.js/lib/highlight.js');
+hljs.registerLanguage('xml', require('highlight.js/lib/languages/xml.js'));
+hljs.registerLanguage('css', require('highlight.js/lib/languages/css.js'));
+hljs.registerLanguage('cmake', require('highlight.js/lib/languages/cmake.js'));
+hljs.registerLanguage('dockerfile', require('highlight.js/lib/languages/dockerfile.js'));
+hljs.registerLanguage('less', require('highlight.js/lib/languages/less.js'));
+hljs.registerLanguage('scss', require('highlight.js/lib/languages/scss.js'));
+hljs.registerLanguage('yaml', require('highlight.js/lib/languages/yaml.js'));
+hljs.registerLanguage('powershell', require('highlight.js/lib/languages/powershell.js'));
+hljs.registerLanguage('javascript', require('highlight.js/lib/languages/javascript.js'));
+hljs.registerLanguage('js', require('highlight.js/lib/languages/javascript.js'));
+hljs.registerLanguage('json', require('highlight.js/lib/languages/json.js'));
+hljs.registerLanguage('bash', require('highlight.js/lib/languages/shell.js'));
+hljs.registerLanguage('php', require('highlight.js/lib/languages/php.js'));
+hljs.registerLanguage('shell', require('highlight.js/lib/languages/shell.js'));
+hljs.registerLanguage('typescript', require('highlight.js/lib/languages/typescript.js'));
+hljs.registerLanguage('ts', require('highlight.js/lib/languages/typescript.js'));
+
 document.addEventListener("DOMContentLoaded", function(event) {
 
     const markdownRenderer = new marked.Renderer();
@@ -44,8 +62,32 @@ document.addEventListener("DOMContentLoaded", function(event) {
         return result;
     };
 
+    markdownRenderer.code = (code, language ) => {
+        if (language === undefined) {
+            language = 'text';
+        }
+
+        language = language.toLowerCase()
+
+        if ((hljs.getLanguage(language) === 'undefined' ||  hljs.getLanguage(language) === undefined) && language !== 'text') {
+            console.error(`Please add highlight.js as a language (could be a marked error as well, sometimes it thinks a language): ${language}                
+We are not loading everything, since it is about 500kb`)
+        }
+        language = language === 'text' || language === undefined ? 'html' : language;
+        const validLang = !!(language && hljs.getLanguage(language));
+        const highlighted = validLang ? hljs.highlight(language, code).value : code;
+        return `<pre><code class="hljs ${language}">${highlighted}</code></pre>`;
+    };
+
+    markdownRenderer.codespan = (code) => {
+        const lang = 'html';
+        const highlighted = hljs.highlight(lang, code).value ;
+        return `<code style="display: inline; line-height: 34px;" class="hljs ${lang}">${highlighted}</code>`;
+    }
+
     const mdContent = $('#md-content');
     if (mdContent.length) {
+        global.gitlist.setTheme();
         const html = marked(mdContent.text(), {
             renderer: markdownRenderer
         });

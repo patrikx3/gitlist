@@ -15,22 +15,10 @@
 
     <script type="text/javascript">
         window.gitlist = {
-            dark: [
-                'cyborg',
-                'darkly',
-                'slate',
-                'superhero',
-            ],
-            isDark: function(theme) {
-                for(var i = 0; i < window.gitlist.dark.length; i++ ) {
-                    if (window.gitlist.dark[i] === theme) {
-                        return true;
-                    }
-                }
-                return false;
-            },
+            dark: [],
+            isDark: undefined,
             viewer: undefined,
-            setCodeMirrorTheme: undefined,
+            setTheme: undefined,
             getThemeCookie: undefined,
             basepath: '{{ app.url_subdir }}',
             branch: '{{ branch }}',

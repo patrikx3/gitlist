@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         themeList.append(menu);
     }
 
-    gitlist.setCodeMirrorTheme(getThemeCookie())
+    gitlist.setTheme()
 
     const themesheet = $('#bootstrap-theme');
 
@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         setThemeCookie($this.attr('data-theme'));
         const href = (gitlist.basepath === '/' ? '' : gitlist.basepath) + themeurl;
         themesheet.attr('href', href);
-        gitlist.setCodeMirrorTheme(getThemeCookie())
+        gitlist.setTheme()
         event.preventDefault();
 
     });
