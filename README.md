@@ -46,9 +46,14 @@ http://gitlist.patrikx3.com/
 # Installation
 
 ## Requirements
-For the build on your workstation (themes):
+
+By now `composer` is not enough. We are using `webpack`, `babel`, `less`, `grunt` ...
+
+For the build on your workstation (less, babel, Bootstrap themes,  and webpack):
+
 * ```NodeJs``` >= 10
-* ```Bower``` and ```Grunt``` (npm install -g npm grunt-cli)
+* ```Grunt``` (npm install -g npm grunt-cli)
+* `Composer`
 
 In order to run GitList on your server, you'll need:
 
@@ -57,22 +62,39 @@ In order to run GitList on your server, you'll need:
 * ```PHP``` >= 7.1 
 
 ## By hand
-If you just want to get the project dependencies, instead of building everything:
+
+If you have Composer in your path, things get easier. But you know the drill.
+
+If want to get the project dependencies, and build everything:
 
 ```
 git clone https://github.com/patrikx3/gitlist.git
 curl -s http://getcomposer.org/installer | php
 php composer.phar install
+
+# i use Node v10 and NPM v6
 sudo npm install -g npm grunt-cli
 npm install
-grunt
-npm run webpack
+
+# if you do not want to create a release
+npm run webpack-watch
+# another terminal
+npm run less-watch
+
+# now you can work in it
+
+# if you have bash and want to create a full release
+# and strip all unneeded files,
+# optimize the packagist vendor folder
+# you might need zip from linux
+# this is it:
+./scripts/release.sh
+
+# the files will be in the ./build/release folder
+# and the zip is in the ./build/release/gitlist-a.b.c.zip file
 ```
 
-If you have Composer in your path, things get easier. But you know the drill.
-
 [Install](INSTALL.md) - here.
-
 
 [//]: #@corifeus-footer
 
