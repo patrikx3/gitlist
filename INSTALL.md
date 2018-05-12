@@ -80,65 +80,6 @@ server {
 }
 ```
 
-#### Might own NGINX that works with root and subdir as well
-
-```text
-server {
-
-	server_name gitlist.patrikx3.com;
-	root /var/www/gitlist.patrikx3.com/public;
-
-	location / {
-
-		try_files $uri /index.php$is_args$args;
-	}
-
-	location /nested {
-
-		alias /var/www/gitlist.patrikx3.com/public;
-
-		try_files $uri @nested;
-
-		location ~ \.php$ {
-
-			include snippets/fastcgi-php.conf;
-			fastcgi_param SCRIPT_FILENAME $request_filename;
-			fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
-		}
-	}
-
-	location /release {
-
-		alias /var/www/gitlist.patrikx3.com/build/release/public;
-
-		try_files $uri @release;
-
-		location ~ \.php$ {
-
-			include snippets/fastcgi-php.conf;
-			fastcgi_param SCRIPT_FILENAME $request_filename;
-			fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
-		}
-	}
-
-	location @nested {
-
-		rewrite /nested/(.*)$ /nested/index.php?/$1 last;
-	}
-
-
-	location @release {
-
-		rewrite /release/(.*)$ /release/index.php?/$1 last;
-	}
-
-	location ~ \.php$ {
-
-		include snippets/fastcgi-php.conf;
-		fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
-	}
-}
-```
 
 
 ### lighthttpd
@@ -175,7 +116,7 @@ UrlToolkit {
 
 ---
 
-[**GITLIST**](https://pages.corifeus.com/gitlist) Build v1.1.8 
+[**GITLIST**](https://pages.corifeus.com/gitlist) Build v1.1.9 
 
 [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software) [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) 
 
