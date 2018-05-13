@@ -4,7 +4,7 @@ set -e
 sudo rm -rf ./cache
 mkdir -p ./cache
 touch ./cache/.gitkeep
-chmod 0777 ./cache
+chmod 0770 ./cache
 
 sudo rm -rf ./git-test/
 mkdir -p ./git-test/

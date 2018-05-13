@@ -30,6 +30,9 @@ class Application extends SilexApplication
         $app = $this;
         $this->path = realpath($root);
 
+        $string = file_get_contents("../package.json");
+        $pkg = json_decode($string, true);
+
         $this['url_subdir'] = dirname($_SERVER['SCRIPT_NAME']);
         if ($this['url_subdir'] === '/') {
             $this['url_subdir'] = '';
@@ -38,7 +41,7 @@ class Application extends SilexApplication
         $this['date.format'] = $config->get('date', 'format') ? $config->get('date', 'format') : 'd/m/Y H:i:s';
         $this['theme'] = 'bootstrap';
 
-        $this['title'] = $config->get('app', 'title') ? $config->get('app', 'title') : 'GitList';
+        $this['title'] = $config->get('app', 'title') ? $config->get('app', 'title') : 'P3X GitList ' . $pkg['version'];
         $this['filetypes'] = $config->getSection('filetypes');
         $this['binary_filetypes'] = $config->getSection('binary_filetypes');
         $this['cache.archives'] = $this->getCachePath() . 'archives';
@@ -77,7 +80,7 @@ class Application extends SilexApplication
         $this->register(new RepositoryUtilServiceProvider());
         $this->register(new RoutingUtilServiceProvider());
 
-        $this['twig'] =  $this->extend('twig', function ($twig, $app) {
+        $this['twig'] =  $this->extend('twig', function ($twig, $app) use ($pkg) {
             $twig->addFilter(new \Twig_SimpleFilter('htmlentities', 'htmlentities'));
             $twig->addFilter(new \Twig_SimpleFilter('md5', 'md5'));
             $twig->addFilter(new \Twig_SimpleFilter('format_date', array($app, 'formatDate')));
@@ -86,8 +89,6 @@ class Application extends SilexApplication
 
             $twig->addGlobal('theme', !isset($_COOKIE['gitlist-bootstrap-theme']) ? 'bootstrap-cosmo' : $_COOKIE['gitlist-bootstrap-theme']);
 
-            $string = file_get_contents("../package.json");
-            $pkg = json_decode($string, true);
 
             $twig->addGlobal('version', $pkg['version']);
             $twig->addGlobal('gitlist_date_format', $this['date.format']);
