@@ -1,11 +1,3 @@
-
-window.gitlist.dark =  [
-    'cyborg',
-    'darkly',
-    'slate',
-    'superhero',
-];
-
 window.gitlist.isDark =(theme) => {
     for(var i = 0; i < window.gitlist.dark.length; i++ ) {
         if (window.gitlist.dark[i] === theme) {
@@ -38,6 +30,13 @@ window.gitlist.setTheme = () => {
         if (gitlist.viewer !== undefined) {
             gitlist.viewer.setOption("theme", 'default');
         }
+    }
+    let setTimeoutSwitch;
+    if (window.gitlist.lastloadSpan !== undefined && window.gitlist.lastloadSpan > 1000) {
+        clearTimeout(setTimeoutSwitch)
+        setTimeoutSwitch = setTimeout(() => {
+            $('.p3x-gitlist-overlay').remove();
+        }, window.gitlist.lastloadSpan)
     }
 }
 
@@ -76,6 +75,9 @@ $(function () {
 });
 
 document.addEventListener("DOMContentLoaded", function() {
+    if (window.gitlist.lastload !== undefined) {
+        window.gitlist.lastloadSpan = Date.now() - window.gitlist.lastload;
+    }
     $('.p3x-gitlist-overlay').remove();
 })
 

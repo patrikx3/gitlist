@@ -6,9 +6,17 @@
 
 {% block content %}
 
+    <script type="text/javascript">
+        window.gitlist.lastload = Date.now();
+    </script>
     <div class="p3x-gitlist-overlay">
-        <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
-
+        <div>
+            <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+        </div>
+        <br/>
+        <div>
+            Loading a big commit ...
+        </div>
     </div>
 
     {% include 'breadcrumb.twig' with {breadcrumbs: [{dir: "Commit #{commit.hash}", path:''}]} %}

@@ -5,8 +5,9 @@
                         
 [//]: #@corifeus-header:end
 
-### v1.1.15
-* in progress
+### v1.1.18-573
+* for big commits and changing the theme, it calculated the time it was loading the full commit list and it is about the same time when you change the theme, it added an overlay and this text eg. `9 seconds to switch the theme`
+* automatic versions generated with grun
 
 ### v1.1.14
 * added overlay when loading big commits
@@ -126,7 +127,7 @@ require('codemirror/mode/yaml/yaml');
 
 ---
 
-[**GITLIST**](https://pages.corifeus.com/gitlist) Build v1.1.14 
+[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v1.1.19-574 
 
 [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software) [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) 
 

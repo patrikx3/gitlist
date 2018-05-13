@@ -36,6 +36,23 @@ document.addEventListener("DOMContentLoaded", function(event) {
     const themesheet = $('#bootstrap-theme');
 
     $('.theme-link').click(function(event){
+
+        if (window.gitlist.lastloadSpan !== undefined && window.gitlist.lastloadSpan > 1000) {
+            $('body').prepend(`
+ <div class="p3x-gitlist-overlay">
+        <div>
+            <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+        </div>
+        <div>
+            For a big page, it takes some time to switch the theme...<br/>
+            The page rendering took about ${Math.ceil(window.gitlist.lastloadSpan / 1000)} seconds ...<br/>
+            It means the theme will take <strong>about</strong> the same time ...
+            
+        </div>
+</div>        
+        `)
+        }
+
         debounceResize();
         themeList.find('.active').removeClass('active');
         const $this = $(this);

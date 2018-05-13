@@ -65,7 +65,6 @@ module.exports = ${JSON.stringify(themeCss, null, 4)}
         replacer: {
             type: 'p3x',
             npmio: false,
-            node: false,
         },
         config:
             {
@@ -117,7 +116,7 @@ module.exports = ${JSON.stringify(themeCss, null, 4)}
             }
     });
 
-    grunt.registerTask('default', ['clean','less', 'copy', 'cory-replace']);
+    grunt.registerTask('default', ['clean','less', 'copy', 'cory-npm', 'cory-replace']);
     grunt.registerTask('build', ['default']);
     grunt.registerTask('run', ['watch:less']);
 
