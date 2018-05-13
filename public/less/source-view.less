@@ -5,9 +5,14 @@
 .p3x-gitlist-dark {
   .source-view {
 
-    border: 1px solid @navbar-default-bg;
+
+    .CodeMirror {
+      border: 1px solid @navbar-default-bg;
+    }
 
     .source-diff {
+      border: 1px solid @navbar-default-bg;
+
       pre {
         color: @navbar-inverse-color;
         background-color: @navbar-inverse-bg;
@@ -53,7 +58,6 @@
 .source-view {
   width: 100%;
   display: block;
-  border: 1px solid @gray-lighter;
 
 
   .source-header {
@@ -72,7 +76,15 @@
     text-decoration: none !important;
   }
 
+  .CodeMirror {
+    border: 1px solid @gray-lighter;
+  }
+
   .source-diff {
+
+    border: 1px solid @gray-lighter;
+
+
     max-width: 100%;
     min-width: 100%;
     overflow-x: auto;
@@ -118,6 +130,7 @@
   }
 
   #sourcecode {
+
     width: 100%;
   }
 
