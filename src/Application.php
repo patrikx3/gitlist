@@ -87,8 +87,20 @@ class Application extends SilexApplication
             $twig->addFilter(new \Twig_SimpleFilter('format_size', array($app, 'formatSize')));
             $twig->addFunction(new \Twig_SimpleFunction('avatar', array($app, 'getAvatar')));
 
-            $twig->addGlobal('theme', !isset($_COOKIE['gitlist-bootstrap-theme']) ? 'bootstrap-cosmo' : $_COOKIE['gitlist-bootstrap-theme']);
+            $currentTheme = !isset($_COOKIE['gitlist-bootstrap-theme']) ? 'bootstrap-cosmo' : $_COOKIE['gitlist-bootstrap-theme'];
+            $themeDark = [
+                'cyborg',
+                'darkly',
+                'slate',
+                'superhero',
+            ];
 
+            $twig->addGlobal('theme_type', !in_array(substr($currentTheme, strlen('bootstrap-')), $themeDark) ? 'p3x-gitlist-light' : 'p3x-gitlist-dark');
+
+            $twig->addGlobal('theme', $currentTheme);
+
+
+            $twig->addGlobal('theme_dark', $themeDark);
 
             $twig->addGlobal('version', $pkg['version']);
             $twig->addGlobal('gitlist_date_format', $this['date.format']);

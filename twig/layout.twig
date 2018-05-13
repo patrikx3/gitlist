@@ -11,12 +11,12 @@
     <link rel="stylesheet" type="text/css" href="{{ app.url_subdir }}/webpack/style.css">
     <link rel="stylesheet" type="text/css" href="{{ app.url_subdir }}/css/{{ theme }}.css" id="bootstrap-theme">
 
-    <script type="text/javascript">window.gitlist = { dark: [], isDark: undefined, viewer: undefined, setTheme: undefined, getThemeCookie: undefined, basepath: '{{ app.url_subdir }}', branch: '{{ branch }}', repo: '{{ repo }}', dateFormat: '{{ gitlist_date_format }}' }</script>
+    <script type="text/javascript">window.gitlist = { dark: {{  theme_dark |json_encode|raw }}, isDark: undefined, viewer: undefined, setTheme: undefined, getThemeCookie: undefined, basepath: '{{ app.url_subdir }}', branch: '{{ branch }}', repo: '{{ repo }}', dateFormat: '{{ gitlist_date_format }}' }</script>
     <script src="{{ app.url_subdir }}/webpack/bundle.js"></script>
 
 </head>
 
-<body>
+<body class="{{ theme_type }}">
 
 {% block body %}{% endblock %}
 {% block javascripts %}
