@@ -9,7 +9,7 @@
 * in progress
 
 ### v1.1.12
-* allow CodeMirror show toggle height 600px vs all
+* allow CodeMirror show toggle height 300px vs all
 
 ### v1.1.11
 * Make to use the tag/branch button like GitHub
