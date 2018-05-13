@@ -14,8 +14,7 @@
                 <a class="navbar-brand" href="javascript:;" onclick="document.location.hash='#';">{{ commit.message }}</a>
             </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
                         <a href="{{ path('branch', {repo: repo, branch: commit.hash}) }}" title="Browse code at this point in history"><span class="fa fa-list-alt"></span> Browse code</a>

@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", function(event) {
 
 
-    const menuResponsive = require('./menu-responsive')
-    menuResponsive({
-        menuList: $('#p3x-gitlist-branch-list-dropdown-menu'),
-    })
+//    const menuResponsive = require('./menu-responsive')
+//    menuResponsive({
+//        menuList: $('#p3x-gitlist-branch-list-dropdown-menu'),
+//    })
 
     const List = require('list.js')
 
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
             const search = input.val().trim();
             branchList.search(search)
             tagList.search(search)
-        }, 500)
+        }, 250)
 
         input.keyup(debouncedKeyup)
 

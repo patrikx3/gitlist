@@ -1,32 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"/>
-
     <base href="{{ app.url_subdir }}/"/>
 
+    <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=yes">
 
     <title>{% block title %}Welcome!{% endblock %}</title>
     <link rel="shortcut icon" type="image/png" href="{{ app.url_subdir }}/img/favicon.png"/>
-
     <link rel="stylesheet" type="text/css" href="{{ app.url_subdir }}/webpack/style.css">
     <link rel="stylesheet" type="text/css" href="{{ app.url_subdir }}/css/{{ theme }}.css" id="bootstrap-theme">
 
-    <script type="text/javascript">
-        window.gitlist = {
-            dark: [],
-            isDark: undefined,
-            viewer: undefined,
-            setTheme: undefined,
-            getThemeCookie: undefined,
-            basepath: '{{ app.url_subdir }}',
-            branch: '{{ branch }}',
-            repo: '{{ repo }}',
-            dateFormat: '{{ gitlist_date_format }}'
-        }
-    </script>
-
+    <script type="text/javascript">window.gitlist = { dark: [], isDark: undefined, viewer: undefined, setTheme: undefined, getThemeCookie: undefined, basepath: '{{ app.url_subdir }}', branch: '{{ branch }}', repo: '{{ repo }}', dateFormat: '{{ gitlist_date_format }}' }</script>
     <script src="{{ app.url_subdir }}/webpack/bundle.js"></script>
 
 </head>
@@ -36,9 +21,6 @@
 {% block body %}{% endblock %}
 {% block javascripts %}
 
-
 {% endblock %}
-
-
 </body>
 </html>
