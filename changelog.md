@@ -7,7 +7,7 @@
 
 ### v1.1.18-573
 * for big commits and changing the theme, it calculated the time it was loading the full commit list and it is about the same time when you change the theme, it added an overlay and this text eg. `9 seconds to switch the theme`
-* automatic versions generated with grun
+* automatic versions generated with grunt
 
 ### v1.1.14
 * added overlay when loading big commits
