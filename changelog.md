@@ -5,8 +5,11 @@
                         
 [//]: #@corifeus-header:end
 
-### v1.1.11
+### v1.1.12
 * in progress
+
+### v1.1.11
+* Make to use the tag/branch button like GitHub
 
 ### v1.1.10
 * total dark/light mode (CodeMirror, diff, Markdown)

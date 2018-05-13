@@ -8,24 +8,16 @@
 
     {% include 'breadcrumb.twig' with {breadcrumbs: [{dir: "Commit #{commit.hash}", path:''}]} %}
 
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="javascript:;" onclick="document.location.hash='#';">{{ commit.message }}</a>
-            </div>
-
-            <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="{{ path('branch', {repo: repo, branch: commit.hash}) }}" title="Browse code at this point in history"><span class="fa fa-list-alt"></span> Browse code</a>
-                    </li>
-                </ul>
-            </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-    </nav>
-
+    <div>
+        <div style="float: right;">
+            <a class="btn btn-info" href="{{ path('branch', {repo: repo, branch: commit.hash}) }}" title="Browse code at this point in history"><span class="fa fa-list-alt"></span> Browse code</a>
+        </div>
+        <div style="font-size: 175%; padding: 10px; font-weight: bold;">
+            {{ commit.message }}
+        </div>
+    </div>
+    <div style="height: 10px; clear: both;"></div>
     <div class="commit-view">
-
 
         <div class="commit-body">
             {% if commit.body is not empty %}
