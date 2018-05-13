@@ -75,6 +75,10 @@ $(function () {
 
 });
 
+document.addEventListener("DOMContentLoaded", function() {
+    $('.p3x-gitlist-overlay').remove();
+})
+
 
 
 global.gitlist.scrollHash = function(element, event) {

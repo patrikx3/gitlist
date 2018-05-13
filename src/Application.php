@@ -81,6 +81,14 @@ class Application extends SilexApplication
         $this->register(new RoutingUtilServiceProvider());
 
         $this['twig'] =  $this->extend('twig', function ($twig, $app) use ($pkg) {
+
+            $twig->addFilter(new \Twig_SimpleFilter('to_id', function($value) {
+                $value = str_replace(['.', '/', '\\', ' '], '-', $value);
+                $value = strtolower($value);
+                return $value;
+            }));
+
+
             $twig->addFilter(new \Twig_SimpleFilter('htmlentities', 'htmlentities'));
             $twig->addFilter(new \Twig_SimpleFilter('md5', 'md5'));
             $twig->addFilter(new \Twig_SimpleFilter('format_date', array($app, 'formatDate')));
