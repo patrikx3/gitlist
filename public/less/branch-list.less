@@ -1,19 +1,44 @@
+.p3x-gitlist-branch-menu-header, .p3x-gitlist-branch-menu-item
+{
+  padding: @padding-base-vertical;
+}
+
 #p3x-gitlist-branch-list {
   a {
     text-decoration: none !important;
   }
 
-  .main-list {
-    padding: @padding-base-vertical;
-    color: @navbar-inverse-color;
+  .p3x-gitlist-branch-menu-item:hover {
+    cursor: pointer;
+  }
+  .p3x-gitlist-branch-menu-item:hover {
+    background-color: @link-color;
 
-    a {
+  }
+}
 
+.p3x-gitlist-light {
+  #p3x-gitlist-branch-list {
+    .main-list {
+      a {
+        color: @text-color ;
+      }
+      .p3x-gitlist-branch-menu-item:hover {
+        a, a:hover {
+          color: white;
+        }
+      }
     }
   }
-
-  .list {
+}
+.p3x-gitlist-dark {
+  #p3x-gitlist-branch-list {
+    .main-list {
+      a {
+        color: @dropdown-link-active-color !important;
+      }
+    }
   }
 }
-#p3x-gitlist-branch-list-search {
-}
+
+

@@ -1,3 +1,52 @@
+.p3x-gitlist-light {
+
+}
+
+.p3x-gitlist-dark {
+  .source-view {
+    .source-diff {
+      pre {
+        color: @navbar-inverse-color;
+        background-color: @navbar-inverse-bg;
+        &:hover {
+          border: 1px solid @navbar-default-border;
+        }
+      }
+      table {
+      }
+      table td {
+        background-color: @navbar-inverse-bg;
+      }
+      .new {
+        background-color: darken(@alert-success-bg, 50%);
+        color: lighten(@alert-success-text, 50%)
+      }
+      .old {
+        background-color: darken(@alert-danger-bg, 50%);
+        color: lighten(@alert-danger-text, 50%)
+      }
+      .chunk {
+        background-color: @navbar-inverse-bg;
+        color: @navbar-inverse-color;
+      }
+      .lineNo {
+        background-color: @navbar-inverse-bg !important;
+        color: @navbar-default-color !important;
+        border-right: 1px solid @navbar-default-border !important;;
+      }
+      .lineNo a {
+        color: @navbar-inverse-color !important;
+      }
+    }
+
+    #sourcecode {
+    }
+
+    .image-blob {
+    }
+  }
+}
+
 .source-view {
   width: 100%;
   display: block;
@@ -10,7 +59,7 @@
       padding-bottom: 5px;
       padding-right: 5px;
       width: 100%;
-      text-align: right;
+      text-align: left;
     }
   }
 
@@ -28,10 +77,10 @@
       border: none;
       border-radius: 0;
       overflow: hidden;
+      border: 1px solid transparent;
 
       &:hover {
-        background-color: @alert-info-bg;
-        color: @alert-info-text
+        border: 1px solid @navbar-inverse-border;
       }
     }
     table {
@@ -40,12 +89,12 @@
       padding: 0;
     }
     .new {
-      background-color: @alert-success-bg;
-      color: @alert-success-text
+      background-color: darken(@alert-success-bg, 50%);
+      color: lighten(@alert-success-text, 50%)
     }
     .old {
-      background-color: @alert-danger-bg;
-      color: @alert-danger-text
+      background-color: darken(@alert-danger-bg, 50%);
+      color: lighten(@alert-danger-text, 50%)
     }
     .chunk {
       background-color: @alert-info-bg;

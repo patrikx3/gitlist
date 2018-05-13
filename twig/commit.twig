@@ -8,7 +8,7 @@
 
     {% include 'breadcrumb.twig' with {breadcrumbs: [{dir: "Commit #{commit.hash}", path:''}]} %}
 
-    <nav class="navbar navbar-inverse">
+    <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="javascript:;" onclick="document.location.hash='#';">{{ commit.message }}</a>
@@ -52,14 +52,13 @@
     {% for diff in commit.diffs %}
         <br/>
         <div class="btn-group pull-right">
-            <a href="{{ path('commits', {repo: repo, commitishPath: commit.hash ~ '/' ~ diff.file}) }}"  class="btn btn-default btn-sm"><span class="fa fa-list-alt"></span> History</a>
-            <a href="{{ path('blob', {repo: repo, commitishPath: commit.hash ~'/' ~ diff.file}) }}"  class="btn btn-default btn-sm"><span class="fa fa-file"></span> View file @ {{ commit.shortHash }}</a>
+            <a href="{{ path('commits', {repo: repo, commitishPath: commit.hash ~ '/' ~ diff.file}) }}"  class="btn btn-primary btn-sm"><span class="fa fa-list-alt"></span> History</a>
+            <a href="{{ path('blob', {repo: repo, commitishPath: commit.hash ~'/' ~ diff.file}) }}"  class="btn btn-primary btn-sm"><span class="fa fa-file"></span> View file @ {{ commit.shortHash }}</a>
         </div>
-        <div style="clear: both; height: 5px;"></div>
 
         <div class="source-view">
         <div class="source-header">
-            <div class="meta"><a id="diff-{{ loop.index }}">{{ diff.file }}</div>
+            <div class="meta"><span id="diff-{{ loop.index }}">{{ diff.file }}</div>
         </div>
 
         <div class="source-diff">

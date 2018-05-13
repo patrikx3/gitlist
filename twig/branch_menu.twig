@@ -6,27 +6,27 @@
         </form>
 
         <div class="main-list">
-            <div class="p3x-list-item-header">
+            <div class="p3x-list-item-header p3x-gitlist-branch-menu-header">
                 Branches
             </div>
             <div id="p3x-gitlist-list-branch">
                 <span class="list">
                     {% for item in branches %}
-                        <div><a href="{{ path('branch', {repo: repo, branch: item}) }}"><span class="item">{{ item }}</span></a></div>
+                        <div class="p3x-gitlist-branch-menu-item" onclick="location.href ='{{ path('branch', {repo: repo, branch: item}) }}'"><a href="{{ path('branch', {repo: repo, branch: item}) }}"><span class="item">{{ item }}</span></a></div>
                     {% endfor %}
                 </span>
             </div>
 
             {% if tags %}
                 <div role="separator" class="divider"></div>
-                <div class="p3x-list-item-header">
+                <div class="p3x-list-item-header p3x-gitlist-branch-menu-header">
                     Tags
                 </div>
 
                 <div id="p3x-gitlist-list-tag">
                     <span class="list">
                         {% for item in tags %}
-                            <div><a href="{{ path('branch', {repo: repo, branch: item}) }}"><span class="item">{{ item }}</span></a></div>
+                            <div class="p3x-gitlist-branch-menu-item" onclick="location.href ='{{ path('branch', {repo: repo, branch: item}) }}'" ><a href="{{ path('branch', {repo: repo, branch: item}) }}"><span class="item">{{ item }}</span></a></div>
                         {% endfor %}
                     </span>
                 </div>

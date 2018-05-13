@@ -1,22 +1,51 @@
+.p3x-gitlist-light {
+  .blame-view {
 
-.blame-view {
-
-  td.blame-info {
-  }
-  td.blame-line {
+    td.blame-info {
+    }
+    td.blame-line {
+      pre {
+        overflow-x: auto;
+        white-space:pre-wrap;
+      }
+    }
+    tr {
+    }
+    tr:last-child {
+    }
+    .line {
+    }
+    .commit {
+    }
     pre {
-      overflow-x: auto;
-      white-space:pre-wrap;
     }
   }
-  tr {
-  }
-  tr:last-child {
-  }
-  .line {
-  }
-  .commit {
-  }
-  pre {
+}
+
+.p3x-gitlist-dark {
+  .blame-view {
+
+    td.blame-info {
+    }
+    td.blame-line {
+      pre {
+        background-color: lighten(@navbar-inverse-bg, 5%);
+        color: @navbar-inverse-color;
+        border-color: @navbar-inverse-border;
+        overflow-x: auto;
+        white-space:pre-wrap;
+      }
+    }
+    tr {
+    }
+    tr:last-child {
+    }
+    .line {
+    }
+    .commit {
+    }
+    pre {
+    }
   }
 }
+

@@ -1,31 +1,70 @@
-.repository {
-  margin-bottom: @line-height-computed;
-  border: 1px solid @navbar-default-border;
+.p3x-gitlist-light {
+  .repository {
+    margin-bottom: @line-height-computed;
+    border: 1px solid @navbar-default-border;
 
-  .repository-header {
-    border-bottom: 1px solid @navbar-default-border;
-    padding: 10px;
-    font-size: @font-size-base;
-    font-weight: 700;
-    background-color: @navbar-default-bg;
-    color: @navbar-default-color;
+    .repository-header {
+      border-bottom: 1px solid @navbar-default-border;
+      padding: 10px;
+      font-size: @font-size-base;
+      font-weight: 700;
+      background-color: @navbar-default-bg;
+      color: @navbar-default-color;
 
-    a{
-      color: @navbar-default-color !important;
+      a{
+        color: @navbar-default-color !important;
+      }
+
+      span.rss-icon {
+        font-size: @font-size-h3;
+      }
+      > .fa {
+        margin-right: 8px;
+      }
     }
+    .repository-body {
+      padding: @padding-base-vertical @padding-base-horizontal;
 
-    span.rss-icon {
-      font-size: @font-size-h3;
-    }
-    > .fa {
-      margin-right: 8px;
-    }
-  }
-  .repository-body {
-    padding: @padding-base-vertical @padding-base-horizontal;
-
-    p {
-      margin: 0;
+      p {
+        margin: 0;
+      }
     }
   }
 }
+
+
+.p3x-gitlist-dark {
+  .repository {
+    margin-bottom: @line-height-computed;
+    border: 1px solid @navbar-inverse-border;
+
+    .repository-header {
+      border-bottom: 1px solid @navbar-inverse-border;
+      padding: 10px;
+      font-size: @font-size-base;
+      font-weight: 700;
+      background-color: @navbar-inverse-bg;
+      color: @navbar-default-brand-color;
+
+      a{
+        color: @navbar-inverse-color !important;
+      }
+
+      span.rss-icon {
+        font-size: @font-size-h3;
+      }
+      > .fa {
+        margin-right: 8px;
+      }
+    }
+    .repository-body {
+      padding: @padding-base-vertical @padding-base-horizontal;
+
+      p {
+        margin: 0;
+      }
+    }
+  }
+
+}
+
