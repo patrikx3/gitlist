@@ -9,6 +9,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
         const codeSmall = $('#p3x-gitlist-file-small');
         const codeBig = $('#p3x-gitlist-file-codemirror');
+        const value = sourceCode.text();
+        const maxSize = 64;
+        const size = Math.ceil(value.length / 1024);
+
+        const defaultInfo = `You enabled the full mode instead of scroll mode.<br/>
+This can be slow. Scroll mode is fast!<br/>
+The maximum auto parsed code size is ${maxSize} KB.<br/> 
+This code is ${size} KB. `
 
         const createCodeMirror = () => {
             codeSmall.hide();
@@ -38,11 +46,21 @@ document.addEventListener("DOMContentLoaded", function(event) {
             buttonScroll.click(setScroll)
 
             const setFull = () => {
-                buttonScroll.removeClass('active')
-                buttonFull.addClass('active')
-                codeMirror.css('height', 'auto')
-                gitlist.viewer.setSize(null, '100%');
-                Cookies.set(cookieName, 'full', cookieSettings)
+
+                if (currentSizing !== 'full' && size > maxSize) {
+                    $.snackbar({
+                        htmlAllowed: true,
+                        content: defaultInfo,
+                        timeout: 30000,
+                    });
+                }
+                setTimeout(() => {
+                    buttonScroll.removeClass('active')
+                    buttonFull.addClass('active')
+                    codeMirror.css('height', 'auto')
+                    gitlist.viewer.setSize(null, '100%');
+                    Cookies.set(cookieName, 'full', cookieSettings)
+                }, 250)
             }
 
             buttonFull.click(setFull)
@@ -65,9 +83,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
             }
         }
 
-        const value = sourceCode.text();
-        const maxSize = 64;
-        const size = Math.ceil(value.length / 1024);
         if (size > maxSize && currentSizing === 'full') {
             codeBig.hide();
             codeSmall.show();
@@ -78,11 +93,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
             setTimeout(() => {
                 $.snackbar({
                     htmlAllowed: true,
-                    content: `
-You enabled the full mode instead of scroll mode.<br/>
-This can be slow. Scroll mode is fast!<br/>
-The maximum auto parsed code size is ${maxSize} KB.<br/> 
-This code is ${size} KB. Auro-parsing disabled!<br/>
+                    content: `${defaultInfo} Auro-parsing disabled!<br/>
 To see the parsed code, click the <strong>Parse code</strong> button.
 `,
                     timeout: 30000,
