@@ -1,6 +1,6 @@
 {
     "name": "p3x-gitlist",
-    "version": "2.0.5-579",
+    "version": "2.0.13-586",
     "corifeus": {
         "prefix": "p3x-",
         "publish": false,
@@ -25,10 +25,6 @@
     "license": "MIT",
     "devDependencies": {
         "concurrently": "^3.5.1",
-        "@babel/core": "^7.0.0-beta.46",
-        "@babel/polyfill": "^7.0.0-beta.46",
-        "@babel/preset-env": "^7.0.0-beta.46",
-        "babel-loader": "^8.0.0-beta.2",
         "bootstrap": "^3.3.7",
         "bootswatch": "3.3.7 <3.9.9",
         "corifeus-builder": "^1.7.1400-407",

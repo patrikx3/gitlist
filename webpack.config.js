@@ -57,6 +57,7 @@ For more information about all licenses, please see ${webpackBanner}
                 compress: {
                     warnings: false
                 },
+                ecma: 8,
                 // todo found out if mangle use or not
                 // mangle: false === keep function names
                 // mangle: true === drop function names
@@ -110,13 +111,6 @@ module.exports = {
     },
     module: {
         rules: [
-            {
-                test: /\.js$/, // which file needs to be read
-//          exclude: /node_modules/, // which folder needs not to be read
-//          exclude: /node_modules\/(?!(MY-MODULE|ANOTHER-ONE)\/).*/,
-                exclude: /node_modules\/(?!(ngivr)).*/,
-                loader: ['babel-loader'] // which transplier/compiler/plugin to compile files
-            },
             {
                 test: /\.less$/,
                 use: [{

@@ -9,6 +9,9 @@
 * in progress
 * network and graph dark mode
 
+### v2.0.12-585
+* removed `Babel` 😀
+
 ### v2.0.4-579
 * Automated build with webpack and grunt
 
@@ -134,7 +137,7 @@ require('codemirror/mode/yaml/yaml');
 
 ---
 
-[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2.0.5-579 
+[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2.0.13-586 
 
 [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software) [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) 
 
