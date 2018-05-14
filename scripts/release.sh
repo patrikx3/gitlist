@@ -5,7 +5,8 @@ TOP=$DIR/..
 set -e
 
 version=$( node -e "console.log(require('$TOP/package.json').version)" )
-name=gitlist-$version
+pkg_name=$( node -e "console.log(require('$TOP/package.json').name)" )
+name=$pkg_name-$version
 repo=$TOP/build/$name
 
 pushd $TOP
