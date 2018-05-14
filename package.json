@@ -1,6 +1,6 @@
 {
     "name": "p3x-gitlist",
-    "version": "2.0.15-589",
+    "version": "2.0.16-591",
     "corifeus": {
         "prefix": "p3x-",
         "publish": false,
