@@ -3,6 +3,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
     const sourceCode = $('#sourcecode');
     if (sourceCode.length) {
 
+        const Cookies = require('js-cookie')
+        const cookieName = 'p3x-gitlist-codemirror-size'
+        const currentSizing = Cookies.get(cookieName)
+
         const codeSmall = $('#p3x-gitlist-file-small');
         const codeBig = $('#p3x-gitlist-file-codemirror');
 
@@ -17,10 +21,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
             const buttonFull = $('#p3x-gitlist-file-button-full');
             const codeMirrorHeight = 300;
 
-            const Cookies = require('js-cookie')
-            const cookieName = 'p3x-gitlist-codemirror-size'
 
-            const currentSizing = Cookies.get(cookieName)
             const cookieSettings = {
                 path: '/',
                 expires: 3650
@@ -67,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         const value = sourceCode.text();
         const maxSize = 64;
         const size = Math.ceil(value.length / 1024);
-        if (size > maxSize) {
+        if (size > maxSize && currentSizing === 'full') {
             codeBig.hide();
             codeSmall.show();
             const codeSmallButton = $('#p3x-gitlist-file-small-button');
@@ -78,11 +79,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
                 $.snackbar({
                     htmlAllowed: true,
                     content: `
+You enabled the full mode instead of scroll mode.<br/>
+This can be slow. Scroll mode is fast!<br/>
 The maximum auto parsed code size is ${maxSize} KB.<br/> 
-This code is ${size} KB.<br/>
+This code is ${size} KB. Auro-parsing disabled!<br/>
 To see the parsed code, click the <strong>Parse code</strong> button.
 `,
-                    timeout: 15000,
+                    timeout: 30000,
                 });
 
                 let flag = true;
