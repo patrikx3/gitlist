@@ -1,3 +1,13 @@
+const Cookies = require('js-cookie')
+const themeCookieName = 'gitlist-bootstrap-theme'
+
+function getThemeCookie() {
+    const theme = Cookies.get(themeCookieName)
+    return theme || 'bootstrap-cosmo';
+}
+
+gitlist.getThemeCookie = getThemeCookie;
+
 document.addEventListener("DOMContentLoaded", function(event) {
 
     const themes = require('./themes.js')
@@ -10,15 +20,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
         menuList: themeList,
     })
 
-    const Cookies = require('js-cookie')
-    const themeCookieName = 'gitlist-bootstrap-theme'
-
-    function getThemeCookie() {
-        const theme = Cookies.get(themeCookieName)
-        return theme || 'bootstrap-cosmo';
-    }
-
-    gitlist.getThemeCookie = getThemeCookie;
 
     function setThemeCookie(theme) {
         Cookies.set(themeCookieName, theme,  { expires: 3650, path: '/' });

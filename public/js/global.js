@@ -1,3 +1,4 @@
+
 window.gitlist.isDark =(theme) => {
     for(var i = 0; i < window.gitlist.dark.length; i++ ) {
         if (window.gitlist.dark[i] === theme) {
@@ -9,26 +10,44 @@ window.gitlist.isDark =(theme) => {
 
 let $body;
 
+window.gitlist.codemirrorTheme = {
+    light: 'idea',
+    dark: 'dracula',
+}
+
+window.gitlist.getActualTheme = () => {
+    const theme = window.gitlist.getThemeCookie()
+    const actualTheme = theme.split('-')[1]
+    return actualTheme;
+}
+
+window.gitlist.getActualThemeCodemirror = () => {
+    if (window.gitlist.isDark(window.gitlist.getActualTheme())) {
+        return window.gitlist.codemirrorTheme.dark;
+    } else {
+        return window.gitlist.codemirrorTheme.light;
+    }
+}
+
 window.gitlist.setTheme = () => {
-    if ($body === undefined) {
+    if ($body === undefined || window.gitlist.getThemeCookie === undefined) {
         setTimeout(() => {
-            window.gitlist.setTheme(theme)
+            window.gitlist.setTheme()
         })
         return;
     }
-    const theme = global.gitlist.getThemeCookie()
-    const actualTheme = theme.split('-')[1]
-    if (window.gitlist.isDark(actualTheme)) {
+    const theme = window.gitlist.getActualTheme();
+    if (window.gitlist.isDark(theme)) {
         $body.addClass('p3x-gitlist-dark')
         $body.removeClass('p3x-gitlist-light')
         if (gitlist.viewer !== undefined) {
-            gitlist.viewer.setOption("theme", 'blackboard');
+            gitlist.viewer.setOption("theme", window.gitlist.codemirrorTheme.dark);
         }
     } else {
         $body.addClass('p3x-gitlist-light')
         $body.removeClass('p3x-gitlist-dark')
         if (gitlist.viewer !== undefined) {
-            gitlist.viewer.setOption("theme", 'default');
+            gitlist.viewer.setOption("theme", window.gitlist.codemirrorTheme.light);
         }
     }
     let setTimeoutSwitch;

@@ -21,21 +21,25 @@ document.addEventListener("DOMContentLoaded", function(event) {
             expires: 3650
         }
 
-        buttonScroll.click(() => {
+        const setScroll = () => {
             buttonFull.removeClass('active')
             buttonScroll.addClass('active')
             codeMirror.css('height', codeMirrorHeight)
             gitlist.viewer.setSize(null, codeMirrorHeight);
             Cookies.set(cookieName, 'scroll', cookieSettings)
-        })
+        }
 
-        buttonFull.click(() => {
+        buttonScroll.click(setScroll)
+
+        const setFull = () => {
             buttonScroll.removeClass('active')
             buttonFull.addClass('active')
             codeMirror.css('height', 'auto')
             gitlist.viewer.setSize(null, '100%');
             Cookies.set(cookieName, 'full', cookieSettings)
-        })
+        }
+
+        buttonFull.click(setFull)
 
         gitlist.viewer = CodeMirror(function(elt) {
             pre.parentNode.replaceChild(elt, pre);
@@ -46,22 +50,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
             lineWrapping: true,
             readOnly: true,
             mode: mode,
+            theme: window.gitlist.getActualThemeCodemirror(),
         });
-
-        const setCodeMirror = function() {
-            if (gitlist.getThemeCookie !== undefined) {
-                global.gitlist.setTheme()
-            } else {
-                setTimeout(function() {
-                    setCodeMirror()
-                    if (currentSizing !== 'scroll') {
-                        buttonFull.click();
-                    } else {
-                        buttonScroll.click();
-                    }
-                })
-            }
+        if (currentSizing === 'full') {
+            setFull()
+        } else {
+            setScroll()
         }
-        setCodeMirror()
     }
 })

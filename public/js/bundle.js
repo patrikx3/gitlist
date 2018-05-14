@@ -1,5 +1,6 @@
 require('codemirror/lib/codemirror.css')
-require('codemirror/theme/blackboard.css')
+require('codemirror/theme/dracula.css')
+require('codemirror/theme/idea.css')
 require('../less/style.less')
 require('../less/fontawesome.less')
 
@@ -56,6 +57,6 @@ require('./clone-buttons')
 require('./paginate')
 require('./search-branch')
 require('./search-repositories')
-require('./global')
 require('./theme-switcher.js')
+require('./global')
 
