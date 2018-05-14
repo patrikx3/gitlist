@@ -1,7 +1,5 @@
 document.addEventListener("DOMContentLoaded", function(event) {
 
-    require('snackbarjs');
-
     const cloneButtonSSH = $('#clone-button-ssh');
     const cloneButtonHTTP = $('#clone-button-http');
     const cloneInputSSH = $('#clone-input-ssh');

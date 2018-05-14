@@ -95,7 +95,6 @@ We are not loading everything, since it is about 500kb`)
             folder: 'svg',
             ext: '.svg',
         }));
-        global.gitlist.scrollHash(location)
     }
 
 });

@@ -8,6 +8,8 @@ global.jQuery = require('jquery')
 global.$ = global.jQuery;
 
 require('bootstrap');
+require('snackbarjs');
+require('animate.css');
 
 global.marked = require('marked')
 global.htmlEncode = require('js-htmlencode')

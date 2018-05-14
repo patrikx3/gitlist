@@ -30,7 +30,7 @@ window.gitlist.getActualThemeCodemirror = () => {
 }
 
 window.gitlist.setTheme = () => {
-    if ($body === undefined || window.gitlist.getThemeCookie === undefined) {
+    if ($body === undefined) {
         setTimeout(() => {
             window.gitlist.setTheme()
         })
@@ -59,6 +59,16 @@ window.gitlist.setTheme = () => {
     }
 }
 
+const pushHash = (hash) => {
+    if(history.pushState) {
+        const pushState = location.pathname + hash;
+        history.pushState(null, null, pushState);
+    }
+    else {
+        location.hash = hash;
+    }
+
+}
 
 $(function () {
 
@@ -73,7 +83,8 @@ $(function () {
             }
             if (href.startsWith('#')) {
                 e.preventDefault()
-                const el = document.getElementById(href.substring(1));
+                const hash = href.substring(1);
+                const el = document.getElementById(hash);
                 if (el === null) {
                     return;
                 }
@@ -82,7 +93,7 @@ $(function () {
                     block: "center",
 
                 })
-
+                pushHash(href)
             }
         })
     }
@@ -92,14 +103,6 @@ $(function () {
     });
 
 });
-
-document.addEventListener("DOMContentLoaded", function() {
-    if (window.gitlist.lastload !== undefined) {
-        window.gitlist.lastloadSpan = Date.now() - window.gitlist.lastload;
-    }
-    $('.p3x-gitlist-overlay').remove();
-})
-
 
 
 global.gitlist.scrollHash = function(element, event) {
@@ -117,13 +120,19 @@ global.gitlist.scrollHash = function(element, event) {
 
     if (event !== undefined) {
         event.preventDefault()
-        if(history.pushState) {
-            const pushState = location.pathname + url.hash;
-            history.pushState(null, null, pushState);
-        }
-        else {
-            location.hash = url.hash;
-        }
+        pushHash(url.hash)
     }
     return false;
 }
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    if (window.gitlist.lastload !== undefined) {
+        window.gitlist.lastloadSpan = Date.now() - window.gitlist.lastload;
+    }
+    $('.p3x-gitlist-overlay').remove();
+    global.gitlist.scrollHash(location)
+})
+
+
+
