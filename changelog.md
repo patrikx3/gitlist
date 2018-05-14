@@ -5,9 +5,12 @@
                         
 [//]: #@corifeus-header:end
 
-### v2.0.0
+### v2.1.0
 * in progress
 * network and graph dark mode
+
+### v2.0.4-579
+* Automated build with webpack and grunt
 
 ### v1.1.18-573
 * for big commits and changing the theme, it calculated the time it was loading the full commit list and it is about the same time when you change the theme, it added an overlay and this text eg. `9 seconds to switch the theme`
