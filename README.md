@@ -4,7 +4,7 @@
 
 
  
-# 🤖 P3X Gitlist v2.0.13-586  
+# 🤖 P3X Gitlist v2.0.15-589  
 
 This is an open-source project. Star this repository if you like it, or even donate!  Thank you so much! :)
 
@@ -71,7 +71,7 @@ https://github.com/patrikx3/gitlist/releases/tag/2.0.4-579
 
 The following versions are not using `Babel`!!!! Yikes!
 
-### v1.2.0 - unreleased / in progress
+### v999.999.999-999 - unreleased / in progress
 * In submodules, if the "submodule" and "path" is not the same, it chokes (it should work the submodule name and path are not the same)
   * Works
     * submodule "path/name"
@@ -145,7 +145,7 @@ npm run watch
 
 ---
 
-[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2.0.13-586 
+[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2.0.15-589 
 
 [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software) [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) 
 
