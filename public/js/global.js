@@ -1,3 +1,6 @@
+const scrollIntoViewOptions = {
+    block: "center",
+}
 
 window.gitlist.isDark =(theme) => {
     for(var i = 0; i < window.gitlist.dark.length; i++ ) {
@@ -88,11 +91,7 @@ $(function () {
                 if (el === null) {
                     return;
                 }
-                el.scrollIntoView({
-                    behavior: 'smooth',
-                    block: "center",
-
-                })
+                el.scrollIntoView(scrollIntoViewOptions)
                 pushHash(href)
             }
         })
@@ -112,11 +111,7 @@ global.gitlist.scrollHash = function(element, event) {
     if (elfind === null) {
         return true;
     }
-    elfind.scrollIntoView({
-        behavior: 'smooth',
-        block: "center",
-
-    })
+    elfind.scrollIntoView(scrollIntoViewOptions)
 
     if (event !== undefined) {
         event.preventDefault()
