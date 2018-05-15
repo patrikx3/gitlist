@@ -7,8 +7,9 @@
 {% block content %}
     {% include 'breadcrumb.twig' with {breadcrumbs: breadcrumbs} %}
 
-    {% if fileType != 'image' and fileType != 'markdown'  %}
-        <div class="pull-left">
+
+    <div class="pull-left">
+    {% if (fileType != 'image' and fileType != 'markdown') or enforceCodemirror  %}
             <div id="p3x-gitlist-file-small" style="display: none;">
                 <button id="p3x-gitlist-file-small-button" class="btn btn-sm btn-primary">Parse code</button>
             </div>
@@ -17,8 +18,19 @@
                 <button id="p3x-gitlist-file-button-scroll" class="btn btn-sm btn-primary">Scroll mode</button>
                 <button id="p3x-gitlist-file-button-full" class="btn btn-sm btn-primary">Full height</button>
             </div>
-        </div>
     {% endif %}
+
+    {% if fileType == 'markdown' %}
+
+        {% if enforceCodemirror %}
+            <a href="{{ path('blob', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}" class="btn btn-primary btn-sm"><span class="fa fa-code"></span> Markdown rendered</a>
+        {%  else  %}
+            <a href="{{ path('blob', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}?codemirror=1" class="btn btn-primary btn-sm"><span class="fa fa-code"></span> Markdown code</a>
+        {%  endif  %}
+
+
+    {% endif %}
+    </div>
 
     <div class="btn-group pull-right">
         <a href="{{ path('blob_raw', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}" class="btn btn-primary btn-sm"><span class="fa fa-file-text-o"></span> Raw</a>
@@ -32,7 +44,7 @@
         {% if fileType == 'image' %}
         <div class="text-center"><img src="{{ path('blob_raw', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}" alt="{{ file }}" class="image-blob" /></div>
 
-        {% elseif fileType == 'markdown' %}
+        {% elseif fileType == 'markdown' and enforceCodemirror != true %}
         <div class="md-view"><div id="md-content">{{ blob }}</div></div>
 
         {% else %}

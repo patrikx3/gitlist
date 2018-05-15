@@ -26,6 +26,7 @@ class Repository
         'el' => 'erlang',
         'go' => 'go',
         'groovy' => 'groovy',
+        'hbs' => 'handlebars',
         'hs' => 'haskell',
         'lhs' => 'haskell',
         'jsp' => 'application/x-jsp',
@@ -35,16 +36,20 @@ class Repository
         'tpl' => 'htmlmixed',
         'js' => 'javascript',
         'json' => 'javascript',
-        'less' => 'less',
+        'jsx' => 'jsx',
+        'less' => 'css',
         'lua' => 'lua',
         'md' => 'markdown',
         'markdown' => 'markdown',
-        'sql' => 'mysql',
+        'sql' => 'sql',
+        'swift' => 'swift',
+        'twig' => 'twig',
         'ml' => 'ocaml',
         'mli' => 'ocaml',
         'pl' => 'perl',
         'pm' => 'perl',
         'pas' => 'pascal',
+        'ps1' => 'powershell',
         'ini' => 'properties',
         'cfg' => 'properties',
         'nt' => 'ntriples',
@@ -52,6 +57,7 @@ class Repository
         'rb' => 'ruby',
         'rst' => 'rst',
         'r' => 'r',
+        'lock' => 'javascript',
         'sh' => 'shell',
         'ss' => 'scheme',
         'scala' => 'text/x-scala',
@@ -120,6 +126,10 @@ class Repository
      */
     public function getFileType($file)
     {
+        if ($file === 'Dockerfile') {
+            return 'dockerfile';
+        };
+
         if (($pos = strrpos($file, '.')) !== false) {
             $fileType = substr($file, $pos + 1);
         } else {

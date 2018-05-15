@@ -3,6 +3,7 @@ hljs.registerLanguage('xml', require('highlight.js/lib/languages/xml.js'));
 hljs.registerLanguage('css', require('highlight.js/lib/languages/css.js'));
 hljs.registerLanguage('cmake', require('highlight.js/lib/languages/cmake.js'));
 hljs.registerLanguage('dockerfile', require('highlight.js/lib/languages/dockerfile.js'));
+hljs.registerLanguage('Dockerfile', require('highlight.js/lib/languages/dockerfile.js'));
 hljs.registerLanguage('less', require('highlight.js/lib/languages/less.js'));
 hljs.registerLanguage('scss', require('highlight.js/lib/languages/scss.js'));
 hljs.registerLanguage('yaml', require('highlight.js/lib/languages/yaml.js'));
