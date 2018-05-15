@@ -100,6 +100,7 @@ class Repository
         'jpeg' => 'image',
         'bmp' => 'image',
         'csproj' => 'xml',
+        'iml' => 'xml',
     ];
 
     protected static $binaryTypes = [

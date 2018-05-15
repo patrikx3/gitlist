@@ -9,16 +9,6 @@
 
 
     <div class="pull-left">
-    {% if (fileType != 'image' and fileType != 'markdown') or enforceCodemirror  %}
-            <div id="p3x-gitlist-file-small" style="display: none;">
-                <button id="p3x-gitlist-file-small-button" class="btn btn-sm btn-primary">Parse code</button>
-            </div>
-
-            <div class="btn-group btn-toggle" id="p3x-gitlist-file-codemirror" style="display: none;">
-                <button id="p3x-gitlist-file-button-scroll" class="btn btn-sm btn-primary">Scroll mode</button>
-                <button id="p3x-gitlist-file-button-full" class="btn btn-sm btn-primary">Full height</button>
-            </div>
-    {% endif %}
 
     {% if fileType == 'markdown' %}
 
@@ -30,6 +20,18 @@
 
 
     {% endif %}
+
+    {% if (fileType != 'image' and fileType != 'markdown') or enforceCodemirror  %}
+            <div id="p3x-gitlist-file-small" style="display: none;">
+                <button id="p3x-gitlist-file-small-button" class="btn btn-sm btn-primary">Parse code</button>
+            </div>
+
+            <div class="btn-group btn-toggle" id="p3x-gitlist-file-codemirror" style="display: none;">
+                <button id="p3x-gitlist-file-button-scroll" class="btn btn-sm btn-primary">Scroll mode</button>
+                <button id="p3x-gitlist-file-button-full" class="btn btn-sm btn-primary">Full height</button>
+            </div>
+    {% endif %}
+
     </div>
 
     <div class="btn-group pull-right">
