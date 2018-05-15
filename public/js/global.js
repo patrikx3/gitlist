@@ -1,5 +1,14 @@
 const scrollIntoViewOptions = {
-    block: "center",
+    behavior: "instant",
+    block: "start",
+    inline: "start"
+}
+const navbarHeight = 80;
+const scrollIntoView = (el) => {
+    el.scrollIntoView(scrollIntoViewOptions)
+    if ((window.innerHeight + window.scrollY) <= document.body.offsetHeight - navbarHeight ) {
+        window.scrollBy(0,-navbarHeight )
+    }
 }
 
 window.gitlist.isDark =(theme) => {
@@ -91,7 +100,7 @@ $(function () {
                 if (el === null) {
                     return;
                 }
-                el.scrollIntoView(scrollIntoViewOptions)
+                scrollIntoView(el);
                 pushHash(href)
             }
         })
@@ -111,7 +120,7 @@ global.gitlist.scrollHash = function(element, event) {
     if (elfind === null) {
         return true;
     }
-    elfind.scrollIntoView(scrollIntoViewOptions)
+    scrollIntoView(elfind);
 
     if (event !== undefined) {
         event.preventDefault()
