@@ -3,6 +3,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
     const sourceCode = $('#sourcecode');
     if (sourceCode.length) {
 
+        let originalCode = '';
+
         const Cookies = require('js-cookie')
         const cookieName = 'p3x-gitlist-codemirror-size'
         const currentSizing = Cookies.get(cookieName)
@@ -27,20 +29,55 @@ This code is ${size} KB. `
             const codeMirror = $('.CodeMirror');
             const buttonScroll = $('#p3x-gitlist-file-button-scroll');
             const buttonFull = $('#p3x-gitlist-file-button-full');
+            const buttonEdit = $('#p3x-gitlist-file-button-edit');
+            const buttonEditCancel = $('#p3x-gitlist-file-button-edit-cancel');
+            const buttonEditSave = $('#p3x-gitlist-file-button-edit-save')
+//            const buttonEditRow = $('#p3x-gitlist-file-button-edit-row');
             const codeMirrorHeight = 300;
 
+            buttonEditCancel.hide();
+            buttonEditSave.hide();
 
-            const cookieSettings = {
-                path: '/',
-                expires: 3650
-            }
+            buttonEdit.click(() => {
+//                buttonEditRow.show();
+                buttonEdit.hide();
+                buttonEditCancel.show();
+                buttonEditSave.show();
+                gitlist.viewer.setOption('readOnly', false)
+                originalCode = gitlist.viewer.getValue()
+                gitlist.viewer.focus();
+                $.snackbar({
+                    content: 'The editor is now editable.',
+                })
+            })
+
+            buttonEditCancel.click(() => {
+//                buttonEditRow.hide();
+                buttonEdit.show();
+                buttonEditSave.hide();
+                buttonEditCancel.hide();
+                gitlist.viewer.setValue(originalCode)
+                gitlist.viewer.setOption('readOnly', true)
+                $.snackbar({
+                    content: 'You have cancelled you changes.',
+                })
+            })
+
+            buttonEditSave.click(() => {
+//                buttonEditRow.show();
+
+                $.snackbar({
+                    content: 'This function is not implemented. In progress now.',
+                })
+            })
+
 
             const setScroll = () => {
                 buttonFull.removeClass('active')
                 buttonScroll.addClass('active')
                 codeMirror.css('height', codeMirrorHeight)
                 gitlist.viewer.setSize(null, codeMirrorHeight);
-                Cookies.set(cookieName, 'scroll', cookieSettings)
+                Cookies.set(cookieName, 'scroll', window.gitlist.cookieSettings)
             }
 
             buttonScroll.click(setScroll)
@@ -59,7 +96,7 @@ This code is ${size} KB. `
                     buttonFull.addClass('active')
                     codeMirror.css('height', 'auto')
                     gitlist.viewer.setSize(null, '100%');
-                    Cookies.set(cookieName, 'full', cookieSettings)
+                    Cookies.set(cookieName, 'full', window.gitlist.cookieSettings)
                 }, 250)
             }
 
@@ -81,6 +118,7 @@ This code is ${size} KB. `
             } else {
                 setScroll()
             }
+
         }
 
         if (size > maxSize && currentSizing === 'full') {
@@ -122,4 +160,10 @@ To see the parsed code, click the <strong>Parse code</strong> button.
             createCodeMirror();
         }
     }
+})
+
+global.gitlist.ng.controller('file', function( $scope, $http ) {
+
+    //console.log(window.gitlist)
+
 })

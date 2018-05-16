@@ -1,9 +1,15 @@
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-//const HtmlWebpackPlugin = require('html-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const fs = require('fs').promises
+const path = require('path');
+const fsExtra = require('fs-extra')
 const webpack = require('webpack');
+const utils = require('corifeus-utils')
 
-const fileAsset = `[name].[ext]`;
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const WebpackOnBuildPlugin = require('on-build-webpack');
+
+const fileAsset = `[name].[hash].[ext]`;
 const minimize = process.argv.includes('--production');
 const mode = minimize ? 'development' : 'production';
 
@@ -11,20 +17,51 @@ let minimizer = undefined;
 
 const pkg = require('./package');
 
+const buildDir = __dirname + '/public/webpack';
+
 let devtool;
 
+const isWatching = process.argv.includes('--watch')
 const plugins = [
+
     new ExtractTextPlugin({
-        filename: 'style.css'
+        filename: '[name].[hash].css',
+        disable: false,
+        allChunks: true
     }),
 
-    /*
     new HtmlWebpackPlugin({
-        template: `./public/twig/layout.twig`,
+        template: `${__dirname}/twig/layout-tpl.twig`,
+        inject: 'head',
+        chunksSortMode: 'dependency',
         chunks: ['bundle'],
+        filename: `${__dirname}/twig/layout.twig`,
     }),
-    */
 ];
+
+if (isWatching) {
+    plugins.push(
+        new WebpackOnBuildPlugin(async (stats) => {
+            try {
+                const newFileNames = Object.keys(stats.compilation.assets).map(file => path.resolve(`${buildDir}/${file}`));
+                const baseDir = path.resolve(buildDir);
+                const baseDirList = await utils.fs.readdirRecursive(baseDir)
+                const promises = [];
+                for(let baseDirFile of baseDirList) {
+                    if (!newFileNames.includes(baseDirFile)) {
+                        promises.push(
+                            fs.unlink(baseDirFile)
+                        )
+                    }
+                }
+                await Promise.all(promises);
+            } catch(e) {
+                console.error(e)
+                process.exit(-1)
+            }
+        }),
+    )
+}
 
 if (minimize) {
 
@@ -33,7 +70,9 @@ if (minimize) {
   
 ${pkg.description}
 
-License: MIT Copyright (c) ${new Date().getFullYear()} Patrik Laszlo`;
+${pkg.homepage}
+
+License: MIT Copyright (c) ${new Date().getFullYear()} Patrik Laszlo / P3X / Corifeus and contributors.`;
 
     minimizer = [
         new UglifyJsPlugin({
@@ -61,13 +100,14 @@ For more information about all licenses, please see ${webpackBanner}
                 // todo found out if mangle use or not
                 // mangle: false === keep function names
                 // mangle: true === drop function names
-                mangle: true,
+                mangle: false,
                 sourceMap: true,
                 comments: false,
                 beautify: false
             },
         }),
     ]
+
 
     plugins.push(
         new webpack.BannerPlugin({
@@ -85,6 +125,9 @@ For more information about all licenses, please see ${webpackBanner}
             append: '\n//# sourceMappingURL=/[url]'
         })
     )
+
+
+
 }
 
 const fileLoader = [
@@ -94,20 +137,24 @@ const fileLoader = [
             name: fileAsset,
             outputPath: 'assets',
             context: 'assets',
-            publicPath: 'webpack/assets',
+//            publicPath: 'webpack/assets',
 //            useRelativePath: true,
         }
     }
 ]
 module.exports = {
+//    watch: true,
     devtool: devtool,
 
     entry: {
         bundle: "./public/js/bundle.js",
     },
     output: {
-        path: __dirname + '/public/webpack',
-        filename: "[name].js"
+        path: buildDir,
+        filename: '[name].[hash].js',
+        chunkFilename: '[id].[hash].chunk.js',
+//        publicPath: '{{ app.url_subdir }}/webpack/',
+        publicPath: './webpack/',
     },
     module: {
         rules: [

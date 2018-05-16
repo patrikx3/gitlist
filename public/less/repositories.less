@@ -43,11 +43,11 @@
       padding: 10px;
       font-size: @font-size-base;
       font-weight: 700;
-      background-color: @navbar-inverse-bg;
-      color: @navbar-default-brand-color;
+      background-color: fade(@navbar-default-bg, 5%);
+      color: lighten(@navbar-default-link-color, 25%) !important;
 
       a{
-        color: @navbar-inverse-color !important;
+        color: lighten(@navbar-default-link-color, 25%) !important;
       }
 
       span.rss-icon {

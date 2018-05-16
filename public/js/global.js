@@ -1,3 +1,6 @@
+let $body;
+let $head;
+
 const scrollIntoViewOptions = {
     behavior: "instant",
     block: "start",
@@ -20,7 +23,11 @@ window.gitlist.isDark =(theme) => {
     return false;
 }
 
-let $body;
+window.gitlist.cookieSettings = {
+    path: gitlist.basepath === '' ? '/' : gitlist.basepath,
+    expires: 3650
+}
+
 
 window.gitlist.codemirrorTheme = {
     light: 'idea',
@@ -82,9 +89,33 @@ const pushHash = (hash) => {
 
 }
 
+
+global.gitlist.scrollHash = function(element, event) {
+    const url = new URL(element.href)
+    const id = url.hash.substring(1)
+    const elfind = document.getElementById(id + '-parent')
+    if (elfind === null) {
+        return true;
+    }
+    scrollIntoView(elfind);
+
+    if (event !== undefined) {
+        event.preventDefault()
+        pushHash(url.hash)
+    }
+    return false;
+}
+
 $(function () {
 
     $body = $('body');
+    $head = $('head')
+
+    Object.values(window.gitlist.themes).forEach(css => {
+        const cssPath = `${window.gitlist.basepath}${css}`;
+        $head.append(`<link rel="prefetch" href="${cssPath}">`)
+    })
+
 
     const es = document.getElementsByTagName('a')
     for(let i=0; i<es.length; i++){
@@ -110,33 +141,13 @@ $(function () {
         e.stopPropagation();
     });
 
-});
-
-
-global.gitlist.scrollHash = function(element, event) {
-    const url = new URL(element.href)
-    const id = url.hash.substring(1)
-    const elfind = document.getElementById(id + '-parent')
-    if (elfind === null) {
-        return true;
-    }
-    scrollIntoView(elfind);
-
-    if (event !== undefined) {
-        event.preventDefault()
-        pushHash(url.hash)
-    }
-    return false;
-}
-
-
-document.addEventListener("DOMContentLoaded", function() {
     if (window.gitlist.lastload !== undefined) {
         window.gitlist.lastloadSpan = Date.now() - window.gitlist.lastload;
     }
     $('.p3x-gitlist-overlay').remove();
     global.gitlist.scrollHash(location)
-})
+});
+
 
 
 

@@ -6,7 +6,6 @@ require('../less/fontawesome.less')
 
 global.jQuery = require('jquery')
 global.$ = global.jQuery;
-
 require('bootstrap');
 require('snackbarjs');
 require('animate.css');
@@ -62,7 +61,7 @@ require('codemirror/mode/yaml/yaml');
 require('eve-raphael/eve.js');
 global.Raphael = require('raphael')
 global.twemoji = require('twemoji')
-global.twemoji.base = 'webpack/assets/twemoji/';
+global.twemoji.base = 'generated/twemoji/';
 
 
 require('./network-graph.js')
@@ -72,7 +71,6 @@ require('./gitgraph.js/gitgraph.js')
 
 require('./gitgraph-draw')
 require('./markdown')
-require('./code-mirror')
 require('./menu')
 require('./clone-buttons')
 require('./paginate')
@@ -80,4 +78,5 @@ require('./search-branch')
 require('./search-repositories')
 require('./theme-switcher.js')
 require('./global')
+require('./angular-bootstrap')
 

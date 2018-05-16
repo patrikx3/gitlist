@@ -31,3 +31,5 @@ node_modules/.yarn-integrity
 
 
 /public/webpack
+/public/generated
+/twig/layout.twig

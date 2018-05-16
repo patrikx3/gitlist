@@ -101,12 +101,14 @@ class Application extends SilexApplication
                 'darkly',
                 'slate',
                 'superhero',
+                'solar',
             ];
 
             $twig->addGlobal('theme_type', !in_array(substr($currentTheme, strlen('bootstrap-')), $themeDark) ? 'p3x-gitlist-light' : 'p3x-gitlist-dark');
 
             $twig->addGlobal('theme', $currentTheme);
-
+            $postfixFile = __DIR__ . '/css-postfix';
+            $twig->addGlobal('theme_postfix', file_get_contents($postfixFile));
 
             $twig->addGlobal('theme_dark', $themeDark);
 
