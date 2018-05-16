@@ -19,7 +19,7 @@
         </div>
 
         {% if (fileType != 'image' and fileType != 'markdown') or (enforceCodemirror) %}
-            <div class="btn-group">
+        <div class="btn-group">
             <button id="p3x-gitlist-file-button-edit" class="btn btn-sm btn-primary">
                 <span class="fa fa-edit"></span> Edit
             </button>
@@ -30,6 +30,10 @@
                 <span class="fa fa-close"></span> Cancel
             </button>
         </div>
+        {%  elseif fileType == 'markdown' %}
+        <a href="{{ path('blob', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}?codemirror=1&edit=1" class="btn btn-sm btn-primary">
+            <span class="fa fa-edit"></span> Edit
+        </a>
         {% endif %}
 
     </div>

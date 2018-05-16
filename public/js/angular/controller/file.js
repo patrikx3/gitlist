@@ -119,6 +119,12 @@ This code is ${size} KB. `
                 setScroll()
             }
 
+            if (location.search.includes('edit=1')) {
+                setTimeout(() => {
+                    buttonEdit.click();
+                }, 500)
+            }
+
         }
 
         if (size > maxSize && currentSizing === 'full') {
@@ -160,6 +166,7 @@ To see the parsed code, click the <strong>Parse code</strong> button.
             createCodeMirror();
         }
     }
+
 })
 
 global.gitlist.ng.controller('file', function( $scope, $http ) {
