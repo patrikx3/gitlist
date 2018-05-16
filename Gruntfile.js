@@ -139,7 +139,7 @@ module.exports = themes;
                 clean: {
                     generated: [
                         'public/generated',
-                        //  'public/webpack',
+                        'public/webpack',
                     ],
                     css: [
                         'public/generated/css'

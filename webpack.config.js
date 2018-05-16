@@ -39,29 +39,27 @@ const plugins = [
     }),
 ];
 
-if (isWatching) {
-    plugins.push(
-        new WebpackOnBuildPlugin(async (stats) => {
-            try {
-                const newFileNames = Object.keys(stats.compilation.assets).map(file => path.resolve(`${buildDir}/${file}`));
-                const baseDir = path.resolve(buildDir);
-                const baseDirList = await utils.fs.readdirRecursive(baseDir)
-                const promises = [];
-                for(let baseDirFile of baseDirList) {
-                    if (!newFileNames.includes(baseDirFile)) {
-                        promises.push(
-                            fs.unlink(baseDirFile)
-                        )
-                    }
+plugins.push(
+    new WebpackOnBuildPlugin(async (stats) => {
+        try {
+            const newFileNames = Object.keys(stats.compilation.assets).map(file => path.resolve(`${buildDir}/${file}`));
+            const baseDir = path.resolve(buildDir);
+            const baseDirList = await utils.fs.readdirRecursive(baseDir)
+            const promises = [];
+            for(let baseDirFile of baseDirList) {
+                if (!newFileNames.includes(baseDirFile)) {
+                    promises.push(
+                        fs.unlink(baseDirFile)
+                    )
                 }
-                await Promise.all(promises);
-            } catch(e) {
-                console.error(e)
-                process.exit(-1)
             }
-        }),
-    )
-}
+            await Promise.all(promises);
+        } catch(e) {
+            console.error(e)
+            process.exit(-1)
+        }
+    }),
+)
 
 if (minimize) {
 
