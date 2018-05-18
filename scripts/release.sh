@@ -31,6 +31,7 @@ do
 done
 
 rm -rf $repo/public/less
+rm -rf $repo/public/scss
 rm -rf $repo/public/js
 
 zipname=$TOP/build/$name.zip

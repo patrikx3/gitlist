@@ -1,0 +1,45 @@
+.p3x-gitlist-light {
+  .blame-view {
+
+    td.blame-info {
+    }
+    td.blame-line {
+      pre {
+        overflow-x: auto;
+        white-space:pre-wrap;
+      }
+    }
+    tr {
+    }
+    tr:last-child {
+    }
+    .line {
+    }
+    .commit {
+    }
+    pre {
+    }
+  }
+}
+
+.p3x-gitlist-dark {
+  .blame-view {
+
+    td.blame-info {
+    }
+    td.blame-line {
+
+    }
+    tr {
+    }
+    tr:last-child {
+    }
+    .line {
+    }
+    .commit {
+    }
+    pre {
+    }
+  }
+}
+

@@ -1,11 +1,21 @@
 require('codemirror/lib/codemirror.css')
 require('codemirror/theme/dracula.css')
 require('codemirror/theme/idea.css')
-require('../less/style.less')
-require('../less/fontawesome.less')
+
+const fontawesome = require('@fortawesome/fontawesome').default
+//console.log(fontawesome);
+//console.log(fontawesome.default);
+const faSolid = require('@fortawesome/fontawesome-free-solid')['default']
+const faRegular = require('@fortawesome/fontawesome-free-regular')['default']
+const faBrands  = require('@fortawesome/fontawesome-free-brands')['default']
+fontawesome.library.add(faSolid)
+fontawesome.library.add(faRegular)
+fontawesome.library.add(faBrands)
+
 
 global.jQuery = require('jquery')
 global.$ = global.jQuery;
+global.Popper = require('popper.js').default
 require('bootstrap');
 require('snackbarjs');
 require('animate.css');

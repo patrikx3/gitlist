@@ -3,11 +3,21 @@ const path = require('path');
 const fsExtra = require('fs-extra')
 const webpack = require('webpack');
 const utils = require('corifeus-utils')
+//const nodeSassCssImporter = require('node-sass-css-importer');
 
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const WebpackOnBuildPlugin = require('on-build-webpack');
+
+const sassLoader = {
+    loader: 'sass-loader',
+/*
+    options: {
+        importer: nodeSassCssImporter()
+    }
+*/
+};
 
 const fileAsset = `[name].[hash].[ext]`;
 const minimize = process.argv.includes('--production');
@@ -21,7 +31,7 @@ const buildDir = __dirname + '/public/webpack';
 
 let devtool;
 
-const isWatching = process.argv.includes('--watch')
+
 const plugins = [
 
     new ExtractTextPlugin({
@@ -31,7 +41,7 @@ const plugins = [
     }),
 
     new HtmlWebpackPlugin({
-        template: `${__dirname}/twig/layout-tpl.twig`,
+        template: `${__dirname}/twig/layout.tpl.twig`,
         inject: 'head',
         chunksSortMode: 'dependency',
         chunks: ['bundle'],
@@ -64,13 +74,7 @@ plugins.push(
 if (minimize) {
 
     devtool = false;
-    const bannerText = `@license ${pkg.name} v${pkg.version}
-  
-${pkg.description}
-
-${pkg.homepage}
-
-License: MIT Copyright (c) ${new Date().getFullYear()} Patrik Laszlo / P3X / Corifeus and contributors.`;
+    const bannerText = require('corifeus-builder').utils.license();
 
     minimizer = [
         new UglifyJsPlugin({
@@ -157,6 +161,21 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.(scss|css)$/,
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: [ {
+                        loader: 'css-loader',
+                        options: {
+                            sourceMap: true,
+                            minimize: minimize,
+                        }
+                    }, sassLoader]
+                })
+            },
+
+            /*
+            {
                 test: /\.less$/,
                 use: [{
                     loader: 'style-loader' // creates style nodes from JS strings
@@ -166,6 +185,7 @@ module.exports = {
                     loader: 'less-loader' // compiles Less to CSS
                 }],
             },
+            */
             {
                 test: /\.html$/,
                 use: [{
@@ -196,6 +216,7 @@ module.exports = {
                 test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
                 use: fileLoader
             },
+            /*
             {
                 test: /\.css$/,
                 use: ExtractTextPlugin.extract({
@@ -210,6 +231,7 @@ module.exports = {
                         }]
                 })
             }
+            */
         ]
     },
     optimization: {

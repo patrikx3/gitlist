@@ -1,5 +1,8 @@
 
-@license p3x-gitlist v3.0.0
+
+/*! 
+
+@license p3x-gitlist v3.0.1-651
   
 🤖 P3X Gitlist
 
@@ -26,3 +29,10 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.    
+
+*/
+                        
+@import "../../../node_modules/bootstrap/scss/bootstrap";
+@import "../../../node_modules/bootswatch/dist/spacelab/variables";
+@import "../../../node_modules/bootswatch/dist/spacelab/bootswatch";
+@import "../default";
