@@ -75,8 +75,8 @@ For now, you can create a folder eg. `/var/www/gitlist.me.com/` and make sure, t
 ### Second
 The `config.ini` file with `url_subdir` or later `clone_subdir` variable has been changed to the `git_clone_subdir` variable.
 
-### Third
-I 😀 removed `Babel`, we are in 2018. If you want use an older `Browser` (like iPhone 5), you can probably install latest `Chrome` and it will work.
+### Third 😀
+I removed `Babel`, we are in 2018. If you want use an older `Browser` (like iPhone 5), you can probably install latest `Chrome` and it will work.
    
 Besides, without `Babel` the `JavaScript` is much faster. (At work, without `Babel`, bigger `JS` file and works `20x` faster.)
 

@@ -181,10 +181,10 @@ ${branchInfo}
                             content: json.output,
                         })
                     }
-                    originalCode = value;
                     if (json.error === true) {
                         errorHandler(json);
                     } else {
+                        originalCode = value;
                         $.snackbar({
                             htmlAllowed: true,
                             content: '<i class="fas fa-check"></i>&nbsp;&nbsp;The file is saved.',
