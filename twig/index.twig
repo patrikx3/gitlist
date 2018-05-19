@@ -13,8 +13,11 @@
         {% for repository in repositories %}
             <div class="repository">
                 <div class="repository-header">
-                    <i class="fa fa-folder-open"></i> <a href="{{ path('repository', {repo: repository.name}) }}"><span class="name">{{ repository.name }}</span></a>
-                    <a href="{{ path('rss', {repo: repository.name, branch: 'master'}) }}"><span class="fa fa-rss rss-icon pull-right"></span></a>
+                    <i class="fas fa-cube"></i>
+                    <a href="{{ path('repository', {repo: repository.name}) }}">
+                       <span class="name">{{ repository.name | remove_extension }}</span>
+                   </a>
+                    <a href="{{ path('rss', {repo: repository.name, branch: 'master'}) }}"><span class="fa fa-rss pull-right"></span></a>
                 </div>
                 <div class="repository-body">
                     {% if repository.description %}

@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
             $('body').prepend(`
  <div class="p3x-gitlist-overlay">
         <div>
-            <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+            <i class="fas fa-cog fa-spin fa-3x"></i>
         </div>
         <div>
             For a big page, it takes some time to switch the theme...<br/>

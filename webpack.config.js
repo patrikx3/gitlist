@@ -1,23 +1,12 @@
 const fs = require('fs').promises
 const path = require('path');
-const fsExtra = require('fs-extra')
 const webpack = require('webpack');
 const utils = require('corifeus-utils')
-//const nodeSassCssImporter = require('node-sass-css-importer');
 
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const WebpackOnBuildPlugin = require('on-build-webpack');
-
-const sassLoader = {
-    loader: 'sass-loader',
-/*
-    options: {
-        importer: nodeSassCssImporter()
-    }
-*/
-};
 
 const fileAsset = `[name].[hash].[ext]`;
 const minimize = process.argv.includes('--production');
@@ -25,12 +14,9 @@ const mode = minimize ? 'development' : 'production';
 
 let minimizer = undefined;
 
-const pkg = require('./package');
-
 const buildDir = __dirname + '/public/webpack';
 
 let devtool;
-
 
 const plugins = [
 
@@ -161,21 +147,6 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.(scss|css)$/,
-                use: ExtractTextPlugin.extract({
-                    fallback: 'style-loader',
-                    use: [ {
-                        loader: 'css-loader',
-                        options: {
-                            sourceMap: true,
-                            minimize: minimize,
-                        }
-                    }, sassLoader]
-                })
-            },
-
-            /*
-            {
                 test: /\.less$/,
                 use: [{
                     loader: 'style-loader' // creates style nodes from JS strings
@@ -185,7 +156,6 @@ module.exports = {
                     loader: 'less-loader' // compiles Less to CSS
                 }],
             },
-            */
             {
                 test: /\.html$/,
                 use: [{
@@ -216,7 +186,6 @@ module.exports = {
                 test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
                 use: fileLoader
             },
-            /*
             {
                 test: /\.css$/,
                 use: ExtractTextPlugin.extract({
@@ -231,7 +200,6 @@ module.exports = {
                         }]
                 })
             }
-            */
         ]
     },
     optimization: {

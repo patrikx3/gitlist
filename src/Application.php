@@ -67,6 +67,7 @@ class Application extends SilexApplication
                                 false;
 
         $this->register(new GitServiceProvider(), array(
+            'config'            => $config,
             'git.client'         => $config->get('git', 'client'),
             'git.repos'          => $repositories,
             'ini.file'           => "config.ini",
@@ -86,6 +87,10 @@ class Application extends SilexApplication
                 $value = str_replace(['.', '/', '\\', ' '], '-', $value);
                 $value = strtolower($value);
                 return $value;
+            }));
+
+            $twig->addFilter(new \Twig_SimpleFilter('remove_extension', function ($string) {
+                return pathinfo($string, PATHINFO_FILENAME);
             }));
 
 

@@ -4,7 +4,10 @@
 
 {% block title %}P3X GitList{% endblock %}
 
+
 {% block content %}
+
+
     {% embed 'breadcrumb.twig' with {breadcrumbs: breadcrumbs} %}
         {% block extra %}
 
@@ -76,6 +79,7 @@
             {% endif %}
         {% endblock %}
     {% endembed %}
+    <div class="p3x-gitlist-breadcrumb-divider"></div>
 
     {% if files is not empty %}
         <table class="table tree">
@@ -103,18 +107,22 @@
             {% for file in files %}
                 <tr>
                     <td>
-                        <span class="fa {{ file.type == "folder" or file.type == "symlink" or file.type == "module" ? "fa-folder-open" : "fa-file-text-o" }}"></span>
-
                         {%- if file.type == "folder" or file.type == "symlink" -%}
+                            <span class="fas fa-folder"></span>
+                            &nbsp;
                             <a href="{{ path('tree', {repo: repo, commitishPath: branch ~ '/' ~ path ~ (file.type == "symlink" ? file.path : file.name)}) }}">{{ file.name }}</a>
 
                         {%- elseif file.type == "module" -%}
+                            <span class="fas fa-folder-open"></span>
+                            &nbsp;
                             <a title="Branch: {{ branch }}" href="{{ file.url }}/tree/{{ branch }}">{{ file.name }}</a>
                             @
                             <a title="Commit: {{ file.hash }}"
                                href="{{ file.url }}/tree/{{ file.hash }}">{{ file.shortHash }}</a>
 
                         {%- else -%}
+                            <span class="far fa-file-alt"></span>
+                            &nbsp;
                             <a href="{{ path('blob', {repo: repo, commitishPath: branch ~ '/' ~ path ~ (file.type == "symlink" ? file.path : file.name)}) }}">{{ file.name }}</a>
 
                         {%- endif -%}

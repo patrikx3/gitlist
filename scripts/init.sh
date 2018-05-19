@@ -17,9 +17,9 @@ do
 done
 
 find . -name '*description*' |
-while read filename
+while read filename;
 do
-    echo "$(dirname ${filename:2}) is a test repository." > $filename
+    echo "$(dirname ${filename:2} | cut -f 1 -d '.') test repository." > $filename
 done
 
 popd

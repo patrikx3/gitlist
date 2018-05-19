@@ -7,29 +7,30 @@
 {% block content %}
     {% include 'breadcrumb.twig' with {breadcrumbs: breadcrumbs} %}
 
-    <span ng-controller="file">
+    <script type="text/javascript">
+        window.gitlist.codemirror_full_limit = parseInt({{ codemirror_full_limit }});
+    </script>
+
+    <div class="p3x-gitlist-breadcrumb-divider"></div>
+
     <div class="pull-right p3x-gitlist-twig-file-button-row">
-        <div class="btn-group">
-            <a href="{{ path('blob_raw', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"
-               class="btn btn-primary btn-sm"><span class="fa fa-file-text-o"></span> Raw</a>
-            <a href="{{ path('blame', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"
-               class="btn btn-primary btn-sm"><span class="fa fa-bullhorn"></span> Blame</a>
-            <a href="{{ path('commits', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"
-               class="btn btn-primary btn-sm"><span class="fa fa-list"></span> History</a>
-        </div>
+        <a href="{{ path('blob_raw', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"
+           class="btn btn-primary btn-sm"><span class="fas fa-download"></span> Raw</a>
+        <a href="{{ path('blame', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"
+           class="btn btn-primary btn-sm"><span class="fa fa-fire"></span> Blame</a>
+        <a href="{{ path('commits', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"
+           class="btn btn-primary btn-sm"><span class="fa fa-list"></span> History</a>
 
         {% if (fileType != 'image' and fileType != 'markdown') or (enforceCodemirror) %}
-        <div class="">
-            <button id="p3x-gitlist-file-button-edit" class="btn btn-sm btn-primary">
-                <span class="fa fa-edit"></span> Edit
-            </button>
-            <button id="p3x-gitlist-file-button-edit-save" class="btn btn-sm btn-primary">
-                <span class="fa fa-save"></span> Save
-            </button>
-            <button id="p3x-gitlist-file-button-edit-cancel" class="btn btn-sm btn-primary">
-                <span class="fa fa-close"></span> Cancel
-            </button>
-        </div>
+        <button id="p3x-gitlist-file-button-edit" class="btn btn-sm btn-primary">
+            <span class="fa fa-edit"></span> Edit
+        </button>
+        <button id="p3x-gitlist-file-button-edit-cancel" class="btn btn-sm btn-primary">
+            <span class="fa fa-ban"></span> Cancel
+        </button>
+        <button id="p3x-gitlist-file-button-edit-save" class="btn btn-sm btn-primary">
+            <span class="fa fa-save"></span> Save
+        </button>
         {%  elseif fileType == 'markdown' %}
         <a href="{{ path('blob', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}?codemirror=1&edit=1" class="btn btn-sm btn-primary">
             <span class="fa fa-edit"></span> Edit
@@ -55,16 +56,16 @@
     {% endif %}
 
         {% if (fileType != 'image' and fileType != 'markdown') or enforceCodemirror %}
-            <div id="p3x-gitlist-file-small" style="display: none;">
-                <button id="p3x-gitlist-file-small-button" class="btn btn-sm btn-primary">Parse code</button>
-            </div>
-
             <span id="p3x-gitlist-file-codemirror" style="display: none;">
                 <div class="btn-group btn-toggle">
                     <button id="p3x-gitlist-file-button-scroll" class="btn btn-sm btn-primary">Scroll mode</button>
                     <button id="p3x-gitlist-file-button-full" class="btn btn-sm btn-primary">Full height</button>
                 </div>
             </span>
+
+            <h6 id="p3x-gitlist-file-codemirror-exceeded" style="display: none;">
+                {{ (fileSize / 1024) | number_format }} kb of {{ codemirror_full_limit }} kb allowed
+            </h6>
 
         {% endif %}
 
@@ -85,7 +86,6 @@
             <pre id="sourcecode" language="{{ fileType }}">{{ blob|htmlentities|raw }}</pre>
         {% endif %}
     </div>
-    </span>
 
 
 

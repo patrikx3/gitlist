@@ -19,14 +19,19 @@ document.addEventListener("DOMContentLoaded", function(event) {
             valueNames: ['item'],
             indexAsync: true,
         };
+
         const branchList = new List(branchListId, listBranchOptions);
         const tagList = new List(tagListId, listBranchOptions);
         const input = $('#p3x-gitlist-branch-list-search');
 
         const debouncedKeyup = debounce(() => {
             const search = input.val().trim();
+
             branchList.search(search)
-            tagList.search(search)
+
+            if (tagList.hasOwnProperty('search')) {
+                tagList.search(search)
+            }
         }, 250)
 
         input.keyup(debouncedKeyup)

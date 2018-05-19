@@ -17,7 +17,7 @@
         color: @navbar-inverse-color;
         background-color: @navbar-inverse-bg;
         &:hover {
-          border: 1px solid @navbar-default-border;
+          filter: brightness(1.1);
         }
       }
       table {
@@ -26,12 +26,12 @@
         background-color: @navbar-inverse-bg;
       }
       .new {
-        background-color: darken(@alert-success-bg, 50%);
-        color: lighten(@alert-success-text, 50%)
+        background-color: fade(@alert-success-bg, 80%);
+        color: darken(@alert-success-text, 50%);
       }
       .old {
-        background-color: darken(@alert-danger-bg, 50%);
-        color: lighten(@alert-danger-text, 50%)
+        background-color: fade(@alert-danger-bg, 80%);
+        color: darken(@alert-danger-text, 50%);
       }
       .chunk {
         background-color: @navbar-inverse-bg;
@@ -96,7 +96,7 @@
       border: 1px solid transparent;
 
       &:hover {
-        border: 1px solid @navbar-inverse-border;
+        filter: brightness(0.9);
       }
     }
     table {
@@ -105,12 +105,12 @@
       padding: 0;
     }
     .new {
-      background-color: darken(@alert-success-bg, 50%);
-      color: lighten(@alert-success-text, 50%)
+      background-color: @alert-success-bg;
+      color: @alert-success-text;
     }
     .old {
-      background-color: darken(@alert-danger-bg, 50%);
-      color: lighten(@alert-danger-text, 50%)
+      background-color: @alert-danger-bg;
+      color: @alert-danger-text;
     }
     .chunk {
       background-color: @alert-info-bg;

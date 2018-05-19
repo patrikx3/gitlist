@@ -11,14 +11,22 @@
         <tr>
             <td width="5%"><img src="{{ avatar(item.author.email, 40) }}" /></td>
             <td width="95%">
-                <span class="pull-right"><a class="btn btn-primary default btn-sm" href="{{ path('commit', {repo: repo, commit: item.hash}) }}"><span class="fa fa-list-alt"></span> View {{ item.shortHash }}</a></span>
+                <span class="pull-right">
+                    <a class="btn btn-primary btn-sm" href="{{ path('branch', {repo: repo, branch: item.hash}) }}" title="Browse code at this point in history"><span class="fa fa-list-alt"></span>&nbsp;Browse</a>
+
+                    <a class="btn btn-primary default btn-sm" href="{{ path('commit', {repo: repo, commit: item.hash}) }}"><span class="fa fa-list-alt"></span>&nbsp;Changes</a>
+                </span>
                 <h4>{{ item.message }}</h4>
-                <span>
+                <h6 title="{{ item.hash }}" class="pull-right" style="margin: 0; cursor: pointer;">
+                    <span class="hidden-xs">{{ item.hash }}</span>
+                    <span class="hidden-sm hidden-md hidden-lg">{{ item.shortHash }}</span>
+                </h6>
+                <h6>
                     <a href="mailto:{{ item.author.email }}">{{ item.author.name }}</a> authored on {{ item.date | format_date }}
                     {% if item.author.email != item.commiter.email %}
                     &bull; <a href="mailto:{{ item.commiter.email }}">{{ item.commiter.name }}</a> committed on {{ item.commiterDate | format_date }}
                     {% endif %}
-                </span>
+                </h6>
             </td>
         </tr>
         {% endfor %}

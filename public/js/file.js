@@ -4,25 +4,27 @@ document.addEventListener("DOMContentLoaded", function(event) {
     if (sourceCode.length) {
 
         let originalCode = '';
-
+        let disableFull = false;
         const Cookies = require('js-cookie')
         const cookieName = 'p3x-gitlist-codemirror-size'
         const currentSizing = Cookies.get(cookieName)
 
-        const codeSmall = $('#p3x-gitlist-file-small');
-        const codeBig = $('#p3x-gitlist-file-codemirror');
+        const codeCodeMirroNormal = $('#p3x-gitlist-file-codemirror');
+        const codeCodeMirrorBig = $('#p3x-gitlist-file-codemirror-exceeded')
         const value = sourceCode.text();
-        const maxSize = 64;
+        const maxSize = window.gitlist.codemirror_full_limit;
         const size = Math.ceil(value.length / 1024);
 
-        const defaultInfo = `You enabled the full mode instead of scroll mode.<br/>
-This can be slow. Scroll mode is fast!<br/>
-The maximum auto parsed code size is ${maxSize} KB.<br/> 
-This code is ${size} KB. `
-
         const createCodeMirror = () => {
-            codeSmall.hide();
-            codeBig.show();
+
+            if (size > maxSize) {
+                disableFull = true;
+                codeCodeMirroNormal.hide();
+                codeCodeMirrorBig.show();
+            } else {
+                codeCodeMirroNormal.show();
+            }
+
             const mode = sourceCode.attr('language');
             const pre = sourceCode.get(0);
 
@@ -47,7 +49,7 @@ This code is ${size} KB. `
                 originalCode = gitlist.viewer.getValue()
                 gitlist.viewer.focus();
                 $.snackbar({
-                    content: 'The editor is now editable.',
+                    content: 'Editing',
                 })
             })
 
@@ -59,45 +61,36 @@ This code is ${size} KB. `
                 gitlist.viewer.setValue(originalCode)
                 gitlist.viewer.setOption('readOnly', true)
                 $.snackbar({
-                    content: 'You have cancelled you changes.',
+                    content: 'Cancelled editing',
                 })
             })
 
             buttonEditSave.click(() => {
 //                buttonEditRow.show();
-
                 $.snackbar({
-                    content: 'This function is not implemented. In progress now.',
+                    content: 'Not implemented.',
                 })
             })
-
 
             const setScroll = () => {
                 buttonFull.removeClass('active')
                 buttonScroll.addClass('active')
                 codeMirror.css('height', codeMirrorHeight)
                 gitlist.viewer.setSize(null, codeMirrorHeight);
-                Cookies.set(cookieName, 'scroll', window.gitlist.cookieSettings)
+
+                if (!disableFull) {
+                    Cookies.set(cookieName, 'scroll', window.gitlist.cookieSettings)
+                }
             }
 
             buttonScroll.click(setScroll)
 
             const setFull = () => {
-
-                if (currentSizing !== 'full' && size > maxSize) {
-                    $.snackbar({
-                        htmlAllowed: true,
-                        content: defaultInfo,
-                        timeout: 30000,
-                    });
-                }
-                setTimeout(() => {
-                    buttonScroll.removeClass('active')
-                    buttonFull.addClass('active')
-                    codeMirror.css('height', 'auto')
-                    gitlist.viewer.setSize(null, '100%');
-                    Cookies.set(cookieName, 'full', window.gitlist.cookieSettings)
-                }, 250)
+                buttonScroll.removeClass('active')
+                buttonFull.addClass('active')
+                codeMirror.css('height', 'auto')
+                gitlist.viewer.setSize(null, '100%');
+                Cookies.set(cookieName, 'full', window.gitlist.cookieSettings)
             }
 
             buttonFull.click(setFull)
@@ -113,7 +106,7 @@ This code is ${size} KB. `
                 mode: mode,
                 theme: window.gitlist.getActualThemeCodemirror(),
             });
-            if (currentSizing === 'full') {
+            if (currentSizing === 'full' && !disableFull) {
                 setFull()
             } else {
                 setScroll()
@@ -126,51 +119,8 @@ This code is ${size} KB. `
             }
 
         }
+        createCodeMirror();
 
-        if (size > maxSize && currentSizing === 'full') {
-            codeBig.hide();
-            codeSmall.show();
-            const codeSmallButton = $('#p3x-gitlist-file-small-button');
-
-            const animate = 'animated bounce'
-            let timeout;
-            setTimeout(() => {
-                $.snackbar({
-                    htmlAllowed: true,
-                    content: `${defaultInfo} Auro-parsing disabled!<br/>
-To see the parsed code, click the <strong>Parse code</strong> button.
-`,
-                    timeout: 30000,
-                });
-
-                let flag = true;
-                timeout = setInterval(() => {
-                    if (flag) {
-                        codeSmall.removeClass(animate)
-                    } else {
-                        codeSmall.addClass(animate)
-                    }
-                    flag = !flag;
-                }, 2000)
-                codeSmall.addClass(animate)
-
-            }, 250)
-
-            codeSmallButton.click(() => {
-                clearInterval(timeout)
-                codeBig.show();
-                codeSmall.hide();
-                createCodeMirror();
-            })
-        } else {
-            createCodeMirror();
-        }
     }
-
-})
-
-global.gitlist.ng.controller('file', function( $scope, $http ) {
-
-    //console.log(window.gitlist)
 
 })

@@ -1,6 +1,6 @@
 {
     "name": "p3x-gitlist",
-    "version": "3.0.2-651",
+    "version": "2.5.4-663",
     "corifeus": {
         "postfix": "",
         "prefix": "p3x-",
@@ -16,11 +16,9 @@
     },
     "scripts": {
         "build": "grunt && webpack --production",
-        "watch:webpack": "webpack --watch",
-        "watch:sass": "grunt clean:css watch:scss",
-        "watch:ng": "grunt watch:ng",
-        "watch:angular": "grunt watch:ng",
-        "watch": "grunt && concurrently \"webpack --watch\" \"grunt watch:scss\" \"grunt watch:ng\""
+        "webpack-watch": "webpack --watch",
+        "less-watch": "grunt watch:less",
+        "watch": "grunt && concurrently \"webpack --watch\" \"grunt watch:less\""
     },
     "description": "🤖 P3X Gitlist",
     "main": "index.js",
@@ -28,7 +26,7 @@
     "author": "patrikx3 <alabard@gmail.com>",
     "license": "MIT",
     "devDependencies": {
-        "bootswatch": "^4.1.1",
+        "bootswatch": "^3.3.7",
         "concurrently": "^3.5.1",
         "corifeus-builder": "^1.8.9-414",
         "corifeus-utils": "^1.2.66-383",
@@ -36,9 +34,11 @@
         "extract-text-webpack-plugin": "^4.0.0-beta.0",
         "file-loader": "^1.1.11",
         "fs-extra": "^6.0.1",
+        "glob": "^7.1.2",
         "grunt": "^1.0.2",
-        "grunt-sass": "^2.1.0",
+        "grunt-contrib-less": "^1.4.1",
         "html-webpack-plugin": "^3.2.0",
+        "less-loader": "^4.1.0",
         "style-loader": "^0.21.0",
         "uglifyjs-webpack-plugin": "^1.2.5",
         "url-loader": "^1.0.1",
@@ -54,12 +54,8 @@
         "@fortawesome/fontawesome-free-brands": "^5.0.13",
         "@fortawesome/fontawesome-free-regular": "^5.0.13",
         "@fortawesome/fontawesome-free-solid": "^5.0.13",
-        "angular": "^1.7.0",
-        "animate.css": "^3.6.1",
-        "bootstrap": "^4.1.1",
+        "bootstrap": "^3.3.7",
         "codemirror": "^5.37.0",
-        "glob": "^7.1.2",
-        "grunt-injector": "^1.1.0",
         "highlight.js": "^9.12.0",
         "jquery": "^3.3.1",
         "js-cookie": "^2.2.0",
@@ -67,12 +63,9 @@
         "list.js": "^1.5.0",
         "lodash": "^4.17.10",
         "marked": "^0.3.19",
-        "node-sass": "^4.9.0",
         "on-build-webpack": "^0.1.0",
         "php-date": "^2.1.1",
-        "popper.js": "^1.14.3",
         "raphael": "^2.2.7",
-        "sass-loader": "^7.0.1",
         "snackbarjs": "^1.1.0",
         "twemoji": "^2.5.1"
     }

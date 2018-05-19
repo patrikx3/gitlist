@@ -30,7 +30,7 @@
             <tr>
                 <td width="30%" nowrap>
                     <div style="overflow-y: auto; ">
-                        <span class="fa fa-file-text-o"></span> <a href="{{ path('blob', {repo: repo, branch: branch, file: result.file, commitishPath: branch ~ '/' ~ result.file}) }}#L{{ result.line }}">{{ result.file }}</a></td>
+                        <span class="far fa-file-alt"></span>&nbsp;<a href="{{ path('blob', {repo: repo, branch: branch, file: result.file, commitishPath: branch ~ '/' ~ result.file}) }}#L{{ result.line }}">{{ result.file }}</a></td>
                     </div>
                 <td width="70%">
                     <pre style="overflow-y: auto; ">
