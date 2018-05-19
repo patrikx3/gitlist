@@ -5,8 +5,8 @@
 {% block title %}P3X GitList{% endblock %}
 
 {% block content %}
-    {% include 'breadcrumb.twig' with {breadcrumbs: [{dir: 'Statistics', path:''}]} %}
-    <div class="p3x-gitlist-breadcrumb-divider"></div>
+    {% include 'breadcrumb.twig' with {breadcrumbs: [{dir: 'Statistics', path:''}, {dir: branch, path:''}]} %}
+
     <table class="p3x-gitlist-stats table stats">
         <thead>
             <tr>

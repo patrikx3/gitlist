@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function(event) {
+$(function() {
 
     const cloneButtonSSH = $('#clone-button-ssh');
     const cloneButtonHTTP = $('#clone-button-http');

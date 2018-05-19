@@ -5,7 +5,7 @@
 {% block title %}P3X GitList{% endblock %}
 
 {% block content %}
-    {% include 'breadcrumb.twig' with {breadcrumbs: [{dir: 'Network Graph of master', path:''}]} %}
+    {% include 'breadcrumb.twig' with {breadcrumbs: [{dir: 'Network Graph ', path: ''}, {dir: commitishPath, path: ''}]} %}
 
 	<div class="network-view">
 		<div class="network-graph" data-source="{{ path('networkData', {repo: repo, commitishPath: commitishPath}) }}">

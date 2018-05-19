@@ -15,7 +15,7 @@ class TreeGraphController implements ControllerProviderInterface
         $route->get(
             '{repo}/treegraph/{commitishPath}',
             function ($repo, $commitishPath) use ($app) {
-                /** @var \GitList\Git\Repository $repository */
+
                 $repository = $app['git']->getRepositoryFromName($app['git.repos'], $repo);
 
                 $command = 'log --graph --date-order --all -C -M -n 100 --date=iso ' .
@@ -44,7 +44,6 @@ class TreeGraphController implements ControllerProviderInterface
                         );
                     }
                 }
-
                 if ($commitishPath === null) {
                     $commitishPath = $repository->getHead();
                 }
@@ -57,6 +56,9 @@ class TreeGraphController implements ControllerProviderInterface
                     array(
                         'repo' => $repo,
                         'branch' => $branch,
+                        'branches'       => $repository->getBranches(),
+                        'tags'           => $repository->getTags(),
+                        'browse_type'    => 'treegraph',
                         'commitishPath' => $commitishPath,
                         'graphItems' => $graphItems,
                     )

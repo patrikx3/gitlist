@@ -1,6 +1,14 @@
 require('codemirror/lib/codemirror.css')
-require('codemirror/theme/dracula.css')
-require('codemirror/theme/idea.css')
+
+window.gitlist.codemirrorTheme = {
+    light: 'idea',
+    dark: 'dracula',
+}
+
+require(`codemirror/theme/${window.gitlist.codemirrorTheme.light}.css`)
+require(`codemirror/theme/${window.gitlist.codemirrorTheme.dark}.css`)
+
+
 require('../less/style.less')
 
 const fontawesome = require('@fortawesome/fontawesome').default
@@ -13,18 +21,19 @@ fontawesome.library.add(faSolid)
 fontawesome.library.add(faRegular)
 fontawesome.library.add(faBrands)
 
-
+window.gitlist.snapckbarLongTimeout = 10000;
 global.jQuery = require('jquery')
 global.$ = global.jQuery;
-require('bootstrap');
 require('snackbarjs');
+require('jquery.redirect');
+require('bootstrap');
 
 global.marked = require('marked')
 global.htmlEncode = require('js-htmlencode')
 global.CodeMirror = require('codemirror');
+require('codemirror/addon/selection/active-line.js')
 require('codemirror/addon/mode/simple');
 require('codemirror/addon/mode/multiplex');
-
 require('codemirror/mode/cmake/cmake');
 require('codemirror/mode/clike/clike');
 require('codemirror/mode/css/css');
@@ -80,7 +89,6 @@ require('./gitgraph.js/gitgraph.js')
 
 require('./gitgraph-draw')
 require('./markdown')
-require('./menu')
 require('./clone-buttons')
 require('./paginate')
 require('./search-branch')

@@ -5,15 +5,27 @@
 
     <div class="container">
 
-
-
         {% if page in ['commits', 'searchcommits'] %}
             <form class="form-group" action="{{ app.git_clone_subdir }}/{{repo}}/commits/{{branch}}/search" method="POST">
-                <input type="search form-control" name="query" class="form-control input-sm" placeholder="Search commits...">
+                <div class="input-group">
+                    <input type="search form-control" value="{{ search_query }}" name="query" class="form-control input-sm" placeholder="Search commits..." onkeypress="window.gitlist.setInputQuery('query')" autofocus>
+                  <span class="input-group-btn">
+                    <button class="btn btn-default btn-sm" type="button" onclick="window.gitlist.clearInput('query')">
+                        <i class="fas fa-times"></i>
+                    </button>
+                  </span>
+                </div>
             </form>
         {% else %}
             <form class="form-group" action="{{ app.git_clone_subdir }}/{{repo}}/tree/{{branch}}/search" method="POST">
-                <input type="search form-control" name="query" class="form-control input-sm" placeholder="Search tree...">
+                <div class="input-group">
+                    <input type="search form-control"  value="{{ search_query }}" name="query" class="form-control input-sm" placeholder="Search tree..." onkeypress="window.gitlist.setInputQuery('query')" autofocus>
+                  <span class="input-group-btn">
+                    <button class="btn btn-default btn-sm" type="button" onclick="window.gitlist.clearInput('query')">
+                        <i class="fas fa-times"></i>
+                    </button>
+                  </span>
+                </div>
             </form>
         {% endif %}
 

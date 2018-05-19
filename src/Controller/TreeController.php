@@ -15,8 +15,9 @@ class TreeController implements ControllerProviderInterface
 
         $route->get('{repo}/tree/{commitishPath}/', $treeController = function ($repo, $commitishPath = '') use ($app) {
             $repository = $app['git']->getRepositoryFromName($app['git.repos'], $repo);
+            $head = $repository->getHead();
             if (!$commitishPath) {
-                $commitishPath = $repository->getHead();
+                $commitishPath = $head;
             }
 
             list($branch, $tree) = $app['util.routing']->parseCommitishPathParam($commitishPath, $repo);
@@ -33,6 +34,7 @@ class TreeController implements ControllerProviderInterface
             }
 
             return $app['twig']->render('tree.twig', array(
+                'head'           => $head,
                 'files'          => $files->output(),
                 'repo'           => $repo,
                 'branch'         => $branch,
@@ -40,6 +42,7 @@ class TreeController implements ControllerProviderInterface
                 'parent'         => $parent,
                 'breadcrumbs'    => $breadcrumbs,
                 'branches'       => $repository->getBranches(),
+                'browse_type'    => 'tree',
                 'tags'           => $repository->getTags(),
                 'readme'         => $app['util.repository']->getReadme($repository, $branch, $tree ? "$tree" : ""),
             ));
@@ -65,6 +68,7 @@ class TreeController implements ControllerProviderInterface
                 'path'           => $tree,
                 'breadcrumbs'    => $breadcrumbs,
                 'branches'       => $repository->getBranches(),
+                'browse_type'    => 'search',
                 'tags'           => $repository->getTags(),
                 'query'          => $query
             ));

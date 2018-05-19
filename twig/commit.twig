@@ -95,7 +95,7 @@
                     {% endif %}
                 </td>
                 <td style="width: 100%">
-                    <pre{% if line.getType %} class="{{ line.getType }}"{% endif %}>{{ line.getLine }}</pre>
+                    <pre class="p3x-gitlist-code {% if line.getType %}  {{ line.getType }} {% endif %}">{{ line.getLine }}</pre>
                 </td>
             </tr>
         {% endfor %}

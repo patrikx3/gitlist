@@ -79,7 +79,7 @@
             {% endif %}
         {% endblock %}
     {% endembed %}
-    <div class="p3x-gitlist-breadcrumb-divider"></div>
+
 
     {% if files is not empty %}
         <table class="table tree">
@@ -115,7 +115,7 @@
                         {%- elseif file.type == "module" -%}
                             <span class="fas fa-folder-open"></span>
                             &nbsp;
-                            <a title="Branch: {{ branch }}" href="{{ file.url }}/tree/{{ branch }}">{{ file.name }}</a>
+                            <a title="Head: {{ head }}" href="{{ file.url }}/tree/{{ head }}">{{ file.name }}</a>
                             @
                             <a title="Commit: {{ file.hash }}"
                                href="{{ file.url }}/tree/{{ file.hash }}">{{ file.shortHash }}</a>

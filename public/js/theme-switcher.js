@@ -10,9 +10,7 @@ function getThemeCookie() {
 
 gitlist.getThemeCookie = getThemeCookie;
 
-document.addEventListener("DOMContentLoaded", function(event) {
-
-
+$(function() {
 
     const themeList = $('#theme-list');
 
@@ -89,5 +87,4 @@ document.addEventListener("DOMContentLoaded", function(event) {
         }
         
     });
-// 12312312312adsasdasdasd
 });

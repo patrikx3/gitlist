@@ -19,6 +19,7 @@
       <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher" />
       <path value="$PROJECT_DIR$/vendor/silex/silex" />
       <path value="$PROJECT_DIR$/vendor/patrikx3/gitter" />
+      <path value="$PROJECT_DIR$/vendor/spatie/temporary-directory" />
     </include_path>
   </component>
   <component name="PhpUnit">

@@ -5,12 +5,11 @@
 {% block title %}P3X GitList{% endblock %}
 
 {% block content %}
-    {% include 'breadcrumb.twig' with {breadcrumbs: [{dir: 'Graph', path:''}]} %}
-    <div class="network-view">
-        <div class="network-header">
-            <h3 class="meta">Graph of {{ repo }} </h3>
-        </div>
+    {% include 'breadcrumb.twig' with {breadcrumbs: [{dir: 'Graph', path:''}, {dir: branch, path:''}]} %}
 
+
+
+    <div class="network-view">
         <div id="git-graph-container">
             <div id="rel-container">
                 <canvas id="graph-canvas" width="100px">
@@ -29,8 +28,8 @@
                                 <a id="{{ item.short_rev }}" class="treegraph-button" href="{{ path('commit', {repo: repo, commit: item.rev}) }}"> {{ item.short_rev }} </a>
                                 <strong> {{ item.branch }} </strong>
                                 <em>{{ item.subject }}</em> by
-                                <span class="author">{{ item.author }} &lt;{{ item.author_email }}&gt;</span>
-                                <span class="time">{{ item.date | date(gitlist_date_format) }}</span>;
+                                <span class="author"><a href="mailto:{{ item.author_email }}">{{ item.author }}</a></span>
+                                <span>{{ item.date | date(gitlist_date_format) }}</span>;
                             {% else %}
                                 <span/>
                             {% endif %}

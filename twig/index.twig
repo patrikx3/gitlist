@@ -6,7 +6,14 @@
 
 <div class="container" id="repositories">
     <div class="search form-group">
-        <input class="search form-control" placeholder="Search" autofocus>
+        <div class="input-group">
+            <input class="search form-control" name="query-repo" placeholder="Search repositories" autofocus value=""/>
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button" id="p3x-gitlist-repo-list-clear">
+                    <i class="fas fa-times"></i>
+                </button>
+            </span>
+        </div>
     </div>
 
     <div class="list">

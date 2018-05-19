@@ -5,9 +5,12 @@
                         
 [//]: #@corifeus-header:end
 
-### v2.1.0
+### v2.6.0
 * in progress
 * network and graph dark mode
+
+### v2.5.0
+* you can edit files now
 
 ### v2.0.12-585
 * removed `Babel` 😀
@@ -137,7 +140,7 @@ require('codemirror/mode/yaml/yaml');
 
 ---
 
-[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2.5.8-668 
+[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2.5.19-684 
 
 [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software) [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) 
 

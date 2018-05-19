@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(function() {
     const graphList = [];
 
     if (!document.getElementById('graph-canvas')) {

@@ -17,7 +17,7 @@ hljs.registerLanguage('shell', require('highlight.js/lib/languages/shell.js'));
 hljs.registerLanguage('typescript', require('highlight.js/lib/languages/typescript.js'));
 hljs.registerLanguage('ts', require('highlight.js/lib/languages/typescript.js'));
 
-document.addEventListener("DOMContentLoaded", function(event) {
+$(function() {
 
     const markdownRenderer = new marked.Renderer();
 

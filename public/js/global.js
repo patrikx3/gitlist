@@ -1,6 +1,8 @@
 let $body;
 let $head;
 
+const Cookies = require('js-cookie')
+
 const scrollIntoViewOptions = {
     behavior: "instant",
     block: "start",
@@ -12,6 +14,26 @@ const scrollIntoView = (el) => {
     if ((window.innerHeight + window.scrollY) <= document.body.offsetHeight - navbarHeight ) {
         window.scrollBy(0,-navbarHeight )
     }
+}
+
+const regExpEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+window.gitlist.validate = {
+    email: (email) => {
+        return regExpEmail.test(String(email));
+    }
+}
+
+window.gitlist.clearInput = (name) => {
+    const input = $(`[name=${name}]`)
+    input.val('')
+    Cookies.set(`p3x-gitlist-${name}`, '', window.gitlist.cookieSettings)
+    input.focus()
+}
+
+window.gitlist.setInputQuery = (name) => {
+    const input = $(`[name=${name}]`)
+    Cookies.set(`p3x-gitlist-${name}`, input.val(), window.gitlist.cookieSettings)
 }
 
 window.gitlist.isDark =(theme) => {
@@ -28,11 +50,6 @@ window.gitlist.cookieSettings = {
     expires: 3650
 }
 
-
-window.gitlist.codemirrorTheme = {
-    light: 'idea',
-    dark: 'dracula',
-}
 
 window.gitlist.getActualTheme = () => {
     const theme = window.gitlist.getThemeCookie()
@@ -107,7 +124,7 @@ global.gitlist.scrollHash = function(element, event) {
 }
 
 $(function () {
-
+    $('.dropdown-toggle').dropdown();
     $body = $('body');
     $head = $('head')
 

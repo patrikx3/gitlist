@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function(event) {
+$(function() {
 
     let $pager;
     let loading = false;

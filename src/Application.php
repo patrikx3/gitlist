@@ -112,6 +112,14 @@ class Application extends SilexApplication
             $twig->addGlobal('theme_type', !in_array(substr($currentTheme, strlen('bootstrap-')), $themeDark) ? 'p3x-gitlist-light' : 'p3x-gitlist-dark');
 
             $twig->addGlobal('theme', $currentTheme);
+            $query = isset($_REQUEST['query']) ? $_REQUEST['query'] : (isset($_COOKIE['p3x-gitlist-query']) ? $_COOKIE['p3x-gitlist-query'] : '');
+
+            setcookie('p3x-gitlist-query',$query,0, '/' . $this['url_subdir']);
+
+            $_COOKIE['p3x-gitlist-query'] = $query;
+
+            $twig->addGlobal('search_query', $query);
+
             $postfixFile = __DIR__ . '/css-postfix';
             $twig->addGlobal('theme_postfix', file_get_contents($postfixFile));
 

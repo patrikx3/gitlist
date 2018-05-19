@@ -21,7 +21,6 @@ class MainController implements ControllerProviderInterface
             ));
         })->bind('homepage');
 
-
         $route->get('/refresh', function(Request $request) use ($app ) {
             # Go back to calling page
             return $app->redirect($request->headers->get('Referer'));
@@ -41,6 +40,7 @@ class MainController implements ControllerProviderInterface
                 'repo'           => $repo,
                 'branch'         => $branch,
                 'branches'       => $repository->getBranches(),
+                'browse_type'    => 'stats',
                 'tags'           => $repository->getTags(),
                 'stats'          => $stats,
                 'authors'        => $authors,

@@ -48,6 +48,7 @@ class BlobController implements ControllerProviderInterface
                 'branch'         => $branch,
                 'breadcrumbs'    => $breadcrumbs,
                 'branches'       => $repository->getBranches(),
+                'browse_type'    => 'blob',
                 'tags'           => $repository->getTags(),
                 'enforceCodemirror' => isset($_GET['codemirror'])
             ));

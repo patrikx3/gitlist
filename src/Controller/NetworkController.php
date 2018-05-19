@@ -109,6 +109,9 @@ class NetworkController implements ControllerProviderInterface
                 return $app['twig']->render(
                     'network.twig',
                     array(
+                        'branches'       => $repository->getBranches(),
+                        'tags'           => $repository->getTags(),
+                        'browse_type'    => 'network',
                         'repo' => $repo,
                         'branch' => $branch,
                         'commitishPath' => $commitishPath,

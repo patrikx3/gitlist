@@ -13,7 +13,8 @@
         "symfony/twig-bridge": ">=4",
         "twig/twig": ">=2",
         "silex/silex": ">=2",
-        "patrikx3/gitter": ">=1.0.6"
+        "patrikx3/gitter": ">=1.0.6",
+        "spatie/temporary-directory": "^1.1"
     },
     "require-dev": {
         "symfony/browser-kit": ">=4",

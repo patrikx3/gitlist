@@ -52,6 +52,7 @@ class CommitController implements ControllerProviderInterface
                 'repo'           => $repo,
                 'branch'         => $branch,
                 'branches'       => $repository->getBranches(),
+                'browse_type'    => pathinfo($template)['filename'],
                 'tags'           => $repository->getTags(),
                 'commits'        => $categorized,
                 'file'           => $file,
@@ -81,6 +82,7 @@ class CommitController implements ControllerProviderInterface
                 'file'           => '',
                 'commits'        => $categorized,
                 'branches'       => $repository->getBranches(),
+                'browse_type'    => 'searchcommits',
                 'tags'           => $repository->getTags(),
                 'query'          => $query
             ));
@@ -95,6 +97,9 @@ class CommitController implements ControllerProviderInterface
             $branch = $repository->getHead();
 
             return $app['twig']->render('commit.twig', array(
+                'branches'       => $repository->getBranches(),
+                'tags'           => $repository->getTags(),
+                'browse_type'    => 'commit',
                 'branch'         => $branch,
                 'repo'           => $repo,
                 'commit'         => $commit,
@@ -118,6 +123,7 @@ class CommitController implements ControllerProviderInterface
                 'repo'           => $repo,
                 'branch'         => $branch,
                 'branches'       => $repository->getBranches(),
+                'browse_type'    => 'blame',
                 'tags'           => $repository->getTags(),
                 'blames'         => $blames,
             ));

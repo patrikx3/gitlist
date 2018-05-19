@@ -1,3 +1,6 @@
+<script type="text/javascript">
+    window.gitlist.browse_type = '{{ browse_type }}';
+</script>
 <div class="dropdown" id="p3x-gitlist-branch-list-container">
     <button class="btn btn-info dropdown-toggle btn-sm" type="button" id="p3x-gitlist-branch-list" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
         browsing: <strong title="{{ branch }}">{{ branch }}</strong>
@@ -15,7 +18,7 @@
             <div id="p3x-gitlist-list-branch">
                 <span class="list">
                     {% for item in branches %}
-                        <div class="p3x-gitlist-branch-menu-item" onclick="location.href ='{{ path('branch', {repo: repo, branch: item}) }}'"><a href="{{ path('branch', {repo: repo, branch: item}) }}"><span class="item">{{ item }}</span></a></div>
+                        <div class="p3x-gitlist-branch-menu-item"onclick="window.gitlist.browserClick({ checkout: '{{ item }}', type: 'branch'})"><a onclick="return false;" href="{{ path('branch', {repo: repo, branch: item}) }}"><span class="item">{{ item }}</span></a></div>
                     {% endfor %}
                 </span>
             </div>
@@ -29,7 +32,7 @@
                 <div id="p3x-gitlist-list-tag">
                     <span class="list">
                         {% for item in tags %}
-                            <div class="p3x-gitlist-branch-menu-item" onclick="location.href ='{{ path('branch', {repo: repo, branch: item}) }}'" ><a href="{{ path('branch', {repo: repo, branch: item}) }}"><span class="item">{{ item }}</span></a></div>
+                            <div class="p3x-gitlist-branch-menu-item" onclick="window.gitlist.browserClick({ checkout: '{{ item }}', type: 'tag'})" ><a href="{{ path('branch', {repo: repo, branch: item}) }}" onclick="return false;"><span class="item">{{ item }}</span></a></div>
                         {% endfor %}
                     </span>
                 </div>
@@ -39,45 +42,3 @@
 
     </div>
 </div>
-
-<!--
-<li class="dropdown" id="p3x-gitlist-branch-list">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown"> browsing: <strong>{{ branch }}</strong> <b class="caret"></b></a>
-    <div role="menu" class="dropdown-menu" id="p3x-gitlist-branch-list-dropdown-menu">
-        <form>
-            <input id="p3x-gitlist-branch-list-search" class="form-control" placeholder="Search" autofocus>
-        </form>
-
-        <div class="main-list">
-            <div class="p3x-list-item-header p3x-gitlist-branch-menu-header">
-                Branches
-            </div>
-            <div id="p3x-gitlist-list-branch">
-                <span class="list">
-                    {% for item in branches %}
-                        <div class="p3x-gitlist-branch-menu-item" onclick="location.href ='{{ path('branch', {repo: repo, branch: item}) }}'"><a href="{{ path('branch', {repo: repo, branch: item}) }}"><span class="item">{{ item }}</span></a></div>
-                    {% endfor %}
-                </span>
-            </div>
-
-            {% if tags %}
-                <div role="separator" class="divider"></div>
-                <div class="p3x-list-item-header p3x-gitlist-branch-menu-header">
-                    Tags
-                </div>
-
-                <div id="p3x-gitlist-list-tag">
-                    <span class="list">
-                        {% for item in tags %}
-                            <div class="p3x-gitlist-branch-menu-item" onclick="location.href ='{{ path('branch', {repo: repo, branch: item}) }}'" ><a href="{{ path('branch', {repo: repo, branch: item}) }}"><span class="item">{{ item }}</span></a></div>
-                        {% endfor %}
-                    </span>
-                </div>
-            {% endif %}
-
-        </div>
-
-    </div>
-</li>
-
--->

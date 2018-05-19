@@ -5,5 +5,4 @@
         <li{% if loop.last %} class="active"{% endif %}>{% if not loop.last %}<a href="{{ path('tree', {repo: repo, commitishPath: branch ~ '/' ~ breadcrumb.path}) }}">{{ breadcrumb.dir }}</a>{% endif %}{% if loop.last %}{{ breadcrumb.dir }}{% endif %}</li>
     {% endfor %}
 </ol>
-
-
+<div class="p3x-gitlist-breadcrumb-divider"></div>
