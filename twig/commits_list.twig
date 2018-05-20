@@ -12,9 +12,9 @@
             <td width="5%"><img src="{{ avatar(item.author.email, 40) }}" /></td>
             <td width="95%">
                 <span class="pull-right">
-                    <a class="btn btn-default btn-sm" href="{{ path('branch', {repo: repo, branch: item.hash}) }}" title="Browse code at this point in history"><span class="fa fa-list-alt"></span>&nbsp;Browse</a>
+                    <a class="btn btn-primary btn-sm" href="{{ path('branch', {repo: repo, branch: item.hash}) }}" title="Browse code at this point in history"><span class="fa fa-list-alt"></span>&nbsp;Browse</a>
 
-                    <a class="btn btn-default default btn-sm" href="{{ path('commit', {repo: repo, commit: item.hash}) }}"><span class="fa fa-list-alt"></span>&nbsp;Changes</a>
+                    <a class="btn btn-primary default btn-sm" href="{{ path('commit', {repo: repo, commit: item.hash}) }}"><span class="fa fa-list-alt"></span>&nbsp;Changes</a>
                 </span>
                 <h4>{{ item.message }}</h4>
                 <h6 title="{{ item.hash }}" class="pull-right" style="margin: 0; cursor: pointer;">

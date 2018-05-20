@@ -167,10 +167,12 @@ ${branchInfo}
 
                 commitModal.modal('hide');
 
+                /*
                 $.snackbar({
                     htmlAllowed: true,
                     content: ' <i class="fas fa-cog fa-spin"></i>&nbsp;Saving ...'
                 })
+                */
 
                 try {
                     const url = `${window.gitlist.basepath}/${window.gitlist.repo}/git-helper/${window.gitlist.branch}/save`

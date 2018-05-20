@@ -47,7 +47,7 @@ window.gitlist.setInputQuery = (name) => {
     Cookies.set(`p3x-gitlist-${name}`, input.val(), window.gitlist.cookieSettings)
 }
 
-window.gitlist.isDark =(theme) => {
+window.gitlist.isDark =(theme = window.gitlist.getActualTheme()) => {
     for(var i = 0; i < window.gitlist.dark.length; i++ ) {
         if (window.gitlist.dark[i] === theme) {
             return true;
@@ -97,6 +97,8 @@ window.gitlist.setTheme = () => {
             gitlist.viewer.setOption("theme", window.gitlist.codemirrorTheme.light);
         }
     }
+    window.gitlist.networkRedraw();
+    window.gitlist.treegraph();
     let setTimeoutSwitch;
     if (window.gitlist.lastloadSpan !== undefined && window.gitlist.lastloadSpan > 1000) {
         clearTimeout(setTimeoutSwitch)
@@ -141,10 +143,12 @@ $(function () {
     $body = $('body');
     $head = $('head')
 
+    /*
     Object.values(window.gitlist.themes).forEach(css => {
         const cssPath = `${window.gitlist.basepath}${css}`;
         $head.append(`<link rel="prefetch" href="${cssPath}">`)
     })
+    */
 
 
     const es = document.getElementsByTagName('a')
@@ -176,6 +180,7 @@ $(function () {
     }
     $('.p3x-gitlist-overlay').remove();
     global.gitlist.scrollHash(location)
+
 });
 
 

@@ -61,23 +61,19 @@
     {% for diff in commit.diffs %}
         <br/>
         <div class="pull-right">
-            <a href="{{ path('commits', {repo: repo, commitishPath: commit.hash ~ '/' ~ diff.file}) }}"  class="btn btn-default btn-sm"><span class="fa fa-list-alt"></span>&nbsp;History</a>
+            <a href="{{ path('commits', {repo: repo, commitishPath: commit.hash ~ '/' ~ diff.file}) }}"  class="btn btn-primary btn-sm"><span class="fa fa-list-alt"></span>&nbsp;History</a>
             &nbsp;
-            <a href="{{ path('blob', {repo: repo, commitishPath: commit.hash ~'/' ~ diff.file}) }}"  class="btn btn-default btn-sm"><span class="fas fa-file-alt"></span>&nbsp;View file @ {{ commit.shortHash }}</a>
+            <a href="{{ path('blob', {repo: repo, commitishPath: commit.hash ~'/' ~ diff.file}) }}"  class="btn btn-primary btn-sm"><span class="fas fa-file-alt"></span>&nbsp;View file @ {{ commit.shortHash }}</a>
         </div>
-
         <div class="source-view">
         <div class="source-header">
             <div class="meta"><span id="diff-{{ loop.index }}"><a href="#{{ diff.file | to_id }}">{{ diff.file }}</a></div>
         </div>
 
-        <div class="source-diff">
+        <div class="source-diff" style="margin-top: 5px;">
         <table>
         {% for line in diff.getLines %}
-            <tr>
-                <td colspan="3">
-                </td>
-            </tr>
+
             <tr>
                 <td class="lineNo">
                     {% if line.getType != 'chunk' %}

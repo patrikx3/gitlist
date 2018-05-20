@@ -1,21 +1,51 @@
 /**
  * Network Graph JS
- * This File is a part of the GitList Project at http://gitlist.org
+ * This File is a part of the GitList Project at https://github.com/patrikx3/gitlist
  *
- * @license http://www.opensource.org/licenses/bsd-license.php
+ * @license https://github.com/patrikx3/gitlist/blob/master/LICENSE
  * @author Lukas Domnick <lukx@lukx.de> http://github.com/lukx
  * @author Patrik Laszlo <alabard@gmail.com> https://github.com/patrikx3/gitlist
  */
-    // global config
+// global config
 const cfg = {
-        laneColors: ['#ff0000', '#0000FF', '#00FFFF', '#00FF00', '#FFFF00', '#ff00ff'],
-        laneHeight: 20,
-        columnWidth: 42,
-        dotRadius: 3
-    };
+    get laneColors() {
+        if (window.gitlist.isDark()) {
+            return ['#BDBDBD', '#BBDEFB', '#03A9F4', '#2196F3', '#BDBDBD', '#FFFFFF'];
+        } else {
+            return ['#455A64', '#607D8B', '#757575', '#9E9E9E', '#CFD8DC', '#BDBDBD'];
+        }
+    },
+    get dotColor() {
+        if (window.gitlist.isDark()) {
+            return '#ffffff88';
+        } else {
+            return '#00000088';
+        }
+    },
+    laneHeight: 20,
+    columnWidth: 42,
+    dotRadius: 3
+};
+
+Object.defineProperty(window.gitlist, 'canvasLaneColors', {
+    get: () => {
+        return cfg.laneColors;
+    }
+
+})
+Object.defineProperty(window.gitlist, 'canvasDotColor', {
+    get: () => {
+        return cfg.dotColor;
+    }
+})
+
+window.gitlist.randomCanvasLaneColors = () => {
+    const items = window.gitlist.canvasLaneColors;
+    return items[Math.floor(Math.random() * items.length)];
+}
+
 
 const $ = require('jquery')
-
 const phpDate = require('php-date')
 
 /**
@@ -308,23 +338,24 @@ function commitDataRetriever(startPage, callback) {
     return that;
 }
 
-
-// the $(document).ready starting point
-$(function () {
+window.gitlist.networkRedraw = () => {
 
     // initialise network graph only when there is one network graph container on the page
     if ($('div.network-graph').length !== 1) {
         return;
     }
 
-    let
-        // the element into which we will render our graph
-        commitsGraph = $('div.network-graph').first(),
-        laneManager = graphLaneManager(),
-        dataRetriever = commitDataRetriever(commitsGraph.data('source'), handleCommitsRetrieved),
-        paper = Raphael(commitsGraph[0], commitsGraph.width(), commitsGraph.height()),
-        usedColumns = 0,
-        detailOverlay = commitDetailOverlay();
+    // the element into which we will render our graph
+    let commitsGraph = $('div.network-graph').first();
+
+    commitsGraph.find('svg').remove();
+    commitsGraph.find('.network-commit-overlay').remove();
+
+    let laneManager = graphLaneManager()
+    let dataRetriever = commitDataRetriever(commitsGraph.data('source'), handleCommitsRetrieved)
+    let paper = Raphael(commitsGraph[0], commitsGraph.width(), commitsGraph.height())
+    let usedColumns = 0
+    let detailOverlay = commitDetailOverlay()
 
     dataRetriever.bindIndicator(commitsGraph.parent('.network-view'));
     detailOverlay.appendTo(commitsGraph);
@@ -552,7 +583,12 @@ $(function () {
 
         paper.setSize(newWidth, newHeight);
         // fixup parent's scroll position
-        paper.canvas.parentNode.scrollLeft = paper.canvas.parentNode.scrollLeft + deltaX;
+
+        try {
+            paper.canvas.parentNode.scrollLeft = paper.canvas.parentNode.scrollLeft + deltaX;
+        } catch (e) {
+            console.warn(e)
+        }
 
         // now fixup the x positions of existing circles and lines
         paper.forEach(function (el) {
@@ -572,4 +608,5 @@ $(function () {
     commitsGraph.on('enterHotZone', handleEnterHotZone);
     // load initial data
     dataRetriever.retrieve();
-});
+
+}

@@ -9,7 +9,7 @@ require(`codemirror/theme/${window.gitlist.codemirrorTheme.light}.css`)
 require(`codemirror/theme/${window.gitlist.codemirrorTheme.dark}.css`)
 
 
-require('../less/style.less')
+//require('../less/style.less')
 
 const fontawesome = require('@fortawesome/fontawesome').default
 //console.log(fontawesome);
@@ -82,12 +82,12 @@ global.twemoji = require('twemoji')
 global.twemoji.base = 'generated/twemoji/';
 
 
-require('./network-graph.js')
+require('./network.js')
 
 require('./gitgraph.js/gitgraph.css')
 require('./gitgraph.js/gitgraph.js')
 
-require('./gitgraph-draw')
+require('./treegraph')
 require('./markdown')
 require('./clone-buttons')
 require('./paginate')

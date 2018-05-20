@@ -17,48 +17,24 @@
 }
 
 #p3x-gitlist-branch-list-container {
-  a {
-    text-decoration: none !important;
+
+  .p3x-gitlist-branch-menu-item, a {
+    text-decoration: none;
+    color: @dropdown-link-color;
   }
+
 
   .p3x-gitlist-branch-menu-item:hover {
     cursor: pointer;
   }
-  .p3x-gitlist-branch-menu-item:hover {
-    background-color: @link-color;
+  .p3x-gitlist-branch-menu-item:hover, .p3x-gitlist-branch-menu-item:hover a {
+    background-color: @dropdown-link-hover-bg;
+    color: @dropdown-link-hover-color;
   }
 
-  .main-list {
-    .p3x-gitlist-branch-menu-item:hover {
-      a, a:hover {
-        color: white !important;
-      }
-    }
-
-
+  .p3x-gitlist-branch-menu-item.active, .p3x-gitlist-branch-menu-item.active a {
+    background-color: @dropdown-link-active-bg;
+    color: @dropdown-link-active-color;
   }
 }
-
-.p3x-gitlist-light {
-  #p3x-gitlist-branch-list-container {
-    .main-list {
-      a {
-
-      }
-
-    }
-  }
-}
-.p3x-gitlist-dark {
-  #p3x-gitlist-branch-list {
-    .main-list {
-      .p3x-gitlist-branch-menu-item {
-        a {
-          color: @navbar-default-color;
-        }
-      }
-    }
-  }
-}
-
 

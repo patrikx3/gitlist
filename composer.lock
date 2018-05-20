@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b1300f788301299851484cc6f9df30ce",
-    "content-hash": "f30ef1fc4ee890d1bee242ee096e54d2",
+    "hash": "bf99eb826bbc0141c373643c7641d35d",
+    "content-hash": "51acf3ac6c2746b622cdb2924e3480a0",
     "packages": [
         {
             "name": "danielstjules/stringy",
@@ -65,21 +65,22 @@
         },
         {
             "name": "patrikx3/gitter",
-            "version": "1.0.6",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/patrikx3/gitter.git",
-                "reference": "4524e73be72020ffde7c92687fdfd69d35d844ba"
+                "reference": "009abb7f217f42cb24dda7af4866c26399603461"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/patrikx3/gitter/zipball/4524e73be72020ffde7c92687fdfd69d35d844ba",
-                "reference": "4524e73be72020ffde7c92687fdfd69d35d844ba",
+                "url": "https://api.github.com/repos/patrikx3/gitter/zipball/009abb7f217f42cb24dda7af4866c26399603461",
+                "reference": "009abb7f217f42cb24dda7af4866c26399603461",
                 "shasum": ""
             },
             "require": {
                 "danielstjules/stringy": ">=3",
                 "php": ">=7.1.0",
+                "spatie/temporary-directory": "^1.1",
                 "symfony/process": ">=4"
             },
             "require-dev": {
@@ -117,7 +118,7 @@
                 "git",
                 "vcs"
             ],
-            "time": "2018-05-04 19:17:20"
+            "time": "2018-05-20 13:48:48"
         },
         {
             "name": "pimple/pimple",
