@@ -15,18 +15,18 @@ $(function() {
 
         const debounce = require('lodash/debounce')
 
-        const currentUrl = new URL(location)
-        if (window.gitlist.basepath !== '') {
-            currentUrl.pathname = currentUrl.pathname.substring(window.gitlist.basepath.length)
-        }
-        let paths = currentUrl.pathname.split('/');
+        let paths = window.gitlist.getPaths();
 
         let slice = 4
         if (window.gitlist.browse_type === 'tree') {
             slice = 3
         }
         paths = paths.slice(slice);
-        const path = paths.join('/')
+        let path = paths.join('/')
+        if (path !== '') {
+            path = `/${path}`
+        }
+
 
         const baseUrl = `${window.gitlist.basepath}/${window.gitlist.repo}`
         const search_query = window.gitlist.search_query;
@@ -35,25 +35,25 @@ $(function() {
                 return `${baseUrl}/${options.checkout}`;
             },
             commits: (options) => {
-                return `${baseUrl}/commits/${options.checkout}`;
+                return `${baseUrl}/commits/${options.checkout}${path}`;
             },
             commit: (options) => {
-                return `${baseUrl}/commit/${options.checkout}`;
+                return `${baseUrl}/commit/${options.checkout}${path}`;
             },
             stats: (options) => {
-                return `${baseUrl}/stats/${options.checkout}`;
+                return `${baseUrl}/stats/${options.checkout}${path}`;
             },
             network: (options) => {
-                return `${baseUrl}/network/${options.checkout}`;
+                return `${baseUrl}/network/${options.checkout}${path}`;
             },
             blob: (options) => {
-                return `${baseUrl}/blob/${options.checkout}/${path}`;
+                return `${baseUrl}/blob/${options.checkout}${path}`;
             },
             blame: (options) => {
-                return `${baseUrl}/blame/${options.checkout}`;
+                return `${baseUrl}/blame/${options.checkout}${path}`;
             },
             treegraph: (options) => {
-                return `${baseUrl}/treegraph/${options.checkout}`;
+                return `${baseUrl}/treegraph/${options.checkout}${path}`;
             },
             search: (options) => {
                 return {

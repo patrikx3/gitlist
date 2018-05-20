@@ -19,24 +19,29 @@
         </div>
     </div>
 
-    {% include 'breadcrumb.twig' with {breadcrumbs: [{dir: "Commit #{commit.hash}", path:''}]} %}
-    <div style="height: 5px;"></div>
-    <div>
-        <div style="float: right;">
+    {% embed 'breadcrumb.twig' with {breadcrumbs: [{dir: "Commit #{commit.hash}", path:''}]} %}
+        {% block right %}
             <a class="btn btn-info btn-sm" href="{{ path('branch', {repo: repo, branch: commit.hash}) }}" title="Browse code at this point in history"><span class="fa fa-list-alt"></span> Browse code</a>
-        </div>
-        <div style="font-size: 175%; padding: 10px; font-weight: bold;">
-            {{ commit.message }}
-        </div>
-    </div>
-    <div style="height: 10px; clear: both;"></div>
+        {%  endblock %}
+
+        {% block left %}
+            <div>
+                <div style="font-size: 175%; padding: 10px; font-weight: bold;">
+                    {{ commit.message }}
+                </div>
+            </div>
+
+        {%  endblock %}
+
+    {% endembed %}
+
     <div class="commit-view">
 
         <div class="commit-body">
             {% if commit.body is not empty %}
             <p>{{ commit.body | nl2br }}</p>
             {% endif %}
-            <img src="{{ avatar(commit.author.email, 32) }}" class="pull-left space-right" />
+            <img src="{{ avatar(commit.author.email, 32) }}" class="pull-left" style="padding: 8px;" />
             <span>
                 <a href="mailto:{{ commit.author.email }}">{{ commit.author.name }}</a> authored on {{ commit.date | format_date }}
                 {% if commit.author.email != commit.commiter.email %}
@@ -56,9 +61,9 @@
     {% for diff in commit.diffs %}
         <br/>
         <div class="pull-right">
-            <a href="{{ path('commits', {repo: repo, commitishPath: commit.hash ~ '/' ~ diff.file}) }}"  class="btn btn-primary btn-sm"><span class="fa fa-list-alt"></span>&nbsp;History</a>
+            <a href="{{ path('commits', {repo: repo, commitishPath: commit.hash ~ '/' ~ diff.file}) }}"  class="btn btn-default btn-sm"><span class="fa fa-list-alt"></span>&nbsp;History</a>
             &nbsp;
-            <a href="{{ path('blob', {repo: repo, commitishPath: commit.hash ~'/' ~ diff.file}) }}"  class="btn btn-primary btn-sm"><span class="fas fa-file-alt"></span>&nbsp;View file @ {{ commit.shortHash }}</a>
+            <a href="{{ path('blob', {repo: repo, commitishPath: commit.hash ~'/' ~ diff.file}) }}"  class="btn btn-default btn-sm"><span class="fas fa-file-alt"></span>&nbsp;View file @ {{ commit.shortHash }}</a>
         </div>
 
         <div class="source-view">

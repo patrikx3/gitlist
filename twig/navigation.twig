@@ -1,13 +1,16 @@
 <div class="navbar navbar-default navbar-fixed-top" id="p3x-gitlist-navigation" role="navigation">
     <div class="container">
-        <div class="navbar-header">
+        <div class="navbar-header p3x-gitlist-navbar-header">
             <button type="button" id="p3x-gitlist-navigation-menu-button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ path('homepage') }}"> {{ app.title }}</a>
+            <a class="navbar-brand hidden-xs" href="{{ path('homepage') }}">{{ app.title }}</a>
+            <a class="navbar-brand hidden-sm hidden-md hidden-lg" href="{{ path('homepage') }}"data-toggle="tooltip" data-placement="bottom" title="{{ app.title }}">
+                <i class="fab fa-git-square fa-fw" style="transform: scale(1.75)"></i>
+            </a>
         </div>
         <div class="navbar-collapse collapse" id="p3x-gitlist-navigation-theme">
             <ul class="nav navbar-nav navbar-right">

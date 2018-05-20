@@ -2,7 +2,7 @@ $(function() {
 
     const List = require('list.js')
 
-    const id = 'repositories'
+    const id = 'p3x-gitlist-index'
 
     if ($(`#${id}`).length) {
 
@@ -11,17 +11,16 @@ $(function() {
         const cookieName = 'p3x-gitlist-query-repo';
         const value = Cookies.get(cookieName)
         const input = $('[name="query-repo"]')
-        const inputClear = $('#p3x-gitlist-repo-list-clear');
+        const inputClear = $('#p3x-gitlist-index-list-clear');
 
 
         input.keypress(() => {
             Cookies.set(cookieName, input.val(), window.gitlist.cookieSettings)
         })
         input.val(value);
-        console.log(input)
 
         const listOptions = {
-            valueNames: ['name'],
+            valueNames: ['name', 'description'],
             indexAsync: true,
         };
         const list = new List(id, listOptions);

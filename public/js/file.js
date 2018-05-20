@@ -74,18 +74,38 @@ ${branchInfo}
                 })
             })
 
-            buttonEditCancel.click(() => {
+            const validateCodeIsSame = (snack = true) => {
+                value = gitlist.viewer.getValue();
+                if (originalCode === value) {
+                    if (snack) {
+                        $.snackbar({
+                            content: 'The code has not changed. No saving.',
+                        })
+                    }
+                    return true;
+                }
+                return false;
+            }
+
+            const close = () => {
                 buttonEdit.show();
                 buttonEditSave.hide();
                 buttonEditCancel.hide();
-                gitlist.viewer.setValue(originalCode)
                 gitlist.viewer.setOption('readOnly', true)
-                $.snackbar({
-                    content: 'Cancelled editing, you changes reverted.',
-                })
+            }
+
+            buttonEditCancel.click(() => {
+                if (!validateCodeIsSame(false)) {
+                    gitlist.viewer.setValue(originalCode)
+                    $.snackbar({
+                        htmlAllowed: true,
+                        content: 'The changes are reverted.',
+                    })
+                }
+                close();
             })
 
-            let filename = location.pathname.split('/');
+            let filename = window.gitlist.getPaths();
             filename = filename.slice(4).join('/');
 
             const errorHandler = (e) => {
@@ -97,16 +117,6 @@ ${branchInfo}
                 console.error(e);
             }
 
-            const validateCodeIsSame = () => {
-                value = gitlist.viewer.getValue();
-                if (originalCode === value) {
-                    $.snackbar({
-                        content: 'The code has not changed. No saving.',
-                    })
-                    return true;
-                }
-                return false;
-            }
 
             const commitModal = $('#p3x-gitlist-modal-commit');
             buttonEditSave.click(async () => {
@@ -155,6 +165,8 @@ ${branchInfo}
                     return;
                 }
 
+                commitModal.modal('hide');
+
                 $.snackbar({
                     htmlAllowed: true,
                     content: ' <i class="fas fa-cog fa-spin"></i>&nbsp;Saving ...'
@@ -185,12 +197,12 @@ ${branchInfo}
                         errorHandler(json);
                     } else {
                         originalCode = value;
+                        close();
                         $.snackbar({
                             htmlAllowed: true,
                             content: '<i class="fas fa-check"></i>&nbsp;&nbsp;The file is saved.',
                         })
                     }
-                    commitModal.modal('hide');
                 } catch(e) {
                     errorHandler(e);
                 }

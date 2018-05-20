@@ -5,21 +5,34 @@
 {% block title %}P3X GitList{% endblock %}
 
 {% block content %}
-    {% include 'breadcrumb.twig' with {breadcrumbs: [{dir: 'Blame', path:''}]} %}
+    {% embed 'breadcrumb.twig' with {breadcrumbs: [{dir: 'Blame', path:''}, {dir: file, path:''}]} %}
 
-    <div class="source-view">
-        <div class="source-header">
-            <div class="meta">{{ file }}</div>
-        </div>
-        <table class="table blame-view">
+        {% block left %}
+            {% if blames %}
+                <button type="button" class="btn btn-primary btn-sm">Blames found: {{ blames | length }}</button>
+            {% endif %}
+        {%  endblock %}
+
+    {% endembed %}
+    {% if blames %}
+
         {% for blame in blames %}
-            <tr>
-                <td class="blame-info commit"><a href="{{ path('commit', {repo: repo, commit: blame.commit}) }}">{{ blame.commitShort }}</a></td>
-                <td class="blame-line"><pre class="p3x-gitlist-code">{{ blame.line }}</pre></td>
-            </tr>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <span class="far fa-file-alt"></span>&nbsp;&nbsp; <a href="{{ path('commit', {repo: repo, commit: blame.commit}) }}">{{ blame.commitShort }}</a>
+                </div>
+                <div class="panel-body p3x-gitlist-search-match">{{ blame.line }}</div>
+            </div>
         {% endfor %}
-        </table>
-    </div>
+    {% else %}
+        <h4>
+            The blames.
+        </h4>
+    {% endif %}
+
+
+
+
 
 
 {% endblock %}

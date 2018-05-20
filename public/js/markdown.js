@@ -23,6 +23,7 @@ $(function() {
 
     const kebabCase = require('lodash/kebabCase')
     markdownRenderer.heading = function (text, level, raw) {
+        level = level + 2;
         const ref = kebabCase(text).replace(/[^\x00-\xFF]/g, "");
         const id = ref + '-parent';
         const hover = ` onmouseenter="document.getElementById('${ref}').style.display = 'inline'"  onmouseleave="document.getElementById('${ref}').style.display = 'none'" `;
@@ -86,9 +87,8 @@ We are not loading everything, since it is about 500kb`)
         return `<code style="display: inline; line-height: 34px;" class="hljs ${lang}">${highlighted}</code>`;
     }
 
-    const mdContent = $('#md-content');
+    const mdContent = $('#p3x-gitlist-readme');
     if (mdContent.length) {
-        global.gitlist.setTheme();
         const html = marked(mdContent.text(), {
             renderer: markdownRenderer
         });

@@ -16,12 +16,23 @@ const scrollIntoView = (el) => {
     }
 }
 
+/*
 const regExpEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 window.gitlist.validate = {
     email: (email) => {
         return regExpEmail.test(String(email));
     }
+}
+*/
+
+window.gitlist.getPaths = () => {
+    const currentUrl = new URL(window.location)
+    if (window.gitlist.basepath !== '') {
+        currentUrl.pathname = currentUrl.pathname.substring(window.gitlist.basepath.length)
+    }
+    let paths = currentUrl.pathname.split('/');
+    return paths;
 }
 
 window.gitlist.clearInput = (name) => {
@@ -125,6 +136,8 @@ global.gitlist.scrollHash = function(element, event) {
 
 $(function () {
     $('.dropdown-toggle').dropdown();
+    $('[data-toggle="tooltip"]').tooltip()
+
     $body = $('body');
     $head = $('head')
 

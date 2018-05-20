@@ -1,51 +1,17 @@
 .p3x-gitlist-light {
   @import (less) '../../node_modules/highlight.js/styles/github.css';
 
-  .readme-view {
-    border: 1px solid @navbar-default-border;
-  }
-
-  .md-header {
-    padding: @padding-large-horizontal;
-    background-color: @navbar-default-bg;
-    color: @navbar-default-color;
-    line-height: @line-height-base;
-    border-bottom: 1px solid lighten(@navbar-default-border, 5%);
-    font-weight: bold;
-  }
 
 }
 .p3x-gitlist-dark {
-  @import (less) '../../node_modules/highlight.js/styles/tomorrow-night.css';
-
-  .readme-view {
-    border: 1px solid @navbar-inverse-border;
-  }
-
-  .md-header {
-    padding: @padding-large-horizontal;
-    background-color: @navbar-inverse-bg;
-    color: @navbar-inverse-color;
-    line-height: @line-height-base;
-    border-bottom: 1px solid lighten(@navbar-inverse-border, 5%);
-    font-weight: bold;
-  }
+  @import (less) '../../node_modules/highlight.js/styles/dracula.css';
 
 }
 
-
-.md-view {
-  width: 100%;
-  margin-bottom: @line-height-base;
-}
-
-#md-content {
-  padding: @padding-large-vertical @padding-large-horizontal;
-
+#p3x-gitlist-readme {
   pre {
     padding: 0;
-
   }
-
 }
+
 

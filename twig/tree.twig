@@ -7,87 +7,20 @@
 
 {% block content %}
 
+    {% embed 'breadcrumb.twig' with {breadcrumbs: breadcrumbs } %}
+        {% block right %}
+            <button class="btn btn-sm btn-info" onclick="alert('in progress');">New file</button>
+        {%  endblock %}
 
-    {% embed 'breadcrumb.twig' with {breadcrumbs: breadcrumbs} %}
-        {% block extra %}
-
-            <div class="pull-right">
-                <div class="btn-group">
-                    {% if app.show_http_remote or app.show_ssh_remote %}
-                        <a href="#" class="btn btn-primary btn-xs" title="Show remotes to clone this repository."
-                           data-toggle="modal" data-target="#p3x-gitlist-modal-clone">Clone</a>
-                    {% endif %}
-                    <a href="{{ path('archive', {repo: repo, branch: branch, format: 'zip'}) }}"
-                       class="btn btn-primary btn-xs" title="Download '{{ branch }}' as a ZIP archive">ZIP</a>
-                    <a href="{{ path('archive', {repo: repo, branch: branch, format: 'tar'}) }}"
-                       class="btn btn-primary btn-xs" title="Download '{{ branch }}' as a TAR archive">TAR</a>
-                    <a href="{{ path('rss', {repo: repo, branch: branch}) }}" class="btn btn-primary btn-xs"><span
-                                class="fa fa-rss"></span></a>
-                </div>
-            </div>
-            {% if app.show_http_remote or app.show_ssh_remote %}
-
-                <!-- Modal -->
-                <div id="p3x-gitlist-modal-clone" class="modal fade" role="dialog" tabindex="-1">
-                    <div class="modal-dialog">
-
-                        <!-- Modal content-->
-                        <div class="modal-content">
-
-                            <div class="modal-body">
-
-                                <div style="text-align: center">
-                                    <div class="btn-group">
-                                        {% if app.show_ssh_remote %}
-                                            <button type="button"
-                                                    class="btn btn-primary{{ app.show_ssh_remote and app.show_http_remote ? ' active' }}"
-                                                    id="clone-button-ssh">SSH
-                                            </button>
-                                        {% endif %}
-                                        {% if app.show_http_remote %}
-                                            <button type="button" class="btn btn-primary" id="clone-button-http">HTTPS</button>
-                                        {% endif %}
-                                    </div>
-                                </div>
-                                <br/>
-
-
-                                {% if app.show_ssh_remote %}
-                                    <input readonly
-                                           type="text" class="form-control{{ app.show_ssh_remote ? ' visible' }}"
-                                           id="clone-input-ssh"
-                                           value="git clone {{ app.ssh_user }}@{{ global.request.host }}:{{ repo }}">
-                                {% endif %}
-                                {% if app.show_http_remote %}
-                                    <input type="text"
-                                           readonly class="form-control{{ app.show_ssh_remote is empty and app.show_http_remote ? ' visible' }}"
-                                           id="clone-input-http"
-                                           value="git clone http{{ app.use_https ? 's' }}://{{ app.http_user }}{{ app.http_user ? '@' }}{{ global.request.host }}/{{ app.git_clone_subdir }}{{ repo }}">
-                                {% endif %}
-
-
-
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-            {% endif %}
-        {% endblock %}
     {% endembed %}
 
-
     {% if files is not empty %}
-        <table class="table tree">
+        <table class="table table-striped">
             <thead>
             <tr>
                 <th width="80%">Name</th>
-                <th width="10%">Mode</th>
-                <th width="10%">Size</th>
+                <th width="10%" style="text-align: right;">Mode</th>
+                <th width="10%" style="text-align: right;">Size</th>
             </tr>
             </thead>
             <tbody>
@@ -130,8 +63,8 @@
 
 
                     </td>
-                    <td>{{ file.mode }}</td>
-                    <td>{% if file.size %}{{ (file.size / 1024) | number_format }} kb{% endif %}</td>
+                    <td style="text-align: right;">{{ file.mode }}</td>
+                    <td style="text-align: right;">{% if file.size %}{{ (file.size / 1024) | number_format }} kb{% endif %}</td>
                 </tr>
             {% endfor %}
             </tbody>
@@ -140,12 +73,7 @@
         <p>This repository is empty.</p>
     {% endif %}
     {% if readme is defined and readme is not empty %}
-        <div class="readme-view">
-            <div class="md-header">
-                <span class="meta">{{ readme.filename }}</span>
-            </div>
-            <div id="md-content">{{ readme.content }}</div>
-        </div>
+        {% include 'markdown.twig' with {'filename': readme.filename, 'data': readme.content} %}
     {% endif %}
 
 

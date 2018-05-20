@@ -24,41 +24,26 @@
   }
 }
 
+.p3x-gitlist-button {
+  .btn {
+    margin-bottom: @padding-base-vertical !important;
+  }
+}
 
 .p3x-gitlist-dark {
   #snackbar-container > div {
     border: 1px solid @navbar-default-border;
   }
 
-  pre {
+  code {
     overflow-x: auto;
     white-space:pre-wrap;
   }
 
-  pre.p3x-gitlist-code {
+  code.p3x-gitlist-code {
     background-color: lighten(@navbar-inverse-bg, 5%);
     color: @navbar-inverse-color;
     border-color: @navbar-inverse-border;
-  }
-}
-
-
-.header {
-  margin-bottom: @line-height-computed;
-}
-
-
-
-.space-right {
-  padding: 0 8px 0 0;
-}
-
-.rss-icon {
-  color: @brand-danger;
-  font-size: @font-size-large;
-
-  &:hover {
-    color: darken(@brand-danger, 15%);
   }
 }
 
@@ -77,7 +62,7 @@ a.p3x-gitlist-markdown-heading-link {
 }
 
 .p3x-gitlist-breadcrumb-divider {
-  min-height: 8px;
+  min-height: @padding-base-vertical;
   display: block;
   clear: both;;
 }
@@ -89,30 +74,19 @@ img.emoji {
   vertical-align: -0.1em;
 }
 
-body {
-  font-size: 10pt !important;
-}
-
 .p3x-list-item-header {
   font-weight: bold !important;
 }
 
-.p3x-gitlist-twig-file-button-row {
-  margin-bottom: 5px !important;
-}
-
 @import "network.less";
-@import "clone-modal.less";
+@import "clone-button.less";
 @import "footer";
-@import "repositories";
 @import "main-tabs";
-@import "tree";
-@import "source-view";
+@import "treegraph";
+@import "file";
 @import "commits";
 @import "commit-list";
-@import "stats";
-@import "blame-view";
 @import "markdown";
-@import "table";
-@import "branch-menu";
+@import "browser";
 @import "overlay";
+@import "search";

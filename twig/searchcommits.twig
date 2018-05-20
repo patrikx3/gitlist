@@ -5,7 +5,17 @@
 {% block title %}P3X GitList{% endblock %}
 
 {% block content %}
-    {% include 'breadcrumb.twig' with {breadcrumbs: [{dir: 'Commits search results for: ' ~ query, path:''}]} %}
+
+    {% embed 'breadcrumb.twig' with {breadcrumbs: [{dir: 'Commits search results for: ' ~ query, path:''}]} %}
+
+        {% block left %}
+            {% if commits %}
+                <button type="button" class="btn btn-primary btn-sm">Commits found: {{ commits | length }}</button>
+            {% endif %}
+        {%  endblock %}
+
+    {% endembed %}
+
 
     {% include 'commits_list.twig' %}
 

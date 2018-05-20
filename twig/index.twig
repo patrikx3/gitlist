@@ -4,12 +4,12 @@
 {% block body %}
 {% include 'navigation.twig' %}
 
-<div class="container" id="repositories">
+<div class="container" id="p3x-gitlist-index">
     <div class="search form-group">
         <div class="input-group">
             <input class="search form-control" name="query-repo" placeholder="Search repositories" autofocus value=""/>
             <span class="input-group-btn">
-                <button class="btn btn-default" type="button" id="p3x-gitlist-repo-list-clear">
+                <button class="btn btn-default" type="button" id="p3x-gitlist-index-list-clear">
                     <i class="fas fa-times"></i>
                 </button>
             </span>
@@ -18,25 +18,34 @@
 
     <div class="list">
         {% for repository in repositories %}
-            <div class="repository">
-                <div class="repository-header">
-                    <i class="fas fa-cube"></i>
-                    <a href="{{ path('repository', {repo: repository.name}) }}">
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+               <th>
+                   <i class="fas fa-cube"></i>
+                   <a href="{{ path('repository', {repo: repository.name}) }}">
                        <span class="name">{{ repository.name | remove_extension }}</span>
                    </a>
-                    <a href="{{ path('rss', {repo: repository.name, branch: 'master'}) }}"><span class="fa fa-rss pull-right"></span></a>
-                </div>
-                <div class="repository-body">
-                    {% if repository.description %}
-                        <p>{{ repository.description }}</p>
-                    {% else %}
-                        <p>There is no repository description file. Please, create one to remove this message.</p>
-                    {% endif %}
-                </div>
-            </div>
+                   <a href="{{ path('rss', {repo: repository.name, branch: 'master'}) }}"><i class="fa fa-rss pull-right"></i></a>
+               </th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span class="description">
+                        {% if repository.description %}
+                            {{ repository.description }}
+                        {% else %}
+                            There is no repository description file. Please, create one to remove this message.
+                        {% endif %}
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
         {% endfor %}
     </div>
-
 
 
     {% include 'footer.twig' %}

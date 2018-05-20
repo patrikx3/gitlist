@@ -1,7 +1,7 @@
 <ul class="nav nav-pills nav-justified" id="p3x-gitlist-main-tabs">
     {% if branches is defined %}
         <li>
-            {% include 'branch_menu.twig' %}
+            {% include 'browser.twig' %}
         </li>
     {% endif %}
     <li{% if page == 'files' %} class="active"{% endif %}><a href="{{ path('branch', {repo: repo, branch: branch}) }}">Files</a></li>

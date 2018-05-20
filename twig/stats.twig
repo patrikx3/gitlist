@@ -7,42 +7,66 @@
 {% block content %}
     {% include 'breadcrumb.twig' with {breadcrumbs: [{dir: 'Statistics', path:''}, {dir: branch, path:''}]} %}
 
-    <table class="p3x-gitlist-stats table stats">
-        <thead>
-            <tr>
-                <th width="30%"><span class="fas fa-file"></span> File extensions ({{ stats.extensions|length }})</th>
-                <th width="40%"><span class="fa fa-users"></span> Authors ({{ authors|length }})</th>
-                <th width="30%"><span class="fa fa-star"></span> Other</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>
-                    <ul>
-                    {% for ext, amount in stats.extensions %}
-                        <li><strong>{{ ext }}</strong>: {{ amount }} files</li>
-                    {% endfor %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong>
+                            <i class="fas fa-file-alt"></i>&nbsp;&nbsp;File extensions
+                        </strong>
+                        <span class="badge pull-right">{{ stats.extensions|length }}</span>
+                    </div>
+                    <ul class="list-group">
+                        {% for ext, amount in stats.extensions %}
+                        <li class="list-group-item">
+                            <strong>{{ ext }}</strong>
+                            <span class="pull-right">{{ amount }}</span>
+                        </li>
+                        {% endfor %}
                     </ul>
-                </td>
-                <td>
-                    <ul>
-                    {% for author in authors %}
-                        <li><strong><a href="mailto:{{ author.email }}">{{ author.name }}</a></strong>: {{ author.commits }} commits</li>
-                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <span class="badge pull-right">{{ authors|length }}</span>
+                        <strong>
+                            <i class="fas fa-user"></i>&nbsp;&nbsp;Authors
+                        </strong>
+                    </div>
+                    <ul class="list-group">
+                        {% for author in authors %}
+                            <li class="list-group-item">
+                                <strong><a href="mailto:{{ author.email }}">{{ author.name }}</a></strong>
+                                <span class="pull-right">{{ author.commits }}</span>
+                            </li>
+                        {% endfor %}
                     </ul>
-                </td>
-                <td>
-                    <p>
-                        <strong>Total files:</strong> {{ stats.files }}
-                    </p>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong>
+                            <i class="far fa-chart-bar"></i>&nbsp;&nbsp;Stats
+                        </strong>
+                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <span class="pull-right">{{ stats.files }}</span>
+                            <strong>Total files</strong>
+                        </li>
+                        <li class="list-group-item">
+                            <strong>{{ stats.size }} bytes</strong>
+                            <span class="pull-right">{{ stats.size | format_size  }}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                    <p>
 
-                        <strong>Total bytes:</strong> {{ stats.size }} bytes ({{ stats.size | format_size  }})
-                    </p>
-                </td>
-            </tr>
-        </tbody>
-    </table>
 
 {% endblock %}
