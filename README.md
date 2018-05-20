@@ -4,7 +4,7 @@
 
 
  
-# 🤖 P3X Gitlist v2.6.1-719  
+# 🤖 P3X Gitlist v2.6.3-722  
 
 This is an open-source project. Star this repository if you like it, or even donate!  Thank you so much! :)
 
@@ -85,9 +85,19 @@ https://github.com/patrikx3/gitlist/releases/tag/2.0.4-579
 
 The following versions are not using `Babel`!!!! Yikes!
 
+### The next release
+
+**P3X GitList v3.0 will migrate from `Silex` to `Symphony` on the server side and the frontend will be using `Bootstrap 4` with `AngularJS`. That version will expect to work with `async/await` and the latest `JavaScript` versions, as now, no `Babel` anymore!!!** 
+
+
 ### Unreleased / in progress
+
+I think this `v2.6` is complete.    
+
 * Allow to edit non binary files
 * Upload binary files
+* Add new files
+* Delete files
 * Localization
 * In submodules, if the "submodule" and "path" is not the same, it chokes (it should work the submodule name and path are not the same)
   * Works
@@ -162,7 +172,7 @@ npm run watch
 
 ---
 
-[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2.6.1-719 
+[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2.6.3-722 
 
 [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software) [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) 
 

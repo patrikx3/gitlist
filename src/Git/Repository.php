@@ -373,7 +373,7 @@ class Repository extends BaseRepository
         return $data;
     }
 
-    public function getStatistics($branch)
+    public function getStatistics($branch = null)
     {
         // Calculate amount of files, extensions and file size
         $logs = $this->getClient()->run($this, 'ls-tree -r -l ' . $branch);
