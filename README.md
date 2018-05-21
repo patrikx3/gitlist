@@ -85,14 +85,7 @@ https://github.com/patrikx3/gitlist/releases/tag/2.0.4-579
 
 The following versions are not using `Babel`!!!! Yikes!
 
-### The next release
-
-**P3X GitList v3.0 will migrate from `Silex` to `Symphony` on the server side and the frontend will be using `Bootstrap 4` with `AngularJS`. That version will expect to work with `async/await` and the latest `JavaScript` versions, as now, no `Babel` anymore!!!** 
-
-
 ### Unreleased / in progress
-
-I think this `v2.6` is complete.    
 
 * Allow to edit non binary files
 * Upload binary files
