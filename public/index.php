@@ -1,8 +1,10 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
 /**
- * GitList: an elegant and modern git repository viewer
- * http://gitlist.org
+ * P3X GitList: an elegant and modern git repository viewer
+ * http://github.com/patrikx3/gitlist
  */
 
 if (!ini_get('date.timezone')) {

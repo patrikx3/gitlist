@@ -52,15 +52,15 @@ const lessSettings = (grunt) => {
 
                 // css with random
                 const themeCss = {
-                    'bootstrap-default': `/generated/css/bootstrap-default.${lessHash}.css`,
-                    'bootstrap-solar': `/generated/css/bootstrap-solar.${lessHash}.css`,
+                    'bootstrap-default': `generated/css/bootstrap-default.${lessHash}.css`,
+                    'bootstrap-solar': `generated/css/bootstrap-solar.${lessHash}.css`,
                 }
 
                 for (let path of watches) {
                     const stat = fs.statSync(`${root}/${path}`);
                     if (stat.isDirectory() && !excluded.includes(path)) {
                         themes.push(path);
-                        themeCss[`bootstrap-${path}`] = `/generated/css/bootstrap-${path}.${lessHash}.css`;
+                        themeCss[`bootstrap-${path}`] = `generated/css/bootstrap-${path}.${lessHash}.css`;
                     }
                 }
                 // -- css with random

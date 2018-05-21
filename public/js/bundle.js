@@ -1,12 +1,10 @@
-require('codemirror/lib/codemirror.css')
-
 window.gitlist.codemirrorTheme = {
     light: 'idea',
     dark: 'dracula',
 }
-
-require(`codemirror/theme/${window.gitlist.codemirrorTheme.light}.css`)
-require(`codemirror/theme/${window.gitlist.codemirrorTheme.dark}.css`)
+require('codemirror/lib/codemirror.css')
+require(`codemirror/theme/idea.css`)
+require(`codemirror/theme/dracula.css`)
 
 
 //require('../less/style.less')
@@ -95,5 +93,6 @@ require('./browser')
 require('./index.js')
 require('./file')
 require('./theme-switcher.js')
+require('./commit')
 require('./global')
 

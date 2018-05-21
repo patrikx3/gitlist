@@ -2,7 +2,7 @@
 
 namespace GitList\Provider;
 
-use GitList\Git\Client;
+use Gitter\Client;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 

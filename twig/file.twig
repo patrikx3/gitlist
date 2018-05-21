@@ -133,7 +133,7 @@
 
 
 
-    <div class="source-view">
+    <div>
 
         {% if fileType == 'image' %}
             <div class="text-center"><img src="{{ path('blob_raw', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"
@@ -142,7 +142,7 @@
         {% elseif fileType == 'markdown' and enforceCodemirror != true %}
             {% include 'markdown.twig' with {'filename': file, 'data': blob} %}
         {% else %}
-            <pre class="p3x-gitlist-code" id="sourcecode" language="{{ fileType }}">{{ blob|htmlentities|raw }}</pre>
+            <pre class="p3x-gitlist-code" id="p3x-gitlist-file-editor" language="{{ fileType }}">{{ blob|htmlentities|raw }}</pre>
 
         {% endif %}
     </div>

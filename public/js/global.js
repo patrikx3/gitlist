@@ -16,6 +16,8 @@ const scrollIntoView = (el) => {
     }
 }
 
+window.gitlist.scrollIntoView = scrollIntoView;
+
 /*
 const regExpEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -48,7 +50,7 @@ window.gitlist.setInputQuery = (name) => {
 }
 
 window.gitlist.isDark =(theme = window.gitlist.getActualTheme()) => {
-    for(var i = 0; i < window.gitlist.dark.length; i++ ) {
+    for(let i = 0; i < window.gitlist.dark.length; i++ ) {
         if (window.gitlist.dark[i] === theme) {
             return true;
         }
@@ -62,8 +64,7 @@ window.gitlist.cookieSettings = {
 }
 
 
-window.gitlist.getActualTheme = () => {
-    const theme = window.gitlist.getThemeCookie()
+window.gitlist.getActualTheme = (theme = window.gitlist.getThemeCookie()) => {
     const actualTheme = theme.split('-')[1]
     return actualTheme;
 }
@@ -76,6 +77,8 @@ window.gitlist.getActualThemeCodemirror = () => {
     }
 }
 
+let currentTheme;
+let setTimeoutSwitch;
 window.gitlist.setTheme = () => {
     if ($body === undefined) {
         setTimeout(() => {
@@ -84,28 +87,36 @@ window.gitlist.setTheme = () => {
         return;
     }
     const theme = window.gitlist.getActualTheme();
+//    console.log('theming', 'currenTheme', currentTheme, 'new theme', theme);
+    if (theme === currentTheme) {
+//        console.log('same theme')
+        return;
+    }
+//    console.log('p3x-gitlist switching theme')
+    currentTheme = theme;
     if (window.gitlist.isDark(theme)) {
         $body.addClass('p3x-gitlist-dark')
         $body.removeClass('p3x-gitlist-light')
         if (gitlist.viewer !== undefined) {
             gitlist.viewer.setOption("theme", window.gitlist.codemirrorTheme.dark);
         }
+        gitlist.diffEditors.forEach(editor => editor.setOption('theme', window.gitlist.codemirrorTheme.dark ) )
     } else {
         $body.addClass('p3x-gitlist-light')
         $body.removeClass('p3x-gitlist-dark')
         if (gitlist.viewer !== undefined) {
             gitlist.viewer.setOption("theme", window.gitlist.codemirrorTheme.light);
         }
+        gitlist.diffEditors.forEach(editor => editor.setOption('theme', window.gitlist.codemirrorTheme.light ) )
     }
     window.gitlist.networkRedraw();
     window.gitlist.treegraph();
-    let setTimeoutSwitch;
-    if (window.gitlist.lastloadSpan !== undefined && window.gitlist.lastloadSpan > 1000) {
+//    if (window.gitlist.lastloadSpan !== undefined && window.gitlist.lastloadSpan > 1000) {
         clearTimeout(setTimeoutSwitch)
         setTimeoutSwitch = setTimeout(() => {
             $('.p3x-gitlist-overlay').remove();
-        }, window.gitlist.lastloadSpan)
-    }
+        }, 250)
+//    }
 }
 
 const pushHash = (hash) => {
@@ -137,18 +148,22 @@ global.gitlist.scrollHash = function(element, event) {
 }
 
 $(function () {
+    currentTheme = window.gitlist.getActualTheme(window.gitlist.loadTheme)
+
     $('.dropdown-toggle').dropdown();
     $('[data-toggle="tooltip"]').tooltip()
 
     $body = $('body');
     $head = $('head')
 
-    /*
+//    let waiter = 500;
+//    let timeout = 500;
     Object.values(window.gitlist.themes).forEach(css => {
-        const cssPath = `${window.gitlist.basepath}${css}`;
-        $head.append(`<link rel="prefetch" href="${cssPath}">`)
+//        setTimeout(() => {
+            $head.append(`<link as="style" rel="prefetch" href="${css}">`)
+//        }, timeout)
+//        timeout += waiter;
     })
-    */
 
 
     const es = document.getElementsByTagName('a')
@@ -171,9 +186,11 @@ $(function () {
         })
     }
 
+    /*
     $('.search').click(function (e) {
         e.stopPropagation();
     });
+    */
 
     if (window.gitlist.lastload !== undefined) {
         window.gitlist.lastloadSpan = Date.now() - window.gitlist.lastload;
@@ -181,6 +198,10 @@ $(function () {
     $('.p3x-gitlist-overlay').remove();
     global.gitlist.scrollHash(location)
 
+
+    window.gitlist.networkRedraw();
+    window.gitlist.treegraph();
+    gitlist.setTheme()
 });
 
 

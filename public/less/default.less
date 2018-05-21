@@ -30,6 +30,19 @@
   }
 }
 
+
+.p3x-gitlist-light {
+  .CodeMirror {
+    border: 1px solid @gray-lighter;
+  }
+}
+
+.p3x-gitlist-dark {
+  .CodeMirror {
+    border: 1px solid @navbar-default-bg !important;
+  }
+}
+
 .p3x-gitlist-dark {
   #snackbar-container > div {
     border: 1px solid @navbar-default-border;
@@ -78,14 +91,20 @@ img.emoji {
   font-weight: bold !important;
 }
 
+.breadcrumb {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@import "index";
 @import "clone-button.less";
 @import "footer";
 @import "main-tabs";
 @import "treegraph";
 @import "file";
-@import "commits";
-@import "commit-list";
 @import "markdown";
 @import "browser";
 @import "overlay";
 @import "search";
+@import "codemirror";

@@ -23,86 +23,70 @@
         {% block right %}
             <a class="btn btn-info btn-sm" href="{{ path('branch', {repo: repo, branch: commit.hash}) }}" title="Browse code at this point in history"><span class="fa fa-list-alt"></span> Browse code</a>
         {%  endblock %}
-
-        {% block left %}
-            <div>
-                <div style="font-size: 175%; padding: 10px; font-weight: bold;">
-                    {{ commit.message }}
-                </div>
-            </div>
-
-        {%  endblock %}
-
     {% endembed %}
 
-    <div class="commit-view">
-
-        <div class="commit-body">
-            {% if commit.body is not empty %}
-            <p>{{ commit.body | nl2br }}</p>
-            {% endif %}
-            <img src="{{ avatar(commit.author.email, 32) }}" class="pull-left" style="padding: 8px;" />
-            <span>
-                <a href="mailto:{{ commit.author.email }}">{{ commit.author.name }}</a> authored on {{ commit.date | format_date }}
-                {% if commit.author.email != commit.commiter.email %}
-                &bull; <a href="mailto:{{ commit.commiter.email }}">{{ commit.commiter.name }}</a> committed on {{ commit.commiterDate | format_date }}
-                {% endif %}
-                <br />Showing {{ commit.changedFiles }} changed files
-            </span>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="media">
+                <div class="media-left">
+                    <a>
+                        <img class="media-object" src="{{ avatar(commit.author.email, 32) }}"/>
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">
+                        {{ commit.message  }}
+                        {% if commit.body is not empty %}
+                            {{ commit.body | nl2br }}
+                        {% endif %}
+                    </h4>
+                    <a href="mailto:{{ commit.author.email }}">{{ commit.author.name }}</a> authored on {{ commit.date | format_date }}
+                    {% if commit.author.email != commit.commiter.email %}
+                        &bull; <a href="mailto:{{ commit.commiter.email }}">{{ commit.commiter.name }}</a> committed on {{ commit.commiterDate | format_date }}
+                    {% endif %}
+                </div>
+            </div>
         </div>
+        <div class="panel-body">
+            Showing {{ commit.changedFiles }} changed files
+        </div>
+        <ul class="list-group">
+            {% for diff in commit.diffs %}
+                <li class="list-group-item">
+                    <!--<div class="pull-right">{{ diff.index }}</div>-->
+                    <i class="far fa-file-alt"></i>&nbsp;
+                    <a id="{{ diff.file | to_id }}" href="#p3x-gitlist-diff-{{ loop.index }}">{{ diff.file }}</a>
+                </li>
+            {% endfor %}
+        </ul>
     </div>
 
-    <ul class="commit-list">
-        {% for diff in commit.diffs %}
-            <li><i class="far fa-file-alt"></i> <a id="{{ diff.file | to_id }}" href="#diff-{{ loop.index }}">{{ diff.file }}</a> <span class="meta pull-right">{{ diff.index }}</span></li>
-        {% endfor %}
-    </ul>
+
+    <div role="alert" class="alert-dismissable alert alert-info">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        The diffs are not showing by default, because it costs a lot of computing.
+    </div>
 
     {% for diff in commit.diffs %}
-        <br/>
         <div class="pull-right">
             <a href="{{ path('commits', {repo: repo, commitishPath: commit.hash ~ '/' ~ diff.file}) }}"  class="btn btn-primary btn-sm"><span class="fa fa-list-alt"></span>&nbsp;History</a>
             &nbsp;
             <a href="{{ path('blob', {repo: repo, commitishPath: commit.hash ~'/' ~ diff.file}) }}"  class="btn btn-primary btn-sm"><span class="fas fa-file-alt"></span>&nbsp;View file @ {{ commit.shortHash }}</a>
         </div>
-        <div class="source-view">
-        <div class="source-header">
-            <div class="meta"><span id="diff-{{ loop.index }}"><a href="#{{ diff.file | to_id }}">{{ diff.file }}</a></div>
+        <a id="p3x-gitlist-diff-{{ loop.index }}" href="#{{ diff.file | to_id }}">{{ diff.file }}</a>
+
+        <div class="p3x-gitlist-breadcrumb-divider"></div>
+
+        <script class="p3x-gitlist-commit-diff" data-diff-ref="p3x-gitlist-diff-{{ loop.index }}" data-diff-id="p3x-gitlist-diff-data-{{ loop.index }}" type="application/json">{{ diff.getPureLines |json_encode|raw }}</script>
+
+        <div class="panel panel-default" id="p3x-gitlist-diff-data-{{ loop.index }}" style="cursor: pointer;">
+            <div class="panel-body" style="text-align: center;">
+                Click to load this diff ...
+            </div>
         </div>
 
-        <div class="source-diff" style="margin-top: 5px;">
-        <table>
-        {% for line in diff.getLines %}
+        <div class="p3x-gitlist-breadcrumb-divider"></div>
 
-            <tr>
-                <td class="lineNo">
-                    {% if line.getType != 'chunk' %}
-                        <a id="{{ diff.index  | to_id }}L{{ loop.index }}R{{ line.getNumOld }}"></a>
-                        <a href="#{{ diff.index  | to_id }}L{{ loop.index }}R{{ line.getNumOld }}">
-                    {% endif %}
-                    {{ line.getNumOld }}
-                    {% if line.getType != 'chunk' %}
-                        </a>
-                    {% endif %}
-                </td>
-                <td class="lineNo">
-                    {% if line.getType != 'chunk' %}
-                        <a id="{{ diff.index  | to_id }}L{{ loop.index }}L{{ line.getNumNew }}"></a>
-                        <a href="#{{ diff.index | to_id }}L{{ loop.index }}L{{ line.getNumNew }}">
-                    {% endif %}
-                    {{ line.getNumNew }}
-                    {% if line.getType != 'chunk' %}
-                        </a>
-                    {% endif %}
-                </td>
-                <td style="width: 100%">
-                    <pre class="p3x-gitlist-code {% if line.getType %}  {{ line.getType }} {% endif %}">{{ line.getLine }}</pre>
-                </td>
-            </tr>
-        {% endfor %}
-        </table>
-        </div>
-    </div>
     {% endfor %}
 
 {% endblock %}

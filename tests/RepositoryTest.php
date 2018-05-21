@@ -1,7 +1,7 @@
 <?php
 
-use GitList\Git\Client;
-use GitList\Git\Repository;
+use Gitter\Client;
+use Gitter\Repository;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
 

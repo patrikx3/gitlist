@@ -1,6 +1,6 @@
 $(function() {
 
-    const sourceCode = $('#sourcecode');
+    const sourceCode = $('#p3x-gitlist-file-editor');
     if (sourceCode.length) {
 
         const commit = window.gitlist.commit;
@@ -233,7 +233,6 @@ ${branchInfo}
             }
 
             buttonFull.click(setFull)
-
             const cm  = CodeMirror(function(elt) {
                 pre.parentNode.replaceChild(elt, pre);
             }, {

@@ -10,7 +10,7 @@ function getThemeCookie() {
 
 gitlist.getThemeCookie = getThemeCookie;
 
-$(function() {
+$(function () {
 
     const themeList = $('#theme-list');
 
@@ -28,28 +28,27 @@ $(function() {
     const currentCookie = getThemeCookie('gitlist-bootstrap-theme');
     const darkMenu = [];
     const lightMenu = []
-    for(let key in themes) {
+    for (let key in themes) {
         const actualTheme = key.substring(10)
-        const menu = '<li class="' + (currentCookie  === key ? 'active' : '') + '" style="text-transform: capitalize"><a href="#" data-theme="' + key + '" class="theme-link">' + actualTheme + '</a></li>';
+        const menu = '<li class="' + (currentCookie === key ? 'active' : '') + '" style="text-transform: capitalize"><a href="#" data-theme="' + key + '" class="theme-link">' + actualTheme + '</a></li>';
         if (window.gitlist.isDark(actualTheme)) {
             darkMenu.push(menu)
         } else {
             lightMenu.push(menu)
         }
     }
-    for(let menu of lightMenu) {
+    for (let menu of lightMenu) {
         themeList.append(menu);
     }
     themeList.append('<li class="divider"></li>')
-    for(let menu of darkMenu) {
+    for (let menu of darkMenu) {
         themeList.append(menu);
     }
 
-    gitlist.setTheme()
-
     const themesheet = $('#bootstrap-theme');
 
-    $('.theme-link').click(function(event){
+    let deferredSwitchTheme;
+    $('.theme-link').click(function (event) {
 
         event.preventDefault();
 
@@ -60,31 +59,37 @@ $(function() {
             $this.parent().addClass('active');
             const themeurl = themes[$this.attr('data-theme')];
             setThemeCookie($this.attr('data-theme'));
-            const href = (gitlist.basepath === '/' ? '' : gitlist.basepath) + themeurl;
+            const href = themeurl;
+            const currentHref = themesheet.attr('href')
+//            console.log('currentHref', currentHref, 'href', href)
+            if (currentHref === href) {
+                return;
+            }
+
+//            console.log('p3x-gitlist themer swtich')
+
             themesheet.attr('href', href);
             gitlist.setTheme()
         }
 
-        if (window.gitlist.lastloadSpan !== undefined && window.gitlist.lastloadSpan > 1000) {
+        clearTimeout(deferredSwitchTheme)
+        deferredSwitchTheme = setTimeout(() => {
             $('body').prepend(`
  <div class="p3x-gitlist-overlay">
         <div>
-            <i class="fas fa-cog fa-spin fa-3x"></i>
+            <i class="fas fa-cog fa-spin fa-4x"></i>
         </div>
+        <br/>
         <div>
-            For a big page, it takes some time to switch the theme...<br/>
-            The page rendering took about ${Math.ceil(window.gitlist.lastloadSpan / 1000)} seconds ...<br/>
-            It means, the theme will take <strong>about</strong> the same time ...<br/>
-            What is good, is that we are not reloading the server data.   
+            Hang on, we are not reloading the server ...
         </div>
 </div>        
         `)
-            setTimeout(() => {
+            clearTimeout(deferredSwitchTheme)
+            deferredSwitchTheme = setTimeout(() => {
                 generateNewTheme()
             }, 250)
-        } else {
-            generateNewTheme();
-        }
-        
+        }, 250);
+
     });
 });

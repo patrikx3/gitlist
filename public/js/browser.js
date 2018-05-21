@@ -38,7 +38,7 @@ $(function() {
                 return `${baseUrl}/commits/${options.checkout}${path}`;
             },
             commit: (options) => {
-                return `${baseUrl}/commit/${options.checkout}${path}`;
+                return `${baseUrl}/commits/${options.checkout}${path}`;
             },
             stats: (options) => {
                 return `${baseUrl}/stats/${options.checkout}${path}`;
