@@ -43,17 +43,18 @@
   }
 }
 
+code, pre {
+  overflow-x: auto;
+  //white-space:pre-wrap;
+  font-family: monospace;
+}
+
 .p3x-gitlist-dark {
   #snackbar-container > div {
     border: 1px solid @navbar-default-border;
   }
 
-  code {
-    overflow-x: auto;
-    white-space:pre-wrap;
-  }
-
-  code.p3x-gitlist-code {
+  code.p3x-gitlist-code, pre.p3x-gitlist-code {
     background-color: lighten(@navbar-inverse-bg, 5%);
     color: @navbar-inverse-color;
     border-color: @navbar-inverse-border;
@@ -108,3 +109,5 @@ img.emoji {
 @import "overlay";
 @import "search";
 @import "codemirror";
+@import "commit";
+@import "tree";

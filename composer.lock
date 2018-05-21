@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1a3e0f217a00c866cb5fdb29ba5b86a5",
-    "content-hash": "0b00d3963cfedce5bb95b05fc1137135",
+    "hash": "ff02bd2f1a1e4e2e96c295f75e2ae1b0",
+    "content-hash": "d9636fa07c87ab61f1ccefa6531284ca",
     "packages": [
         {
             "name": "danielstjules/stringy",
@@ -65,16 +65,16 @@
         },
         {
             "name": "patrikx3/gitter",
-            "version": "2.0.0",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/patrikx3/gitter.git",
-                "reference": "b0c79d6b500ad12cacdde8e56c99a5d8ec289737"
+                "reference": "1ee9c22731e4da73e64191f2ece2f3d4ac0a52c7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/patrikx3/gitter/zipball/b0c79d6b500ad12cacdde8e56c99a5d8ec289737",
-                "reference": "b0c79d6b500ad12cacdde8e56c99a5d8ec289737",
+                "url": "https://api.github.com/repos/patrikx3/gitter/zipball/1ee9c22731e4da73e64191f2ece2f3d4ac0a52c7",
+                "reference": "1ee9c22731e4da73e64191f2ece2f3d4ac0a52c7",
                 "shasum": ""
             },
             "require": {
@@ -118,7 +118,7 @@
                 "git",
                 "vcs"
             ],
-            "time": "2018-05-21 15:36:26"
+            "time": "2018-05-21 20:35:20"
         },
         {
             "name": "pimple/pimple",

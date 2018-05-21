@@ -5,15 +5,17 @@ const Cookies = require('js-cookie')
 
 const scrollIntoViewOptions = {
     behavior: "instant",
-    block: "start",
-    inline: "start"
+//    block: "start",
+//    inline: "start"
 }
 const navbarHeight = 80;
 const scrollIntoView = (el) => {
     el.scrollIntoView(scrollIntoViewOptions)
+    /*
     if ((window.innerHeight + window.scrollY) <= document.body.offsetHeight - navbarHeight ) {
-        window.scrollBy(0,-navbarHeight )
+        window.scrollBy(0, -navbarHeight )
     }
+    */
 }
 
 window.gitlist.scrollIntoView = scrollIntoView;
@@ -100,14 +102,12 @@ window.gitlist.setTheme = () => {
         if (gitlist.viewer !== undefined) {
             gitlist.viewer.setOption("theme", window.gitlist.codemirrorTheme.dark);
         }
-        gitlist.diffEditors.forEach(editor => editor.setOption('theme', window.gitlist.codemirrorTheme.dark ) )
     } else {
         $body.addClass('p3x-gitlist-light')
         $body.removeClass('p3x-gitlist-dark')
         if (gitlist.viewer !== undefined) {
             gitlist.viewer.setOption("theme", window.gitlist.codemirrorTheme.light);
         }
-        gitlist.diffEditors.forEach(editor => editor.setOption('theme', window.gitlist.codemirrorTheme.light ) )
     }
     window.gitlist.networkRedraw();
     window.gitlist.treegraph();
@@ -118,7 +118,6 @@ window.gitlist.setTheme = () => {
         }, 250)
 //    }
 }
-
 const pushHash = (hash) => {
     if(history.pushState) {
         const pushState = location.pathname + hash;
@@ -129,16 +128,17 @@ const pushHash = (hash) => {
     }
 
 }
-
+window.gitlist.pushHash = pushHash;
 
 global.gitlist.scrollHash = function(element, event) {
     const url = new URL(element.href)
     const id = url.hash.substring(1)
     const elfind = document.getElementById(id + '-parent')
-    if (elfind === null) {
+    const elfind2 = document.getElementById(id)
+    if (elfind === null && elfind2 === null) {
         return true;
     }
-    scrollIntoView(elfind);
+    scrollIntoView(elfind || elfind2);
 
     if (event !== undefined) {
         event.preventDefault()

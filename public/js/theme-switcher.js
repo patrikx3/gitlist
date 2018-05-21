@@ -66,14 +66,6 @@ $(function () {
                 return;
             }
 
-//            console.log('p3x-gitlist themer swtich')
-
-            themesheet.attr('href', href);
-            gitlist.setTheme()
-        }
-
-        clearTimeout(deferredSwitchTheme)
-        deferredSwitchTheme = setTimeout(() => {
             $('body').prepend(`
  <div class="p3x-gitlist-overlay">
         <div>
@@ -85,11 +77,17 @@ $(function () {
         </div>
 </div>        
         `)
-            clearTimeout(deferredSwitchTheme)
-            deferredSwitchTheme = setTimeout(() => {
-                generateNewTheme()
-            }, 250)
-        }, 250);
+
+//            console.log('p3x-gitlist themer swtich')
+
+            themesheet.attr('href', href);
+            gitlist.setTheme()
+        }
+
+        clearTimeout(deferredSwitchTheme)
+        deferredSwitchTheme = setTimeout(() => {
+            generateNewTheme()
+        }, 250)
 
     });
 });
