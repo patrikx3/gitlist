@@ -1,4 +1,4 @@
-{% extends 'layout_page.twig' %}
+{% extends 'layout-page.twig' %}
 
 {% set page = 'commits' %}
 
@@ -35,10 +35,10 @@
                     </a>
                 </div>
                 <div class="media-body">
-                    <h4 class="media-heading">
+                    <h4 class="media-heading" id="p3x-git-commit-heading">
                         {{ commit.message }}
                         {% if commit.body is not empty %}
-                            {{ commit.body | nl2br }}
+                            {{ commit.body }}
                         {% endif %}
                     </h4>
                     <a href="mailto:{{ commit.author.email }}">{{ commit.author.name }}</a> authored

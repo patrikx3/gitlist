@@ -1,6 +1,6 @@
 {
     "name": "p3x-gitlist",
-    "version": "2.7.9-749",
+    "version": "2.7.18-755",
     "corifeus": {
         "postfix": "",
         "prefix": "p3x-",
@@ -64,7 +64,7 @@
         "js-htmlencode": "^0.3.0",
         "list.js": "^1.5.0",
         "lodash": "^4.17.10",
-        "marked": "^0.3.19",
+        "marked": "^0.4.0",
         "php-date": "^2.1.1",
         "raphael": "^2.2.7",
         "snackbarjs": "^1.1.0",

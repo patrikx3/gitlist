@@ -110,7 +110,7 @@ For more information about all licenses, please see ${webpackBanner}
     plugins.push(
         new webpack.SourceMapDevToolPlugin({
             filename: 'sourcemaps/[file].map',
-            append: '\n//# sourceMappingURL=/[url]'
+            append: '\n//# sourceMappingURL=./[url]'
         })
     )
 

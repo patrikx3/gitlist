@@ -2,6 +2,17 @@ $(() => {
 
     const diffEditors = $('.p3x-gitlist-diff-container');
 
+    const commitMessage = $('#p3x-git-commit-heading');
+    if (commitMessage.length) {
+        const html = marked(commitMessage.text().trim(), {
+            renderer: window.gitlist.markdownRenderer,
+        });
+        commitMessage.html(twemoji.parse(html, {
+            folder: 'svg',
+            ext: '.svg',
+        }));
+    }
+
     let deferScroll;
     if (diffEditors) {
         for (let diffEditor of diffEditors) {

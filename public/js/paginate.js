@@ -4,6 +4,7 @@ $(function() {
     let loading = false;
     let button;
     let noMore = false;
+    let $noCommits;
 
     const nextCommitListItem = () => {
 
@@ -43,6 +44,11 @@ $(function() {
 
     function paginate() {
         $pager = $('.pager');
+        $noCommits = $('#p3x-gitlist-commits-no-more')
+        if ($noCommits.length !== 0) {
+            $pager.remove();
+            return;
+        }
         button  = $pager.find('.next a');
         button.one('click', function (e) {
             e.preventDefault();

@@ -43,21 +43,21 @@
         {% endfor %}
     </tbody>
 </table>
+
+
 {% endfor %}
 {% else %}
 
-    <h4>
+    <h4 id="p3x-gitlist-commits-no-more">
         No more commits.
     </h4>
 
 {% endif %}
 
 {% if page != 'searchcommits' %}
-<ul class="pager">
-    {% if pager.current != pager.last %}
-    <li class="next" id="p3x-gitlist-commit-list-next">
-        <a href="?page={{ pager.next }}">Older / Next &rarr;</a>
-    </li>
-    {% endif %}
-</ul>
+    <ul class="pager">
+        <li class="next" id="p3x-gitlist-commit-list-next">
+            <a href="?page={{ pager.next }}">Older / Next &rarr;</a>
+        </li>
+    </ul>
 {% endif %}
