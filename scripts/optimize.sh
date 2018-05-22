@@ -11,5 +11,6 @@ composer install
 composer install --no-dev
 composer dump-autoload --optimize
 npm install
-npm run build
+npm run build --verbose
+rm -rf ./node_modules
 popd

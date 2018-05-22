@@ -4,7 +4,7 @@
 
 
  
-# 🤖 P3X Gitlist v2.7.18-755  
+# 🤖 P3X Gitlist v2.7.79-796  
 
 This is an open-source project. Star this repository if you like it, or even donate!  Thank you so much! :)
 
@@ -15,7 +15,7 @@ All my domains (patrikx3.com and corifeus.com) could have errors since I am deve
 
 ### Node Version Requirement 
 ``` 
->=8.9.0 
+>=10.0.0 
 ```  
    
 ### Built on Node 
@@ -53,8 +53,9 @@ You might need to tune your web server, to only parse the `public/index.php` PHP
 #### PHP Memory
 It is possible, that some big commits are huge and for now, it loads everything. In `V3`, everything will be `lazy`, but looks like I had a huge commit and I had to set my `PHP.ini` had to change like:
 ```text
-max_execution_time = 120
-memory_limit = 512M
+max_execution_time = 240
+max_input_time = 240
+memory_limit = 1024m
 ```
 
 I checked and the big commit was using 258 MBytes.
@@ -165,7 +166,7 @@ npm run watch
 
 ---
 
-[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2.7.18-755 
+[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2.7.79-796 
 
 [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software) [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) 
 

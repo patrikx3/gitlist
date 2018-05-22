@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ff02bd2f1a1e4e2e96c295f75e2ae1b0",
-    "content-hash": "d9636fa07c87ab61f1ccefa6531284ca",
+    "hash": "8baa0982d7d49a96cc8ee647cdc5b0fe",
+    "content-hash": "eb8fe708a8d1ba403f1707e210f075a9",
     "packages": [
         {
             "name": "danielstjules/stringy",
@@ -62,63 +62,6 @@
                 "utils"
             ],
             "time": "2017-06-12 01:10:27"
-        },
-        {
-            "name": "patrikx3/gitter",
-            "version": "2.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/patrikx3/gitter.git",
-                "reference": "1ee9c22731e4da73e64191f2ece2f3d4ac0a52c7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/patrikx3/gitter/zipball/1ee9c22731e4da73e64191f2ece2f3d4ac0a52c7",
-                "reference": "1ee9c22731e4da73e64191f2ece2f3d4ac0a52c7",
-                "shasum": ""
-            },
-            "require": {
-                "danielstjules/stringy": ">=3",
-                "php": ">=7.1.0",
-                "spatie/temporary-directory": "^1.1",
-                "symfony/process": ">=4"
-            },
-            "require-dev": {
-                "mockery/mockery": ">=1",
-                "phpunit/phpunit": ">=7",
-                "symfony/filesystem": ">=4"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Gitter": "lib/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-2-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Klaus Silveira",
-                    "email": "klaussilveira@php.net",
-                    "homepage": "http://www.klaussilveira.com/",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Patrik Laszlo",
-                    "email": "alabard@gmail.com",
-                    "homepage": "https://www.patrikx3.com/",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Gitter interacts with Git repositories with the latest version dependencies and PHP.",
-            "homepage": "https://github.com/patrikx3/gitter",
-            "keywords": [
-                "git",
-                "vcs"
-            ],
-            "time": "2018-05-21 20:35:20"
         },
         {
             "name": "pimple/pimple",
@@ -1159,6 +1102,120 @@
                 "instantiate"
             ],
             "time": "2017-07-22 11:58:36"
+        },
+        {
+            "name": "hamcrest/hamcrest-php",
+            "version": "v2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hamcrest/hamcrest-php.git",
+                "reference": "776503d3a8e85d4f9a1148614f95b7a608b046ad"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hamcrest/hamcrest-php/zipball/776503d3a8e85d4f9a1148614f95b7a608b046ad",
+                "reference": "776503d3a8e85d4f9a1148614f95b7a608b046ad",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.3|^7.0"
+            },
+            "replace": {
+                "cordoval/hamcrest-php": "*",
+                "davedevelopment/hamcrest-php": "*",
+                "kodova/hamcrest-php": "*"
+            },
+            "require-dev": {
+                "phpunit/php-file-iterator": "1.3.3",
+                "phpunit/phpunit": "~4.0",
+                "satooshi/php-coveralls": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "hamcrest"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD"
+            ],
+            "description": "This is the PHP port of Hamcrest Matchers",
+            "keywords": [
+                "test"
+            ],
+            "time": "2016-01-20 08:20:44"
+        },
+        {
+            "name": "mockery/mockery",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mockery/mockery.git",
+                "reference": "99e29d3596b16dabe4982548527d5ddf90232e99"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mockery/mockery/zipball/99e29d3596b16dabe4982548527d5ddf90232e99",
+                "reference": "99e29d3596b16dabe4982548527d5ddf90232e99",
+                "shasum": ""
+            },
+            "require": {
+                "hamcrest/hamcrest-php": "~2.0",
+                "lib-pcre": ">=7.0",
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "phpdocumentor/phpdocumentor": "^2.9",
+                "phpunit/phpunit": "~5.7.10|~6.5"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Mockery": "library/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Pádraic Brady",
+                    "email": "padraic.brady@gmail.com",
+                    "homepage": "http://blog.astrumfutura.com"
+                },
+                {
+                    "name": "Dave Marshall",
+                    "email": "dave.marshall@atstsolutions.co.uk",
+                    "homepage": "http://davedevelopment.co.uk"
+                }
+            ],
+            "description": "Mockery is a simple yet flexible PHP mock object framework",
+            "homepage": "https://github.com/mockery/mockery",
+            "keywords": [
+                "BDD",
+                "TDD",
+                "library",
+                "mock",
+                "mock objects",
+                "mockery",
+                "stub",
+                "test",
+                "test double",
+                "testing"
+            ],
+            "time": "2018-05-08 08:54:48"
         },
         {
             "name": "myclabs/deep-copy",

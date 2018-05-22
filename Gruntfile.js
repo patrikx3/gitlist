@@ -1,4 +1,4 @@
-
+const prodDir = require('./package').corifeus["prod-dir"]
 module.exports = function (grunt) {
 
     grunt.loadNpmTasks('grunt-contrib-less');
@@ -14,11 +14,12 @@ module.exports = function (grunt) {
             {
                 clean: {
                     generated: [
-                        'public/generated',
-                        'public/webpack',
+                        `public/${prodDir}/css`,
+                        `public/${prodDir}/twemoji`,
+                        `public/${prodDir}/webpack`,
                     ],
                     css: [
-                        'public/generated/css'
+
                     ]
                     /*
                     themes: [
@@ -38,18 +39,18 @@ module.exports = function (grunt) {
                                 src: [
                                     '**',
                                 ],
-                                dest: './public/generated/twemoji/svg'
+                                dest: `./public/${prodDir}/twemoji/svg`
                             },
 
                         ]
                     },
                 },
                 less: {
-                    development: require('./grunt/less').lessSettings(grunt),
+                    development: require('./src/browser/grunt/less').lessSettings(grunt),
                 },
                 watch: {
                     less: {
-                        files: ['public/less/*.*'],
+                        files: ['src/browser/browser/less/*.*'],
                         tasks: ['clean:css', 'less'],
                         options: {
                             atBegin: true,

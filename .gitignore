@@ -29,7 +29,5 @@ node_modules
 
 node_modules/.yarn-integrity
 
-
-/public/webpack
-/public/generated
+/public/prod
 /twig/layout.twig

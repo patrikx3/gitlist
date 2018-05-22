@@ -14,7 +14,9 @@ const mode = minimize ? 'development' : 'production';
 
 let minimizer = undefined;
 
-const buildDir = __dirname + '/public/webpack';
+const prodDir = require('./package').corifeus["prod-dir"];
+
+const buildDir = __dirname + `/public/${prodDir}/webpack`;
 
 let devtool;
 
@@ -27,11 +29,11 @@ const plugins = [
     }),
 
     new HtmlWebpackPlugin({
-        template: `${__dirname}/twig/layout.tpl.twig`,
+        template: `${__dirname}/src/browser/layout.tpl.twig`,
         inject: 'head',
         chunksSortMode: 'dependency',
         chunks: ['bundle'],
-        filename: `${__dirname}/twig/layout.twig`,
+        filename: `${__dirname}/src/twig/layout.twig`,
     }),
 ];
 
@@ -135,14 +137,14 @@ module.exports = {
     devtool: devtool,
 
     entry: {
-        bundle: "./public/js/bundle.js",
+        bundle: "./src/browser/bundle.js",
     },
     output: {
         path: buildDir,
         filename: '[name].[hash].js',
         chunkFilename: '[id].[hash].chunk.js',
 //        publicPath: '{{ app.url_subdir }}/webpack/',
-        publicPath: './webpack/',
+        publicPath: `./${prodDir}/webpack/`,
     },
     module: {
         rules: [
@@ -209,3 +211,4 @@ module.exports = {
     plugins: plugins,
     mode: mode,
 }
+

@@ -10,33 +10,35 @@ name=$pkg_name-$version
 repo=$TOP/build/$name
 
 pushd $TOP
+npm install
 composer install --no-dev
 composer dump-autoload --optimize
+mkdir -p $TOP/cache
 #npm install
 npm run build
 
 rm -rf $repo || true
 mkdir -p $repo
 
-for item in "$TOP/cache" "$TOP/src" "$TOP/public" "$TOP/vendor" "$TOP/twig"
+for item in "$TOP/cache" "$TOP/src" "$TOP/public" "$TOP/vendor"
 do
     echo $item
     cp -R $item $repo/
 done
 
-for item in "$TOP/INSTALL.md" "$TOP/LICENSE" "$TOP/README.md" "$TOP/boot.php" "$TOP/config.example.ini" "$TOP/package.json"
+for item in "$TOP/INSTALL.md" "$TOP/changelog.md" "$TOP/LICENSE" "$TOP/README.md" "$TOP/boot.php" "$TOP/config.example.ini" "$TOP/package.json"
 do
     echo $item
     cp $item $repo/
 done
 
-rm -rf $repo/public/less
-rm -rf $repo/public/js
+rm -rf $repo/src/browser
 
 zipname=$TOP/build/$name.zip
 rm -rf $zipname
 pushd $repo
-zip -r $TOP/build/$name.zip * .*
+sudo apt install -y zip
+zip -r $TOP/build/$name.zip * .* > /dev/null
 popd
 
 RELEASE=$TOP/build/release
