@@ -14,7 +14,8 @@ $(() => {
     }
 
     let deferScroll;
-    if (diffEditors) {
+    //console.log(diffEditors.length);
+    if (diffEditors.length > 0) {
 
         const generatedDiffs = {};
         const generatedDiffsGenerated = {};
@@ -28,6 +29,7 @@ $(() => {
         })
 
         $.ajax(location).then((diffs) => {
+            console.log('P3X-GITLIST loading commit diffs via AJAX')
             let index = 0;
             for(let diff of diffs) {
 
@@ -87,7 +89,7 @@ $(() => {
                     html += '</table>';
 //                    console.log(index);
                     generatedDiffs[index] = html;
-                    console.log(`P3X-GITLIST loading via AJAX and rendering diffs deffered - ${index}`)
+                    console.log(`P3X-GITLIST rendering diffs deffered - ${index}`)
                 }, timeout)
                 timeout += waiter;
             }
