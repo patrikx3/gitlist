@@ -67,6 +67,9 @@ I removed `Babel`, we are in 2018. If you want use an older `Browser` (like iPho
    
 Besides, without `Babel` the `JavaScript` is much faster. (At work, without `Babel`, bigger `JS` file and works `20x` faster.)
 
+### Fourth
+If you use huge repos, like me, make sure to increase the `PHP` memory limit above `128MB`. 
+
 #### The last version with Babel
 https://github.com/patrikx3/gitlist/releases/tag/2.0.4-579
 
