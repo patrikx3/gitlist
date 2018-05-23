@@ -13,6 +13,15 @@ class MainController implements ControllerProviderInterface
     {
         $route = $app['controllers_factory'];
 
+        $route->post('/json-error', function(Request $request) use ($app) {
+
+            return $app['twig']->render('error.twig', array(
+                'error'   => $request->get('error'),
+            ));
+        })->bind('json-error');
+
+
+
         $route->get('/', function() use ($app) {
             $repositories = $app['git']->getRepositories($app['git.repos']);
 

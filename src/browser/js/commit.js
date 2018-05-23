@@ -22,8 +22,16 @@ $(() => {
 
         const url = new URL(location);
         url.searchParams.append('ajax', 1)
-        $.ajax(url.toString()).then((diffsResponseJson) => {
-            diffs = diffsResponseJson;
+        $.ajax(url.toString()).then(function (diffsResponseJson) {
+            if (typeof diffsResponseJson !== 'object') {
+                const sendErrorMessage = `${window.gitlist.basepath}/json-error`;
+                console.log(sendErrorMessage);
+                $.redirect(sendErrorMessage, {
+                    error: diffsResponseJson,
+                })
+            } else {
+                diffs = diffsResponseJson;
+            }
         }).catch(window.gitlist.ajaxErrorHandler)
 
         for (let diffEditor of diffEditors) {
@@ -44,6 +52,10 @@ $(() => {
                             clearTimeout(diffEditor.timeout)
                             diffEditor.timeout = setTimeout(showDiff, 100);
                         } else if (!generatedDiffs.hasOwnProperty(index)) {
+                                clearTimeout(diffEditor.timeout)
+                                if (typeof diffs === 'string') {
+                                    return;
+                                }
                                 generatedDiffs[index] = true;
                                 const diff = diffs[index - 1];
                                 setTimeout(() => {
