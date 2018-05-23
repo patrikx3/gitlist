@@ -521,8 +521,9 @@ class Repository
             if ('Binary' === substr($log, 0, 6)) {
                 $m = [];
                 if (preg_match('/Binary files (.+) and (.+) differ/', $log, $m)) {
-                    $diff->setOld($m[1]);
-                    $diff->setNew("    {$m[2]}");
+                    $diff->setBinary(true);
+                    $diff->setOld('--- ' . $m[1]);
+                    $diff->setNew("+++ {$m[2]}");
                 }
             }
 

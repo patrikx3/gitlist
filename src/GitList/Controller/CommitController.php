@@ -110,10 +110,11 @@ class CommitController implements ControllerProviderInterface
                         ];
                     }
                     $diffs[] = (object)[
+                        'binary' => $diffInstance->getBinary(),
                         'file' => $diffInstance->getFile(),
-                        'old' => $diffInstance->getOld(),
-                        'new' => $diffInstance->getNew(),
-                        'index' => $diffInstance->getIndex(),
+                        'old' => trim($diffInstance->getOld()),
+                        'new' => trim($diffInstance->getNew()),
+                        'index' => trim($diffInstance->getIndex()),
                         'lines' => $lines,
                     ];
                 }

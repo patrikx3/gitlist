@@ -18,81 +18,12 @@ $(() => {
     if (diffEditors.length > 0) {
 
         const generatedDiffs = {};
-        const generatedDiffsGenerated = {};
-        const waiter = 10;
-        let timeout = 10;
+        let diffs
 
-        $.snackbar({
-            htmlAllowed: true,
-            content: `Hang on, loading and rendering diffs deffered via AJAX...`,
-            timeout: window.gitlist.snapckbarLongTimeout,
-        })
-
-        $.ajax(location).then((diffs) => {
-            console.log('P3X-GITLIST loading commit diffs via AJAX')
-            let index = 0;
-            for(let diff of diffs) {
-
-/*
-
- <table>
-    {% for line in diff.getLines %}
-        <tr>
-            <td class="lineNo">
-                {% if line.getType != 'chunk' %}
-                    <!--                                <a id="{{ diff.index  | to_id }}L{{ loop.index }}R{{ line.getNumOld }}"></a> -->
-                    <!--                                <a href="#{{ diff.index  | to_id }}L{{ loop.index }}R{{ line.getNumOld }}"> -->
-                {% endif %}
-                {{ line.getNumOld }}
-                {% if line.getType != 'chunk' %}
-                    <!--                                </a> -->
-                {% endif %}
-            </td>
-            <td class="lineNo">
-                {% if line.getType != 'chunk' %}
-                    <!--                                <a id="{{ diff.index  | to_id }}L{{ loop.index }}L{{ line.getNumNew }}"></a> -->
-                    <!--                                <a href="#{{ diff.index | to_id }}L{{ loop.index }}L{{ line.getNumNew }}"> -->
-                {% endif %}
-                {{ line.getNumNew }}
-                {% if line.getType != 'chunk' %}
-                    <!--                                </a> -->
-                {% endif %}
-            </td>
-            <td style="width: 100%">
-                <pre{% if line.getType %} class="{{ line.getType }}"{% endif %}>{{ line.getLine }}</pre>
-            </td>
-        </tr>
-    {% endfor %}
-</table>
-
- */
-                setTimeout(() => {
-                    index++;
-                    let html = '';
-                    html += '<table>';
-                    for(let line of diff.lines) {
-//                    console.log(line)
-                        html += `
-        <tr>
-            <td class="lineNo">
-            ${line['num-old']}
-            </td>
-            <td class="lineNo">
-            ${line['num-new']}
-            </td>
-           <td style="width: 100%">
-                <pre class="${line.type}">${htmlEncode(line.line)}</pre>
-            </td>
-        </tr>
-`;
-                    }
-                    html += '</table>';
-//                    console.log(index);
-                    generatedDiffs[index] = html;
-                    console.log(`P3X-GITLIST rendering diffs deffered - ${index}`)
-                }, timeout)
-                timeout += waiter;
-            }
+        const url = new URL(location);
+        url.searchParams.append('ajax', 1)
+        $.ajax(url.toString()).then((diffsResponseJson) => {
+            diffs = diffsResponseJson;
         }).catch(window.gitlist.ajaxErrorHandler)
 
         for (let diffEditor of diffEditors) {
@@ -103,24 +34,25 @@ $(() => {
             ('click', () => {
                 clearTimeout(deferScroll)
                 setTimeout(() => {
-                    //window.gitlist.scrollIntoView(document.getElementById(diffEditor.dataset.diffRef))
                     window.gitlist.pushHash(`#${diffEditor.dataset.diffRef}`)
                     const index = diffEditor.dataset.diffIndex;
-                    //console.log(diffEditor)
+                    $diffEditor.toggle();
+                    $editableHover.toggleClass('active');
                     const showDiff = () => {
-                        if (!generatedDiffs.hasOwnProperty(index)) {
+                        if (diffs === undefined || !window.gitlist.generateDiff.hasOwnProperty(index)) {
+//                            console.log(window.gitlist.generateDiff[index]);
                             clearTimeout(diffEditor.timeout)
-                            diffEditor.timeout = setTimeout(showDiff, 250);
-                        } else if (!generatedDiffsGenerated.hasOwnProperty()) {
-                            const $div = $(`#p3x-gitlist-diff-ajax-${index}`)
-                            $div.html(generatedDiffs[index])
-                            generatedDiffsGenerated[index] = true;
+                            diffEditor.timeout = setTimeout(showDiff, 100);
+                        } else if (!generatedDiffs.hasOwnProperty(index)) {
+                                generatedDiffs[index] = true;
+                                const diff = diffs[index - 1];
+                                setTimeout(() => {
+                                    window.gitlist.generateDiff[index](diff);
+                                }, 100)
                         }
                     }
                     showDiff();
-                    $diffEditor.toggle();
-                    $editableHover.toggleClass('active');
-                }, 0)
+                }, 1)
             })
         }
     }

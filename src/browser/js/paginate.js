@@ -29,8 +29,12 @@ $(function() {
         const retrieve = `${location.pathname}${href}`
         history.pushState({
         }, document.title, retrieve);
+
+        const url = new URL(location);
+        url.search = href;
+        url.searchParams.append('ajax', 1)
         $.ajax({
-            url: retrieve,
+            url: url.toString(),
             async: true,
             type: "GET",
         }).then(function(html) {

@@ -66,10 +66,13 @@
         </div>
         <ul class="list-group">
             {% for diff in commit.diffs %}
-                <li class="list-group-item" id="p3x-gitlist-diff-{{ loop.index }}">
+                <li class="list-group-item" id="p3x-gitlist-diff-{{ loop.index }}" title="Index {{ loop.index  }}">
                     <div class="pull-left">
                         <i class="fas fa-file-alt"></i>&nbsp;&nbsp;
                         <span id="{{ diff.file | to_id }}" href="#p3x-gitlist-diff-{{ loop.index }}">{{ diff.file }}</span>
+                        <div style="opacity: 0.5;">
+                            Diff lines: {{ diff.getLines | length }}
+                        </div>
                     </div>
                     <div class="pull-right p3x-gitlist-button">
                         <a id="p3x-gitlist-diff-data-{{ loop.index }}"
@@ -87,9 +90,7 @@
                 <li class="list-group-item p3x-gitlist-diff-container" data-diff-ref="p3x-gitlist-diff-{{ loop.index }}"
                     data-diff-id="p3x-gitlist-diff-data-{{ loop.index }}" data-diff-index="{{ loop.index }}" style="display: none;">
                         <div class="p3x-gitlist-diff" id="p3x-gitlist-diff-ajax-{{ loop.index }}">
-
-                            <div style="opacity: 0.5; margin: 10px;">Hang on, loading and rendering diffs deffered via AJAX...</div>
-
+                            <p3x-gitlist-commit-diff loop-index="{{ loop.index }}"></p3x-gitlist-commit-diff>
                         </div>
                 </li>
             {% endfor %}

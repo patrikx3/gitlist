@@ -7,9 +7,9 @@
     <title>{% block title %}Welcome!{% endblock %}</title>
     <link rel="shortcut icon" type="image/png" href="img/favicon.png"/>
     <link rel="stylesheet" type="text/css" href="{{ prod_dir  }}/css/{{ theme }}.{{ theme_postfix }}.css" id="bootstrap-theme">
-    <script type="text/javascript">window.gitlist = { lastload: undefined, lastloadSpan: undefined, dark: {{  theme_dark |json_encode|raw }}, isDark: undefined, viewer: undefined, setTheme: undefined, getThemeCookie: undefined, basepath: '{{ app.url_subdir }}', branch: '{{ branch }}', repo: '{{ repo }}', dateFormat: '{{ gitlist_date_format }}', themes: {}, codemirror_full_limit: undefined, browse_type: undefined, search_query: '{{ search_query }}', browserClick: undefined, networkRedraw: undefined, treegraph: undefined, canvasLaneColors: undefined, canvasDotColors: undefined, randomCanvasLaneColors: undefined, loadTheme: '{{ theme }}', codemirrorTheme : {}, scrollIntoView: undefined, markdownRenderer: undefined}</script>
-<link href="./prod/webpack/bundle.a3a7f8ac512449e3dfd7.css" rel="stylesheet"><script type="text/javascript" src="./prod/webpack/bundle.a3a7f8ac512449e3dfd7.js"></script></head>
-<body class="{{ theme_type }}" id="p3x-gitlist-body">
+    <script type="text/javascript">window.gitlist = { lastload: undefined, lastloadSpan: undefined, dark: {{  theme_dark |json_encode|raw }}, isDark: undefined, viewer: undefined, setTheme: undefined, getThemeCookie: undefined, basepath: '{{ app.url_subdir }}', branch: '{{ branch }}', repo: '{{ repo }}', dateFormat: '{{ gitlist_date_format }}', themes: {}, codemirror_full_limit: undefined, browse_type: undefined, search_query: '{{ search_query }}', browserClick: undefined, networkRedraw: undefined, treegraph: undefined, canvasLaneColors: undefined, canvasDotColors: undefined, randomCanvasLaneColors: undefined, loadTheme: '{{ theme }}', codemirrorTheme : {}, scrollIntoView: undefined, markdownRenderer: undefined, ng: undefined, generateDiff: {}, editorMaxHeight: 300}</script>
+<link href="./prod/webpack/bundle.457f70f6e82c473a0c49.css" rel="stylesheet"><script type="text/javascript" src="./prod/webpack/bundle.457f70f6e82c473a0c49.js"></script></head>
+<body class="{{ theme_type }}" id="p3x-gitlist-ng">
 
 {% block body %}{% endblock %}
 {% block javascripts %}

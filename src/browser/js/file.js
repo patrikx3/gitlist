@@ -37,7 +37,7 @@ $(function() {
             const buttonEdit = $('#p3x-gitlist-file-button-edit');
             const buttonEditCancel = $('#p3x-gitlist-file-button-edit-cancel');
             const buttonEditSave = $('#p3x-gitlist-file-button-edit-save')
-            const codeMirrorHeight = 300;
+            const codeMirrorHeight = window.gitlist.editorMaxHeight;
 
             buttonEditCancel.hide();
             buttonEditSave.hide();

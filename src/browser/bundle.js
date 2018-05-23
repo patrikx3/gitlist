@@ -80,7 +80,6 @@ global.twemoji = require('twemoji')
 const prodDir = require('../../package').corifeus["prod-dir"];
 global.twemoji.base = `${prodDir}/twemoji/`;
 
-
 require('./js/network.js')
 
 require('./js/gitgraph.js/gitgraph.css')
@@ -96,4 +95,5 @@ require('./js/file')
 require('./js/theme-switcher.js')
 require('./js/commit')
 require('./js/global')
+require('./js/angular/bootstrap');
 

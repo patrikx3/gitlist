@@ -21,6 +21,7 @@ class Diff extends AbstractModel
     protected $old;
     protected $new;
     protected $file;
+    protected $binary = false;
 
     public function addLine($line, $oldNo, $newNo)
     {
@@ -70,5 +71,13 @@ class Diff extends AbstractModel
     public function getFile()
     {
         return $this->file;
+    }
+
+    public function setBinary($bool) {
+        $this->binary = true;
+    }
+
+    public function getBinary() {
+        return $this->binary;
     }
 }

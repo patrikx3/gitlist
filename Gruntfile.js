@@ -50,7 +50,7 @@ module.exports = function (grunt) {
                 },
                 watch: {
                     less: {
-                        files: ['src/browser/browser/less/*.*'],
+                        files: ['src/browser/less/*.*'],
                         tasks: ['clean:css', 'less'],
                         options: {
                             atBegin: true,

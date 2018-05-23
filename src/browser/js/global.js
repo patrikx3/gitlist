@@ -103,6 +103,7 @@ window.gitlist.setTheme = () => {
         return;
     }
 
+    /*
     const diffButtons = $('.p3x-gitlist-diff-button.active');
     for(let diffButton of diffButtons ) {
         diffButton.click();
@@ -114,7 +115,7 @@ window.gitlist.setTheme = () => {
         });
         window.scrollTo(0, 0);
     }
-
+    */
 //    console.log('p3x-gitlist switching theme')
     currentTheme = theme;
     if (window.gitlist.isDark(theme)) {

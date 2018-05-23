@@ -9,10 +9,10 @@
   }
 
   .p3x-gitlist-diff {
-
     max-width: 100%;
     min-width: 100%;
     overflow-x: auto;
+
     pre {
       background-color: @body-bg;
       color: @text-color;
@@ -21,17 +21,18 @@
       border-radius: 0;
       overflow: hidden;
       border: 1px solid transparent;
-      font-family: monospace;
 
       &:hover {
 //        filter: brightness(0.9);
       }
     }
     table {
+      font-family: monospace;
     }
     table td {
       padding: 0;
     }
+
     .new {
       background-color: @alert-success-bg;
       color: @alert-success-text;
@@ -50,7 +51,6 @@
       padding: 0 6px;
       text-align: right;
       border-right: 1px solid @navbar-default-border !important;
-      font-family: monospace;
     }
     .lineNo a {
       color: @navbar-default-color !important;
