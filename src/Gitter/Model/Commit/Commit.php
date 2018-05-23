@@ -12,6 +12,7 @@
 namespace Gitter\Model\Commit;
 
 use Gitter\Model\Item;
+use Gitter\Model\Diff;
 use Gitter\Util\DateTime;
 
 class Commit extends Item
@@ -25,6 +26,8 @@ class Commit extends Item
     protected $commiterDate;
     protected $message;
     protected $body;
+
+    /** @var Diff[] */
     protected $diffs;
 
     public function importData(array $data)

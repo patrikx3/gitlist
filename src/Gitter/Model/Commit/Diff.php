@@ -15,6 +15,7 @@ use Gitter\Model\AbstractModel;
 
 class Diff extends AbstractModel
 {
+    /** @var DiffLine[] */
     protected $lines;
     protected $index;
     protected $old;

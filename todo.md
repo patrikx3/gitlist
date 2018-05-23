@@ -4,18 +4,11 @@
 
                         
 [//]: #@corifeus-header:end
-
-# Install PHP 7.2 on Ubuntu before Bionic
-
-```bash
-sudo add-apt-repository ppa:ondrej/php
-# enter (empty)
-
-sudo apt update
-sudo apt install -y php7.2
-sudo apt upgrade -y
-```
-
+# TODO
+* treegraph pager
+* diff by file
+* pager not working right with commits
+* search has no pager (either of two)
 [//]: #@corifeus-footer
 
 ---

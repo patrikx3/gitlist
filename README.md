@@ -4,7 +4,7 @@
 
 
  
-# 🤖 P3X Gitlist v2.7.79-796  
+# 🤖 P3X Gitlist v2.8.0  
 
 This is an open-source project. Star this repository if you like it, or even donate!  Thank you so much! :)
 
@@ -51,6 +51,10 @@ https://github.com/patrikx3/gitlist/releases
 You might need to tune your web server, to only parse the `public/index.php` PHP script, so you can view your `php` files in `P3X GitList`. 
 
 #### PHP Memory
+
+**By now, I am loading the diffs via `AJAX`. I render in the browser the diffs even deffered. For a huge commit `twig` rendered the `PHP` using over `512MB`, now it works with `128MB`. The browser does not hang anymore.**
+
+##### This what it was before ...
 It is possible, that some big commits are huge and for now, it loads everything. In `V3`, everything will be `lazy`, but looks like I had a huge commit and I had to set my `PHP.ini` had to change like:
 ```text
 max_execution_time = 240
@@ -166,7 +170,7 @@ npm run watch
 
 ---
 
-[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2.7.79-796 
+[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2.8.0 
 
 [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software) [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) 
 

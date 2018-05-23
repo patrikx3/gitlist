@@ -85,37 +85,11 @@
                     <div style="clear: both;"></div>
                 </li>
                 <li class="list-group-item p3x-gitlist-diff-container" data-diff-ref="p3x-gitlist-diff-{{ loop.index }}"
-                    data-diff-id="p3x-gitlist-diff-data-{{ loop.index }}" style="display: none;">
-                        <div class="p3x-gitlist-diff">
-                            <table>
-                                {% for line in diff.getLines %}
-                                    <tr>
-                                        <td class="lineNo">
-                                            {% if line.getType != 'chunk' %}
-                                                <!--                                <a id="{{ diff.index  | to_id }}L{{ loop.index }}R{{ line.getNumOld }}"></a> -->
-                                                <!--                                <a href="#{{ diff.index  | to_id }}L{{ loop.index }}R{{ line.getNumOld }}"> -->
-                                            {% endif %}
-                                            {{ line.getNumOld }}
-                                            {% if line.getType != 'chunk' %}
-                                                <!--                                </a> -->
-                                            {% endif %}
-                                        </td>
-                                        <td class="lineNo">
-                                            {% if line.getType != 'chunk' %}
-                                                <!--                                <a id="{{ diff.index  | to_id }}L{{ loop.index }}L{{ line.getNumNew }}"></a> -->
-                                                <!--                                <a href="#{{ diff.index | to_id }}L{{ loop.index }}L{{ line.getNumNew }}"> -->
-                                            {% endif %}
-                                            {{ line.getNumNew }}
-                                            {% if line.getType != 'chunk' %}
-                                                <!--                                </a> -->
-                                            {% endif %}
-                                        </td>
-                                        <td style="width: 100%">
-                                            <pre{% if line.getType %} class="{{ line.getType }}"{% endif %}>{{ line.getLine }}</pre>
-                                        </td>
-                                    </tr>
-                                {% endfor %}
-                            </table>
+                    data-diff-id="p3x-gitlist-diff-data-{{ loop.index }}" data-diff-index="{{ loop.index }}" style="display: none;">
+                        <div class="p3x-gitlist-diff" id="p3x-gitlist-diff-ajax-{{ loop.index }}">
+
+                            <div style="opacity: 0.5; margin: 10px;">Hang on, loading and rendering diffs deffered via AJAX...</div>
+
                         </div>
                 </li>
             {% endfor %}

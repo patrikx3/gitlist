@@ -96,6 +96,31 @@ class CommitController implements ControllerProviderInterface
             $commit = $repository->getCommit($commit);
             $branch = $repository->getHead();
 
+            if($app['request_stack']->getCurrentRequest()->isXmlHttpRequest()) {
+                $diffsInstance = $commit->getDiffs();
+                $diffs = [];
+                foreach($diffsInstance as $diffInstance) {
+                    $lines = [];
+                    foreach ($diffInstance->getLines() as $lineInstance) {
+                        $lines[] = (object)[
+                          'type' => $lineInstance->getType(),
+                          'num-old' => $lineInstance->getNumOld(),
+                          'num-new' => $lineInstance->getNumNew(),
+                          'line' => $lineInstance->getLine(),
+                        ];
+                    }
+                    $diffs[] = (object)[
+                        'file' => $diffInstance->getFile(),
+                        'old' => $diffInstance->getOld(),
+                        'new' => $diffInstance->getNew(),
+                        'index' => $diffInstance->getIndex(),
+                        'lines' => $lines,
+                    ];
+                }
+                return $app->json($diffs);
+            };
+
+
             return $app['twig']->render('commit.twig', array(
                 'branches'       => $repository->getBranches(),
                 'tags'           => $repository->getTags(),

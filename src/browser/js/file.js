@@ -107,14 +107,8 @@ ${branchInfo}
             let filename = window.gitlist.getPaths();
             filename = filename.slice(4).join('/');
 
-            const errorHandler = (e) => {
-                $.snackbar({
-                    htmlAllowed: true,
-                    content: e.message,
-                    timeout: window.gitlist.snapckbarLongTimeout,
-                })
-                console.error(e);
-            }
+
+            const errorHandler = window.gitlist.ajaxErrorHandler;
 
 
             const commitModal = $('#p3x-gitlist-modal-commit');

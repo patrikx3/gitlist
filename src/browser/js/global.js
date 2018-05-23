@@ -29,6 +29,15 @@ window.gitlist.validate = {
 }
 */
 
+window.gitlist.ajaxErrorHandler = (e) => {
+    $.snackbar({
+        htmlAllowed: true,
+        content: e.message,
+        timeout: window.gitlist.snapckbarLongTimeout,
+    })
+    console.error(e);
+}
+
 window.gitlist.getPaths = () => {
     const currentUrl = new URL(window.location)
     if (window.gitlist.basepath !== '') {
