@@ -91,12 +91,19 @@ class CommitController implements ControllerProviderInterface
           ->convert('branch', 'escaper.argument:escape')
           ->bind('searchcommits');
 
-        $route->get('{repo}/commit/{commit}', function ($repo, $commit) use ($app) {
+        $route->get('{repo}/commit/{commit}', function (Request $request, $repo, $commit) use ($app) {
             $repository = $app['git']->getRepositoryFromName($app['git.repos'], $repo);
-            $commit = $repository->getCommit($commit);
+
+            $showLines = $request->get('ajax') === '1' || $app['request_stack']->getCurrentRequest()->isXmlHttpRequest();
+            $filename = $request->get('filename');
+
+            $commit = $repository->getCommit($commit, [
+                "showLines" => $showLines,
+                'filename' => $filename,
+            ]);
             $branch = $repository->getHead();
 
-            if($app['request_stack']->getCurrentRequest()->isXmlHttpRequest()) {
+            if($request->get('ajax') === '1' || $app['request_stack']->getCurrentRequest()->isXmlHttpRequest()) {
                 $diffsInstance = $commit->getDiffs();
                 $diffs = [];
                 foreach($diffsInstance as $diffInstance) {

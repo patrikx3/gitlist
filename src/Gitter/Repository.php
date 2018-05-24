@@ -438,7 +438,7 @@ class Repository
      *
      * @return array  Commit data
      */
-    public function getCommit($commitHash)
+    public function getCommit($commitHash, $options = null)
     {
         $logs = $this->getClient()->run(
             $this,
@@ -468,7 +468,7 @@ class Repository
             $logs = explode("\n", $this->getClient()->run($this, $command));
         }
 
-        $commit->setDiffs($this->readDiffLogs($logs));
+        $commit->setDiffs($this->readDiffLogs($logs, $options));
 
         return $commit;
     }
@@ -480,9 +480,18 @@ class Repository
      *
      * @return array Array of diffs
      */
-    public function readDiffLogs(array $logs)
+    public function readDiffLogs(array $logs, $options = null)
     {
+        if ($options === null) {
+            $options = [];
+            $options['showLines'] = true;
+        }
+        if (!isset($options['filename'])) {
+            $options['filename'] = '';
+        }
+
         $diffs = [];
+
         $lineNumOld = 0;
         $lineNumNew = 0;
         foreach ($logs as $log) {
@@ -492,7 +501,11 @@ class Repository
             }
             if ('diff' === substr($log, 0, 4)) {
                 if (isset($diff)) {
-                    $diffs[] = $diff;
+                    if ($options['filename'] === '') {
+                        $diffs[] = $diff;
+                    } elseif ($options['filename'] === $diff->getFile()) {
+                        $diffs[] = $diff;
+                    }
                 }
 
                 $diff = new Diff();
@@ -551,11 +564,15 @@ class Repository
             }
 
             if (isset($diff)) {
-                $diff->addLine($log, $lineNumOld, $lineNumNew);
+                if ($options['showLines']) {
+                    $diff->addLine($log, $lineNumOld, $lineNumNew);
+                }
+                $diff->lineCount++;
             }
         }
 
         if (isset($diff)) {
+            if ($options['filename'] === '' || count($diffs) === 0)
             $diffs[] = $diff;
         }
 

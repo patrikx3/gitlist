@@ -23,6 +23,8 @@ class Diff extends AbstractModel
     protected $file;
     protected $binary = false;
 
+    public $lineCount = 0;
+
     public function addLine($line, $oldNo, $newNo)
     {
         $this->lines[] = new DiffLine($line, $oldNo, $newNo);

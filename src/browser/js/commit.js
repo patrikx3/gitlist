@@ -18,8 +18,9 @@ $(() => {
     if (diffEditors.length > 0) {
 
         const generatedDiffs = {};
-        let diffs
 
+        /*
+        let diffs
         const url = new URL(location);
         url.searchParams.append('ajax', 1)
         $.ajax(url.toString()).then(function (diffsResponseJson) {
@@ -33,13 +34,13 @@ $(() => {
                 diffs = diffsResponseJson;
             }
         }).catch(window.gitlist.ajaxErrorHandler)
+        */
 
         for (let diffEditor of diffEditors) {
             const $editableHover = $('#' + diffEditor.dataset.diffId);
 //            console.log(diffEditor.dataset.diffId)
             const $diffEditor = $(diffEditor);
-            $editableHover.on
-            ('click', () => {
+            $editableHover.on('click', () => {
                 clearTimeout(deferScroll)
                 setTimeout(() => {
                     window.gitlist.pushHash(`#${diffEditor.dataset.diffRef}`)
@@ -47,24 +48,26 @@ $(() => {
                     $diffEditor.toggle();
                     $editableHover.toggleClass('active');
                     const showDiff = () => {
-                        if (diffs === undefined || !window.gitlist.generateDiff.hasOwnProperty(index)) {
+                        if (!window.gitlist.generateDiff.hasOwnProperty(index)) {
 //                            console.log(window.gitlist.generateDiff[index]);
                             clearTimeout(diffEditor.timeout)
                             diffEditor.timeout = setTimeout(showDiff, 100);
                         } else if (!generatedDiffs.hasOwnProperty(index)) {
                                 clearTimeout(diffEditor.timeout)
-                                if (typeof diffs === 'string') {
-                                    return;
-                                }
                                 generatedDiffs[index] = true;
-                                const diff = diffs[index - 1];
-                                setTimeout(() => {
-                                    window.gitlist.generateDiff[index](diff);
-                                }, 100)
+                                window.gitlist.generateDiff[index]({
+                                    loading: true,
+                                    toggle: false,
+                                });
+                        } else {
+                            window.gitlist.generateDiff[index]({
+                                loading: false,
+                                toggle: true,
+                            });
                         }
                     }
                     showDiff();
-                }, 1)
+                })
             })
         }
     }
