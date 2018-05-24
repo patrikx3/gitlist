@@ -70,6 +70,9 @@ Besides, without `Babel` the `JavaScript` is much faster. (At work, without `Bab
 ### Fourth
 If you use huge repos, like me, make sure to increase the `PHP` memory limit above `128MB`. 
 
+#### Fifth
+I have disabled loading everything in `twig`, besides the `diffs` are loading via `AJAX`, I made it to work huge commits with `64MB` `PHP`.
+
 #### The last version with Babel
 https://github.com/patrikx3/gitlist/releases/tag/2.0.4-579
 
