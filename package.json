@@ -29,8 +29,8 @@
     "devDependencies": {
         "bootswatch": "^3.3.7",
         "concurrently": "^3.5.1",
-        "corifeus-builder": "^1.8.19-420",
-        "corifeus-utils": "^1.2.76-388",
+        "corifeus-builder": "^1.8.24-423",
+        "corifeus-utils": "^1.2.80-389",
         "css-loader": "^0.28.11",
         "extract-text-webpack-plugin": "^4.0.0-beta.0",
         "file-loader": "^1.1.11",
