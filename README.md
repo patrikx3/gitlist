@@ -109,9 +109,9 @@ http://gitlist.patrikx3.com/
 
 ## Requirements
 
-By now `composer` is not enough. We are using `webpack`, `babel`, `less`, `grunt` ...
+By now `composer` is not enough. We are using `webpack`, `less`, `grunt` ...
 
-For the build on your workstation (less, babel, Bootstrap themes,  and webpack):
+For the build on your workstation (less, Bootstrap themes,  and webpack):
 
 * ```NodeJs``` >= 10
 * ```Grunt``` (npm install -g npm grunt-cli)
