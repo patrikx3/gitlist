@@ -71,7 +71,7 @@
                         <i class="fas fa-file-alt"></i>&nbsp;&nbsp;
                         <span id="{{ diff.file | to_id }}" href="#p3x-gitlist-diff-{{ loop.index }}">{{ diff.file }}</span>
                         <div style="opacity: 0.5;">
-                            Diff lines: {{ diff.lineCount }}
+                            Diff lines: {{ diff.lineCount }} Type: {{ diff.binary ? 'binary' : 'text' }}
                         </div>
                     </div>
                     <div class="pull-right p3x-gitlist-button">

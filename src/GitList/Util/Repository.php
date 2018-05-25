@@ -107,7 +107,7 @@ class Repository
         'exe', 'com', 'so', 'la', 'o', 'dll', 'pyc',
         'jpg', 'jpeg', 'bmp', 'gif', 'png', 'xmp', 'pcx', 'svgz', 'ttf', 'tiff', 'oet',
         'gz', 'tar', 'rar', 'zip', '7z', 'jar', 'class',
-        'odt', 'ods', 'pdf', 'doc', 'docx', 'dot', 'xls', 'xlsx',
+        'odt', 'ods', 'pdf', 'doc', 'docx', 'dot', 'xls', 'xlsx', 'gzip'
     ];
 
     public function __construct(Application $app)
