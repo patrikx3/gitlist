@@ -4,7 +4,7 @@
 
 
  
-# 🤖 P3X Gitlist v2.8.27-829  
+# 🤖 P3X Gitlist v2.8.30-838  
 
 This is an open-source project. Star this repository if you like it, or even donate!  Thank you so much! :)
 
@@ -20,7 +20,7 @@ All my domains (patrikx3.com and corifeus.com) could have errors since I am deve
    
 ### Built on Node 
 ``` 
-v10.1.0
+v10.2.1
 ```   
    
 The ```async``` and ```await``` keywords are required.
@@ -66,6 +66,7 @@ The `config.ini` file with `url_subdir` or later `clone_subdir` variable has bee
 I removed `Babel`, we are in 2018. If you want use an older `Browser` (like iPhone 5), you can probably install latest `Chrome` and it will work.
    
 Besides, without `Babel` the `JavaScript` is much faster. (At work, without `Babel`, bigger `JS` file and works `20x` faster.)
+mast
 
 ### Fourth
 If you use huge repos, like me, make sure to increase the `PHP` memory limit above `128MB`. 
@@ -160,7 +161,7 @@ npm run watch
 
 ---
 
-[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2.8.27-829 
+[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2.8.30-838 
 
 [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software) [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) 
 
