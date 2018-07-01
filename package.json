@@ -1,6 +1,6 @@
 {
     "name": "p3x-gitlist",
-    "version": "2.8.35-844",
+    "version": "2.8.47-848",
     "corifeus": {
         "prod-dir": "prod",
         "postfix": "8b5e3a4adea77d341db75b103d5b6a2b786da21f1fcc9598e2dc67a82b3bee73",
@@ -11,7 +11,7 @@
         "cdn": true,
         "icon": "fas fa-code",
         "code": "Spawn",
-        "nodejs": "v10.2.1",
+        "nodejs": "v10.5.0",
         "reponame": "gitlist",
         "build": true
     },
@@ -28,7 +28,7 @@
     "license": "MIT",
     "devDependencies": {
         "bootswatch": "^3.3.7",
-        "concurrently": "^3.5.1",
+        "concurrently": "^3.6.0",
         "corifeus-builder": "^1.8.27-426",
         "corifeus-utils": "^1.2.83-391",
         "css-loader": "^0.28.11",
@@ -36,17 +36,17 @@
         "file-loader": "^1.1.11",
         "fs-extra": "^6.0.1",
         "glob": "^7.1.2",
-        "grunt": "^1.0.2",
+        "grunt": "^1.0.3",
         "grunt-contrib-less": "^1.4.1",
         "html-loader": "^0.5.5",
         "html-webpack-plugin": "^3.2.0",
         "less-loader": "^4.1.0",
         "on-build-webpack": "^0.1.0",
         "style-loader": "^0.21.0",
-        "uglifyjs-webpack-plugin": "^1.2.5",
+        "uglifyjs-webpack-plugin": "^1.2.7",
         "url-loader": "^1.0.1",
-        "webpack": "^4.8.3",
-        "webpack-cli": "^2.1.4"
+        "webpack": "^4.14.0",
+        "webpack-cli": "^3.0.8"
     },
     "engines": {
         "node": ">=10.2.1"
@@ -57,12 +57,12 @@
         "@fortawesome/fontawesome-free-brands": "^5.0.13",
         "@fortawesome/fontawesome-free-regular": "^5.0.13",
         "@fortawesome/fontawesome-free-solid": "^5.0.13",
-        "angular": "^1.7.0",
+        "angular": "^1.7.2",
         "bootstrap": "^3.3.7",
-        "codemirror": "^5.38.0",
+        "codemirror": "^5.39.0",
         "highlight.js": "^9.12.0",
         "jquery": "^3.3.1",
-        "jquery.redirect": "^1.1.1",
+        "jquery.redirect": "^1.1.4",
         "js-cookie": "^2.2.0",
         "js-htmlencode": "^0.3.0",
         "list.js": "^1.5.0",
@@ -71,6 +71,6 @@
         "php-date": "^2.1.1",
         "raphael": "^2.2.7",
         "snackbarjs": "^1.1.0",
-        "twemoji": "^2.5.1"
+        "twemoji": "^11.0.0"
     }
 }

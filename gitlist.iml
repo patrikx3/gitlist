@@ -1,21 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="WEB_MODULE" version="4">
-  <component name="FacetManager">
-    <facet type="Python" name="Python">
-      <configuration sdkName="" />
-    </facet>
-  </component>
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
-    <content url="file://$MODULE_DIR$">
-      <excludeFolder url="file://$MODULE_DIR$/build" />
-      <excludeFolder url="file://$MODULE_DIR$/git-test" />
-      <excludeFolder url="file://$MODULE_DIR$/git-test2" />
-      <excludeFolder url="file://$MODULE_DIR$/public/generated" />
-      <excludeFolder url="file://$MODULE_DIR$/public/prod" />
-      <excludeFolder url="file://$MODULE_DIR$/public/webpack" />
-      <excludeFolder url="file://$MODULE_DIR$/webpack" />
-    </content>
+    <content url="file://$MODULE_DIR$" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>

@@ -7,10 +7,8 @@ $(() => {
         const html = marked(commitMessage.text().trim(), {
             renderer: window.gitlist.markdownRenderer,
         });
-        commitMessage.html(twemoji.parse(html, {
-            folder: 'svg',
-            ext: '.svg',
-        }));
+        const twemojiSettings = require('./settings').twemoji;
+        commitMessage.html(twemoji.parse(html, twemojiSettings));
     }
 
     let deferScroll;

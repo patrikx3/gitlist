@@ -4,7 +4,7 @@
 
 
  
-# 🤖 P3X Gitlist v2.8.34-844  
+# 🤖 P3X Gitlist v2.8.46-847  
 
 This is an open-source project. Star this repository if you like it, or even donate!  Thank you so much! :)
 
@@ -21,7 +21,7 @@ All my domains (patrikx3.com and corifeus.com) could have errors since I am deve
    
 ### Built on Node 
 ``` 
-v10.2.1
+v10.5.0
 ```   
    
 The ```async``` and ```await``` keywords are required.
@@ -82,6 +82,8 @@ The following versions are not using `Babel`!!!! Yikes!
 
 ### Unreleased / in progress
 
+* grunt-contrib-less - 2 is missing the `@path` variable
+* Auto scroll down it does not, but show always `No more commits.`
 * Upload binary files
 * Add new text files
 * Delete files
@@ -162,7 +164,7 @@ npm run watch
 
 ---
 
-[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2.8.34-844 
+[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2.8.46-847 
 
 [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software) [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) 
 

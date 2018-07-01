@@ -97,13 +97,11 @@ $(function() {
 
     const mdContent = $('#p3x-gitlist-readme');
     if (mdContent.length) {
+        const twemojiSettings = require('./settings').twemoji;
         const html = marked(mdContent.text(), {
             renderer: markdownRenderer
         });
-        mdContent.html(twemoji.parse(html, {
-            folder: 'svg',
-            ext: '.svg',
-        }));
+        mdContent.html(twemoji.parse(html, twemojiSettings));
     }
 
 });
