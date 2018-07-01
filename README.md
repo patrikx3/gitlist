@@ -106,7 +106,7 @@ https://github.com/klaussilveira/gitlist
 
 #### Gitlist
 https://github.com/klaussilveira/gitlist/commits/master  
-Jun 22, 2018
+Jun 27, 2018
 
 #### Gitter
 https://github.com/klaussilveira/gitter/commits/master  
