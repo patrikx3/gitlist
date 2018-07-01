@@ -7,9 +7,16 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand hidden-xs" href="{{ path('homepage') }}">{{ app.title }}</a>
-            <a class="navbar-brand hidden-sm hidden-md hidden-lg" href="{{ path('homepage') }}"data-toggle="tooltip" data-placement="bottom" title="{{ app.title }}">
-                <i class="fab fa-git-square fa-fw" style="transform: scale(1.75)"></i>
+            <a class="navbar-brand hidden-xs" href="{{ path('homepage') }}" id="p3x-gitlist-navigation-brand-header" class="p3x-gitlist-navigation-brand">
+                <img src="img/gitlist.svg" id="p3x-gitlist-navigation-brand-icon" class="p3x-gitlist-navigation-brand-icon"/>
+                <span id="p3x-gitlist-navigation-brand-title">
+                    {{ app.title }}
+                </span>
+
+            </a>
+            <a class="navbar-brand hidden-sm hidden-md hidden-lg" style="position: relative;" href="{{ path('homepage') }}">
+                <!-- <i class="fab fa-git-square fa-fw" style="transform: scale(1.75)"></i> -->
+                <img src="img/gitlist.svg" id="p3x-gitlist-navigation-brand-icon-pure"  class="p3x-gitlist-navigation-brand" data-toggle="tooltip" data-placement="bottom" title="{{ app.title }}"/>
             </a>
         </div>
         <div class="navbar-collapse collapse" id="p3x-gitlist-navigation-theme">

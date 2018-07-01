@@ -1,49 +1,55 @@
 {% if commits %}
-{% for date, commit in commits %}
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>{{ date | date("F j, Y") }}</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for item in commit %}
-        <tr>
-            <td>
+    {% for date, commit in commits %}
+        <table class="table table-striped" id="p3x-gitlist-commits-list">
+            <thead>
+            <tr>
+                <th>{{ date | date("F j, Y") }}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for item in commit %}
+                <tr>
+                    <td>
 
-                <div class="pull-right" style="text-align: right;">
-                    <a class="btn btn-primary btn-sm" href="{{ path('branch', {repo: repo, branch: item.hash}) }}" title="Browse code at this point in history"><span class="fa fa-list-alt"></span>&nbsp;Browse</a>
+                        <div class="pull-right" style="text-align: right;">
+                            <a class="btn btn-primary btn-sm"
+                               href="{{ path('branch', {repo: repo, branch: item.hash}) }}"
+                               title="Browse code at this point in history"><span class="fa fa-list-alt"></span>&nbsp;Browse</a>
 
-                    <a class="btn btn-primary default btn-sm" href="{{ path('commit', {repo: repo, commit: item.hash}) }}"><i class="far fa-chart-bar"></i>&nbsp;Changes</a>
-                    <div style="margin-top: 5px;">
-                        <span class="hidden-xs">{{ item.hash }}</span>
-                        <span class="hidden-sm hidden-md hidden-lg">{{ item.shortHash }}</span>
-                    </div>
-                </div>
+                            <a class="btn btn-primary default btn-sm"
+                               href="{{ path('commit', {repo: repo, commit: item.hash}) }}"><i
+                                        class="far fa-chart-bar"></i>&nbsp;Changes</a>
+                            <div style="margin-top: 5px; opacity: 0.5;">
+                                <span class="hidden-xs">{{ item.hash }}</span>
+                                <span class="hidden-sm hidden-md hidden-lg">{{ item.shortHash }}</span>
+                            </div>
+                        </div>
 
-                <div class="media">
-                    <div class="media-left">
-                        <a>
-                            <img class="media-object"  src="{{ avatar(item.author.email, 40) }}" />
-                        </a>
-                    </div>
-                    <div class="media-body">
-                        <h4 class="media-heading">
-                            {{ item.message }}
-                        </h4>
-                        <a href="mailto:{{ item.author.email }}">{{ item.author.name }}</a> authored on {{ item.date | format_date }}
-                        {% if item.author.email != item.commiter.email %}
-                            &bull; <a href="mailto:{{ item.commiter.email }}">{{ item.commiter.name }}</a> committed on {{ item.commiterDate | format_date }}
-                        {% endif %}
+                        <div class="media">
+                            <div class="media-left">
+                                <a>
+                                    <img class="media-object" src="{{ avatar(item.author.email, 40) }}"/>
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">
+                                    {{ item.message }}
+                                </h4>
+                                <a href="mailto:{{ item.author.email }}">{{ item.author.name }}</a> authored
+                                on {{ item.date | format_date }}
+                                {% if item.author.email != item.commiter.email %}
+                                    &bull; <a
+                                        href="mailto:{{ item.commiter.email }}">{{ item.commiter.name }}</a> committed on {{ item.commiterDate | format_date }}
+                                {% endif %}
 
-                    </div>
-                </div>
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
-{% endfor %}
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endfor %}
 {% else %}
 
     <h4>
@@ -53,13 +59,13 @@
 {% endif %}
 
 {% if page != 'searchcommits' %}
-<ul class="pager">
-    {% if pager.current != pager.last %}
-    <li class="next" id="p3x-gitlist-commit-list-next">
-        <a href="?page={{ pager.next }}">Older / Next &rarr;</a>
-    </li>
-    {% endif %}
-</ul>
+    <ul class="pager">
+        {% if pager.current != pager.last %}
+            <li class="next" id="p3x-gitlist-commit-list-next">
+                <a href="?page={{ pager.next }}">Older / Next &rarr;</a>
+            </li>
+        {% endif %}
+    </ul>
 {% endif %}
 
 <script type="text/javascript">

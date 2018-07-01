@@ -1,9 +1,9 @@
 {
     "name": "p3x-gitlist",
-    "version": "2.8.47-848",
+    "version": "2.8.52-855",
     "corifeus": {
         "prod-dir": "prod",
-        "postfix": "8b5e3a4adea77d341db75b103d5b6a2b786da21f1fcc9598e2dc67a82b3bee73",
+        "postfix": "20a700444a281ab649b240e9237215c11a7bfb9e2c3c800d2de262b8a5a6acc6",
         "prefix": "p3x-",
         "publish": false,
         "type": "p3x",
