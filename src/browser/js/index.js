@@ -17,6 +17,15 @@ $(function() {
         input.keypress(() => {
             Cookies.set(cookieName, input.val(), window.gitlist.cookieSettings)
         })
+        input.change(() => {
+            Cookies.set(cookieName, input.val(), window.gitlist.cookieSettings)
+        })
+        input.keydown(() => {
+            Cookies.set(cookieName, input.val(), window.gitlist.cookieSettings)
+        })
+        input.keydown(() => {
+            Cookies.set(cookieName, input.val(), window.gitlist.cookieSettings)
+        })
         input.val(value);
 
         const listOptions = {

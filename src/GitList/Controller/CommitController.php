@@ -11,6 +11,7 @@ class CommitController implements ControllerProviderInterface
     public function connect(Application $app)
     {
         $route = $app['controllers_factory'];
+
         $route->get('{repo}/commits/search', function (Request $request, $repo) use ($app) {
             $subRequest = Request::create(
                 '/' . $repo . '/commits/master/search',
@@ -22,6 +23,7 @@ class CommitController implements ControllerProviderInterface
 
         $route->get('{repo}/commits/{commitishPath}', function ($repo, $commitishPath) use ($app) {
             $repository = $app['git']->getRepositoryFromName($app['git.repos'], $repo);
+
 
             if ($commitishPath === null) {
                 $commitishPath = $repository->getHead();
@@ -44,7 +46,7 @@ class CommitController implements ControllerProviderInterface
                 $categorized[$date][] = $commit;
             }
 
-            $template = $app['request_stack']->getCurrentRequest()->isXmlHttpRequest() ? 'commits-list.js' : 'commits.twig';
+            $template = $app['request_stack']->getCurrentRequest()->isXmlHttpRequest() ? 'commits-list.twig' : 'commits.twig';
 
             return $app['twig']->render($template, array(
                 'page'           => 'commits',
