@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="{{ prod_dir  }}/css/{{ theme }}.{{ theme_postfix }}.css" id="bootstrap-theme">
     <script type="text/javascript">window.gitlist = { lastload: undefined, lastloadSpan: undefined, dark: {{  theme_dark |json_encode|raw }}, isDark: undefined, viewer: undefined, setTheme: undefined, getThemeCookie: undefined, basepath: '{{ app.url_subdir }}', branch: '{{ branch }}', repo: '{{ repo }}', dateFormat: '{{ gitlist_date_format }}', themes: {}, codemirror_full_limit: undefined, browse_type: undefined, search_query: '{{ search_query }}', browserClick: undefined, networkRedraw: undefined, treegraph: undefined, canvasLaneColors: undefined, canvasDotColors: undefined, randomCanvasLaneColors: undefined, loadTheme: '{{ theme }}', codemirrorTheme : {}, scrollIntoView: undefined, markdownRenderer: undefined, editorMaxHeight: 300, blameCodeMirror: undefined}</script>
 </head>
-<body class="{{ theme_type }}">
+<body class="{{ theme_type }}" id="p3x-gitlist-body">
 
 {% block body %}{% endblock %}
 {% block javascripts %}
