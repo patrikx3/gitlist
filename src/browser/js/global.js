@@ -108,58 +108,67 @@ window.gitlist.setTheme = () => {
     for(let diffButton of diffButtons ) {
         diffButton.click();
     }
+
+    const switchThemeActually = () => {
+        currentTheme = theme;
+
+        /*
+        const themeBlameCodeMirror  = (options) => {
+            const {  theme } = options
+            for(let cm of window.gitlist.blameCodeMirror) {
+                cm.setOption("theme", theme);
+            }
+        }
+        */
+
+        let bodyAddClass
+        let bodyRemoveClass
+        let codeMirrorTheme
+        if (window.gitlist.isDark(theme)) {
+            bodyAddClass = 'p3x-gitlist-dark'
+            bodyRemoveClass = 'p3x-gitlist-light'
+            codeMirrorTheme = window.gitlist.codemirrorTheme.dark
+        } else {
+            bodyAddClass = 'p3x-gitlist-light'
+            bodyRemoveClass = 'p3x-gitlist-dark'
+            codeMirrorTheme = window.gitlist.codemirrorTheme.light
+
+        }
+
+        $body.addClass(bodyAddClass)
+        $body.removeClass(bodyRemoveClass)
+        if (gitlist.viewer !== undefined) {
+            gitlist.viewer.setOption("theme", codeMirrorTheme);
+        }
+        if (gitlist.blameCodeMirror !== undefined) {
+            gitlist.blameCodeMirror.setOption("theme", codeMirrorTheme);
+        }
+
+
+        window.gitlist.networkRedraw();
+        window.gitlist.treegraph();
+//    if (window.gitlist.lastloadSpan !== undefined && window.gitlist.lastloadSpan > 1000) {
+        clearTimeout(setTimeoutSwitch)
+        setTimeoutSwitch = setTimeout(() => {
+            $('.p3x-gitlist-overlay').remove();
+        }, 250)
+
+    }
+    //    console.log('p3x-gitlist switching theme')
+//    }
+
     if (diffButtons.length > 0) {
         $.snackbar({
             content: `We hid the shown diffs, to make the theme switching faster.`,
             timeout: window.gitlist.snapckbarLongTimeout,
         });
         window.scrollTo(0, 0);
-    }
-
-    //    console.log('p3x-gitlist switching theme')
-    currentTheme = theme;
-
-    /*
-    const themeBlameCodeMirror  = (options) => {
-        const {  theme } = options
-        for(let cm of window.gitlist.blameCodeMirror) {
-            cm.setOption("theme", theme);
-        }
-    }
-    */
-
-    let bodyAddClass
-    let bodyRemoveClass
-    let codeMirrorTheme
-    if (window.gitlist.isDark(theme)) {
-        bodyAddClass = 'p3x-gitlist-dark'
-        bodyRemoveClass = 'p3x-gitlist-light'
-        codeMirrorTheme = window.gitlist.codemirrorTheme.dark
+        setTimeout(switchThemeActually, 250)
     } else {
-        bodyAddClass = 'p3x-gitlist-light'
-        bodyRemoveClass = 'p3x-gitlist-dark'
-        codeMirrorTheme = window.gitlist.codemirrorTheme.light
-
-    }
-
-    $body.addClass(bodyAddClass)
-    $body.removeClass(bodyRemoveClass)
-    if (gitlist.viewer !== undefined) {
-        gitlist.viewer.setOption("theme", codeMirrorTheme);
-    }
-    if (gitlist.blameCodeMirror !== undefined) {
-        gitlist.blameCodeMirror.setOption("theme", codeMirrorTheme);
+        switchThemeActually()
     }
 
 
-    window.gitlist.networkRedraw();
-    window.gitlist.treegraph();
-//    if (window.gitlist.lastloadSpan !== undefined && window.gitlist.lastloadSpan > 1000) {
-    clearTimeout(setTimeoutSwitch)
-    setTimeoutSwitch = setTimeout(() => {
-        $('.p3x-gitlist-overlay').remove();
-    }, 250)
-//    }
 }
 const pushHash = (hash) => {
     if(history.pushState) {
