@@ -1,8 +1,12 @@
-<div ng-if="!diff" style="opacity: 0.5; margin: 20px; font-size: 125%;">
+<div ng-if="!diff" class="p3x-gitlist-commit-diff-loader">
     <i class="fas fa-cog fa-spin"></i> Hang on, loading the diffs via AJAX and using deffered rendering ...
 </div>
 
-<div style="max-height: {{ $root.gitlist.editorMaxHeight }}px; overflow-y: auto;">
+<div ng-if="diff && !done" class="p3x-gitlist-commit-diff-loader p3x-gitlist-commit-diff-loader-bottom">
+    <i class="fas fa-cog fa-spin"></i> Rendering non blocking huge diffs: {{ diff.lines.length }} / {{ diffLength }} <br/>
+</div>
+
+<div style="max-height: {{ $root.gitlist.editorMaxHeight }}px; overflow-y: auto;" id="p3x-gitlist-commit-diff-scroller-{{ $ctrl.loopIndex }}">
     <table id="p3x-gitlist-commit-diff-ng-table" ng-if="diff" style="min-width: 100%; max-width: 100%">
         <tr>
             <td class="lineNo">Old</td>

@@ -6,7 +6,6 @@ ini_set('display_errors', 1);
  * P3X GitList: an elegant and modern git repository viewer
  * http://github.com/patrikx3/gitlist
  */
-
 if (!ini_get('date.timezone')) {
     date_default_timezone_set('UTC');
 }

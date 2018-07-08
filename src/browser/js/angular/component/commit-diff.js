@@ -7,7 +7,9 @@ global.gitlist.ng.component('p3xGitlistCommitDiff', {
     controller: function ($scope, $timeout, $http) {
         const $ctrl = this;
 
+
         $scope.diff = undefined;
+        $scope.done = false;
 
         $scope.showNumber = (lineInfo) => {
             const first = lineInfo.line[0];
@@ -20,6 +22,8 @@ global.gitlist.ng.component('p3xGitlistCommitDiff', {
         const maxSizeLine = 256;
         let show = true;
         let originalSizeLine;
+       // let scrollerDiv
+
         const addLine = () => {
             /*
              $timeout(() => {
@@ -32,36 +36,46 @@ global.gitlist.ng.component('p3xGitlistCommitDiff', {
                         break;
                     }
                 }
-                if (index < lines.length - 1) {
+
+                 if (index < lines.length - 1) {
                     addLine();
+                } else {
+                    $scope.done = true;
                 }
             })
-             */
+            */
             $timeout(() => {
                 $scope.diff.lines.push(lines[index])
                 index++
-                if (index < lines.length ) {
+                if (index < lines.length) {
                     if (show) {
                         addLine();
                     }
+                }else {
+                    $scope.done = true
                 }
+
+               // scrollerDiv.scrollTop = scrollerDiv.scrollHeight;
             })
         }
 
         const generateDiff = async (options) => {
 
-            const { loading, toggle} = options;
+            const {loading, toggle} = options;
 
             if (toggle) {
                 show = !show;
-                if(show && originalSizeLine > maxSizeLine && index < lines.length ) {
+                if (show && originalSizeLine > maxSizeLine && index < lines.length) {
                     addLine();
-                };
+                }
+                ;
             }
 
             if (!loading) {
                 return;
             }
+
+
 
             try {
                 const url = new URL(location)
@@ -78,7 +92,9 @@ global.gitlist.ng.component('p3xGitlistCommitDiff', {
                     originalSizeLine = diff.lines.length
                     if (originalSizeLine > maxSizeLine) {
 //                        console.log('original', diff.lines.length)
+                        $scope.diffLength = diff.lines.length
                         lines = diff.lines.splice(maxSizeLine);
+                    //    scrollerDiv = document.getElementById(`p3x-gitlist-commit-diff-scroller-${ $ctrl.loopIndex }`)
                         $scope.diff = diff;
 //                        console.log('first allowed', diff.lines.length)
 //                        console.log('left', lines.length)
@@ -86,10 +102,11 @@ global.gitlist.ng.component('p3xGitlistCommitDiff', {
                         addLine()
                     } else {
                         $scope.diff = diff;
+                        $scope.done = true;
                     }
                 });
 
-            } catch(e) {
+            } catch (e) {
                 window.gitlist.ajaxErrorHandler(e)
             }
         }

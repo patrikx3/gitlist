@@ -37,7 +37,7 @@ const lessSettings = (grunt) => {
             const pkg = fsExtra.readJsonSync(pkgFilename);
             pkg.corifeus.postfix = lessHash
             //fsExtra.writeJsonSync(pkgFilename, pkg)
-            fs.writeFileSync(pkgFilename, JSON.stringify(pkg, null, 2), 'utf8')
+            fs.writeFileSync(pkgFilename, JSON.stringify(pkg, null, 4), 'utf8')
             grunt.log.writeln('The css postfix file has been saved!');
 
             const generateLessFiles = () => {
@@ -109,7 +109,7 @@ module.exports = themes;
 `);
                 fsExtra.outputJsonSync(filesLessCache, filesLess)
                 return filesLess
-//    grunt.log.writeln(JSON.stringify(filesLess, null, 2))
+//    grunt.log.writeln(JSON.stringify(filesLess, null, 4))
             }
 
 

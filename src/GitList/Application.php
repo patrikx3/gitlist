@@ -33,7 +33,7 @@ class Application extends SilexApplication
         $string = file_get_contents("../package.json");
         $pkg = json_decode($string, true);
 
-        $this['url_subdir'] = dirname($_SERVER['SCRIPT_NAME']);
+        $this['url_subdir'] = str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME']));
         if ($this['url_subdir'] === '/') {
             $this['url_subdir'] = '';
         }

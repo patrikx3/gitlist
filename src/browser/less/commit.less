@@ -1,4 +1,4 @@
-.p3x-gitlist-diff-container   {
+.p3x-gitlist-diff-container {
   width: 100%;
   display: block;
 
@@ -23,7 +23,7 @@
       border: 1px solid transparent;
 
       &:hover {
-//        filter: brightness(0.9);
+        //        filter: brightness(0.9);
       }
     }
     table {
@@ -46,8 +46,8 @@
       color: @alert-info-text;
     }
     .lineNo {
-//      background-color: @navbar-default-bg !important;
-//      color: @navbar-default-color !important;
+      //      background-color: @navbar-default-bg !important;
+      //      color: @navbar-default-color !important;
       padding: 0 6px;
       text-align: right;
       border-right: 1px solid @navbar-default-border !important;
@@ -63,7 +63,7 @@
   }
 }
 
-#p3x-git-commit-heading {
+#p3x-gitlist-commit-heading {
   font-size: 120%;
   pre, code {
     padding: 0;
@@ -71,4 +71,14 @@
     margin: 0;
     text-align: left;
   }
+}
+
+.p3x-gitlist-commit-diff-loader {
+  opacity: 0.5;
+  padding: 20px;
+  font-size: 125%;
+}
+
+.p3x-gitlist-commit-diff-loader-bottom {
+  border-bottom: @list-group-border solid 1px;
 }

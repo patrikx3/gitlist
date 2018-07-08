@@ -38,6 +38,7 @@ class Client
         }
 
         $this->setPath($path);
+
     }
 
     /**
@@ -134,7 +135,6 @@ class Client
     protected function setPath($path)
     {
         $this->path = $path;
-
         return $this;
     }
 

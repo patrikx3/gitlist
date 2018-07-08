@@ -1,9 +1,9 @@
 {
     "name": "p3x-gitlist",
-    "version": "2.8.57-862",
+    "version": "2.8.69-872",
     "corifeus": {
         "prod-dir": "prod",
-        "postfix": "20a700444a281ab649b240e9237215c11a7bfb9e2c3c800d2de262b8a5a6acc6",
+        "postfix": "08ad433c72ece542fe35c29872aa035c4aaaa0d9f6fb2d305519ff6860984574",
         "prefix": "p3x-",
         "publish": false,
         "type": "p3x",
@@ -11,7 +11,7 @@
         "cdn": true,
         "icon": "fas fa-code",
         "code": "Spawn",
-        "nodejs": "v10.5.0",
+        "nodejs": "v10.6.0",
         "reponame": "gitlist",
         "build": true
     },
@@ -29,9 +29,9 @@
     "devDependencies": {
         "bootswatch": "^3.3.7",
         "concurrently": "^3.6.0",
-        "corifeus-builder": "^1.8.27-426",
-        "corifeus-utils": "^1.2.83-391",
-        "css-loader": "^0.28.11",
+        "corifeus-builder": "^1.8.35-434",
+        "corifeus-utils": "^1.2.91-400",
+        "css-loader": "^1.0.0",
         "extract-text-webpack-plugin": "^4.0.0-beta.0",
         "file-loader": "^1.1.11",
         "fs-extra": "^6.0.1",
@@ -45,11 +45,11 @@
         "style-loader": "^0.21.0",
         "uglifyjs-webpack-plugin": "^1.2.7",
         "url-loader": "^1.0.1",
-        "webpack": "^4.14.0",
+        "webpack": "^4.15.1",
         "webpack-cli": "^3.0.8"
     },
     "engines": {
-        "node": ">=10.2.1"
+        "node": ">=10.5.0"
     },
     "homepage": "https://pages.corifeus.com/gitlist",
     "dependencies": {
@@ -68,6 +68,7 @@
         "list.js": "^1.5.0",
         "lodash": "^4.17.10",
         "marked": "^0.4.0",
+        "moment": "^2.22.2",
         "php-date": "^2.1.1",
         "raphael": "^2.2.7",
         "snackbarjs": "^1.1.0",
