@@ -1,9 +1,9 @@
 {
     "name": "p3x-gitlist",
-    "version": "2.8.69-872",
+    "version": "2.9.1-882",
     "corifeus": {
         "prod-dir": "prod",
-        "postfix": "08ad433c72ece542fe35c29872aa035c4aaaa0d9f6fb2d305519ff6860984574",
+        "postfix": "2607a7cb45c1136298a2a2ccb0a3d49ec147c7dab987b6dd4ec124a716e92c92",
         "prefix": "p3x-",
         "publish": false,
         "type": "p3x",
@@ -57,7 +57,6 @@
         "@fortawesome/fontawesome-free-brands": "^5.0.13",
         "@fortawesome/fontawesome-free-regular": "^5.0.13",
         "@fortawesome/fontawesome-free-solid": "^5.0.13",
-        "angular": "^1.7.2",
         "bootstrap": "^3.3.7",
         "codemirror": "^5.39.0",
         "highlight.js": "^9.12.0",

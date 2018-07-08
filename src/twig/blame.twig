@@ -5,28 +5,61 @@
 {% block title %}P3X GitList{% endblock %}
 
 {% block content %}
+
     {% embed 'breadcrumb.twig' with {breadcrumbs: [{dir: 'Blame', path:''}, {dir: file, path:''}]} %}
 
         {% block left %}
             {% if blames %}
-                <button type="button" class="btn btn-primary btn-sm">Blames found: {{ blames | length }}</button>
+                <span class="label label-info">Blames found: {{ blames | length }}</span>
+                <span class="label label-info">Mode: {{ type }}</span>
             {% endif %}
         {%  endblock %}
 
     {% endembed %}
+
+
+
     {% if blames %}
 
-        {% for blame in blames %}
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <span class="far fa-file-alt"></span>&nbsp;&nbsp; <a href="{{ path('commit', {repo: repo, commit: blame.commit}) }}">{{ blame.commitShort }}</a>
-                </div>
-                <div class="panel-body p3x-gitlist-search-match">{{ blame.line }}</div>
+        <div class="p3x-gitlist-overlay">
+            <div>
+                <i class="fas fa-cog fa-spin fa-4x"></i>
             </div>
+            <br/>
+            <div>
+                Hang on, we reloading big blames...
+            </div>
+        </div>
+
+        {% for blame in blames %}
+
+        <div class="panel panel-default p3x-gitlist-blame-panel" data-index="{{ loop.index0 }}" data-mode="{{ type }}">
+            <div class="panel-heading">
+                    <table style="width: 100%; background-color: transparent;" id="p3x-gitlilst-blame-heading-table-{{ loop.index0 }}">
+                        <tr>
+                            <td>
+                                <span class="far fa-file-alt"></span>&nbsp;&nbsp; <a href="{{ path('commit', {repo: repo, commit: blame.commit}) }}">{{ blame.commitShort }}</a>
+                            </td>
+                            <td style="text-align: right;">
+                                <button class="btn btn-sm btn-primary" id="p3x-gitlilst-blame-heading-button-codemirror-{{ loop.index0 }}">
+                                    Display in code mirror
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+
+            </div>
+            <div class="panel-body">
+                <div class="p3x-gitlist-blame-text" id="p3x-gitlist-blame-text-{{ loop.index0 }}">{{ blame.line }}</div>
+                <textarea class="hidden" id="p3x-gitlist-blame-codemirror-{{ loop.index0 }}">{{ blame.line }}</textarea>
+            </div>
+
+        </div>
+
         {% endfor %}
     {% else %}
         <h4>
-            The blames.
+            No blames.
         </h4>
     {% endif %}
 

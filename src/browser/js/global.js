@@ -118,19 +118,40 @@ window.gitlist.setTheme = () => {
     */
 //    console.log('p3x-gitlist switching theme')
     currentTheme = theme;
-    if (window.gitlist.isDark(theme)) {
-        $body.addClass('p3x-gitlist-dark')
-        $body.removeClass('p3x-gitlist-light')
-        if (gitlist.viewer !== undefined) {
-            gitlist.viewer.setOption("theme", window.gitlist.codemirrorTheme.dark);
-        }
-    } else {
-        $body.addClass('p3x-gitlist-light')
-        $body.removeClass('p3x-gitlist-dark')
-        if (gitlist.viewer !== undefined) {
-            gitlist.viewer.setOption("theme", window.gitlist.codemirrorTheme.light);
+
+    /*
+    const themeBlameCodeMirror  = (options) => {
+        const {  theme } = options
+        for(let cm of window.gitlist.blameCodeMirror) {
+            cm.setOption("theme", theme);
         }
     }
+    */
+
+    let bodyAddClass
+    let bodyRemoveClass
+    let codeMirrorTheme
+    if (window.gitlist.isDark(theme)) {
+        bodyAddClass = 'p3x-gitlist-dark'
+        bodyRemoveClass = 'p3x-gitlist-light'
+        codeMirrorTheme = window.gitlist.codemirrorTheme.dark
+    } else {
+        bodyAddClass = 'p3x-gitlist-light'
+        bodyRemoveClass = 'p3x-gitlist-dark'
+        codeMirrorTheme = window.gitlist.codemirrorTheme.light
+
+    }
+
+    $body.addClass(bodyAddClass)
+    $body.removeClass(bodyRemoveClass)
+    if (gitlist.viewer !== undefined) {
+        gitlist.viewer.setOption("theme", codeMirrorTheme);
+    }
+    if (gitlist.blameCodeMirror !== undefined) {
+        gitlist.blameCodeMirror.setOption("theme", codeMirrorTheme);
+    }
+
+
     window.gitlist.networkRedraw();
     window.gitlist.treegraph();
 //    if (window.gitlist.lastloadSpan !== undefined && window.gitlist.lastloadSpan > 1000) {

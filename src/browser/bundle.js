@@ -95,6 +95,7 @@ require('./js/file')
 require('./js/theme-switcher.js')
 require('./js/commit')
 require('./js/commits-list')
+require('./js/blame')
 require('./js/global')
-require('./js/angular/bootstrap');
+
 

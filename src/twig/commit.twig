@@ -87,10 +87,20 @@
                     </div>
                     <div style="clear: both;"></div>
                 </li>
-                <li class="list-group-item p3x-gitlist-diff-container" data-diff-ref="p3x-gitlist-diff-{{ loop.index }}"
-                    data-diff-id="p3x-gitlist-diff-data-{{ loop.index }}" data-diff-index="{{ loop.index }}" style="display: none;">
+                <li class="list-group-item p3x-gitlist-diff-container"
+                    data-diff-id="p3x-gitlist-diff-data-{{ loop.index }}" style="display: none;"  data-filename="{{ diff.file }}" data-loop-index="{{ loop.index }}">
                         <div class="p3x-gitlist-diff" id="p3x-gitlist-diff-ajax-{{ loop.index }}">
-                            <p3x-gitlist-commit-diff filename="{{ diff.file }}" loop-index="{{ loop.index }}"></p3x-gitlist-commit-diff>
+                            <div class="p3x-gitlist-commit-diff-loader" id="p3x-gitlist-commit-diff-loader-{{ loop.index }}">
+                                <span id="p3x-gitlist-commit-diff-loader-ajax-{{ loop.index }}">
+                                    <i class="fas fa-cog fa-spin"></i> Hang on, loading the diffs via AJAX
+                                </span>
+                                <span id="p3x-gitlist-commit-diff-loader-webworker-{{ loop.index }}" style="display: none;">
+                                    <i class="fas fa-cog fa-spin"></i> Hang on, rendering the diffs with web worker
+                                </span>
+                            </div>
+                            <div style="overflow-y: auto;" id="p3x-gitlist-commit-diff-scroller-{{ loop.index }}">
+                            </div>
+
                         </div>
                 </li>
             {% endfor %}

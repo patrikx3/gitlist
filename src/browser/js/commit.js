@@ -36,36 +36,52 @@ $(() => {
 
         for (let diffEditor of diffEditors) {
             const $editableHover = $('#' + diffEditor.dataset.diffId);
-//            console.log(diffEditor.dataset.diffId)
             const $diffEditor = $(diffEditor);
             $editableHover.on('click', () => {
-                clearTimeout(deferScroll)
-                setTimeout(() => {
-                    window.gitlist.pushHash(`#${diffEditor.dataset.diffRef}`)
-                    const index = diffEditor.dataset.diffIndex;
-                    $diffEditor.toggle();
-                    $editableHover.toggleClass('active');
-                    const showDiff = () => {
-                        if (!window.gitlist.generateDiff.hasOwnProperty(index)) {
-//                            console.log(window.gitlist.generateDiff[index]);
-                            clearTimeout(diffEditor.timeout)
-                            diffEditor.timeout = setTimeout(showDiff, 100);
-                        } else if (!generatedDiffs.hasOwnProperty(index)) {
-                                clearTimeout(diffEditor.timeout)
-                                generatedDiffs[index] = true;
-                                window.gitlist.generateDiff[index]({
-                                    loading: true,
-                                    toggle: false,
-                                });
-                        } else {
-                            window.gitlist.generateDiff[index]({
-                                loading: false,
-                                toggle: true,
-                            });
+                const url = new URL(location)
+                $diffEditor.toggle()
+                $editableHover.toggleClass('active')
+                if (diffEditor.dataset.loaded) {
+                    return;
+                }
+                const loopIndex = diffEditor.dataset.loopIndex;
+                //console.log(loopIndex)
+                diffEditor.dataset.loaded = true
+                url.searchParams.append('ajax', '1')
+                url.searchParams.append('filename', diffEditor.dataset.filename)
+
+                const loader = $(`#p3x-gitlist-commit-diff-loader-${loopIndex}`)
+                const loaderAjax = $(`#p3x-gitlist-commit-diff-loader-ajax-${loopIndex}`)
+                const loaderWebworker = $(`#p3x-gitlist-commit-diff-loader-webworker-${loopIndex}`)
+                const scroller = $(`#p3x-gitlist-commit-diff-scroller-${loopIndex}`)
+                scroller.css('max-height', window.gitlist.editorMaxHeight)
+
+                $.ajax(url.toString()).then(function (diffsResponseJson) {
+                    if (typeof diffsResponseJson !== 'object') {
+                        const sendErrorMessage = `${window.gitlist.basepath}/json-error`;
+                        console.log(sendErrorMessage);
+                        $.redirect(sendErrorMessage, {
+                            error: diffsResponseJson,
+                        })
+                    } else {
+                        const diffs = diffsResponseJson[0];
+                        loaderAjax.hide()
+                        loaderWebworker.show()
+                        const worker = new Worker(`${window.gitlist.basepath}/web-worker/commit-diff.js`);
+                        worker.addEventListener('message', function (event) {
+                            loader.hide();
+                            scroller.append(event.data)
+                            worker.terminate()
+                            //console.log('worker.onmessage', event.data)
+                        })
+                        for(let diffLineIndex in diffs.lines) {
+                            diffs.lines[diffLineIndex].line = htmlEncode(diffs.lines[diffLineIndex].line)
                         }
+                        worker.postMessage({
+                            diffs : diffs
+                        });
                     }
-                    showDiff();
-                })
+                }).catch(window.gitlist.ajaxErrorHandler)
             })
         }
     }
