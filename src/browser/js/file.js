@@ -252,6 +252,16 @@ ${branchInfo}
                 if (line !== undefined) {
                     setTimeout(() => {
                         cm.scrollIntoView({line: line, char:0}, isReallyFull ? window.innerHeight / 2 : 100)
+                        /*
+                        const codes =  $('.CodeMirror-linenumber')
+                        for(let codeLinenumber of codes) {
+                            const $codeLinenumber = $(codeLinenumber)
+                            const findLine = $codeLinenumber.text();
+                            if(findLine === line ) {
+                                break;
+                            }
+                        }
+                        */
                     }, 250)
                 }
             }

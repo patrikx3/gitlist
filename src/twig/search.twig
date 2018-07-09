@@ -10,7 +10,7 @@
 
         {% block left %}
             {% if results %}
-                <button type="button" class="btn btn-primary btn-sm">File count: {{ results | length }}</button>
+                <span class="label label-info">File count: {{ results | length }}</span>
             {% endif %}
         {%  endblock %}
 
@@ -19,17 +19,49 @@
 
     {% if results %}
 
+        <div class="p3x-gitlist-overlay">
+            <div>
+                <i class="fas fa-cog fa-spin fa-4x"></i>
+            </div>
+            <br/>
+            <div>
+                Hang on, we reloading big blames...
+            </div>
+        </div>
+
         {% for result in results %}
-            <div class="panel panel-default">
+
+            <div class="panel panel-default p3x-gitlist-file-fragment-panel" data-index="{{ loop.index0 }}" data-mode="{{ result.type }}">
                 <div class="panel-heading">
-                    <span class="far fa-file-alt"></span>&nbsp;&nbsp;<a href="{{ path('blob', {repo: repo, branch: branch, file: result.file, commitishPath: branch ~ '/' ~ result.file}) }}&codemirror=1&query={{ search_query }}#L{{ result.line }}">{{ result.file }}</a>
+                    <table style="width: 100%; background-color: transparent;" id="p3x-gitlilst-file-fragment-heading-table-{{ loop.index0 }}">
+                        <tr>
+                            <td>
+                                <span class="far fa-file-alt"></span>&nbsp;&nbsp;<a href="{{ path('blob', {repo: repo, branch: branch, file: result.file, commitishPath: branch ~ '/' ~ result.file}) }}&codemirror=1&query={{ search_query }}#L{{ result.line }}">{{ result.file }}</a> on line {{ result.line }}
+                            </td>
+                            <td style="text-align: right;">
+
+                                <button class="btn btn-sm btn-primary" id="p3x-gitlilst-file-fragment-heading-button-edit-{{ loop.index0 }}" data-url="{{ path('blob', {repo: repo, branch: branch, file: result.file, commitishPath: branch ~ '/' ~ result.file}) }}&codemirror=1&query={{ search_query }}#L{{ result.line }}" style=" text-transform: capitalize;">
+                                    <i class="fas fa-edit"></i>&nbsp; Edit
+                                </button>
+                                &nbsp;&nbsp;
+                                <button class="btn btn-sm btn-primary" id="p3x-gitlilst-file-fragment-heading-button-codemirror-{{ loop.index0 }}" style=" text-transform: capitalize;">
+                                    <i class="fas fa-eye"></i>&nbsp; {{ result.type }}
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+
                 </div>
-                <div class="panel-body p3x-gitlist-search-match">{{ result.match }}</div>
+                <div class="panel-body">
+                    <div class="p3x-gitlist-file-fragment-text" id="p3x-gitlist-file-fragment-text-{{ loop.index0 }}">{{ result.match }}</div>
+                    <textarea class="hidden" id="p3x-gitlist-file-fragment-codemirror-{{ loop.index0 }}">{{ result.match }}</textarea>
+                </div>
+
             </div>
         {% endfor %}
     {% else %}
         <h4>
-            The search found no result.
+            No result.
         </h4>
     {% endif %}
 

@@ -33,16 +33,16 @@
 
         {% for blame in blames %}
 
-        <div class="panel panel-default p3x-gitlist-blame-panel" data-index="{{ loop.index0 }}" data-mode="{{ type }}">
+        <div class="panel panel-default p3x-gitlist-file-fragment-panel" data-index="{{ loop.index0 }}" data-mode="{{ type }}">
             <div class="panel-heading">
-                    <table style="width: 100%; background-color: transparent;" id="p3x-gitlilst-blame-heading-table-{{ loop.index0 }}">
+                    <table style="width: 100%; background-color: transparent;" id="p3x-gitlilst-file-fragment-heading-table-{{ loop.index0 }}">
                         <tr>
                             <td>
                                 <span class="far fa-file-alt"></span>&nbsp;&nbsp; <a href="{{ path('commit', {repo: repo, commit: blame.commit}) }}">{{ blame.commitShort }}</a>
                             </td>
                             <td style="text-align: right;">
-                                <button class="btn btn-sm btn-primary" id="p3x-gitlilst-blame-heading-button-codemirror-{{ loop.index0 }}">
-                                    Display in code mirror
+                                <button class="btn btn-sm btn-primary" id="p3x-gitlilst-file-fragment-heading-button-codemirror-{{ loop.index0 }}">
+                                    <i class="fas fa-eye"></i>&nbsp;&nbsp;Code Mirror
                                 </button>
                             </td>
                         </tr>
@@ -50,8 +50,8 @@
 
             </div>
             <div class="panel-body">
-                <div class="p3x-gitlist-blame-text" id="p3x-gitlist-blame-text-{{ loop.index0 }}">{{ blame.line }}</div>
-                <textarea class="hidden" id="p3x-gitlist-blame-codemirror-{{ loop.index0 }}">{{ blame.line }}</textarea>
+                <div class="p3x-gitlist-file-fragment-text" id="p3x-gitlist-file-fragment-text-{{ loop.index0 }}">{{ blame.line }}</div>
+                <textarea class="hidden" id="p3x-gitlist-file-fragment-codemirror-{{ loop.index0 }}">{{ blame.line }}</textarea>
             </div>
 
         </div>

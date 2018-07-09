@@ -113,9 +113,9 @@ window.gitlist.setTheme = () => {
         currentTheme = theme;
 
         /*
-        const themeBlameCodeMirror  = (options) => {
+        const themeFragmentFileCodeMirror  = (options) => {
             const {  theme } = options
-            for(let cm of window.gitlist.blameCodeMirror) {
+            for(let cm of window.gitlist.fragmentFileCodeMirror) {
                 cm.setOption("theme", theme);
             }
         }
@@ -140,8 +140,8 @@ window.gitlist.setTheme = () => {
         if (gitlist.viewer !== undefined) {
             gitlist.viewer.setOption("theme", codeMirrorTheme);
         }
-        if (gitlist.blameCodeMirror !== undefined) {
-            gitlist.blameCodeMirror.setOption("theme", codeMirrorTheme);
+        if (gitlist.fragmentFileCodeMirror !== undefined) {
+            gitlist.fragmentFileCodeMirror.setOption("theme", codeMirrorTheme);
         }
 
 

@@ -61,6 +61,12 @@ class TreeController implements ControllerProviderInterface
             $breadcrumbs = array(array('dir' => 'Search results for: ' . $query, 'path' => ''));
             $results = $repository->searchTree($query, $branch);
 
+            for($i = 0; $i < count($results); $i++) {
+                $result = $results[$i];
+                $results[$i]['type'] = $app['util.repository']->getFileType($result['file']);
+            }
+
+
             return $app['twig']->render('search.twig', array(
                 'results'        => $results,
                 'repo'           => $repo,
@@ -72,6 +78,7 @@ class TreeController implements ControllerProviderInterface
                 'tags'           => $repository->getTags(),
                 'query'          => $query
             ));
+
         })->assert('repo', $app['util.routing']->getRepositoryRegex())
           ->assert('branch', $app['util.routing']->getBranchRegex())
           ->convert('branch', 'escaper.argument:escape')
