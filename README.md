@@ -36,7 +36,12 @@ https://nodejs.org/en/download/package-manager/
                         
 [//]: #@corifeus-header:end
 
-This is Klaus Silveira's fork, with multiple themes (dark/light), sub-modules, uglify-es, webpack, toast, pure Bootstrap 3 and upgraded to PHP7.1 with all components.
+This is Klaus Silveira's fork, with multiple themes (dark/light), sub-modules, uglify-es, webpack, toast, pure Bootstrap 3 and upgraded to PHP7.1 with all components.  
+
+#### Warning
+For the actual released `zip` file does not need anything like `NodeJS` or anything like that. Only a `web server`, `PHP 7.1` and `GIT`.
+
+See releases: https://github.com/patrikx3/gitlist/releases
 
 ### PHP > 7.1 only
  
@@ -64,16 +69,15 @@ For now, you can create a folder eg. `/var/www/gitlist.me.com/` and make sure, t
 The `config.ini` file with `url_subdir` or later `clone_subdir` variable has been changed to the `git_clone_subdir` variable.
 
 ### Third 😀
-I removed `Babel`, we are in 2018. If you want use an older `Browser` (like iPhone 5), you can probably install latest `Chrome` and it will work.
+I removed `Babel`, we started to upgrade in 2018 on this repo. If you want use an older `Browser` (like iPhone 5), you can probably install latest `Chrome` and it will work.
    
-Besides, without `Babel` the `JavaScript` is much faster. (At work, without `Babel`, bigger `JS` file and works `20x` faster.)
+Besides, without `Babel` the `JavaScript` is much faster. (At work, without `Babel`, smaller `JS` bundle files and works about `20x` faster.)
 mast
 
 ### Fourth
-If you use huge repos, like me, make sure to increase the `PHP` memory limit above `128MB`. 
-
-#### Fifth
-I have disabled loading everything in `twig`, besides the `diffs` are loading via `AJAX`, I made it to work huge commits with `64MB` `PHP`.
+I have disabled loading everything in `twig`, besides the `diffs` are loading via `AJAX`, I made it to work huge commits with `64MB` `PHP`.  
+See in action:  
+https://gitlist.patrikx3.com/gitlist.git/commit/f1e4d5b938c8f1a6cd178aeea2e9e86111ea5323#p3x-gitlist-diff-93  
 
 #### The last version with Babel
 https://github.com/patrikx3/gitlist/releases/tag/2.0.4-579
