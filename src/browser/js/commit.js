@@ -74,11 +74,15 @@ $(() => {
                             worker.terminate()
                             //console.log('worker.onmessage', event.data)
                         })
-                        for(let diffLineIndex in diffs.lines) {
+                        /*
+                          for(let diffLineIndex in diffs.lines) {
                             diffs.lines[diffLineIndex].line = htmlEncode(diffs.lines[diffLineIndex].line)
                         }
+                        */
                         worker.postMessage({
-                            diffs : diffs
+                            diffs : diffs,
+                            basepath: window.gitlist.basepath,
+                            htmlEncode: window.htmlEncode.toString(),
                         });
                     }
                 }).catch(window.gitlist.ajaxErrorHandler)

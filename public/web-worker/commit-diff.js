@@ -1,10 +1,17 @@
+
 const showNumber = (lineInfo) => {
     const first = lineInfo.line[0];
     return first === ' ' || first === '@' || first === '-' || first === '+';
 }
 
+let htmlEncode
+
 const construct = (data) => {
     const diffs = data.diffs
+
+    for(let diffLineIndex in diffs.lines) {
+        diffs.lines[diffLineIndex].line = htmlEncode(diffs.lines[diffLineIndex].line)
+    }
 
     let result = `
      <table id="p3x-gitlist-commit-diff-ng-table" style="min-width: 100%; max-width: 100%">
@@ -45,6 +52,7 @@ const construct = (data) => {
 }
 
 onmessage = function(e) {
+    eval(`htmlEncode = ${e.data.htmlEncode}`)
     const result = construct(e.data);
     postMessage(result)
 }

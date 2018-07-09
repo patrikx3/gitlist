@@ -44,6 +44,7 @@ module.exports = function (grunt) {
 
                         ]
                     },
+
                 },
                 less: {
                     development: require('./src/browser/grunt/less').lessSettings(grunt),
