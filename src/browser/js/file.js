@@ -248,9 +248,17 @@ ${branchInfo}
             }
 
             const scrollToEditor = () => {
-                const line = location.hash.startsWith('#L')  ? location.hash.substring(2) : undefined
+                let line = location.hash.startsWith('#L')  ? location.hash.substring(2) : undefined
                 if (line !== undefined) {
                     setTimeout(() => {
+                        line = parseInt(line)
+                        cm.setSelection({
+                            line: line - 1 ,
+                            char: 0,
+                        }, {
+                            line: line - 1,
+                            char: Number.MAX_SAFE_INTEGER
+                        })
                         cm.scrollIntoView({line: line, char:0}, isReallyFull ? window.innerHeight / 2 : 100)
                         /*
                         const codes =  $('.CodeMirror-linenumber')
