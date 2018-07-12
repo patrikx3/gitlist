@@ -5,6 +5,13 @@
                         
 [//]: #@corifeus-header:end
 
+### v2.10
+* Display SVG files, while you can edit it as well
+* The network dots were small, now big ones with 10 radius, 20px;
+* Delete files
+* grunt-contrib-less - 2 is missing the `@path` variable
+* add change log display
+
 ### v2.9
 * The tree search and the blames are using the shared code (with option to use with Code mirror)
 * Diffs are rendering with web workers.
@@ -152,7 +159,7 @@ require('codemirror/mode/yaml/yaml');
 
 ---
 
-[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2.9.17-894 
+[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2.10.31-921 
 
 [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software) [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) 
 

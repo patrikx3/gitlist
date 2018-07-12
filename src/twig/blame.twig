@@ -12,6 +12,7 @@
             {% if blames %}
                 <span class="label label-info">Blames found: {{ blames | length }}</span>
                 <span class="label label-info">Mode: {{ type }}</span>
+                <span class="label label-info">Binary: {{ binary ? 'true' : 'false' }}</span>
             {% endif %}
         {%  endblock %}
 
@@ -38,21 +39,26 @@
                     <table style="width: 100%; background-color: transparent;" id="p3x-gitlilst-file-fragment-heading-table-{{ loop.index0 }}">
                         <tr>
                             <td>
-                                <span class="far fa-file-alt"></span>&nbsp;&nbsp; <a href="{{ path('commit', {repo: repo, commit: blame.commit}) }}">{{ blame.commitShort }}</a>
+                                <span class="far fa-file-alt"></span>&nbsp;&nbsp; <a id="{{ blame.commitShort }}" href="{{ path('commit', {repo: repo, commit: blame.commit}) }}">{{ blame.commitShort }}</a>
                             </td>
                             <td style="text-align: right;">
-                                <button class="btn btn-sm btn-primary" id="p3x-gitlilst-file-fragment-heading-button-codemirror-{{ loop.index0 }}">
+                                {% if not binary %}
+                                <button data-commit-short="{{ blame.commitShort }}" class="btn btn-sm btn-primary" id="p3x-gitlilst-file-fragment-heading-button-codemirror-{{ loop.index0 }}">
                                     <i class="fas fa-eye"></i>&nbsp;&nbsp;Code Mirror
                                 </button>
+                                {% endif %}
                             </td>
                         </tr>
                     </table>
 
             </div>
-            <div class="panel-body">
-                <div class="p3x-gitlist-file-fragment-text" id="p3x-gitlist-file-fragment-text-{{ loop.index0 }}">{{ blame.line }}</div>
-                <textarea class="hidden" id="p3x-gitlist-file-fragment-codemirror-{{ loop.index0 }}">{{ blame.line }}</textarea>
-            </div>
+            {% if not binary %}
+                <div class="panel-body">
+
+                    <div class="p3x-gitlist-file-fragment-text" id="p3x-gitlist-file-fragment-text-{{ loop.index0 }}">{{ blame.line }}</div>
+                    <textarea class="hidden" id="p3x-gitlist-file-fragment-codemirror-{{ loop.index0 }}">{{ blame.line }}</textarea>
+                </div>
+            {% endif %}
 
         </div>
 

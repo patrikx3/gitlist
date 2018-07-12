@@ -14,7 +14,7 @@ class GitController implements ControllerProviderInterface
     {
         $route = $app['controllers_factory'];
 
-        $route->post('{repo}/git-helper/{branch}/save', function (Request $request, $repo, $branch = '') use ($app) {
+        $route->post('{repo}/git-helper/{branch}/{action}', function (Request $request, $repo, $branch = '', $action) use ($app) {
             $repository = ($app['git']->getRepositoryFromName($app['git.repos'], $repo));
 
             $hadError = false;
@@ -26,8 +26,26 @@ class GitController implements ControllerProviderInterface
                     $email = $request->get('email');
                     $name = $request->get('name');
                     $comment = $request->get('comment');
-                    $objectResult = $repository->changeFile($app->getCachePath(), $repo, $branch, $filename, $value, $name, $email, $comment);
-                    return json_encode($objectResult);
+
+
+                    switch($action) {
+                        case 'save':
+                            $objectResult = $repository->changeFile($app->getCachePath(), $repo, $branch, $filename, $value, $name, $email, $comment);
+                            return json_encode($objectResult);
+
+                        case 'delete':
+                            $objectResult = $repository->deleteFile($app->getCachePath(), $repo, $branch, $filename, $name, $email, $comment);
+                            return json_encode($objectResult);
+                            break;
+
+                        default:
+                            return json_encode((object) [
+                                'status' => 'error',
+                                'error' => true,
+                                'message' => 'Un-implemented action "' . $action . '".' ,
+                            ]);
+
+                    }
                 }
             } catch(\Throwable $e) {
                 $hadError = $e;

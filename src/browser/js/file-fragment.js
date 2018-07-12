@@ -34,12 +34,25 @@ $(() => {
                     }
                 }
 
+
+                /*
+                const position = $buttonToggleCodeMirror.get(0).dataset.commitShort
+                const hash =  `#${position}`
+                //history.pushState(null, document.title,);
+                location.hash = hash
+                $buttonToggleCodeMirror.get(0).scrollIntoView()
+                */
+
                 $buttonToggleCodeMirrorCurrent = $buttonToggleCodeMirror
                 $textCurrent = $text;
                 $textareaCurrent = $textarea;
                 $text.addClass('hidden');
                 $textarea.removeClass('hidden')
                 $buttonToggleCodeMirror.addClass('active')
+
+//                const maxSize = window.gitlist.codemirror_full_limit;
+ //               const size = Math.ceil($textarea.get(0).value.length / 1024);
+  //              const codeMirrorHeight = window.gitlist.editorMaxHeight;
 
                 const cm  = CodeMirror.fromTextArea($textarea.get(0), {
                     styleActiveLine: true,
@@ -53,6 +66,8 @@ $(() => {
                     mode: fragmentFile.dataset.mode,
                     theme: window.gitlist.getActualThemeCodemirror(),
                 });
+
+
                 window.gitlist.fragmentFileCodeMirror = cm
             })
         }

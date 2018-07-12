@@ -22,7 +22,7 @@
 
     {% embed 'breadcrumb.twig' with {breadcrumbs: [{dir: "Commit #{commit.hash}", path:''}]} %}
         {% block right %}
-            <a class="btn btn-info btn-sm" href="{{ path('branch', {repo: repo, branch: commit.hash}) }}"
+            <a class="btn btn-primary btn-sm" href="{{ path('branch', {repo: repo, branch: commit.hash}) }}"
                title="Browse code at this point in history"><span class="fa fa-list-alt"></span> Browse code</a>
         {% endblock %}
     {% endembed %}

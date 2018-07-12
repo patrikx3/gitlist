@@ -21,7 +21,17 @@
         </div>
         <div class="navbar-collapse collapse" id="p3x-gitlist-navigation-theme">
             <ul class="nav navbar-nav navbar-right">
-                <li><a target="_blank" href="https://github.com/patrikx3/gitlist/">GitHub</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">GitHub <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="https://github.com/patrikx3/gitlist" target="p3x-gitlist" >Repo</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" onclick="window.gitlist.changeLog()">Changelog</a>
+                        </li>
+                    </ul>
+                </li>
 
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle p3x-gitlist-navigation-theme-open" data-toggle="dropdown">Themes <b class="caret"></b></a>
@@ -37,4 +47,23 @@
         </div><!--/.nav-collapse -->
     </div>
 </div>
+
+<div id="p3x-gitlist-modal-changelog" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true"><i class="fas fa-times"></i></span></button>
+                <h4 class="modal-title">Change log</h4>
+            </div>
+            <div class="modal-body" id="p3x-gitlist-modal-changelog-body">
+                <i class="fas fa-cog fa-spin"></i>&nbsp;Loading change log ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"> <span class="fas fa-times"></span> Close</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 <div class="p3x-gitlist-header-height"></div>

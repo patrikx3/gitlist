@@ -8,10 +8,17 @@
 {% block content %}
 
     {% embed 'breadcrumb.twig' with {breadcrumbs: breadcrumbs } %}
-        {% block right %}
-            <!--
-            <button class="btn btn-sm btn-info" onclick="alert('in progress');">New file</button>
-            -->
+        {% block left %}
+            <div class="p3x-gitlist-button">
+                <button class="btn btn-sm btn-info" onclick="alert('in progress');">
+                    <i class="far fa-file-alt"></i> New file
+                </button>
+                <button class="btn btn-sm btn-info" onclick="alert('in progress');">
+                    <i class="far fa-file"></i> Upload binary
+                </button>
+
+
+            </div>
         {%  endblock %}
 
     {% endembed %}

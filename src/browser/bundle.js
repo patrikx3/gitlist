@@ -85,6 +85,7 @@ require('./js/network.js')
 require('./js/gitgraph.js/gitgraph.css')
 require('./js/gitgraph.js/gitgraph.js')
 
+require('./js/tree')
 require('./js/treegraph')
 require('./js/markdown')
 require('./js/clone-buttons')
@@ -96,6 +97,7 @@ require('./js/theme-switcher.js')
 require('./js/commit')
 require('./js/commits-list')
 require('./js/file-fragment')
+require('./js/change-log')
 require('./js/global')
 
 

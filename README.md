@@ -4,7 +4,7 @@
 
 
  
-# 🤖 P3X Gitlist v2.9.17-894  
+# 🤖 P3X Gitlist v2.10.31-921  
 
 This is an open-source project. Star this repository if you like it, or even donate!  Thank you so much! :)
 
@@ -36,10 +36,12 @@ https://nodejs.org/en/download/package-manager/
                         
 [//]: #@corifeus-header:end
 
-This is Klaus Silveira's fork, with multiple themes (dark/light), sub-modules, uglify-es, webpack, toast, pure Bootstrap 3 and upgraded to PHP7.1 with all components.  
+This is Klaus Silveira's fork, with web workers, multiple themes (dark/light), sub-modules, uglify-es, webpack, toast, pure Bootstrap 3 and upgraded to PHP7.1 with all components.  
+
+Usually, even a small router can use it with 64MB `PHP memory limit`.   
 
 #### Warning
-For the actual released `zip` file does not need anything like `NodeJS` or anything like that. Only a `web server`, `PHP 7.1` and `GIT`.
+For the actual released `zip` file does not need `NodeJS` or anything like that. Only a `web server`, `PHP 7.1` and `GIT`.
 
 See releases: https://github.com/patrikx3/gitlist/releases
 
@@ -72,10 +74,10 @@ The `config.ini` file with `url_subdir` or later `clone_subdir` variable has bee
 I removed `Babel`, we started to upgrade in 2018 on this repo. If you want use an older `Browser` (like iPhone 5), you can probably install latest `Chrome` and it will work.
    
 Besides, without `Babel` the `JavaScript` is much faster. (At work, without `Babel`, smaller `JS` bundle files and works about `20x` faster.)
-mast
+
 
 ### Fourth
-I have disabled loading everything in `twig`, besides the `diffs` are loading via `AJAX`, I made it to work huge commits with `64MB` `PHP`.  
+I have disabled loading everything in `twig`, besides the `diffs` are loading via `AJAX` and `web workers`, I made it to work huge commits with `64MB` `PHP`.  
 See in action:  
 https://gitlist.patrikx3.com/gitlist.git/commit/f1e4d5b938c8f1a6cd178aeea2e9e86111ea5323#p3x-gitlist-diff-93  
 
@@ -85,13 +87,12 @@ https://github.com/patrikx3/gitlist/releases/tag/2.0.4-579
 The following versions are not using `Babel`!!!! Yikes!
 
 ### Unreleased / in progress
-
-* grunt-contrib-less - 2 is missing the `@path` variable
-* Auto scroll down it does not, but show always `No more commits.`
-* Upload binary files
+* Commit, if it is too long, let's use CSS ellepsis
 * Add new text files
-* Delete files
+* Upload binary files
+* Markdown on commits
 * Localization
+* Convert Silex 2 to Symfony 4
 * In submodules, if the "submodule" and "path" is not the same, it chokes (it should work the submodule name and path are not the same)
   * Works
     * submodule "path/name"
@@ -99,7 +100,7 @@ The following versions are not using `Babel`!!!! Yikes!
   * Not working
     * submodule "name"
     * path path/name 
-
+* In submodules, the url cannot have slash at the end
 
 [Change log](changelog.md) ...
 
@@ -175,7 +176,7 @@ npm run watch
 
 ---
 
-[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2.9.17-894 
+[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2.10.31-921 
 
 [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software) [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) 
 

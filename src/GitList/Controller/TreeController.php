@@ -61,6 +61,9 @@ class TreeController implements ControllerProviderInterface
             $breadcrumbs = array(array('dir' => 'Search results for: ' . $query, 'path' => ''));
             $results = $repository->searchTree($query, $branch);
 
+            if ($results === false) {
+                $results = [];
+            }
             for($i = 0; $i < count($results); $i++) {
                 $result = $results[$i];
                 $results[$i]['type'] = $app['util.repository']->getFileType($result['file']);

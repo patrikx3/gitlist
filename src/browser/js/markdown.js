@@ -94,7 +94,6 @@ markdownRenderer.codespan = (code) => {
 window.gitlist.markdownRenderer = markdownRenderer;
 $(function() {
 
-
     const mdContent = $('#p3x-gitlist-readme');
     if (mdContent.length) {
         const twemojiSettings = require('./settings').twemoji;
@@ -105,3 +104,13 @@ $(function() {
     }
 
 });
+
+window.gitlist.renderMarkdown = (options) => {
+    const { markdown } = options;
+    const twemojiSettings = require('./settings').twemoji;
+    const markedHtml = marked(markdown, {
+        renderer: window.gitlist.markdownRenderer
+    });
+    const html = twemoji.parse(markedHtml, twemojiSettings)
+    return html;
+}

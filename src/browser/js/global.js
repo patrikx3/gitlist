@@ -1,5 +1,8 @@
 let $body;
 let $head;
+
+const currentUrl = new URL(window.location)
+
 const Cookies = require('js-cookie')
 
 const scrollIntoViewOptions = {
@@ -39,7 +42,6 @@ window.gitlist.ajaxErrorHandler = (e) => {
 }
 
 window.gitlist.getPaths = () => {
-    const currentUrl = new URL(window.location)
     if (window.gitlist.basepath !== '') {
         currentUrl.pathname = currentUrl.pathname.substring(window.gitlist.basepath.length)
     }
@@ -255,4 +257,20 @@ $(function () {
     window.gitlist.networkRedraw();
     window.gitlist.treegraph();
     gitlist.setTheme()
+
+    const snack = currentUrl.searchParams.get('snack')
+    if (snack !== null) {
+        $.snackbar({
+            htmlAllowed: true,
+            content: '<i class="fas fa-info-circle"></i>&nbsp;&nbsp;' + snack ,
+            timeout: window.gitlist.snapckbarLongTimeout,
+        })
+    }
+
+    const cookieShownChangelogName = 'p3x-gitlist-changelog-shown';
+    const cookieShownChangelog = Cookies.get(cookieShownChangelogName)
+    if (!cookieShownChangelog) {
+        Cookies.set(cookieShownChangelogName, window.gitlist.cookieSettings)
+        window.gitlist.changeLog()
+    }
 });

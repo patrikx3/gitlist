@@ -24,7 +24,7 @@ const cfg = {
     },
     laneHeight: 20,
     columnWidth: 42,
-    dotRadius: 3
+    dotRadius: 8
 };
 
 Object.defineProperty(window.gitlist, 'canvasLaneColors', {
@@ -39,9 +39,16 @@ Object.defineProperty(window.gitlist, 'canvasDotColor', {
     }
 })
 
+
+let nextLaneIndex  = 0
 window.gitlist.randomCanvasLaneColors = () => {
     const items = window.gitlist.canvasLaneColors;
-    return items[Math.floor(Math.random() * items.length)];
+
+    nextLaneIndex++
+    if (nextLaneIndex > items.length) {
+        nextLaneIndex = 0
+    }
+    return items[nextLaneIndex];
 }
 
 

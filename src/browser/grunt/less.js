@@ -72,6 +72,8 @@ const lessSettings = (grunt) => {
                 // less with random
                 fsExtra.ensureDirSync(themeDir);
 
+                const pathFont = 'https://fonts.googleapis.com/css?family=Roboto:300,400,700'
+
                 for (let theme of themes) {
                     const less = `${themeDir}/${theme}.less`;
 
@@ -82,6 +84,7 @@ const lessSettings = (grunt) => {
 `)
                     } else if (theme === 'solar') {
                         fs.writeFileSync(less, `
+@path: '${pathFont}';
 @import "../../../../node_modules/bootstrap/less/bootstrap";
 @import "solar/variables";
 @import "solar/bootswatch";
@@ -89,6 +92,7 @@ const lessSettings = (grunt) => {
 `)
                     } else {
                         fs.writeFileSync(less, `
+@path: '${pathFont}';
 @import "../../../../node_modules/bootstrap/less/bootstrap";
 @import "../../../../node_modules/bootswatch/${theme}/variables";
 @import "../../../../node_modules/bootswatch/${theme}/bootswatch";

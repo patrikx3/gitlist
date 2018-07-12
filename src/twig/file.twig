@@ -9,77 +9,158 @@
     <script type="text/javascript">
         window.gitlist.codemirror_full_limit = parseInt({{ codemirror_full_limit }});
         window.gitlist.branches = {{ branches | json_encode | raw }}
-            window.gitlist.commit = '{{ branch }}'
+        window.gitlist.commit = '{{ branch }}'
     </script>
-
     {% embed 'breadcrumb.twig' with {breadcrumbs: breadcrumbs} %}
         {% block right %}
-            {% if (fileType != 'image' and fileType != 'markdown') or (enforceCodemirror) %}
-                <button id="p3x-gitlist-file-button-edit" class="btn btn-sm btn-info">
-                    <span class="fa fa-edit"></span> Edit
-                </button>
-                <button id="p3x-gitlist-file-button-edit-cancel" class="btn btn-sm btn-danger">
-                    <span class="fa fa-ban"></span> Cancel
-                </button>
-                <button id="p3x-gitlist-file-button-edit-save" class="btn btn-sm btn-info">
-                    <span class="fa fa-save"></span> Save
+
+            <div style="text-align: right;">
+
+                {% if extension == 'svg' %}
+                    <button class="btn btn-sm btn-primary" id="p3x-gitlist-file-svg-show">
+                        <span class="fas fa-image"></span>
+                        Display SVG
+                    </button>
+                {% endif %}
+
+                <button class="btn btn-sm btn-danger" id="p3x-gitlist-file-delete">
+                    <span class="fa fa-trash"></span>
+                    Delete
                 </button>
 
-                <div id="p3x-gitlist-modal-commit" class="modal fade" tabindex="-1" role="dialog">
+
+                <div id="p3x-gitlist-modal-delete" class="modal fade" tabindex="-1" role="dialog">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                            aria-hidden="true"><i class="fas fa-times"></i></span></button>
-                                <h4 class="modal-title">Commit</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true"><i class="fas fa-times"></i></span>
+                                </button>
+                                <h4 class="modal-title">Delete</h4>
                             </div>
                             <div class="modal-body">
-                                <form id="p3x-gitlist-modal-commit-form">
+                                Are you sure to delete this file?
+                                <form id="p3x-gitlist-modal-delete-form">
                                     <div class="input-group">
-                                        <span class="input-group-addon" id="p3x-gitlist-modal-commit-name-aria"><i
-                                                    class="fas fa-user"></i></span>
+                                            <span class="input-group-addon" id="p3x-gitlist-modal-delete-name-aria"><i
+                                                        class="fas fa-user"></i></span>
                                         <input type="text" class="form-control" placeholder="Name" required
-                                               aria-describedby="p3x-gitlist-modal-commit-name-aria"
-                                               id="p3x-gitlist-modal-commit-name" minlength="3" maxlength="64"
+                                               aria-describedby="p3x-gitlist-modal-delete-name-aria"
+                                               id="p3x-gitlist-modal-delete-name" minlength="3" maxlength="64"
                                                autofocus>
                                     </div>
                                     <br/>
                                     <div class="input-group">
-                                        <span class="input-group-addon" id="p3x-gitlist-modal-commit-email-aria"><i
-                                                    class="fas fa-at"></i></span>
-                                        <input required type="email" id="p3x-gitlist-modal-commit-email"
+                                            <span class="input-group-addon" id="p3x-gitlist-modal-delete-email-aria"><i
+                                                        class="fas fa-at"></i></span>
+                                        <input required type="email" id="p3x-gitlist-modal-delete-email"
                                                class="form-control" placeholder="E-mail"
-                                               aria-describedby="p3x-gitlist-modal-commit-email-aria" maxlength="64"
+                                               aria-describedby="p3x-gitlist-modal-delete-email-aria" maxlength="64"
                                                minlength="3">
                                     </div>
 
                                     <br/>
                                     <div class="input-group">
-                                        <span class="input-group-addon" id="p3x-gitlist-modal-commit-comment-aria"><i
-                                                    class="far fa-comment"></i></span>
+                                            <span class="input-group-addon" id="p3x-gitlist-modal-delete-comment-aria"><i
+                                                        class="far fa-comment"></i></span>
                                         <input required type="text" class="form-control" placeholder="Comment"
-                                               aria-describedby="p3x-gitlist-modal-commit-email-aria"
-                                               id="p3x-gitlist-modal-commit-comment" minlength="3" maxlength="64"
-                                               value="P3X Gitlist Commit">
+                                               aria-describedby="p3x-gitlist-modal-delete-email-aria"
+                                               id="p3x-gitlist-modal-delete-comment" minlength="3" maxlength="64"
+                                               value="P3X Gitlist Commit Delete">
                                     </div>
                                 </form>
 
                             </div>
                             <div class="modal-footer">
-                                <button id="p3x-gitlist-modal-commit-push" type="submit" class="btn btn-info">Commit
-                                    and Push
+                                <button id="p3x-gitlist-modal-delete-confirm" type="submit" class="btn btn-info">
+                                    <span class="fa fa-trash"></span>
+                                    Delete for sure
                                 </button>
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">
+                                    <span class="fas fa-times"></span>
+                                    Close
+                                </button>
                             </div>
                         </div><!-- /.modal-content -->
                     </div><!-- /.modal-dialog -->
                 </div><!-- /.modal -->
-            {% elseif fileType == 'markdown' %}
-                <a href="{{ path('blob', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}?codemirror=1&edit=1"
-                   class="btn btn-sm btn-info">
-                    <span class="fa fa-edit"></span> Edit
-                </a>
-            {% endif %}
+
+
+                <span class="p3x-gitlist-file-svg-toggle">
+                {% if (fileType != 'image' and fileType != 'markdown') or (enforceCodemirror) %}
+                    <button id="p3x-gitlist-file-button-edit" class="btn btn-sm btn-info">
+                        <span class="fa fa-edit"></span> Edit
+                    </button>
+                    <button id="p3x-gitlist-file-button-edit-cancel" class="btn btn-sm btn-warning">
+                        <i class="fas fa-eraser"></i> Cancel
+                    </button>
+                    <button id="p3x-gitlist-file-button-edit-save" class="btn btn-sm btn-info">
+                        <span class="fa fa-save"></span> Save
+                    </button>
+
+                    <div id="p3x-gitlist-modal-commit" class="modal fade" tabindex="-1" role="dialog">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                                aria-hidden="true"><i class="fas fa-times"></i></span></button>
+                                    <h4 class="modal-title">Commit</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form id="p3x-gitlist-modal-commit-form">
+                                        <div class="input-group">
+                                            <span class="input-group-addon" id="p3x-gitlist-modal-commit-name-aria"><i
+                                                        class="fas fa-user"></i></span>
+                                            <input type="text" class="form-control" placeholder="Name" required
+                                                   aria-describedby="p3x-gitlist-modal-commit-name-aria"
+                                                   id="p3x-gitlist-modal-commit-name" minlength="3" maxlength="64"
+                                                   autofocus>
+                                        </div>
+                                        <br/>
+                                        <div class="input-group">
+                                            <span class="input-group-addon" id="p3x-gitlist-modal-commit-email-aria"><i
+                                                        class="fas fa-at"></i></span>
+                                            <input required type="email" id="p3x-gitlist-modal-commit-email"
+                                                   class="form-control" placeholder="E-mail"
+                                                   aria-describedby="p3x-gitlist-modal-commit-email-aria" maxlength="64"
+                                                   minlength="3">
+                                        </div>
+
+                                        <br/>
+                                        <div class="input-group">
+                                            <span class="input-group-addon" id="p3x-gitlist-modal-commit-comment-aria"><i
+                                                        class="far fa-comment"></i></span>
+                                            <input required type="text" class="form-control" placeholder="Comment"
+                                                   aria-describedby="p3x-gitlist-modal-commit-email-aria"
+                                                   id="p3x-gitlist-modal-commit-comment" minlength="3" maxlength="64"
+                                                   value="P3X Gitlist Commit">
+                                        </div>
+                                    </form>
+
+                                   </div>
+                                <div class="modal-footer">
+                                    <button id="p3x-gitlist-modal-commit-push" type="submit" class="btn btn-info">
+                                        <span class="fas fa-caret-right"></span> Commit
+                                        and Push
+                                    </button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal"> <span class="fas fa-times"></span> Close</button>
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
+
+                {% elseif fileType == 'markdown' %}
+                    <a href="{{ path('blob', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}?codemirror=1&edit=1"
+                       class="btn btn-sm btn-info">
+                        <span class="fa fa-edit"></span> Edit
+                    </a>
+                {% endif %}
+
+
+                </span>
+
+
+            </div>
 
         {% endblock %}
 
@@ -94,9 +175,9 @@
                 <a href="{{ path('commits', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"
                    class="btn btn-default btn-sm"><i class="fas fa-history"></i> History</a>
 
+                <div class="p3x-gitlist-file-svg-toggle">
 
-
-                {% if (fileType != 'image' and fileType != 'markdown') or enforceCodemirror %}
+               {% if (fileType != 'image' and fileType != 'markdown') or enforceCodemirror %}
                     <span id="p3x-gitlist-file-codemirror" style="display: none;">
                         <div class="btn-group btn-toggle">
                             <button id="p3x-gitlist-file-button-scroll" class="btn btn-sm btn-default">Scroll mode</button>
@@ -120,6 +201,10 @@
 
                 {% endif %}
 
+                </div>
+
+
+
             </div>
 
         {% endblock %}
@@ -136,14 +221,17 @@
     <div>
 
         {% if fileType == 'image' %}
-            <div class="text-center"><img src="{{ path('blob_raw', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"
+            <div class="text-center"><img style="max-width: 100%; max-height: auto;" src="{{ path('blob_raw', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"
                                           alt="{{ file }}" class="image-blob"/></div>
 
         {% elseif fileType == 'markdown' and enforceCodemirror != true %}
             {% include 'markdown.twig' with {'filename': file, 'data': blob} %}
         {% else %}
             <pre class="p3x-gitlist-code" id="p3x-gitlist-file-editor" language="{{ fileType }}">{{ blob|htmlentities|raw }}</pre>
+        {% endif %}
 
+        {% if extension == 'svg' %}
+            <div id="p3x-gitlist-file-svg-content" style="display: none;" class="p3x-gitlist-file-svg-toggle p3x-gitlist-max-width"></div>
         {% endif %}
     </div>
 

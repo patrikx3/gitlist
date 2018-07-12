@@ -38,9 +38,16 @@ class BlobController implements ControllerProviderInterface
 
             $output = $blob->output();
 
+            $extension = '';
+            $pathinfo = (pathinfo($file));
+            if (isset($pathinfo['extension'])) {
+                $extension = $pathinfo['extension'];
+            }
+
             return $app['twig']->render('file.twig', array(
                 'fileSize'       => strlen($output),
                 'codemirror_full_limit' => $codemirror_full_limit,
+                'extension'      => $extension,
                 'file'           => $file,
                 'fileType'       => $fileType,
                 'blob'           => $output,

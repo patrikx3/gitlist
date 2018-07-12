@@ -156,6 +156,7 @@ class CommitController implements ControllerProviderInterface
             return $app['twig']->render('blame.twig', array(
                 'file'           => $file,
                 'type'           => $app['util.repository']->getFileType($file),
+                'binary'           => $app['util.repository']->isBinary($file),
                 'repo'           => $repo,
                 'branch'         => $branch,
                 'branches'       => $repository->getBranches(),

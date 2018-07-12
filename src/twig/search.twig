@@ -38,14 +38,14 @@
                             <td>
                                 <span class="far fa-file-alt"></span>&nbsp;&nbsp;<a href="{{ path('blob', {repo: repo, branch: branch, file: result.file, commitishPath: branch ~ '/' ~ result.file}) }}&codemirror=1&query={{ search_query }}#L{{ result.line }}">{{ result.file }}</a> on line {{ result.line }}
                             </td>
-                            <td style="text-align: right;">
+                            <td style="text-align: right;" class="p3x-gitlist-button">
 
                                 <button class="btn btn-sm btn-primary" id="p3x-gitlilst-file-fragment-heading-button-edit-{{ loop.index0 }}" data-url="{{ path('blob', {repo: repo, branch: branch, file: result.file, commitishPath: branch ~ '/' ~ result.file}) }}&codemirror=1&query={{ search_query }}#L{{ result.line }}" style=" text-transform: capitalize;">
-                                    <i class="fas fa-edit"></i>&nbsp; Edit
+                                    <span class="fas fa-edit"></span>&nbsp; Edit
                                 </button>
                                 &nbsp;&nbsp;
                                 <button class="btn btn-sm btn-primary" id="p3x-gitlilst-file-fragment-heading-button-codemirror-{{ loop.index0 }}" style=" text-transform: capitalize;">
-                                    <i class="fas fa-eye"></i>&nbsp; {{ result.type }}
+                                    <span class="fas fa-eye"></span>&nbsp; {{ result.type }}
                                 </button>
                             </td>
                         </tr>

@@ -41,6 +41,7 @@ $(function() {
             $pager.after(html);
             $pager.remove();
             loading = false;
+            window.gitlist.constructCommitsListConstructMarkdown()
             paginate();
         });
     }

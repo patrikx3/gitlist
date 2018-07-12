@@ -765,8 +765,7 @@ class Repository
         return $shortHash;
     }
 
-    public function changeFile($cachePath, $repo, $branch, $repoFilename, $value, $name, $email, $comment) {
-
+    protected function changeRepo($cachePath, $repo, $branch, $repoFilename, $name, $email, $comment, $callback) {
         $temporaryDirectory = '';
         $tempRepo = '';
         $hadError = false;
@@ -789,9 +788,8 @@ class Repository
             array_push($outputs, $output);
 
             $filename = realpath($tempRepo . DIRECTORY_SEPARATOR . $repoFilename);
-            //$originalFileContent = file_get_contents($filename);
 
-            file_put_contents($filename, $value);
+            $finalOutput = $callback($client, $filename, $outputs);
 
             $command = " -c \"user.name=$name\" -c \"user.email=$email\" commit -am \"$comment\" ";
             $output = $client->run($this, $command);
@@ -805,7 +803,7 @@ class Repository
 
             $result =  (object) [
                 'status' => 'ok',
-                'output' => $output,
+                'output' => $finalOutput,
                 'outputs' => $outputs
             ];
             return $result;
@@ -832,6 +830,38 @@ class Repository
                 ]);
             }
         }
+    }
+
+    /**
+     * @param $cachePath
+     * @param $repo
+     * @param $branch
+     * @param $repoFilename
+     * @param $value
+     * @param $name
+     * @param $email
+     * @param $comment
+     * @return object
+     */
+    public function changeFile($cachePath, $repo, $branch, $repoFilename, $value, $name, $email, $comment) {
+
+       return $this->changeRepo($cachePath, $repo, $branch, $repoFilename, $name, $email, $comment, function($client, $filename, $outputs) use ($value) {
+           //$originalFileContent = file_get_contents($filename);
+           file_put_contents($filename, $value);
+           return '';
+       });
+    }
+
+    public function deleteFile($cachePath, $repo, $branch, $repoFilename, $name, $email, $comment) {
+
+        return $this->changeRepo($cachePath, $repo, $branch, $repoFilename, $name, $email, $comment, function($client, $filename, $outputs) {
+            //$originalFileContent = file_get_contents($filename);
+            @unlink($filename);
+            $command = " rev-parse HEAD ";
+            $output = $client->run($this, $command);
+            array_push($outputs, $output);
+            return $output;
+        });
     }
 
     /**

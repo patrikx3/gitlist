@@ -1,10 +1,19 @@
 $(() => {
 
-    const commitList = $('#p3x-gitlist-commits-list');
+    const constructMarkdown = () => {
+        const $commitListTables = $('.p3x-gitlist-commits-list:not(.p3x-gitlist-commits-list-rendered)');
 
-    if (commitList.length > 0) {
-        const twemojiSettings = require('./settings').twemoji;
-        commitList.html(twemoji.parse(commitList.html(), twemojiSettings));
+        if ($commitListTables.length > 0) {
+
+            for(let commitTable of $commitListTables) {
+                const $commitTable = $(commitTable)
+                console.log($commitTable.hasClass("p3x-gitlist-commits-list-rendered"))
+                $commitTable.addClass('p3x-gitlist-commits-list-rendered')
+
+            }
+        }
     }
 
+    constructMarkdown();
+    window.gitlist.constructCommitsListConstructMarkdown = constructMarkdown;
 })

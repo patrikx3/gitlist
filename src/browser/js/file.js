@@ -1,14 +1,157 @@
 $(function() {
 
+
+    const commit = window.gitlist.commit;
+    const branches = window.gitlist.branches;
+
+    const Cookies = require('js-cookie')
+
+    const errorHandler = window.gitlist.ajaxErrorHandler;
+
+    const invalidSnackbarCommit = () => {
+        $.snackbar({
+            content: 'The commit form data is invalid..'
+        })
+    }
+
+    const validCommit = () => {
+        if (!branches.includes(commit)) {
+            let branchInfo;
+            if (branches.length === 1) {
+                branchInfo = `Only the <strong>${branches.join(', ')}</strong> branch is editable.`
+            }  else {
+                branchInfo = `Only the <strong>${branches.join(', ')}</strong> branches are editable.`
+            }
+            $.snackbar({
+                htmlAllowed: true,
+                content: `This commit <strong>${commit}</strong> is not changeable.<br/>
+${branchInfo}
+`,
+            })
+
+            return false;
+        } {
+            return true
+        }
+    }
+
+    const preLoadCommits = (options) => {
+        const { inputs, commentCookie } = options
+        for(let inputKey in inputs) {
+            const input = inputs[inputKey]
+            //console.log(inputKey, commentCookie)
+            let cookieName = `p3x-gitlist-commit-${inputKey}`;
+            if (inputKey === 'comment') {
+                cookieName = `p3x-gitlist-commit-${commentCookie }-${inputKey}`;
+            }
+            const cookie = Cookies.get(cookieName)
+            if (cookie) {
+                input.val(cookie.trim());
+            }
+            input.change(() => {
+                const val = input.val().trim();
+                Cookies.set(cookieName, val);
+                input.val(val);
+            })
+        }
+    }
+
+    const paths = window.gitlist.getPaths();
+    filename = paths.slice(4).join('/');
+
+    const gitHelperAjax = async (options) => {
+        const { modal, action, inputs, value } = options
+
+        modal.modal('hide')
+
+        const url = `${window.gitlist.basepath}/${window.gitlist.repo}/git-helper/${window.gitlist.branch}/${action}`
+        const response = await $.ajax({
+            url: url,
+            type: 'POST',
+            data: {
+                value: value,
+                email: inputs.email.val(),
+                name: inputs.name.val(),
+                comment: inputs.comment.val(),
+                filename: filename
+            }
+        })
+        const json = JSON.parse(response)
+
+        if (json.hasOwnProperty('output') && json.output !== '') {
+            $.snackbar({
+                htmlAllowed: true,
+                content: json.output,
+            })
+        }
+        if (json.error === true) {
+            errorHandler(json);
+        }
+        return json;
+    }
+
+    const $modalDelete = $('#p3x-gitlist-modal-delete')
+    const $buttonDelete = $('#p3x-gitlist-file-delete')
+    const $buttonDeleteSure = $('#p3x-gitlist-modal-delete-confirm')
+    const $formDeleteForm = $('#p3x-gitlist-modal-delete-form')
+
+    const $deleteInputName = $('#p3x-gitlist-modal-delete-name');
+    const $deleteInputEmail = $('#p3x-gitlist-modal-delete-email');
+    const $deleteInputComment = $('#p3x-gitlist-modal-delete-comment');
+
+    const inputs = {
+        name: $deleteInputName,
+        email: $deleteInputEmail,
+        comment: $deleteInputComment,
+    }
+    preLoadCommits({
+        inputs: inputs,
+        commentCookie: 'delete'
+    })
+
+    $buttonDelete.click(() => {
+        if (!validCommit()) {
+            return
+        }
+        $modalDelete.modal('show')
+    })
+
+
+    $buttonDeleteSure.click(async() => {
+        if($formDeleteForm[0].checkValidity() === false) {
+            invalidSnackbarCommit()
+            return;
+        }
+
+        try {
+            const json = await gitHelperAjax({
+                modal: $modalDelete,
+                action: 'delete',
+                inputs: inputs,
+                value: undefined,
+            })
+            const newLocation = `${window.gitlist.basepath}/${paths[1]}/commit/${json.output}?snack=` + encodeURIComponent(`The "${filename}" file is deleted. You are switched to the page where you can see the  last commit.`)
+            // console.log(json, newLocation)
+            location = newLocation
+            /*
+            close();
+            $.snackbar({ewLo
+                htmlAllowed: true,
+                content: '<i class="fas fa-check"></i>&nbsp;&nbsp;The file is saved.',
+            })
+            */
+
+        } catch(e) {
+            errorHandler(e)
+        }
+
+    })
+
     const sourceCode = $('#p3x-gitlist-file-editor');
     if (sourceCode.length) {
 
-        const commit = window.gitlist.commit;
-        const branches = window.gitlist.branches;
-
         let originalCode = '';
         let disableFull = false;
-        const Cookies = require('js-cookie')
         const cookieName = 'p3x-gitlist-codemirror-size'
         const currentSizing = Cookies.get(cookieName)
 
@@ -17,6 +160,8 @@ $(function() {
         let value = sourceCode.text();
         const maxSize = window.gitlist.codemirror_full_limit;
         const size = Math.ceil(value.length / 1024);
+
+        let cm;
 
         const createCodeMirror = () => {
 
@@ -37,6 +182,7 @@ $(function() {
             const buttonEdit = $('#p3x-gitlist-file-button-edit');
             const buttonEditCancel = $('#p3x-gitlist-file-button-edit-cancel');
             const buttonEditSave = $('#p3x-gitlist-file-button-edit-save')
+            const buttonDelete = $('#p3x-gitlist-file-delete')
             const codeMirrorHeight = window.gitlist.editorMaxHeight;
 
             buttonEditCancel.hide();
@@ -44,25 +190,13 @@ $(function() {
 
             buttonEdit.click(() => {
 
-                if (!branches.includes(commit)) {
-                    let branchInfo;
-                    if (branches.length === 1) {
-                        branchInfo = `Only the <strong>${branches.join(', ')}</strong> branch is editable.`
-                    }  else {
-                        branchInfo = `Only the <strong>${branches.join(', ')}</strong> branches are editable.`
-                    }
-                    $.snackbar({
-                        htmlAllowed: true,
-                        content: `This commit <strong>${commit}</strong> is not editable.<br/>
-${branchInfo}
-`,
-                    })
-
-                    return;
+                if (!validCommit()) {
+                    return
                 }
 
 //                buttonEditRow.show();
                 buttonEdit.hide();
+                buttonDelete.hide()
                 buttonEditCancel.show();
                 buttonEditSave.show();
                 gitlist.viewer.setOption('readOnly', false)
@@ -87,6 +221,7 @@ ${branchInfo}
             }
 
             const close = () => {
+                buttonDelete.show()
                 buttonEdit.show();
                 buttonEditSave.hide();
                 buttonEditCancel.hide();
@@ -103,12 +238,6 @@ ${branchInfo}
                 }
                 close();
             })
-
-            let filename = window.gitlist.getPaths();
-            filename = filename.slice(4).join('/');
-
-
-            const errorHandler = window.gitlist.ajaxErrorHandler;
 
 
             const commitModal = $('#p3x-gitlist-modal-commit');
@@ -129,19 +258,10 @@ ${branchInfo}
                 comment: commitInputComment,
             }
 
-            for(let inputKey in inputs) {
-                const input = inputs[inputKey]
-                const cookieName = `p3x-gitlist-commit-${inputKey}`;
-                const cookie = Cookies.get(cookieName)
-                if (cookie) {
-                    input.val(cookie.trim());
-                }
-                input.change(() => {
-                    const val = input.val().trim();
-                    Cookies.set(cookieName, val);
-                    input.val(val);
-                })
-            }
+            preLoadCommits({
+                inputs: inputs,
+                commentCookie: 'change'
+            })
 
             const commitCommitPushButton = $('#p3x-gitlist-modal-commit-push')
 
@@ -152,13 +272,9 @@ ${branchInfo}
                 }
 
                 if(commitForm[0].checkValidity() === false) {
-                    $.snackbar({
-                        content: 'The commit form data is invalid..'
-                    })
+                    invalidSnackbarCommit()
                     return;
                 }
-
-                commitModal.modal('hide');
 
                 /*
                 $.snackbar({
@@ -168,36 +284,20 @@ ${branchInfo}
                 */
 
                 try {
-                    const url = `${window.gitlist.basepath}/${window.gitlist.repo}/git-helper/${window.gitlist.branch}/save`
-                    const response = await $.ajax({
-                        url: url,
-                        type: 'POST',
-                        data: {
-                            value: value,
-                            email: inputs.email.val(),
-                            name: inputs.name.val(),
-                            comment: inputs.comment.val(),
-                            filename: filename
-                        }
-                    })
-                    const json = JSON.parse(response)
 
-                    if (json.output !== '') {
-                        $.snackbar({
-                            htmlAllowed: true,
-                            content: json.output,
-                        })
-                    }
-                    if (json.error === true) {
-                        errorHandler(json);
-                    } else {
-                        originalCode = value;
-                        close();
-                        $.snackbar({
-                            htmlAllowed: true,
-                            content: '<i class="fas fa-check"></i>&nbsp;&nbsp;The file is saved.',
-                        })
-                    }
+                    await gitHelperAjax({
+                        modal: commitModal,
+                        action: 'save',
+                        inputs: inputs,
+                        value: value,
+                    })
+
+                    originalCode = value;
+                    close();
+                    $.snackbar({
+                        htmlAllowed: true,
+                        content: '<i class="fas fa-check"></i>&nbsp;&nbsp;The file is saved.',
+                    })
                 } catch(e) {
                     errorHandler(e);
                 }
@@ -226,7 +326,7 @@ ${branchInfo}
             }
 
             buttonFull.click(setFull)
-            const cm  = CodeMirror(function(elt) {
+            cm  = CodeMirror(function(elt) {
                 pre.parentNode.replaceChild(elt, pre);
             }, {
                 styleActiveLine: true,
@@ -285,6 +385,26 @@ ${branchInfo}
 
         }
         createCodeMirror();
+
+        const $showSvgButton = $('#p3x-gitlist-file-svg-show')
+        if ($showSvgButton.length > 0) {
+            const $svgElements = $('.p3x-gitlist-file-svg-toggle')
+            const $cmWrapper = $(cm.getWrapperElement())
+            const $svgContentWrapper = $('#p3x-gitlist-file-svg-content')
+            $showSvgButton.click(() => {
+                if ($showSvgButton.hasClass('active')) {
+                    $svgContentWrapper.empty()
+                } else {
+                    const image = `<img class="p3x-gitlist-max-width" src="data:image/svg+xml;base64,${btoa(cm.getValue())}"/>`
+//                    console.log(image)
+                    $svgContentWrapper.append(image)
+                }
+                $showSvgButton.toggleClass('active')
+                $svgElements.toggle()
+                $cmWrapper.toggle()
+
+            })
+        }
 
     }
 
