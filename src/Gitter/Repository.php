@@ -801,10 +801,15 @@ class Repository
             $output = $client->run($this, $command);
             array_push($outputs, $output);
 
+            $command = " rev-parse HEAD ";
+            $lastCommit = $client->run($this, $command);
+            array_push($outputs, $lastCommit);
+
             $result =  (object) [
                 'status' => 'ok',
                 'output' => $finalOutput,
-                'outputs' => $outputs
+                'outputs' => $outputs,
+                'last-commit' => $lastCommit
             ];
             return $result;
         } catch(\Throwable $e) {
@@ -857,10 +862,7 @@ class Repository
         return $this->changeRepo($cachePath, $repo, $branch, $repoFilename, $name, $email, $comment, function($client, $filename, $outputs) {
             //$originalFileContent = file_get_contents($filename);
             @unlink($filename);
-            $command = " rev-parse HEAD ";
-            $output = $client->run($this, $command);
-            array_push($outputs, $output);
-            return $output;
+            return 'Deleted ' . $filename;
         });
     }
 

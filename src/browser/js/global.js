@@ -1,7 +1,7 @@
 let $body;
 let $head;
 
-const currentUrl = new URL(window.location)
+let currentUrl = new URL(window.location)
 
 const Cookies = require('js-cookie')
 
@@ -10,7 +10,6 @@ const scrollIntoViewOptions = {
 //    block: "start",
 //    inline: "start"
 }
-const navbarHeight = 80;
 const scrollIntoView = (el) => {
     el.scrollIntoView(scrollIntoViewOptions)
     /*
@@ -49,6 +48,13 @@ window.gitlist.getPaths = () => {
     return paths;
 }
 
+window.gitlist.getPath = () => {
+    let paths = window.gitlist.getPaths();
+    paths = paths.slice(4);
+    let path = paths.join('/')
+    return path
+}
+
 window.gitlist.clearInput = (name) => {
     const input = $(`[name=${name}]`)
     input.val('')
@@ -74,7 +80,6 @@ window.gitlist.cookieSettings = {
     path: gitlist.basepath === '' ? '/' : gitlist.basepath,
     expires: 3650
 }
-
 
 window.gitlist.getActualTheme = (theme = window.gitlist.getThemeCookie()) => {
     const actualTheme = theme.split('-')[1]
@@ -184,7 +189,7 @@ const pushHash = (hash) => {
 }
 window.gitlist.pushHash = pushHash;
 
-global.gitlist.scrollHash = function(element, event) {
+window.gitlist.scrollHash = function(element, event) {
     const url = new URL(element.href)
     const id = url.hash.substring(1)
     const elfind = document.getElementById(id + '-parent')
@@ -199,6 +204,61 @@ global.gitlist.scrollHash = function(element, event) {
         pushHash(url.hash)
     }
     return false;
+}
+
+window.gitlist.changeableCommit = () => {
+    if (!window.gitlist.branches.includes(window.gitlist.branch)) {
+        let branchInfo;
+        if (window.gitlist.branches.length === 1) {
+            branchInfo = `Only the <strong>${window.gitlist.branches.join(', ')}</strong> branch is changeable.`
+        }  else {
+            branchInfo = `Only the <strong>${window.gitlist.branches.join(', ')}</strong> branches are changeable.`
+        }
+        $.snackbar({
+            htmlAllowed: true,
+            content: `This commit <strong>${window.gitlist.branch}</strong> is not changeable.<br/>
+${branchInfo}
+`,
+            timeout: window.gitlist.snapckbarLongTimeout,
+        })
+        return false;
+    } {
+        return true
+    }
+}
+
+window.gitlist.preloadCommitValues = (options) => {
+    const { type } = options
+
+    const inputs = {
+        name: $(`#p3x-gitlist-modal-${ type }-name`),
+        email: $(`#p3x-gitlist-modal-${ type }-email`),
+        comment: $(`#p3x-gitlist-modal-${ type }-comment`),
+    }
+
+    for(let inputKey in inputs) {
+        const input = inputs[inputKey]
+        //console.log(inputKey, commentCookie)
+        let cookieName = `p3x-gitlist-commit-${inputKey}`;
+        if (inputKey === 'comment') {
+            cookieName = `p3x-gitlist-commit-${type }-${inputKey}`;
+        }
+        const cookie = Cookies.get(cookieName)
+        if (cookie) {
+            input.val(cookie.trim());
+        }
+        input.change(() => {
+            const val = input.val().trim();
+            Cookies.set(cookieName, val, window.gitlist.cookieSettings);
+            input.val(val);
+        })
+    }
+}
+
+window.gitlist.invalidSnackbarCommit = () => {
+    $.snackbar({
+        content: 'The commit form data is invalid..'
+    })
 }
 
 $(function () {
@@ -270,7 +330,8 @@ $(function () {
     const cookieShownChangelogName = 'p3x-gitlist-changelog-shown';
     const cookieShownChangelog = Cookies.get(cookieShownChangelogName)
     if (!cookieShownChangelog) {
-        Cookies.set(cookieShownChangelogName, window.gitlist.cookieSettings)
+        Cookies.set(cookieShownChangelogName, true, window.gitlist.cookieSettings)
         window.gitlist.changeLog()
     }
+
 });

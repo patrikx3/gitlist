@@ -70,7 +70,7 @@ class CommitController implements ControllerProviderInterface
             $query = $request->get('query');
 
             $commits = $repository->searchCommitLog($query, $branch);
-            $categorized = array();
+            $categorized = [];
 
             foreach ($commits as $commit) {
                 $date = $commit->getCommiterDate();

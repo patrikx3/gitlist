@@ -1,63 +1,11 @@
 $(function() {
 
-
-    const commit = window.gitlist.commit;
-    const branches = window.gitlist.branches;
-
     const Cookies = require('js-cookie')
 
     const errorHandler = window.gitlist.ajaxErrorHandler;
 
-    const invalidSnackbarCommit = () => {
-        $.snackbar({
-            content: 'The commit form data is invalid..'
-        })
-    }
-
-    const validCommit = () => {
-        if (!branches.includes(commit)) {
-            let branchInfo;
-            if (branches.length === 1) {
-                branchInfo = `Only the <strong>${branches.join(', ')}</strong> branch is editable.`
-            }  else {
-                branchInfo = `Only the <strong>${branches.join(', ')}</strong> branches are editable.`
-            }
-            $.snackbar({
-                htmlAllowed: true,
-                content: `This commit <strong>${commit}</strong> is not changeable.<br/>
-${branchInfo}
-`,
-            })
-
-            return false;
-        } {
-            return true
-        }
-    }
-
-    const preLoadCommits = (options) => {
-        const { inputs, commentCookie } = options
-        for(let inputKey in inputs) {
-            const input = inputs[inputKey]
-            //console.log(inputKey, commentCookie)
-            let cookieName = `p3x-gitlist-commit-${inputKey}`;
-            if (inputKey === 'comment') {
-                cookieName = `p3x-gitlist-commit-${commentCookie }-${inputKey}`;
-            }
-            const cookie = Cookies.get(cookieName)
-            if (cookie) {
-                input.val(cookie.trim());
-            }
-            input.change(() => {
-                const val = input.val().trim();
-                Cookies.set(cookieName, val);
-                input.val(val);
-            })
-        }
-    }
-
     const paths = window.gitlist.getPaths();
-    filename = paths.slice(4).join('/');
+    const filename = paths.slice(4).join('/');
 
     const gitHelperAjax = async (options) => {
         const { modal, action, inputs, value } = options
@@ -104,13 +52,10 @@ ${branchInfo}
         email: $deleteInputEmail,
         comment: $deleteInputComment,
     }
-    preLoadCommits({
-        inputs: inputs,
-        commentCookie: 'delete'
-    })
+
 
     $buttonDelete.click(() => {
-        if (!validCommit()) {
+        if (!window.gitlist.changeableCommit()) {
             return
         }
         $modalDelete.modal('show')
@@ -119,7 +64,7 @@ ${branchInfo}
 
     $buttonDeleteSure.click(async() => {
         if($formDeleteForm[0].checkValidity() === false) {
-            invalidSnackbarCommit()
+            window.gitlist.invalidSnackbarCommit()
             return;
         }
 
@@ -130,7 +75,7 @@ ${branchInfo}
                 inputs: inputs,
                 value: undefined,
             })
-            const newLocation = `${window.gitlist.basepath}/${paths[1]}/commit/${json.output}?snack=` + encodeURIComponent(`The "${filename}" file is deleted. You are switched to the page where you can see the  last commit.`)
+            const newLocation = `${window.gitlist.basepath}/${paths[1]}/commit/${json['last-commit']}?snack=` + encodeURIComponent(`The "${filename}" file is deleted. You are switched to the page where you can see the last commit.`)
             // console.log(json, newLocation)
             location = newLocation
             /*
@@ -190,7 +135,7 @@ ${branchInfo}
 
             buttonEdit.click(() => {
 
-                if (!validCommit()) {
+                if (!window.gitlist.changeableCommit()) {
                     return
                 }
 
@@ -258,11 +203,6 @@ ${branchInfo}
                 comment: commitInputComment,
             }
 
-            preLoadCommits({
-                inputs: inputs,
-                commentCookie: 'change'
-            })
-
             const commitCommitPushButton = $('#p3x-gitlist-modal-commit-push')
 
             commitCommitPushButton.click( async () => {
@@ -272,7 +212,7 @@ ${branchInfo}
                 }
 
                 if(commitForm[0].checkValidity() === false) {
-                    invalidSnackbarCommit()
+                    window.gitlist.invalidSnackbarCommit()
                     return;
                 }
 

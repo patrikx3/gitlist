@@ -30,7 +30,7 @@ const plugins = [
 
     new HtmlWebpackPlugin({
         template: `${__dirname}/src/browser/layout.tpl.twig`,
-        inject: 'head',
+        inject: 'body',
         chunksSortMode: 'dependency',
         chunks: ['bundle'],
         filename: `${__dirname}/src/twig/layout.twig`,
@@ -60,6 +60,19 @@ plugins.push(
 )
 
 if (minimize) {
+
+    const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+
+    plugins.push(
+        new OptimizeCssAssetsPlugin({
+            assetNameRegExp: /\.css$/g,
+            cssProcessor: require('cssnano'),
+            cssProcessorOptions: { safe: true, discardComments: { removeAll: true } },
+            canPrint: true
+        })
+
+    )
+
 
     devtool = false;
     const bannerText = require('corifeus-builder').utils.license();
@@ -117,7 +130,6 @@ For more information about all licenses, please see ${webpackBanner}
     )
 
 
-
 }
 
 const fileLoader = [
@@ -151,11 +163,11 @@ module.exports = {
             {
                 test: /\.less$/,
                 use: [{
-                    loader: 'style-loader' // creates style nodes from JS strings
+                    loader: 'style-loader' ,
                 }, {
-                    loader: 'css-loader' // translates CSS into CommonJS
+                    loader: 'css-loader',
                 }, {
-                    loader: 'less-loader' // compiles Less to CSS
+                    loader: 'less-loader',
                 }],
             },
             {
@@ -191,7 +203,7 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: ExtractTextPlugin.extract({
-                    fallback: "style-loader",
+                   // fallback: "style-loader",
                     use: [
                         {
                             loader: 'css-loader',
@@ -211,4 +223,3 @@ module.exports = {
     plugins: plugins,
     mode: mode,
 }
-

@@ -81,7 +81,7 @@ class Application extends SilexApplication
         $this->register(new RepositoryUtilServiceProvider());
         $this->register(new RoutingUtilServiceProvider());
 
-        $this['twig'] =  $this->extend('twig', function ($twig, $app) use ($pkg) {
+        $this['twig'] =  $this->extend('twig', function ($twig, $app) use ($pkg, $config) {
 
             $twig->addFilter(new \Twig_SimpleFilter('to_id', function($value) {
                 $value = str_replace(['.', '/', '\\', ' '], '-', $value);
@@ -127,6 +127,15 @@ class Application extends SilexApplication
 
             $twig->addGlobal('version', $pkg['version']);
             $twig->addGlobal('gitlist_date_format', $this['date.format']);
+
+
+            $codemirror_full_limit = (int)$config->get('app', 'codemirror_full_limit');
+            if (!is_int($codemirror_full_limit) || $codemirror_full_limit < 32) {
+                $codemirror_full_limit = 32;
+            }
+
+            $twig->addGlobal('codemirror_full_limit', $codemirror_full_limit);
+
 
             return $twig;
         });

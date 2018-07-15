@@ -1,16 +1,12 @@
 {% if commits %}
     {% for date, commit in commits %}
-        <table class="table table-striped p3x-gitlist-commits-list">
-            <thead>
-            <tr>
-                <th>{{ date | date("F j, Y") }}</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for item in commit %}
-                <tr>
-                    <td>
-
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {{ date | date("F j, Y") }}
+            </div>
+            <ul class="list-group list-group-striped">
+                {% for item in commit %}
+                    <li class="list-group-item p3x-gitlist-commits-list">
                         <div class="pull-right p3x-gitlist-button" style="text-align: right;">
                             <a class="btn btn-primary btn-sm"
                                href="{{ path('branch', {repo: repo, branch: item.hash}) }}"
@@ -19,10 +15,7 @@
                             <a class="btn btn-primary default btn-sm"
                                href="{{ path('commit', {repo: repo, commit: item.hash}) }}"><i
                                         class="far fa-chart-bar"></i>&nbsp;Changes</a>
-                            <div style="margin-top: 5px; opacity: 0.5;">
-                                <span class="hidden-xs">{{ item.hash }}</span>
-                                <span class="hidden-sm hidden-md hidden-lg">{{ item.shortHash }}</span>
-                            </div>
+
                         </div>
 
                         <div class="media">
@@ -31,24 +24,29 @@
                                     <img class="media-object" src="{{ avatar(item.author.email, 40) }}"/>
                                 </a>
                             </div>
-                            <div class="media-body">
-                                <h4 class="media-heading">
-                                    {{ item.message }}
-                                </h4>
-                                <a href="mailto:{{ item.author.email }}">{{ item.author.name }}</a> authored
-                                on {{ item.date | format_date }}
-                                {% if item.author.email != item.commiter.email %}
-                                    &bull; <a
-                                        href="mailto:{{ item.commiter.email }}">{{ item.commiter.name }}</a> committed on {{ item.commiterDate | format_date }}
-                                {% endif %}
-
+                            <div class="media-body p3x-gitlist-commits-list-message p3x-gitlist-markdown-clear-fix">{{ item.message }}</div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="pull-right p3x-gitlist-button" style="text-align: right;">
+                            <div style="margin-top: 5px; opacity: 0.5;">
+                                <span class="hidden-xs">{{ item.hash }}</span>
+                                <span class="hidden-sm hidden-md hidden-lg">{{ item.shortHash }}</span>
                             </div>
                         </div>
-                    </td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+
+                        <div class="pull-left">
+                            <a href="mailto:{{ item.author.email }}">{{ item.author.name }}</a> authored
+                            on {{ item.date | format_date }}
+                            {% if item.author.email != item.commiter.email %}
+                                &bull; <a
+                                    href="mailto:{{ item.commiter.email }}">{{ item.commiter.name }}</a> committed on {{ item.commiterDate | format_date }}
+                            {% endif %}
+                        </div>
+                        <div class="clearfix"></div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
     {% endfor %}
 {% else %}
 

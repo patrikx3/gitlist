@@ -1,6 +1,7 @@
 <?php
-
+// This is where we move to Symfony form Silex
 // Startup and configure Silex application
+// https://github.com/symfony/symfony-docs/issues/8678
 $app = new GitList\Application($config, __DIR__);
 
 // Mount the controllers

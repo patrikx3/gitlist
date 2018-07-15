@@ -38,6 +38,8 @@ class GitController implements ControllerProviderInterface
                             return json_encode($objectResult);
                             break;
 
+
+                        case 'new-file-or-directory':
                         default:
                             return json_encode((object) [
                                 'status' => 'error',

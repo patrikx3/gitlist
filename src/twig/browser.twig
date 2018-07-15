@@ -1,5 +1,6 @@
 <script type="text/javascript">
     window.gitlist.browse_type = '{{ browse_type }}';
+    window.gitlist.branches = {{ branches | json_encode | raw }}
 </script>
 <div class="dropdown" id="p3x-gitlist-branch-list-container">
     <button class="btn btn-default btn dropdown-toggle" type="button" id="p3x-gitlist-branch-list" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">

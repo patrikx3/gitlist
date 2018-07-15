@@ -73,9 +73,9 @@ class TreeController implements ControllerProviderInterface
             return $app['twig']->render('search.twig', array(
                 'results'        => $results,
                 'repo'           => $repo,
-                'branch'         => $branch,
                 'path'           => $tree,
                 'breadcrumbs'    => $breadcrumbs,
+                'branch'         => $branch,
                 'branches'       => $repository->getBranches(),
                 'browse_type'    => 'search',
                 'tags'           => $repository->getTags(),
@@ -125,15 +125,17 @@ class TreeController implements ControllerProviderInterface
           ->bind('archive');
 
 
-        $route->get('{repo}/{branch}/', function($repo, $branch) use ($app, $treeController) {
-            return $treeController($repo, $branch);
+        $route->get('{repo}/{branch}/', function($repo, $branch) use ($app) {
+            return $app->redirect( $app['url_subdir'] . '/' . $repo . '/tree/' . $branch);
         })->assert('repo', $app['util.routing']->getRepositoryRegex())
           ->assert('branch', $app['util.routing']->getBranchRegex())
           ->convert('branch', 'escaper.argument:escape')
           ->bind('branch');
 
-        $route->get('{repo}/', function($repo) use ($app, $treeController) {
-            return $treeController($repo);
+        $route->get('{repo}/', function($repo) use ($app) {
+            $repository = $app['git']->getRepositoryFromName($app['git.repos'], $repo);
+            $head = $repository->getHead();
+            return $app->redirect( $app['url_subdir'] . '/' . $repo . '/tree/' . $head);
         })->assert('repo', $app['util.routing']->getRepositoryRegex())
           ->bind('repository');
 

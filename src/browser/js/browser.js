@@ -15,24 +15,13 @@ $(function() {
 
         const debounce = require('lodash/debounce')
 
-        let paths = window.gitlist.getPaths();
-
-        let slice = 4
-        if (window.gitlist.browse_type === 'tree') {
-            slice = 3
-        }
-        paths = paths.slice(slice);
-        let path = paths.join('/')
-        if (path !== '') {
-            path = `/${path}`
-        }
-
+        const path = window.gitlist.getPath()
 
         const baseUrl = `${window.gitlist.basepath}/${window.gitlist.repo}`
         const search_query = window.gitlist.search_query;
         const urls = {
             tree: (options) => {
-                return `${baseUrl}/${options.checkout}`;
+                return `${baseUrl}/tree/${options.checkout}`;
             },
             commits: (options) => {
                 return `${baseUrl}/commits/${options.checkout}${path}`;

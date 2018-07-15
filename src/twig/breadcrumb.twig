@@ -66,13 +66,13 @@
                         <input readonly
                                type="text" class="form-control{{ app.show_ssh_remote ? ' visible' }}"
                                id="clone-input-ssh"
-                               value="git clone {{ app.ssh_user }}@{{ global.request.host }}:{{ repo }}">
+                               value="git clone {{ app.ssh_user }}@{{ global.request.host }}:{{ app.git_clone_subdir }}{{ repo }}">
                     {% endif %}
                     {% if app.show_http_remote %}
                         <input type="text"
                                readonly class="form-control{{ app.show_ssh_remote is empty and app.show_http_remote ? ' visible' }}"
                                id="clone-input-http"
-                               value="git clone http{{ app.use_https ? 's' }}://{{ app.http_user }}{{ app.http_user ? '@' }}{{ global.request.host }}/{{ app.git_clone_subdir }}{{ repo }}">
+                               value="git clone http{{ app.use_https ? 's' }}://{{ app.http_user }}{{ app.http_user ? '@' }}{{ global.request.host }}{{ app.url_subdir }}/{{ repo }}">
                     {% endif %}
 
 

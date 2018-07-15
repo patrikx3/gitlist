@@ -4,7 +4,7 @@
 
 
  
-# 🤖 P3X Gitlist v2.10.32-923  
+# 🤖 P3X Gitlist v2.10.48-940  
 
 This is an open-source project. Star this repository, if you like it, or even donate! Thank you so much! :)
 
@@ -87,12 +87,10 @@ https://github.com/patrikx3/gitlist/releases/tag/2.0.4-579
 The following versions are not using `Babel`!!!! Yikes!
 
 ### Unreleased / in progress
-* Commit, if it is too long, let's use CSS ellepsis
 * Add new text files
 * Upload binary files
-* Markdown on commits
-* Localization
 * Convert Silex 2 to Symfony 4
+* Localization (twig, controller, php, js)
 * In submodules, if the "submodule" and "path" is not the same, it chokes (it should work the submodule name and path are not the same)
   * Works
     * submodule "path/name"
@@ -101,6 +99,11 @@ The following versions are not using `Babel`!!!! Yikes!
     * submodule "name"
     * path path/name 
 * In submodules, the url cannot have slash at the end
+* Basically, the twig "for" is not cheap => expensive, use AJAX and web worker 
+  * search.twig
+  * blame.twig
+* Search, at work, "fix" string hs 1221 results, use AJAX and pager
+* Blames in gitlist on composer.lock has 994 results, use AJAX and pager
 
 [Change log](changelog.md) ...
 
@@ -176,7 +179,7 @@ npm run watch
 
 ---
 
-[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2.10.32-923 
+[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2.10.48-940 
 
 [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software) [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) 
 

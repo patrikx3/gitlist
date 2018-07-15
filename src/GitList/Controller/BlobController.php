@@ -12,12 +12,7 @@ class BlobController implements ControllerProviderInterface
     {
         $route = $app['controllers_factory'];
 
-        $codemirror_full_limit = (int)$app['config']->get('app', 'codemirror_full_limit');
-        if (!is_int($codemirror_full_limit) || $codemirror_full_limit < 32) {
-            $codemirror_full_limit = 32;
-        }
-
-        $route->get('{repo}/blob/{commitishPath}', function ($repo, $commitishPath) use ($app, $codemirror_full_limit) {
+        $route->get('{repo}/blob/{commitishPath}', function ($repo, $commitishPath) use ($app) {
             $repository = $app['git']->getRepositoryFromName($app['git.repos'], $repo);
 
             list($branch, $file) = $app['util.routing']
@@ -46,14 +41,13 @@ class BlobController implements ControllerProviderInterface
 
             return $app['twig']->render('file.twig', array(
                 'fileSize'       => strlen($output),
-                'codemirror_full_limit' => $codemirror_full_limit,
                 'extension'      => $extension,
                 'file'           => $file,
                 'fileType'       => $fileType,
                 'blob'           => $output,
                 'repo'           => $repo,
-                'branch'         => $branch,
                 'breadcrumbs'    => $breadcrumbs,
+                'branch'         => $branch,
                 'branches'       => $repository->getBranches(),
                 'browse_type'    => 'blob',
                 'tags'           => $repository->getTags(),

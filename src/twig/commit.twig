@@ -21,21 +21,14 @@
 
 
     {% embed 'breadcrumb.twig' with {breadcrumbs: [{dir: "Commit #{commit.hash}", path:''}]} %}
+        {% block left %}
+            <span class="label label-primary">Showing {{ commit.changedFiles }} changed files</span>
+        {% endblock %}
         {% block right %}
             <a class="btn btn-primary btn-sm" href="{{ path('branch', {repo: repo, branch: commit.hash}) }}"
                title="Browse code at this point in history"><span class="fa fa-list-alt"></span> Browse code</a>
         {% endblock %}
     {% endembed %}
-
-
-
-    <!--
-    <div role="alert" class="alert-dismissable alert alert-warning">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
-                    aria-hidden="true">&times;</span></button>
-        The diffs are not showing by default, because it costs a lot of computing.
-    </div>
-    -->
 
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -46,11 +39,7 @@
                     </a>
                 </div>
                 <div class="media-body">
-                    <h4 class="media-heading" id="p3x-gitlist-commit-heading">
-                        {{ commit.message }}
-                        {% if commit.body is not empty %}
-                            {{ commit.body }}
-                        {% endif %}
+                    <h4 class="media-heading p3x-gitlist-markdown-clear-fix" id="p3x-gitlist-commit-heading">{{ commit.message }}{% if commit.body is not empty %}}<br/>{{ commit.body }}{% endif %}
                     </h4>
                     <a href="mailto:{{ commit.author.email }}">{{ commit.author.name }}</a> authored
                     on {{ commit.date | format_date }}
@@ -61,9 +50,7 @@
                 </div>
             </div>
         </div>
-        <div class="panel-body">
-            Showing {{ commit.changedFiles }} changed files
-        </div>
+
         <ul class="list-group">
             {% for diff in commit.diffs %}
                 <li class="list-group-item" id="p3x-gitlist-diff-{{ loop.index }}" title="Index {{ loop.index  }}">
