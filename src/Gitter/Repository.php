@@ -4,6 +4,7 @@
  * This file is part of the Gitter library.
  *
  * (c) Klaus Silveira <klaussilveira@php.net>
+ * (c) Patrik Laszlo <alabard@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -16,8 +17,9 @@ use Gitter\Model\Tree;
 use Gitter\Model\Blob;
 use Gitter\Model\Commit\Diff;
 use Gitter\Statistics\StatisticsInterface;
-use Gitter\PrettyFormat;
+//use Gitter\PrettyFormat;
 use Symfony\Component\Filesystem\Filesystem;
+use Eloquent\Pathogen\FileSystem\FileSystemPath;
 
 use Spatie\TemporaryDirectory\TemporaryDirectory;
 
@@ -765,107 +767,6 @@ class Repository
         return $shortHash;
     }
 
-    protected function changeRepo($cachePath, $repo, $branch, $repoFilename, $name, $email, $comment, $callback) {
-        $temporaryDirectory = '';
-        $tempRepo = '';
-        $hadError = false;
-        $command  = '';
-        $output = '';
-        $outputs = [];
-
-        try {
-            $temporaryDirectory = (new TemporaryDirectory($cachePath))->create();
-
-            $client = $this->getClient();
-            $repoPath = realpath($this->getPath());
-            $tempRepo = $temporaryDirectory->path();
-
-            $output =  $client->run($this, 'clone '. $repoPath . ' ' . $tempRepo);
-            $this->setPath($tempRepo);
-
-            $command = "checkout $branch";
-            $output = $client->run($this, $command);
-            array_push($outputs, $output);
-
-            $filename = realpath($tempRepo . DIRECTORY_SEPARATOR . $repoFilename);
-
-            $finalOutput = $callback($client, $filename, $outputs);
-
-            $command = " -c \"user.name=$name\" -c \"user.email=$email\" commit -am \"$comment\" ";
-            $output = $client->run($this, $command);
-            array_push($outputs, $output);
-
-            // $command = "commit -am \"$comment\"";
-            // $output = $client->run($repository, $command);
-            $command = "push";
-            $output = $client->run($this, $command);
-            array_push($outputs, $output);
-
-            $command = " rev-parse HEAD ";
-            $lastCommit = $client->run($this, $command);
-            array_push($outputs, $lastCommit);
-
-            $result =  (object) [
-                'status' => 'ok',
-                'output' => $finalOutput,
-                'outputs' => $outputs,
-                'last-commit' => $lastCommit
-            ];
-            return $result;
-        } catch(\Throwable $e) {
-            $hadError = $e;
-        } finally {
-            if ($temporaryDirectory !== '') {
-                $temporaryDirectory->delete();
-            }
-
-            if ($hadError !== false) {
-                $message = $hadError->getMessage();
-                return ((object) [
-                    'status' => $message === '' ? 'ok' : 'error',
-                    'error' => $message === '' ? false : true,
-                    //'temporaryDirectory' => $tempRepo,
-                    'message' => $message,
-                    //'currentdir' => getcwd(),
-                    //'command' => $command,
-                    'output' => $output,
-                    'outputs' => $outputs,
-                    //'$filename' => $filename,
-                    //'$value' => $value,
-                ]);
-            }
-        }
-    }
-
-    /**
-     * @param $cachePath
-     * @param $repo
-     * @param $branch
-     * @param $repoFilename
-     * @param $value
-     * @param $name
-     * @param $email
-     * @param $comment
-     * @return object
-     */
-    public function changeFile($cachePath, $repo, $branch, $repoFilename, $value, $name, $email, $comment) {
-
-       return $this->changeRepo($cachePath, $repo, $branch, $repoFilename, $name, $email, $comment, function($client, $filename, $outputs) use ($value) {
-           //$originalFileContent = file_get_contents($filename);
-           file_put_contents($filename, $value);
-           return '';
-       });
-    }
-
-    public function deleteFile($cachePath, $repo, $branch, $repoFilename, $name, $email, $comment) {
-
-        return $this->changeRepo($cachePath, $repo, $branch, $repoFilename, $name, $email, $comment, function($client, $filename, $outputs) {
-            //$originalFileContent = file_get_contents($filename);
-            @unlink($filename);
-            return 'Deleted ' . $filename;
-        });
-    }
-
     /**
      * Return true if the repo contains this commit.
      *
@@ -1087,5 +988,267 @@ class Repository
 
         return false;
     }
+
+
+    protected function changeRepo($cachePath, $repo, $branch, $repoFilename, $name, $email, $comment, $callback) {
+        $temporaryDirectory = '';
+        $tempRepo = '';
+        $hadError = false;
+        $command  = '';
+        $output = '';
+        $outputs = [];
+        $trace = null;
+
+        try {
+            $temporaryDirectory = (new TemporaryDirectory($cachePath))->create();
+
+            $client = $this->getClient();
+            $repoPath = realpath($this->getPath());
+            $tempRepo = $temporaryDirectory->path();
+
+            $output =  $client->run($this, 'clone '. $repoPath . ' ' . $tempRepo);
+            $this->setPath($tempRepo);
+
+            $normalizedRepoFilePath = $this->isValidPath($tempRepo, $repoFilename);
+
+            $filename = realpath($tempRepo . DIRECTORY_SEPARATOR . $repoFilename);
+
+            $command = "checkout $branch";
+            $output = $client->run($this, $command);
+            array_push($outputs, $output);
+
+            $message = $callback($client, $filename, $outputs, $tempRepo, $normalizedRepoFilePath);
+            array_push($outputs, $message);
+
+            $command = " -c \"user.name=$name\" -c \"user.email=$email\" commit -am \"$comment\" ";
+            $output = $client->run($this, $command);
+            array_push($outputs, $output);
+
+
+            // $command = "commit -am \"$comment\"";
+            // $output = $client->run($repository, $command);
+            $command = "push";
+            $output = $client->run($this, $command);
+            array_push($outputs, $output);
+
+            $command = " rev-parse HEAD ";
+            $lastCommit = $client->run($this, $command);
+
+            $result =  (object) [
+                'status' => 'ok',
+                'output' => $message,
+                'outputs' => $outputs,
+                'last-commit' => $lastCommit
+            ];
+            return $result;
+        } catch(\Throwable $e) {
+
+            $hadError = $e;
+        } finally {
+
+            if ($temporaryDirectory !== '') {
+                @$temporaryDirectory->delete();
+            }
+
+            if ($hadError !== false) {
+
+                $message = $hadError->getMessage();
+                if ($message === '') {
+                    $exceptionName = get_class($hadError);
+                    $message = "Received exception without message with type '{$exceptionName}'.";
+                    $trace = $hadError->getTrace();
+                }
+
+                return ((object) [
+                    'status' => $message === '' ? 'ok' : 'error',
+                    'error' => $message === '' ? false : true,
+                    //'temporaryDirectory' => $tempRepo,
+                    'message' => $message,
+                    //'currentdir' => getcwd(),
+                    //'command' => $command,
+                    'output' => $output,
+                    'outputs' => $outputs,
+                    'trace' => $trace,
+                    //'$filename' => $filename,
+                    //'$value' => $value,
+                ]);
+            }
+        }
+    }
+
+
+    protected function isValidPath($tempRepo, $repoFilename) {
+        $basePath = FileSystemPath::fromString($tempRepo);
+        $repoFilenameItem = FileSystemPath::fromString($repoFilename);
+
+        $normalizing = $basePath->resolve($repoFilenameItem);
+//        array_unshift($outputs, '$normalizing: ' . $normalizing);
+
+        $normalized = FileSystemPath::fromString($normalizing)->normalize();
+//        array_unshift($outputs, '$normalized: ' . $normalized);
+
+//        array_unshift($outputs, '$normalizing type: ' . gettype($normalizing));
+///        array_unshift($outputs, '$normalized type: ' .  gettype($normalized));
+
+        $normalizedRepoFilePath = $normalized->__toString();
+        $validPath = strpos($normalizing->__toString(), $normalizedRepoFilePath ) !== false;
+        if ($validPath === false) {
+            throw new \Exception("This '{$repoFilename}' path is invalid.");
+        }
+        return $normalizedRepoFilePath;
+    }
+
+    public function newFileBinary($cachePath, $repo, $branch, $repoFilename, $value, $name, $email, $comment, $override, $phpUploadFile) {
+
+        return json_encode((object)[
+            'filename' => $repoFilename,
+            'email' => $email,
+            'name' => $name,
+            'comment' => $comment,
+            'upload-file' => $phpUploadFile,
+            'override' => $override,
+        ]);
+        /*
+
+
+        File mime type check is not implemented.
+
+           $objectResult = $repository->newFileBinary($app->getCachePath(), $repo, $branch, $filename, $name, $email, $comment, $request->get('override') === '1' ? true : false, $_FILES[0]);
+
+
+{
+  "filename": "2017-Electronic-Diversity-Visa Lottery-Kriszti.jpg",
+  "email": "alabard@gmail.com",
+  "name": "patrikx3",
+  "comment": "P3X Gitlist Commit New binary",
+  "upload-file": {
+    "name": "2017-Electronic-Diversity-Visa Lottery-Kriszti.jpg",
+    "type": "image\/jpeg",
+    "tmp_name": "\/tmp\/phpzGVxqY",
+    "error": 0,
+    "size": 125931
+  },
+  "override": "1"
+}
+
+
+{
+  "filename": "krip.krip",
+  "email": "alabard@gmail.com",
+  "name": "patrikx3",
+  "comment": "P3X Gitlist Commit New binary",
+  "upload-file": {
+    "name": "krip.krip",
+    "type": "",
+    "tmp_name": "",
+    "error": 1,
+    "size": 0
+  },
+  "override": "1"
+}
+
+{
+  "filename": "corifeus-colors.txt",
+  "email": "alabard@gmail.com",
+  "name": "patrikx3",
+  "comment": "P3X Gitlist Commit New binary",
+  "upload-file": {
+    "name": "corifeus-colors.txt",
+    "type": "text\/plain",
+    "tmp_name": "\/tmp\/phpxjBzT8",
+    "error": 0,
+    "size": 133
+  },
+  "override": "1"
+}
+
+         */
+    }
+
+    public function changeFile($cachePath, $repo, $branch, $repoFilename, $value, $name, $email, $comment) {
+
+        return $this->changeRepo($cachePath, $repo, $branch, $repoFilename, $name, $email, $comment, function($client, $filename, $outputs, $tempRepo, $normalizedRepoFilePath) use ($value) {
+            //$originalFileContent = file_get_contents($filename);
+            file_put_contents($normalizedRepoFilePath, $value);
+            return '';
+        });
+    }
+
+    public function deleteFile($cachePath, $repo, $branch, $repoFilename, $name, $email, $comment) {
+
+        return $this->changeRepo($cachePath, $repo, $branch, $repoFilename, $name, $email, $comment, function($client, $filename, $outputs, $tempRepo, $normalizedRepoFilePath) {
+            //$originalFileContent = file_get_contents($filename);
+            @unlink($normalizedRepoFilePath);
+            return 'Deleted ' . $filename;
+        });
+    }
+
+    public function newFileOrDirectory($cachePath, $repo, $branch, $repoFilename, $name, $email, $comment)
+    {
+        return $this->changeRepo($cachePath, $repo, $branch, $repoFilename, $name, $email, $comment, function ($client, $filename, &$outputs, $tempRepo, $normalizedRepoFilePath) use ($repoFilename, $repo, $branch, $name, $email, $comment) {
+//            array_unshift($outputs, $cachePath);
+//            array_unshift($outputs, $repoFilename);
+
+            /*
+            array_unshift($outputs, '$tempRepo: ' . $tempRepo);
+            array_unshift($outputs, '$repo: ' . $repo);
+            array_unshift($outputs, '$branch: ' . $branch);
+            array_unshift($outputs, '$repoFilename: ' . $repoFilename);
+            array_unshift($outputs, '$name: ' . $name);
+            array_unshift($outputs, '$email: ' . $email);
+            array_unshift($outputs, '$comment: ' . $comment);
+            array_unshift($outputs, '$filename: ' . $filename);
+            array_unshift($outputs, '$repoFilename: ' . $repoFilename);
+
+            $basePath = FileSystemPath::fromString($tempRepo);
+            $repoFilenameItem = FileSystemPath::fromString($repoFilename);
+
+            $normalizing = $basePath->resolve($repoFilenameItem);
+            array_unshift($outputs, '$normalizing: ' . $normalizing);
+
+            $normalized = FileSystemPath::fromString($normalizing)->normalize();
+            array_unshift($outputs, '$normalized: ' . $normalized);
+
+            array_unshift($outputs, '$normalizing type: ' . gettype($normalizing));
+            array_unshift($outputs, '$normalized type: ' .  gettype($normalized));
+
+            $validPath = strpos($normalizing->__toString(), $normalized->__toString()) !== false;
+            array_unshift($outputs, 'includes current path in search: ' . ($validPath ? 'true' : 'false'));
+
+            return $repoFilename;
+            */
+
+            if (realpath($normalizedRepoFilePath) !== FALSE) {
+                throw new \Exception("This path is already existing: {$repoFilename}");
+            }
+
+            if (substr($repoFilename, -1) == '\\' || substr($repoFilename, -1) == '/') {
+          //echo "is path ";
+               // if (realpath($normalizedRepoFilePath) === FALSE) {
+                    if (@mkdir($normalizedRepoFilePath, 0777, true)) {
+                        //        echo "path is not existing ";
+                        touch($normalizedRepoFilePath . '/.gitkeep');
+                        $command = " add . ";
+                        $output = $client->run($this, $command);
+                        array_push($outputs, $output);
+                        return "Created new directory (including .gitkeep file): {$repoFilename}";
+                    }
+                    return "Failed to create the new directory: {$repoFilename}";
+                //} else {
+              //      echo "path is existing ";
+                //    throw new \Exception("This path is already existing.");
+                //}
+            } else {
+                @mkdir(dirname($normalizedRepoFilePath), 0777, true);
+                touch($normalizedRepoFilePath );
+                $command = " add . ";
+                $output = $client->run($this, $command);
+                array_push($outputs, $output);
+                return "Created new file : {$repoFilename}";
+//                echo "path is file ";
+            }
+        });
+    }
+
 
 }

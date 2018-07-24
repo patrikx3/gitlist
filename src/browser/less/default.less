@@ -127,10 +127,16 @@ img.emoji {
   }
 }
 
+.btn:hover svg.svg-inline--fa {
+  transition-duration: 250ms;
+  transition-property: transform;
+  transform: scale(1.1) rotate(360deg);
+}
+
 @import "index";
 @import "clone-button.less";
 @import "footer";
-@import "main-tabs";
+@import "menu";
 @import "treegraph";
 @import "file";
 @import "markdown";

@@ -4,7 +4,7 @@
 
 
  
-# 🤖 P3X Gitlist v2.10.48-940  
+# 🤖 P3X Gitlist v2.10.71-976  
 
 This is an open-source project. Star this repository, if you like it, or even donate! Thank you so much! :)
 
@@ -21,7 +21,7 @@ All my domains (patrikx3.com and corifeus.com) could have errors, since I am dev
    
 ### Built on Node 
 ``` 
-v10.6.0
+v10.7.0
 ```   
    
 The ```async``` and ```await``` keywords are required.
@@ -81,13 +81,27 @@ I have disabled loading everything in `twig`, besides the `diffs` are loading vi
 See in action:  
 https://gitlist.patrikx3.com/gitlist.git/commit/f1e4d5b938c8f1a6cd178aeea2e9e86111ea5323#p3x-gitlist-diff-93  
 
+### Six
+If you upload a bigger binary file, it is important, that your web server allows to upload bigger files, because I found an error with `NGINX` as: 
+```text
+Request Entity Too Large"
+```
+
+I resolved in the `NGINX` web server configuration file `nginx.conf` as:
+  
+`client_max_body_size 64M;`
+  
+Reference:  
+http://nginx.org/en/docs/http/ngx_http_core_module.html#client_max_body_size
+  
+So, this is only for testing. You should limit for some max size, that you want it at maximum, really.
+
 #### The last version with Babel
 https://github.com/patrikx3/gitlist/releases/tag/2.0.4-579
 
 The following versions are not using `Babel`!!!! Yikes!
 
 ### Unreleased / in progress
-* Add new text files
 * Upload binary files
 * Convert Silex 2 to Symfony 4
 * Localization (twig, controller, php, js)
@@ -179,7 +193,7 @@ npm run watch
 
 ---
 
-[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2.10.48-940 
+[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2.10.71-976 
 
 [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software) [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) 
 

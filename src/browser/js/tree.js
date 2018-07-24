@@ -9,7 +9,7 @@ $(() => {
 
     // <editor-fold desc="file">
 
-   const $buttonNewFileModal = $('#p3x-gitlist-modal-new')
+    const $buttonNewFileModal = $('#p3x-gitlist-modal-new')
     const $formNewfile = $('#p3x-gitlist-modal-new-form')
     const $buttonSubmitNewfile = $('#p3x-gitlist-modal-new-filename-confirm')
     const $inputNewfile = $('#p3x-gitlist-modal-new-filename')
@@ -29,28 +29,26 @@ $(() => {
             return;
         }
 
+
         try {
-            const url = `${window.gitlist.basepath}/${window.gitlist.repo}/git-helper/${window.gitlist.branch}/new-file-or-directory`
-            const response = await $.ajax({
-                url: url,
-                type: 'POST',
-                data: {
-                    value: value,
-                    email: inputs.email.val(),
-                    name: inputs.name.val(),
-                    comment: inputs.comment.val(),
-                    filename: filename
-                }
+            const inputs = window.gitlist.commitModelInputs['new']
+            const json = await window.gitlist.gitHelperAjax({
+                modal: $buttonNewFileModal,
+                action: 'new-file-or-directory',
+                inputs: inputs,
+                filename: $inputNewfile.val(),
             })
+            if (window.gitlist.gitNewPush(json)) {
+                return
+            }
+
+
         } catch(e) {
             window.gitlist.ajaxErrorHandler(e)
         }
+        return false;
 
-        $.snackbar({
-            htmlAllowed: true,
-            content: 'New file in progress',
-            timeout: window.gitlist.snapckbarLongTimeout,
-        })
+
        // $buttonNewFileModal.modal('hide')
     })
 
@@ -64,6 +62,7 @@ $(() => {
     const $buttonSubmitNewfileBinary = $('#p3x-gitlist-modal-new-filename-binary-confirm')
     const $inputNewfileBinaryFile = $('#p3x-gitlist-modal-new-binary-filename-binary')
     const $inputNewfileBinaryUpload = $('#p3x-gitlist-modal-new-binary-filename-binary-upload')
+    const $inputNewfileBinaryOverride = $('#p3x-gitlist-modal-new-binary-filename-binary-override')
     $inputNewfileBinaryFile.val(path)
 
     let uploadBinaryFilename = ''
@@ -77,29 +76,78 @@ $(() => {
 
     $inputNewfileBinaryUpload.change(() => {
         if ($inputNewfileBinaryUpload[0].files.length === 0) {
-            console.log('1')
             $inputNewfileBinaryFile.val(`${path}`)
         } else {
-            console.log('2')
             uploadBinaryFilename = $inputNewfileBinaryUpload[0].files[0].name
             $inputNewfileBinaryFile.val(`${path}${uploadBinaryFilename}`)
         }
     })
 
-    $buttonSubmitNewfileBinary.click(() => {
+
+    $formNewfileBinary[0].addEventListener('submit', async function(ev) {
+        ev.preventDefault();
+
         if($formNewfileBinary[0].checkValidity() === false) {
             window.gitlist.invalidSnackbarCommit()
             return;
         }
 
-        $.snackbar({
-            htmlAllowed: true,
-            content: 'New file binary in progress',
-            timeout: window.gitlist.snapckbarLongTimeout,
-        })
+        try {
+            // http://php.net/manual/en/features.file-upload.php#114004
+            const inputs = window.gitlist.commitModelInputs['new-binary']
+            const json = await window.gitlist.gitHelperAjax({
+                upload: true,
+                modal: $buttonNewBinaryModal,
+                action: 'file-binary',
+                inputs: inputs,
+                filename: $inputNewfileBinaryFile.val(),
+                fileUpload: $inputNewfileBinaryUpload,
+                data: {
+                    override: $inputNewfileBinaryOverride.val()
+                }
+            })
+            if (window.gitlist.gitNewPush(json)) {
+                return
+            }
 
-        $buttonNewBinaryModal.modal('hide')
+        } catch(e) {
+            window.gitlist.ajaxErrorHandler(e)
+        }
+        return false;
+    }, false);
+
+    /*
+    $buttonSubmitNewfileBinary.click(async () => {
+        if($formNewfileBinary[0].checkValidity() === false) {
+            window.gitlist.invalidSnackbarCommit()
+            return;
+        }
+
+        try {
+            const inputs = window.gitlist.commitModelInputs['new-binary']
+            const json = await window.gitlist.gitHelperAjax({
+                upload: true,
+                modal: $buttonNewBinaryModal,
+                action: 'file-binary',
+                inputs: inputs,
+                filename: $inputNewfileBinaryFile.val(),
+                fileUpload: $inputNewfileBinaryUpload,
+                data: {
+                    override: $inputNewfileBinaryOverride.val()
+                }
+            })
+            if (window.gitlist.gitNewPush(json)) {
+                return
+            }
+
+        } catch(e) {
+            alert(e);
+            window.gitlist.ajaxErrorHandler(e)
+        }
+        return false;
     })
+    */
+
 
     // </editor-fold>
 

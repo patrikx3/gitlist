@@ -1,285 +1,23 @@
-let $body;
-let $head;
+require('./global/cookie')
+require('./global/hash')
+require('./global/scroll')
+require('./global/path')
+require('./global/ajax')
+require('./global/git')
+require('./global/input')
+require('./global/snackbar')
+require('./global/theme')
 
-let currentUrl = new URL(window.location)
-
-const Cookies = require('js-cookie')
-
-const scrollIntoViewOptions = {
-    behavior: "instant",
-//    block: "start",
-//    inline: "start"
-}
-const scrollIntoView = (el) => {
-    el.scrollIntoView(scrollIntoViewOptions)
-    /*
-    if ((window.innerHeight + window.scrollY) <= document.body.offsetHeight - navbarHeight ) {
-        window.scrollBy(0, -navbarHeight )
-    }
-    */
-}
-
-window.gitlist.scrollIntoView = scrollIntoView;
-
-/*
-const regExpEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-window.gitlist.validate = {
-    email: (email) => {
-        return regExpEmail.test(String(email));
-    }
-}
-*/
-
-window.gitlist.ajaxErrorHandler = (e) => {
-    $.snackbar({
-        htmlAllowed: true,
-        content: e.message,
-        timeout: window.gitlist.snapckbarLongTimeout,
-    })
-    console.error(e);
-}
-
-window.gitlist.getPaths = () => {
-    if (window.gitlist.basepath !== '') {
-        currentUrl.pathname = currentUrl.pathname.substring(window.gitlist.basepath.length)
-    }
-    let paths = currentUrl.pathname.split('/');
-    return paths;
-}
-
-window.gitlist.getPath = () => {
-    let paths = window.gitlist.getPaths();
-    paths = paths.slice(4);
-    let path = paths.join('/')
-    return path
-}
-
-window.gitlist.clearInput = (name) => {
-    const input = $(`[name=${name}]`)
-    input.val('')
-    Cookies.set(`p3x-gitlist-${name}`, '', window.gitlist.cookieSettings)
-    input.focus()
-}
-
-window.gitlist.setInputQuery = (name) => {
-    const input = $(`[name=${name}]`)
-    Cookies.set(`p3x-gitlist-${name}`, input.val(), window.gitlist.cookieSettings)
-}
-
-window.gitlist.isDark =(theme = window.gitlist.getActualTheme()) => {
-    for(let i = 0; i < window.gitlist.dark.length; i++ ) {
-        if (window.gitlist.dark[i] === theme) {
-            return true;
-        }
-    }
-    return false;
-}
-
-window.gitlist.cookieSettings = {
-    path: gitlist.basepath === '' ? '/' : gitlist.basepath,
-    expires: 3650
-}
-
-window.gitlist.getActualTheme = (theme = window.gitlist.getThemeCookie()) => {
-    const actualTheme = theme.split('-')[1]
-    return actualTheme;
-}
-
-window.gitlist.getActualThemeCodemirror = () => {
-    if (window.gitlist.isDark(window.gitlist.getActualTheme())) {
-        return window.gitlist.codemirrorTheme.dark;
-    } else {
-        return window.gitlist.codemirrorTheme.light;
-    }
-}
-
-let currentTheme;
-let setTimeoutSwitch;
-window.gitlist.setTheme = () => {
-    if ($body === undefined) {
-        setTimeout(() => {
-            window.gitlist.setTheme()
-        })
-        return;
-    }
-    const theme = window.gitlist.getActualTheme();
-//    console.log('theming', 'currenTheme', currentTheme, 'new theme', theme);
-    if (theme === currentTheme) {
-//        console.log('same theme')
-        return;
-    }
-
-    const diffButtons = $('.p3x-gitlist-diff-button.active');
-    //console.log(diffButtons)
-    for(let diffButton of diffButtons ) {
-        diffButton.click();
-    }
-
-    const switchThemeActually = () => {
-        currentTheme = theme;
-
-        /*
-        const themeFragmentFileCodeMirror  = (options) => {
-            const {  theme } = options
-            for(let cm of window.gitlist.fragmentFileCodeMirror) {
-                cm.setOption("theme", theme);
-            }
-        }
-        */
-
-        let bodyAddClass
-        let bodyRemoveClass
-        let codeMirrorTheme
-        if (window.gitlist.isDark(theme)) {
-            bodyAddClass = 'p3x-gitlist-dark'
-            bodyRemoveClass = 'p3x-gitlist-light'
-            codeMirrorTheme = window.gitlist.codemirrorTheme.dark
-        } else {
-            bodyAddClass = 'p3x-gitlist-light'
-            bodyRemoveClass = 'p3x-gitlist-dark'
-            codeMirrorTheme = window.gitlist.codemirrorTheme.light
-
-        }
-
-        $body.addClass(bodyAddClass)
-        $body.removeClass(bodyRemoveClass)
-        if (gitlist.viewer !== undefined) {
-            gitlist.viewer.setOption("theme", codeMirrorTheme);
-        }
-        if (gitlist.fragmentFileCodeMirror !== undefined) {
-            gitlist.fragmentFileCodeMirror.setOption("theme", codeMirrorTheme);
-        }
-
-
-        window.gitlist.networkRedraw();
-        window.gitlist.treegraph();
-//    if (window.gitlist.lastloadSpan !== undefined && window.gitlist.lastloadSpan > 1000) {
-        clearTimeout(setTimeoutSwitch)
-        setTimeoutSwitch = setTimeout(() => {
-            $('.p3x-gitlist-overlay').remove();
-        }, 250)
-
-    }
-    //    console.log('p3x-gitlist switching theme')
-//    }
-
-    if (diffButtons.length > 0) {
-        $.snackbar({
-            content: `We hid the shown diffs, to make the theme switching faster.`,
-            timeout: window.gitlist.snapckbarLongTimeout,
-        });
-        window.scrollTo(0, 0);
-        setTimeout(switchThemeActually, 250)
-    } else {
-        switchThemeActually()
-    }
-
-
-}
-const pushHash = (hash) => {
-    if(history.pushState) {
-        const pushState = location.pathname + hash;
-        history.pushState(null, null, pushState);
-    }
-    else {
-        location.hash = hash;
-    }
-
-}
-window.gitlist.pushHash = pushHash;
-
-window.gitlist.scrollHash = function(element, event) {
-    const url = new URL(element.href)
-    const id = url.hash.substring(1)
-    const elfind = document.getElementById(id + '-parent')
-    const elfind2 = document.getElementById(id)
-    if (elfind === null && elfind2 === null) {
-        return true;
-    }
-    scrollIntoView(elfind || elfind2);
-
-    if (event !== undefined) {
-        event.preventDefault()
-        pushHash(url.hash)
-    }
-    return false;
-}
-
-window.gitlist.changeableCommit = () => {
-    if (!window.gitlist.branches.includes(window.gitlist.branch)) {
-        let branchInfo;
-        if (window.gitlist.branches.length === 1) {
-            branchInfo = `Only the <strong>${window.gitlist.branches.join(', ')}</strong> branch is changeable.`
-        }  else {
-            branchInfo = `Only the <strong>${window.gitlist.branches.join(', ')}</strong> branches are changeable.`
-        }
-        $.snackbar({
-            htmlAllowed: true,
-            content: `This commit <strong>${window.gitlist.branch}</strong> is not changeable.<br/>
-${branchInfo}
-`,
-            timeout: window.gitlist.snapckbarLongTimeout,
-        })
-        return false;
-    } {
-        return true
-    }
-}
-
-window.gitlist.preloadCommitValues = (options) => {
-    const { type } = options
-
-    const inputs = {
-        name: $(`#p3x-gitlist-modal-${ type }-name`),
-        email: $(`#p3x-gitlist-modal-${ type }-email`),
-        comment: $(`#p3x-gitlist-modal-${ type }-comment`),
-    }
-
-    for(let inputKey in inputs) {
-        const input = inputs[inputKey]
-        //console.log(inputKey, commentCookie)
-        let cookieName = `p3x-gitlist-commit-${inputKey}`;
-        if (inputKey === 'comment') {
-            cookieName = `p3x-gitlist-commit-${type }-${inputKey}`;
-        }
-        const cookie = Cookies.get(cookieName)
-        if (cookie) {
-            input.val(cookie.trim());
-        }
-        input.change(() => {
-            const val = input.val().trim();
-            Cookies.set(cookieName, val, window.gitlist.cookieSettings);
-            input.val(val);
-        })
-    }
-}
-
-window.gitlist.invalidSnackbarCommit = () => {
-    $.snackbar({
-        content: 'The commit form data is invalid..'
-    })
-}
 
 $(function () {
+    const Cookies = require('js-cookie')
+
     currentTheme = window.gitlist.getActualTheme(window.gitlist.loadTheme)
 
     $('.dropdown-toggle').dropdown();
     $('[data-toggle="tooltip"]').tooltip()
 
-    $body = $('body');
-    $head = $('head')
-
-//    let waiter = 500;
-//    let timeout = 500;
-    /*
-    Object.values(window.gitlist.themes).forEach(css => {
-//        setTimeout(() => {
-        $head.append(`<link as="style" rel="prefetch" href="${css}">`)
-//        }, timeout)
-//        timeout += waiter;
-    })
-    */
+    window.gitlist.$body = $('body');
 
     const es = document.getElementsByTagName('a')
     for(let i=0; i<es.length; i++){
@@ -295,8 +33,8 @@ $(function () {
                 if (el === null) {
                     return;
                 }
-                scrollIntoView(el);
-                pushHash(href)
+                window.gitlist.scrollIntoView(el);
+                window.gitlist.pushHash(href)
             }
         })
     }
@@ -311,14 +49,14 @@ $(function () {
         window.gitlist.lastloadSpan = Date.now() - window.gitlist.lastload;
     }
     $('.p3x-gitlist-overlay').remove();
-    global.gitlist.scrollHash(location)
+    window.gitlist.scrollHash(location)
 
 
     window.gitlist.networkRedraw();
     window.gitlist.treegraph();
     gitlist.setTheme()
 
-    const snack = currentUrl.searchParams.get('snack')
+    const snack = new URL(window.location).searchParams.get('snack')
     if (snack !== null) {
         $.snackbar({
             htmlAllowed: true,

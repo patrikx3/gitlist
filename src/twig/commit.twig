@@ -22,10 +22,10 @@
 
     {% embed 'breadcrumb.twig' with {breadcrumbs: [{dir: "Commit #{commit.hash}", path:''}]} %}
         {% block left %}
-            <span class="label label-primary">Showing {{ commit.changedFiles }} changed files</span>
+            <span class="label label-primary">File changed: {{ commit.changedFiles }}</span>
         {% endblock %}
         {% block right %}
-            <a class="btn btn-primary btn-sm" href="{{ path('branch', {repo: repo, branch: commit.hash}) }}"
+            <a class="btn btn-info btn-sm" href="{{ path('branch', {repo: repo, branch: commit.hash}) }}"
                title="Browse code at this point in history"><span class="fa fa-list-alt"></span> Browse code</a>
         {% endblock %}
     {% endembed %}
@@ -69,7 +69,7 @@
                            class="btn btn-primary btn-sm"><i class="fas fa-history"></i>&nbsp;&nbsp;History</a>
                         &nbsp;
                         <a href="{{ path('blob', {repo: repo, commitishPath: commit.hash ~'/' ~ diff.file}) }}"
-                           class="btn btn-primary btn-sm"><i class="far fa-eye"></i>&nbsp;&nbsp;View
+                           class="btn btn-primary btn-sm"><i class="fas fa-edit"></i>&nbsp;&nbsp;View / Edit
                         </a>
                     </div>
                     <div style="clear: both;"></div>

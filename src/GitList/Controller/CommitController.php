@@ -130,6 +130,9 @@ class CommitController implements ControllerProviderInterface
                 return $app->json($diffs);
             };
 
+            if (isset($_GET['delete-branch'])) {
+                $branch = $_GET['delete-branch'];
+            }
 
             return $app['twig']->render('commit.twig', array(
                 'branches'       => $repository->getBranches(),

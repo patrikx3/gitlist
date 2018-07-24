@@ -1,9 +1,9 @@
 {
     "name": "p3x-gitlist",
-    "version": "2.10.49-941",
+    "version": "2.10.72-986",
     "corifeus": {
         "prod-dir": "prod",
-        "postfix": "0198d850aea1effc67f4262ae31e1744f0e52dfed96c00f3bd85bb480e266549",
+        "postfix": "0258f9141baab8c7e285745a2d377a85a1d57fc5644e7e600a3601749db8be99",
         "prefix": "p3x-",
         "publish": false,
         "type": "p3x",
@@ -11,7 +11,7 @@
         "cdn": true,
         "icon": "fas fa-code",
         "code": "Spawn",
-        "nodejs": "v10.6.0",
+        "nodejs": "v10.7.0",
         "reponame": "gitlist",
         "build": true
     },
@@ -29,12 +29,12 @@
     "devDependencies": {
         "bootswatch": "^3.3.7",
         "concurrently": "^3.6.0",
-        "corifeus-builder": "^1.8.40-440",
+        "corifeus-builder": "^1.8.43-441",
         "corifeus-utils": "^1.2.96-406",
         "css-loader": "^1.0.0",
         "extract-text-webpack-plugin": "^4.0.0-beta.0",
         "file-loader": "^1.1.11",
-        "fs-extra": "^6.0.1",
+        "fs-extra": "^7.0.0",
         "glob": "^7.1.2",
         "grunt": "^1.0.3",
         "grunt-contrib-less": "^2.0.0",
@@ -42,12 +42,13 @@
         "html-webpack-plugin": "^3.2.0",
         "less-loader": "^4.1.0",
         "on-build-webpack": "^0.1.0",
-        "optimize-css-assets-webpack-plugin": "^4.0.3",
+        "optimize-css-assets-webpack-plugin": "^5.0.0",
+        "postcss-safe-parser": "^4.0.1",
         "style-loader": "^0.21.0",
         "uglifyjs-webpack-plugin": "^1.2.7",
         "url-loader": "^1.0.1",
-        "webpack": "^4.16.0",
-        "webpack-cli": "^3.0.8"
+        "webpack": "^4.16.1",
+        "webpack-cli": "^3.1.0"
     },
     "engines": {
         "node": ">=10.5.0"
@@ -59,7 +60,7 @@
         "@fortawesome/fontawesome-free-regular": "^5.0.13",
         "@fortawesome/fontawesome-free-solid": "^5.0.13",
         "bootstrap": "^3.3.7",
-        "codemirror": "^5.39.0",
+        "codemirror": "^5.39.2",
         "highlight.js": "^9.12.0",
         "jquery": "^3.3.1",
         "jquery.redirect": "^1.1.4",

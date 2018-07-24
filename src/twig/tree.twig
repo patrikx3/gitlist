@@ -14,21 +14,23 @@
                     <i class="far fa-file-alt"></i> New file or directory
                 </button>
 
-                {% embed 'modal/modal-commit.twig' with {type: 'new', title: 'New file', bodyTitle: 'Are you sure to add a new file or directory?' } %}
+                {% embed 'modal/modal-commit.twig' with {type: 'new', title: 'New file', bodyTitle: 'Are you sure to add a new file or directory?<br/><strong>If you add a slash to the end of the "filename", you create a directory, otherwise you create a file. <br/>Please, make sure you use a relative path.</strong>' } %}
                     {% block form %}
 
                         <div class="input-group">
                                             <span class="input-group-addon" id="p3x-gitlist-modal-{{ type }}-filename-aria"><i
                                                         class="far fa-file-alt"></i></span>
-                            <input required type="text" class="form-control" placeholder="New filename"
+                            <input required type="text" class="form-control" placeholder="New filename or directory"
                                    aria-describedby="p3x-gitlist-modal-{{ type }}-filename-aria"
-                                   id="p3x-gitlist-modal-{{ type }}-filename" minlength="2" maxlength="128"
+                                   id="p3x-gitlist-modal-{{ type }}-filename" minlength="1" maxlength="128"
                                    value="">
                         </div>
-
+                        <br/>
                     {%  endblock %}
                     {% block buttons %}
-                        <button id="p3x-gitlist-modal-new-filename-confirm" type="submit" class="btn btn-info">
+
+
+                        <button id="p3x-gitlist-modal-new-filename-confirm" type="button" class="btn btn-info">
                             <span class="far fa-file-alt"></span>
                             New file or directory
                         </button>
@@ -41,7 +43,7 @@
                     <i class="far fa-file"></i> Upload binary
                 </button>
 
-                {% embed 'modal/modal-commit.twig' with {enctype: 'multipart/form-data', type: 'new-binary', title: 'New binary', bodyTitle: 'Are you sure to add a new binary file?' } %}
+                {% embed 'modal/modal-commit.twig' with {enctype: 'multipart/form-data', type: 'new-binary', title: 'New binary', bodyTitle: 'Are you sure to add a new binary file?', wrapForm: true } %}
                     {% block form %}
                         <div class="input-group">
 
@@ -49,23 +51,30 @@
                                    aria-describedby="p3x-gitlist-modal-{{ type }}-filename-binary-upload-aria"
                                    id="p3x-gitlist-modal-{{ type }}-filename-binary-upload">
                         </div>
-                        <br/>
+                        <div class="checkbox">
+                            <label><input id="p3x-gitlist-modal-{{ type }}-filename-binary-override" type="checkbox" value="1">Allow override existing</label>
+                        </div>
+
                         <div class="input-group">
                                             <span class="input-group-addon" id="p3x-gitlist-modal-{{ type }}-filename-binary-aria"><i
                                                         class="far fa-file"></i></span>
                             <input required type="text" class="form-control" placeholder="New binary filename"
                                    aria-describedby="p3x-gitlist-modal-{{ type }}-filename-binary-aria"
-                                   id="p3x-gitlist-modal-{{ type }}-filename-binary" minlength="2" maxlength="128"
+                                   id="p3x-gitlist-modal-{{ type }}-filename-binary" minlength="1" maxlength="128"
                                    value="">
                         </div>
+                        <br/>
+
 
 
                     {%  endblock %}
                     {% block buttons %}
+
                         <button id="p3x-gitlist-modal-new-filename-binary-confirm" type="submit" class="btn btn-info">
                             <span class="far fa-file"></span>
                             New binary file
                         </button>
+
                     {%  endblock %}
                 {% endembed %}
 

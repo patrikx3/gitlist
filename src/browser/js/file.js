@@ -4,39 +4,7 @@ $(function() {
 
     const errorHandler = window.gitlist.ajaxErrorHandler;
 
-    const paths = window.gitlist.getPaths();
-    const filename = paths.slice(4).join('/');
-
-    const gitHelperAjax = async (options) => {
-        const { modal, action, inputs, value } = options
-
-        modal.modal('hide')
-
-        const url = `${window.gitlist.basepath}/${window.gitlist.repo}/git-helper/${window.gitlist.branch}/${action}`
-        const response = await $.ajax({
-            url: url,
-            type: 'POST',
-            data: {
-                value: value,
-                email: inputs.email.val(),
-                name: inputs.name.val(),
-                comment: inputs.comment.val(),
-                filename: filename
-            }
-        })
-        const json = JSON.parse(response)
-
-        if (json.hasOwnProperty('output') && json.output !== '') {
-            $.snackbar({
-                htmlAllowed: true,
-                content: json.output,
-            })
-        }
-        if (json.error === true) {
-            errorHandler(json);
-        }
-        return json;
-    }
+    const gitHelperAjax = window.gitlist.gitHelperAjax;
 
     const $modalDelete = $('#p3x-gitlist-modal-delete')
     const $buttonDelete = $('#p3x-gitlist-file-delete')
@@ -69,22 +37,17 @@ $(function() {
         }
 
         try {
+
             const json = await gitHelperAjax({
                 modal: $modalDelete,
                 action: 'delete',
                 inputs: inputs,
-                value: undefined,
+
             })
-            const newLocation = `${window.gitlist.basepath}/${paths[1]}/commit/${json['last-commit']}?snack=` + encodeURIComponent(`The "${filename}" file is deleted. You are switched to the page where you can see the last commit.`)
-            // console.log(json, newLocation)
-            location = newLocation
-            /*
-            close();
-            $.snackbar({ewLo
-                htmlAllowed: true,
-                content: '<i class="fas fa-check"></i>&nbsp;&nbsp;The file is saved.',
-            })
-            */
+            if (window.gitlist.gitNewPush(json)) {
+                return
+            }
+
 
         } catch(e) {
             errorHandler(e)
@@ -229,7 +192,9 @@ $(function() {
                         modal: commitModal,
                         action: 'save',
                         inputs: inputs,
-                        value: value,
+                        data: {
+                            value: value
+                        },
                     })
 
                     originalCode = value;

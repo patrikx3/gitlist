@@ -66,8 +66,8 @@ if (minimize) {
     plugins.push(
         new OptimizeCssAssetsPlugin({
             assetNameRegExp: /\.css$/g,
-            cssProcessor: require('cssnano'),
-            cssProcessorOptions: { safe: true, discardComments: { removeAll: true } },
+//            cssProcessor: require('cssnano'),
+//            cssProcessorOptions: { safe: true, discardComments: { removeAll: true } },
             canPrint: true
         })
 

@@ -4,11 +4,11 @@
             {% include 'browser.twig' %}
         </li>
     {% endif %}
-    <li{% if page == 'files' %} class="active"{% endif %}><a href="{{ path('branch', {repo: repo, branch: branch}) }}">Files</a></li>
-    <li{% if page in ['commits', 'searchcommits'] %} class="active"{% endif %}> <a href="{{ path('commits', {repo: repo, commitishPath: branch}) }}">Commits</a></li>
-    <li{% if page == 'stats' %} class="active"{% endif %}><a href="{{ path('stats', {repo: repo, branch: branch}) }}">Stats</a></li>
-  	<li{% if page == 'network' %} class="active"{% endif %}><a href="{{ path('network', {repo: repo, commitishPath: branch}) }}">Network</a></li>
-  	<li{% if page == 'treegraph' %} class="active"{% endif %}><a href="{{ path('treegraph', {repo: repo, commitishPath: branch}) }}">Graph</a></li>
+    <li{% if page == 'files' %} class="active"{% endif %}><a href="{{ path('branch', {repo: repo, branch: branch}) }}"><i class="fas fa-file"></i> Files</a></li>
+    <li{% if page in ['commits', 'searchcommits'] %} class="active"{% endif %}> <a href="{{ path('commits', {repo: repo, commitishPath: branch}) }}"><i class="fas fa-code-branch"></i> Commits</a></li>
+    <li{% if page == 'stats' %} class="active"{% endif %}><a href="{{ path('stats', {repo: repo, branch: branch}) }}"><i class="fas fa-star"></i> Stats</a></li>
+  	<li{% if page == 'network' %} class="active"{% endif %}><a href="{{ path('network', {repo: repo, commitishPath: branch}) }}"><i class="fas fa-chart-pie"></i> Network</a></li>
+  	<li{% if page == 'treegraph' %} class="active"{% endif %}><a href="{{ path('treegraph', {repo: repo, commitishPath: branch}) }}"><i class="fas fa-chart-bar"></i> Graph</a></li>
 </ul>
 
 

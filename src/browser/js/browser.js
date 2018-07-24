@@ -24,25 +24,25 @@ $(function() {
                 return `${baseUrl}/tree/${options.checkout}`;
             },
             commits: (options) => {
-                return `${baseUrl}/commits/${options.checkout}${path}`;
+                return `${baseUrl}/commits/${options.checkout}/${path}`;
             },
             commit: (options) => {
-                return `${baseUrl}/commits/${options.checkout}${path}`;
+                return `${baseUrl}/commits/${options.checkout}/${path}`;
             },
             stats: (options) => {
-                return `${baseUrl}/stats/${options.checkout}${path}`;
+                return `${baseUrl}/stats/${options.checkout}/${path}`;
             },
             network: (options) => {
-                return `${baseUrl}/network/${options.checkout}${path}`;
+                return `${baseUrl}/network/${options.checkout}/${path}`;
             },
             blob: (options) => {
-                return `${baseUrl}/blob/${options.checkout}${path}`;
+                return `${baseUrl}/blob/${options.checkout}/${path}`;
             },
             blame: (options) => {
-                return `${baseUrl}/blame/${options.checkout}${path}`;
+                return `${baseUrl}/blame/${options.checkout}/${path}`;
             },
             treegraph: (options) => {
-                return `${baseUrl}/treegraph/${options.checkout}${path}`;
+                return `${baseUrl}/treegraph/${options.checkout}/${path}`;
             },
             search: (options) => {
                 return {

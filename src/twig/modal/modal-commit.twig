@@ -1,3 +1,7 @@
+{% if wrapForm %}
+<form id="p3x-gitlist-modal-{{ type }}-form" name="p3x-gitlist-modal-{{ type }}-form" method="post" enctype="{{ enctype| default('application/x-www-form-urlencoded') }}">
+{% endif %}
+
 <div id="p3x-gitlist-modal-{{ type }}" class="modal fade" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -8,10 +12,14 @@
                 <h4 class="modal-title"><strong>{{ title }}</strong></h4>
             </div>
             <div class="modal-body">
-                {{ bodyTitle }}
-                    <form id="p3x-gitlist-modal-{{ type }}-form" enctype="{{ enctype| default('application/x-www-form-urlencoded') }}" method="post" action="asdasdd">
+                <strong>{{ bodyTitle | raw }}</strong>
 
-                    <h4>{% block form %}{% endblock %}</h4>
+                {% if not wrapForm %}
+                <form id="p3x-gitlist-modal-{{ type }}-form" name="p3x-gitlist-modal-{{ type }}-form" method="post" enctype="{{ enctype| default('application/x-www-form-urlencoded') }}">
+                {% endif %}
+
+
+                    {% block form %}{% endblock %}
 
                     <div class="input-group">
                                             <span class="input-group-addon" id="p3x-gitlist-modal-{{ type }}-name-aria"><i
@@ -43,7 +51,9 @@
 
 
 
+                {% if not wrapForm %}
                 </form>
+                {% endif %}
 
             </div>
             <div class="modal-footer">
@@ -56,6 +66,12 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
+
+{% if wrapForm %}
+</form>
+{% endif %}
+
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {

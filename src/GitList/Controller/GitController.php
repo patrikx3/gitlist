@@ -1,4 +1,12 @@
 <?php
+/*
+ * This file is part of the Gitter library.
+ *
+ * (c) Patrik Laszlo <alabard@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 namespace GitList\Controller;
 
@@ -21,7 +29,7 @@ class GitController implements ControllerProviderInterface
 
             try {
                 if ($repository instanceof Repository && $app instanceof GitlistApp) {
-                    $filename = $request->get('filename');
+                    $filename = trim($request->get('filename'));
                     $value = $request->get('value');
                     $email = $request->get('email');
                     $name = $request->get('name');
@@ -38,8 +46,28 @@ class GitController implements ControllerProviderInterface
                             return json_encode($objectResult);
                             break;
 
-
                         case 'new-file-or-directory':
+                            $objectResult = $repository->newFileOrDirectory($app->getCachePath(), $repo, $branch, $filename, $name, $email, $comment);
+                            return json_encode($objectResult);
+                            break;
+
+                        case 'file-binary':
+
+                            $objectResult = $repository->newFileBinary($app->getCachePath(), $repo, $branch, $filename, $name, $email, $comment, $request->get('override') === '1' ? true : false, $_FILES['upload-file']);
+                            return json_encode($objectResult);
+
+                            /*
+                            return json_encode((object)[
+                               'filename' => $filename,
+                                'email' => $email,
+                                'name' => $name,
+                                'comment' => $comment,
+                                'upload-file' => $_FILES['upload-file'],
+                                'override' => $request->get('override'),
+                            ]);
+                            */
+                            break;
+
                         default:
                             return json_encode((object) [
                                 'status' => 'error',
