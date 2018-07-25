@@ -36,7 +36,7 @@ https://nodejs.org/en/download/package-manager/
                         
 [//]: #@corifeus-header:end
 
-This is Klaus Silveira's fork, with web workers, multiple themes (dark/light), sub-modules, uglify-es, webpack, toast, pure Bootstrap 3 and upgraded to PHP7.1 with all components.  
+This is a new GitList with web workers, multiple themes (dark/light), sub-modules, uglify-es, webpack, toast, pure Bootstrap 3 and upgraded to PHP7.1 with all components.  
 
 Usually, even a small router can use it with 64MB `PHP memory limit`.   
 
