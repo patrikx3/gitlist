@@ -14,7 +14,7 @@
                     <i class="far fa-file-alt"></i> New file or directory
                 </button>
 
-                {% embed 'modal/modal-commit.twig' with {type: 'new', title: 'New file', bodyTitle: 'Are you sure to add a new file or directory?<br/><strong>If you add a slash to the end of the "filename", you create a directory, otherwise you create a file. <br/>Please, make sure you use a relative path.</strong>' } %}
+                {% embed 'modal/modal-commit.twig' with {type: 'new', title: 'New file', bodyTitle: 'Are you sure to add a new file or directory?<br/><strong>If you add a slash to the end of the "filename", you create a directory, otherwise you create a file. <br/>Please, make sure you use a relative path.</strong>', wrapForm: true } %}
                     {% block form %}
 
                         <div class="input-group">
@@ -30,7 +30,7 @@
                     {% block buttons %}
 
 
-                        <button id="p3x-gitlist-modal-new-filename-confirm" type="button" class="btn btn-info">
+                        <button id="p3x-gitlist-modal-new-filename-confirm" type="submit" class="btn btn-info">
                             <span class="far fa-file-alt"></span>
                             New file or directory
                         </button>
@@ -40,7 +40,7 @@
 
 
                 <button type="button"  class="btn btn-sm btn-info"  id="p3x-gitlist-tree-new-binary">
-                    <i class="far fa-file"></i> Upload binary
+                    <i class="far fa-file"></i> Upload file and/or override/binary
                 </button>
 
                 {% embed 'modal/modal-commit.twig' with {enctype: 'multipart/form-data', type: 'new-binary', title: 'New binary', bodyTitle: 'Are you sure to add a new binary file?', wrapForm: true } %}
@@ -72,7 +72,7 @@
 
                         <button id="p3x-gitlist-modal-new-filename-binary-confirm" type="submit" class="btn btn-info">
                             <span class="far fa-file"></span>
-                            New binary file
+                            Upload file and/or override/binary
                         </button>
 
                     {%  endblock %}

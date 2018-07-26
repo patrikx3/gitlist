@@ -23,7 +23,7 @@
                     Delete
                 </button>
 
-                {% embed 'modal/modal-commit.twig' with {type: 'delete', title: 'Delete', bodyTitle: 'Are you sure to delete this file?' } %}
+                {% embed 'modal/modal-commit.twig' with {type: 'delete', title: 'Delete', bodyTitle: 'Are you sure to delete this file?', wrapForm: true } %}
                     {% block buttons %}
                         <button id="p3x-gitlist-modal-delete-confirm" type="submit" class="btn btn-danger">
                             <span class="fa fa-trash"></span>
@@ -34,7 +34,7 @@
                 {% endembed %}
 
                 <span class="p3x-gitlist-file-svg-toggle">
-                {% if (fileType != 'image' and fileType != 'markdown') or (enforceCodemirror) %}
+                {% if (((fileType != 'image' and fileType != 'markdown' ) or (enforceCodemirror)) and not binary )%}
                     <button id="p3x-gitlist-file-button-edit" class="btn btn-sm btn-info">
                         <span class="fa fa-edit"></span> Edit
                     </button>
@@ -45,7 +45,7 @@
                         <span class="fa fa-save"></span> Save
                     </button>
 
-                    {% embed 'modal/modal-commit.twig' with { type: 'commit', title: 'Commit', bodyTitle: 'Are you sure to commit this change?' } %}
+                    {% embed 'modal/modal-commit.twig' with { type: 'commit', title: 'Commit', bodyTitle: 'Are you sure to commit this change?', wrapForm: true } %}
                     {% block buttons %}
                         <button id="p3x-gitlist-modal-commit-push" type="submit" class="btn btn-info">
                             <span class="fas fa-caret-right"></span>
@@ -75,8 +75,13 @@
 
             <div class="p3x-gitlist-button">
 
+                {% if binary %}
+                    <a href="{{ path('blob_raw', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"
+                       class="btn btn-info btn-sm"><span class="fas fa-download"></span> Download</a>
+                {% else %}
                 <a href="{{ path('blob_raw', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"
-                   class="btn btn-default btn-sm"><span class="fas fa-download"></span> Raw</a>
+                       class="btn btn-info btn-sm"><span class="fas fa-download"></span> Raw</a>
+                {% endif %}
                 <a href="{{ path('blame', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"
                    class="btn btn-default btn-sm"><span class="fa fa-fire"></span> Blame</a>
                 <a href="{{ path('commits', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"
@@ -84,7 +89,7 @@
 
                 <div class="p3x-gitlist-file-svg-toggle">
 
-               {% if (fileType != 'image' and fileType != 'markdown') or enforceCodemirror %}
+               {% if (((fileType != 'image' and fileType != 'markdown') or enforceCodemirror) and not binary) %}
                     <span id="p3x-gitlist-file-codemirror" style="display: none;">
                         <div class="btn-group btn-toggle">
                             <button id="p3x-gitlist-file-button-scroll" class="btn btn-sm btn-default">Scroll mode</button>
@@ -133,7 +138,7 @@
 
         {% elseif fileType == 'markdown' and enforceCodemirror != true %}
             {% include 'markdown.twig' with {'filename': file, 'data': blob} %}
-        {% else %}
+        {% elseif not binary %}
             <pre class="p3x-gitlist-code" id="p3x-gitlist-file-editor" language="{{ fileType }}">{{ blob|htmlentities|raw }}</pre>
         {% endif %}
 

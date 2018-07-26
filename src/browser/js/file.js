@@ -7,6 +7,12 @@ $(function() {
     const gitHelperAjax = window.gitlist.gitHelperAjax;
 
     const $modalDelete = $('#p3x-gitlist-modal-delete')
+
+
+    if ($modalDelete.length === 0 ) {
+        return;
+    }
+
     const $buttonDelete = $('#p3x-gitlist-file-delete')
     const $buttonDeleteSure = $('#p3x-gitlist-modal-delete-confirm')
     const $formDeleteForm = $('#p3x-gitlist-modal-delete-form')
@@ -29,8 +35,8 @@ $(function() {
         $modalDelete.modal('show')
     })
 
-
-    $buttonDeleteSure.click(async() => {
+    $formDeleteForm[0].addEventListener('submit', async(ev) => {
+        ev.preventDefault();
         if($formDeleteForm[0].checkValidity() === false) {
             window.gitlist.invalidSnackbarCommit()
             return;
@@ -63,8 +69,8 @@ $(function() {
         const cookieName = 'p3x-gitlist-codemirror-size'
         const currentSizing = Cookies.get(cookieName)
 
-        const codeCodeMirroNormal = $('#p3x-gitlist-file-codemirror');
-        const codeCodeMirrorBig = $('#p3x-gitlist-file-codemirror-exceeded')
+        const $codeCodeMirroNormal = $('#p3x-gitlist-file-codemirror');
+        const $codeCodeMirrorBig = $('#p3x-gitlist-file-codemirror-exceeded')
         let value = sourceCode.text();
         const maxSize = window.gitlist.codemirror_full_limit;
         const size = Math.ceil(value.length / 1024);
@@ -75,38 +81,38 @@ $(function() {
 
             if (size > maxSize) {
                 disableFull = true;
-                codeCodeMirroNormal.hide();
-                codeCodeMirrorBig.show();
+                $codeCodeMirroNormal.hide();
+                $codeCodeMirrorBig.show();
             } else {
-                codeCodeMirroNormal.show();
+                $codeCodeMirroNormal.show();
             }
 
             const mode = sourceCode.attr('language');
             const pre = sourceCode.get(0);
 
-            const codeMirror = $('.CodeMirror');
-            const buttonScroll = $('#p3x-gitlist-file-button-scroll');
-            const buttonFull = $('#p3x-gitlist-file-button-full');
-            const buttonEdit = $('#p3x-gitlist-file-button-edit');
-            const buttonEditCancel = $('#p3x-gitlist-file-button-edit-cancel');
-            const buttonEditSave = $('#p3x-gitlist-file-button-edit-save')
-            const buttonDelete = $('#p3x-gitlist-file-delete')
+            const $codeMirror = $('.CodeMirror');
+            const $buttonScroll = $('#p3x-gitlist-file-button-scroll');
+            const $buttonFull = $('#p3x-gitlist-file-button-full');
+            const $buttonEdit = $('#p3x-gitlist-file-button-edit');
+            const $buttonEditCancel = $('#p3x-gitlist-file-button-edit-cancel');
+            const $buttonEditSave = $('#p3x-gitlist-file-button-edit-save')
+            const $buttonDelete = $('#p3x-gitlist-file-delete')
             const codeMirrorHeight = window.gitlist.editorMaxHeight;
 
-            buttonEditCancel.hide();
-            buttonEditSave.hide();
+            $buttonEditCancel.hide();
+            $buttonEditSave.hide();
 
-            buttonEdit.click(() => {
+            $buttonEdit.click(() => {
 
                 if (!window.gitlist.changeableCommit()) {
                     return
                 }
 
 //                buttonEditRow.show();
-                buttonEdit.hide();
-                buttonDelete.hide()
-                buttonEditCancel.show();
-                buttonEditSave.show();
+                $buttonEdit.hide();
+                $buttonDelete.hide()
+                $buttonEditCancel.show();
+                $buttonEditSave.show();
                 gitlist.viewer.setOption('readOnly', false)
                 originalCode = gitlist.viewer.getValue()
                 gitlist.viewer.focus();
@@ -129,14 +135,14 @@ $(function() {
             }
 
             const close = () => {
-                buttonDelete.show()
-                buttonEdit.show();
-                buttonEditSave.hide();
-                buttonEditCancel.hide();
+                $buttonDelete.show()
+                $buttonEdit.show();
+                $buttonEditSave.hide();
+                $buttonEditCancel.hide();
                 gitlist.viewer.setOption('readOnly', true)
             }
 
-            buttonEditCancel.click(() => {
+            $buttonEditCancel.click(() => {
                 if (!validateCodeIsSame(false)) {
                     gitlist.viewer.setValue(originalCode)
                     $.snackbar({
@@ -148,33 +154,34 @@ $(function() {
             })
 
 
-            const commitModal = $('#p3x-gitlist-modal-commit');
-            buttonEditSave.click(async () => {
+            const $commitModal = $('#p3x-gitlist-modal-commit');
+            $buttonEditSave.click(async () => {
                 if (validateCodeIsSame()) {
                     return;
                 }
-                commitModal.modal('show')
+                $commitModal.modal('show')
             })
-            const commitInputName = $('#p3x-gitlist-modal-commit-name');
-            const commitInputEmail = $('#p3x-gitlist-modal-commit-email');
-            const commitInputComment = $('#p3x-gitlist-modal-commit-comment');
-            const commitForm = $('#p3x-gitlist-modal-commit-form');
+            const $commitInputName = $('#p3x-gitlist-modal-commit-name');
+            const $commitInputEmail = $('#p3x-gitlist-modal-commit-email');
+            const $commitInputComment = $('#p3x-gitlist-modal-commit-comment');
+            const $commitForm = $('#p3x-gitlist-modal-commit-form');
 
             const inputs = {
-                name: commitInputName,
-                email: commitInputEmail,
-                comment: commitInputComment,
+                name: $commitInputName,
+                email: $commitInputEmail,
+                comment: $commitInputComment,
             }
 
-            const commitCommitPushButton = $('#p3x-gitlist-modal-commit-push')
+            //const $commitCommitPushButton = $('#p3x-gitlist-modal-commit-push')
 
-            commitCommitPushButton.click( async () => {
+            $commitForm[0].addEventListener('submit', async(ev) => {
+                ev.preventDefault();
 
                 if (validateCodeIsSame()) {
                     return;
                 }
 
-                if(commitForm[0].checkValidity() === false) {
+                if($commitForm[0].checkValidity() === false) {
                     window.gitlist.invalidSnackbarCommit()
                     return;
                 }
@@ -189,7 +196,7 @@ $(function() {
                 try {
 
                     await gitHelperAjax({
-                        modal: commitModal,
+                        modal: $commitModal,
                         action: 'save',
                         inputs: inputs,
                         data: {
@@ -210,9 +217,9 @@ $(function() {
             })
 
             const setScroll = () => {
-                buttonFull.removeClass('active')
-                buttonScroll.addClass('active')
-                codeMirror.css('height', codeMirrorHeight)
+                $buttonFull.removeClass('active')
+                $buttonScroll.addClass('active')
+                $codeMirror.css('height', codeMirrorHeight)
                 gitlist.viewer.setSize(null, codeMirrorHeight);
 
                 if (!disableFull) {
@@ -220,17 +227,17 @@ $(function() {
                 }
             }
 
-            buttonScroll.click(setScroll)
+            $buttonScroll.click(setScroll)
 
             const setFull = () => {
-                buttonScroll.removeClass('active')
-                buttonFull.addClass('active')
-                codeMirror.css('height', 'auto')
+                $buttonScroll.removeClass('active')
+                $buttonFull.addClass('active')
+                $codeMirror.css('height', 'auto')
                 gitlist.viewer.setSize(null, '100%');
                 Cookies.set(cookieName, 'full', window.gitlist.cookieSettings)
             }
 
-            buttonFull.click(setFull)
+            $buttonFull.click(setFull)
             cm  = CodeMirror(function(elt) {
                 pre.parentNode.replaceChild(elt, pre);
             }, {
@@ -281,7 +288,7 @@ $(function() {
 
             if (location.search.includes('edit=1')) {
                 setTimeout(() => {
-                    buttonEdit.click();
+                    $buttonEdit.click();
                     scrollToEditor();
                 }, 500)
             } else {

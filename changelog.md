@@ -6,6 +6,8 @@
 [//]: #@corifeus-header:end
 
 ### v2.10
+* Upload binary and/or existing files
+* Able to delete binary files
 * Added some animation to the Fontawesome 5 icons
 * Add new text files or add directory
 * Sometimes, the delete file, if was showingnot the last, but the previous of the last commit
@@ -165,7 +167,7 @@ require('codemirror/mode/yaml/yaml');
 
 ---
 
-[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2.10.71-976 
+[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2.10.72-986 
 
 [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software) [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) 
 

@@ -11,7 +11,7 @@ $(() => {
 
     const $buttonNewFileModal = $('#p3x-gitlist-modal-new')
     const $formNewfile = $('#p3x-gitlist-modal-new-form')
-    const $buttonSubmitNewfile = $('#p3x-gitlist-modal-new-filename-confirm')
+    //const $buttonSubmitNewfile = $('#p3x-gitlist-modal-new-filename-confirm')
     const $inputNewfile = $('#p3x-gitlist-modal-new-filename')
     $inputNewfile.val(path)
 
@@ -22,7 +22,8 @@ $(() => {
         $buttonNewFileModal.modal('show')
     })
 
-    $buttonSubmitNewfile.click(async() => {
+    $formNewfile[0].addEventListener('submit', async(ev) => {
+        ev.preventDefault();
 
         if($formNewfile[0].checkValidity() === false) {
             window.gitlist.invalidSnackbarCommit()
@@ -50,7 +51,7 @@ $(() => {
 
 
        // $buttonNewFileModal.modal('hide')
-    })
+    }, false)
 
     // </editor-fold>
 
@@ -59,7 +60,7 @@ $(() => {
     const $buttonNewBinary = $('#p3x-gitlist-tree-new-binary')
     const $buttonNewBinaryModal = $('#p3x-gitlist-modal-new-binary')
     const $formNewfileBinary = $('#p3x-gitlist-modal-new-binary-form')
-    const $buttonSubmitNewfileBinary = $('#p3x-gitlist-modal-new-filename-binary-confirm')
+    //const $buttonSubmitNewfileBinary = $('#p3x-gitlist-modal-new-filename-binary-confirm')
     const $inputNewfileBinaryFile = $('#p3x-gitlist-modal-new-binary-filename-binary')
     const $inputNewfileBinaryUpload = $('#p3x-gitlist-modal-new-binary-filename-binary-upload')
     const $inputNewfileBinaryOverride = $('#p3x-gitlist-modal-new-binary-filename-binary-override')
@@ -103,7 +104,7 @@ $(() => {
                 filename: $inputNewfileBinaryFile.val(),
                 fileUpload: $inputNewfileBinaryUpload,
                 data: {
-                    override: $inputNewfileBinaryOverride.val()
+                    override: $inputNewfileBinaryOverride.is(`:checked`) ? 1 : 0,
                 }
             })
             if (window.gitlist.gitNewPush(json)) {

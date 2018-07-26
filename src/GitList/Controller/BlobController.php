@@ -24,14 +24,22 @@ class BlobController implements ControllerProviderInterface
             $breadcrumbs = $app['util.view']->getBreadcrumbs($file);
             $fileType = $app['util.repository']->getFileType($file);
 
+            $binary = $app['util.repository']->isBinary($file) && $fileType !== 'image';
+
+            /*
             if ($fileType !== 'image' && $app['util.repository']->isBinary($file)) {
                 return $app->redirect($app['url_generator']->generate('blob_raw', array(
                     'repo'   => $repo,
                     'commitishPath' => $commitishPath,
                 )));
             }
+            */
 
-            $output = $blob->output();
+            if (!$binary) {
+                $output = $blob->output();
+            } else {
+                $output = '';
+            }
 
             $extension = '';
             $pathinfo = (pathinfo($file));
@@ -40,6 +48,7 @@ class BlobController implements ControllerProviderInterface
             }
 
             return $app['twig']->render('file.twig', array(
+                'binary'        => $binary,
                 'fileSize'       => strlen($output),
                 'extension'      => $extension,
                 'file'           => $file,

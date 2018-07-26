@@ -4,7 +4,7 @@
 
 
  
-# 🤖 P3X Gitlist v2.10.71-976  
+# 🤖 P3X Gitlist v2.10.72-986  
 
 This is an open-source project. Star this repository, if you like it, or even donate! Thank you so much! :)
 
@@ -96,13 +96,14 @@ http://nginx.org/en/docs/http/ngx_http_core_module.html#client_max_body_size
   
 So, this is only for testing. You should limit for some max size, that you want it at maximum, really.
 
-#### The last version with Babel
+## The last version with Babel
 https://github.com/patrikx3/gitlist/releases/tag/2.0.4-579
 
 The following versions are not using `Babel`!!!! Yikes!
 
-### Unreleased / in progress
-* Upload binary files
+## Unreleased / in progress
+* New form it says file is existing when create a new file
+* When new file creating go to the editor
 * Convert Silex 2 to Symfony 4
 * Localization (twig, controller, php, js)
 * In submodules, if the "submodule" and "path" is not the same, it chokes (it should work the submodule name and path are not the same)
@@ -193,7 +194,7 @@ npm run watch
 
 ---
 
-[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2.10.71-976 
+[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2.10.72-986 
 
 [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software) [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) 
 

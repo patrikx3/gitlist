@@ -1098,16 +1098,79 @@ class Repository
         return $normalizedRepoFilePath;
     }
 
-    public function newFileBinary($cachePath, $repo, $branch, $repoFilename, $value, $name, $email, $comment, $override, $phpUploadFile) {
+    public function newFileBinary($cachePath, $repo, $branch, $repoFilename, $name, $email, $comment, $override, $phpUploadFile) {
 
-        return json_encode((object)[
+        /*
+        return (object)[
             'filename' => $repoFilename,
             'email' => $email,
             'name' => $name,
             'comment' => $comment,
             'upload-file' => $phpUploadFile,
             'override' => $override,
-        ]);
+        ];
+        */
+
+        return $this->changeRepo($cachePath, $repo, $branch, $repoFilename, $name, $email, $comment, function ($client, $filename, &$outputs, $tempRepo, $normalizedRepoFilePath) use ($cachePath, $repo, $branch, $repoFilename, $name, $email, $comment, $override, $phpUploadFile) {
+//            array_unshift($outputs, $cachePath);
+//            array_unshift($outputs, $repoFilename);
+
+            /*
+            array_unshift($outputs, '$tempRepo: ' . $tempRepo);
+            array_unshift($outputs, '$repo: ' . $repo);
+            array_unshift($outputs, '$branch: ' . $branch);
+            array_unshift($outputs, '$repoFilename: ' . $repoFilename);
+            array_unshift($outputs, '$name: ' . $name);
+            array_unshift($outputs, '$email: ' . $email);
+            array_unshift($outputs, '$comment: ' . $comment);
+            array_unshift($outputs, '$filename: ' . $filename);
+            array_unshift($outputs, '$repoFilename: ' . $repoFilename);
+
+            $basePath = FileSystemPath::fromString($tempRepo);
+            $repoFilenameItem = FileSystemPath::fromString($repoFilename);
+
+            $normalizing = $basePath->resolve($repoFilenameItem);
+            array_unshift($outputs, '$normalizing: ' . $normalizing);
+
+            $normalized = FileSystemPath::fromString($normalizing)->normalize();
+            array_unshift($outputs, '$normalized: ' . $normalized);
+
+            array_unshift($outputs, '$normalizing type: ' . gettype($normalizing));
+            array_unshift($outputs, '$normalized type: ' .  gettype($normalized));
+
+            $validPath = strpos($normalizing->__toString(), $normalized->__toString()) !== false;
+            array_unshift($outputs, 'includes current path in search: ' . ($validPath ? 'true' : 'false'));
+
+            return $repoFilename;
+            */
+
+            $wasItNonExisting = !realpath($normalizedRepoFilePath);
+
+
+            if (substr($repoFilename, -1) == '\\' || substr($repoFilename, -1) == '/') {
+                return "The file can't end with this file name: {$repoFilename}";
+            } else {
+                if (!$wasItNonExisting && !$override) {
+                    throw new \Exception("This file is already existing: {$normalizedRepoFilePath}");
+                }
+                if ($wasItNonExisting && $override) {
+                    @unlink($normalizedRepoFilePath);
+                }
+                @mkdir(dirname($normalizedRepoFilePath), 0777, true);
+                move_uploaded_file( $phpUploadFile['tmp_name'], $normalizedRepoFilePath);
+
+                if ($wasItNonExisting) {
+                    $command = " add . ";
+                    $output = $client->run($this, $command);
+                    array_push($outputs, $output);
+                    return "Created new binary file : {$repoFilename}";
+                } else {
+                    return "Overridden binary file : {$repoFilename}";
+                }
+//                echo "path is file ";
+            }
+        });
+
         /*
 
 
@@ -1218,7 +1281,7 @@ class Repository
             return $repoFilename;
             */
 
-            if (realpath($normalizedRepoFilePath) !== FALSE) {
+            if (realpath($normalizedRepoFilePath) === FALSE) {
                 throw new \Exception("This path is already existing: {$repoFilename}");
             }
 
