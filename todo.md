@@ -4,11 +4,31 @@
 
                         
 [//]: #@corifeus-header:end
+
 # TODO
+* New form it says file is existing when create a new file
+* When new file creating go to the editor
+* Convert Silex 2 to Symfony 4
+* Localization (twig, controller, php, js)
+* In submodules, if the "submodule" and "path" is not the same, it chokes (it should work the submodule name and path are not the same)
+  * Works
+    * submodule "path/name"
+    * path path/name
+  * Not working
+    * submodule "name"
+    * path path/name 
+* In submodules, the url cannot have slash at the end
+* Basically, the twig "for" is not cheap => expensive, use AJAX and web worker 
+  * search.twig
+  * blame.twig
+* Search, at work, "fix" string hs 1221 results, use AJAX and pager
+* Blames in gitlist on composer.lock has 994 results, use AJAX and pager
 * treegraph pager
 * diff by file
 * pager not working right with commits
 * search has no pager (either of two)
+
+
 [//]: #@corifeus-footer
 
 ---
