@@ -10,7 +10,7 @@
 * Able to delete binary files
 * Added some animation to the Fontawesome 5 icons
 * Add new text files or add directory
-* Sometimes, the delete file, if was showingnot the last, but the previous of the last commit
+* Sometimes, the delete file, it was not showing the last, but the previous last commit
 * Markdown, twemoji on commits
 * Fix long commits
 * Display SVG files, while you can edit it as well
