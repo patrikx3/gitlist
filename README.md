@@ -84,7 +84,7 @@ I have disabled loading everything in `twig`, besides the `diffs` are loading vi
 See in action:  
 https://gitlist.patrikx3.com/gitlist.git/commit/f1e4d5b938c8f1a6cd178aeea2e9e86111ea5323#p3x-gitlist-diff-93  
 
-### Six
+### Fifth
 If you upload a bigger binary file, it is important, that your web server allows to upload bigger files, because I found an error with `NGINX` as: 
 ```text
 Request Entity Too Large"
