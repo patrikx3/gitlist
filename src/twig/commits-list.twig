@@ -50,20 +50,20 @@
     {% endfor %}
 {% else %}
 
-    <h4>
+    <h4 class="p3x-gitlist-commit-list-no-more-commit">
         No more commits.
     </h4>
 
 {% endif %}
 
 {% if page != 'searchcommits' %}
-    <ul class="pager">
-        {% if pager.current != pager.last %}
-            <li class="next" id="p3x-gitlist-commit-list-next">
-                <a href="?page={{ pager.next }}">Older / Next &rarr;</a>
-            </li>
+    <div id="p3x-gitlist-pager-bottom">
+        {% if pager.current < pager.last - 1 %}
+            <a id="p3x-gitlist-commit-list-next" class="btn btn-default" href="?page={{ pager.next }}">
+                Older / Next <i class="fas fa-chevron-right"></i>
+            </a>
         {% endif %}
-    </ul>
+    </div>
 {% endif %}
 
 <script type="text/javascript">

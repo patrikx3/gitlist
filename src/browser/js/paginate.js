@@ -2,7 +2,7 @@ $(function() {
 
     let $pager;
     let loading = false;
-    let button;
+    let $button;
     let noMore = false;
     let $noCommits;
 
@@ -12,14 +12,14 @@ $(function() {
             return;
         }
         loading = true;
-        const href = button.attr('href');
+        const href = $button.attr('href');
         //console.log(href);
         if (href === undefined) {
             loading = false;
             if (!noMore) {
                 $.snackbar({
                     htmlAllowed: true,
-                    content: `There are no more commits.`
+                    content: `No more commits.`
                 });
                 noMore = true;
             }
@@ -43,20 +43,21 @@ $(function() {
             loading = false;
             window.gitlist.constructCommitsListConstructMarkdown()
             paginate();
+            $('.p3x-gitlist-commit-list-no-more-commit').remove();
         });
     }
 
 
 
     function paginate() {
-        $pager = $('.pager');
+        $pager = $('#p3x-gitlist-pager-bottom');
         $noCommits = $('#p3x-gitlist-commits-no-more')
         if ($noCommits.length !== 0) {
             $pager.remove();
             return;
         }
-        button  = $pager.find('.next a');
-        button.one('click', function (e) {
+        $button  = $pager.find('#p3x-gitlist-commit-list-next');
+        $button.one('click', function (e) {
             e.preventDefault();
             nextCommitListItem()
             return false;
@@ -64,7 +65,7 @@ $(function() {
     }
     paginate();
 
-    if (button.length > 0) {
+    if ($button.length > 0) {
         $(window).scroll(function () {
             if ($(window).scrollTop() >= $(document).height() - $(window).height() - 10) {
                 nextCommitListItem();

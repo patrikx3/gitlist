@@ -5,7 +5,15 @@
 {% block title %}P3X GitList{% endblock %}
 
 {% block content %}
-    {% include 'breadcrumb.twig' with {breadcrumbs: [{dir: 'Commit history', path:''}]} %}
+    {% embed 'breadcrumb.twig' with {breadcrumbs: [{dir: 'Commit history', path:''}]} %}
+
+        {#
+        {% block left %}
+
+        {% endblock %}
+        #}
+
+    {% endembed %}
 
     {% include 'commits-list.twig' %}
 
