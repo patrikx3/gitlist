@@ -18,7 +18,7 @@ const construct = (data) => {
         <tr>
             <td class="lineNo">Old</td>
             <td class="lineNo">&nbsp;&nbsp;</td>
-            <td class="old">${diffs.old}}</td>
+            <td class="old">${diffs.old}</td>
         </tr>
         <tr>
             <td class="lineNo">&nbsp;&nbsp;</td>
