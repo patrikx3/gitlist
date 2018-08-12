@@ -14,7 +14,7 @@
                     <i class="far fa-file-alt"></i> New file or directory
                 </button>
 
-                {% embed 'modal/modal-commit.twig' with {type: 'new', title: 'New file', bodyTitle: 'Are you sure to add a new file or directory?<br/><strong>If you add a slash to the end of the "filename", you create a directory, otherwise you create a file. <br/>Please, make sure you use a relative path.</strong>', wrapForm: true } %}
+                {% embed 'modal/modal-commit.twig' with {type: 'new', title: 'New file', bodyTitle: 'Are you sure to add a new file or directory?<br/><strong>If you add a slash to the end of the "filename", you create a directory, otherwise you create a file. <br/>Please, make sure you use a relative path.</strong><br/><br/><span style="text-decoration: underline;">Note:</span> The filename is not created on the current tree browser you are, but that actual root of the repo.', wrapForm: true } %}
                     {% block form %}
 
                         <div class="input-group">

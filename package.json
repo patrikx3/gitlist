@@ -1,6 +1,6 @@
 {
     "name": "p3x-gitlist",
-    "version": "2.10.77-1004",
+    "version": "2.11.6-1022",
     "corifeus": {
         "prod-dir": "prod",
         "postfix": "9bcf9a322f0f39a5a62a1ebfca2b2590bc79e95f43bcd634b09553421c5fc0ad",
@@ -29,8 +29,8 @@
     "devDependencies": {
         "bootswatch": "^3.3.7",
         "concurrently": "^3.6.1",
-        "corifeus-builder": "^1.9.6-451",
-        "corifeus-utils": "^1.2.101-409",
+        "corifeus-builder": "^1.9.14-452",
+        "corifeus-utils": "^1.2.111-410",
         "css-loader": "^1.0.0",
         "extract-text-webpack-plugin": "^4.0.0-beta.0",
         "file-loader": "^1.1.11",
@@ -44,10 +44,10 @@
         "on-build-webpack": "^0.1.0",
         "optimize-css-assets-webpack-plugin": "^5.0.0",
         "postcss-safe-parser": "^4.0.1",
-        "style-loader": "^0.21.0",
+        "style-loader": "^0.22.1",
         "uglifyjs-webpack-plugin": "^1.2.7",
         "url-loader": "^1.0.1",
-        "webpack": "^4.16.4",
+        "webpack": "^4.16.5",
         "webpack-cli": "^3.1.0"
     },
     "engines": {
@@ -73,6 +73,6 @@
         "php-date": "^2.1.1",
         "raphael": "^2.2.7",
         "snackbarjs": "^1.1.0",
-        "twemoji": "^11.0.0"
+        "twemoji": "^11.0.1"
     }
 }

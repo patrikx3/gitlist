@@ -89,10 +89,11 @@ class Client
 
         $process = new Process($command, $repository->getPath());
         $process->setTimeout(180);
+        $process->enableOutput();
         $process->run();
 
         if (!$process->isSuccessful()) {
-            throw new \RuntimeException($process->getErrorOutput());
+            throw new \RuntimeException($process->getExitCode() . " - " . $process->getExitCodeText(). " - " . $process->getErrorOutput() . " - " . $process->getOutput() );
         }
 
         return $process->getOutput();

@@ -1009,7 +1009,7 @@ class Repository
             $output =  $client->run($this, 'clone '. $repoPath . ' ' . $tempRepo);
             $this->setPath($tempRepo);
 
-            $normalizedRepoFilePath = $this->isValidPath($tempRepo, $repoFilename);
+            $normalizedRepoFilePath = $this->isValidPath($tempRepo, $repoFilename, $outputs);
 
             $filename = realpath($tempRepo . DIRECTORY_SEPARATOR . $repoFilename);
 
@@ -1038,7 +1038,8 @@ class Repository
                 'status' => 'ok',
                 'output' => $message,
                 'outputs' => $outputs,
-                'last-commit' => $lastCommit
+                'last-commit' => $lastCommit,
+                'branch' => $branch,
             ];
             return $result;
         } catch(\Throwable $e) {
@@ -1055,7 +1056,7 @@ class Repository
                 $message = $hadError->getMessage();
                 if ($message === '') {
                     $exceptionName = get_class($hadError);
-                    $message = "Received exception without message with type '{$exceptionName}'.";
+                    $message = "Received exception without message with type '{$exceptionName}'. " . $hadError->getMessage();
                     $trace = $hadError->getTrace();
                 }
 
@@ -1077,14 +1078,18 @@ class Repository
     }
 
 
-    protected function isValidPath($tempRepo, $repoFilename) {
+    protected function isValidPath($tempRepo, $repoFilename, &$outputs) {
         $basePath = FileSystemPath::fromString($tempRepo);
+        //array_push($outputs, "$basePath {$basePath}");
         $repoFilenameItem = FileSystemPath::fromString($repoFilename);
+        //array_push($outputs, "$repoFilenameItem {$repoFilenameItem}");
 
         $normalizing = $basePath->resolve($repoFilenameItem);
+        //array_push($outputs, "$normalizing {$normalizing}");
 //        array_unshift($outputs, '$normalizing: ' . $normalizing);
 
         $normalized = FileSystemPath::fromString($normalizing)->normalize();
+        //array_push($outputs, "$normalized {$normalized}");
 //        array_unshift($outputs, '$normalized: ' . $normalized);
 
 //        array_unshift($outputs, '$normalizing type: ' . gettype($normalizing));
@@ -1092,7 +1097,10 @@ class Repository
 
         $normalizedRepoFilePath = $normalized->__toString();
         $validPath = strpos($normalizing->__toString(), $normalizedRepoFilePath ) !== false;
-        if ($validPath === false) {
+        //array_push($outputs, "$normalizing {$normalizing->__toString()}");
+        //array_push($outputs, "$normalizedRepoFilePath {$normalizedRepoFilePath}");
+        //array_push($outputs, (substr($normalizedRepoFilePath, 0, strlen($basePath)) . " $basePath"));
+        if ($validPath === false || substr($normalizedRepoFilePath, 0, strlen($basePath)) != $basePath) {
             throw new \Exception("This '{$repoFilename}' path is invalid.");
         }
         return $normalizedRepoFilePath;
@@ -1146,12 +1154,15 @@ class Repository
 
             $wasItNonExisting = !realpath($normalizedRepoFilePath);
 
-
+            array_push($outputs, $wasItNonExisting );
+            array_push($outputs, $repoFilename);
+            array_push($outputs, $normalizedRepoFilePath);
+            array_push($outputs, $override);
             if (substr($repoFilename, -1) == '\\' || substr($repoFilename, -1) == '/') {
                 return "The file can't end with this file name: {$repoFilename}";
             } else {
                 if (!$wasItNonExisting && !$override) {
-                    throw new \Exception("This file is already existing: {$normalizedRepoFilePath}");
+                    throw new \Exception("This file is already existing: {$repoFilename}");
                 }
                 if ($wasItNonExisting && $override) {
                     @unlink($normalizedRepoFilePath);
@@ -1281,7 +1292,8 @@ class Repository
             return $repoFilename;
             */
 
-            if (realpath($normalizedRepoFilePath) === FALSE) {
+            $existing = realpath($normalizedRepoFilePath);
+            if ($existing) {
                 throw new \Exception("This path is already existing: {$repoFilename}");
             }
 

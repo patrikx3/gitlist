@@ -37,7 +37,7 @@ rm -rf $repo/src/browser
 zipname=$TOP/build/$name.zip
 rm -rf $zipname
 pushd $repo
-sudo apt install -y zip
+#sudo apt install -y zip
 zip -r $TOP/build/$name.zip * .* > /dev/null
 popd
 

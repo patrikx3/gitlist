@@ -19,7 +19,7 @@ fontawesome.library.add(faSolid)
 fontawesome.library.add(faRegular)
 fontawesome.library.add(faBrands)
 
-window.gitlist.snapckbarLongTimeout = 10000;
+window.gitlist.snapckbarLongTimeout = 20000;
 global.jQuery = require('jquery')
 global.$ = global.jQuery;
 require('snackbarjs');
@@ -76,7 +76,7 @@ require('codemirror/mode/yaml/yaml');
 
 require('eve-raphael/eve.js');
 global.Raphael = require('raphael')
-global.twemoji = require('twemoji')
+global.twemoji = require('twemoji').default
 const prodDir = require('../../package').corifeus["prod-dir"];
 global.twemoji.base = `${prodDir}/twemoji/`;
 
@@ -98,6 +98,7 @@ require('./js/commit')
 require('./js/commits-list')
 require('./js/file-fragment')
 require('./js/change-log')
+require('./js/todo')
 require('./js/global')
 
 

@@ -118,7 +118,7 @@ window.gitlist.gitHelperAjax = async (options) => {
         window.gitlist.ajaxErrorHandler(json);
     }
 
-    if (json.hasOwnProperty('outputs') && json.outputs.length > 1) {
+    if (json.hasOwnProperty('outputs') && json.outputs.length > 1 && typeof json.outputs[json.outputs.length - 1] === 'string') {
         const message = json.outputs[json.outputs.length - 1].trim();
         if (message !== '') {
             $.snackbar({
