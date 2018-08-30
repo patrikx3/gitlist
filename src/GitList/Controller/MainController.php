@@ -29,7 +29,7 @@ class MainController implements ControllerProviderInterface
                 $repository = $app['git']->getRepositoryFromName($app['git.repos'], $repo['name']);
 
                 $command = 'log --graph --date-order --all -C -M -n 1 --date=rfc ' .
-                    '--pretty=format:"B[%d] C[%H] D[%ad] A[%an] E[%ae] H[%h] S[%s]"';
+                    '--pretty=format:"B[%D] C[%H] D[%ad] A[%an] E[%ae] H[%h] S[%s]"';
                 $rawRows = $repository->getClient()->run($repository, $command);
                 $rawRows = explode("\n", $rawRows);
 
@@ -41,9 +41,15 @@ class MainController implements ControllerProviderInterface
                             );
                             continue;
                         }
+                        $branch = $output[4];
+                        $branchArray = explode('->', $branch);
+                        if (isset($branchArray[1])) {
+                            $branch = trim($branchArray[1]);
+                        }
                         $repositories[$repo['name']]['time'] = $output[6];
                         $repositories[$repo['name']]['user'] = $output[7];
-                        $repositories[$repo['name']]['branch'] = $output[4];
+                        $repositories[$repo['name']]['branch'] = $branch;
+
                         /*
                         $graphItems[] = array(
                             "relation"=>$output[1],
