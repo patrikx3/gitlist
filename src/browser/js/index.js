@@ -14,6 +14,13 @@ $(function() {
         const inputClear = $('#p3x-gitlist-index-list-clear');
 
 
+        const moment = require('moment')
+        const times = $('.p3x-gitlist-index-repo-last-commit > .p3x-gitlist-index-repo-last-commit-time')
+        for(let time of times) {
+            const timeMoment = moment(time.innerText).fromNow()
+            time.innerText = timeMoment
+        }
+
         input.keypress(() => {
             Cookies.set(cookieName, input.val(), window.gitlist.cookieSettings)
         })
@@ -42,13 +49,6 @@ $(function() {
             input.val('');
             list.search('')
         })
-
-        const moment = require('moment')
-        const times = $('.p3x-gitlist-index-repo-last-commit > .p3x-gitlist-index-repo-last-commit-time')
-        for(let time of times) {
-            const timeMoment = moment(time.innerText).fromNow()
-            time.innerText = timeMoment
-        }
 
     }
 })
