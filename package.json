@@ -1,6 +1,6 @@
 {
     "name": "p3x-gitlist",
-    "version": "2.11.10-1026",
+    "version": "2.11.14-1031",
     "corifeus": {
         "prod-dir": "prod",
         "postfix": "9bcf9a322f0f39a5a62a1ebfca2b2590bc79e95f43bcd634b09553421c5fc0ad",

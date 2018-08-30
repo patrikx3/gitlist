@@ -32,6 +32,13 @@
             <tbody>
                 <tr>
                     <td>
+                        <a class="btn btn-link btn-sm pull-right p3x-gitlist-index-repo-last-commit" href="{{ path('commits', {repo: repository.name}) }}">
+                            <span class="p3x-gitlist-index-repo-last-commit-time">{{ repository.time }}</span>
+                            by
+                            <span class="p3x-gitlist-index-repo-last-commit-user">{{ repository.user }}</span>
+                            on
+                            {{ repository.branch }}
+                        </a>
                         <div class="description p3x-gitlist-index-description" >
                         {% if repository.description %}
                             {{ repository.description }}

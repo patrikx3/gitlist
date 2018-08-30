@@ -132,7 +132,7 @@ class Repository
         };
 
         if (($pos = strrpos($file, '.')) !== false) {
-            $fileType = substr($file, $pos + 1);
+            $fileType = strtolower(substr($file, $pos + 1));
         } else {
             return 'text';
         }

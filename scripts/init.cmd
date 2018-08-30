@@ -14,7 +14,7 @@ copy artifacts\config.windows.ini .\config.ini
 
 pushd %GIT_TEST%
 
-for %%r in ("https://github.com/patrikx3/npm-registry" "https://github.com/patrikx3/angular-compile" "https://github.com/patrikx3/onenote" "https://github.com/patrikx3/aes-folder" "https://github.com/patrikx3/ramdisk" "https://github.com/patrikx3/lede-insomnia" "https://github.com/patrikx3/gitlist" "https://github.com/patrikx3/gitlist-workspace" "https://github.com/patrikx3/resume-web" "https://github.com/patrikx3/service-manager-tray-for-windows" "https://github.com/patrikx3/docker-debian-testing-mongodb-stable") do (
+for %%r in ("https://github.com/patrikx3/angular-compile" "https://github.com/patrikx3/onenote" "https://github.com/patrikx3/aes-folder" "https://github.com/patrikx3/ramdisk" "https://github.com/patrikx3/lede-insomnia" "https://github.com/patrikx3/gitlist" "https://github.com/patrikx3/gitlist-workspace" "https://github.com/patrikx3/resume-web" "https://github.com/patrikx3/service-manager-tray-for-windows" "https://github.com/patrikx3/docker-debian-testing-mongodb-stable") do (
 
    echo %%r
    git clone --bare %%r

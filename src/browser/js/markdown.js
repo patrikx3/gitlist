@@ -64,7 +64,21 @@ markdownRenderer.image = function(href, title, text) {
         }
         resultText += text;
     }
-    const result = '<a target="_blank" href="' + href + '"><img class="p3x-gitlist-markdown-image" alt="' + htmlEncode(resultText) + '" title="' + htmlEncode(resultText) + '" src="' + href + '"/></a>';
+
+    if (!href.startsWith('https:/') && !href.startsWith('http:/')) {
+        const start = gitlist.basepath + '/' + gitlist.repo + '/raw/' +  gitlist.branch + '/';
+        if (!location.pathname.startsWith(start)) {
+            href = start + href;
+        } else {
+            const url = new URL(location);
+            let path = url.pathname.split('/');
+            path.pop();
+            path = path.join('/');
+            href = path + '/' + href;
+        }
+    }
+
+    const  result = '<a target="_blank" href="' + href + '"><img class="p3x-gitlist-markdown-image" alt="' + htmlEncode(resultText) + '" title="' + htmlEncode(resultText) + '" src="' + href + '"/></a>';
 
     return result;
 };

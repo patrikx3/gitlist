@@ -5,6 +5,11 @@
                         
 [//]: #@corifeus-header:end
 
+## v2.11
+* Markdown images ware not working 100%
+* File extension types were not working with like eg. JPG, Jpg, jPg, now it works
+* On the index page it shows the last commit and username by elapsed time
+
 ## v2.10
 * Upload binary and/or existing files
 * Able to delete binary files
@@ -167,7 +172,7 @@ require('codemirror/mode/yaml/yaml');
 
 ---
 
-[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2.11.9-1026 
+[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2.11.13-1027 
 
 [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software) [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) 
 
