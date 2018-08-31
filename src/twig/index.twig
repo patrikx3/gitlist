@@ -23,7 +23,7 @@
             <tr>
                <th>
                    <a class="btn btn-link btn-sm p3x-gitlist-index-reponame" href="{{ path('repository', {repo: repository.name}) }}">
-                       <span class="name">{{ repository.name | remove_extension }}</span>
+                       <span class="p3x-gitlist-index-name">{{ repository.name | remove_extension }}</span>
                    </a>
                    <a class="btn btn-info btn-sm pull-right" href="{{ path('rss', {repo: repository.name, branch: 'master'}) }}"><i class="fa fa-rss pull-right"></i></a>
                </th>

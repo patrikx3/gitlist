@@ -36,7 +36,7 @@ $(function() {
         input.val(value);
 
         const listOptions = {
-            valueNames: ['name', 'description'],
+            valueNames: ['p3x-gitlist-index-name', 'p3x-gitlist-index-description', 'p3x-gitlist-index-repo-last-commit'],
             indexAsync: true,
         };
         const list = new List(id, listOptions);
