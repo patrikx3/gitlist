@@ -5,7 +5,6 @@
                         
 [//]: #@corifeus-header:end
 ## TODO
-* Convert Silex 2 to Symfony 4
 * Localization (twig, controller, php, js)
 * Sometimes, I try to upload a file like `grub.png` and it does not work, while I upload a different `.png` and it works, weird
 * make sure new functions work with Windows or disable some features is Windows
@@ -26,13 +25,14 @@
     * submodule "name"
     * path path/name 
 * In submodules, the url cannot have slash at the end
+* Convert Silex 2 to Symfony 4 - actually this is stays as Silex, Symfony is overcomplicated for a small web site
 
 
 [//]: #@corifeus-footer
 
 ---
 
-[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2.12.6-1040 
+[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2018.9.5-1 
 
 [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software) [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) 
 

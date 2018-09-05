@@ -9,7 +9,9 @@ require(`codemirror/theme/dracula.css`)
 
 //require('../less/style.less')
 
-const fontawesome = require('@fortawesome/fontawesome').default
+require('@fortawesome/fontawesome-free/js/all')
+
+/*
 //console.log(fontawesome);
 //console.log(fontawesome.default);
 const faSolid = require('@fortawesome/fontawesome-free-solid')['default']
@@ -18,6 +20,7 @@ const faBrands  = require('@fortawesome/fontawesome-free-brands')['default']
 fontawesome.library.add(faSolid)
 fontawesome.library.add(faRegular)
 fontawesome.library.add(faBrands)
+*/
 
 window.gitlist.snapckbarLongTimeout = 20000;
 global.jQuery = require('jquery')

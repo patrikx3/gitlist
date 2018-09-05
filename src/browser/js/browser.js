@@ -30,10 +30,10 @@ $(function() {
                 return `${baseUrl}/commits/${options.checkout}/${path}`;
             },
             stats: (options) => {
-                return `${baseUrl}/stats/${options.checkout}/${path}`;
+                return `${baseUrl}/stats/${options.checkout}`;
             },
             network: (options) => {
-                return `${baseUrl}/network/${options.checkout}/${path}`;
+                return `${baseUrl}/network/${options.checkout}`;
             },
             blob: (options) => {
                 return `${baseUrl}/blob/${options.checkout}/${path}`;
@@ -42,7 +42,7 @@ $(function() {
                 return `${baseUrl}/blame/${options.checkout}/${path}`;
             },
             treegraph: (options) => {
-                return `${baseUrl}/treegraph/${options.checkout}/${path}`;
+                return `${baseUrl}/treegraph/${options.checkout}`;
             },
             search: (options) => {
                 return {
