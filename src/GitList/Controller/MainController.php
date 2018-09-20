@@ -47,8 +47,10 @@ class MainController implements ControllerProviderInterface
                             $branch = trim($branchArray[1]);
                         }
                         $repositories[$repo['name']]['time'] = $output[6];
+                        $repositories[$repo['name']]['timestamp'] = strtotime($output[6]);
                         $repositories[$repo['name']]['user'] = $output[7];
                         $repositories[$repo['name']]['branch'] = $branch;
+                        $repositories[$repo['name']]['key'] = $repo['name'];
 
                         /*
                         $graphItems[] = array(
@@ -66,8 +68,9 @@ class MainController implements ControllerProviderInterface
                 }
 
             }
-           // print_r($repositories);
-
+            uksort($repositories, function($a, $b) use ($repositories) {
+                return $repositories[$a]['timestamp'] < $repositories[$b]['timestamp']  ? 1 : -1;
+            });
 
             return $app['twig']->render('index.twig', array(
                 'repositories' => $repositories,
