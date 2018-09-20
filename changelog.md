@@ -5,7 +5,7 @@
                         
 [//]: #@corifeus-header:end
 
-## 2018.9.20-0
+## v2018.9.20-0
 * Sort the repo list by last updated
 
 ## v2.12
