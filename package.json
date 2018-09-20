@@ -1,6 +1,6 @@
 {
     "name": "p3x-gitlist",
-    "version": "2018.9.20-1",
+    "version": "2018.9.20-2",
     "corifeus": {
         "prod-dir": "prod",
         "postfix": "b2c12b19179d52db3488baed66a493c18ff1737f3dcfa5604783b86c7672078a",
@@ -21,7 +21,7 @@
         "less-watch": "grunt watch:less",
         "watch": "grunt && concurrently \"webpack --watch\" \"grunt watch:less\""
     },
-    "description": "🤖 P3X Gitlist",
+    "description": "🤖 P3X Gitlist - An elegant, feature rich and modern git repository viewer",
     "main": "index.js",
     "repository": "https://github.com/patrikx3/gitlist",
     "author": "patrikx3 <alabard@gmail.com>",
