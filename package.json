@@ -1,6 +1,6 @@
 {
     "name": "p3x-gitlist",
-    "version": "2018.10.8-0",
+    "version": "2018.10.8-2",
     "corifeus": {
         "prod-dir": "prod",
         "postfix": "b2c12b19179d52db3488baed66a493c18ff1737f3dcfa5604783b86c7672078a",
@@ -59,6 +59,7 @@
         "bootstrap": "^3.3.7",
         "codemirror": "^5.40.2",
         "highlight.js": "^9.12.0",
+        "is-string-int": "^1.0.1",
         "jquery": "^3.3.1",
         "jquery.redirect": "^1.1.4",
         "js-cookie": "^2.2.0",

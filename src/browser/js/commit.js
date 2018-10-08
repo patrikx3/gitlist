@@ -14,17 +14,21 @@ $(() => {
 
     if ($diffEditors.length > 0) {
 
+
+
         for (let diffEditor of $diffEditors) {
             const $editableHover = $('#' + diffEditor.dataset.diffId);
             const $diffEditor = $(diffEditor);
             $editableHover.on('click', () => {
                 const url = new URL(location)
                 $diffEditor.toggle()
+
                 $editableHover.toggleClass('active')
                 if (diffEditor.dataset.loaded) {
                     return;
                 }
                 const loopIndex = diffEditor.dataset.loopIndex;
+
                 //console.log(loopIndex)
                 diffEditor.dataset.loaded = true
                 url.searchParams.append('ajax', '1')
@@ -67,6 +71,19 @@ $(() => {
                     }
                 }).catch(window.gitlist.ajaxErrorHandler)
             })
+
+        }
+
+        const isStringInt = require('is-string-int')
+        if(isStringInt(location.hash.substr(1))) {
+            const diff = parseInt(location.hash.substr(1))
+            const position = `p3x-gitlist-diff-${diff}`
+            const element = document.getElementById(position);
+            const diffButton = $(`#p3x-gitlist-diff-data-${diff}`)
+            setTimeout(() => {
+                window.gitlist.scrollIntoView(element)
+                diffButton.click()
+            }, 500)
         }
     }
 
