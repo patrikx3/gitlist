@@ -7,7 +7,7 @@
 
 
  
-# 🤖 P3X Gitlist - An elegant, feature rich and modern git repository viewer v2018.9.20-1  
+# 🤖 P3X Gitlist - An elegant, feature rich and modern git ui repository viewer v2018.9.28-2  
 
 This is an open-source project. Star this repository, if you like it, or even donate! Thank you so much! :)
 
@@ -24,7 +24,7 @@ All my domains (patrikx3.com and corifeus.com) could have errors, since I am dev
    
 ### Built on Node 
 ``` 
-v10.10.0
+v10.11.0
 ```   
    
 The ```async``` and ```await``` keywords are required.
@@ -182,7 +182,7 @@ npm run watch
 
 ---
 
-[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2018.9.20-1 
+[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2018.9.28-2 
 
 [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software) [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) 
 
