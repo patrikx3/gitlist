@@ -1,6 +1,6 @@
 {
     "name": "p3x-gitlist",
-    "version": "2018.10.8-2",
+    "version": "2018.10.20-2",
     "corifeus": {
         "prod-dir": "prod",
         "postfix": "b2c12b19179d52db3488baed66a493c18ff1737f3dcfa5604783b86c7672078a",
@@ -11,7 +11,7 @@
         "cdn": true,
         "icon": "fas fa-code",
         "code": "Spawn",
-        "nodejs": "v10.11.0",
+        "nodejs": "v10.12.0",
         "reponame": "gitlist",
         "build": true
     },
@@ -29,8 +29,8 @@
     "devDependencies": {
         "bootswatch": "^3.3.7",
         "concurrently": "^4.0.1",
-        "corifeus-builder": "^2018.10.8-3",
-        "corifeus-utils": "^2018.10.8-3",
+        "corifeus-builder": "^2018.10.20-4",
+        "corifeus-utils": "^2018.10.20-3",
         "css-loader": "^1.0.0",
         "extract-text-webpack-plugin": "^4.0.0-beta.0",
         "file-loader": "^2.0.0",
@@ -44,10 +44,10 @@
         "on-build-webpack": "^0.1.0",
         "optimize-css-assets-webpack-plugin": "^5.0.1",
         "postcss-safe-parser": "^4.0.1",
-        "style-loader": "^0.23.0",
+        "style-loader": "^0.23.1",
         "terser-webpack-plugin": "^1.1.0",
-        "url-loader": "^1.1.1",
-        "webpack": "^4.20.2",
+        "url-loader": "^1.1.2",
+        "webpack": "^4.21.0",
         "webpack-cli": "^3.1.2"
     },
     "engines": {
@@ -55,10 +55,10 @@
     },
     "homepage": "https://pages.corifeus.com/gitlist",
     "dependencies": {
-        "@fortawesome/fontawesome-free": "^5.3.1",
+        "@fortawesome/fontawesome-free": "^5.4.1",
         "bootstrap": "^3.3.7",
         "codemirror": "^5.40.2",
-        "highlight.js": "^9.12.0",
+        "highlight.js": "^9.13.1",
         "is-string-int": "^1.0.1",
         "jquery": "^3.3.1",
         "jquery.redirect": "^1.1.4",
@@ -71,6 +71,6 @@
         "php-date": "^2.1.1",
         "raphael": "^2.2.7",
         "snackbarjs": "^1.1.0",
-        "twemoji": "^11.0.1"
+        "twemoji": "^11.2.0"
     }
 }
