@@ -1,6 +1,6 @@
 {
     "name": "p3x-gitlist",
-    "version": "2018.10.20-2",
+    "version": "2018.11.1-1",
     "corifeus": {
         "prod-dir": "prod",
         "postfix": "b2c12b19179d52db3488baed66a493c18ff1737f3dcfa5604783b86c7672078a",
@@ -11,7 +11,7 @@
         "cdn": true,
         "icon": "fas fa-code",
         "code": "Spawn",
-        "nodejs": "v10.12.0",
+        "nodejs": "v11.0.0",
         "reponame": "gitlist",
         "build": true
     },
@@ -29,9 +29,9 @@
     "devDependencies": {
         "bootswatch": "^3.3.7",
         "concurrently": "^4.0.1",
-        "corifeus-builder": "^2018.10.20-4",
-        "corifeus-utils": "^2018.10.20-3",
-        "css-loader": "^1.0.0",
+        "corifeus-builder": "^2018.11.1-2",
+        "corifeus-utils": "^2018.11.1-2",
+        "css-loader": "^1.0.1",
         "extract-text-webpack-plugin": "^4.0.0-beta.0",
         "file-loader": "^2.0.0",
         "fs-extra": "^7.0.0",
@@ -47,7 +47,7 @@
         "style-loader": "^0.23.1",
         "terser-webpack-plugin": "^1.1.0",
         "url-loader": "^1.1.2",
-        "webpack": "^4.21.0",
+        "webpack": "^4.23.1",
         "webpack-cli": "^3.1.2"
     },
     "engines": {
@@ -55,9 +55,9 @@
     },
     "homepage": "https://pages.corifeus.com/gitlist",
     "dependencies": {
-        "@fortawesome/fontawesome-free": "^5.4.1",
+        "@fortawesome/fontawesome-free": "^5.4.2",
         "bootstrap": "^3.3.7",
-        "codemirror": "^5.40.2",
+        "codemirror": "^5.41.0",
         "highlight.js": "^9.13.1",
         "is-string-int": "^1.0.1",
         "jquery": "^3.3.1",
