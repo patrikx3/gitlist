@@ -68,8 +68,11 @@ class MainController implements ControllerProviderInterface
                 }
 
             }
+
             uksort($repositories, function($a, $b) use ($repositories) {
-                return $repositories[$a]['timestamp'] < $repositories[$b]['timestamp']  ? 1 : -1;
+                $timestampA = isset($repositories[$a]['timestamp']) ? $repositories[$a]['timestamp'] : -1;
+                $timestampB = isset($repositories[$b]['timestamp']) ? $repositories[$b]['timestamp'] : -1;
+                return $timestampA < $timestampB  ? 1 : -1;
             });
 
             return $app['twig']->render('index.twig', array(

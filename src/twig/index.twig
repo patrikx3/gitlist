@@ -39,6 +39,11 @@
                             on
                             {{ repository.branch }}
                         </a>
+                        <div class="p3x-gitlist-index-repo-last-commit-empty" style="display: none;">
+                            <strong>
+                                This repo is empty. Please, create a GIT commit push to make it to be usable.
+                            </strong>
+                        </div>
                         <div class="p3x-gitlist-index-description" >
                         {% if repository.description %}
                             {{ repository.description }}

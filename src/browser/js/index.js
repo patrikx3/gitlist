@@ -16,9 +16,17 @@ $(function() {
 
         const moment = require('moment')
         const times = $('.p3x-gitlist-index-repo-last-commit > .p3x-gitlist-index-repo-last-commit-time')
-        for(let time of times) {
-            const timeMoment = moment(time.innerText).fromNow()
-            time.innerText = timeMoment
+        const timesContainer = $('.p3x-gitlist-index-repo-last-commit')
+        const timesContainerEmpty = $('.p3x-gitlist-index-repo-last-commit-empty')
+        for(let timeindex in times) {
+            const time = times[timeindex]
+            if (String(time.innerText).trim() === '') {
+                $(timesContainer[timeindex]).hide();
+                $(timesContainerEmpty[timeindex]).show();
+            } else {
+                const timeMoment = moment(time.innerText).fromNow()
+                time.innerText = timeMoment
+            }
         }
 
         input.keypress(() => {
