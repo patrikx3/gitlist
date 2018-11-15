@@ -1,9 +1,9 @@
 {
     "name": "p3x-gitlist",
-    "version": "2018.11.15-2",
+    "version": "2018.11.15-4",
     "corifeus": {
         "prod-dir": "prod",
-        "postfix": "b2c12b19179d52db3488baed66a493c18ff1737f3dcfa5604783b86c7672078a",
+        "postfix": "76c75df7a1d843713419c2e8f3c87216466e0070b05645c352ac4e7a221bd6a4",
         "prefix": "p3x-",
         "publish": false,
         "type": "p3x",

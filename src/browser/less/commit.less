@@ -35,12 +35,14 @@
     }
 
     .new {
-      background-color: @alert-success-bg;
-      color: @alert-success-text;
+      background-color: rgba(@alert-success-bg, 0.2);
+      border-bottom: 1px solid @alert-success-bg !important;
+//      color: @alert-success-text;
     }
     .old {
-      background-color: @alert-danger-bg;
-      color: @alert-danger-text;
+      background-color: rgba(@alert-danger-bg, 0.2);
+      border-bottom: 1px solid @alert-danger-bg !important;
+//      color: @alert-danger-text;
     }
     .chunk {
       background-color: @alert-info-bg;
