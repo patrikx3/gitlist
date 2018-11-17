@@ -1,6 +1,6 @@
 {
     "name": "p3x-gitlist",
-    "version": "2018.11.15-4",
+    "version": "2018.11.17-2",
     "corifeus": {
         "prod-dir": "prod",
         "postfix": "76c75df7a1d843713419c2e8f3c87216466e0070b05645c352ac4e7a221bd6a4",
@@ -29,8 +29,8 @@
     "devDependencies": {
         "bootswatch": "^3.3.7",
         "concurrently": "^4.0.1",
-        "corifeus-builder": "^2018.11.1-2",
-        "corifeus-utils": "^2018.11.1-2",
+        "corifeus-builder": "^2018.11.17-2",
+        "corifeus-utils": "^2018.11.17-2",
         "css-loader": "^1.0.1",
         "extract-text-webpack-plugin": "^4.0.0-beta.0",
         "file-loader": "^2.0.0",
@@ -51,7 +51,7 @@
         "webpack-cli": "^3.1.2"
     },
     "engines": {
-        "node": ">=8.11.4"
+        "node": ">=10.13.0"
     },
     "homepage": "https://pages.corifeus.com/gitlist",
     "dependencies": {
