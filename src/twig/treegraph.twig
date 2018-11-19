@@ -25,9 +25,10 @@
                             {% if item.rev is defined %}
                                 <a id="{{ item.short_rev }}" class="treegraph-button" href="{{ path('commit', {repo: repo, commit: item.rev}) }}"> {{ item.short_rev }}</a>
                                 <strong> {{ item.branch }} </strong>
-                                <span class="p3x-gitlist-treegraph-subject">{{ item.subject }}</span> by
-                                <span class="author"><a class="treegraph-link" href="mailto:{{ item.author_email }}">{{ item.author }}</a></span>
-                                on <span>{{ item.date | date(gitlist_date_format) }}</span>
+                                <span>{{ item.date | date(gitlist_date_format) }}</span>
+                                by
+                                <span class="author"><a class="treegraph-link" href="mailto:{{ item.author_email }}">{{ item.author }}</a></span>:
+                                <span class="p3x-gitlist-treegraph-subject">{{ item.subject }}</span>
                             {% else %}
                                 <span></span>
                             {% endif %}
