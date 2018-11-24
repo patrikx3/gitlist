@@ -1,6 +1,6 @@
 {
     "name": "p3x-gitlist",
-    "version": "2018.11.19-1",
+    "version": "2018.11.24-1",
     "corifeus": {
         "prod-dir": "prod",
         "postfix": "76c75df7a1d843713419c2e8f3c87216466e0070b05645c352ac4e7a221bd6a4",
@@ -11,7 +11,7 @@
         "cdn": true,
         "icon": "fas fa-code",
         "code": "Spawn",
-        "nodejs": "v10.13.0",
+        "nodejs": "v11.2.0",
         "reponame": "gitlist",
         "build": true
     },
@@ -28,9 +28,9 @@
     "license": "MIT",
     "devDependencies": {
         "bootswatch": "^3.3.7",
-        "concurrently": "^4.0.1",
-        "corifeus-builder": "^2018.11.17-2",
-        "corifeus-utils": "^2018.11.17-2",
+        "concurrently": "^4.1.0",
+        "corifeus-builder": "^2018.11.24-2",
+        "corifeus-utils": "^2018.11.24-2",
         "css-loader": "^1.0.1",
         "extract-text-webpack-plugin": "^4.0.0-beta.0",
         "file-loader": "^2.0.0",
@@ -47,7 +47,7 @@
         "style-loader": "^0.23.1",
         "terser-webpack-plugin": "^1.1.0",
         "url-loader": "^1.1.2",
-        "webpack": "^4.25.1",
+        "webpack": "^4.26.0",
         "webpack-cli": "^3.1.2"
     },
     "engines": {
@@ -57,7 +57,7 @@
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.5.0",
         "bootstrap": "^3.3.7",
-        "codemirror": "^5.41.0",
+        "codemirror": "^5.42.0",
         "highlight.js": "^9.13.1",
         "is-string-int": "^1.0.1",
         "jquery": "^3.3.1",
@@ -66,7 +66,7 @@
         "js-htmlencode": "^0.3.0",
         "list.js": "^1.5.0",
         "lodash": "^4.17.11",
-        "marked": "^0.5.1",
+        "marked": "^0.5.2",
         "moment": "^2.22.2",
         "php-date": "^2.1.1",
         "raphael": "^2.2.7",
