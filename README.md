@@ -7,7 +7,7 @@
 
 
  
-# 🤖 P3X Gitlist - An elegant, feature rich and modern git ui repository viewer v2018.11.24-0  
+# 🤖 P3X Gitlist - An enhanced elegant, feature rich and modern git ui repository viewer v2018.12.9-4  
 
 This is an open-source project. Star this repository, if you like it, or even donate! Thank you so much! :)
 
@@ -24,7 +24,7 @@ All my domains (patrikx3.com and corifeus.com) could have errors, since I am dev
    
 ### Built on Node 
 ``` 
-v11.2.0
+v11.4.0
 ```   
    
 The ```async``` and ```await``` keywords are required.
@@ -87,7 +87,7 @@ https://gitlist.patrikx3.com/gitlist.git/commit/f1e4d5b938c8f1a6cd178aeea2e9e861
 ### Fifth
 If you upload a bigger binary file, it is important, that your web server allows to upload bigger files, because I found an error with `NGINX` as: 
 ```text
-Request Entity Too Large"
+Request Entity Too Large
 ```
 
 I resolved in the `NGINX` web server configuration file `nginx.conf` as:
@@ -182,7 +182,7 @@ npm run watch
 
 ---
 
-[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2018.11.24-0 
+[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2018.12.9-4 
 
 [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software) [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) 
 
