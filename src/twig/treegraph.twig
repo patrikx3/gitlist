@@ -5,7 +5,17 @@
 {% block title %}P3X GitList{% endblock %}
 
 {% block content %}
-    {% include 'breadcrumb.twig' with {breadcrumbs: [{dir: 'Graph', path:''}]} %}
+
+    {% embed 'breadcrumb.twig' with {breadcrumbs: [{dir: 'Graph', path:''}]} %}
+        {% block right %}
+        {% endblock %}
+
+        {% block left %}
+            <span class="label label-info">Hover over the log to see the full commit message.</span>
+        {% endblock %}
+
+    {% endembed %}
+
 
     <div class="network-view">
         <div id="git-graph-container">
