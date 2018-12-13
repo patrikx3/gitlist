@@ -77,7 +77,8 @@ class MainController implements ControllerProviderInterface
 
             return $app['twig']->render('index.twig', array(
                 'repositories' => $repositories,
-
+                'branch' => '',
+                'repo' => '',
             ));
         })->bind('homepage');
 

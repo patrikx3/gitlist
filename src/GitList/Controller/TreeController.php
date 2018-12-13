@@ -125,7 +125,8 @@ class TreeController implements ControllerProviderInterface
           ->bind('archive');
 
 
-        $route->get('{repo}/{branch}/', function($repo, $branch) use ($app) {
+        // this is weird ... was / , not working, i changed to \/ , now it works
+        $route->get('{repo}\/{branch}', function($repo, $branch) use ($app) {
             return $app->redirect( $app['url_subdir'] . '/' . $repo . '/tree/' . $branch);
         })->assert('repo', $app['util.routing']->getRepositoryRegex())
           ->assert('branch', $app['util.routing']->getBranchRegex())
