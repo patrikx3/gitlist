@@ -1,9 +1,9 @@
 {
     "name": "p3x-gitlist",
-    "version": "2018.12.9-5",
+    "version": "2018.12.13-1",
     "corifeus": {
         "prod-dir": "prod",
-        "postfix": "76c75df7a1d843713419c2e8f3c87216466e0070b05645c352ac4e7a221bd6a4",
+        "postfix": "098f1623cff621d401361e0c4fb5543daf16c4741cfb427488d5261e7711e543",
         "prefix": "p3x-",
         "publish": false,
         "type": "p3x",
@@ -31,7 +31,7 @@
         "concurrently": "^4.1.0",
         "corifeus-builder": "^2018.12.9-7",
         "corifeus-utils": "^2018.12.9-7",
-        "css-loader": "^1.0.1",
+        "css-loader": "^2.0.0",
         "extract-text-webpack-plugin": "^4.0.0-beta.0",
         "file-loader": "^2.0.0",
         "fs-extra": "^7.0.1",
@@ -55,7 +55,7 @@
     },
     "homepage": "https://pages.corifeus.com/gitlist",
     "dependencies": {
-        "@fortawesome/fontawesome-free": "^5.6.0",
+        "@fortawesome/fontawesome-free": "^5.6.1",
         "bootstrap": "^3.3.7",
         "codemirror": "^5.42.0",
         "highlight.js": "^9.13.1",
@@ -67,7 +67,7 @@
         "list.js": "^1.5.0",
         "lodash": "^4.17.11",
         "marked": "^0.5.2",
-        "moment": "^2.22.2",
+        "moment": "^2.23.0",
         "php-date": "^2.1.1",
         "raphael": "^2.2.7",
         "snackbarjs": "^1.1.0",

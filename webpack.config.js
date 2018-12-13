@@ -208,7 +208,8 @@ module.exports = {
                         {
                             loader: 'css-loader',
                             options: {
-                                minimize: minimize,
+                                // in v2 it throws error
+                              //  minimize: minimize,
                                 sourceMap: true
                             },
                         }]
