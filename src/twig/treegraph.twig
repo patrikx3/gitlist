@@ -27,7 +27,8 @@
                                 <strong> {{ item.branch }} </strong>
                                 <span>{{ item.date | date(gitlist_date_format) }}</span>
                                 by
-                                <span class="author"><a class="treegraph-link" href="mailto:{{ item.author_email }}">{{ item.author }}</a></span>:
+                                <span class="author"><a class="treegraph-link" href="mailto:{{ item.author_email }}">{{ item.author }}</a></span>
+                                &nbsp;
                                 <span class="p3x-gitlist-treegraph-subject">{{ item.subject }}</span>
                             {% else %}
                                 <span></span>

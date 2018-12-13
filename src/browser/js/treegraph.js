@@ -22,6 +22,14 @@ window.gitlist.treegraph = () => {
         $("#graph-raw-list li span.node-relation").each(function () {
             graphList.push($(this).text());
         })
+        const $li = $('#rev-list li');
+        $li.each(function() {
+            const $this = $(this)
+            const text = $this.find('.p3x-gitlist-treegraph-subject').text()
+            if (text !== undefined && text !== '') {
+                $this.attr('title', text)
+            }
+        })
         global.gitGraph(document.getElementById('graph-canvas'), graphList);
     }
 }

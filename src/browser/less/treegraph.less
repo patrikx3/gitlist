@@ -1,4 +1,5 @@
 .p3x-gitlist-treegraph-log {
+
 }
 
 .treegraph-button {
@@ -27,83 +28,18 @@
   }
 }
 
-.network-view {
-  width: 100%;
-  margin-bottom: @line-height-base;
-  position: relative;
 
 
-  &.loading-commits {
-
-    &:before {
-      content: "";
-      display: block;
-      height: 100px;
-      width: 200px;
-      box-sizing: border-box;
-      padding: 10px;
-      font-weight: bold;
-      position: absolute;
-
-      left: 50%;
-      top: 50%;
-      margin-left: -100px;
-      margin-top: -50px;
-
-      z-index: 2000;
-    }
-
-    .network-header .meta:after {
-      content: " - Loading";
-    }
+.p3x-gitlist-treegraph-subject {
+  white-space: nowrap;
+  p {
+    display: inline;
+    text-overflow: ellipsis;
   }
-
-  .network-header {
-  }
-  pre {
-    margin: 0;
-    padding: 12px;
-    border: none;
-  }
-  .network-graph {
-    height: 400px;
-    overflow: hidden;
-    cursor: move;
-    position: relative;
-    border: 1px solid @table-border-color;
-
-
-    .network-commit-overlay {
-      position: absolute;
-      width: 400px;
-      top: 0;
-      left: 0;
-      padding: 8px;
-      margin: 0 0 @line-height-base;
-      list-style: none;
-      background-color: @navbar-default-bg;
-      color: @navbar-default-color;
-
-      a, a:active {
-        background-color: @navbar-default-bg;
-        color: @navbar-inverse-color;
-      }
-
-      img {
-        float: left;
-        margin-right: 10px;
-      }
-
-      div {
-      }
-    }
-
-  }
-}
-
-.p3x-gitlist-treegraph-subject p {
-  display: inline;
   a, a:active {
     color: @brand-primary !important;
   }
+}
+
+#rev-list  {
 }

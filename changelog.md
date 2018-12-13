@@ -8,6 +8,7 @@
 ## v2018.12.13
 * The icons of the main tabs animations were not centered (cosmetic fix) 
 * There was a routing problem, some pages were not working
+* Added tooltips to the log, which is not shown - too long text ...
 
 ## v2018.9.20-0
 * Sort the repo list by last updated
@@ -182,7 +183,7 @@ require('codemirror/mode/yaml/yaml');
 
 ---
 
-[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2018.12.13-1 
+[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2018.12.13-3 
 
 [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software) [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) 
 
