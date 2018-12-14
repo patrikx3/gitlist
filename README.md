@@ -7,7 +7,7 @@
 
 
  
-# 🤖 P3X Gitlist - An enhanced elegant, feature rich and modern git ui repository viewer v2018.12.13-4  
+# 🤖 P3X Gitlist - An enhanced elegant, feature rich and modern git ui repository viewer v2018.12.14-0  
 
 This is an open-source project. Star this repository, if you like it, or even donate! Thank you so much! :)
 
@@ -82,7 +82,7 @@ Besides, without `Babel` the `JavaScript` is much faster. (At work, without `Bab
 ### Fourth
 I have disabled loading everything in `twig`, besides the `diffs` are loading via `AJAX` and `web workers`, I made it to work huge commits with `64MB` `PHP`.  
 See in action:  
-https://gitlist.patrikx3.com/gitlist.git/commit/f1e4d5b938c8f1a6cd178aeea2e9e86111ea5323#p3x-gitlist-diff-93  
+https://gitlist.patrikx3.com/gitlist.git/commit/f1e4d5b938c8f1a6cd178aeea2e9e86111ea5323#93  
 
 ### Fifth
 If you upload a bigger binary file, it is important, that your web server allows to upload bigger files, because I found an error with `NGINX` as: 
@@ -182,7 +182,7 @@ npm run watch
 
 ---
 
-[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2018.12.13-4 
+[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2018.12.14-0 
 
 [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software) [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) 
 

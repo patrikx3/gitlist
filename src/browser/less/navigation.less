@@ -1,25 +1,23 @@
-.p3x-gitlist-navigation-brand-icon {
-
-}
-
-
-#p3x-gitlist-navigation-brand-icon-pure {
-  height: @navbar-height - 16px;
-  width: auto;
-  top: 8px;
-  position: absolute;
-}
-
 #p3x-gitlist-navigation-brand-icon {
-  height: @navbar-height - @navbar-margin-bottom - 2px;
-  width: auto;
+  float: left;
+  margin: 0;
+  padding: 0;
+  width: @navbar-height;
   display: inline-block;
 }
 
-#p3x-gitlist-navigation-brand-icon-title {
-  display: inline-block;
-  margin-left: 36px;
+.p3x-gitlist-light {
+  #p3x-gitlist-navigation-brand-icon {
+    filter: drop-shadow( 0px 0px 3px rgba(0, 0, 0, 0.5));
+  }
 }
+
+.p3x-gitlist-dark {
+  #p3x-gitlist-navigation-brand-icon {
+    filter: drop-shadow( 2px 2px 2px rgba(255, 255, 255, 0.2));
+  }
+}
+
 
 #p3x-gitlist-navigation-menu-button:hover {
   transition-duration: 250ms;
