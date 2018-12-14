@@ -1,6 +1,11 @@
 #p3x-gitlist-main-tabs * {
   margin-bottom: 2px;
   position: relative;
+
+  @media only screen and (max-width : @screen-sm-min) {
+    text-align: left;
+  }
+
   a:hover > svg.svg-inline--fa {
     transition-duration: 250ms;
     transition-property: transform;
@@ -10,3 +15,4 @@
     top: 2px;
   }
 }
+
