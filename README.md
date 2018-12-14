@@ -7,7 +7,7 @@
 
 
  
-# 🤖 P3X Gitlist - An enhanced elegant, feature rich and modern git ui repository viewer v2018.12.14-0  
+# 🤖 P3X Gitlist - An enhanced elegant, feature rich and modern git ui repository viewer v2018.12.14-1  
 
 This is an open-source project. Star this repository, if you like it, or even donate! Thank you so much! :)
 
@@ -42,6 +42,11 @@ https://nodejs.org/en/download/package-manager/
 This is a new GitList with web workers, multiple themes (dark/light), sub-modules, uglify-es, webpack, toast, pure Bootstrap 3 and upgraded to PHP7.1 with all components.  
 
 Usually, even a small router can use it with 64MB `PHP memory limit`.   
+
+
+# Live demo
+
+http://gitlist.patrikx3.com/
 
 #### Warning
 For the actual released `zip` file does not need `NodeJS` or anything like that. Only a `web server`, `PHP 7.1` and `GIT`.
@@ -123,10 +128,6 @@ Nov 14, 2018
 https://github.com/klaussilveira/gitter/commits/master  
 Jun 1, 2018
 
-# Live demo
-
-http://gitlist.patrikx3.com/
-
 # Installation
 
 ## Requirements
@@ -182,7 +183,7 @@ npm run watch
 
 ---
 
-[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2018.12.14-0 
+[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2018.12.14-1 
 
 [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software) [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) 
 
