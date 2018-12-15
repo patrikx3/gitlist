@@ -1,7 +1,7 @@
 module.exports = (options) => {
 
     const { menuList } = options;
-    let { nav, navButton } = options
+    let { shift, nav, navButton } = options
 
     if (nav === undefined) {
         nav = $('#p3x-gitlist-navigation')
@@ -11,17 +11,22 @@ module.exports = (options) => {
         navButton = $('#p3x-gitlist-navigation-menu-button');
     }
 
+    if (shift === undefined) {
+        shift = 0;
+    }
+
     const debounce = require('lodash/debounce')
 
     const debounceResize = debounce(() => {
-        if (navButton.is(':visible')) {
+        if (navButton.is(':visible') && options.alwaysCalculate !== true) {
             menuList.css({
                 'maxHeight': 'auto',
                 'overflowX': 'visible',
             });
 
         } else {
-            const allowedMaxHeight = window.innerHeight - nav.height() - 20;
+            const allowedMaxHeight = window.innerHeight - nav.height() - 20 - shift;
+
             menuList.css({
                 'maxHeight': allowedMaxHeight,
                 'overflowX': 'auto'

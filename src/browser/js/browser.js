@@ -2,10 +2,13 @@ $(function() {
 
     const menu = $('#p3x-gitlist-branch-list-container');
     if (menu.length > 0) {
-//    const menuResponsive = require('./menu-responsive')
-//    menuResponsive({
-//        menuList: $('#p3x-gitlist-branch-list-dropdown-menu'),
-//    })
+        const menuResponsive = require('./menu-responsive')
+        menuResponsive({
+            menuList: $('#p3x-gitlist-branch-list-dropdown-menu'),
+            shift: 130,
+            navButton: $('#p3x-gitlist-branch-list'),
+            alwaysCalculate: true,
+        })
 
         const List = require('list.js')
 
