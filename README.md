@@ -54,7 +54,7 @@ http://gitlist.patrikx3.com/
 #### Warning
 For the actual released `zip` file does not need `NodeJS` or anything like that. Only a `web server`, `PHP 7.1` and `GIT`.
 
-### PHP > 7.1 only
+### PHP 7 version installation
  
 [README](artifacts/php-7.2-ubuntu.md)
 
