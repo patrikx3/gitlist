@@ -75,19 +75,6 @@ You might need to tune your web server, to only parse the `public/index.php` PHP
 
 [TODO](todo.md) ...
 
-# Old info
-https://github.com/klaussilveira/gitlist
-
-### Last merge from `klaussilveira`
-
-#### Gitlist
-https://github.com/klaussilveira/gitlist/commits/master  
-Nov 14, 2018
-
-#### Gitter
-https://github.com/klaussilveira/gitter/commits/master  
-Jun 1, 2018
-
 # Installation
 
 ## Requirements
@@ -138,6 +125,20 @@ npm run watch
 ```
 
 [Install](INSTALL.md) - here.
+
+# Old info
+https://github.com/klaussilveira/gitlist
+
+### Last merge from `klaussilveira`
+
+#### Gitlist
+https://github.com/klaussilveira/gitlist/commits/master  
+Nov 14, 2018
+
+#### Gitter
+https://github.com/klaussilveira/gitter/commits/master  
+Jun 1, 2018
+
 
 [//]: #@corifeus-footer
 
