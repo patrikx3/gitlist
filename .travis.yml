@@ -9,10 +9,6 @@ before_install:
 - composer config --global github-oauth.github.com $GITHUB_TOKEN
 before_script:
   - composer install
-  - npm install -g grunt-cli npm
-  - npm install
-after_script:
-  - npm run build
 notifications:
   email:
     recipients:
