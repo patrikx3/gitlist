@@ -41,11 +41,15 @@ pushd $repo
 zip -r $TOP/build/$name.zip * .* > /dev/null
 popd
 
-#RELEASE=$TOP/build/release
-#rm -rf $RELEASE || true
-#mv $repo $RELEASE
-rm -rf $repo
-#cp $TOP/config.ini $RELEASE || true
-#cp -R $TOP/git-test $RELEASE/ || true
+if [ $# -eq 0 ];
+then
+    rm -rf $repo
+else
+    RELEASE=$TOP/build/release
+    rm -rf $RELEASE || true
+    mv $repo $RELEASE
+    cp $TOP/config.ini $RELEASE || true
+    cp -R $TOP/git-test $RELEASE/ || true
+fi
 
 popd

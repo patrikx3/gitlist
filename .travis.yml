@@ -8,6 +8,8 @@ php:
 before_install:
 - composer config --global github-oauth.github.com $GITHUB_TOKEN
 before_script: composer install
+after_script:
+  - npm run build
 notifications:
   email:
     recipients:
