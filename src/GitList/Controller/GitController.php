@@ -15,6 +15,7 @@ use Gitter\Repository;
 use Silex\Application;
 use Silex\Api\ControllerProviderInterface;
 use Symfony\Component\HttpFoundation\Request;
+use TheSeer\Tokenizer\Exception;
 
 class GitController implements ControllerProviderInterface
 {
@@ -66,6 +67,23 @@ class GitController implements ControllerProviderInterface
                                 'override' => $request->get('override'),
                             ]);
                             */
+                            break;
+
+                        case 'fetch-origin':
+                            try {
+                                $objectResult = $repository->fetchOrigin();
+                                return json_encode($objectResult);
+                            } catch(\Exception $e) {
+                                return json_encode(((object) [
+                                    'status' => 'error',
+                                    'error' => true,
+                                    //'temporaryDirectory' => $tempRepo,
+                                    'message' => $e->getMessage(),
+                                    'trace' => $e->getTrace(),
+                                    //'$filename' => $filename,
+                                    //'$value' => $value,
+                                ]));
+                            }
                             break;
 
                         default:

@@ -46,6 +46,8 @@ $(function() {
         const listOptions = {
             valueNames: ['p3x-gitlist-index-name', 'p3x-gitlist-index-description', 'p3x-gitlist-index-repo-last-commit'],
             indexAsync: true,
+//            sortClass: 'p3x-gitlist-index-sort',
+//            page: 5,
         };
         const list = new List(id, listOptions);
         if (value !== undefined) {

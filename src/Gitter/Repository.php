@@ -764,6 +764,7 @@ class Repository
 
     public function getShortHash($commit) {
         $shortHash = $this->getClient()->run($this, 'rev-parse  --short ' . $commit);
+        $shortHash = trim($shortHash, "\r\n ");
         return $shortHash;
     }
 
@@ -1325,5 +1326,15 @@ class Repository
         });
     }
 
+
+    public function fetchOrigin() {
+        $output = $this->getClient()->run($this, "fetch origin '*:*'");
+        return ((object) [
+            'status' => 'ok',
+            'error' => false,
+            'message' => 'OK, fetch origin is competed.',
+//            'message' => $output
+        ]);
+    }
 
 }

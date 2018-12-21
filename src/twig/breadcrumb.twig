@@ -14,13 +14,40 @@
             <i class="fa fa-rss"></i>
             &nbsp;RSS
         </a>
-        <a href="{{ path('archive', {repo: repo, branch: branch, format: 'zip'}) }}" class="btn btn-default btn-sm" title="Download '{{ branch }}' as a ZIP archive">
-            <i class="fas fa-file-archive"></i>&nbsp;ZIP
-        </a>
-        <a href="{{ path('archive', {repo: repo, branch: branch, format: 'tar'}) }}"
-           class="btn btn-default btn-sm" title="Download '{{ branch }}' as a TAR archive">
-            <i class="far fa-file-archive"></i>&nbsp;TAR
-        </a>
+
+        <span class="dropdown">
+            <a class="btn btn-default btn-sm dropdown-toggle" type="button" id="p3x-gitlist-breadcrumb-git" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                Git
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="p3x-gitlist-breadcrumb-git">
+                <li>
+                    <a href="javascript:void(0)" id="p3x-gitlist-breadcrumb-git-fetch">
+                        <i class="fas fa-chevron-down"></i>&nbsp;Fetch origin
+                    </a>
+                </li>
+            </ul>
+        </span>
+
+        <span class="dropdown">
+            <a class="btn btn-default btn-sm dropdown-toggle" type="button" id="p3x-gitlist-breadcrumb-download" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                Download
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="p3x-gitlist-breadcrumb-download">
+                <li>
+                    <a href="{{ path('archive', {repo: repo, branch: branch, format: 'zip'}) }}" title="Download '{{ branch }}' as a ZIP archive">
+                        <i class="fas fa-file-archive"></i>&nbsp;ZIP
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('archive', {repo: repo, branch: branch, format: 'tar'}) }}" title="Download '{{ branch }}' as a TAR archive">
+                        <i class="far fa-file-archive"></i>&nbsp;TAR
+                    </a>
+                </li>
+            </ul>
+        </span>
+
         {% if app.show_http_remote or app.show_ssh_remote %}
             <a href="#" class="btn btn-default btn-sm" title="Show remotes to clone this repository." data-toggle="modal" data-target="#p3x-gitlist-modal-clone">
                 <i class="far fa-clone"></i>&nbsp;Clone
