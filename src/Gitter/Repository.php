@@ -1332,7 +1332,7 @@ class Repository
         return ((object) [
             'status' => 'ok',
             'error' => false,
-            'message' => 'OK, fetch origin is competed.',
+            'message' => 'OK, fetch origin is done.',
 //            'message' => $output
         ]);
     }
