@@ -1,9 +1,9 @@
 {
-    "name": "p3x-gitlist333a67e1315d881bf5f6d3010d0c93828f294f24f7be203534d473210b0bd3ca",
-    "version": "2018.12.22-1",
+    "name": "p3x-gitlist",
+    "version": "2018.12.22-7",
     "corifeus": {
         "prod-dir": "prod",
-        "postfix": "333a67e1315d881bf5f6d3010d0c93828f294f24f7be203534d473210b0bd3ca",
+        "css-postfix": "333a67e1315d881bf5f6d3010d0c93828f294f24f7be203534d473210b0bd3ca",
         "prefix": "p3x-",
         "publish": false,
         "type": "p3x",

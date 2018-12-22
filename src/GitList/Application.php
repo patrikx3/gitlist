@@ -120,7 +120,7 @@ class Application extends SilexApplication
 
             $twig->addGlobal('search_query', $query);
 
-            $twig->addGlobal('theme_postfix', $pkg['corifeus']['postfix']);
+            $twig->addGlobal('theme_postfix', $pkg['corifeus']['css-postfix']);
             $twig->addGlobal('prod_dir', $pkg['corifeus']['prod-dir']);
 
             $twig->addGlobal('theme_dark', $themeDark);

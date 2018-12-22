@@ -35,7 +35,7 @@ const lessSettings = (grunt) => {
             lessLastHash = lessHash;
             const pkgFilename = './package.json';
             const pkg = fsExtra.readJsonSync(pkgFilename);
-            pkg.corifeus.postfix = lessHash
+            pkg.corifeus['css-postfix'] = lessHash
             //fsExtra.writeJsonSync(pkgFilename, pkg)
             fs.writeFileSync(pkgFilename, JSON.stringify(pkg, null, 4), 'utf8')
             grunt.log.writeln('The css postfix file has been saved!');

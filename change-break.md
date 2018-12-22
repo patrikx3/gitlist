@@ -50,7 +50,7 @@ The following versions are not using `Babel`!!!! Yikes!
 
 ---
 
-[**P3X-GITLIST1BC6EA984561F4D17158256F7D3644E455FD705BA9A22ABD465DC9DEAD3890FD**](https://pages.corifeus.com/gitlist) Build v2018.12.22-0 
+[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2018.12.22-6 
 
 [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software) [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) 
 
