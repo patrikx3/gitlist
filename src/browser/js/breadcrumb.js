@@ -26,7 +26,6 @@ $(function() {
             $.snackbar({
                 htmlAllowed: true,
                 content: json.message,
-                timeout: window.gitlist.snapckbarLongTimeout,
             })
         } catch(e) {
             window.gitlist.ajaxErrorHandler(e);

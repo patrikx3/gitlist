@@ -1,9 +1,9 @@
 {
-    "name": "p3x-gitlist",
-    "version": "2018.12.21-12",
+    "name": "p3x-gitlist333a67e1315d881bf5f6d3010d0c93828f294f24f7be203534d473210b0bd3ca",
+    "version": "2018.12.22-1",
     "corifeus": {
         "prod-dir": "prod",
-        "postfix": "1bc6ea984561f4d17158256f7d3644e455fd705ba9a22abd465dc9dead3890fd",
+        "postfix": "333a67e1315d881bf5f6d3010d0c93828f294f24f7be203534d473210b0bd3ca",
         "prefix": "p3x-",
         "publish": false,
         "type": "p3x",
@@ -29,9 +29,9 @@
     "devDependencies": {
         "bootswatch": "^3.3.7",
         "concurrently": "^4.1.0",
-        "corifeus-builder": "^2018.12.21-1",
+        "corifeus-builder": "^2018.12.22-3",
         "corifeus-utils": "^2018.12.21-1",
-        "css-loader": "^2.0.1",
+        "css-loader": "^2.0.2",
         "extract-text-webpack-plugin": "^4.0.0-beta.0",
         "file-loader": "^3.0.1",
         "fs-extra": "^7.0.1",
@@ -47,7 +47,7 @@
         "style-loader": "^0.23.1",
         "terser-webpack-plugin": "^1.1.0",
         "url-loader": "^1.1.2",
-        "webpack": "^4.28.1",
+        "webpack": "^4.28.2",
         "webpack-cli": "^3.1.2"
     },
     "engines": {
@@ -57,7 +57,7 @@
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.6.3",
         "bootstrap": "^3.3.7",
-        "codemirror": "^5.42.0",
+        "codemirror": "^5.42.2",
         "highlight.js": "^9.13.1",
         "is-string-int": "^1.0.1",
         "jquery": "^3.3.1",

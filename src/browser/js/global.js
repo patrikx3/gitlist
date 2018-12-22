@@ -72,4 +72,20 @@ $(function () {
         window.gitlist.changeLog()
     }
 
+    $("#p3x-gitlist-to-top").click(function(event) {
+        event.preventDefault();
+        $("html, body").animate({ scrollTop: 0 }, "slow");
+        return false;
+    });
+
+});
+
+
+$(window).scroll(function() {
+    var height = $(window).scrollTop();
+    if (height > 100) {
+        $('#p3x-gitlist-to-top').fadeIn();
+    } else {
+        $('#p3x-gitlist-to-top').fadeOut();
+    }
 });
