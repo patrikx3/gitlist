@@ -90,6 +90,8 @@ class Tree extends Item implements \RecursiveIterator
                 $tree->setName($file[4]);
                 $tree->setHash($file[2]);
                 $tree->setShortHash($shortHash);
+//                echo $submoduleName;
+  //              exit;
                 $url = $submodules["submodule $submoduleName"]['url'];
                 if (preg_match('/^https?:\/\/(www\.)?github.com\//i', $url)) {
                     $s = S::create($url);

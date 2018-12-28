@@ -7,6 +7,7 @@ hljs.registerLanguage('Dockerfile', require('highlight.js/lib/languages/dockerfi
 hljs.registerLanguage('less', require('highlight.js/lib/languages/less.js'));
 hljs.registerLanguage('scss', require('highlight.js/lib/languages/scss.js'));
 hljs.registerLanguage('yaml', require('highlight.js/lib/languages/yaml.js'));
+hljs.registerLanguage('yml', require('highlight.js/lib/languages/yaml.js'));
 hljs.registerLanguage('powershell', require('highlight.js/lib/languages/powershell.js'));
 hljs.registerLanguage('javascript', require('highlight.js/lib/languages/javascript.js'));
 hljs.registerLanguage('js', require('highlight.js/lib/languages/javascript.js'));
@@ -17,6 +18,8 @@ hljs.registerLanguage('shell', require('highlight.js/lib/languages/shell.js'));
 hljs.registerLanguage('cmd', require('highlight.js/lib/languages/shell.js'));
 hljs.registerLanguage('typescript', require('highlight.js/lib/languages/typescript.js'));
 hljs.registerLanguage('ts', require('highlight.js/lib/languages/typescript.js'));
+hljs.registerLanguage('python', require('highlight.js/lib/languages/python.js'));
+hljs.registerLanguage('py', require('highlight.js/lib/languages/python.js'));
 
 const markdownRenderer = new marked.Renderer();
 global.gitlist.markdownRenderer = markdownRenderer;
@@ -39,7 +42,9 @@ markdownRenderer.link = function(href, title, text) {
     if (href.startsWith('https:/') || href.startsWith('http:/')) {
         a = '<a target="_blank" href="' + href + '">' + text + '</a>';
     } else {
-        const start = gitlist.basepath + '/' + gitlist.repo + '/blob/' +  gitlist.branch + '/';
+        // /ramdisk.git/tree/master/artifacts/
+        console.log(href)
+        const start = gitlist.basepath + '/' + gitlist.repo + (href.endsWith('/') ? '/tree/' : '/blob/' ) +  gitlist.branch + '/';
         if (!location.pathname.startsWith(start)) {
             href = start + href;
         } else {
