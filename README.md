@@ -27,7 +27,7 @@ All my domains (patrikx3.com and corifeus.com) could have errors, since I am dev
 
 This is a new decorated enhanced GitList with web workers, multiple themes (dark/light), sub-modules, uglify-es, webpack, toast, pure Bootstrap 3 and upgraded to PHP7.1 with all components.  
 
-Usually, even a small router can use it with 64MB `PHP memory limit`.   
+Becuase of the web workers, even a small router can use it with 64MB `PHP memory limit`.   
 
 
 # Live demo
