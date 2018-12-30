@@ -93,7 +93,7 @@ git clone https://github.com/patrikx3/gitlist.git
 curl -s http://getcomposer.org/installer | php
 php composer.phar install
 
-# i use Node v10 and NPM v6
+# i use Node latest usually and NPM
 sudo npm install -g npm grunt-cli
 npm install
 
