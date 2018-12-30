@@ -58,7 +58,7 @@ You might need to tune your web server, to only parse the `public/index.php` PHP
 
 [TODO](todo.md) ...
 
-# Installation
+# Development
 
 ## Requirements
 
@@ -67,6 +67,7 @@ By now `composer` is not enough. We are using `webpack`, `less`, `grunt` ...
 For the build on your workstation (less, Bootstrap themes,  and webpack):
 
 * ```NodeJs``` >= 10
+  * https://nodejs.org/en/download/package-manager/
 * ```Grunt``` (npm install -g npm grunt-cli)
 * `Composer`
 
@@ -83,6 +84,11 @@ If you have Composer in your path, things get easier. But you know the drill.
 If want to get the project dependencies, and build everything:
 
 ```
+# ubuntu
+# https://github.com/nodesource/distributions/blob/master/README.md#debinstall
+curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
 git clone https://github.com/patrikx3/gitlist.git
 curl -s http://getcomposer.org/installer | php
 php composer.phar install
