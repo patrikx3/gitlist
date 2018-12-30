@@ -35,22 +35,19 @@ Becuase of the web workers, even a small router can use it with 64MB `PHP memory
 http://gitlist.patrikx3.com/
 
 
-# Release version/update info
+# Releases
+  
+https://github.com/patrikx3/gitlist/releases
 
 ### Ubuntu prior Bionic PHP 7 version installation
  
 [README](artifacts/php-7.2-ubuntu.md)
-
-## Releases
-  
-https://github.com/patrikx3/gitlist/releases
 
 ### NGINX gitlist.patrikx3.com configs 
 
 This is a complete config that uses NGINX and the **git-http-backend**.
 
 [gitlist.patrikx3.com.conf](artifacts/gitlist.patrikx3.com.conf)
-
 
 ### Web server
 You might need to tune your web server, to only parse the `public/index.php` PHP script, so you can view your `php` files in `P3X GitList`. 
