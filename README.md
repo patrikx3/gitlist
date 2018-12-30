@@ -50,12 +50,8 @@ This parse only the `public/index.php` file, no other PHP files, so that they ar
 
 [gitlist.patrikx3.com.conf](artifacts/gitlist.patrikx3.com.conf)
 
-### Web server
-You might need to tune your web server, to only parse the `public/index.php` PHP script, so you can view your `php` files in `P3X GitList`. 
-
 ## There is a changing break
 [README](change-break.md)
-
 
 # TODO and Change log
 
@@ -79,7 +75,7 @@ For the build on your workstation (less, Bootstrap themes,  and webpack):
 In order to run GitList on your server, you'll need:
 
 * ```git```
-* ```Apache``` with ```mod_rewrite``` enabled or ```nginx```
+* ```Apache``` with ```mod_rewrite``` enabled or ```nginx``` - preferred
 * ```PHP``` >= 7.1 
 
 ## By hand
