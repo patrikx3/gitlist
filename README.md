@@ -45,7 +45,7 @@ https://github.com/patrikx3/gitlist/releases
 
 ### NGINX gitlist.patrikx3.com configs 
 
-This is a complete config that uses NGINX and the **git-http-backend**.
+This is a complete config that uses NGINX, LETSENCRYPT (using https://acme.sh) and the **git-http-backend**.
 
 [gitlist.patrikx3.com.conf](artifacts/gitlist.patrikx3.com.conf)
 
