@@ -41,8 +41,8 @@ http://gitlist.patrikx3.com/
  
 [README](artifacts/php-7.2-ubuntu.md)
 
-## Package
-Done, just put on your server, nothing to build:   
+## Releases
+  
 https://github.com/patrikx3/gitlist/releases
 
 ### Web server
