@@ -37,7 +37,7 @@ http://gitlist.patrikx3.com/
 
 # Release version/update info
 
-### PHP 7 version installation
+### Ubuntu prior Bionic PHP 7 version installation
  
 [README](artifacts/php-7.2-ubuntu.md)
 
