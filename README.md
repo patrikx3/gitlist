@@ -50,14 +50,12 @@ This parse only the `public/index.php` file, no other PHP files, so that they ar
 
 [gitlist.patrikx3.com.conf](artifacts/gitlist.patrikx3.com.conf)
 
-## There is a changing break
-[README](change-break.md)
-
-# TODO and Change log
-
-[Change log](changelog.md) ...
-
-[TODO](todo.md) ...
+## FYI
+[Change log](changelog.md)  
+  
+[TODO](todo.md)  
+  
+[Change breaking code](change-break.md)
 
 # Development
 
@@ -78,7 +76,7 @@ In order to run GitList on your server, you'll need:
 * ```Apache``` with ```mod_rewrite``` enabled or ```nginx``` - preferred
 * ```PHP``` >= 7.1 
 
-## By hand
+## So, by hand
 
 If you have Composer in your path, things get easier. But you know the drill.
 
