@@ -46,6 +46,7 @@ https://github.com/patrikx3/gitlist/releases
 ### NGINX gitlist.patrikx3.com configs 
 
 This is a complete config that uses NGINX, LETSENCRYPT (using https://acme.sh) and the **git-http-backend**.
+This parse only the `public/index.php` file, no other PHP files, so that they are editable in `Decorated P3X GitList` as in the live demo.
 
 [gitlist.patrikx3.com.conf](artifacts/gitlist.patrikx3.com.conf)
 
