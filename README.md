@@ -104,6 +104,11 @@ npm install
 # in the ./public folder
 npm run watch
 
+# you might need the zip program
+# to create release
+sudo apt install -y zip
+
+
 # if you have bash and want to create a full release
 # and strip all unneeded files,
 # optimize the packagist vendor folder
