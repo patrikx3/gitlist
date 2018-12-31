@@ -96,6 +96,9 @@ php composer.phar install
 sudo npm install -g npm grunt-cli
 npm install
 
+# create some simple repos
+./scripts/init.sh
+
 # if you do not want to create a release
 # just work on it
 # now the js and css is built on the fly
