@@ -119,7 +119,7 @@ sudo apt install -y zip
 ./scripts/release.sh
 ```
 
-[Install](INSTALL.md) - here.
+[Original install information](INSTALL.md) - here.
 
 # Old info
 https://github.com/klaussilveira/gitlist
