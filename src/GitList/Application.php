@@ -53,6 +53,8 @@ class Application extends SilexApplication
         $this['http_user'] = $config->get('clone_button', 'http_user_dynamic') ? $_SERVER['PHP_AUTH_USER'] : $config->get('clone_button', 'http_user');
         $this['show_ssh_remote'] = $config->get('clone_button', 'show_ssh_remote');
         $this['ssh_user'] = $config->get('clone_button', 'ssh_user');
+        $this['git_http_subdir_calculated'] = $config->get('clone_button', 'git_http_subdir_calculated');
+        $this['git_http_subdir'] = $config->get('clone_button', 'git_http_subdir');
 
         // Register services
         $this->register(new TwigServiceProvider(), array(
@@ -133,8 +135,13 @@ class Application extends SilexApplication
             if (!is_int($codemirror_full_limit) || $codemirror_full_limit < 32) {
                 $codemirror_full_limit = 32;
             }
-
             $twig->addGlobal('codemirror_full_limit', $codemirror_full_limit);
+
+            $github_repo_changelog = (bool)$config->get('app', 'github_repo_changelog');
+            if (!is_bool($github_repo_changelog)) {
+                $github_repo_changelog = true;
+            }
+            $twig->addGlobal('github_repo_changelog', $github_repo_changelog);
 
 
             return $twig;
