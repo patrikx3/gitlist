@@ -25,7 +25,7 @@ All my domains (patrikx3.com and corifeus.com) could have errors, since I am dev
                         
 [//]: #@corifeus-header:end
 
-This is a new decorated enhanced GitList with web workers, editable/deletable files/directories, multiple themes (dark/light), sub-modules, uglify-es, webpack, toast, pure Bootstrap 3 and upgraded to PHP7.1 with all components.  
+This is a new decorated enhanced GitList with web workers, editable/deletable files/directories, multiple themes (dark/light), sub-modules, uglify-es, webpack, toast, pure Bootstrap 3 and upgraded since PHP7.1 with all components.  
 
 Becuase of the web workers, even a small router can use it with 64MB `PHP memory limit`.   
 
