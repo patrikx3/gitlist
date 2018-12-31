@@ -7,7 +7,7 @@
 # GitList Installation
 * Download GitList from [https://github.com/patrikx3/gitlist/releases](https://github.com/patrikx3/gitlist/releases/) and decompress to your `/var/www/gitlist` folder, or anywhere else you want to place GitList.
 * Rename the `config.example.ini-example` file to `config.ini`.
-* Open up the `config.ini` and configure your installation. You'll have to provide where your repositories are located and the base GitList URL (in our case, http://localhost/gitlist).
+* Open up the `config.ini` and configure your installation. You'll have to provide where your repositories are located and the base GitList URL.
 * Create the cache folder and give read/write permissions to your web server user:
 
 ```
@@ -116,7 +116,7 @@ UrlToolkit {
 
 ---
 
-[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2018.12.30-3 
+[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2018.12.30-4 
 
 [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software) [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) 
 

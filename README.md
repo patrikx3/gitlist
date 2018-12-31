@@ -7,7 +7,7 @@
 
 
  
-# 🤖 P3X Gitlist - A decorated enhanced elegant, feature rich and modern private git ui repository viewer  v2018.12.30-3    
+# 🤖 P3X Gitlist - A decorated enhanced elegant, feature rich and modern private git ui repository viewer  v2018.12.30-4    
 
   
 This is an open-source project. Star this repository, if you like it, or even donate! Thank you so much! :)
@@ -115,13 +115,13 @@ sudo apt install -y zip
 # optimize the packagist vendor folder
 # you might need zip from linux
 # the files will be in the ./build/release folder
-# and the zip is in the ./build/release/p3x-gitlist-a.b.c.zip file
+# and the zip is in the ./build/p3x-gitlist-a.b.c.zip file
 ./scripts/release.sh
 ```
 
-[Original install information](INSTALL.md) - here.
-
 # Old info
+[Original install information, although some new info is included](INSTALL.md) - here.
+
 https://github.com/klaussilveira/gitlist
 
 ### Last merge from `klaussilveira`
@@ -139,7 +139,7 @@ December 31, 2018
 
 ---
 
-[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2018.12.30-3 
+[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2018.12.30-4 
 
 [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software) [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) 
 
