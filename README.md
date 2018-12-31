@@ -57,6 +57,8 @@ This parse only the `public/index.php` file, no other PHP files, so that they ar
 
 # Development
 
+To make it easier to develop Gitter and GitList, we unified the two code into one.  
+
 ## Requirements
 
 By now `composer` is not enough. We are using `webpack`, `less`, `grunt` ...
@@ -124,11 +126,11 @@ https://github.com/klaussilveira/gitlist
 
 #### Gitlist
 https://github.com/klaussilveira/gitlist/commits/master  
-Nov 14, 2018
+December 31, 2018
 
 #### Gitter
 https://github.com/klaussilveira/gitter/commits/master  
-Jun 1, 2018
+December 31, 2018
 
 
 [//]: #@corifeus-footer
