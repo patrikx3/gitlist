@@ -97,6 +97,7 @@ sudo npm install -g npm grunt-cli
 npm install
 
 # create some simple repos
+# create a test config.ini
 ./scripts/init.sh
 
 # if you do not want to create a release
