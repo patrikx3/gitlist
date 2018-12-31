@@ -10,7 +10,7 @@
   * clone.git_http_subdir_calculated
     * true = it calculates to actual route/nested path by itself for the http clone button
   * git_http_subdir
-    * if git_http_subdir_calculated is false, then as the path is used as git_http_subdir variable
+    * if git_http_subdir_calculated is false, then the git_http_subdir variable uses as the path
 
 ## v2018.12.24
 * Added Python as markdown and CodeMirror
