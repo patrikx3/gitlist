@@ -110,7 +110,6 @@ npm run watch
 # to create release
 sudo apt install -y zip
 
-
 # if you have bash and want to create a full release
 # and strip all unneeded files,
 # optimize the packagist vendor folder
@@ -118,7 +117,6 @@ sudo apt install -y zip
 # the files will be in the ./build/release folder
 # and the zip is in the ./build/release/p3x-gitlist-a.b.c.zip file
 ./scripts/release.sh
-
 ```
 
 [Install](INSTALL.md) - here.
