@@ -5,6 +5,10 @@
                         
 [//]: #@corifeus-header:end
 
+## v2019.01.01
+* added a variable: app.fixed_navbar in config.inii
+  * you can set the navbar as fixed or not
+
 ## v2018.12.31
 * config.ini changes
   * clone.git_http_subdir_calculated
@@ -204,7 +208,7 @@ require('codemirror/mode/yaml/yaml');
 
 ---
 
-[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2018.12.31-3 
+[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2019.1.1-1 
 
 [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software) [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) 
 

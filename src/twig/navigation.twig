@@ -1,4 +1,4 @@
-<div class="navbar navbar-default navbar-fixed-top" id="p3x-gitlist-navigation" role="navigation">
+<div class="navbar navbar-default {{ app.fixed_navbar ? 'navbar-fixed-top' : ''}}" id="p3x-gitlist-navigation" role="navigation">
     <div class="container">
         <div class="navbar-header p3x-gitlist-navbar-header">
             <button type="button" id="p3x-gitlist-navigation-menu-button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -89,4 +89,6 @@
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-<div class="p3x-gitlist-header-height"></div>
+{% if app.fixed_navbar %}
+    <div class="p3x-gitlist-header-height"></div>
+{% endif %}
