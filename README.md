@@ -96,7 +96,7 @@ php composer.phar install
 sudo npm install -g npm grunt-cli
 npm install
 
-# create some simple repos
+# create some simple GIT repos
 # create a test config.ini
 ./scripts/init.sh
 
