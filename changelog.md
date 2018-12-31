@@ -5,10 +5,21 @@
                         
 [//]: #@corifeus-header:end
 
-## v2017.12.24
+## v2018.12.31
+* config.ini changes
+  * app.github_repo_changelog
+    * there is a menu in the github button
+    * there is a changelog button, if this is false
+    * the changelog button is hidden
+  * clone.git_http_subdir_calculated
+    * true = it calculates to actual route/nested path by itself for the http clone button
+  * git_http_subdir
+    * if git_http_subdir_calculated is false, then as the path is used as git_http_subdir variable
+
+## v2018.12.24
 * Added Python as markdown and CodeMirror
 
-## v2017.12.22
+## v2018.12.22
 * Added a top to bottom button
 
 ## v2018.12.21
@@ -197,7 +208,7 @@ require('codemirror/mode/yaml/yaml');
 
 ---
 
-[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2018.12.31-0 
+[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2018.12.31-1 
 
 [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software) [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) 
 
