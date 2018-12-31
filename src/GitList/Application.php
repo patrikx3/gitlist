@@ -137,12 +137,6 @@ class Application extends SilexApplication
             }
             $twig->addGlobal('codemirror_full_limit', $codemirror_full_limit);
 
-            $github_repo_changelog = (bool)$config->get('app', 'github_repo_changelog');
-            if (!is_bool($github_repo_changelog)) {
-                $github_repo_changelog = true;
-            }
-            $twig->addGlobal('github_repo_changelog', $github_repo_changelog);
-
 
             return $twig;
         });

@@ -65,12 +65,14 @@ $(function () {
         })
     }
 
+    /*
     const cookieShownChangelogName = 'p3x-gitlist-changelog-shown';
     const cookieShownChangelog = Cookies.get(cookieShownChangelogName)
     if (!cookieShownChangelog) {
         Cookies.set(cookieShownChangelogName, true, window.gitlist.cookieSettings)
         window.gitlist.changeLog()
     }
+    */
 
     $("#p3x-gitlist-to-top").click(function(event) {
         event.preventDefault();

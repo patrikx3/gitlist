@@ -7,10 +7,6 @@
 
 ## v2018.12.31
 * config.ini changes
-  * app.github_repo_changelog
-    * there is a menu in the github button
-    * there is a changelog button, if this is false
-    * the changelog button is hidden
   * clone.git_http_subdir_calculated
     * true = it calculates to actual route/nested path by itself for the http clone button
   * git_http_subdir
