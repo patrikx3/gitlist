@@ -55,7 +55,11 @@ class Application extends SilexApplication
         $this['http_user'] = str_replace('@', '%40', $this['http_user']);
 
         $this['show_ssh_remote'] = $config->get('clone_button', 'show_ssh_remote');
-        $this['ssh_user'] = $config->get('clone_button', 'ssh_user');
+
+
+        $this['ssh_user'] = $config->get('clone_button', 'ssh_user_dynamic') ? $_SERVER['PHP_AUTH_USER'] : $config->get('clone_button', 'ssh_user');
+
+
         $this['ssh_user'] = str_replace('@', '%40', $this['ssh_user']);
 
         $this['git_http_subdir_calculated'] = $config->get('clone_button', 'git_http_subdir_calculated');
