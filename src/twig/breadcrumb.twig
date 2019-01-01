@@ -98,7 +98,7 @@
                         <input readonly
                                type="text" class="form-control{{ app.show_ssh_remote ? ' visible' }}"
                                id="clone-input-ssh"
-                               value="git clone {{ app.ssh_user }}{{ app.ssh_user ? '@' }}{{ global.request.host }}:{{ app.ssh_clone_subdir }}{{ repo }}">
+                               value="git clone ssh://{{ app.ssh_user }}{{ app.ssh_user ? '@' }}{{ global.request.host }}:{{ app.ssh_clone_subdir }}{{ repo }}">
                     {% endif %}
                     {% if app.show_http_remote %}
                         <input type="text"
