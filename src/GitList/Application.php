@@ -56,6 +56,9 @@ class Application extends SilexApplication
 
         $this['show_ssh_remote'] = $config->get('clone_button', 'show_ssh_remote');
 
+        if (!isset($_SERVER['PHP_AUTH_USER'])) {
+            $_SERVER['PHP_AUTH_USER'] = '';
+        }
 
         $this['ssh_user'] = $config->get('clone_button', 'ssh_user_dynamic') ? $_SERVER['PHP_AUTH_USER'] : $config->get('clone_button', 'ssh_user');
 

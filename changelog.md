@@ -10,7 +10,9 @@
   * you can set the navbar as fixed or not
 * added an alert when on the editor to let the users some people are not liking the full height editor mode and switch to the scroll mode 
 * the http user and git user with @ are replaced with %40
-* added a new ssh variable so that the ssh clone button can be dynamic like the http_user_dynamic
+* added a new ssh variable so that the ssh clone button can be dynamic like the http_user_dynamic called ssh_user_dynamic
+* renamed the git_clone_subdir to ssh_clone_subdir, it make most sense
+
 
 ## v2018.12.31
 * config.ini changes
