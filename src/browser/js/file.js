@@ -71,6 +71,8 @@ $(function() {
 
         const $codeCodeMirroNormal = $('#p3x-gitlist-file-codemirror');
         const $codeCodeMirrorBig = $('#p3x-gitlist-file-codemirror-exceeded')
+        const $codeCodeMirrorFullHeight = $('#p3x-gitlist-file-codemirror-full-height');
+
         let value = sourceCode.text();
         const maxSize = window.gitlist.codemirror_full_limit;
         const size = Math.ceil(value.length / 1024);
@@ -217,6 +219,7 @@ $(function() {
             })
 
             const setScroll = () => {
+                $codeCodeMirrorFullHeight.hide()
                 $buttonFull.removeClass('active')
                 $buttonScroll.addClass('active')
                 $codeMirror.css('height', codeMirrorHeight)
@@ -230,6 +233,7 @@ $(function() {
             $buttonScroll.click(setScroll)
 
             const setFull = () => {
+                $codeCodeMirrorFullHeight.show()
                 $buttonScroll.removeClass('active')
                 $buttonFull.addClass('active')
                 $codeMirror.css('height', 'auto')
@@ -255,6 +259,8 @@ $(function() {
             const isReallyFull = currentSizing === 'full' && !disableFull;
             if (isReallyFull) {
                 setFull()
+
+
             } else {
                 setScroll()
             }
