@@ -9,12 +9,11 @@
 * added a variable: app.fixed_navbar in config.ini
   * you can set the navbar as fixed or not
 * added an alert when on the editor to let the users some people are not liking the full height editor mode and switch to the scroll mode 
-* the http user and git user with @ are replaced with %40
 * added a new ssh variable so that the ssh clone button can be dynamic like the http_user_dynamic called ssh_user_dynamic
 * renamed the git_clone_subdir to ssh_clone_subdir, it make most sense
 * in the git clone ssh button was missing the protocol (ssh://)
 * the RSS content type application/rss+xml is obsolete so I changed the content type to application/xml
-
+* the http_user and the ssh_user is url encoded
 
 ## v2018.12.31
 * config.ini changes
@@ -215,7 +214,7 @@ require('codemirror/mode/yaml/yaml');
 
 ---
 
-[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2019.1.1-15 
+[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2019.1.1-16 
 
 [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software) [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) 
 
