@@ -66,7 +66,7 @@
         "js-htmlencode": "^0.3.0",
         "list.js": "^1.5.0",
         "lodash": "^4.17.11",
-        "marked": "^0.5.2",
+        "marked": "^0.6.0",
         "moment": "^2.23.0",
         "php-date": "^2.1.1",
         "raphael": "^2.2.7",

@@ -114,7 +114,6 @@ sudo apt install -y zip
 # and strip all unneeded files,
 # optimize the packagist vendor folder
 # you might need zip from linux
-# the files will be in the ./build/release folder
 # and the zip is in the ./build/p3x-gitlist-a.b.c.zip file
 ./scripts/release.sh
 ```
