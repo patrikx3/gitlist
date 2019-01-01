@@ -10,7 +10,7 @@
   * you can set the navbar as fixed or not
 * added an alert when on the editor to let the users some people are not liking the full height editor mode and switch to the scroll mode 
 * added a new ssh variable so that the ssh clone button can be dynamic like the http_user_dynamic called ssh_user_dynamic
-* renamed the git_clone_subdir to ssh_clone_subdir, it make most sense
+* renamed the git_clone_subdir to ssh_clone_subdir, it makes more sense
 * in the git clone ssh button was missing the protocol (ssh://)
 * the RSS content type application/rss+xml is obsolete so I changed the content type to application/xml
 * the http_user and the ssh_user is url encoded
