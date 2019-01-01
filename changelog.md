@@ -9,6 +9,7 @@
 * added a variable: app.fixed_navbar in config.ini
   * you can set the navbar as fixed or not
 * added an alert when on the editor to let the users some people are not liking the full height editor mode and switch to the scroll mode 
+* the http user and git user with @ are replaced with %40
 
 ## v2018.12.31
 * config.ini changes
@@ -209,7 +210,7 @@ require('codemirror/mode/yaml/yaml');
 
 ---
 
-[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2019.1.1-6 
+[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2019.1.1-8 
 
 [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software) [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) 
 

@@ -51,8 +51,13 @@ class Application extends SilexApplication
         $this['use_https'] = $config->get('clone_button', 'use_https');
         $this['git_clone_subdir'] = $config->get('clone_button', 'git_clone_subdir');
         $this['http_user'] = $config->get('clone_button', 'http_user_dynamic') ? $_SERVER['PHP_AUTH_USER'] : $config->get('clone_button', 'http_user');
+
+        $this['http_user'] = str_replace('@', '%40', $this['http_user']);
+
         $this['show_ssh_remote'] = $config->get('clone_button', 'show_ssh_remote');
         $this['ssh_user'] = $config->get('clone_button', 'ssh_user');
+        $this['ssh_user'] = str_replace('@', '%40', $this['ssh_user']);
+
         $this['git_http_subdir_calculated'] = $config->get('clone_button', 'git_http_subdir_calculated');
         $this['git_http_subdir'] = $config->get('clone_button', 'git_http_subdir');
         $this['fixed_navbar'] = $config->get('app', 'fixed_navbar');
