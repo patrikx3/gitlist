@@ -14,7 +14,7 @@ Which is not secure.
 For now, you can create a folder eg. `/var/www/gitlist.me.com/` and make sure, that you server does not point to `/var/www/gitlist.me.com/`, but instead, point to `/var/www/gitlist.me.com/public`.
 
 ### Second
-The `config.ini` file with `url_subdir` or later `clone_subdir` variable has been changed to the `git_clone_subdir` variable.
+The `config.ini` file with `url_subdir` or later `clone_subdir` variable has been changed to the `ssh_clone_subdir` variable.
 
 ### Third 😀
 I removed `Babel`, we started to upgrade in 2018 on this repo. If you want use an older `Browser` (like iPhone 5), you can probably install latest `Chrome` and it will work.
