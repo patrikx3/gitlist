@@ -127,7 +127,7 @@ class MainController implements ControllerProviderInterface
                 'commits' => $commits,
             ));
 
-            return new Response($html, 200, array('Content-Type' => 'application/rss+xml'));
+            return new Response($html, 200, array('Content-Type' => 'application/xml'));
         })->assert('repo', $app['util.routing']->getRepositoryRegex())
             ->assert('branch', $app['util.routing']->getBranchRegex())
             ->value('branch', null)
