@@ -12,7 +12,7 @@
 * the http user and git user with @ are replaced with %40
 * added a new ssh variable so that the ssh clone button can be dynamic like the http_user_dynamic called ssh_user_dynamic
 * renamed the git_clone_subdir to ssh_clone_subdir, it make most sense
-
+* in the git clone ssh button was missing the protocol (ssh://)
 
 ## v2018.12.31
 * config.ini changes
