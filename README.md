@@ -36,12 +36,12 @@ Because of the web workers, even a small router can use it with 64MB `PHP memory
 
 # Live demo
 
-http://gitlist.patrikx3.com/
+[http://gitlist.patrikx3.com/](http://gitlist.patrikx3.com/)
 
 
 # Releases
   
-https://github.com/patrikx3/gitlist/releases  
+[https://github.com/patrikx3/gitlist/releases](https://github.com/patrikx3/gitlist/releases)  
 
 [Ubuntu prior Bionic PHP 7 version installation](artifacts/php-7.2-ubuntu.md)
 
@@ -136,6 +136,13 @@ December 31, 2018
 #### Gitter
 https://github.com/klaussilveira/gitter/commits/master  
 December 31, 2018
+
+# Promotion
+
+[https://patrikx3.github.io/gitlist/](https://patrikx3.github.io/gitlist/)  
+[https://gitlist.tk/](https://gitlist.tk/)  
+
+
 
 
 [//]: #@corifeus-footer
