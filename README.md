@@ -137,13 +137,11 @@ December 31, 2018
 https://github.com/klaussilveira/gitter/commits/master  
 December 31, 2018
 
-# Promotion
+# URL links
 
 [https://patrikx3.github.io/gitlist/](https://patrikx3.github.io/gitlist/)  
+[https://pages.corifeus.com/gitlist/](https://pages.corifeus.com/gitlist/)  
 [https://gitlist.tk/](https://gitlist.tk/)  
-
-
-
 
 [//]: #@corifeus-footer
 
