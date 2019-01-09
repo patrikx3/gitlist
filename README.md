@@ -9,7 +9,7 @@
 
 
  
-# 🤖 P3X Gitlist - A decorated enhanced elegant, feature rich and modern private git ui repository viewer  v2019.1.8-3    
+# 🤖 P3X Gitlist - A decorated enhanced elegant, feature rich and modern private git ui repository viewer  v2019.1.9-0    
 
   
 🙏 This is an open-source project. Star this repository, if you like it, or even donate to maintain the servers and the development. Thank you so much!
@@ -129,11 +129,11 @@ https://github.com/klaussilveira/gitlist
 
 #### Gitlist
 https://github.com/klaussilveira/gitlist/commits/master  
-December 31, 2018
+January 9, 2019
 
 #### Gitter
 https://github.com/klaussilveira/gitter/commits/master  
-December 31, 2018
+January 9, 2019
 
 # URL links
 
@@ -145,16 +145,16 @@ December 31, 2018
 
 ---
 
-[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2019.1.8-3 
+[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2019.1.9-0 
 
 [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software) [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) 
 
 
 ## P3X Sponsors
 
-[IntelliJ - The most intelligent Java IDE](https://www.jetbrains.com)
+[IntelliJ - The most intelligent Java IDE](https://www.jetbrains.com/?from=patrikx3)
   
-[![JetBrains](https://cdn.corifeus.com/assets/svg/jetbrains-logo.svg)](https://www.jetbrains.com/) [![NoSQLBooster](https://cdn.corifeus.com/assets/png/nosqlbooster-70x70.png)](https://www.nosqlbooster.com/)
+[![JetBrains](https://cdn.corifeus.com/assets/svg/jetbrains-logo.svg)](https://www.jetbrains.com/?from=patrikx3) [![NoSQLBooster](https://cdn.corifeus.com/assets/png/nosqlbooster-70x70.png)](https://www.nosqlbooster.com/)
 
 [The Smartest IDE for MongoDB](https://www.nosqlbooster.com)
   
