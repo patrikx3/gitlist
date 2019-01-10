@@ -9,7 +9,9 @@
 * added, on the repos list, sorting by name and last commit date - ascending/descending
 * added paging, there is a new `config.ini` variable in the `app` section named `repo_paging`
   * if `repo_paging = 0`, pagination is disabled
-  * otherwise the specified `repo_paging` / page is set
+  * otherwise the specified `repo_paging` / page is set, the default is 10
+* fixed some variables when they were not initialized
+* the logo was too big, not it is proper
 
 ## v2019.01.01
 * added a variable: app.fixed_navbar in config.ini
@@ -220,7 +222,7 @@ require('codemirror/mode/yaml/yaml');
 
 ---
 
-[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2019.1.10-2 
+[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2019.1.10-4 
 
 [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software) [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) 
 
