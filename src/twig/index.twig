@@ -4,17 +4,53 @@
 {% block body %}
 {% include 'navigation.twig' %}
 
+
 <div class="container" id="p3x-gitlist-index">
-    <div class="search form-group">
-        <div class="input-group">
-            <input class="search form-control" name="query-repo" placeholder="Search repositories" autofocus value=""/>
-            <span class="input-group-btn">
+
+    <div id="p3x-gitlist-index-flex" >
+        <div class="search form-group" id="p3x-gitlist-index-flex-search">
+            <div class="input-group">
+                <input class="search form-control" name="query-repo" placeholder="Search repositories" autofocus value=""/>
+                <span class="input-group-btn">
                 <button class="btn btn-default" type="button" id="p3x-gitlist-index-list-clear">
                     <i class="fas fa-times"></i>
                 </button>
+
             </span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="input-group">
+                <select class="form-control"  id="p3x-gitlist-index-list-sort-select">
+                    <option value="p3x-gitlist-index-name">
+                        Sort by name
+                    </option>
+                    <option value="p3x-gitlist-index-repo-last-commit-timestamp">
+                        Sort by last commit
+                    </option>
+                </select>
+                <span class="input-group-btn">
+                <button class="btn btn-default" type="button" id="p3x-gitlist-index-list-sort-order"></button>
+            </span>
+            </div>
         </div>
     </div>
+
+    <div class="p3x-gitlist-index-pagination-container">
+        <ul class="pagination p3x-gitlist-index-pagination p3x-gitlist-index-pagination-top">
+            <li>
+                <a class="page active" href="javascript:function Z(){Z=""}Z()">1</a>
+            </li>
+            <li>
+                <a class="page" href="javascript:function Z(){Z=""}Z()">2</a>
+            </li>
+            <li>
+                …
+            </li>
+        </ul>
+    </div>
+
     <!-- <button class="p3x-gitlist-index-sort btn btn-default"><i class="fas fa-sort"></i></button> -->
     <div class="list">
         {% for repository in repositories %}
@@ -33,6 +69,7 @@
                 <tr>
                     <td>
                         <a class="btn btn-link btn-sm pull-right p3x-gitlist-index-repo-last-commit" href="{{ path('commits', {repo: repository.name}) }}">
+                            <span class="p3x-gitlist-index-repo-last-commit-timestamp">{{ repository.timestamp }}</span>
                             <span class="p3x-gitlist-index-repo-last-commit-time">{{ repository.time }}</span>
                             by
                             <span class="p3x-gitlist-index-repo-last-commit-user">{{ repository.user }}</span>
@@ -57,6 +94,21 @@
         </table>
         {% endfor %}
     </div>
+
+    <div class="p3x-gitlist-index-pagination-container">
+        <ul class="pagination p3x-gitlist-index-pagination p3x-gitlist-index-pagination-bottom">
+            <li>
+                <a class="page active" href="javascript:function Z(){Z=""}Z()">1</a>
+            </li>
+            <li>
+                <a class="page" href="javascript:function Z(){Z=""}Z()">2</a>
+            </li>
+            <li>
+                …
+            </li>
+        </ul>
+    </div>
+
 
 
     {% include 'footer.twig' %}

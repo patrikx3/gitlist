@@ -6,4 +6,30 @@
   .p3x-gitlist-index-reponame {
     padding-left: 0px;
   }
+
+  .p3x-gitlist-index-repo-last-commit-timestamp {
+    visibility: hidden;
+  }
+
+  @media only screen and (min-width : @screen-xs-min) {
+    #p3x-gitlist-index-flex {
+      display: flex;
+    }
+
+    #p3x-gitlist-index-flex-search {
+      flex-grow: 1;
+    }
+  }
+
+  .p3x-gitlist-index-pagination {
+    margin-top: 0;
+    text-align: center;
+  }
+
+  .p3x-gitlist-index-pagination-container {
+    display: flex;
+    justify-content: center;
+  }
+
+
 }

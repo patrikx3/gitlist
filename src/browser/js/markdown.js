@@ -43,7 +43,7 @@ markdownRenderer.link = function(href, title, text) {
         a = '<a target="_blank" href="' + href + '">' + text + '</a>';
     } else {
         // /ramdisk.git/tree/master/artifacts/
-        console.log(href)
+        //console.log(href)
         const start = gitlist.basepath + '/' + gitlist.repo + (href.endsWith('/') ? '/tree/' : '/blob/' ) +  gitlist.branch + '/';
         if (!location.pathname.startsWith(start)) {
             href = start + href;
