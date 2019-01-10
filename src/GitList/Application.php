@@ -50,7 +50,7 @@ class Application extends SilexApplication
         $this['show_http_remote'] = $config->get('clone_button', 'show_http_remote');
         $this['use_https'] = $config->get('clone_button', 'use_https');
         $this['ssh_clone_subdir'] = $config->get('clone_button', 'ssh_clone_subdir');
-        $this['repo_paging'] = $config->get('app', 'repo_paging');
+        $this['repo_paging'] = $config->get('app', 'repo_paging') ? $config->get('app', 'repo_paging') : 5;
 
         if (!isset($_SERVER['PHP_AUTH_USER'])) {
             $_SERVER['PHP_AUTH_USER'] = '';
@@ -62,9 +62,9 @@ class Application extends SilexApplication
 
         $this['ssh_user'] = $config->get('clone_button', 'ssh_user_dynamic') ? $_SERVER['PHP_AUTH_USER'] : $config->get('clone_button', 'ssh_user');
 
-        $this['git_http_subdir_calculated'] = $config->get('clone_button', 'git_http_subdir_calculated');
-        $this['git_http_subdir'] = $config->get('clone_button', 'git_http_subdir');
-        $this['fixed_navbar'] = $config->get('app', 'fixed_navbar');
+        $this['git_http_subdir_calculated'] = $config->get('clone_button', 'git_http_subdir_calculated') ? $config->get('clone_button', 'git_http_subdir_calculated') : true;
+        $this['git_http_subdir'] = $config->get('clone_button', 'git_http_subdir') ?  $config->get('clone_button', 'git_http_subdir') : '';
+        $this['fixed_navbar'] = $config->get('app', 'fixed_navbar') ? $config->get('app', 'fixed_navbar') : true;
 
         // Register services
         $this->register(new TwigServiceProvider(), array(
