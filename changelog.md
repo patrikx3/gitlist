@@ -13,8 +13,8 @@
 * added paging, there is a new `config.ini` variable in the `app` section named `repo_paging`
   * if `repo_paging = 0`, pagination is disabled
   * otherwise the specified `repo_paging` / page is set, the default is 10
-* fixed some variables when they were not initialized
-* the logo was too big, not it is proper
+* fixed some variables, when they were not initialized
+* the logo was too big, now it is proper
 
 ## v2019.01.01
 * added a variable: app.fixed_navbar in config.ini
