@@ -7,6 +7,7 @@ require('./global/git')
 require('./global/input')
 require('./global/snackbar')
 require('./global/theme')
+require('./global/is-bot')
 
 
 $(function () {

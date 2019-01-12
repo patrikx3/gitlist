@@ -6,7 +6,11 @@ $(function() {
 
     if ($(`#${id}`).length) {
 
-        const paging = parseInt(window.gitlist.repoPaging)
+        let paging = parseInt(window.gitlist.repoPaging)
+
+        if(window.gitlist.isBot()) {
+            paging = 0
+        }
 
         const Cookies = require('js-cookie');
 
