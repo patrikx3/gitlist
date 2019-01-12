@@ -20,6 +20,7 @@ $(function() {
         const times = $('.p3x-gitlist-index-repo-last-commit > .p3x-gitlist-index-repo-last-commit-time')
         const timesContainer = $('.p3x-gitlist-index-repo-last-commit')
         const timesContainerEmpty = $('.p3x-gitlist-index-repo-last-commit-empty')
+
         for(let timeindex in times) {
             const time = times[timeindex]
             if (String(time.innerText).trim() === '') {
@@ -31,18 +32,12 @@ $(function() {
             }
         }
 
-        input.keypress(() => {
+        const inputHandler = () => {
             Cookies.set(cookieName, input.val(), window.gitlist.cookieSettings)
-        })
-        input.change(() => {
-            Cookies.set(cookieName, input.val(), window.gitlist.cookieSettings)
-        })
-        input.keydown(() => {
-            Cookies.set(cookieName, input.val(), window.gitlist.cookieSettings)
-        })
-        input.keydown(() => {
-            Cookies.set(cookieName, input.val(), window.gitlist.cookieSettings)
-        })
+        }
+        for (let ev of ['change', 'keydown']) {
+            input.on(ev, inputHandler);
+        }
         input.val(value);
 
         const listOptions = {
@@ -51,23 +46,40 @@ $(function() {
 //            sortClass: 'p3x-gitlist-index-sort',
         };
 
-        if (paging !== 0) {
+        let showPaging = false;
+        if (paging !== 0 && times.length > paging) {
+            showPaging = true;
             listOptions.page = paging
             listOptions.pagination =  [{
                 name: "p3x-gitlist-index-pagination-top",
                 paginationClass: "p3x-gitlist-index-pagination-top",
-                outerWindow: 2
+                innerWindow: 2,
+                left: 1,
+                right: 1
             }, {
+                name: "p3x-gitlist-index-pagination-bottom",
                 paginationClass: "p3x-gitlist-index-pagination-bottom",
-                innerWindow: 3,
-                left: 2,
-                right: 4
+                innerWindow: 2,
+                left: 1,
+                right: 1,
             }]
         } else {
             $('.p3x-gitlist-index-pagination-container').hide()
         }
 
         const list = new List(id, listOptions);
+        const $pager = $('#p3x-gitlist-index-pagination-top')
+        list.on('updated', () => {
+            if (showPaging) {
+                const items = $pager.find('li')
+                if (items.length < 2) {
+                    $('.p3x-gitlist-index-pagination-container').hide()
+                } else {
+                    $('.p3x-gitlist-index-pagination-container').show()
+                }
+            }
+        })
+
         if (value !== undefined) {
             list.search(value);
         }
