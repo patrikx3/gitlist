@@ -84,7 +84,7 @@ If you have Composer in your path, things get easier. But you know the drill.
 
 If want to get the project dependencies, and build everything:
 
-```
+```bash
 # ubuntu
 # https://github.com/nodesource/distributions/blob/master/README.md#debinstall
 curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash -
@@ -140,6 +140,7 @@ January 9, 2019
 [https://patrikx3.github.io/gitlist/](https://patrikx3.github.io/gitlist/)  
 [https://pages.corifeus.com/gitlist/](https://pages.corifeus.com/gitlist/)  
 [https://gitlist.tk/](https://gitlist.tk/)  
+[Git Wiki Kernel Web Interfaces](https://git.wiki.kernel.org/index.php/Interfaces,_frontends,_and_tools#Web_Interfaces)  
 
 [//]: #@corifeus-footer
 
