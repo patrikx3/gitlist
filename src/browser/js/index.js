@@ -45,7 +45,7 @@ $(function() {
         input.val(value);
 
         const listOptions = {
-            valueNames: ['p3x-gitlist-index-name', 'p3x-gitlist-index-description', 'p3x-gitlist-index-repo-last-commit', 'p3x-gitlist-index-repo-last-commit-timestamp'],
+            valueNames: ['p3x-gitlist-index-name', 'p3x-gitlist-index-description', 'p3x-gitlist-index-repo-last-commit-timestamp', 'p3x-gitlist-index-repo-last-commit-user', 'p3x-gitlist-index-repo-last-commit-time'],
             indexAsync: true,
 //            sortClass: 'p3x-gitlist-index-sort',
         };

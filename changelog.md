@@ -5,6 +5,9 @@
                         
 [//]: #@corifeus-header:end
 
+## v2019.01.15
+* FIX: the index page search was not working 100% exactly
+
 ## v2019.01.12
 * FEATURE: on the index page pager, when there is just one page, the button is hidden
 * FIX: repo_paging variables default was 5 instead of 10
@@ -227,7 +230,7 @@ require('codemirror/mode/yaml/yaml');
 
 ---
 
-[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2019.1.12-3 
+[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2019.1.15-0 
 
 [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software) [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) 
 
