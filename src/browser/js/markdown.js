@@ -83,7 +83,7 @@ markdownRenderer.image = function(href, title, text) {
         }
     }
 
-    const  result = '<a target="_blank" href="' + href + '"><img class="p3x-gitlist-markdown-image" alt="' + htmlEncode(resultText) + '" title="' + htmlEncode(resultText) + '" src="' + href + '"/></a>';
+    const  result = '<img class="p3x-gitlist-markdown-image" alt="' + htmlEncode(resultText) + '" title="' + htmlEncode(resultText) + '" src="' + href + '"/>';
 
     return result;
 };
