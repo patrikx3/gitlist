@@ -1,6 +1,6 @@
 {
     "name": "p3x-gitlist",
-    "version": "2019.1.15-1",
+    "version": "2019.1.19-1",
     "corifeus": {
         "prod-dir": "prod",
         "css-postfix": "4039a8d7750bcd851512aaad9b07f134f2a393360a5ec3a091cb8f3b06934e9c",
@@ -11,7 +11,7 @@
         "cdn": true,
         "icon": "fas fa-code",
         "code": "Spawn",
-        "nodejs": "v11.6.0",
+        "nodejs": "v11.7.0",
         "reponame": "gitlist",
         "build": true
     },
@@ -29,8 +29,8 @@
     "devDependencies": {
         "bootswatch": "^3.3.7",
         "concurrently": "^4.1.0",
-        "corifeus-builder": "^2019.1.9-1",
-        "corifeus-utils": "^2019.1.9-1",
+        "corifeus-builder": "^2019.1.19-1",
+        "corifeus-utils": "^2019.1.19-1",
         "css-loader": "^2.1.0",
         "extract-text-webpack-plugin": "^4.0.0-beta.0",
         "file-loader": "^3.0.1",
@@ -47,7 +47,7 @@
         "style-loader": "^0.23.1",
         "terser-webpack-plugin": "^1.2.1",
         "url-loader": "^1.1.2",
-        "webpack": "^4.28.3",
+        "webpack": "^4.28.4",
         "webpack-cli": "^3.2.1"
     },
     "engines": {

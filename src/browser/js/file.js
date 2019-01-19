@@ -73,6 +73,13 @@ $(function() {
         const $codeCodeMirrorBig = $('#p3x-gitlist-file-codemirror-exceeded')
         const $codeCodeMirrorFullHeight = $('#p3x-gitlist-file-codemirror-full-height');
 
+        const fullHeightCookieName = 'p3x-gitlist-codemirror-full-height';
+        let fullHeightCookie = Cookies.get(fullHeightCookieName)
+
+        if (fullHeightCookie !== undefined) {
+            $codeCodeMirrorFullHeight.remove();
+        }
+
         let value = sourceCode.text();
         const maxSize = window.gitlist.codemirror_full_limit;
         const size = Math.ceil(value.length / 1024);
@@ -219,6 +226,10 @@ $(function() {
             })
 
             const setScroll = () => {
+                if (fullHeightCookie !== undefined) {
+                    $codeCodeMirrorFullHeight.remove()
+                }
+
                 $codeCodeMirrorFullHeight.hide()
                 $buttonFull.removeClass('active')
                 $buttonScroll.addClass('active')
@@ -234,6 +245,10 @@ $(function() {
 
             const setFull = () => {
                 $codeCodeMirrorFullHeight.show()
+
+                fullHeightCookie = true
+                Cookies.set(fullHeightCookieName, true, window.gitlist.cookieSettingsShort)
+
                 $buttonScroll.removeClass('active')
                 $buttonFull.addClass('active')
                 $codeMirror.css('height', 'auto')

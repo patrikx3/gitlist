@@ -5,6 +5,9 @@
                         
 [//]: #@corifeus-header:end
 
+## v2019.01.18
+* FEATURE: the codemirror full height option has an alert, that is only shown on every week, not every time
+
 ## v2019.01.15
 * FIX: the index page search was not working 100% exactly
 
@@ -77,7 +80,7 @@
 * Markdown, twemoji on commits
 * Fix long commits
 * Display SVG files, while you can edit it as well
-* The network dots were small, now big ones with 10 radius, 20px;
+                   * The network dots were small, now big ones with 10 radius, 20px;
 * Delete files
 * grunt-contrib-less - 2 is missing the `@path` variable
 * add change log display
@@ -160,7 +163,7 @@ require('codemirror/mode/yaml/yaml');
 ```
 
 ## v1.1.6
-* All `PHP` files will be in the `root` and only `index.php`, `images`, `icons`, `svg`, `css`, `js`bundle files will be in the `public` subdir.
+* All `PHP` files will be in the `root` and only `index.php`, `images`, `icons`, `svg`, `css`, `js` bundle files will be in the `public` subdir.
 
 ## v1.1.5
 * Removed old `clone` button modal popup, using `Bootstrap` only
@@ -230,7 +233,7 @@ require('codemirror/mode/yaml/yaml');
 
 ---
 
-[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2019.1.15-0 
+[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2019.1.19-0 
 
 [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software) [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) 
 
