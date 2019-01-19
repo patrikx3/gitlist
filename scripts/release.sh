@@ -6,7 +6,7 @@ set -e
 
 version=$( node -e "console.log(require('$TOP/package.json').version)" )
 pkg_name=$( node -e "console.log(require('$TOP/package.json').name)" )
-name=$pkg_name-$version
+name=$pkg_name-v$version
 repo=$TOP/build/$name
 
 pushd $TOP
