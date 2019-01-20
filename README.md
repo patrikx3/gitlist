@@ -137,9 +137,16 @@ January 9, 2019
 
 # URL links
 
+[P3X Gitlist playground](https://patrikx3.com/hu/ajto/jatszoter/19/p3x-gitlist#PG19)  
+
+[Corifeus P3X Gitlist pages](https://pages.corifeus.com/gitlist/)  
+
+[AlternativeTo Gitlist](https://alternativeto.net/software/p3x-gitlist/)  
+
 [https://patrikx3.github.io/gitlist/](https://patrikx3.github.io/gitlist/)  
-[https://pages.corifeus.com/gitlist/](https://pages.corifeus.com/gitlist/)  
+
 [https://gitlist.tk/](https://gitlist.tk/)  
+
 [Git Wiki Kernel Web Interfaces](https://git.wiki.kernel.org/index.php/Interfaces,_frontends,_and_tools#Web_Interfaces)  
 
 [//]: #@corifeus-footer
