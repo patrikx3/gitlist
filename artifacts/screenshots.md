@@ -5,16 +5,21 @@
                         
 [//]: #@corifeus-header:end
 
-# Install PHP 7.2 on Ubuntu before Bionic
 
-```bash
-sudo add-apt-repository ppa:ondrej/php
-# enter (empty)
+![Screenshot 1](https://cdn.corifeus.com/git/gitlist/artifacts/screenshots/p3x-gitlist-1.jpeg)
 
-sudo apt update
-sudo apt install -y php7.2
-sudo apt upgrade -y
-```
+![Screenshot 2](https://cdn.corifeus.com/git/gitlist/artifacts/screenshots/p3x-gitlist-2.jpeg)
+
+![Screenshot 3](https://cdn.corifeus.com/git/gitlist/artifacts/screenshots/p3x-gitlist-3.jpeg)
+
+![Screenshot 4](https://cdn.corifeus.com/git/gitlist/artifacts/screenshots/p3x-gitlist-4.jpeg)
+
+![Screenshot 5](https://cdn.corifeus.com/git/gitlist/artifacts/screenshots/p3x-gitlist-5.jpeg)
+
+![Screenshot 6](https://cdn.corifeus.com/git/gitlist/artifacts/screenshots/p3x-gitlist-6.jpeg)
+
+![Screenshot 7](https://cdn.corifeus.com/git/gitlist/artifacts/screenshots/p3x-gitlist-7.jpeg)
+
 
 [//]: #@corifeus-footer
 

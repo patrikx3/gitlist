@@ -9,14 +9,14 @@
 
 
  
-# 🤖 P3X Gitlist - A decorated enhanced elegant, feature rich and modern private git ui repository viewer  v2019.1.23-0    
+# 🤖 P3X Gitlist - A decorated enhanced elegant, feature rich and modern private git ui repository viewer  v2019.1.23-6    
 
   
 🙏 This is an open-source project. Star this repository, if you like it, or even donate to maintain the servers and the development. Thank you so much!
 
 I run my own server with dynamic IP address, so, it may happen, that the server can not be reachable for about max 15 minutes, due to nature of the dynamic DNS. The server may also be unreachable, when I backup the SSD with Clonzilla (very rarely) or an electrical issue (but this should not happen again). When the server is down, please hang on for 15-30 minutes and the server will be back up.
 
-All my domains (patrikx3.com and corifeus.com) could have errors, since I am developing in my free time. However, it is usually stable.
+All my domains ([patrikx3.com](https://patrikx3.com) and [corifeus.com](https://corifeus.com)) could have errors, since I am developing in my free time. However, it is usually stable.
 
 **Bugs are evident™ - MATRIX️**  
     
@@ -36,12 +36,14 @@ Because of the web workers, even a small router can use it with 64MB `PHP memory
 
 [http://gitlist.patrikx3.com/](http://gitlist.patrikx3.com/)
 
+[Screenshots](artifacts/screenshots.md)
 
 # Releases
   
 [https://github.com/patrikx3/gitlist/releases](https://github.com/patrikx3/gitlist/releases)  
 
 [Ubuntu prior Bionic PHP 7 version installation](artifacts/php-7.2-ubuntu.md)
+
 
 ### NGINX gitlist.patrikx3.com configs 
 
@@ -137,23 +139,27 @@ January 9, 2019
 
 # URL links
 
-[P3X Gitlist playground](https://patrikx3.com/hu/ajto/jatszoter/19/p3x-gitlist#PG19)  
+[P3X Gitlist playground](https://patrikx3.com/en/front/playground/19/p3x-gitlist#PG19)  
 
 [Corifeus P3X Gitlist pages](https://pages.corifeus.com/gitlist/)  
 
 [AlternativeTo Gitlist](https://alternativeto.net/software/p3x-gitlist/)  
 
-[https://patrikx3.github.io/gitlist/](https://patrikx3.github.io/gitlist/)  
+[Github.io Gitlist](https://patrikx3.github.io/gitlist/)  
 
-[https://gitlist.tk/](https://gitlist.tk/)  
+[Gitlist.tk](https://gitlist.tk/gitlist.git/blob/master/README.md)  
 
 [Git Wiki Kernel Web Interfaces](https://git.wiki.kernel.org/index.php/Interfaces,_frontends,_and_tools#Web_Interfaces)  
+
+
+[//]: https://betapage.co/startup/p3x-gitlist
+
 
 [//]: #@corifeus-footer
 
 ---
 
-[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2019.1.23-0 
+[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2019.1.23-6 
 
 [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software) [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) 
 
