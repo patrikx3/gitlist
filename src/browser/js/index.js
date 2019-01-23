@@ -84,10 +84,6 @@ $(function() {
             }
         })
 
-        if (value !== undefined) {
-            list.search(value);
-        }
-
         const inputSortOrder = $('#p3x-gitlist-index-list-sort-order')
         const inputSortSelect = $('#p3x-gitlist-index-list-sort-select')
         const cookieNameSortSelect = 'p3x-gitlist-repo-sort-select';
@@ -142,6 +138,13 @@ $(function() {
             input.val('');
             list.search('')
         })
+
+        if (value !== undefined) {
+            setTimeout(() => {
+                list.search(value);
+            }, 250)
+        }
+
 
     }
 })
