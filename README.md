@@ -27,9 +27,7 @@ All my domains ([patrikx3.com](https://patrikx3.com) and [corifeus.com](https://
                         
 [//]: #@corifeus-header:end
 
-This is a new decorated enhanced GitList with web workers, editable/deletable files/directories, multiple themes (dark/light), sub-modules, uglify-es, webpack, toast, pure Bootstrap 3 and upgraded since PHP7.1 with all components.  
-
-Because of the web workers, even a small router can use it with 64MB `PHP memory limit`.   
+P3X Enhanced GitList is a fork of the klaussilveira Gitlist. What is different about is, that it requires/uses the latest PHP version, works with sub-modules. Update all dependencies with monthly release. With big GIT repos/commits, it works with 64Mb memory (some Twig templates are removed and moved to the client and web workers - eg. huge diffs). You will love it to work it on OpenWrt. Provides multiple themes with dark mode - 11 light and 5 dark. Code editor with syntax highlighting, editable files. All changes in the original fork are synced with the enhanced version. 100% responsive with Bootstrap 3. Latest Fontawesome for icons. The markdown engine uses Emojis with Twitter's Emojis. Besides, the commits and logs are parsed as Markdown and Emojis. 
 
 
 # Live demo
