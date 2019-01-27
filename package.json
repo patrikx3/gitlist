@@ -1,6 +1,6 @@
 {
     "name": "p3x-gitlist",
-    "version": "2019.1.23-7",
+    "version": "2019.1.27-0",
     "corifeus": {
         "prod-dir": "prod",
         "css-postfix": "4039a8d7750bcd851512aaad9b07f134f2a393360a5ec3a091cb8f3b06934e9c",
@@ -11,7 +11,7 @@
         "cdn": true,
         "icon": "fas fa-code",
         "code": "Spawn",
-        "nodejs": "v11.7.0",
+        "nodejs": "v11.8.0",
         "reponame": "gitlist",
         "build": true
     },

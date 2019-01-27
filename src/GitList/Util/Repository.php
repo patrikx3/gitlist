@@ -10,11 +10,12 @@ class Repository
 
     protected $defaultFileTypes = [
         'php' => 'php',
-        'c' => 'clike',
-        'h' => 'clike',
-        'cpp' => 'clike',
-        'm' => 'clike',
-        'mm' => 'clike',
+        'c' => 'text/x-csrc',
+        'h' => 'text/x-c++src',
+        'cpp' => 'text/x-c++src',
+        'cc' => 'text/x-c++src',
+        'm' => 'text/x-objectivec',
+        'mm' => 'text/x-objectivec',
         'ino' => 'clike',
         'cs' => 'text/x-csharp',
         'java' => 'text/x-java',
