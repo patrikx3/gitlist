@@ -4,7 +4,8 @@ language: php
 php:
 - '7.1'
 - '7.2'
-- nightly
+- '7.3'
+#- nightly
 before_install:
 - composer config --global github-oauth.github.com $GITHUB_TOKEN
 before_script:
