@@ -51,7 +51,8 @@ $(() => {
                         const diffs = diffsResponseJson[0];
                         loaderAjax.hide()
                         loaderWebworker.show()
-                        const worker = new Worker(`${window.gitlist.basepath}/web-worker/commit-diff.js`);
+                        const Worker = require(`./web-worker/commit-diff.worker`);
+                        const worker = new Worker();
                         worker.addEventListener('message', function (event) {
                             loader.hide();
                             scroller.append(event.data)
@@ -66,7 +67,6 @@ $(() => {
                         worker.postMessage({
                             diffs : diffs,
                             basepath: window.gitlist.basepath,
-                            htmlEncode: window.htmlEncode.toString(),
                         });
                     }
                 }).catch(window.gitlist.ajaxErrorHandler)

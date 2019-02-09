@@ -38,11 +38,11 @@
                     <button id="p3x-gitlist-file-button-edit" class="btn btn-sm btn-info">
                         <span class="fa fa-edit"></span> Edit
                     </button>
-                    <button id="p3x-gitlist-file-button-edit-cancel" class="btn btn-sm btn-warning">
-                        <i class="fas fa-eraser"></i> Cancel
-                    </button>
                     <button id="p3x-gitlist-file-button-edit-save" class="btn btn-sm btn-info">
                         <span class="fa fa-save"></span> Save
+                    </button>
+                    <button id="p3x-gitlist-file-button-edit-cancel" class="btn btn-sm btn-warning">
+                        <i class="fas fa-eraser"></i> Cancel
                     </button>
 
                     {% embed 'modal/modal-commit.twig' with { type: 'commit', title: 'Commit', bodyTitle: 'Are you sure to commit this change?', wrapForm: true } %}

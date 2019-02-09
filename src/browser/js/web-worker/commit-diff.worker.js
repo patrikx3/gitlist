@@ -4,7 +4,7 @@ const showNumber = (lineInfo) => {
     return first === ' ' || first === '@' || first === '-' || first === '+';
 }
 
-let htmlEncode
+const htmlEncode = require('js-htmlencode')
 
 const construct = (data) => {
     const diffs = data.diffs
@@ -52,7 +52,6 @@ const construct = (data) => {
 }
 
 onmessage = function(e) {
-    eval(`htmlEncode = ${e.data.htmlEncode}`)
     const result = construct(e.data);
     postMessage(result)
 }

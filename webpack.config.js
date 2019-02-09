@@ -161,6 +161,10 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.worker\.js$/,
+                use: { loader: 'worker-loader' }
+            },
+            {
                 test: /\.less$/,
                 use: [{
                     loader: 'style-loader' ,
