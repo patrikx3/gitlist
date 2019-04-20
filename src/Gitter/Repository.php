@@ -918,7 +918,7 @@ class Repository
                 continue;
             }
 
-            preg_match_all('/([\w-._]+):([^:]+):([0-9]+):(.+)/', $result, $matches, PREG_SET_ORDER);
+            preg_match_all('/([\w\-._]+):([^:]+):([0-9]+):(.+)/', $result, $matches, PREG_SET_ORDER);
 
             if (isset($matches[0])) {
                 $data['branch'] = $matches[0][1];

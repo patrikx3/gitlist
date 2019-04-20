@@ -9,7 +9,7 @@
 
 
  
-# 🤖 P3X Gitlist - A decorated enhanced elegant, feature rich and modern private git ui repository viewer  v2019.4.6    
+# 🤖 P3X Gitlist - A decorated enhanced elegant, feature rich and modern private git ui repository viewer  v2019.4.8    
 
   
 🙏 This is an open-source project. Star this repository, if you like it, or even donate to maintain the servers and the development. Thank you so much!
@@ -132,11 +132,11 @@ https://github.com/klaussilveira/gitlist
 
 #### Gitlist
 https://github.com/klaussilveira/gitlist/commits/master  
-January 9, 2019
+April 20, 2019
 
 #### Gitter
 https://github.com/klaussilveira/gitter/commits/master  
-January 9, 2019
+April 20, 2019
 
 # URL links
 
@@ -160,7 +160,7 @@ January 9, 2019
 
 ---
 
-[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2019.4.6 
+[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2019.4.8 
 
 [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software) 
 
