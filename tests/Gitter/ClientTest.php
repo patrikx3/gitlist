@@ -12,7 +12,7 @@ class ClientTest extends TestCase
     public static $tmpdir;
     protected $client;
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass() : void
     {
         if (getenv('TMP')) {
             self::$tmpdir = getenv('TMP');
@@ -32,7 +32,7 @@ class ClientTest extends TestCase
         }
     }
 
-    public function setUp()
+    public function setUp() : void
     {
         if (!is_writable(self::$tmpdir)) {
             $this->markTestSkipped('There are no write permissions in order to create test repositories.');
@@ -95,7 +95,7 @@ class ClientTest extends TestCase
         $repository->getClient()->run($repository, 'wrong');
     }
 
-    public static function tearDownAfterClass()
+    public static function tearDownAfterClass() : void
     {
         $fs = new Filesystem();
         $fs->remove(self::$tmpdir);

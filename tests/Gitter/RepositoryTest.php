@@ -15,7 +15,7 @@ class RepositoryTest extends TestCase
 
     protected $client;
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass() : void
     {
         if (getenv('TMP')) {
             self::$tmpdir = getenv('TMP');
@@ -35,7 +35,7 @@ class RepositoryTest extends TestCase
         }
     }
 
-    public function setUp()
+    public function setUp() : void
     {
         if (!is_writable(self::$tmpdir)) {
             $this->markTestSkipped('There are no write permissions in order to create test repositories.');
@@ -45,7 +45,7 @@ class RepositoryTest extends TestCase
         $this->client = new Client($path);
     }
 
-    public function tearDown ()
+    public function tearDown () : void
     {
         \Mockery::close();
     }
@@ -492,7 +492,7 @@ class RepositoryTest extends TestCase
 	}
 
 
-    public static function tearDownAfterClass()
+    public static function tearDownAfterClass() : void
     {
         $fs = new Filesystem();
         $fs->remove(self::$tmpdir);
