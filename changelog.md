@@ -6,7 +6,7 @@
 [//]: #@corifeus-header:end
 
 ### v2019.4.14
-* FEATURE: the balme view was totally wrong
+* FEATURE: the blame view was totally wrong
 * CHROE: upgraded Bootstrap to v3.4.1
 
 ### v2019.4.8
