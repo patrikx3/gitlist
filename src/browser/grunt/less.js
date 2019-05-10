@@ -17,7 +17,7 @@ const lessSettings = (grunt) => {
             compress: true,
         },
         get files() {
-            const files = glob.sync(`${cwd}/src/browser/less/**/*.*`)
+            let files = glob.sync(`${cwd}/src/browser/less/**/*.*`)
             let string = ''
             for (let filename of files) {
                 string += fs.readFileSync(filename, 'utf8')
@@ -51,7 +51,7 @@ const lessSettings = (grunt) => {
                     'default',
                     'solar',
                 ];
-                const excluded = ['fonts'];
+                const excluded = ['fonts', '.github', 'docs'];
 
                 // css with random
                 const themeCss = {

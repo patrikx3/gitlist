@@ -1,3 +1,5 @@
+
+/*
 .p3x-gitlilst-file-fragment-heading-right {
 
   float: right;
@@ -18,6 +20,8 @@
 
   }
 }
+*/
+@fontSize: 12px;
 
 .p3x-gitlist-file-fragment-text {
   overflow-x: auto;
@@ -25,4 +29,31 @@
   margin: 0;
   padding-bottom: 0;
   padding-top: 0;
+  font-family: monospace;
+  font-size: @fontSize;
+}
+
+.p3x-gitlist-file-fragment-blame-line {
+  font-family: monospace;
+  font-size: @fontSize;
+  display: flex;
+  max-width: 100%;
+  overflow-x: auto;
+  clear: both;
+  border-top: 1px solid @list-group-border;
+  border-left: 1px solid @list-group-border;
+  border-right: 1px solid @list-group-border;
+}
+
+.p3x-gitlist-file-fragment-blame-line-header {
+  @width: 100px;
+  padding-left: @padding-base-vertical;
+  background-color: rgba(@list-group-border, 0.4);
+  float: left;
+  width: @width;
+  min-width: @width;
+}
+
+.p3x-gitlist-file-fragment-blame-line-content {
+
 }
