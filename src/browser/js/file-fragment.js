@@ -1,3 +1,4 @@
+/*
 $(() => {
     const $fragmentFilePanel = $('.p3x-gitlist-file-fragment-panel')
     if ($fragmentFilePanel.length > 0) {
@@ -42,7 +43,7 @@ $(() => {
                 location.hash = hash
                 $buttonToggleCodeMirror.get(0).scrollIntoView()
                 */
-
+/*
                 $buttonToggleCodeMirrorCurrent = $buttonToggleCodeMirror
                 $textCurrent = $text;
                 $textareaCurrent = $textarea;
@@ -74,3 +75,4 @@ $(() => {
 
     }
 })
+*/
