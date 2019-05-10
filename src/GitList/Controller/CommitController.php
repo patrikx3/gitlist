@@ -156,6 +156,8 @@ class CommitController implements ControllerProviderInterface
 
             $blames = $repository->getBlame("$branch -- \"$file\"");
 
+            $breadcrumbs = $app['util.view']->getBreadcrumbs($file);
+
             return $app['twig']->render('blame.twig', array(
                 'file'           => $file,
                 'type'           => $app['util.repository']->getFileType($file),
@@ -164,6 +166,7 @@ class CommitController implements ControllerProviderInterface
                 'branch'         => $branch,
                 'branches'       => $repository->getBranches(),
                 'browse_type'    => 'blame',
+                'breadcrumbs'   => $breadcrumbs,
                 'tags'           => $repository->getTags(),
                 'blames'         => $blames,
             ));
