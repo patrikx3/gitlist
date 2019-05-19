@@ -39,7 +39,7 @@
 
 
                 {% for blame in blames %}
-                    <div style="" class="p3x-gitlist-file-fragment-blame-line">
+                    <div class="p3x-gitlist-file-fragment-blame-line">
                         <div class="p3x-gitlist-file-fragment-blame-line-header">
                             <span class="far fa-file-alt"></span>&nbsp;<a id="{{ blame.commitShort }}" href="{{ path('commit', {repo: repo, commit: blame.commit}) }}">{{ blame.commitShort }}</a>
                         </div>
