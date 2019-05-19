@@ -5,7 +5,7 @@
                         
 [//]: #@corifeus-header:end
 
-## v2019.4.20
+## v2019.4.19
 * BUGFIX: on the commit file list with a view/edit button, it was not showing the commit view, but instead, using the main branch
 
 ### v2019.4.16
