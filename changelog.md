@@ -6,7 +6,7 @@
 [//]: #@corifeus-header:end
 
 ## v2019.4.21
-* FEATURE: if the blob view is a commit, the delete and edit buttons are hidden
+* FEATURE: if the blob view is a commit (instead of branch), the delete and edit buttons are hidden
 * FEATURE: default code editor default is increased from 300px to 600px
 
 ## v2019.4.19
