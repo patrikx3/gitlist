@@ -18,7 +18,7 @@
                     </button>
                 {% endif %}
 
-                <button class="btn btn-sm btn-danger" id="p3x-gitlist-file-delete">
+                <button class="btn btn-sm btn-danger" id="p3x-gitlist-file-delete" style="display: none;">
                     <span class="fa fa-trash"></span>
                     Delete
                 </button>
@@ -35,13 +35,13 @@
 
                 <span class="p3x-gitlist-file-svg-toggle">
                 {% if (((fileType != 'image' and fileType != 'markdown' ) or (enforceCodemirror)) and not binary )%}
-                    <button id="p3x-gitlist-file-button-edit" class="btn btn-sm btn-info">
+                    <button id="p3x-gitlist-file-button-edit" class="btn btn-sm btn-info" style="display: none;">
                         <span class="fa fa-edit"></span> Edit
                     </button>
-                    <button id="p3x-gitlist-file-button-edit-save" class="btn btn-sm btn-info">
+                    <button id="p3x-gitlist-file-button-edit-save" class="btn btn-sm btn-info" style="display: none;">
                         <span class="fa fa-save"></span> Save
                     </button>
-                    <button id="p3x-gitlist-file-button-edit-cancel" class="btn btn-sm btn-warning">
+                    <button id="p3x-gitlist-file-button-edit-cancel" class="btn btn-sm btn-warning" style="display: none;">
                         <i class="fas fa-eraser"></i> Cancel
                     </button>
 
@@ -57,9 +57,9 @@
                 {% endembed %}
 
                 {% elseif fileType == 'markdown' %}
-                    <a href="{{ path('blob', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}?codemirror=1&edit=1"
+                    <a href="{{ path('blob', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}?codemirror=1"
                        class="btn btn-sm btn-info">
-                        <span class="fa fa-edit"></span> Edit
+                        <span class="far fa-file-code"></span> View editor
                     </a>
                 {% endif %}
 

@@ -11,7 +11,7 @@ window.gitlist.gitNewPush = (json) => {
     return false;
 }
 
-window.gitlist.changeableCommit = () => {
+window.gitlist.changeableCommit = (opts = { snack: true }) => {
     if (!window.gitlist.branches.includes(window.gitlist.branch)) {
         let branchInfo;
         if (window.gitlist.branches.length === 1) {
@@ -19,13 +19,15 @@ window.gitlist.changeableCommit = () => {
         }  else {
             branchInfo = `Only the <strong>${window.gitlist.branches.join(', ')}</strong> branches are changeable.`
         }
-        $.snackbar({
-            htmlAllowed: true,
-            content: `This commit <strong>${window.gitlist.branch}</strong> is not changeable.<br/>
+        if (opts.snack) {
+            $.snackbar({
+                htmlAllowed: true,
+                content: `This commit <strong>${window.gitlist.branch}</strong> is not changeable.<br/>
 ${branchInfo}
 `,
-            timeout: window.gitlist.snapckbarLongTimeout,
-        })
+                timeout: window.gitlist.snapckbarLongTimeout,
+            })
+        }
         return false;
     } {
         return true

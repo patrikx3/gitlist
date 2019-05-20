@@ -108,8 +108,16 @@ $(function() {
             const $buttonDelete = $('#p3x-gitlist-file-delete')
             const codeMirrorHeight = window.gitlist.editorMaxHeight;
 
-            $buttonEditCancel.hide();
-            $buttonEditSave.hide();
+            //$buttonEditCancel.hide();
+            //$buttonEditSave.hide();
+
+            if (!window.gitlist.changeableCommit({ snack: false})) {
+                $buttonEdit.hide();
+                $buttonDelete.hide();
+            } else {
+                $buttonEdit.show();
+                $buttonDelete.show();
+            }
 
             $buttonEdit.click(() => {
 
