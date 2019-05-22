@@ -36,6 +36,12 @@ class CommitController implements ControllerProviderInterface
             list($branch, $file) = $app['util.repository']->extractRef($repository, $branch, $file);
 
             $type = $file ? "$branch -- \"$file\"" : $branch;
+
+            $binary = false;
+            if ($file !== '') {
+                $binary = $app['util.repository']->isBinary($file);
+            }
+
             $pager = $app['util.view']->getPager($app['request_stack']->getCurrentRequest()->get('page'), $repository->getTotalCommits($type));
             $commits = $repository->getPaginatedCommits($type, $pager['current']);
             $categorized = array();
@@ -54,6 +60,7 @@ class CommitController implements ControllerProviderInterface
                 'pager'          => $pager,
                 'repo'           => $repo,
                 'branch'         => $branch,
+                'binary'         => $binary,
                 'branches'       => $repository->getBranches(),
                 'browse_type'    => pathinfo($template)['filename'],
                 'tags'           => $repository->getTags(),
