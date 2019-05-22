@@ -33,6 +33,9 @@ P3X Enhanced GitList is a fork of the klaussilveira Gitlist. What is different a
  
  You will love it to work it on OpenWrt. Provides multiple themes with dark mode - 11 light and 5 dark. Code editor with syntax highlighting, editable files. All changes in the original fork are synced with the enhanced version. 100% responsive with Bootstrap 3. Latest Fontawesome for icons. The markdown engine uses Emojis with Twitter's Emojis. Besides, the commits and logs are parsed as Markdown and Emojis. 
 
+## Beware
+If you use other than UTF-8 encoded files, you could get incorrect results, as it does not do converting, it only works with UTF-8.
+
 # Live demo
 
 [http://gitlist.patrikx3.com/](http://gitlist.patrikx3.com/)
