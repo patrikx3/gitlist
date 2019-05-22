@@ -53,7 +53,7 @@ class BlobController implements ControllerProviderInterface
                 'extension'      => $extension,
                 'file'           => $file,
                 'fileType'       => $fileType,
-                'blob'           => $output,
+                'blob'           => utf8_encode($output),
                 'repo'           => $repo,
                 'breadcrumbs'    => $breadcrumbs,
                 'branch'         => $branch,

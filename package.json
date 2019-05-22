@@ -1,6 +1,6 @@
 {
     "name": "p3x-gitlist",
-    "version": "2019.4.23",
+    "version": "2019.4.102",
     "corifeus": {
         "prod-dir": "prod",
         "css-postfix": "2e1c8bb44f00d2afc4499c0f0e18f332c4c8cd82ddd019d6d80943ed6963aa9c",
@@ -29,12 +29,12 @@
     "devDependencies": {
         "bootswatch": "^3.4.1",
         "concurrently": "^4.1.0",
-        "corifeus-builder": "^2019.4.12",
+        "corifeus-builder": "^2019.4.101",
         "corifeus-utils": "^2019.4.13",
         "css-loader": "^2.1.1",
         "extract-text-webpack-plugin": "^4.0.0-beta.0",
         "file-loader": "^3.0.1",
-        "fs-extra": "^7.0.1",
+        "fs-extra": "^8.0.1",
         "glob": "^7.1.4",
         "grunt": "^1.0.4",
         "grunt-contrib-less": "^2.0.0",
@@ -45,9 +45,9 @@
         "optimize-css-assets-webpack-plugin": "^5.0.1",
         "postcss-safe-parser": "^4.0.1",
         "style-loader": "^0.23.1",
-        "terser-webpack-plugin": "^1.2.3",
+        "terser-webpack-plugin": "^1.2.4",
         "url-loader": "^1.1.2",
-        "webpack": "^4.31.0",
+        "webpack": "^4.32.1",
         "webpack-cli": "^3.3.2",
         "worker-loader": "^2.0.0"
     },
@@ -58,7 +58,7 @@
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.8.2",
         "bootstrap": "^3.4.1",
-        "codemirror": "^5.46.0",
+        "codemirror": "^5.47.0",
         "highlight.js": "^9.15.6",
         "is-string-int": "^1.0.1",
         "jquery": "^3.4.1",

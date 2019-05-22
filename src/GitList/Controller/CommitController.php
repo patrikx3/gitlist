@@ -5,6 +5,7 @@ namespace GitList\Controller;
 use Silex\Application;
 use Silex\Api\ControllerProviderInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class CommitController implements ControllerProviderInterface
 {
@@ -110,12 +111,15 @@ class CommitController implements ControllerProviderInterface
                 $diffs = [];
                 foreach($diffsInstance as $diffInstance) {
                     $lines = [];
+
                     foreach ($diffInstance->getLines() as $lineInstance) {
                         $lines[] = (object)[
                           'type' => $lineInstance->getType(),
                           'num-old' => $lineInstance->getNumOld(),
                           'num-new' => $lineInstance->getNumNew(),
-                          'line' => $lineInstance->getLine(),
+                           'line' => utf8_encode($lineInstance->getLine()),
+                            //'line' => iconv('latin2', 'utf-8', $lineInstance->getLine()),
+                            //'line' => mb_convert_encoding( $lineInstance->getLine(), 'ISO-8859-2', 'utf-8'),
                         ];
                     }
                     $diffs[] = (object)[
@@ -127,7 +131,8 @@ class CommitController implements ControllerProviderInterface
                         'lines' => $lines,
                     ];
                 }
-                return $app->json($diffs);
+                return new JsonResponse($diffs,  200, array('Content-Type'=>'application/json; charset=utf-8' ));
+                //return $app->json($diffs);
             };
 
             if (isset($_GET['delete-branch'])) {
