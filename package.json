@@ -1,6 +1,6 @@
 {
     "name": "p3x-gitlist",
-    "version": "2019.4.105",
+    "version": "2019.4.107",
     "corifeus": {
         "prod-dir": "prod",
         "css-postfix": "2e1c8bb44f00d2afc4499c0f0e18f332c4c8cd82ddd019d6d80943ed6963aa9c",
@@ -47,7 +47,7 @@
         "style-loader": "^0.23.1",
         "terser-webpack-plugin": "^1.2.4",
         "url-loader": "^1.1.2",
-        "webpack": "^4.32.1",
+        "webpack": "^4.32.2",
         "webpack-cli": "^3.3.2",
         "worker-loader": "^2.0.0"
     },

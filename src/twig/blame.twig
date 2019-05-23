@@ -17,7 +17,7 @@
                 <a href="{{ path('blob_raw', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"
                    class="btn btn-info btn-sm"><span class="fas fa-download"></span> Raw</a>
             {% endif %}
-            <a class="btn btn-default btn-sm" href="{{ path('blob', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"> <span class="far fa-file"></span> View file</a>
+            <a class="btn btn-default btn-sm" href="{{ path('blob', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"> <span class="far fa-file"></span> View</a>
             <a href="{{ path('commits', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"
                class="btn btn-default btn-sm"><i class="fas fa-history"></i> History</a>
 
