@@ -38,8 +38,15 @@ class CommitController implements ControllerProviderInterface
             $type = $file ? "$branch -- \"$file\"" : $branch;
 
             $binary = false;
+            $breadcrumbs  = [
+                [
+                    'dir' => 'Commit list',
+                    'path' => '',
+                ]
+            ];
             if ($file !== '') {
                 $binary = $app['util.repository']->isBinary($file);
+                $breadcrumbs = $app['util.view']->getBreadcrumbs($file);
             }
 
             $pager = $app['util.view']->getPager($app['request_stack']->getCurrentRequest()->get('page'), $repository->getTotalCommits($type));
@@ -61,6 +68,7 @@ class CommitController implements ControllerProviderInterface
                 'repo'           => $repo,
                 'branch'         => $branch,
                 'binary'         => $binary,
+                'breadcrumbs'   => $breadcrumbs,
                 'branches'       => $repository->getBranches(),
                 'browse_type'    => pathinfo($template)['filename'],
                 'tags'           => $repository->getTags(),
