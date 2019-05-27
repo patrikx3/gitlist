@@ -130,13 +130,12 @@ class CommitController implements ControllerProviderInterface
                     foreach ($diffInstance->getLines() as $lineInstance) {
 
                         $line = $lineInstance->getLine();
-                        $encoding = mb_detect_encoding($line);
 
                         $lines[] = (object)[
                           'type' => $lineInstance->getType(),
                           'num-old' => $lineInstance->getNumOld(),
                           'num-new' => $lineInstance->getNumNew(),
-                           'line' => $encoding === 'UTF-8' ? $line : utf8_encode($line),
+                           'line' => $line,
 //                           'line' => utf8_encode($lineInstance->getLine()),
                             //'line' => iconv('latin2', 'utf-8', $lineInstance->getLine()),
                             //'line' => mb_convert_encoding( $lineInstance->getLine(), 'ISO-8859-2', 'utf-8'),

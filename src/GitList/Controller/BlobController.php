@@ -47,15 +47,13 @@ class BlobController implements ControllerProviderInterface
                 $extension = $pathinfo['extension'];
             }
 
-            $encoding = mb_detect_encoding($output);
             return $app['twig']->render('file.twig', array(
                 'binary'        => $binary,
                 'fileSize'       => strlen($output),
                 'extension'      => $extension,
                 'file'           => $file,
                 'fileType'       => $fileType,
-//                'blob'           => utf8_encode($output),
-                'blob'           => $encoding == 'UTF-8' ? $output : utf8_encode($output),
+                'blob'           => $output,
                 'repo'           => $repo,
                 'breadcrumbs'    => $breadcrumbs,
                 'branch'         => $branch,
