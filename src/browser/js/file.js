@@ -111,6 +111,7 @@ $(function() {
             //$buttonEditCancel.hide();
             //$buttonEditSave.hide();
 
+            /*
             if (!window.gitlist.changeableCommit({ snack: false})) {
                 $buttonEdit.hide();
                 $buttonDelete.hide();
@@ -118,6 +119,7 @@ $(function() {
                 $buttonEdit.show();
                 $buttonDelete.show();
             }
+             */
 
             $buttonEdit.click(() => {
 
