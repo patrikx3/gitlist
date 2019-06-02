@@ -6,7 +6,8 @@
 [//]: #@corifeus-header:end
 
 ## v2019.4.121
-* BUGFIX: Since Twemoji `12.0.4`, the `svg` folder is missing 
+* BUGFIX: Since Twemoji `12.0.4`, the `svg` folder is missing
+  * https://github.com/twitter/twemoji/issues/358 
 
 ## v2019.4.119
 * FEATURE: Enhanced navigation. 
