@@ -1,6 +1,6 @@
 {
     "name": "p3x-gitlist",
-    "version": "2019.4.120",
+    "version": "2019.4.123",
     "corifeus": {
         "prod-dir": "prod",
         "css-postfix": "2e1c8bb44f00d2afc4499c0f0e18f332c4c8cd82ddd019d6d80943ed6963aa9c",
@@ -72,6 +72,6 @@
         "php-date": "^2.1.1",
         "raphael": "^2.2.8",
         "snackbarjs": "^1.1.0",
-        "twemoji": "^12.0.4"
+        "twemoji": "=12.0.1"
     }
 }
