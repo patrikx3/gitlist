@@ -39,6 +39,7 @@ class Repository
         'json' => 'javascript',
         'jsx' => 'jsx',
         'less' => 'css',
+        'scss' => 'sass',
         'lua' => 'lua',
         'md' => 'markdown',
         'markdown' => 'markdown',
