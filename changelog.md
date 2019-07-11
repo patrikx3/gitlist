@@ -5,7 +5,7 @@
                         
 [//]: #@corifeus-header:end
 
-## v2019.100.111
+## v2019.100.109
 * FEATURE: Show last commited ago on the tree table by tag or branch with ellipsis
 * FEATURE: Replaced mode column on the tree table with the last commit message with ellipsis
 
