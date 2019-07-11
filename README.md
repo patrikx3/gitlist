@@ -9,7 +9,7 @@
 
 
  
-# 🤖 P3X Gitlist - A decorated enhanced elegant, feature rich and modern private git ui repository viewer  v2019.10.111    
+# 🤖 P3X Gitlist - A decorated enhanced elegant, feature rich and modern private git ui repository viewer  v2019.10.112    
 
   
 **Note about versioning:** Versions are cut in Major.Minor.Patch schema. Major is always the current year. Minor is either 4 (January - June) or 10 (July - December). Patch is incremental by every build. If there is a breaking change, it should be noted in the readme.
@@ -129,11 +129,11 @@ https://github.com/klaussilveira/gitlist
 
 #### Gitlist
 https://github.com/klaussilveira/gitlist/commits/master  
-April 20, 2019
+July 11, 2019
 
 #### Gitter
 https://github.com/klaussilveira/gitter/commits/master  
-April 20, 2019
+July 11, 2019
 
 # URL links
 
@@ -165,7 +165,7 @@ All my domains ([patrikx3.com](https://patrikx3.com) and [corifeus.com](https://
   
 ---
   
-[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2019.10.111 
+[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2019.10.112 
 
 [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software) 
 

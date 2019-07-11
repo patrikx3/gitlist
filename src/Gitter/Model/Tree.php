@@ -95,6 +95,10 @@ class Tree extends Item implements \RecursiveIterator
                 continue;
             }
             $files[] = preg_split("/[\s]+/", $line, 5);
+            $tabSplit = preg_split("/[\t]+/", $line, 2);
+            $file = preg_split("/[\s]+/", $tabSplit[0], 4);
+            $file[] = $tabSplit[1];
+            $files[] = $file;
         }
 
         foreach ($files as $file) {
