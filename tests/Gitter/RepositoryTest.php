@@ -31,7 +31,7 @@ class RepositoryTest extends TestCase
         $fs->mkdir(self::$tmpdir);
 
         if (!is_writable(self::$tmpdir)) {
-            $this->markTestSkipped('There are no write permissions in order to create test repositories.');
+            static::markTestSkipped('There are no write permissions in order to create test repositories.');
         }
     }
 
