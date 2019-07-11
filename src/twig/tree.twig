@@ -109,17 +109,16 @@
             </thead>
             <tbody>
             {% if parent is not null %}
-                <tr>
-                    <td>
-                        {% if not parent %}
+                <tr style="cursor: pointer">
+                    {% if not parent %}
+                        <td colspan="4" onclick='location.href = "{{ path('branch', {repo: repo, branch: branch}) }}"'>
                             <a href="{{ path('branch', {repo: repo, branch: branch}) }}">..</a>
-                        {% else %}
+                        </td>
+                    {% else %}
+                        <td colspan="4" onclick='location.href = "{{ path('tree', {repo: repo, commitishPath: branch ~ '/' ~ parent}) }}"'>
                             <a href="{{ path('tree', {repo: repo, commitishPath: branch ~ '/' ~ parent}) }}">..</a>
-                        {% endif %}
-                    </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                        </td>
+                    {% endif %}
                 </tr>
             {% endif %}
             {% for file in files %}

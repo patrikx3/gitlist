@@ -5,16 +5,17 @@
                         
 [//]: #@corifeus-header:end
 
-## Unreleased
+## v2019.10.114
 * BUGFIX: SVG was showing "Display SVG" instead of "Toggle SVG".
 * CHORE: Synched with klaussilveira on July 11, 2019
 * FEATURE: The commits in the tree table messages are using Twemoji and Markdown.
+* FEATURE: The tree table in sub-folder not only the "..", but the whole cell is going to upper folder using a pointer cursor.
 
-## v2019.100.111
+## v2019.10.111
 * FEATURE: The tree table looks like GitHub.
 * FEATURE: The file/blob size is proper size, instead of rounded kilobytes.
 
-## v2019.100.109
+## v2019.10.109
 * FEATURE: Show last commited ago on the tree table by tag or branch with ellipsis
 * FEATURE: Replaced mode column on the tree table with the last commit message with ellipsis
 
@@ -317,7 +318,7 @@ All my domains ([patrikx3.com](https://patrikx3.com) and [corifeus.com](https://
   
 ---
   
-[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2019.10.112 
+[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2019.10.114 
 
 [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software) 
 
