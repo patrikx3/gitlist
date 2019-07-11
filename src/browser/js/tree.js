@@ -117,6 +117,16 @@ $(() => {
         return false;
     }, false);
 
+    const $messages = $('.p3x-gitlist-tree-table-item-message')
+    if ($messages.length > 0) {
+        $messages.each((index, element) => {
+            console.log(element.innerHTML)
+            element.innerHTML = window.gitlist.renderMarkdown({
+                markdown: element.innerHTML.trim()
+            })
+        })
+    }
+
     /*
     $buttonSubmitNewfileBinary.click(async () => {
         if($formNewfileBinary[0].checkValidity() === false) {

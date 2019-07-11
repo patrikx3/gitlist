@@ -7,6 +7,8 @@
 
 ## Unreleased
 * BUGFIX: SVG was showing "Display SVG" instead of "Toggle SVG".
+* CHORE: Synched with klaussilveira on July 11, 2019
+* FEATURE: The commits in the tree table messages are using Twemoji and Markdown.
 
 ## v2019.100.111
 * FEATURE: The tree table looks like GitHub.
