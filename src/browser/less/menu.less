@@ -1,30 +1,31 @@
 
 #p3x-gitlist-main-tabs-browser {
-  margin-bottom: @navbar-padding-horizontal / 2;
+    margin-bottom: @navbar-padding-horizontal / 2;
 }
 
-@media only screen and (min-width : @screen-sm-min) {
-  #p3x-gitlist-main-tabs-browser {
-    float: left;
-    margin-right: @navbar-padding-horizontal;
-  }
+@media only screen and (min-width: @screen-sm-min) {
+    #p3x-gitlist-main-tabs-browser {
+        float: left;
+        margin-right: @navbar-padding-horizontal;
+    }
 }
 
 #p3x-gitlist-main-tabs * {
-  margin-bottom: 2px;
-  position: relative;
+    margin-bottom: 2px;
+    position: relative;
 
-  @media only screen and (max-width : @screen-sm-min) {
-    text-align: left;
-  }
+    @media only screen and (max-width: @screen-sm-min) {
+        text-align: left;
+    }
 
-  a:hover > svg.svg-inline--fa {
-    transition-duration: 250ms;
-    transition-property: transform;
-    transform: scale(1.2) rotate(360deg);
-  }
-  svg.svg-inline--fa {
-    top: 2px;
-  }
+    a:hover > svg.svg-inline--fa {
+        transition-duration: 250ms;
+        transition-property: transform;
+        transform: scale(1.2) rotate(360deg);
+    }
+
+    svg.svg-inline--fa {
+        top: 2px;
+    }
 }
 

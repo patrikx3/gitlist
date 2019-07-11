@@ -18,15 +18,16 @@
                     {% block form %}
 
                         <div class="input-group">
-                                            <span class="input-group-addon" id="p3x-gitlist-modal-{{ type }}-filename-aria"><i
-                                                        class="far fa-file-alt"></i></span>
+                                            <span class="input-group-addon"
+                                                  id="p3x-gitlist-modal-{{ type }}-filename-aria"><i
+                                                    class="far fa-file-alt"></i></span>
                             <input required type="text" class="form-control" placeholder="New filename or directory"
                                    aria-describedby="p3x-gitlist-modal-{{ type }}-filename-aria"
                                    id="p3x-gitlist-modal-{{ type }}-filename" minlength="1" maxlength="128"
                                    value="">
                         </div>
                         <br/>
-                    {%  endblock %}
+                    {% endblock %}
                     {% block buttons %}
 
 
@@ -34,12 +35,11 @@
                             <span class="far fa-file-alt"></span>
                             New file or directory
                         </button>
-                    {%  endblock %}
+                    {% endblock %}
                 {% endembed %}
 
 
-
-                <button type="button"  class="btn btn-sm btn-info"  id="p3x-gitlist-tree-new-binary">
+                <button type="button" class="btn btn-sm btn-info" id="p3x-gitlist-tree-new-binary">
                     <i class="far fa-file"></i> Upload file and/or override/binary
                 </button>
 
@@ -52,12 +52,14 @@
                                    id="p3x-gitlist-modal-{{ type }}-filename-binary-upload">
                         </div>
                         <div class="checkbox">
-                            <label><input id="p3x-gitlist-modal-{{ type }}-filename-binary-override" type="checkbox" value="1">Allow override existing</label>
+                            <label><input id="p3x-gitlist-modal-{{ type }}-filename-binary-override" type="checkbox"
+                                          value="1">Allow override existing</label>
                         </div>
 
                         <div class="input-group">
-                                            <span class="input-group-addon" id="p3x-gitlist-modal-{{ type }}-filename-binary-aria"><i
-                                                        class="far fa-file"></i></span>
+                                            <span class="input-group-addon"
+                                                  id="p3x-gitlist-modal-{{ type }}-filename-binary-aria"><i
+                                                    class="far fa-file"></i></span>
                             <input required type="text" class="form-control" placeholder="New binary filename"
                                    aria-describedby="p3x-gitlist-modal-{{ type }}-filename-binary-aria"
                                    id="p3x-gitlist-modal-{{ type }}-filename-binary" minlength="1" maxlength="128"
@@ -67,7 +69,7 @@
 
 
 
-                    {%  endblock %}
+                    {% endblock %}
                     {% block buttons %}
 
                         <button id="p3x-gitlist-modal-new-filename-binary-confirm" type="submit" class="btn btn-info">
@@ -75,13 +77,13 @@
                             Upload file and/or override/binary
                         </button>
 
-                    {%  endblock %}
+                    {% endblock %}
                 {% endembed %}
 
             </div>
 
 
-        {%  endblock %}
+        {% endblock %}
 
     {% endembed %}
 

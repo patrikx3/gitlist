@@ -17,7 +17,7 @@ abstract class AbstractModel
 {
     protected $repository;
 
-    public function getRepository() : Repository
+    public function getRepository(): Repository
     {
         return $this->repository;
     }

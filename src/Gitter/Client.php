@@ -44,7 +44,7 @@ class Client
     /**
      * Creates a new repository on the specified path
      *
-     * @param  string     $path Path where the new repository will be created
+     * @param string $path Path where the new repository will be created
      * @return Repository Instance of Repository
      */
     public function createRepository($path, $bare = null)
@@ -61,7 +61,7 @@ class Client
     /**
      * Opens a repository at the specified path
      *
-     * @param  string     $path Path where the repository is located
+     * @param string $path Path where the repository is located
      * @return Repository Instance of Repository
      */
     public function getRepository($path)
@@ -93,7 +93,7 @@ class Client
         $process->run();
 
         if (!$process->isSuccessful()) {
-            throw new \RuntimeException($process->getExitCode() . " - " . $process->getExitCodeText(). " - " . $process->getErrorOutput() . " - " . $process->getOutput() );
+            throw new \RuntimeException($process->getExitCode() . " - " . $process->getExitCodeText() . " - " . $process->getErrorOutput() . " - " . $process->getOutput());
         }
 
         return $process->getOutput();
@@ -217,7 +217,7 @@ class Client
     /**
      * Searches for valid repositories on the specified path
      *
-     * @param  array $paths Array of paths where repositories will be searched
+     * @param array $paths Array of paths where repositories will be searched
      * @return array Found repositories, containing their name, path and description sorted
      *               by repository name
      */
@@ -239,8 +239,8 @@ class Client
         }
 
         $allRepositories = array_unique($allRepositories, SORT_REGULAR);
-        uksort($allRepositories, function($k1, $k2) {
-            return strtolower($k2)<strtolower($k1);
+        uksort($allRepositories, function ($k1, $k2) {
+            return strtolower($k2) < strtolower($k1);
         });
 
         return $allRepositories;

@@ -12,7 +12,7 @@ class GitServiceProvider implements ServiceProviderInterface
     /**
      * Register the Git\Client on the Application ServiceProvider
      *
-     * @param  Container $app Silex Application
+     * @param Container $app Silex Application
      * @return Git\Client  Instance of the Git\Client
      */
     public function register(Container $app)

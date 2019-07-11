@@ -27,7 +27,8 @@ class Tree extends Item implements \RecursiveIterator
         $this->setRepository($repository);
     }
 
-    private function getSubmodules($files, $hash) {
+    private function getSubmodules($files, $hash)
+    {
         if ($this->submodules === null) {
             foreach ($files as $file) {
                 if ($file[4] === '.gitmodules') {
@@ -79,8 +80,7 @@ class Tree extends Item implements \RecursiveIterator
                 $submodules = $this->getSubmodules($files, $this->getHash());
                 if (strpos($this->getHash(), ':') === false) {
                     $submoduleName = $file[4];
-                }
-                else {
+                } else {
                     $submoduleName = str_replace('"', '', explode(':', $this->getHash())[1]) . "$file[4]";
                 }
 
@@ -91,7 +91,7 @@ class Tree extends Item implements \RecursiveIterator
                 $tree->setHash($file[2]);
                 $tree->setShortHash($shortHash);
 //                echo $submoduleName;
-  //              exit;
+                //              exit;
                 $url = $submodules["submodule $submoduleName"]['url'];
                 if (preg_match('/^https?:\/\/(www\.)?github.com\//i', $url)) {
                     $s = S::create($url);

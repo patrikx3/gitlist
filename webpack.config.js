@@ -104,7 +104,7 @@ For more information about all licenses, please see ${webpackBanner}
                 // mangle: false === keep function names
                 // mangle: true === drop function names
                 mangle: false,
-                sourceMap: true,
+
                 comments: false,
                 beautify: false
             },

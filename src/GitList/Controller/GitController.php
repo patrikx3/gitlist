@@ -37,7 +37,7 @@ class GitController implements ControllerProviderInterface
                     $comment = $request->get('comment');
 
 
-                    switch($action) {
+                    switch ($action) {
                         case 'save':
                             $objectResult = $repository->changeFile($app->getCachePath(), $repo, $branch, $filename, $value, $name, $email, $comment);
                             return json_encode($objectResult);
@@ -73,8 +73,8 @@ class GitController implements ControllerProviderInterface
                             try {
                                 $objectResult = $repository->fetchOrigin();
                                 return json_encode($objectResult);
-                            } catch(\Exception $e) {
-                                return json_encode(((object) [
+                            } catch (\Exception $e) {
+                                return json_encode(((object)[
                                     'status' => 'error',
                                     'error' => true,
                                     //'temporaryDirectory' => $tempRepo,
@@ -87,19 +87,19 @@ class GitController implements ControllerProviderInterface
                             break;
 
                         default:
-                            return json_encode((object) [
+                            return json_encode((object)[
                                 'status' => 'error',
                                 'error' => true,
-                                'message' => 'Un-implemented action "' . $action . '".' ,
+                                'message' => 'Un-implemented action "' . $action . '".',
                             ]);
 
                     }
                 }
-            } catch(\Throwable $e) {
+            } catch (\Throwable $e) {
                 $hadError = $e;
             } finally {
                 if ($hadError !== false) {
-                    return json_encode((object) [
+                    return json_encode((object)[
                         'status' => 'error',
                         'error' => true,
                         'message' => $hadError->getMessage(),

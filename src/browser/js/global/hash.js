@@ -1,19 +1,15 @@
-
-
 window.gitlist.pushHash = (hash) => {
-    if(history.pushState) {
+    if (history.pushState) {
         const pushState = location.pathname + hash;
         history.pushState(null, null, pushState);
-    }
-    else {
+    } else {
         location.hash = hash;
     }
 
 };
 
 
-
-window.gitlist.scrollHash = function(element, event) {
+window.gitlist.scrollHash = function (element, event) {
     const url = new URL(element.href)
     const id = url.hash.substring(1)
     const elfind = document.getElementById(id + '-parent')

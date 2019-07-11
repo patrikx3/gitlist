@@ -40,7 +40,7 @@ Object.defineProperty(window.gitlist, 'canvasDotColor', {
 })
 
 
-let nextLaneIndex  = 0
+let nextLaneIndex = 0
 window.gitlist.randomCanvasLaneColors = () => {
     const items = window.gitlist.canvasLaneColors;
 

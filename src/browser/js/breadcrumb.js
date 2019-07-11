@@ -1,4 +1,4 @@
-$(function() {
+$(function () {
     const $gitActions = $('#p3x-gitlist-breadcrumb-git');
 
     if ($gitActions.length === 0) {
@@ -7,7 +7,7 @@ $(function() {
 
     const $gitActionFetch = $('#p3x-gitlist-breadcrumb-git-fetch')
 
-    $gitActionFetch.on('click', async() => {
+    $gitActionFetch.on('click', async () => {
         const url = `${window.gitlist.basepath}/${window.gitlist.repo}/git-helper/${window.gitlist.branch}/fetch-origin`
         try {
             const request = $.ajax({
@@ -27,7 +27,7 @@ $(function() {
                 htmlAllowed: true,
                 content: json.message,
             })
-        } catch(e) {
+        } catch (e) {
             window.gitlist.ajaxErrorHandler(e);
 
         }

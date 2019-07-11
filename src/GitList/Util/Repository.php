@@ -123,7 +123,7 @@ class Repository
      * The file type is used by CodeMirror, a Javascript-based IDE implemented in
      * GitList, to properly highlight the blob syntax (if it's a source-code)
      *
-     * @param  string $file File name
+     * @param string $file File name
      *
      * @return mixed  File type
      */
@@ -209,9 +209,9 @@ class Repository
     /**
      * Returns an Array where the first value is the tree-ish and the second is the path.
      *
-     * @param  \GitList\Git\Repository $repository
-     * @param  string                  $branch
-     * @param  string                  $tree
+     * @param \GitList\Git\Repository $repository
+     * @param string $branch
+     * @param string $tree
      *
      * @return array
      */
@@ -226,7 +226,7 @@ class Repository
             $branch = $matches[1];
         } else {
             // Otherwise, attempt to detect the ref using a list of the project's branches and tags
-            $validRefs = array_merge((array) $repository->getBranches(), (array) $repository->getTags());
+            $validRefs = array_merge((array)$repository->getBranches(), (array)$repository->getTags());
             foreach ($validRefs as $key => $ref) {
                 if (!preg_match(sprintf('#^%s/#', preg_quote($ref, '#')), $input)) {
                     unset($validRefs[$key]);

@@ -1,4 +1,4 @@
-$(function() {
+$(function () {
 
     let $pager;
     let loading = false;
@@ -27,8 +27,7 @@ $(function() {
         }
         noMore = false;
         const retrieve = `${location.pathname}${href}`
-        history.pushState({
-        }, document.title, retrieve);
+        history.pushState({}, document.title, retrieve);
 
         const url = new URL(location);
         url.search = href;
@@ -37,7 +36,7 @@ $(function() {
             url: url.toString(),
             async: true,
             type: "GET",
-        }).then(function(html) {
+        }).then(function (html) {
             $pager.after(html);
             $pager.remove();
             loading = false;
@@ -48,7 +47,6 @@ $(function() {
     }
 
 
-
     function paginate() {
         $pager = $('#p3x-gitlist-pager-bottom');
         $noCommits = $('#p3x-gitlist-commits-no-more')
@@ -56,13 +54,14 @@ $(function() {
             $pager.remove();
             return;
         }
-        $button  = $pager.find('#p3x-gitlist-commit-list-next');
+        $button = $pager.find('#p3x-gitlist-commit-list-next');
         $button.one('click', function (e) {
             e.preventDefault();
             nextCommitListItem()
             return false;
         });
     }
+
     paginate();
 
     if ($button.length > 0) {

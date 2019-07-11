@@ -22,10 +22,10 @@ $(() => {
         $buttonNewFileModal.modal('show')
     })
 
-    $formNewfile[0].addEventListener('submit', async(ev) => {
+    $formNewfile[0].addEventListener('submit', async (ev) => {
         ev.preventDefault();
 
-        if($formNewfile[0].checkValidity() === false) {
+        if ($formNewfile[0].checkValidity() === false) {
             window.gitlist.invalidSnackbarCommit()
             return;
         }
@@ -44,13 +44,13 @@ $(() => {
             }
 
 
-        } catch(e) {
+        } catch (e) {
             window.gitlist.ajaxErrorHandler(e)
         }
         return false;
 
 
-       // $buttonNewFileModal.modal('hide')
+        // $buttonNewFileModal.modal('hide')
     }, false)
 
     // </editor-fold>
@@ -85,10 +85,10 @@ $(() => {
     })
 
 
-    $formNewfileBinary[0].addEventListener('submit', async function(ev) {
+    $formNewfileBinary[0].addEventListener('submit', async function (ev) {
         ev.preventDefault();
 
-        if($formNewfileBinary[0].checkValidity() === false) {
+        if ($formNewfileBinary[0].checkValidity() === false) {
             window.gitlist.invalidSnackbarCommit()
             return;
         }
@@ -111,7 +111,7 @@ $(() => {
                 return
             }
 
-        } catch(e) {
+        } catch (e) {
             window.gitlist.ajaxErrorHandler(e)
         }
         return false;

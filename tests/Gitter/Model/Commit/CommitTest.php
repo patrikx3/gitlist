@@ -11,7 +11,7 @@ class CommitTest extends TestCase
 {
     public function testImportData()
     {
-        $data = array (
+        $data = array(
             'hash' => '209908f247194b1adc836f2e50f957cb1f11f41c',
             'short_hash' => '209908f',
             'tree' => '0a1f6638ccfc6d6b34be8a913144304355d23cc3',

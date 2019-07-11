@@ -1,7 +1,9 @@
 <ol class="breadcrumb" style="margin-bottom: 0;">
     <li><a href="{{ path('tree', {repo: repo, commitishPath: branch}) }}">{{ repo }}</a></li>
     {% for breadcrumb in breadcrumbs %}
-        <li{% if loop.last %} class="active"{% endif %}>{% if not loop.last %}<a href="{{ path('tree', {repo: repo, commitishPath: branch ~ '/' ~ breadcrumb.path}) }}">{{ breadcrumb.dir }}</a>{% endif %}{% if loop.last %}{{ breadcrumb.dir }}{% endif %}</li>
+        <li{% if loop.last %} class="active"{% endif %}>{% if not loop.last %}<a
+                href="{{ path('tree', {repo: repo, commitishPath: branch ~ '/' ~ breadcrumb.path}) }}">{{ breadcrumb.dir }}</a>{% endif %}{% if loop.last %}{{ breadcrumb.dir }}{% endif %}
+        </li>
     {% endfor %}
 </ol>
 
@@ -16,12 +18,14 @@
         </a>
 
         <span class="dropdown">
-            <a class="btn btn-default btn-sm dropdown-toggle" type="button" id="p3x-gitlist-breadcrumb-git" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <a class="btn btn-default btn-sm dropdown-toggle" type="button" id="p3x-gitlist-breadcrumb-git"
+               data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                 Git
                 <span class="caret"></span>
             </a>
             <ul class="dropdown-menu" aria-labelledby="p3x-gitlist-breadcrumb-git">
-                <li data-toggle="tooltip" data-placement="bottom" title="If this repo is already on origin, this action will throw an error otherwise it will fetch from the origin commits.">
+                <li data-toggle="tooltip" data-placement="bottom"
+                    title="If this repo is already on origin, this action will throw an error otherwise it will fetch from the origin commits.">
                     <a href="javascript:void(0)" id="p3x-gitlist-breadcrumb-git-fetch">
                         <i class="fas fa-chevron-down"></i>&nbsp;Fetch origin
                     </a>
@@ -30,18 +34,21 @@
         </span>
 
         <span class="dropdown">
-            <a class="btn btn-default btn-sm dropdown-toggle" type="button" id="p3x-gitlist-breadcrumb-download" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <a class="btn btn-default btn-sm dropdown-toggle" type="button" id="p3x-gitlist-breadcrumb-download"
+               data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                 Download
                 <span class="caret"></span>
             </a>
             <ul class="dropdown-menu" aria-labelledby="p3x-gitlist-breadcrumb-download">
                 <li>
-                    <a href="{{ path('archive', {repo: repo, branch: branch, format: 'zip'}) }}" title="Download '{{ branch }}' as a ZIP archive">
+                    <a href="{{ path('archive', {repo: repo, branch: branch, format: 'zip'}) }}"
+                       title="Download '{{ branch }}' as a ZIP archive">
                         <i class="fas fa-file-archive"></i>&nbsp;ZIP
                     </a>
                 </li>
                 <li>
-                    <a href="{{ path('archive', {repo: repo, branch: branch, format: 'tar'}) }}" title="Download '{{ branch }}' as a TAR archive">
+                    <a href="{{ path('archive', {repo: repo, branch: branch, format: 'tar'}) }}"
+                       title="Download '{{ branch }}' as a TAR archive">
                         <i class="far fa-file-archive"></i>&nbsp;TAR
                     </a>
                 </li>
@@ -49,7 +56,8 @@
         </span>
 
         {% if app.show_http_remote or app.show_ssh_remote %}
-            <a href="#" class="btn btn-default btn-sm" title="Show remotes to clone this repository." data-toggle="modal" data-target="#p3x-gitlist-modal-clone">
+            <a href="#" class="btn btn-default btn-sm" title="Show remotes to clone this repository."
+               data-toggle="modal" data-target="#p3x-gitlist-modal-clone">
                 <i class="far fa-clone"></i>&nbsp;Clone
             </a>
         {% endif %}
@@ -102,11 +110,11 @@
                     {% endif %}
                     {% if app.show_http_remote %}
                         <input type="text"
-                               readonly class="form-control{{ app.show_ssh_remote is empty and app.show_http_remote ? ' visible' }}"
+                               readonly
+                               class="form-control{{ app.show_ssh_remote is empty and app.show_http_remote ? ' visible' }}"
                                id="clone-input-http"
                                value="git clone http{{ app.use_https ? 's' }}://{{ app.http_user | url_encode }}{{ app.http_user ? '@' }}{{ global.request.host }}{{ app.git_http_subdir_calculated ? app.url_subdir : app.git_http_subdir }}/{{ repo }}">
                     {% endif %}
-
 
 
                 </div>

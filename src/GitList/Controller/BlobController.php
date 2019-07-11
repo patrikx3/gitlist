@@ -48,24 +48,24 @@ class BlobController implements ControllerProviderInterface
             }
 
             return $app['twig']->render('file.twig', array(
-                'binary'        => $binary,
-                'fileSize'       => strlen($output),
-                'extension'      => $extension,
-                'file'           => $file,
-                'fileType'       => $fileType,
-                'blob'           => $output,
-                'repo'           => $repo,
-                'breadcrumbs'    => $breadcrumbs,
-                'branch'         => $branch,
-                'branches'       => $repository->getBranches(),
-                'browse_type'    => 'blob',
-                'tags'           => $repository->getTags(),
+                'binary' => $binary,
+                'fileSize' => strlen($output),
+                'extension' => $extension,
+                'file' => $file,
+                'fileType' => $fileType,
+                'blob' => $output,
+                'repo' => $repo,
+                'breadcrumbs' => $breadcrumbs,
+                'branch' => $branch,
+                'branches' => $repository->getBranches(),
+                'browse_type' => 'blob',
+                'tags' => $repository->getTags(),
                 'enforceCodemirror' => isset($_GET['codemirror'])
             ));
         })->assert('repo', $app['util.routing']->getRepositoryRegex())
-          ->assert('commitishPath', '.+')
-          ->convert('commitishPath', 'escaper.argument:escape')
-          ->bind('blob');
+            ->assert('commitishPath', '.+')
+            ->convert('commitishPath', 'escaper.argument:escape')
+            ->bind('blob');
 
         $route->get('{repo}/raw/{commitishPath}', function ($repo, $commitishPath) use ($app) {
             $repository = $app['git']->getRepositoryFromName($app['git.repos'], $repo);
@@ -79,7 +79,7 @@ class BlobController implements ControllerProviderInterface
 
             $headers = array();
             if ($app['util.repository']->isBinary($file)) {
-                $headers['Content-Disposition'] = 'attachment; filename="' .  $file . '"';
+                $headers['Content-Disposition'] = 'attachment; filename="' . $file . '"';
                 $headers['Content-Type'] = 'application/octet-stream';
             } else {
                 $headers['Content-Type'] = 'text/plain';
@@ -87,9 +87,9 @@ class BlobController implements ControllerProviderInterface
 
             return new Response($blob, 200, $headers);
         })->assert('repo', $app['util.routing']->getRepositoryRegex())
-          ->assert('commitishPath', $app['util.routing']->getCommitishPathRegex())
-          ->convert('commitishPath', 'escaper.argument:escape')
-          ->bind('blob_raw');
+            ->assert('commitishPath', $app['util.routing']->getCommitishPathRegex())
+            ->convert('commitishPath', 'escaper.argument:escape')
+            ->bind('blob_raw');
 
         return $route;
     }

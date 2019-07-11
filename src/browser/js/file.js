@@ -1,4 +1,4 @@
-$(function() {
+$(function () {
 
     const Cookies = require('js-cookie')
 
@@ -9,7 +9,7 @@ $(function() {
     const $modalDelete = $('#p3x-gitlist-modal-delete')
 
 
-    if ($modalDelete.length === 0 ) {
+    if ($modalDelete.length === 0) {
         return;
     }
 
@@ -35,9 +35,9 @@ $(function() {
         $modalDelete.modal('show')
     })
 
-    $formDeleteForm[0].addEventListener('submit', async(ev) => {
+    $formDeleteForm[0].addEventListener('submit', async (ev) => {
         ev.preventDefault();
-        if($formDeleteForm[0].checkValidity() === false) {
+        if ($formDeleteForm[0].checkValidity() === false) {
             window.gitlist.invalidSnackbarCommit()
             return;
         }
@@ -55,7 +55,7 @@ $(function() {
             }
 
 
-        } catch(e) {
+        } catch (e) {
             errorHandler(e)
         }
 
@@ -193,14 +193,14 @@ $(function() {
 
             //const $commitCommitPushButton = $('#p3x-gitlist-modal-commit-push')
 
-            $commitForm[0].addEventListener('submit', async(ev) => {
+            $commitForm[0].addEventListener('submit', async (ev) => {
                 ev.preventDefault();
 
                 if (validateCodeIsSame()) {
                     return;
                 }
 
-                if($commitForm[0].checkValidity() === false) {
+                if ($commitForm[0].checkValidity() === false) {
                     window.gitlist.invalidSnackbarCommit()
                     return;
                 }
@@ -229,7 +229,7 @@ $(function() {
                         htmlAllowed: true,
                         content: '<i class="fas fa-check"></i>&nbsp;&nbsp;The file is saved.',
                     })
-                } catch(e) {
+                } catch (e) {
                     errorHandler(e);
                 }
 
@@ -267,7 +267,7 @@ $(function() {
             }
 
             $buttonFull.click(setFull)
-            cm  = CodeMirror(function(elt) {
+            cm = CodeMirror(function (elt) {
                 pre.parentNode.replaceChild(elt, pre);
             }, {
                 styleActiveLine: true,
@@ -291,18 +291,18 @@ $(function() {
             }
 
             const scrollToEditor = () => {
-                let line = location.hash.startsWith('#L')  ? location.hash.substring(2) : undefined
+                let line = location.hash.startsWith('#L') ? location.hash.substring(2) : undefined
                 if (line !== undefined) {
                     setTimeout(() => {
                         line = parseInt(line)
                         cm.setSelection({
-                            line: line - 1 ,
+                            line: line - 1,
                             char: 0,
                         }, {
                             line: line - 1,
                             char: Number.MAX_SAFE_INTEGER
                         })
-                        cm.scrollIntoView({line: line, char:0}, isReallyFull ? window.innerHeight / 2 : 100)
+                        cm.scrollIntoView({line: line, char: 0}, isReallyFull ? window.innerHeight / 2 : 100)
                         /*
                         const codes =  $('.CodeMirror-linenumber')
                         for(let codeLinenumber of codes) {

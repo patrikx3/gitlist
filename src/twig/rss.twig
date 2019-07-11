@@ -6,13 +6,14 @@
         <link>{{ url('homepage') }}</link>
 
         {% for commit in commits %}
-        <item>
-            <title>{{ commit.message }}</title>
-            <description>{{ commit.author.name }} authored {{ commit.shortHash }} in {{ commit.date | format_date }}</description>
-            <link>{{ url('commit', {repo: repo, commit: commit.hash}) }}</link>
-            <pubDate>{{ commit.date | date('r') }}</pubDate>
-            <author>{{ commit.author.email }} ({{ commit.author.name }})</author>
-        </item>
+            <item>
+                <title>{{ commit.message }}</title>
+                <description>{{ commit.author.name }} authored {{ commit.shortHash }}
+                    in {{ commit.date | format_date }}</description>
+                <link>{{ url('commit', {repo: repo, commit: commit.hash}) }}</link>
+                <pubDate>{{ commit.date | date('r') }}</pubDate>
+                <author>{{ commit.author.email }} ({{ commit.author.name }})</author>
+            </item>
         {% endfor %}
     </channel>
 </rss>

@@ -2,141 +2,144 @@
 @import "../../../node_modules/snackbarjs/themes-less/material";
 
 #snackbar-container {
-  left: auto !important;
-  right: 20px !important;
+    left: auto !important;
+    right: 20px !important;
 }
 
 @media (max-width: 767px) {
-  #snackbar-container {
-    left: 0px !important;
-    right: 0px !important;
-    width: 100%;
-    .snackbar {
-      min-width: 100%;
+    #snackbar-container {
+        left: 0px !important;
+        right: 0px !important;
+        width: 100%;
+
+        .snackbar {
+            min-width: 100%;
+        }
+
+        [class="snackbar snackbar-opened"] ~ .snackbar.toast {
+            margin-top: 20px;
+        }
+
+        [class="snackbar snackbar-opened"] {
+            border-radius: 0;
+            margin-bottom: 0;
+        }
     }
-    [class="snackbar snackbar-opened"] ~ .snackbar.toast {
-      margin-top: 20px;
-    }
-    [class="snackbar snackbar-opened"] {
-      border-radius: 0;
-      margin-bottom: 0;
-    }
-  }
 }
 
 .p3x-gitlist-button {
-  .btn {
-    margin-bottom: @padding-base-vertical !important;
-  }
+    .btn {
+        margin-bottom: @padding-base-vertical !important;
+    }
 }
 
 
 .p3x-gitlist-light {
-  .CodeMirror {
-    border: 1px solid @gray-lighter;
-  }
+    .CodeMirror {
+        border: 1px solid @gray-lighter;
+    }
 }
 
 .p3x-gitlist-dark {
-  .CodeMirror {
-    border: 1px solid @navbar-default-bg !important;
-  }
+    .CodeMirror {
+        border: 1px solid @navbar-default-bg !important;
+    }
 }
 
 code, pre {
-  overflow-x: auto;
-  //white-space:pre-wrap;
-  font-family: monospace;
+    overflow-x: auto;
+    //white-space:pre-wrap;
+    font-family: monospace;
 }
 
 
 .p3x-gitlist-dark {
 
-  #snackbar-container > div {
-    border: 1px solid @table-bg-accent;
-  }
+    #snackbar-container > div {
+        border: 1px solid @table-bg-accent;
+    }
 
-  code.p3x-gitlist-code, pre.p3x-gitlist-code {background-color: lighten(@navbar-inverse-bg, 5%);
-    color: @navbar-inverse-color;
-    border-color: @navbar-inverse-border;
-  }
+    code.p3x-gitlist-code, pre.p3x-gitlist-code {
+        background-color: lighten(@navbar-inverse-bg, 5%);
+        color: @navbar-inverse-color;
+        border-color: @navbar-inverse-border;
+    }
 }
 
 .p3x-gitlist-markdown-heading-container {
-  position: relative;
+    position: relative;
 }
 
 a.p3x-gitlist-markdown-heading-link {
-  display: none;
-  font-size: inherit;
-  text-decoration: none !important;
+    display: none;
+    font-size: inherit;
+    text-decoration: none !important;
 }
 
 .p3x-gitlist-markdown-image {
-  max-width: 100%;
+    max-width: 100%;
 }
 
 .p3x-gitlist-breadcrumb-divider {
-  min-height: @padding-base-vertical;
-  display: block;
-  clear: both;;
+    min-height: @padding-base-vertical;
+    display: block;
+    clear: both;;
 }
 
 img.emoji {
-  height: 1em;
-  width: 1em;
-  margin: 0 .05em 0 .1em;
-  vertical-align: -0.1em;
+    height: 1em;
+    width: 1em;
+    margin: 0 .05em 0 .1em;
+    vertical-align: -0.1em;
 }
 
 .p3x-list-item-header {
-  font-weight: bold !important;
+    font-weight: bold !important;
 }
 
 .breadcrumb {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .p3x-gitlist-max-width {
-  max-width: 100%;
-  max-height: auto;
+    max-width: 100%;
+    max-height: auto;
 }
 
 .modal {
-  text-align: left;
+    text-align: left;
 }
 
 .media-body {
-  text-overflow: ellipsis;
+    text-overflow: ellipsis;
 }
-
 
 
 .modal-dialog {
-  ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: @state-danger-text ;
-  }
+    ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: @state-danger-text;
+    }
 
-  input:invalid {
-    color: @state-danger-text;
-    background-color: @state-danger-bg;
-    border-color: @state-danger-border;
-  }
+    input:invalid {
+        color: @state-danger-text;
+        background-color: @state-danger-bg;
+        border-color: @state-danger-border;
+    }
 }
 
 .btn:hover svg.svg-inline--fa {
-  transition-duration: 250ms;
-  transition-property: transform;
-  transform: scale(1.1) rotate(360deg);
+    transition-duration: 250ms;
+    transition-property: transform;
+    transform: scale(1.1) rotate(360deg);
 }
 
 #p3x-gitlist-to-top {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  display: none ;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: none;
 }
 
 @import "index";

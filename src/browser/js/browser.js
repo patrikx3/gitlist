@@ -1,4 +1,4 @@
-$(function() {
+$(function () {
 
     const menu = $('#p3x-gitlist-branch-list-container');
     if (menu.length > 0) {
@@ -77,7 +77,6 @@ $(function() {
         }
 
 
-
         if ($(`#${mainId}`).length) {
             const listBranchOptions = {
                 valueNames: ['item'],
@@ -99,7 +98,6 @@ $(function() {
             }, 250)
 
             input.keyup(debouncedKeyup)
-
 
 
         }

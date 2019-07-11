@@ -11,12 +11,12 @@ window.gitlist.gitNewPush = (json) => {
     return false;
 }
 
-window.gitlist.changeableCommit = (opts = { snack: true }) => {
+window.gitlist.changeableCommit = (opts = {snack: true}) => {
     if (!window.gitlist.branches.includes(window.gitlist.branch)) {
         let branchInfo;
         if (window.gitlist.branches.length === 1) {
             branchInfo = `Only the <strong>${window.gitlist.branches.join(', ')}</strong> branch is changeable.`
-        }  else {
+        } else {
             branchInfo = `Only the <strong>${window.gitlist.branches.join(', ')}</strong> branches are changeable.`
         }
         if (opts.snack) {
@@ -29,26 +29,27 @@ ${branchInfo}
             })
         }
         return false;
-    } {
+    }
+    {
         return true
     }
 }
 
 window.gitlist.preloadCommitValues = (options) => {
-    const { type } = options
+    const {type} = options
 
     const inputs = {
-        name: $(`#p3x-gitlist-modal-${ type }-name`),
-        email: $(`#p3x-gitlist-modal-${ type }-email`),
-        comment: $(`#p3x-gitlist-modal-${ type }-comment`),
+        name: $(`#p3x-gitlist-modal-${type}-name`),
+        email: $(`#p3x-gitlist-modal-${type}-email`),
+        comment: $(`#p3x-gitlist-modal-${type}-comment`),
     }
 
-    for(let inputKey in inputs) {
+    for (let inputKey in inputs) {
         const input = inputs[inputKey]
         //console.log(inputKey, commentCookie)
         let cookieName = `p3x-gitlist-commit-${inputKey}`;
         if (inputKey === 'comment') {
-            cookieName = `p3x-gitlist-commit-${type }-${inputKey}`;
+            cookieName = `p3x-gitlist-commit-${type}-${inputKey}`;
         }
         const cookie = Cookies.get(cookieName)
         if (cookie) {
@@ -64,8 +65,8 @@ window.gitlist.preloadCommitValues = (options) => {
 }
 
 window.gitlist.gitHelperAjax = async (options) => {
-    const { modal, action, inputs, upload, fileUpload } = options
-    let { data, filename } = options
+    const {modal, action, inputs, upload, fileUpload} = options
+    let {data, filename} = options
 
     if (filename === undefined) {
         filename = window.gitlist.getPath();
@@ -91,11 +92,11 @@ window.gitlist.gitHelperAjax = async (options) => {
     let request;
     if (upload === true) {
         const uploadData = new FormData();
-        for(let dataKey of Object.keys(data)) {
+        for (let dataKey of Object.keys(data)) {
             uploadData.append(dataKey, data[dataKey]);
         }
 //        console.log(fileUpload)
-        uploadData.append('upload-file', fileUpload[0].files[0], data.filename );
+        uploadData.append('upload-file', fileUpload[0].files[0], data.filename);
 
         request = $.ajax({
             url: url,

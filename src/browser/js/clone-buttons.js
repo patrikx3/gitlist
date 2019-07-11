@@ -1,4 +1,4 @@
-$(function() {
+$(function () {
 
     const cloneButtonSSH = $('#clone-button-ssh');
     const cloneButtonHTTP = $('#clone-button-http');
@@ -30,9 +30,8 @@ ${input.value}`
     cloneInputHTTP.click(copyCloneInputHTTP)
 
     let cloneButtonSSHInit = false;
-    cloneButtonSSH.click(function()
-    {
-        if(cloneButtonSSH.hasClass('active')) {
+    cloneButtonSSH.click(function () {
+        if (cloneButtonSSH.hasClass('active')) {
             return;
         }
 
@@ -48,9 +47,8 @@ ${input.value}`
     });
 
     let cloneButtonHTTPInit = false;
-    cloneButtonHTTP.click(function()
-    {
-        if(cloneButtonHTTP.hasClass('active')) {
+    cloneButtonHTTP.click(function () {
+        if (cloneButtonHTTP.hasClass('active')) {
             return;
         }
 

@@ -6,7 +6,7 @@ $(() => {
                 markdown: subject.innerHTML
             })
             subject.innerHTML = html
-         //   console.log(html)
+            //   console.log(html)
         }
     }
 })
@@ -23,7 +23,7 @@ window.gitlist.treegraph = () => {
             graphList.push($(this).text());
         })
         const $li = $('#rev-list li');
-        $li.each(function() {
+        $li.each(function () {
             const $this = $(this)
             const text = $this.find('.p3x-gitlist-treegraph-subject').text()
             if (text !== undefined && text !== '') {

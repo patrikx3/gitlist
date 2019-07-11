@@ -22,7 +22,7 @@ class Application extends SilexApplication
      * Constructor initialize services.
      *
      * @param Config $config
-     * @param string $root   Base path of the application files (views, cache)
+     * @param string $root Base path of the application files (views, cache)
      */
     public function __construct(Config $config, $root = null)
     {
@@ -63,39 +63,39 @@ class Application extends SilexApplication
         $this['ssh_user'] = $config->get('clone_button', 'ssh_user_dynamic') ? $_SERVER['PHP_AUTH_USER'] : $config->get('clone_button', 'ssh_user');
 
         $this['git_http_subdir_calculated'] = $config->get('clone_button', 'git_http_subdir_calculated') ? $config->get('clone_button', 'git_http_subdir_calculated') : true;
-        $this['git_http_subdir'] = $config->get('clone_button', 'git_http_subdir') ?  $config->get('clone_button', 'git_http_subdir') : '';
+        $this['git_http_subdir'] = $config->get('clone_button', 'git_http_subdir') ? $config->get('clone_button', 'git_http_subdir') : '';
         $this['fixed_navbar'] = $config->get('app', 'fixed_navbar') ? $config->get('app', 'fixed_navbar') : true;
 
         // Register services
         $this->register(new TwigServiceProvider(), array(
-            'twig.path'       => array($this->getThemePath($this['theme'])),
-            'twig.options'    => $config->get('app', 'cache') ?
-                                 array('cache' => $this->getCachePath() . 'views') : array(),
+            'twig.path' => array($this->getThemePath($this['theme'])),
+            'twig.options' => $config->get('app', 'cache') ?
+                array('cache' => $this->getCachePath() . 'views') : array(),
         ));
 
         $repositories = $config->get('git', 'repositories');
         $this['git.projects'] = $config->get('git', 'project_list') ?
-                                $this->parseProjectList($config->get('git', 'project_list')) :
-                                false;
+            $this->parseProjectList($config->get('git', 'project_list')) :
+            false;
 
         $this->register(new GitServiceProvider(), array(
-            'config'            => $config,
-            'git.client'         => $config->get('git', 'client'),
-            'git.repos'          => $repositories,
-            'ini.file'           => "config.ini",
-            'git.hidden'         => $config->get('git', 'hidden') ?
-                                    $config->get('git', 'hidden') : array(),
+            'config' => $config,
+            'git.client' => $config->get('git', 'client'),
+            'git.repos' => $repositories,
+            'ini.file' => "config.ini",
+            'git.hidden' => $config->get('git', 'hidden') ?
+                $config->get('git', 'hidden') : array(),
             'git.default_branch' => $config->get('git', 'default_branch') ?
-                                    $config->get('git', 'default_branch') : 'master',
+                $config->get('git', 'default_branch') : 'master',
         ));
 
         $this->register(new ViewUtilServiceProvider());
         $this->register(new RepositoryUtilServiceProvider());
         $this->register(new RoutingUtilServiceProvider());
 
-        $this['twig'] =  $this->extend('twig', function ($twig, $app) use ($pkg, $config) {
+        $this['twig'] = $this->extend('twig', function ($twig, $app) use ($pkg, $config) {
 
-            $twig->addFilter(new \Twig_SimpleFilter('to_id', function($value) {
+            $twig->addFilter(new \Twig_SimpleFilter('to_id', function ($value) {
                 $value = str_replace(['.', '/', '\\', ' '], '-', $value);
                 $value = strtolower($value);
                 return $value;
@@ -126,7 +126,7 @@ class Application extends SilexApplication
             $twig->addGlobal('theme', $currentTheme);
             $query = isset($_REQUEST['query']) ? $_REQUEST['query'] : (isset($_COOKIE['p3x-gitlist-query']) ? $_COOKIE['p3x-gitlist-query'] : '');
 
-            setcookie('p3x-gitlist-query',$query,0, '/' . $this['url_subdir']);
+            setcookie('p3x-gitlist-query', $query, 0, '/' . $this['url_subdir']);
 
             $_COOKIE['p3x-gitlist-query'] = $query;
 
@@ -151,7 +151,7 @@ class Application extends SilexApplication
             return $twig;
         });
 
-        $this['escaper.argument'] = $this->factory(function() {
+        $this['escaper.argument'] = $this->factory(function () {
             return new Escaper\ArgumentEscaper();
         });
 
@@ -183,7 +183,7 @@ class Application extends SilexApplication
     {
         $mod = 1000;
         $units = array('B', 'kB', 'MB', 'GB');
-        for($i = 0; $size > $mod; $i++) $size /= $mod;
+        for ($i = 0; $size > $mod; $i++) $size /= $mod;
         return round($size, 2) . " " . $units[$i];
     }
 

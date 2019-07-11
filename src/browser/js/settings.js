@@ -1,6 +1,6 @@
 module.exports = {
     twemoji: {
-        callback: function(icon, options, variant) {
+        callback: function (icon, options, variant) {
             if (icon === "") {
                 return false;
             }

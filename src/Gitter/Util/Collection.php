@@ -1,7 +1,9 @@
 <?php
+
 namespace Gitter\Util;
 
-class Collection implements \ArrayAccess, \IteratorAggregate, \Countable {
+class Collection implements \ArrayAccess, \IteratorAggregate, \Countable
+{
     /**
      * @var array
      */

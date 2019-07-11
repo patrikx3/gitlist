@@ -15,7 +15,6 @@ $(() => {
     if ($diffEditors.length > 0) {
 
 
-
         for (let diffEditor of $diffEditors) {
             const $editableHover = $('#' + diffEditor.dataset.diffId);
             const $diffEditor = $(diffEditor);
@@ -65,7 +64,7 @@ $(() => {
                         }
                         */
                         worker.postMessage({
-                            diffs : diffs,
+                            diffs: diffs,
                             basepath: window.gitlist.basepath,
                         });
                     }
@@ -75,7 +74,7 @@ $(() => {
         }
 
         const isStringInt = require('is-string-int')
-        if(isStringInt(location.hash.substr(1))) {
+        if (isStringInt(location.hash.substr(1))) {
             const diff = parseInt(location.hash.substr(1))
             const position = `p3x-gitlist-diff-${diff}`
             const element = document.getElementById(position);

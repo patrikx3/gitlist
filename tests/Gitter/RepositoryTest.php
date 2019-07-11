@@ -15,14 +15,14 @@ class RepositoryTest extends TestCase
 
     protected $client;
 
-    public static function setUpBeforeClass() : void
+    public static function setUpBeforeClass(): void
     {
         if (getenv('TMP')) {
             self::$tmpdir = getenv('TMP');
         } elseif (getenv('TMPDIR')) {
             self::$tmpdir = getenv('TMPDIR');
         } else {
-           self::$tmpdir = '/tmp';
+            self::$tmpdir = '/tmp';
         }
 
         self::$tmpdir .= '/gitlist_' . md5(time() . mt_rand());
@@ -35,7 +35,7 @@ class RepositoryTest extends TestCase
         }
     }
 
-    public function setUp() : void
+    public function setUp(): void
     {
         if (!is_writable(self::$tmpdir)) {
             $this->markTestSkipped('There are no write permissions in order to create test repositories.');
@@ -45,7 +45,7 @@ class RepositoryTest extends TestCase
         $this->client = new Client($path);
     }
 
-    public function tearDown () : void
+    public function tearDown(): void
     {
         \Mockery::close();
     }
@@ -489,10 +489,10 @@ class RepositoryTest extends TestCase
 
         $this->assertEquals('test file.txt', $diffs[0]->getFile(), 'New file name with a space in it');
         $this->assertEquals('testfile.txt', $diffs[1]->getFile(), 'Old file name');
-	}
+    }
 
 
-    public static function tearDownAfterClass() : void
+    public static function tearDownAfterClass(): void
     {
         $fs = new Filesystem();
         $fs->remove(self::$tmpdir);

@@ -75,11 +75,13 @@ class Diff extends AbstractModel
         return $this->file;
     }
 
-    public function setBinary($bool) {
+    public function setBinary($bool)
+    {
         $this->binary = true;
     }
 
-    public function getBinary() {
+    public function getBinary()
+    {
         return $this->binary;
     }
 }

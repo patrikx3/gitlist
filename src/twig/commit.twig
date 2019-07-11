@@ -39,13 +39,15 @@
                     </a>
                 </div>
                 <div class="media-body">
-                    <h4 class="media-heading p3x-gitlist-markdown-clear-fix" id="p3x-gitlist-commit-heading">{{ commit.message }}{% if commit.body is not empty %}}<br/>{{ commit.body }}{% endif %}
+                    <h4 class="media-heading p3x-gitlist-markdown-clear-fix"
+                        id="p3x-gitlist-commit-heading">{{ commit.message }}{% if commit.body is not empty %}}
+                            <br/>{{ commit.body }}{% endif %}
                     </h4>
                     <a href="mailto:{{ commit.author.email }}">{{ commit.author.name }}</a> authored
                     on {{ commit.date | format_date }}
                     {% if commit.author.email != commit.commiter.email %}
                         &bull; <a
-                            href="mailto:{{ commit.commiter.email }}">{{ commit.commiter.name }}</a> committed on {{ commit.commiterDate | format_date }}
+                        href="mailto:{{ commit.commiter.email }}">{{ commit.commiter.name }}</a> committed on {{ commit.commiterDate | format_date }}
                     {% endif %}
                 </div>
             </div>
@@ -53,10 +55,11 @@
 
         <ul class="list-group">
             {% for diff in commit.diffs %}
-                <li class="list-group-item" id="p3x-gitlist-diff-{{ loop.index }}" title="Index {{ loop.index  }}">
+                <li class="list-group-item" id="p3x-gitlist-diff-{{ loop.index }}" title="Index {{ loop.index }}">
                     <div class="pull-left">
                         <i class="fas fa-file-alt"></i>&nbsp;&nbsp;
-                        <span id="{{ diff.file | to_id }}" href="#p3x-gitlist-diff-{{ loop.index }}">{{ diff.file }}</span>
+                        <span id="{{ diff.file | to_id }}"
+                              href="#p3x-gitlist-diff-{{ loop.index }}">{{ diff.file }}</span>
                         <div style="opacity: 0.5;">
                             Diff lines: {{ diff.lineCount }} Type: {{ diff.binary ? 'binary' : 'text' }}
                         </div>
@@ -76,20 +79,22 @@
                     <div style="clear: both;"></div>
                 </li>
                 <li class="list-group-item p3x-gitlist-diff-container"
-                    data-diff-id="p3x-gitlist-diff-data-{{ loop.index }}" style="display: none;"  data-filename="{{ diff.file }}" data-loop-index="{{ loop.index }}">
-                        <div class="p3x-gitlist-diff" id="p3x-gitlist-diff-ajax-{{ loop.index }}">
-                            <div class="p3x-gitlist-commit-diff-loader" id="p3x-gitlist-commit-diff-loader-{{ loop.index }}">
+                    data-diff-id="p3x-gitlist-diff-data-{{ loop.index }}" style="display: none;"
+                    data-filename="{{ diff.file }}" data-loop-index="{{ loop.index }}">
+                    <div class="p3x-gitlist-diff" id="p3x-gitlist-diff-ajax-{{ loop.index }}">
+                        <div class="p3x-gitlist-commit-diff-loader"
+                             id="p3x-gitlist-commit-diff-loader-{{ loop.index }}">
                                 <span id="p3x-gitlist-commit-diff-loader-ajax-{{ loop.index }}">
                                     <i class="fas fa-cog fa-spin"></i> Hang on, loading the diffs via AJAX
                                 </span>
-                                <span id="p3x-gitlist-commit-diff-loader-webworker-{{ loop.index }}" style="display: none;">
+                            <span id="p3x-gitlist-commit-diff-loader-webworker-{{ loop.index }}" style="display: none;">
                                     <i class="fas fa-cog fa-spin"></i> Hang on, rendering the diffs with web worker
                                 </span>
-                            </div>
-                            <div style="overflow-y: auto;" id="p3x-gitlist-commit-diff-scroller-{{ loop.index }}">
-                            </div>
-
                         </div>
+                        <div style="overflow-y: auto;" id="p3x-gitlist-commit-diff-scroller-{{ loop.index }}">
+                        </div>
+
+                    </div>
                 </li>
             {% endfor %}
         </ul>

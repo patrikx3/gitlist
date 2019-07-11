@@ -27,7 +27,7 @@ class DateTime extends \DateTime
     const UNIX_TIMESTAMP_PATTERN = '/^@\d+$/';
 
     /**
-     * @param string       $time     A date/time string.
+     * @param string $time A date/time string.
      * @param DateTimeZone $timezone A DateTimeZone object representing the desired time zone.
      * @return DateTime A new DateTime instance.
      * @link http://php.net/manual/en/datetime.construct.php

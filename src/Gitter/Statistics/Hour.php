@@ -1,4 +1,5 @@
 <?php
+
 namespace Gitter\Statistics;
 
 use Gitter\Util\Collection;

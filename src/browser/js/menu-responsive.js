@@ -1,7 +1,7 @@
 module.exports = (options) => {
 
-    const { menuList } = options;
-    let { shift, nav, navButton } = options
+    const {menuList} = options;
+    let {shift, nav, navButton} = options
 
     if (nav === undefined) {
         nav = $('#p3x-gitlist-navigation')

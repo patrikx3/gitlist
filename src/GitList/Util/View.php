@@ -7,7 +7,7 @@ class View
     /**
      * Builds a breadcrumb array based on a path spec
      *
-     * @param  string $spec Path spec
+     * @param string $spec Path spec
      * @return array  Array with parts of the breadcrumb
      */
     public function getBreadcrumbs($spec)
@@ -20,7 +20,7 @@ class View
 
         foreach ($paths as $i => $path) {
             $breadcrumbs[] = array(
-                'dir'  => $path,
+                'dir' => $path,
                 'path' => implode('/', array_slice($paths, 0, $i + 1)),
             );
         }
@@ -39,10 +39,10 @@ class View
         $previousPage = $pageNumber - 1;
 
         return array('current' => $pageNumber,
-                     'next' => $nextPage,
-                     'previous' => $previousPage,
-                     'last' => $lastPage,
-                     'total' => $totalCommits,
+            'next' => $nextPage,
+            'previous' => $previousPage,
+            'last' => $lastPage,
+            'total' => $totalCommits,
         );
     }
 }

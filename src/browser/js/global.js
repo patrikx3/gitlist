@@ -21,8 +21,8 @@ $(function () {
     window.gitlist.$body = $('body');
 
     const es = document.getElementsByTagName('a')
-    for(let i=0; i<es.length; i++){
-        es[i].addEventListener('click', function(e) {
+    for (let i = 0; i < es.length; i++) {
+        es[i].addEventListener('click', function (e) {
             const href = e.target.getAttribute('href');
             if (href === null) {
                 return;
@@ -61,7 +61,7 @@ $(function () {
     if (snack !== null) {
         $.snackbar({
             htmlAllowed: true,
-            content: '<i class="fas fa-info-circle"></i>&nbsp;&nbsp;' + snack ,
+            content: '<i class="fas fa-info-circle"></i>&nbsp;&nbsp;' + snack,
             timeout: window.gitlist.snapckbarLongTimeout,
         })
     }
@@ -75,16 +75,16 @@ $(function () {
     }
     */
 
-    $("#p3x-gitlist-to-top").click(function(event) {
+    $("#p3x-gitlist-to-top").click(function (event) {
         event.preventDefault();
-        $("html, body").animate({ scrollTop: 0 }, "slow");
+        $("html, body").animate({scrollTop: 0}, "slow");
         return false;
     });
 
 });
 
 
-$(window).scroll(function() {
+$(window).scroll(function () {
     var height = $(window).scrollTop();
     if (height > 100) {
         $('#p3x-gitlist-to-top').fadeIn();

@@ -73,26 +73,26 @@ class NetworkController implements ControllerProviderInterface
                             'nextPage' => null,
                             'start' => null,
                             'commits' => $jsonFormattedCommits
-                            ), 200
-                        );
+                        ), 200
+                    );
                 }
 
-                return $app->json( array(
+                return $app->json(array(
                     'repo' => $repo,
                     'commitishPath' => $commitishPath,
                     'nextPage' => $nextPageUrl,
                     'start' => $commits[0]->getHash(),
                     'commits' => $jsonFormattedCommits
-                    ), 200
+                ), 200
                 );
             }
         )->assert('repo', $app['util.routing']->getRepositoryRegex())
-        ->assert('commitishPath', $app['util.routing']->getCommitishPathRegex())
-        ->value('commitishPath', null)
-        ->convert('commitishPath', 'escaper.argument:escape')
-        ->assert('page', '\d+')
-        ->value('page', '0')
-        ->bind('networkData');
+            ->assert('commitishPath', $app['util.routing']->getCommitishPathRegex())
+            ->value('commitishPath', null)
+            ->convert('commitishPath', 'escaper.argument:escape')
+            ->assert('page', '\d+')
+            ->value('page', '0')
+            ->bind('networkData');
 
         $route->get(
             '{repo}/network/{commitishPath}',
@@ -109,9 +109,9 @@ class NetworkController implements ControllerProviderInterface
                 return $app['twig']->render(
                     'network.twig',
                     array(
-                        'branches'       => $repository->getBranches(),
-                        'tags'           => $repository->getTags(),
-                        'browse_type'    => 'network',
+                        'branches' => $repository->getBranches(),
+                        'tags' => $repository->getTags(),
+                        'browse_type' => 'network',
                         'repo' => $repo,
                         'branch' => $branch,
                         'commitishPath' => $commitishPath,
@@ -119,10 +119,10 @@ class NetworkController implements ControllerProviderInterface
                 );
             }
         )->assert('repo', $app['util.routing']->getRepositoryRegex())
-        ->assert('commitishPath', $app['util.routing']->getCommitishPathRegex())
-        ->value('commitishPath', null)
-        ->convert('commitishPath', 'escaper.argument:escape')
-        ->bind('network');
+            ->assert('commitishPath', $app['util.routing']->getCommitishPathRegex())
+            ->value('commitishPath', null)
+            ->convert('commitishPath', 'escaper.argument:escape')
+            ->bind('network');
 
         return $route;
     }

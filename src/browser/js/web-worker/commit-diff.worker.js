@@ -1,4 +1,3 @@
-
 const showNumber = (lineInfo) => {
     const first = lineInfo.line[0];
     return first === ' ' || first === '@' || first === '-' || first === '+';
@@ -9,7 +8,7 @@ const htmlEncode = require('js-htmlencode')
 const construct = (data) => {
     const diffs = data.diffs
 
-    for(let diffLineIndex in diffs.lines) {
+    for (let diffLineIndex in diffs.lines) {
         diffs.lines[diffLineIndex].line = htmlEncode(diffs.lines[diffLineIndex].line)
     }
 
@@ -27,7 +26,7 @@ const construct = (data) => {
         </tr>
     `
 
-    for(let lineInfo of diffs.lines) {
+    for (let lineInfo of diffs.lines) {
         result += `
  
         <tr>
@@ -51,7 +50,7 @@ const construct = (data) => {
     return result;
 }
 
-onmessage = function(e) {
+onmessage = function (e) {
     const result = construct(e.data);
     postMessage(result)
 }

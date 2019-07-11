@@ -7,7 +7,7 @@ window.gitlist.ajaxErrorHandler = (e) => {
             timeout: window.gitlist.snapckbarLongTimeout,
         })
 
-    } else  {
+    } else {
         $.snackbar({
             htmlAllowed: true,
             content: e.message,

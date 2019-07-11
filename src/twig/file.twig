@@ -30,18 +30,19 @@
                             &nbsp;
                             Delete
                         </button>
-                    {%  endblock %}
+                    {% endblock %}
                 {% endembed %}
 
                 <span class="p3x-gitlist-file-svg-toggle">
-                {% if (((fileType != 'image' and fileType != 'markdown' ) or (enforceCodemirror)) and not binary )%}
+                {% if (((fileType != 'image' and fileType != 'markdown' ) or (enforceCodemirror)) and not binary ) %}
                     <button id="p3x-gitlist-file-button-edit" class="btn btn-sm btn-info">
                         <span class="fa fa-edit"></span> Edit
                     </button>
                     <button id="p3x-gitlist-file-button-edit-save" class="btn btn-sm btn-info" style="display: none;">
                         <span class="fa fa-save"></span> Save
                     </button>
-                    <button id="p3x-gitlist-file-button-edit-cancel" class="btn btn-sm btn-warning" style="display: none;">
+                    <button id="p3x-gitlist-file-button-edit-cancel" class="btn btn-sm btn-warning"
+                            style="display: none;">
                         <i class="fas fa-eraser"></i> Cancel
                     </button>
 
@@ -52,7 +53,7 @@
                             &nbsp;
                             Save
                         </button>
-                    {%  endblock %}
+                    {% endblock %}
 
                 {% endembed %}
 
@@ -79,7 +80,7 @@
                     <a href="{{ path('blob_raw', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"
                        class="btn btn-info btn-sm"><span class="fas fa-download"></span> Download</a>
                 {% else %}
-                <a href="{{ path('blob_raw', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"
+                    <a href="{{ path('blob_raw', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"
                        class="btn btn-info btn-sm"><span class="fas fa-download"></span> Raw</a>
                 {% endif %}
 
@@ -91,32 +92,33 @@
 
                 <div class="p3x-gitlist-file-svg-toggle">
 
-               {% if (((fileType != 'image' and fileType != 'markdown') or enforceCodemirror) and not binary) %}
-                    <span id="p3x-gitlist-file-codemirror" style="display: none;">
+                    {% if (((fileType != 'image' and fileType != 'markdown') or enforceCodemirror) and not binary) %}
+                        <span id="p3x-gitlist-file-codemirror" style="display: none;">
                         <div class="btn-group btn-toggle">
-                            <button id="p3x-gitlist-file-button-scroll" class="btn btn-sm btn-default">Scroll mode</button>
-                            <button id="p3x-gitlist-file-button-full" class="btn btn-sm btn-default">Full height</button>
+                            <button id="p3x-gitlist-file-button-scroll"
+                                    class="btn btn-sm btn-default">Scroll mode</button>
+                            <button id="p3x-gitlist-file-button-full"
+                                    class="btn btn-sm btn-default">Full height</button>
                         </div>
                     </span>
 
-                {% endif %}
-
-                {% if fileType == 'markdown' %}
-
-                    {% if enforceCodemirror %}
-                        <a href="{{ path('blob', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"
-                           class="btn btn-default btn-sm"><span class="fa fa-code"></span> Markdown rendered</a>
-                    {% else %}
-                        <a title="Click this button and you can edit/save this code."
-                           href="{{ path('blob', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}?codemirror=1"
-                           class="btn btn-default btn-sm"><span class="fa fa-code"></span> Markdown code</a>
                     {% endif %}
 
+                    {% if fileType == 'markdown' %}
 
-                {% endif %}
+                        {% if enforceCodemirror %}
+                            <a href="{{ path('blob', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"
+                               class="btn btn-default btn-sm"><span class="fa fa-code"></span> Markdown rendered</a>
+                        {% else %}
+                            <a title="Click this button and you can edit/save this code."
+                               href="{{ path('blob', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}?codemirror=1"
+                               class="btn btn-default btn-sm"><span class="fa fa-code"></span> Markdown code</a>
+                        {% endif %}
+
+
+                    {% endif %}
 
                 </div>
-
 
 
             </div>
@@ -126,14 +128,19 @@
     {% endembed %}
 
     <div id="p3x-gitlist-file-codemirror-exceeded" role="alert" class="alert-dismissable alert alert-warning">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        This file ( {{ fileSize | format_size }} ) exceeds the allowed full mode ({{ codemirror_full_limit }} kb) size. The editor full hight is disabled, only scrolling is allowed..
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                aria-hidden="true">&times;</span></button>
+        This file ( {{ fileSize | format_size }} ) exceeds the allowed full mode ({{ codemirror_full_limit }} kb) size.
+        The editor full hight is disabled, only scrolling is allowed..
     </div>
 
 
-    <div id="p3x-gitlist-file-codemirror-full-height" role="alert" class="alert-dismissable alert alert-info" style="display: none;">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        If you wish to edit a file, it is recommended to use the scroll mode as some users do not like the full height mode, although some users like it.
+    <div id="p3x-gitlist-file-codemirror-full-height" role="alert" class="alert-dismissable alert alert-info"
+         style="display: none;">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                aria-hidden="true">&times;</span></button>
+        If you wish to edit a file, it is recommended to use the scroll mode as some users do not like the full height
+        mode, although some users like it.
     </div>
 
 
@@ -141,17 +148,20 @@
     <div>
 
         {% if fileType == 'image' %}
-            <div class="text-center"><img style="max-width: 100%; max-height: auto;" src="{{ path('blob_raw', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"
+            <div class="text-center"><img style="max-width: 100%; max-height: auto;"
+                                          src="{{ path('blob_raw', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"
                                           alt="{{ file }}" class="image-blob"/></div>
 
         {% elseif fileType == 'markdown' and enforceCodemirror != true %}
             {% include 'markdown.twig' with {'filename': file, 'data': blob} %}
         {% elseif not binary %}
-            <pre class="p3x-gitlist-code" id="p3x-gitlist-file-editor" language="{{ fileType }}">{{ blob|htmlentities|raw }}</pre>
+            <pre class="p3x-gitlist-code" id="p3x-gitlist-file-editor"
+                 language="{{ fileType }}">{{ blob|htmlentities|raw }}</pre>
         {% endif %}
 
         {% if extension == 'svg' %}
-            <div id="p3x-gitlist-file-svg-content" style="display: none;" class="p3x-gitlist-file-svg-toggle p3x-gitlist-max-width"></div>
+            <div id="p3x-gitlist-file-svg-content" style="display: none;"
+                 class="p3x-gitlist-file-svg-toggle p3x-gitlist-max-width"></div>
         {% endif %}
     </div>
 

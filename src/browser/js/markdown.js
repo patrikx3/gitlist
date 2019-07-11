@@ -37,14 +37,14 @@ markdownRenderer.heading = function (text, level, raw) {
 }
 
 
-markdownRenderer.link = function(href, title, text) {
+markdownRenderer.link = function (href, title, text) {
     let a;
     if (href.startsWith('https:/') || href.startsWith('http:/')) {
         a = '<a target="_blank" href="' + href + '">' + text + '</a>';
     } else {
         // /ramdisk.git/tree/master/artifacts/
         //console.log(href)
-        const start = gitlist.basepath + '/' + gitlist.repo + (href.endsWith('/') ? '/tree/' : '/blob/' ) +  gitlist.branch + '/';
+        const start = gitlist.basepath + '/' + gitlist.repo + (href.endsWith('/') ? '/tree/' : '/blob/') + gitlist.branch + '/';
         if (!location.pathname.startsWith(start)) {
             href = start + href;
         } else {
@@ -59,7 +59,7 @@ markdownRenderer.link = function(href, title, text) {
     return a;
 }
 
-markdownRenderer.image = function(href, title, text) {
+markdownRenderer.image = function (href, title, text) {
     title = title || '';
     text = text || '';
     let resultText = title;
@@ -71,7 +71,7 @@ markdownRenderer.image = function(href, title, text) {
     }
 
     if (!href.startsWith('https:/') && !href.startsWith('http:/')) {
-        const start = gitlist.basepath + '/' + gitlist.repo + '/raw/' +  gitlist.branch + '/';
+        const start = gitlist.basepath + '/' + gitlist.repo + '/raw/' + gitlist.branch + '/';
         if (!location.pathname.startsWith(start)) {
             href = start + href;
         } else {
@@ -83,19 +83,19 @@ markdownRenderer.image = function(href, title, text) {
         }
     }
 
-    const  result = '<img class="p3x-gitlist-markdown-image" alt="' + htmlEncode(resultText) + '" title="' + htmlEncode(resultText) + '" src="' + href + '"/>';
+    const result = '<img class="p3x-gitlist-markdown-image" alt="' + htmlEncode(resultText) + '" title="' + htmlEncode(resultText) + '" src="' + href + '"/>';
 
     return result;
 };
 
-markdownRenderer.code = (code, language ) => {
+markdownRenderer.code = (code, language) => {
     if (language === undefined) {
         language = 'text';
     }
 
     language = language.toLowerCase()
 
-    if ((hljs.getLanguage(language) === 'undefined' ||  hljs.getLanguage(language) === undefined) && language !== 'text') {
+    if ((hljs.getLanguage(language) === 'undefined' || hljs.getLanguage(language) === undefined) && language !== 'text') {
         console.error(`Please add highlight.js as a language (could be a marked error as well, sometimes it thinks a language): ${language}                
 We are not loading everything, since it is about 500kb`)
     }
@@ -107,11 +107,11 @@ We are not loading everything, since it is about 500kb`)
 
 markdownRenderer.codespan = (code) => {
     const lang = 'html';
-    const highlighted = hljs.highlight(lang, code).value ;
+    const highlighted = hljs.highlight(lang, code).value;
     return `<code style="display: inline; line-height: 34px;" class="hljs ${lang}">${highlighted}</code>`;
 }
 window.gitlist.markdownRenderer = markdownRenderer;
-$(function() {
+$(function () {
 
     const mdContent = $('#p3x-gitlist-readme');
     if (mdContent.length) {
@@ -125,7 +125,7 @@ $(function() {
 });
 
 window.gitlist.renderMarkdown = (options) => {
-    const { markdown } = options;
+    const {markdown} = options;
     const twemojiSettings = require('./settings').twemoji;
     const markedHtml = marked(markdown, {
         renderer: window.gitlist.markdownRenderer

@@ -1,4 +1,5 @@
 <?php
+
 namespace Gitter\Tests;
 
 use PHPUnit\Framework\TestCase;
@@ -12,14 +13,14 @@ class ClientTest extends TestCase
     public static $tmpdir;
     protected $client;
 
-    public static function setUpBeforeClass() : void
+    public static function setUpBeforeClass(): void
     {
         if (getenv('TMP')) {
             self::$tmpdir = getenv('TMP');
         } elseif (getenv('TMPDIR')) {
             self::$tmpdir = getenv('TMPDIR');
         } else {
-           self::$tmpdir = '/tmp';
+            self::$tmpdir = '/tmp';
         }
 
         self::$tmpdir .= '/gitlist_' . md5(time() . mt_rand());
@@ -32,7 +33,7 @@ class ClientTest extends TestCase
         }
     }
 
-    public function setUp() : void
+    public function setUp(): void
     {
         if (!is_writable(self::$tmpdir)) {
             $this->markTestSkipped('There are no write permissions in order to create test repositories.');
@@ -43,7 +44,7 @@ class ClientTest extends TestCase
     }
 
     /**
-     expectedException RuntimeException
+     * expectedException RuntimeException
      */
     /*
     public function testIsNotAbleToGetUnexistingRepository()
@@ -103,7 +104,7 @@ class ClientTest extends TestCase
     }
     */
 
-    public static function tearDownAfterClass() : void
+    public static function tearDownAfterClass(): void
     {
         $fs = new Filesystem();
         $fs->remove(self::$tmpdir);

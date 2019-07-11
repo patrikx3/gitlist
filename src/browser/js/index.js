@@ -1,4 +1,4 @@
-$(function() {
+$(function () {
 
     const List = require('list.js')
 
@@ -8,7 +8,7 @@ $(function() {
 
         let paging = parseInt(window.gitlist.repoPaging)
 
-        if(window.gitlist.isBot()) {
+        if (window.gitlist.isBot()) {
             paging = 0
         }
 
@@ -25,7 +25,7 @@ $(function() {
         const timesContainer = $('.p3x-gitlist-index-repo-last-commit')
         const timesContainerEmpty = $('.p3x-gitlist-index-repo-last-commit-empty')
 
-        for(let timeindex in times) {
+        for (let timeindex in times) {
             const time = times[timeindex]
             if (String(time.innerText).trim() === '') {
                 $(timesContainer[timeindex]).hide();
@@ -54,7 +54,7 @@ $(function() {
         if (paging !== 0 && times.length > paging) {
             showPaging = true;
             listOptions.page = paging
-            listOptions.pagination =  [{
+            listOptions.pagination = [{
                 name: "p3x-gitlist-index-pagination-top",
                 paginationClass: "p3x-gitlist-index-pagination-top",
                 innerWindow: 2,

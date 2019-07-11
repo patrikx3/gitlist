@@ -36,7 +36,7 @@ class Routing
         $slashPosition = strpos($commitishPath, '/');
         if (strlen($commitishPath) >= 40 &&
             ($slashPosition === false ||
-             $slashPosition === 40)) {
+                $slashPosition === 40)) {
             // We may have a commit hash as our commitish.
             $hash = substr($commitishPath, 0, 40);
             if (preg_match('/[^a-zA-Z0-9]/i', $hash) === 0) {
@@ -144,7 +144,7 @@ class Routing
     /**
      * Strips the base path from a full repository path
      *
-     * @param  string $repoPath Full path to the repository
+     * @param string $repoPath Full path to the repository
      * @return string Relative path to the repository from git.repositories
      */
     public function getRelativePath($repoPath)

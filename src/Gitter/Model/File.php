@@ -1,7 +1,9 @@
 <?php
+
 namespace Gitter\Model;
 
-class File extends AbstractModel {
+class File extends AbstractModel
+{
 
     protected $mode;
     protected $name;

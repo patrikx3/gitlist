@@ -143,7 +143,7 @@ global.gitGraph = function (canvas, rawGraphList, config) {
             newId = genRandomStr();
         } while (findFlow(newId) !== -1);
 
-        return {id: newId, color: window.gitlist.randomCanvasLaneColors() };
+        return {id: newId, color: window.gitlist.randomCanvasLaneColors()};
     };
 
     //draw method

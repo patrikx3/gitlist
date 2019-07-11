@@ -1,6 +1,6 @@
 let $todoModal
 let todoHtml;
-window.gitlist.todo = async() => {
+window.gitlist.todo = async () => {
     if (todoHtml === undefined) {
         try {
             const response = await $.ajax('https://raw.githubusercontent.com/patrikx3/gitlist/master/todo.md')
@@ -9,7 +9,7 @@ window.gitlist.todo = async() => {
                 markdown: response
             })
             $todoModalBody.html(todoHtml);
-        } catch(e) {
+        } catch (e) {
             window.gitlist.ajaxErrorHandler(e)
         }
     }

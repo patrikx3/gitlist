@@ -6,31 +6,37 @@
     <div class="container">
 
         {% if page in ['commits', 'searchcommits'] %}
-            <form class="form-group" action="{{repo}}/commits/{{branch}}/search" method="POST">
+            <form class="form-group" action="{{ repo }}/commits/{{ branch }}/search" method="POST">
                 <div class="input-group">
-                    <input type="text" minlength="3" required value="{{ search_query }}" name="query" class="form-control input-sm" placeholder="Search commits..." onkeypress="window.gitlist.setInputQuery('query')" autofocus>
-                  <div class="input-group-btn">
-                    <button class="btn btn-default btn-sm" type="button" onclick="window.gitlist.clearInput('query')">
-                        <i class="fas fa-times"></i>
-                    </button>
-                      <button class="btn btn-default btn-sm" type="submit">
-                          <i class="fas fa-search"></i>
-                      </button>
-                  </div>
+                    <input type="text" minlength="3" required value="{{ search_query }}" name="query"
+                           class="form-control input-sm" placeholder="Search commits..."
+                           onkeypress="window.gitlist.setInputQuery('query')" autofocus>
+                    <div class="input-group-btn">
+                        <button class="btn btn-default btn-sm" type="button"
+                                onclick="window.gitlist.clearInput('query')">
+                            <i class="fas fa-times"></i>
+                        </button>
+                        <button class="btn btn-default btn-sm" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
                 </div>
             </form>
         {% else %}
-            <form class="form-group" action="{{repo}}/tree/{{branch}}/search" method="POST">
+            <form class="form-group" action="{{ repo }}/tree/{{ branch }}/search" method="POST">
                 <div class="input-group">
-                    <input type="text" minlength="3" required  value="{{ search_query }}" name="query" class="form-control input-sm" placeholder="Search tree..." onkeypress="window.gitlist.setInputQuery('query')" autofocus>
-                  <div class="input-group-btn">
-                    <button class="btn btn-default btn-sm" type="button" onclick="window.gitlist.clearInput('query')">
-                        <i class="fas fa-times"></i>
-                    </button>
-                      <button class="btn btn-default btn-sm" type="submit">
-                          <i class="fas fa-search"></i>
-                      </button>
-                  </div>
+                    <input type="text" minlength="3" required value="{{ search_query }}" name="query"
+                           class="form-control input-sm" placeholder="Search tree..."
+                           onkeypress="window.gitlist.setInputQuery('query')" autofocus>
+                    <div class="input-group-btn">
+                        <button class="btn btn-default btn-sm" type="button"
+                                onclick="window.gitlist.clearInput('query')">
+                            <i class="fas fa-times"></i>
+                        </button>
+                        <button class="btn btn-default btn-sm" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
                 </div>
             </form>
         {% endif %}

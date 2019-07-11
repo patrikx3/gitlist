@@ -23,10 +23,12 @@
                     <a href="{{ path('blame', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"
                        class="btn btn-default btn-sm"><span class="fa fa-fire"></span> Blame</a>
 
-                    <a class="btn btn-default btn-sm" href="{{ path('blob', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"> <span class="far fa-file"></span> View</a>
+                    <a class="btn btn-default btn-sm"
+                       href="{{ path('blob', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"> <span
+                            class="far fa-file"></span> View</a>
 
-                    </div>
-            {%  endif %}
+                </div>
+            {% endif %}
 
         {% endblock %}
 

@@ -38,7 +38,7 @@ class Repository
     }
 
     /**
-     * @param  bool $value
+     * @param bool $value
      * @return void
      */
     public function setCommitsHaveBeenParsed($value)
@@ -86,7 +86,7 @@ class Repository
     /**
      * Set a git configuration variable
      *
-     * @param string $key   Configuration key
+     * @param string $key Configuration key
      * @param string $value Configuration value
      */
     public function setConfig($key, $value)
@@ -101,7 +101,7 @@ class Repository
      *
      * @param StatisticsInterface|array $statistics
      */
-    public function addStatistics ($statistics)
+    public function addStatistics($statistics)
     {
         if (!is_array($statistics)) {
             $statistics = array($statistics);
@@ -231,7 +231,7 @@ class Repository
      * Update remote references
      *
      * @param string $repository Repository to be pushed
-     * @param string $refspec    Refspec for the push
+     * @param string $refspec Refspec for the push
      */
     public function push($repository = null, $refspec = null)
     {
@@ -255,7 +255,7 @@ class Repository
      *
      * @return string
      */
-    public function getName ()
+    public function getName()
     {
         $name = rtrim($this->path, '/');
 
@@ -322,7 +322,7 @@ class Repository
     /**
      * Check if a specified branch exists
      *
-     * @param  string  $branch Branch to be checked
+     * @param string $branch Branch to be checked
      * @return boolean True if the branch exists
      */
     public function hasBranch($branch)
@@ -436,7 +436,7 @@ class Repository
     /**
      * Show the data from a specific commit.
      *
-     * @param  string $commitHash Hash of the specific commit to read data
+     * @param string $commitHash Hash of the specific commit to read data
      *
      * @return array  Commit data
      */
@@ -478,7 +478,7 @@ class Repository
     /**
      * Read diff logs and generate a collection of diffs.
      *
-     * @param  array $logs Array of log rows
+     * @param array $logs Array of log rows
      *
      * @return array Array of diffs
      */
@@ -575,7 +575,7 @@ class Repository
 
         if (isset($diff)) {
             if ($options['filename'] === '' || count($diffs) === 0)
-            $diffs[] = $diff;
+                $diffs[] = $diff;
         }
 
         return $diffs;
@@ -608,7 +608,7 @@ class Repository
             $m = array();
             if (preg_match('#ref:\srefs/heads/(.+)#', $line, $m)) {
                 if ($this->hasBranch($m[1])) {
-                  return $m[1];
+                    return $m[1];
                 }
             }
         }
@@ -631,7 +631,7 @@ class Repository
     /**
      * Extract the tree hash for a given branch or tree reference
      *
-     * @param  string $branch
+     * @param string $branch
      * @return string
      */
     public function getBranchTree($branch)
@@ -639,13 +639,13 @@ class Repository
         $hash = $this->getClient()->run($this, "log --pretty=\"%T\" --max-count=1 $branch");
         $hash = trim($hash, "\r\n ");
 
-        return $hash ? : false;
+        return $hash ?: false;
     }
 
     /**
      * Get the Tree for the provided folder
      *
-     * @param  string $tree Folder that will be parsed
+     * @param string $tree Folder that will be parsed
      * @return Tree   Instance of Tree for the provided folder
      */
     public function getTree($tree)
@@ -659,7 +659,7 @@ class Repository
     /**
      * Get the Blob for the provided file
      *
-     * @param  string $blob File that will be parsed
+     * @param string $blob File that will be parsed
      * @return Blob   Instance of Blob for the provided file
      */
     public function getBlob($blob)
@@ -670,7 +670,7 @@ class Repository
     /**
      * Blames the provided file and parses the output.
      *
-     * @param  string $file File that will be blamed
+     * @param string $file File that will be blamed
      *
      * @return array  Commits hashes containing the lines
      */
@@ -751,7 +751,7 @@ class Repository
     /**
      * Get and parse the output of a git command with a XML-based pretty format
      *
-     * @param  string $command Command to be run by git
+     * @param string $command Command to be run by git
      * @return array  Parsed command output
      */
     public function getPrettyFormat($command)
@@ -762,7 +762,8 @@ class Repository
         return $format->parse($output);
     }
 
-    public function getShortHash($commit) {
+    public function getShortHash($commit)
+    {
         $shortHash = $this->getClient()->run($this, 'rev-parse  --short ' . $commit);
         $shortHash = trim($shortHash, "\r\n ");
         return $shortHash;
@@ -787,7 +788,7 @@ class Repository
     /**
      * Show Patches that where apllied to the selected file.
      *
-     * @param  string $file File path for which we will retrieve a list of patch logs
+     * @param string $file File path for which we will retrieve a list of patch logs
      *
      * @return array  Collection of Commits data
      */
@@ -953,11 +954,10 @@ class Repository
     }
 
 
-
     /**
      * Create a TAR or ZIP archive of a git tree.
      *
-     * @param string $tree   Tree-ish reference
+     * @param string $tree Tree-ish reference
      * @param string $output Output File name
      * @param string $format Archive format
      */
@@ -972,7 +972,7 @@ class Repository
      * Return true if $path exists in $branch; return false otherwise.
      *
      * @param string $commitish commitish reference; branch, tag, SHA1, etc
-     * @param string $path      path whose existence we want to verify
+     * @param string $path path whose existence we want to verify
      *
      * @return bool
      *
@@ -991,11 +991,12 @@ class Repository
     }
 
 
-    protected function changeRepo($cachePath, $repo, $branch, $repoFilename, $name, $email, $comment, $callback) {
+    protected function changeRepo($cachePath, $repo, $branch, $repoFilename, $name, $email, $comment, $callback)
+    {
         $temporaryDirectory = '';
         $tempRepo = '';
         $hadError = false;
-        $command  = '';
+        $command = '';
         $output = '';
         $outputs = [];
         $trace = null;
@@ -1007,7 +1008,7 @@ class Repository
             $repoPath = realpath($this->getPath());
             $tempRepo = $temporaryDirectory->path();
 
-            $output =  $client->run($this, 'clone '. $repoPath . ' ' . $tempRepo);
+            $output = $client->run($this, 'clone ' . $repoPath . ' ' . $tempRepo);
             $this->setPath($tempRepo);
 
             $normalizedRepoFilePath = $this->isValidPath($tempRepo, $repoFilename, $outputs);
@@ -1035,7 +1036,7 @@ class Repository
             $command = " rev-parse HEAD ";
             $lastCommit = $client->run($this, $command);
 
-            $result =  (object) [
+            $result = (object)[
                 'status' => 'ok',
                 'output' => $message,
                 'outputs' => $outputs,
@@ -1043,7 +1044,7 @@ class Repository
                 'branch' => $branch,
             ];
             return $result;
-        } catch(\Throwable $e) {
+        } catch (\Throwable $e) {
 
             $hadError = $e;
         } finally {
@@ -1061,7 +1062,7 @@ class Repository
                     $trace = $hadError->getTrace();
                 }
 
-                return ((object) [
+                return ((object)[
                     'status' => $message === '' ? 'ok' : 'error',
                     'error' => $message === '' ? false : true,
                     //'temporaryDirectory' => $tempRepo,
@@ -1079,7 +1080,8 @@ class Repository
     }
 
 
-    protected function isValidPath($tempRepo, $repoFilename, &$outputs) {
+    protected function isValidPath($tempRepo, $repoFilename, &$outputs)
+    {
         $basePath = FileSystemPath::fromString($tempRepo);
         //array_push($outputs, "$basePath {$basePath}");
         $repoFilenameItem = FileSystemPath::fromString($repoFilename);
@@ -1097,7 +1099,7 @@ class Repository
 ///        array_unshift($outputs, '$normalized type: ' .  gettype($normalized));
 
         $normalizedRepoFilePath = $normalized->__toString();
-        $validPath = strpos($normalizing->__toString(), $normalizedRepoFilePath ) !== false;
+        $validPath = strpos($normalizing->__toString(), $normalizedRepoFilePath) !== false;
         //array_push($outputs, "$normalizing {$normalizing->__toString()}");
         //array_push($outputs, "$normalizedRepoFilePath {$normalizedRepoFilePath}");
         //array_push($outputs, (substr($normalizedRepoFilePath, 0, strlen($basePath)) . " $basePath"));
@@ -1107,7 +1109,8 @@ class Repository
         return $normalizedRepoFilePath;
     }
 
-    public function newFileBinary($cachePath, $repo, $branch, $repoFilename, $name, $email, $comment, $override, $phpUploadFile) {
+    public function newFileBinary($cachePath, $repo, $branch, $repoFilename, $name, $email, $comment, $override, $phpUploadFile)
+    {
 
         /*
         return (object)[
@@ -1155,7 +1158,7 @@ class Repository
 
             $wasItNonExisting = !realpath($normalizedRepoFilePath);
 
-            array_push($outputs, $wasItNonExisting );
+            array_push($outputs, $wasItNonExisting);
             array_push($outputs, $repoFilename);
             array_push($outputs, $normalizedRepoFilePath);
             array_push($outputs, $override);
@@ -1169,7 +1172,7 @@ class Repository
                     @unlink($normalizedRepoFilePath);
                 }
                 @mkdir(dirname($normalizedRepoFilePath), 0777, true);
-                move_uploaded_file( $phpUploadFile['tmp_name'], $normalizedRepoFilePath);
+                move_uploaded_file($phpUploadFile['tmp_name'], $normalizedRepoFilePath);
 
                 if ($wasItNonExisting) {
                     $command = " add . ";
@@ -1240,18 +1243,20 @@ class Repository
          */
     }
 
-    public function changeFile($cachePath, $repo, $branch, $repoFilename, $value, $name, $email, $comment) {
+    public function changeFile($cachePath, $repo, $branch, $repoFilename, $value, $name, $email, $comment)
+    {
 
-        return $this->changeRepo($cachePath, $repo, $branch, $repoFilename, $name, $email, $comment, function($client, $filename, $outputs, $tempRepo, $normalizedRepoFilePath) use ($value) {
+        return $this->changeRepo($cachePath, $repo, $branch, $repoFilename, $name, $email, $comment, function ($client, $filename, $outputs, $tempRepo, $normalizedRepoFilePath) use ($value) {
             //$originalFileContent = file_get_contents($filename);
             file_put_contents($normalizedRepoFilePath, $value);
             return '';
         });
     }
 
-    public function deleteFile($cachePath, $repo, $branch, $repoFilename, $name, $email, $comment) {
+    public function deleteFile($cachePath, $repo, $branch, $repoFilename, $name, $email, $comment)
+    {
 
-        return $this->changeRepo($cachePath, $repo, $branch, $repoFilename, $name, $email, $comment, function($client, $filename, $outputs, $tempRepo, $normalizedRepoFilePath) {
+        return $this->changeRepo($cachePath, $repo, $branch, $repoFilename, $name, $email, $comment, function ($client, $filename, $outputs, $tempRepo, $normalizedRepoFilePath) {
             //$originalFileContent = file_get_contents($filename);
             @unlink($normalizedRepoFilePath);
             return 'Deleted ' . $filename;
@@ -1299,24 +1304,24 @@ class Repository
             }
 
             if (substr($repoFilename, -1) == '\\' || substr($repoFilename, -1) == '/') {
-          //echo "is path ";
-               // if (realpath($normalizedRepoFilePath) === FALSE) {
-                    if (@mkdir($normalizedRepoFilePath, 0777, true)) {
-                        //        echo "path is not existing ";
-                        touch($normalizedRepoFilePath . '/.gitkeep');
-                        $command = " add . ";
-                        $output = $client->run($this, $command);
-                        array_push($outputs, $output);
-                        return "Created new directory (including .gitkeep file): {$repoFilename}";
-                    }
-                    return "Failed to create the new directory: {$repoFilename}";
+                //echo "is path ";
+                // if (realpath($normalizedRepoFilePath) === FALSE) {
+                if (@mkdir($normalizedRepoFilePath, 0777, true)) {
+                    //        echo "path is not existing ";
+                    touch($normalizedRepoFilePath . '/.gitkeep');
+                    $command = " add . ";
+                    $output = $client->run($this, $command);
+                    array_push($outputs, $output);
+                    return "Created new directory (including .gitkeep file): {$repoFilename}";
+                }
+                return "Failed to create the new directory: {$repoFilename}";
                 //} else {
-              //      echo "path is existing ";
+                //      echo "path is existing ";
                 //    throw new \Exception("This path is already existing.");
                 //}
             } else {
                 @mkdir(dirname($normalizedRepoFilePath), 0777, true);
-                touch($normalizedRepoFilePath );
+                touch($normalizedRepoFilePath);
                 $command = " add . ";
                 $output = $client->run($this, $command);
                 array_push($outputs, $output);
@@ -1327,9 +1332,10 @@ class Repository
     }
 
 
-    public function fetchOrigin() {
+    public function fetchOrigin()
+    {
         $output = $this->getClient()->run($this, "fetch origin '*:*'");
-        return ((object) [
+        return ((object)[
             'status' => 'ok',
             'error' => false,
             'message' => 'OK, fetch origin is done.',

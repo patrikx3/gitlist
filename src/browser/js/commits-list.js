@@ -5,13 +5,13 @@ $(() => {
 
         if ($commitListTables.length > 0) {
 
-            for(let commitTable of $commitListTables) {
+            for (let commitTable of $commitListTables) {
                 const $commitTable = $(commitTable)
                 $commitTable.addClass('p3x-gitlist-commits-list-rendered')
 //console.log(commitTable)
                 const $markedItems = $commitTable.find('.p3x-gitlist-commits-list-message')
 
-                for(let markedItem of $markedItems) {
+                for (let markedItem of $markedItems) {
                     //console.log(markedItem)
                     const $markedItem = $(markedItem)
                     const html = window.gitlist.renderMarkdown({

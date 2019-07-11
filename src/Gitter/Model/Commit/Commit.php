@@ -152,7 +152,7 @@ class Commit extends Item
     {
         return $this->body;
     }
-    
+
     public function setBody($body)
     {
         $this->body = $body;

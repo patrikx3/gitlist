@@ -1,4 +1,5 @@
 <?php
+
 namespace Gitter\Tests;
 
 use Gitter\PrettyFormat;

@@ -1,83 +1,89 @@
 .p3x-gitlist-diff-container {
-  width: 100%;
-  display: block;
+    width: 100%;
+    display: block;
 
-  padding: 0;
+    padding: 0;
 
-  a, a:hover {
-    text-decoration: none !important;
-  }
-
-  .p3x-gitlist-diff {
-    max-width: 100%;
-    min-width: 100%;
-    overflow-x: auto;
-
-    pre {
-      background-color: @body-bg;
-      color: @text-color;
-      margin: 0;
-      padding: 0 0 0 6px;
-      border-radius: 0;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      border: 1px solid transparent;
-
-      &:hover {
-        //        filter: brightness(0.9);
-      }
-    }
-    table {
-      font-family: monospace;
-    }
-    table td {
-      padding: 0;
+    a, a:hover {
+        text-decoration: none !important;
     }
 
-    .new {
-      background-color: rgba(@alert-success-bg, 0.2);
-      border-bottom: 1px solid @alert-success-bg !important;
-//      color: @alert-success-text;
-    }
-    .old {
-      background-color: rgba(@alert-danger-bg, 0.2);
-      border-bottom: 1px solid @alert-danger-bg !important;
-//      color: @alert-danger-text;
-    }
-    .chunk {
-      background-color: @alert-info-bg;
-      color: @alert-info-text;
-    }
-    .lineNo {
-      //      background-color: @navbar-default-bg !important;
-      //      color: @navbar-default-color !important;
-      padding: 0 6px;
-      text-align: right;
-      border-right: 1px solid @navbar-default-border !important;
-    }
-    .lineNo a {
-      color: @navbar-default-color !important;
-    }
-  }
+    .p3x-gitlist-diff {
+        max-width: 100%;
+        min-width: 100%;
+        overflow-x: auto;
 
-  .image-blob {
-    padding: 10px;
-    max-width: 100%;
-  }
+        pre {
+            background-color: @body-bg;
+            color: @text-color;
+            margin: 0;
+            padding: 0 0 0 6px;
+            border-radius: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            border: 1px solid transparent;
+
+            &:hover {
+                //        filter: brightness(0.9);
+            }
+        }
+
+        table {
+            font-family: monospace;
+        }
+
+        table td {
+            padding: 0;
+        }
+
+        .new {
+            background-color: rgba(@alert-success-bg, 0.2);
+            border-bottom: 1px solid @alert-success-bg !important;
+            //      color: @alert-success-text;
+        }
+
+        .old {
+            background-color: rgba(@alert-danger-bg, 0.2);
+            border-bottom: 1px solid @alert-danger-bg !important;
+            //      color: @alert-danger-text;
+        }
+
+        .chunk {
+            background-color: @alert-info-bg;
+            color: @alert-info-text;
+        }
+
+        .lineNo {
+            //      background-color: @navbar-default-bg !important;
+            //      color: @navbar-default-color !important;
+            padding: 0 6px;
+            text-align: right;
+            border-right: 1px solid @navbar-default-border !important;
+        }
+
+        .lineNo a {
+            color: @navbar-default-color !important;
+        }
+    }
+
+    .image-blob {
+        padding: 10px;
+        max-width: 100%;
+    }
 }
 
 #p3x-gitlist-commit-heading {
-  font-size: 120%;
-  overflow: hidden !important;
-  text-overflow: ellipsis !important;
+    font-size: 120%;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
 
 }
 
 
 .p3x-gitlist-commit-diff-loader {
-  opacity: 0.5;
-  padding: 20px;
-  font-size: 125%;
+    opacity: 0.5;
+    padding: 20px;
+    font-size: 125%;
 }
 
 /*

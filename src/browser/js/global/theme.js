@@ -1,13 +1,11 @@
-
-window.gitlist.isDark =(theme = window.gitlist.getActualTheme()) => {
-    for(let i = 0; i < window.gitlist.dark.length; i++ ) {
+window.gitlist.isDark = (theme = window.gitlist.getActualTheme()) => {
+    for (let i = 0; i < window.gitlist.dark.length; i++) {
         if (window.gitlist.dark[i] === theme) {
             return true;
         }
     }
     return false;
 }
-
 
 
 window.gitlist.getActualTheme = (theme = window.gitlist.getThemeCookie()) => {
@@ -41,7 +39,7 @@ window.gitlist.setTheme = () => {
 
     const diffButtons = $('.p3x-gitlist-diff-button.active');
     //console.log(diffButtons)
-    for(let diffButton of diffButtons ) {
+    for (let diffButton of diffButtons) {
         diffButton.click();
     }
 
