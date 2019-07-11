@@ -24,7 +24,7 @@ class Commit extends Item
     protected $date;
     protected $commiter;
     protected $commiterDate;
-    protected $message;
+    public $message;
     protected $body;
 
     /** @var Diff[] */
