@@ -10,6 +10,8 @@ use GitList\Provider\RepositoryUtilServiceProvider;
 use GitList\Provider\ViewUtilServiceProvider;
 use GitList\Provider\RoutingUtilServiceProvider;
 use Symfony\Component\Filesystem\Filesystem;
+use Twig\TwigFilter;
+use Twig\TwigFunction;
 
 /**
  * GitList application.
@@ -95,22 +97,22 @@ class Application extends SilexApplication
 
         $this['twig'] = $this->extend('twig', function ($twig, $app) use ($pkg, $config) {
 
-            $twig->addFilter(new \Twig_SimpleFilter('to_id', function ($value) {
+            $twig->addFilter(new TwigFilter('to_id', function ($value) {
                 $value = str_replace(['.', '/', '\\', ' '], '-', $value);
                 $value = strtolower($value);
                 return $value;
             }));
 
-            $twig->addFilter(new \Twig_SimpleFilter('remove_extension', function ($string) {
+            $twig->addFilter(new TwigFilter('remove_extension', function ($string) {
                 return pathinfo($string, PATHINFO_FILENAME);
             }));
 
 
-            $twig->addFilter(new \Twig_SimpleFilter('htmlentities', 'htmlentities'));
-            $twig->addFilter(new \Twig_SimpleFilter('md5', 'md5'));
-            $twig->addFilter(new \Twig_SimpleFilter('format_date', array($app, 'formatDate')));
-            $twig->addFilter(new \Twig_SimpleFilter('format_size', array($app, 'formatSize')));
-            $twig->addFunction(new \Twig_SimpleFunction('avatar', array($app, 'getAvatar')));
+            $twig->addFilter(new TwigFilter('htmlentities', 'htmlentities'));
+            $twig->addFilter(new TwigFilter('md5', 'md5'));
+            $twig->addFilter(new TwigFilter('format_date', array($app, 'formatDate')));
+            $twig->addFilter(new TwigFilter('format_size', array($app, 'formatSize')));
+            $twig->addFunction(new TwigFunction('avatar', array($app, 'getAvatar')));
 
             $currentTheme = !isset($_COOKIE['gitlist-bootstrap-theme']) ? 'bootstrap-cosmo' : $_COOKIE['gitlist-bootstrap-theme'];
             $themeDark = [
@@ -179,12 +181,11 @@ class Application extends SilexApplication
         return $date->format($this['date.format']);
     }
 
-    public function formatSize($size)
+    public function formatSize($bytes, $precision = 0)
     {
-        $mod = 1000;
-        $units = array('B', 'kB', 'MB', 'GB');
-        for ($i = 0; $size > $mod; $i++) $size /= $mod;
-        return round($size, 2) . " " . $units[$i];
+        $size = ['B','kB','MB','GB','TB','PB','EB','ZB','YB'];
+        $factor = floor((strlen($bytes) - 1) / 3);
+        return sprintf("%.{$precision}f", $bytes / pow(1024, $factor)) . @$size[$factor];
     }
 
     public function getAvatar($email, $size)

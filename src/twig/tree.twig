@@ -148,13 +148,15 @@
 
 
                     </td>
-                    <td class="p3x-gitlist-tree-table-item" style="text-align: right;" title="{% if file.size %}{{ (file.size / 1024) | number_format | escape}} kb{% endif %}">
-                        {% if file.size %}{{ (file.size / 1024) | number_format }} kb{% endif %}
+                    <td class="p3x-gitlist-tree-table-item" style="text-align: right;" title="{% if file.size %}{{ (file.size / 1024) | number_format | htmlentities}} kb{% endif %}">
+                        {% if file.size %}
+                            {{ file.size | format_size }}
+                        {% endif %}
                     </td>
-                    <td class="p3x-gitlist-tree-table-item" title="{{ file.message | escape }}">
+                    <td class="p3x-gitlist-tree-table-item" title="{{ file.message | htmlentities }}">
                         {{ file.message }}
                     </td>
-                    <td class="p3x-gitlist-tree-table-item"  style="text-align: right;" title="{{ file.lastModified | escape }}" >
+                    <td class="p3x-gitlist-tree-table-item"  style="text-align: right;" title="{{ file.lastModified | htmlentities }}" >
                         {{ file.lastModified }}
                     </td>
                 </tr>
