@@ -21,9 +21,16 @@ class Tree extends Item implements \RecursiveIterator
     protected $position = 0;
     private $submodules = null;
 
+    public $path = '';
+
     public function __construct($hash, Repository $repository)
     {
         $this->setHash($hash);
+        $pathArray = explode(":", $hash);
+        if (isset($pathArray[1])) {
+            $this->path = str_replace("\"", "" ,$pathArray[1]);
+        }
+        //exit;
         $this->setRepository($repository);
     }
 
@@ -59,12 +66,28 @@ class Tree extends Item implements \RecursiveIterator
         return $this->submodules;
     }
 
+    public function decorateItem($filename, $item) {
+        $command = 'log -1 --pretty=tformat:"%ar%n%s" '. explode(':', $this->getHash())[0] . ' -- ' . $this->path . $filename;
+       // print_r($command);
+        $fileInfo = explode("\n", $this->getRepository()->getClient()->run($this->getRepository(), $command));
+//        echo $filename;
+//        echo "\n";
+//        print_r($fileInfo);
+//        echo "\n";
+//        echo "\n";
+
+        $item->setLastModified($fileInfo[0]);
+        $item->message = $fileInfo[1];
+    }
+
     public function parse()
     {
         $data = $this->getRepository()->getClient()->run($this->getRepository(), 'ls-tree -lz ' . $this->getHash());
         $lines = explode("\0", $data);
         $files = array();
         $root = array();
+
+        //print_r($data);
 
         foreach ($lines as $key => $line) {
             if (empty($line)) {
@@ -75,6 +98,7 @@ class Tree extends Item implements \RecursiveIterator
         }
 
         foreach ($files as $file) {
+
             // submodule
             if ($file[0] == '160000') {
                 $submodules = $this->getSubmodules($files, $this->getHash());
@@ -100,6 +124,7 @@ class Tree extends Item implements \RecursiveIterator
                     }
                 }
                 $tree->setUrl($url);
+                $this->decorateItem( $file[4], $tree);
                 $root[] = $tree;
                 continue;
             }
@@ -110,6 +135,7 @@ class Tree extends Item implements \RecursiveIterator
                 $tree->setMode($file[0]);
                 $tree->setName($file[4]);
                 $tree->setPath($show);
+                $this->decorateItem( $file[4], $tree);
                 $root[] = $tree;
                 continue;
             }
@@ -119,13 +145,19 @@ class Tree extends Item implements \RecursiveIterator
                 $blob->setMode($file[0]);
                 $blob->setName($file[4]);
                 $blob->setSize($file[3]);
+                $this->decorateItem( $file[4], $blob);
+
+
+
                 $root[] = $blob;
                 continue;
             }
 
             $tree = new Tree($file[2], $this->getRepository());
+
             $tree->setMode($file[0]);
             $tree->setName($file[4]);
+            $this->decorateItem($file[4], $tree);
             $root[] = $tree;
         }
 
@@ -143,6 +175,8 @@ class Tree extends Item implements \RecursiveIterator
                 $file['size'] = $node->getSize();
                 $file['mode'] = $node->getMode();
                 $file['hash'] = $node->getHash();
+                $file['lastModified'] = $node->getLastModified();
+                $file['message'] = $node->message;
                 $files[] = $file;
                 continue;
             }
@@ -153,6 +187,8 @@ class Tree extends Item implements \RecursiveIterator
                 $folder['size'] = '';
                 $folder['mode'] = $node->getMode();
                 $folder['hash'] = $node->getHash();
+                $folder['lastModified'] = $node->getLastModified();
+                $folder['message'] = $node->message;
                 $folders[] = $folder;
                 continue;
             }
@@ -167,6 +203,8 @@ class Tree extends Item implements \RecursiveIterator
                 $folder['shortHash'] = $node->getShortHash();
                 $folder['url'] = $node->getUrl();
                 $folders[] = $folder;
+                $folder['lastModified'] = $node->getLastModified();
+                $folder['message'] = $node->message;
                 continue;
             }
 
@@ -177,6 +215,8 @@ class Tree extends Item implements \RecursiveIterator
                 $folder['mode'] = $node->getMode();
                 $folder['hash'] = '';
                 $folder['path'] = $node->getPath();
+                $folder['lastModified'] = $node->getLastModified();
+                $folder['message'] = $node->message;
                 $folders[] = $folder;
             }
         }

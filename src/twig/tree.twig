@@ -88,13 +88,24 @@
     {% endembed %}
 
     {% if files is not empty %}
-        <table class="table table-striped" id="p3x-gitlist-tree-table">
+        <table class="table table-striped table-hover" id="p3x-gitlist-tree-table">
             <thead>
+<!--
             <tr>
-                <th width="80%">Name</th>
-                <th width="10%" style="text-align: right;">Mode</th>
-                <th width="10%" style="text-align: right;">Size</th>
+                <th width="35%">Name</th>
+                <th width="15%" style="text-align: right;">Size</th>
+                <th width="35%" style="text-align: left;">Message</th>
+                <th width="15%" style="text-align: right;">Modified</th>
             </tr>
+
+-->
+            <tr>
+                <th width="15%"></th>
+                <th width="15%" style="text-align: right;"></th>
+                <th width="55%" style="text-align: left;"></th>
+                <th width="15%" style="text-align: right;"></th>
+            </tr>
+
             </thead>
             <tbody>
             {% if parent is not null %}
@@ -108,11 +119,12 @@
                     </td>
                     <td></td>
                     <td></td>
+                    <td></td>
                 </tr>
             {% endif %}
             {% for file in files %}
                 <tr>
-                    <td>
+                    <td nowrap>
                         {%- if file.type == "folder" or file.type == "symlink" -%}
                             <span class="fas fa-folder"></span>
                             &nbsp;
@@ -136,8 +148,15 @@
 
 
                     </td>
-                    <td style="text-align: right;">{{ file.mode }}</td>
-                    <td style="text-align: right;">{% if file.size %}{{ (file.size / 1024) | number_format }} kb{% endif %}</td>
+                    <td class="p3x-gitlist-tree-table-item" style="text-align: right;" title="{% if file.size %}{{ (file.size / 1024) | number_format | escape}} kb{% endif %}">
+                        {% if file.size %}{{ (file.size / 1024) | number_format }} kb{% endif %}
+                    </td>
+                    <td class="p3x-gitlist-tree-table-item" title="{{ file.message | escape }}">
+                        {{ file.message }}
+                    </td>
+                    <td class="p3x-gitlist-tree-table-item"  style="text-align: right;" title="{{ file.lastModified | escape }}" >
+                        {{ file.lastModified }}
+                    </td>
                 </tr>
             {% endfor %}
             </tbody>

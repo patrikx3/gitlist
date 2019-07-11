@@ -82,7 +82,7 @@ class Client
         $command = $this->getPath() . ' ' . $command;
 
 //        echo $command;
-//        echo "<br/>";
+//        echo "\n";
 //        echo $repository->getPath();
 //        echo "<br/>";
 //        echo "<br/>";

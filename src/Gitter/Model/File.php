@@ -11,6 +11,8 @@ class File extends AbstractModel
     protected $path;
     protected $size;
     protected $shortHash;
+    protected $lastModified;
+    public $message;
 
     public function getSize()
     {
@@ -85,5 +87,12 @@ class File extends AbstractModel
         return $this;
     }
 
+    public function getLastModified() {
+        return $this->lastModified;
+    }
+
+    public function setLastModified($modified) {
+        $this->lastModified = $modified;
+    }
 
 }
