@@ -31,7 +31,7 @@ class RepositoryTest extends TestCase
         $fs->mkdir(self::$tmpdir);
 
         if (!is_writable(self::$tmpdir)) {
-            static::markTestSkipped('There are no write permissions in order to create test repositories.');
+            $this->markTestSkipped('There are no write permissions in order to create test repositories.');
         }
     }
 
@@ -323,17 +323,16 @@ class RepositoryTest extends TestCase
         $this->assertEquals('4143e982237f3bdf56b5350f862c334054aad69e', $files[0]['hash']);
 
         $this->assertEquals('folder', $files[1]['type']);
-        $this->assertEquals('MyFolder', $files[1]['name']);
+        $this->assertEquals('MyTest', $files[1]['name']);
         $this->assertEquals('', $files[1]['size']);
         $this->assertEquals('040000', $files[1]['mode']);
-        $this->assertEquals('4143e982237f3bdf56b5350f862c334054aad69e', $files[1]['hash']);
+        $this->assertEquals('632240595eabd59e4217d196d6c12efb81f9c011', $files[1]['hash']);
 
-
-        $this->assertEquals('blob', $files[5]['type']);
-        $this->assertEquals('test_file.txt', $files[5]['name']);
-        $this->assertEquals('55', $files[5]['size']);
-        $this->assertEquals('100644', $files[5]['mode']);
-        $this->assertEquals('a773bfc0fda6f878e3d17d78c667d18297c8831f', $files[5]['hash']);
+        $this->assertEquals('blob', $files[2]['type']);
+        $this->assertEquals('test_file.txt', $files[2]['name']);
+        $this->assertEquals('55', $files[2]['size']);
+        $this->assertEquals('100644', $files[2]['mode']);
+        $this->assertEquals('a773bfc0fda6f878e3d17d78c667d18297c8831f', $files[2]['hash']);
     }
 
     public function testIsGettingBlobsWithinTrees()
@@ -347,17 +346,17 @@ class RepositoryTest extends TestCase
         $this->assertEquals('040000', $files[0]['mode']);
         $this->assertEquals('8542f67d011ff2ea5ec49a729ba81a52935676d1', $files[0]['hash']);
 
+        $this->assertEquals('blob', $files[1]['type']);
+        $this->assertEquals('crazy.php', $files[1]['name']);
+        $this->assertEquals('26', $files[1]['size']);
+        $this->assertEquals('100644', $files[1]['mode']);
+        $this->assertEquals('d781006b2d05cc31751954a0fb920c990e825aad', $files[1]['hash']);
+
         $this->assertEquals('blob', $files[2]['type']);
-        $this->assertEquals('crazy.php', $files[2]['name']);
+        $this->assertEquals('skywalker.php', $files[2]['name']);
         $this->assertEquals('26', $files[2]['size']);
         $this->assertEquals('100644', $files[2]['mode']);
         $this->assertEquals('d781006b2d05cc31751954a0fb920c990e825aad', $files[2]['hash']);
-
-        $this->assertEquals('blob', $files[3]['type']);
-        $this->assertEquals('crazy.php', $files[3]['name']);
-        $this->assertEquals('26', $files[3]['size']);
-        $this->assertEquals('100644', $files[3]['mode']);
-        $this->assertEquals('d781006b2d05cc31751954a0fb920c990e825aad', $files[3]['hash']);
     }
 
     public function testIsGettingBlobOutput()
