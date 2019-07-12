@@ -31,3 +31,4 @@ node_modules/.yarn-integrity
 
 /public/prod
 /src/twig/layout.twig
+.phpunit.result.cache
