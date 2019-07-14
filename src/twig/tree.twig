@@ -89,29 +89,12 @@
 
     {% if files is not empty %}
         <table class="table table-striped table-hover" id="p3x-gitlist-tree-table">
-            <thead>
-<!--
-            <tr>
-                <th width="35%">Name</th>
-                <th width="15%" style="text-align: right;">Size</th>
-                <th width="35%" style="text-align: left;">Message</th>
-                <th width="15%" style="text-align: right;">Modified</th>
-            </tr>
 
--->
-            <tr>
-                <th width="15%"></th>
-                <th width="15%" style="text-align: right;"></th>
-                <th width="55%" style="text-align: left;"></th>
-                <th width="15%" style="text-align: right;"></th>
-            </tr>
-
-            </thead>
             <tbody>
             {% if parent is not null %}
                 <tr style="cursor: pointer">
                     {% if not parent %}
-                        <td colspan="4" onclick='location.href = "{{ path('branch', {repo: repo, branch: branch}) }}"'>
+                        <td  colspan="4" onclick='location.href = "{{ path('branch', {repo: repo, branch: branch}) }}"'>
                             <a href="{{ path('branch', {repo: repo, branch: branch}) }}">..</a>
                         </td>
                     {% else %}
@@ -122,14 +105,16 @@
                 </tr>
             {% endif %}
             {% for file in files %}
-                <tr>
-                    <td nowrap>
                         {%- if file.type == "folder" or file.type == "symlink" -%}
+                    <tr>
+                        <td width="20%" style="cursor: pointer" onclick='location.href="{{ path('tree', {repo: repo, commitishPath: branch ~ '/' ~ path ~ (file.type == "symlink" ? file.path : file.name)}) }}"' nowrap>
                             <span class="fas fa-folder"></span>
                             &nbsp;
                             <a href="{{ path('tree', {repo: repo, commitishPath: branch ~ '/' ~ path ~ (file.type == "symlink" ? file.path : file.name)}) }}">{{ file.name }}</a>
 
                         {%- elseif file.type == "module" -%}
+                    <tr >
+                        <td width="20%" nowrap>
                             <span class="fas fa-folder-open"></span>
                             &nbsp;
                             <a title="Head: {{ head }}" href="{{ file.url }}/tree/{{ head }}">{{ file.name }}</a>
@@ -138,6 +123,8 @@
                                href="{{ file.url }}/tree/{{ file.hash }}">{{ file.shortHash }}</a>
 
                         {%- else -%}
+                    <tr >
+                        <td width="20%" style="cursor: pointer" onclick='location.href="{{ path('blob', {repo: repo, commitishPath: branch ~ '/' ~ path ~ (file.type == "symlink" ? file.path : file.name)}) }}"' nowrap>
                             <span class="far fa-file-alt"></span>
                             &nbsp;
                             <a href="{{ path('blob', {repo: repo, commitishPath: branch ~ '/' ~ path ~ (file.type == "symlink" ? file.path : file.name)}) }}">{{ file.name }}</a>
@@ -147,15 +134,15 @@
 
 
                     </td>
-                    <td class="p3x-gitlist-tree-table-item" style="text-align: right;" title="{% if file.size %}{{ (file.size / 1024) | number_format | htmlentities}} kb{% endif %}">
+                    <td width="5%" class="p3x-gitlist-tree-table-item" style="text-align: right;" title="{% if file.size %}{{ file.size | format_size | htmlentities}} kb{% endif %}">
                         {% if file.size %}
                             {{ file.size | format_size }}
                         {% endif %}
                     </td>
-                    <td class="p3x-gitlist-tree-table-item p3x-gitlist-tree-table-item-message" title="{{ file.message | htmlentities }}">
+                    <td width="55%" class="p3x-gitlist-tree-table-item p3x-gitlist-tree-table-item-message" title="{{ file.message | htmlentities }}">
                         {{ file.message }}
                     </td>
-                    <td class="p3x-gitlist-tree-table-item"  style="text-align: right;" title="{{ file.lastModified | htmlentities }}" >
+                    <td width="15%" class="p3x-gitlist-tree-table-item"  style="text-align: right;" title="{{ file.lastModified | htmlentities }}" >
                         {{ file.lastModified }}
                     </td>
                 </tr>
