@@ -29,6 +29,14 @@ All `PHP` files will be in the `root` and only `index.php`, `images`, `icons`, `
 
 ```
 server {
+
+    #listen 80;
+    #listen [::]:80;
+    #listen 443 ssl;
+    #listen [::]:443 ssl;
+    #ssl_certificate ;
+    #ssl_certificate_ ;
+    
     server_name MYSERVER;
     access_log /var/log/nginx/MYSERVER.access.log combined;
     error_log /var/log/nginx/MYSERVER.error.log error;
@@ -56,8 +64,9 @@ server {
     }
 
     location ~ \.php$ {
-    	include      snippets/fastcgi-php.conf;
-    	fastcgi_pass $php_listener;
+    	include      fastcgi_params;
+        fastcgi_pass unix:/var/run/php7.2-fpm.sock;
+    	#fastcgi_pass $php_listener;
     }
     
     location ~ /\.ht {
