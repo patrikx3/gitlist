@@ -67,14 +67,14 @@ class Tree extends Item implements \RecursiveIterator
     }
 
     public function decorateItem($filename, $item) {
-        $command = 'log -1 --pretty=tformat:"%ar%n%s" '. explode(':', $this->getHash())[0] . ' -- ' . $this->path . $filename;
-       // print_r($command);
+        $command = 'log -1 --pretty=tformat:"%ar%n%s" '. explode(':', $this->getHash())[0] . ' -- ' . "\"" . $this->path . $filename . "\"" ;
+        //print_r($command);
         $fileInfo = explode("\n", $this->getRepository()->getClient()->run($this->getRepository(), $command));
-//        echo $filename;
-//        echo "\n";
-//        print_r($fileInfo);
-//        echo "\n";
-//        echo "\n";
+        //echo $filename;
+        //echo "\n";
+        //print_r($fileInfo);
+        //echo "\n";
+        //echo "\n";
 
         $item->setLastModified($fileInfo[0]);
         $item->message = $fileInfo[1];

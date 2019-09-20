@@ -11,7 +11,7 @@ mkdir -p ./git-test/
 
 pushd ./git-test
 
-for repo in "https://github.com/patrikx3/angular-compile" "https://github.com/patrikx3/onenote" "https://github.com/patrikx3/ramdisk" "https://github.com/patrikx3/openwrt-insomnia" "https://github.com/patrikx3/gitlist" "https://github.com/patrikx3/gitlist-workspace" "https://github.com/patrikx3/resume-web" "https://github.com/patrikx3/service-manager-tray-for-windows" "https://github.com/patrikx3/corifeus-web-material"
+for repo in "https://github.com/patrikx3/angular-compile" "https://github.com/patrikx3/onenote" "https://github.com/patrikx3/ramdisk" "https://github.com/patrikx3/openwrt-insomnia" "https://github.com/patrikx3/gitlist" "https://github.com/patrikx3/gitlist-workspace" "https://github.com/patrikx3/resume-web" "https://github.com/patrikx3/service-manager-tray-for-windows" "https://github.com/patrikx3/corifeus-web-material" "https://github.com/financial-ai/financial-ai-electron"
 do
     git clone --bare $repo
 done
