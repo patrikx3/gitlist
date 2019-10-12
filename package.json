@@ -1,6 +1,6 @@
 {
     "name": "p3x-gitlist",
-    "version": "2019.10.149",
+    "version": "2019.10.151",
     "corifeus": {
         "prod-dir": "prod",
         "css-postfix": "06a6aa56e6059d4a23001b44540767b6b87d4ad21af5bc9ba3885b5f309ceb28",
@@ -11,7 +11,7 @@
         "cdn": true,
         "icon": "fas fa-code",
         "code": "Spawn",
-        "nodejs": "v12.10.0",
+        "nodejs": "v12.11.1",
         "reponame": "gitlist",
         "build": true
     },
@@ -29,9 +29,9 @@
     "license": "MIT",
     "devDependencies": {
         "bootswatch": "^3.4.1",
-        "concurrently": "^4.1.2",
-        "corifeus-builder": "^2019.10.246",
-        "corifeus-utils": "^2019.10.164",
+        "concurrently": "^5.0.0",
+        "corifeus-builder": "^2019.10.249",
+        "corifeus-utils": "^2019.10.167",
         "css-loader": "^3.2.0",
         "extract-text-webpack-plugin": "^4.0.0-beta.0",
         "file-loader": "^4.2.0",
@@ -46,9 +46,9 @@
         "optimize-css-assets-webpack-plugin": "^5.0.3",
         "postcss-safe-parser": "^4.0.1",
         "style-loader": "^1.0.0",
-        "terser-webpack-plugin": "^2.1.2",
-        "url-loader": "^2.1.0",
-        "webpack": "^4.41.0",
+        "terser-webpack-plugin": "^2.1.3",
+        "url-loader": "^2.2.0",
+        "webpack": "^4.41.1",
         "webpack-cli": "^3.3.9",
         "worker-loader": "^2.0.0"
     },
