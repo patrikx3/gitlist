@@ -99,6 +99,7 @@ class Repository
         'png' => 'image',
         'jpg' => 'image',
         'gif' => 'image',
+        'ico' => 'image',
         'jpeg' => 'image',
         'bmp' => 'image',
         'csproj' => 'xml',
@@ -109,7 +110,7 @@ class Repository
         'exe', 'com', 'so', 'la', 'o', 'dll', 'pyc',
         'jpg', 'jpeg', 'bmp', 'gif', 'png', 'xmp', 'pcx', 'svgz', 'ttf', 'tiff', 'oet',
         'gz', 'tar', 'rar', 'zip', '7z', 'jar', 'class',
-        'odt', 'ods', 'pdf', 'doc', 'docx', 'dot', 'xls', 'xlsx', 'gzip'
+        'odt', 'ods', 'pdf', 'doc', 'docx', 'dot', 'xls', 'xlsx', 'gzip', 'ico'
     ];
 
     public function __construct(Application $app)
