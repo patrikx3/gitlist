@@ -1,6 +1,6 @@
 {
     "name": "p3x-gitlist",
-    "version": "2019.10.155",
+    "version": "2019.10.157",
     "corifeus": {
         "prod-dir": "prod",
         "css-postfix": "06a6aa56e6059d4a23001b44540767b6b87d4ad21af5bc9ba3885b5f309ceb28",
@@ -11,7 +11,7 @@
         "cdn": true,
         "icon": "fas fa-code",
         "code": "Spawn",
-        "nodejs": "v12.11.1",
+        "nodejs": "v12.13.0",
         "reponame": "gitlist",
         "build": true
     },
@@ -30,13 +30,13 @@
     "devDependencies": {
         "bootswatch": "^3.4.1",
         "concurrently": "^5.0.0",
-        "corifeus-builder": "^2019.10.249",
-        "corifeus-utils": "^2019.10.167",
+        "corifeus-builder": "^2019.10.252",
+        "corifeus-utils": "^2019.10.170",
         "css-loader": "^3.2.0",
         "extract-text-webpack-plugin": "^4.0.0-beta.0",
         "file-loader": "^4.2.0",
         "fs-extra": "^8.1.0",
-        "glob": "^7.1.4",
+        "glob": "^7.1.5",
         "grunt": "^1.0.4",
         "grunt-contrib-less": "^2.0.0",
         "html-loader": "^0.5.5",
@@ -46,9 +46,9 @@
         "optimize-css-assets-webpack-plugin": "^5.0.3",
         "postcss-safe-parser": "^4.0.1",
         "style-loader": "^1.0.0",
-        "terser-webpack-plugin": "^2.1.3",
+        "terser-webpack-plugin": "^2.2.1",
         "url-loader": "^2.2.0",
-        "webpack": "^4.41.1",
+        "webpack": "^4.41.2",
         "webpack-cli": "^3.3.9",
         "worker-loader": "^2.0.0"
     },
@@ -59,7 +59,7 @@
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.11.2",
         "bootstrap": "^3.4.1",
-        "codemirror": "^5.49.0",
+        "codemirror": "^5.49.2",
         "highlight.js": "^9.15.10",
         "is-string-int": "^1.0.1",
         "jquery": "^3.4.1",
@@ -70,7 +70,7 @@
         "lodash": "^4.17.15",
         "marked": "^0.7.0",
         "moment": "^2.24.0",
-        "php-date": "^2.1.2",
+        "php-date": "^3.0.0",
         "raphael": "^2.3.0",
         "snackbarjs": "^1.1.0",
         "twemoji": "=12.1.3"
