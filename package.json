@@ -1,6 +1,6 @@
 {
     "name": "p3x-gitlist",
-    "version": "2019.10.159",
+    "version": "2020.4.101",
     "corifeus": {
         "prod-dir": "prod",
         "css-postfix": "06a6aa56e6059d4a23001b44540767b6b87d4ad21af5bc9ba3885b5f309ceb28",
@@ -11,7 +11,7 @@
         "cdn": true,
         "icon": "fas fa-code",
         "code": "Spawn",
-        "nodejs": "v12.13.1",
+        "nodejs": "v12.14.1",
         "reponame": "gitlist",
         "build": true
     },
@@ -29,10 +29,10 @@
     "license": "MIT",
     "devDependencies": {
         "bootswatch": "^3.4.1",
-        "concurrently": "^5.0.0",
-        "corifeus-builder": "^2019.10.256",
-        "corifeus-utils": "^2019.10.173",
-        "css-loader": "^3.2.1",
+        "concurrently": "^5.0.2",
+        "corifeus-builder": "^2020.4.101",
+        "corifeus-utils": "^2020.4.101",
+        "css-loader": "^3.4.2",
         "extract-text-webpack-plugin": "^4.0.0-beta.0",
         "file-loader": "^5.0.2",
         "fs-extra": "^8.1.0",
@@ -45,22 +45,22 @@
         "on-build-webpack": "^0.1.0",
         "optimize-css-assets-webpack-plugin": "^5.0.3",
         "postcss-safe-parser": "^4.0.1",
-        "style-loader": "^1.0.1",
-        "terser-webpack-plugin": "^2.2.1",
+        "style-loader": "^1.1.2",
+        "terser-webpack-plugin": "^2.3.2",
         "url-loader": "^3.0.0",
-        "webpack": "^4.41.2",
+        "webpack": "^4.41.5",
         "webpack-cli": "^3.3.10",
         "worker-loader": "^2.0.0"
     },
     "engines": {
-        "node": ">=10.16.0"
+        "node": ">=12.13.0"
     },
     "homepage": "https://pages.corifeus.com/gitlist",
     "dependencies": {
-        "@fortawesome/fontawesome-free": "^5.11.2",
+        "@fortawesome/fontawesome-free": "^5.12.0",
         "bootstrap": "^3.4.1",
-        "codemirror": "^5.49.2",
-        "highlight.js": "^9.16.2",
+        "codemirror": "^5.50.2",
+        "highlight.js": "^9.17.1",
         "is-string-int": "^1.0.1",
         "jquery": "^3.4.1",
         "jquery.redirect": "^1.1.4",
@@ -68,7 +68,7 @@
         "js-htmlencode": "^0.3.0",
         "list.js": "^1.5.0",
         "lodash": "^4.17.15",
-        "marked": "^0.7.0",
+        "marked": "^0.8.0",
         "moment": "^2.24.0",
         "php-date": "^3.0.0",
         "raphael": "^2.3.0",
