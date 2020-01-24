@@ -4,33 +4,6 @@
     position: relative;
     overflow: hidden;
 
-    &.loading-commits {
-
-        &:before {
-            content: "";
-            display: block;
-            height: 100px;
-            width: 200px;
-            box-sizing: border-box;
-            padding: 10px;
-            font-weight: bold;
-            position: absolute;
-
-            left: 50%;
-            top: 50%;
-            margin-left: -100px;
-            margin-top: -50px;
-
-            z-index: 2000;
-        }
-
-        .network-header .meta:after {
-            content: " - Loading";
-        }
-    }
-
-    .network-header {
-    }
 
     pre {
         margin: 0;

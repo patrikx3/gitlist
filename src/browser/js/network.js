@@ -63,11 +63,12 @@ const phpDate = require('php-date')
 $.fn.dragScrollr = function () {
     let lastX,
         lastY,
-        hotZone = 200,
+        hotZone = 50,
         container = this.first(),
         domElement = container[0]; // so basically container without the jQuery stuff
 
     function handleMouseDown(evt) {
+
         container.on('mousemove', handleMouseMove);
         container.on('mouseup', handleMouseUp);
         container.on('mouseleave', handleMouseUp);
@@ -76,6 +77,7 @@ $.fn.dragScrollr = function () {
     }
 
     function handleMouseMove(evt) {
+
         evt.preventDefault();
 
         // save the last scroll position to figure out whether the scroll event has entered the hot zone
@@ -83,6 +85,8 @@ $.fn.dragScrollr = function () {
         domElement.scrollLeft = domElement.scrollLeft + lastX - evt.pageX;
         domElement.scrollTop = domElement.scrollTop + lastY - evt.pageY;
 
+        //console.log(lastScrollLeft, hotZone, domElement)
+        // WARNING: hotZone !!!!
         if (lastScrollLeft > hotZone && domElement.scrollLeft <= hotZone) {
             container.trigger('enterHotZone');
         }
@@ -286,9 +290,19 @@ function commitDataRetriever(startPage, callback) {
 
     that.updateIndicators = function () {
         if (global.isLoading) {
-            $(indicatorElements).addClass('loading-commits');
+            $('body').append(`
+        <div class="p3x-gitlist-overlay">
+            <div>
+                <i class="fas fa-cog fa-spin fa-4x"></i>
+            </div>
+            <br/>
+            <div>
+                Hang on, retrieving the network graph...
+            </div>
+        </div>
+            `)
         } else {
-            $(indicatorElements).removeClass('loading-commits');
+            $('.p3x-gitlist-overlay').remove()
         }
     };
 
@@ -592,9 +606,10 @@ window.gitlist.networkRedraw = () => {
         // fixup parent's scroll position
 
         try {
-            paper.canvas.parentNode.scrollLeft = paper.canvas.parentNode.scrollLeft + deltaX;
+            const parent = document.getElementsByClassName('network-graph')[0]
+            parent.scrollLeft = parent.scrollLeft + deltaX;
         } catch (e) {
-            console.warn(e)
+            console.error(e)
         }
 
         // now fixup the x positions of existing circles and lines
