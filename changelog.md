@@ -5,6 +5,9 @@
                         
 [//]: #@corifeus-header:end
 
+## v2020.4.107
+* BUGFIX: Network graph loading popup was not working right.
+
 ## v2020.4.105
 * CHORE: Updated NPM versions.
 * BUGFIX: Network graph was not working (drag / scroll).
@@ -335,7 +338,7 @@ All my domains ([patrikx3.com](https://patrikx3.com) and [corifeus.com](https://
 
 ---
 
-[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2020.4.105
+[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2020.4.107
 
 [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software)
 

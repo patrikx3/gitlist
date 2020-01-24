@@ -99,7 +99,7 @@ For more information about all licenses, please see ${webpackBanner}
                 compress: {
                     warnings: false
                 },
-                ecma: 8,
+                ecma: 2018,
                 // todo found out if mangle use or not
                 // mangle: false === keep function names
                 // mangle: true === drop function names

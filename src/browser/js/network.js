@@ -290,19 +290,9 @@ function commitDataRetriever(startPage, callback) {
 
     that.updateIndicators = function () {
         if (global.isLoading) {
-            $('body').append(`
-        <div class="p3x-gitlist-overlay">
-            <div>
-                <i class="fas fa-cog fa-spin fa-4x"></i>
-            </div>
-            <br/>
-            <div>
-                Hang on, retrieving the network graph...
-            </div>
-        </div>
-            `)
+
         } else {
-            $('.p3x-gitlist-overlay').remove()
+
         }
     };
 
@@ -341,6 +331,8 @@ function commitDataRetriever(startPage, callback) {
             callback(null);
             return;
         }
+
+        // WARNING: isLoading !!!!
 
         global.isLoading = true;
         that.updateIndicators();
