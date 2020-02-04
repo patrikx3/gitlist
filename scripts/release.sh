@@ -38,7 +38,9 @@ zipname=$TOP/build/$name.zip
 rm -rf $zipname
 pushd $repo
 #sudo apt install -y zip
-zip -r $TOP/build/$name.zip * .* > /dev/null
+
+zip -r $TOP/build/$name.zip .
+
 popd
 
 if [ $# -eq 0 ];
