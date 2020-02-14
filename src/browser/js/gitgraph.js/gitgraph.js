@@ -7,7 +7,7 @@
 /*
  * Copyright (c) 2011, Terrence Lee <kill889@gmail.com>
  * All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
  *     * Redistributions of source code must retain the above copyright
@@ -18,7 +18,7 @@
  *     * Neither the name of the <organization> nor the
  *       names of its contributors may be used to endorse or promote products
  *       derived from this software without specific prior written permission.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -380,7 +380,10 @@ global.gitGraph = function (canvas, rawGraphList, config) {
                     inlineIntersect = false;
                 }
 
-                color = flows[colomnIndex].color;
+                if (flows[colomnIndex] === undefined) {
+                    console.warn('something is not right with gitgraph.js', flows, colomnIndex)
+                }
+                color = flows[colomnIndex] === undefined ? 'grey' : flows[colomnIndex].color;
 
                 switch (colomn) {
                     case "_" :
