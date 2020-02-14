@@ -20,7 +20,7 @@ window.gitlist.treegraph = () => {
     if (log) {
         const graphList = [];
         $("#graph-raw-list li span.node-relation").each(function () {
-            graphList.push($(this).text());
+            graphList.push($(this).text().trim());
         })
         const $li = $('#rev-list li');
         $li.each(function () {

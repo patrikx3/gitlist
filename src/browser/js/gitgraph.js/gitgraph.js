@@ -179,6 +179,7 @@ global.gitGraph = function (canvas, rawGraphList, config) {
         drawLineUp(x, y, color);
 
         ctx.beginPath();
+        ctx.fillStyle = window.gitlist.isDark() ? 'white' : 'black';
         ctx.arc(x, y, config.nodeRadius, 0, Math.PI * 2, true);
         ctx.fill();
     };
