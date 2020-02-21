@@ -1,6 +1,6 @@
 {
     "name": "p3x-gitlist",
-    "version": "2020.4.120",
+    "version": "2020.4.122",
     "corifeus": {
         "prod-dir": "prod",
         "css-postfix": "367d8f15ce37630f55021bb649494b1fec485e51d5991b8296ae009a7d03a725",
@@ -11,7 +11,7 @@
         "cdn": true,
         "icon": "fas fa-code",
         "code": "Spawn",
-        "nodejs": "v12.15.0",
+        "nodejs": "v12.16.1",
         "reponame": "gitlist",
         "build": true
     },
@@ -30,11 +30,11 @@
     "devDependencies": {
         "bootswatch": "^3.4.1",
         "concurrently": "^5.1.0",
-        "corifeus-builder": "^2020.4.104",
-        "corifeus-utils": "^2020.4.104",
+        "corifeus-builder": "^2020.4.107",
+        "corifeus-utils": "^2020.4.107",
         "css-loader": "^3.4.2",
         "extract-text-webpack-plugin": "^4.0.0-beta.0",
-        "file-loader": "^5.0.2",
+        "file-loader": "^5.1.0",
         "fs-extra": "^8.1.0",
         "glob": "^7.1.6",
         "grunt": "^1.0.4",
@@ -59,7 +59,7 @@
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.12.1",
         "bootstrap": "^3.4.1",
-        "codemirror": "^5.51.0",
+        "codemirror": "^5.52.0",
         "highlight.js": "^9.18.1",
         "is-string-int": "^1.0.1",
         "jquery": "^3.4.1",
