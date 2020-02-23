@@ -208,9 +208,12 @@ global.gitGraph = function (canvas, rawGraphList, config) {
 
         //initiate color array for first row
         for (i = 0, l = graphList[0].length; i < l; i++) {
+            flows.push(genNewFlow());
+            /*
             if (graphList[0][i] !== "_" && graphList[0][i] !== " ") {
-                flows.push(genNewFlow());
+
             }
+             */
         }
 
         y = (canvas.height / ratio) - config.unitSize * 0.5;
@@ -251,9 +254,12 @@ global.gitGraph = function (canvas, rawGraphList, config) {
                             flowSwapPos = colomnIndex;
 
                             //swap two flow
+                            flows[flowSwapPos + 1] = flows[flowSwapPos + 1] || {}
+                            flows[flowSwapPos] = flows[flowSwapPos] || {}
+
+
                             tempFlow = {id:flows[flowSwapPos].id, color:flows[flowSwapPos].color};
 
-                            flows[flowSwapPos + 1] = flows[flowSwapPos + 1] || {}
                             flows[flowSwapPos].id = flows[flowSwapPos + 1].id;
                             flows[flowSwapPos].color = flows[flowSwapPos + 1].color;
 
