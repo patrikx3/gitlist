@@ -103,7 +103,7 @@ For more information about all licenses, please see ${webpackBanner}
                 // todo found out if mangle use or not
                 // mangle: false === keep function names
                 // mangle: true === drop function names
-                mangle: false,
+                mangle: true,
 
                 comments: false,
                 beautify: false
