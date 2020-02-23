@@ -253,6 +253,7 @@ global.gitGraph = function (canvas, rawGraphList, config) {
                             //swap two flow
                             tempFlow = {id:flows[flowSwapPos].id, color:flows[flowSwapPos].color};
 
+                            flows[flowSwapPos + 1] = flows[flowSwapPos + 1] || {}
                             flows[flowSwapPos].id = flows[flowSwapPos + 1].id;
                             flows[flowSwapPos].color = flows[flowSwapPos + 1].color;
 
