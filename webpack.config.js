@@ -10,7 +10,7 @@ const WebpackOnBuildPlugin = require('on-build-webpack');
 
 const fileAsset = `[name].[hash].[ext]`;
 const minimize = process.argv.includes('--production');
-const mode = minimize ? 'development' : 'production';
+const mode = minimize ? 'production' : 'development';
 
 let minimizer = undefined;
 
@@ -179,8 +179,8 @@ module.exports = {
                 use: [{
                     loader: 'html-loader',
                     options: {
-                        minimize: mode,
-                        caseSensitive: true
+                        minimize: minimize,
+                        //caseSensitive: true
                     }
                 }]
             },
