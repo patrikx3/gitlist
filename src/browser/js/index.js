@@ -46,7 +46,7 @@ $(function () {
 
         const listOptions = {
             valueNames: ['p3x-gitlist-index-name', 'p3x-gitlist-index-description', 'p3x-gitlist-index-repo-last-commit-timestamp', 'p3x-gitlist-index-repo-last-commit-user', 'p3x-gitlist-index-repo-last-commit-time'],
-            indexAsync: true,
+            indexAsync: false,
 //            sortClass: 'p3x-gitlist-index-sort',
         };
 
@@ -116,9 +116,6 @@ $(function () {
 
         inputSortSelect.val(settingSortSelect)
 
-        sort()
-        setInputSortOrder()
-        //setInputSortSelect()
 
         inputSortSelect.on('change', () => {
             settingSortSelect = inputSortSelect.val()
@@ -139,12 +136,12 @@ $(function () {
             list.search('')
         })
 
+        sort()
+        setInputSortOrder()
+        //setInputSortSelect()
+
         if (value !== undefined) {
-            setTimeout(() => {
-                list.search(value);
-            }, 250)
+            list.search(value);
         }
-
-
     }
 })
