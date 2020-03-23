@@ -5,6 +5,9 @@
                         
 [//]: #@corifeus-header:end
 
+## v2020.4.146
+* FEATURE: the browser tags are in reverse order, just like GitHub
+
 ## v2020.4.144
 * BUGFIX: On the sort by last commit, was not working perfectly.
 
@@ -362,7 +365,7 @@ All my domains ([patrikx3.com](https://patrikx3.com) and [corifeus.com](https://
 
 ---
 
-[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2020.4.144
+[**P3X-GITLIST**](https://pages.corifeus.com/gitlist) Build v2020.4.146
 
 [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software)
 

@@ -382,6 +382,8 @@ class Repository
             return $cache[$this->path] = NULL;
         }
 
+        $tags = array_reverse($tags);
+
         return $cache[$this->path] = $tags;
     }
 
