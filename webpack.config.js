@@ -31,7 +31,6 @@ const plugins = [
     new HtmlWebpackPlugin({
         template: `${__dirname}/src/browser/layout.tpl.twig`,
         inject: 'body',
-        chunksSortMode: 'dependency',
         chunks: ['bundle'],
         filename: `${__dirname}/src/twig/layout.twig`,
     }),
