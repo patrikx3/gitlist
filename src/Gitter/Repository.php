@@ -1340,7 +1340,7 @@ class Repository
         return ((object)[
             'status' => 'ok',
             'error' => false,
-            'message' => 'OK, fetch origin is done.',
+            'message' => 'OK, fetch origin is done. You may reload the page, if is is required.',
 //            'message' => $output
         ]);
     }
