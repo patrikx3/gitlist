@@ -22,20 +22,38 @@ $(function () {
 
         const moment = require('moment')
         const times = $('.p3x-gitlist-index-repo-last-commit > .p3x-gitlist-index-repo-last-commit-time')
+        const timesStamp = $('.p3x-gitlist-index-repo-last-commit > .p3x-gitlist-index-repo-last-commit-timestamp')
         const timesContainer = $('.p3x-gitlist-index-repo-last-commit')
         const timesContainerEmpty = $('.p3x-gitlist-index-repo-last-commit-empty')
 
-        for (let timeindex in times) {
-            const time = times[timeindex]
-            if (String(time.innerText).trim() === '') {
+        console.info(times.length, timesStamp.length)
+
+        timesStamp.each((timeindex, time) => {
+            const txt = parseInt($(time).text())
+            if (String(txt).trim() === '') {
                 $(timesContainer[timeindex]).hide();
                 $(timesContainerEmpty[timeindex]).show();
             } else {
-                const timeMoment = moment(time.innerText).fromNow()
-                time.innerText = timeMoment
+                const timeMoment = moment(new Date(txt * 1000)).fromNow() //+ ' ' + moment(new Date(txt * 1000)).format('MMMM Do YYYY, h:mm:ss a')
+                times[timeindex].innerText = timeMoment
+            }
+        })
+        /*
+        for (let timeindex in timesStamp) {
+            console.log(timeindex)
+            continue
+            const time = timesStamp[timeindex]
+            console.warn(time.innerText)
+            const txt = parseInt(time.innerText)
+            if (String(txt).trim() === '') {
+                $(timesContainer[timeindex]).hide();
+                $(timesContainerEmpty[timeindex]).show();
+            } else {
+                const timeMoment = moment(new Date(txt * 1000)).fromNow()
+                times[timeindex].innerText = timeMoment
             }
         }
-
+         */
         const inputHandler = () => {
             Cookies.set(cookieName, input.val(), window.gitlist.cookieSettings)
         }
