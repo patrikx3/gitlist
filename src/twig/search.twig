@@ -10,7 +10,7 @@
 
         {% block left %}
             {% if results %}
-                <span class="label label-info">File: {{ results | length }}</span>
+                <span class="C">File: {{ results | length }}</span>
             {% endif %}
         {% endblock %}
 
@@ -46,16 +46,11 @@
 
                                 <button class="btn btn-sm btn-primary"
                                         id="p3x-gitlilst-file-fragment-heading-button-edit-{{ loop.index0 }}"
-                                        data-url="{{ path('blob', {repo: repo, branch: branch, file: result.file, commitishPath: branch ~ '/' ~ result.file}) }}&codemirror=1&query={{ search_query }}#L{{ result.line }}"
+                                        onclick="location ='{{ path('blob', {repo: repo, branch: branch, file: result.file, commitishPath: branch ~ '/' ~ result.file}) }}&codemirror=1&query={{ search_query }}#L{{ result.line }}'"
                                         style=" text-transform: capitalize;">
-                                    <span class="fas fa-edit"></span>&nbsp; Edit
+                                    <span class="fas fa-file"></span>&nbsp; View {{ result.type }} file
                                 </button>
-                                &nbsp;&nbsp;
-                                <button class="btn btn-sm btn-primary"
-                                        id="p3x-gitlilst-file-fragment-heading-button-codemirror-{{ loop.index0 }}"
-                                        style=" text-transform: capitalize;">
-                                    <span class="fas fa-eye"></span>&nbsp; {{ result.type }}
-                                </button>
+
                             </td>
                         </tr>
                     </table>
