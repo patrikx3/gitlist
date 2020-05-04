@@ -136,7 +136,7 @@ July 11, 2019
 
 # URL links
 
-[P3X Gitlist playground](https://patrikx3.com/en/front/playground/18/p3x-gitlist#PG18)  
+[P3X Gitlist playground](https://www.patrikx3.com/en/front/playground/18/p3x-gitlist#PG18)  
 
 [Corifeus P3X Gitlist](https://corifeus.com/gitlist/)  
   

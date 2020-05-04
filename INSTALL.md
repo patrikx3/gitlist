@@ -27,7 +27,7 @@ All `PHP` files will be in the `root` and only `index.php`, `images`, `icons`, `
 
 ### nginx server.conf
 
-```
+```conf
 server {
     server_name MYSERVER;
     access_log /var/log/nginx/MYSERVER.access.log combined;
@@ -86,7 +86,7 @@ server {
 
 I do not use `lighthttpd`, but you know what I mean. Make sure only, the `gitlist/public` folder should be enabled.
 
-```
+```txt
 # GitList is located in /var/www/gitlist/
 server.document-root        = "/var/www"
 
@@ -102,7 +102,7 @@ url.rewrite-once = (
 I do not use `hiawatha`, but you know what I mean. Make sure only, the `gitlist/public` folder should be enabled.
 
 
-```
+```txt
 UrlToolkit {
     ToolkitID = gitlist
     RequestURI isfile Return
@@ -142,3 +142,4 @@ All my domains ([patrikx3.com](https://patrikx3.com) and [corifeus.com](https://
 
 
 [//]: #@corifeus-footer:end
+
