@@ -20,7 +20,7 @@ $(function () {
         const inputClear = $('#p3x-gitlist-index-list-clear');
 
 
-        const moment = require('moment').default
+        const moment = require('moment')
         const times = $('.p3x-gitlist-index-repo-last-commit > .p3x-gitlist-index-repo-last-commit-time')
         const timesStamp = $('.p3x-gitlist-index-repo-last-commit > .p3x-gitlist-index-repo-last-commit-timestamp')
         const timesContainer = $('.p3x-gitlist-index-repo-last-commit')

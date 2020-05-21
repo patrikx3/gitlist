@@ -1,6 +1,6 @@
 {
     "name": "p3x-gitlist",
-    "version": "2020.4.179",
+    "version": "2020.4.182",
     "corifeus": {
         "prod-dir": "prod",
         "css-postfix": "367d8f15ce37630f55021bb649494b1fec485e51d5991b8296ae009a7d03a725",
@@ -30,8 +30,8 @@
     "devDependencies": {
         "bootswatch": "^3.4.1",
         "concurrently": "^5.2.0",
-        "corifeus-builder": "^2020.4.200",
-        "corifeus-utils": "^2020.4.180",
+        "corifeus-builder": "^2020.4.205",
+        "corifeus-utils": "^2020.4.185",
         "css-loader": "^3.5.3",
         "extract-text-webpack-plugin": "^4.0.0-beta.0",
         "file-loader": "^6.0.0",
@@ -59,7 +59,7 @@
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.13.0",
         "bootstrap": "^3.4.1",
-        "codemirror": "^5.53.2",
+        "codemirror": "^5.54.0",
         "highlight.js": "^10.0.3",
         "is-string-int": "^1.0.1",
         "jquery": "=3.4.1",
@@ -69,7 +69,7 @@
         "list.js": "^1.5.0",
         "lodash": "^4.17.15",
         "marked": "^1.1.0",
-        "moment": "^2.25.3",
+        "moment": "^2.26.0",
         "php-date": "^3.0.0",
         "raphael": "^2.3.0",
         "snackbarjs": "^1.1.0",
