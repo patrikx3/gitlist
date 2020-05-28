@@ -6,7 +6,7 @@
 [//]: #@corifeus-header:end
 
 ## v2020.4.188
-* FEATURE: Enable generate a link when clicking on the gutter and scroll to the iven line.
+* FEATURE: Enable generate a link when clicking on the line number/gutter and scroll to the given line.
 
 ## v2020.4.185
 * FEATURE: enable/disable editing via `config.ini` under the `[app]` `enable_editing` variable
