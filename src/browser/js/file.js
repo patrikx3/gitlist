@@ -267,6 +267,7 @@ $(function () {
             }
 
             $buttonFull.click(setFull)
+
             cm = CodeMirror(function (elt) {
                 pre.parentNode.replaceChild(elt, pre);
             }, {
@@ -280,12 +281,17 @@ $(function () {
                 mode: mode,
                 theme: window.gitlist.getActualThemeCodemirror(),
             });
+
+            cm.on("gutterClick", function(cm, n) {
+                const info = cm.lineInfo(n)
+                const line = info.line + 1
+                location.hash = "#L" + line
+                scrollToEditor();
+            });
             gitlist.viewer = cm;
             const isReallyFull = currentSizing === 'full' && !disableFull;
             if (isReallyFull) {
                 setFull()
-
-
             } else {
                 setScroll()
             }

@@ -5,6 +5,9 @@
                         
 [//]: #@corifeus-header:end
 
+## v2020.4.188
+FEATURE: Enable generate a link when clicking on the gutter and scroll to the iven line.
+
 ## v2020.4.185
 * FEATURE: enable/disable editing via `config.ini` under the `[app]` `enable_editing` variable
 * BUG: DELETE button is missing in the viewer, only after editing was showing
@@ -369,7 +372,7 @@ All my domains ([patrikx3.com](https://patrikx3.com) and [corifeus.com](https://
 
 ---
 
-[**P3X-GITLIST**](https://corifeus.com/gitlist) Build v2020.4.185
+[**P3X-GITLIST**](https://corifeus.com/gitlist) Build v2020.4.188
 
 [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software)
 
