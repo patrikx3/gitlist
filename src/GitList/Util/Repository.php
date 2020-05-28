@@ -6,8 +6,13 @@ use Silex\Application;
 
 class Repository
 {
+    protected static $binaryTypes = [
+        'exe', 'com', 'so', 'la', 'o', 'dll', 'pyc',
+        'jpg', 'jpeg', 'bmp', 'gif', 'png', 'xmp', 'pcx', 'svgz', 'ttf', 'tiff', 'oet',
+        'gz', 'tar', 'rar', 'zip', '7z', 'jar', 'class',
+        'odt', 'ods', 'pdf', 'doc', 'docx', 'dot', 'xls', 'xlsx', 'gzip', 'ico'
+    ];
     protected $app;
-
     protected $defaultFileTypes = [
         'php' => 'php',
         'c' => 'text/x-csrc',
@@ -104,13 +109,6 @@ class Repository
         'bmp' => 'image',
         'csproj' => 'xml',
         'iml' => 'xml',
-    ];
-
-    protected static $binaryTypes = [
-        'exe', 'com', 'so', 'la', 'o', 'dll', 'pyc',
-        'jpg', 'jpeg', 'bmp', 'gif', 'png', 'xmp', 'pcx', 'svgz', 'ttf', 'tiff', 'oet',
-        'gz', 'tar', 'rar', 'zip', '7z', 'jar', 'class',
-        'odt', 'ods', 'pdf', 'doc', 'docx', 'dot', 'xls', 'xlsx', 'gzip', 'ico'
     ];
 
     public function __construct(Application $app)

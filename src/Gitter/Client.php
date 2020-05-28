@@ -58,21 +58,6 @@ class Client
         return $repository->create($bare);
     }
 
-    /**
-     * Opens a repository at the specified path
-     *
-     * @param string $path Path where the repository is located
-     * @return Repository Instance of Repository
-     */
-    public function getRepository($path)
-    {
-        if (!file_exists($path) || !file_exists($path . '/.git/HEAD') && !file_exists($path . '/HEAD')) {
-            throw new \RuntimeException('There is no GIT repository at ' . $path);
-        }
-
-        return new Repository($path, $this);
-    }
-
     public function run($repository, $command)
     {
         if (version_compare($this->getVersion(), '1.7.2', '>=')) {
@@ -140,6 +125,14 @@ class Client
     }
 
     /**
+     * Return name of default branch as a string.
+     */
+    public function getDefaultBranch()
+    {
+        return $this->defaultBranch;
+    }
+
+    /**
      * Set default branch as a string.
      *
      * @param string $branch Name of branch to use when repo's HEAD is detached.
@@ -151,60 +144,6 @@ class Client
 
         return $this;
     }
-
-    /**
-     * Return name of default branch as a string.
-     */
-    public function getDefaultBranch()
-    {
-        return $this->defaultBranch;
-    }
-
-    /**
-     * Get hidden repository list
-     *
-     * @return array List of repositories to hide
-     */
-    protected function getHidden()
-    {
-        return $this->hidden;
-    }
-
-    /**
-     * Set the hidden repository list
-     *
-     * @param array $hidden List of repositories to hide
-     * @return object
-     */
-    protected function setHidden($hidden)
-    {
-        $this->hidden = $hidden;
-
-        return $this;
-    }
-
-    /**
-     * Get project list
-     *
-     * @return array List of repositories to show
-     */
-    protected function getProjects()
-    {
-        return $this->projects;
-    }
-
-    /**
-     * Set the shown repository list
-     *
-     * @param array $projects List of repositories to show
-     */
-    protected function setProjects($projects)
-    {
-        $this->projects = $projects;
-
-        return $this;
-    }
-
 
     public function getRepositoryFromName($paths, $repo)
     {
@@ -306,6 +245,66 @@ class Client
         }
 
         return $repositories;
+    }
+
+    /**
+     * Get hidden repository list
+     *
+     * @return array List of repositories to hide
+     */
+    protected function getHidden()
+    {
+        return $this->hidden;
+    }
+
+    /**
+     * Set the hidden repository list
+     *
+     * @param array $hidden List of repositories to hide
+     * @return object
+     */
+    protected function setHidden($hidden)
+    {
+        $this->hidden = $hidden;
+
+        return $this;
+    }
+
+    /**
+     * Get project list
+     *
+     * @return array List of repositories to show
+     */
+    protected function getProjects()
+    {
+        return $this->projects;
+    }
+
+    /**
+     * Set the shown repository list
+     *
+     * @param array $projects List of repositories to show
+     */
+    protected function setProjects($projects)
+    {
+        $this->projects = $projects;
+
+        return $this;
+    }
+
+    /**
+     * Opens a repository at the specified path
+     *
+     * @param string $path Path where the repository is located
+     * @return Repository Instance of Repository
+     */
+    public function getRepository($path)
+    {
+        if (!file_exists($path) || !file_exists($path . '/.git/HEAD') && !file_exists($path . '/HEAD')) {
+            throw new \RuntimeException('There is no GIT repository at ' . $path);
+        }
+
+        return new Repository($path, $this);
     }
 
 }

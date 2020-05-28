@@ -17,6 +17,7 @@ use Gitter\Model\Tree;
 use Gitter\Model\Blob;
 use Gitter\Model\Commit\Diff;
 use Gitter\Statistics\StatisticsInterface;
+
 //use Gitter\PrettyFormat;
 use Symfony\Component\Filesystem\Filesystem;
 use Eloquent\Pathogen\FileSystem\FileSystemPath;
@@ -38,20 +39,20 @@ class Repository
     }
 
     /**
+     * @return boolean
+     */
+    public function getCommitsHaveBeenParsed()
+    {
+        return $this->commitsHaveBeenParsed;
+    }
+
+    /**
      * @param bool $value
      * @return void
      */
     public function setCommitsHaveBeenParsed($value)
     {
         $this->commitsHaveBeenParsed = $value;
-    }
-
-    /**
-     * @return boolean
-     */
-    public function getCommitsHaveBeenParsed()
-    {
-        return $this->commitsHaveBeenParsed;
     }
 
     /**
@@ -67,6 +68,48 @@ class Repository
         }
 
         $this->getClient()->run($this, $command);
+
+        return $this;
+    }
+
+    /**
+     * Get the current Repository path
+     *
+     * @return string Path where the repository is located
+     */
+    public function getPath()
+    {
+        return $this->path;
+    }
+
+    /**
+     * Set the current Repository path
+     *
+     * @param string $path Path where the repository is located
+     */
+    public function setPath($path)
+    {
+        $this->path = $path;
+    }
+
+    /**
+     * Get the current Client instance
+     *
+     * @return Client Client instance
+     */
+    public function getClient()
+    {
+        return $this->client;
+    }
+
+    /**
+     * Set the Client
+     *
+     * @param Client $path Client instance
+     */
+    public function setClient(Client $client)
+    {
+        $this->client = $client;
 
         return $this;
     }
@@ -267,37 +310,6 @@ class Repository
     }
 
     /**
-     * Show a list of the repository branches
-     *
-     * @return array List of branches
-     */
-    public function getBranches()
-    {
-        static $cache = array();
-
-        if (array_key_exists($this->path, $cache)) {
-            return $cache[$this->path];
-        }
-
-        $branches = $this->getClient()->run($this, "branch");
-        $branches = explode("\n", $branches);
-        $branches = array_filter(preg_replace('/[\*\s]/', '', $branches));
-
-        if (empty($branches)) {
-            return $cache[$this->path] = $branches;
-        }
-
-        // Since we've stripped whitespace, the result "* (detached from "
-        // and "* (no branch)" that is displayed in detached HEAD state
-        // becomes "(detachedfrom" and "(nobranch)" respectively.
-        if ((strpos($branches[0], '(detachedfrom') === 0) || ($branches[0] === '(nobranch)')) {
-            $branches = array_slice($branches, 1);
-        }
-
-        return $cache[$this->path] = $branches;
-    }
-
-    /**
      * Return the current repository branch
      *
      * @return mixed Current repository branch as a string, or NULL if in
@@ -317,20 +329,6 @@ class Repository
                 return substr($branch, 2);
             }
         }
-    }
-
-    /**
-     * Check if a specified branch exists
-     *
-     * @param string $branch Branch to be checked
-     * @return boolean True if the branch exists
-     */
-    public function hasBranch($branch)
-    {
-        $branches = $this->getBranches();
-        $status = in_array($branch, $branches);
-
-        return $status;
     }
 
     /**
@@ -433,6 +431,20 @@ class Repository
         $this->setCommitsHaveBeenParsed(true);
 
         return $commits;
+    }
+
+    /**
+     * Get and parse the output of a git command with a XML-based pretty format
+     *
+     * @param string $command Command to be run by git
+     * @return array  Parsed command output
+     */
+    public function getPrettyFormat($command)
+    {
+        $output = $this->getClient()->run($this, $command);
+        $format = new PrettyFormat;
+
+        return $format->parse($output);
     }
 
     /**
@@ -631,6 +643,51 @@ class Repository
     }
 
     /**
+     * Check if a specified branch exists
+     *
+     * @param string $branch Branch to be checked
+     * @return boolean True if the branch exists
+     */
+    public function hasBranch($branch)
+    {
+        $branches = $this->getBranches();
+        $status = in_array($branch, $branches);
+
+        return $status;
+    }
+
+    /**
+     * Show a list of the repository branches
+     *
+     * @return array List of branches
+     */
+    public function getBranches()
+    {
+        static $cache = array();
+
+        if (array_key_exists($this->path, $cache)) {
+            return $cache[$this->path];
+        }
+
+        $branches = $this->getClient()->run($this, "branch");
+        $branches = explode("\n", $branches);
+        $branches = array_filter(preg_replace('/[\*\s]/', '', $branches));
+
+        if (empty($branches)) {
+            return $cache[$this->path] = $branches;
+        }
+
+        // Since we've stripped whitespace, the result "* (detached from "
+        // and "* (no branch)" that is displayed in detached HEAD state
+        // becomes "(detachedfrom" and "(nobranch)" respectively.
+        if ((strpos($branches[0], '(detachedfrom') === 0) || ($branches[0] === '(nobranch)')) {
+            $branches = array_slice($branches, 1);
+        }
+
+        return $cache[$this->path] = $branches;
+    }
+
+    /**
      * Extract the tree hash for a given branch or tree reference
      *
      * @param string $branch
@@ -706,62 +763,6 @@ class Repository
         }
 
         return $blame;
-    }
-
-    /**
-     * Get the current Repository path
-     *
-     * @return string Path where the repository is located
-     */
-    public function getPath()
-    {
-        return $this->path;
-    }
-
-    /**
-     * Set the current Repository path
-     *
-     * @param string $path Path where the repository is located
-     */
-    public function setPath($path)
-    {
-        $this->path = $path;
-    }
-
-    /**
-     * Get the current Client instance
-     *
-     * @return Client Client instance
-     */
-    public function getClient()
-    {
-        return $this->client;
-    }
-
-    /**
-     * Set the Client
-     *
-     * @param Client $path Client instance
-     */
-    public function setClient(Client $client)
-    {
-        $this->client = $client;
-
-        return $this;
-    }
-
-    /**
-     * Get and parse the output of a git command with a XML-based pretty format
-     *
-     * @param string $command Command to be run by git
-     * @return array  Parsed command output
-     */
-    public function getPrettyFormat($command)
-    {
-        $output = $this->getClient()->run($this, $command);
-        $format = new PrettyFormat;
-
-        return $format->parse($output);
     }
 
     public function getShortHash($commit)
@@ -992,125 +993,6 @@ class Repository
         return false;
     }
 
-
-    protected function changeRepo($cachePath, $repo, $branch, $repoFilename, $name, $email, $comment, $callback)
-    {
-        $temporaryDirectory = '';
-        $tempRepo = '';
-        $hadError = false;
-        $command = '';
-        $output = '';
-        $outputs = [];
-        $trace = null;
-
-        try {
-            $temporaryDirectory = (new TemporaryDirectory($cachePath))->create();
-
-            $client = $this->getClient();
-            $repoPath = realpath($this->getPath());
-            $tempRepo = $temporaryDirectory->path();
-
-            $output = $client->run($this, 'clone ' . $repoPath . ' ' . $tempRepo);
-            $this->setPath($tempRepo);
-
-            $normalizedRepoFilePath = $this->isValidPath($tempRepo, $repoFilename, $outputs);
-
-            $filename = realpath($tempRepo . DIRECTORY_SEPARATOR . $repoFilename);
-
-            $command = "checkout $branch";
-            $output = $client->run($this, $command);
-            array_push($outputs, $output);
-
-            $message = $callback($client, $filename, $outputs, $tempRepo, $normalizedRepoFilePath);
-            array_push($outputs, $message);
-
-            $command = " -c \"user.name=$name\" -c \"user.email=$email\" commit -am \"$comment\" ";
-            $output = $client->run($this, $command);
-            array_push($outputs, $output);
-
-
-            // $command = "commit -am \"$comment\"";
-            // $output = $client->run($repository, $command);
-            $command = "push";
-            $output = $client->run($this, $command);
-            array_push($outputs, $output);
-
-            $command = " rev-parse HEAD ";
-            $lastCommit = $client->run($this, $command);
-
-            $result = (object)[
-                'status' => 'ok',
-                'output' => $message,
-                'outputs' => $outputs,
-                'last-commit' => $lastCommit,
-                'branch' => $branch,
-            ];
-            return $result;
-        } catch (\Throwable $e) {
-
-            $hadError = $e;
-        } finally {
-
-            if ($temporaryDirectory !== '') {
-                @$temporaryDirectory->delete();
-            }
-
-            if ($hadError !== false) {
-
-                $message = $hadError->getMessage();
-                if ($message === '') {
-                    $exceptionName = get_class($hadError);
-                    $message = "Received exception without message with type '{$exceptionName}'. " . $hadError->getMessage();
-                    $trace = $hadError->getTrace();
-                }
-
-                return ((object)[
-                    'status' => $message === '' ? 'ok' : 'error',
-                    'error' => $message === '' ? false : true,
-                    //'temporaryDirectory' => $tempRepo,
-                    'message' => $message,
-                    //'currentdir' => getcwd(),
-                    //'command' => $command,
-                    'output' => $output,
-                    'outputs' => $outputs,
-                    'trace' => $trace,
-                    //'$filename' => $filename,
-                    //'$value' => $value,
-                ]);
-            }
-        }
-    }
-
-
-    protected function isValidPath($tempRepo, $repoFilename, &$outputs)
-    {
-        $basePath = FileSystemPath::fromString($tempRepo);
-        //array_push($outputs, "$basePath {$basePath}");
-        $repoFilenameItem = FileSystemPath::fromString($repoFilename);
-        //array_push($outputs, "$repoFilenameItem {$repoFilenameItem}");
-
-        $normalizing = $basePath->resolve($repoFilenameItem);
-        //array_push($outputs, "$normalizing {$normalizing}");
-//        array_unshift($outputs, '$normalizing: ' . $normalizing);
-
-        $normalized = FileSystemPath::fromString($normalizing)->normalize();
-        //array_push($outputs, "$normalized {$normalized}");
-//        array_unshift($outputs, '$normalized: ' . $normalized);
-
-//        array_unshift($outputs, '$normalizing type: ' . gettype($normalizing));
-///        array_unshift($outputs, '$normalized type: ' .  gettype($normalized));
-
-        $normalizedRepoFilePath = $normalized->__toString();
-        $validPath = strpos($normalizing->__toString(), $normalizedRepoFilePath) !== false;
-        //array_push($outputs, "$normalizing {$normalizing->__toString()}");
-        //array_push($outputs, "$normalizedRepoFilePath {$normalizedRepoFilePath}");
-        //array_push($outputs, (substr($normalizedRepoFilePath, 0, strlen($basePath)) . " $basePath"));
-        if ($validPath === false || substr($normalizedRepoFilePath, 0, strlen($basePath)) != $basePath) {
-            throw new \Exception("This '{$repoFilename}' path is invalid.");
-        }
-        return $normalizedRepoFilePath;
-    }
-
     public function newFileBinary($cachePath, $repo, $branch, $repoFilename, $name, $email, $comment, $override, $phpUploadFile)
     {
 
@@ -1243,6 +1125,123 @@ class Repository
 }
 
          */
+    }
+
+    protected function changeRepo($cachePath, $repo, $branch, $repoFilename, $name, $email, $comment, $callback)
+    {
+        $temporaryDirectory = '';
+        $tempRepo = '';
+        $hadError = false;
+        $command = '';
+        $output = '';
+        $outputs = [];
+        $trace = null;
+
+        try {
+            $temporaryDirectory = (new TemporaryDirectory($cachePath))->create();
+
+            $client = $this->getClient();
+            $repoPath = realpath($this->getPath());
+            $tempRepo = $temporaryDirectory->path();
+
+            $output = $client->run($this, 'clone ' . $repoPath . ' ' . $tempRepo);
+            $this->setPath($tempRepo);
+
+            $normalizedRepoFilePath = $this->isValidPath($tempRepo, $repoFilename, $outputs);
+
+            $filename = realpath($tempRepo . DIRECTORY_SEPARATOR . $repoFilename);
+
+            $command = "checkout $branch";
+            $output = $client->run($this, $command);
+            array_push($outputs, $output);
+
+            $message = $callback($client, $filename, $outputs, $tempRepo, $normalizedRepoFilePath);
+            array_push($outputs, $message);
+
+            $command = " -c \"user.name=$name\" -c \"user.email=$email\" commit -am \"$comment\" ";
+            $output = $client->run($this, $command);
+            array_push($outputs, $output);
+
+
+            // $command = "commit -am \"$comment\"";
+            // $output = $client->run($repository, $command);
+            $command = "push";
+            $output = $client->run($this, $command);
+            array_push($outputs, $output);
+
+            $command = " rev-parse HEAD ";
+            $lastCommit = $client->run($this, $command);
+
+            $result = (object)[
+                'status' => 'ok',
+                'output' => $message,
+                'outputs' => $outputs,
+                'last-commit' => $lastCommit,
+                'branch' => $branch,
+            ];
+            return $result;
+        } catch (\Throwable $e) {
+
+            $hadError = $e;
+        } finally {
+
+            if ($temporaryDirectory !== '') {
+                @$temporaryDirectory->delete();
+            }
+
+            if ($hadError !== false) {
+
+                $message = $hadError->getMessage();
+                if ($message === '') {
+                    $exceptionName = get_class($hadError);
+                    $message = "Received exception without message with type '{$exceptionName}'. " . $hadError->getMessage();
+                    $trace = $hadError->getTrace();
+                }
+
+                return ((object)[
+                    'status' => $message === '' ? 'ok' : 'error',
+                    'error' => $message === '' ? false : true,
+                    //'temporaryDirectory' => $tempRepo,
+                    'message' => $message,
+                    //'currentdir' => getcwd(),
+                    //'command' => $command,
+                    'output' => $output,
+                    'outputs' => $outputs,
+                    'trace' => $trace,
+                    //'$filename' => $filename,
+                    //'$value' => $value,
+                ]);
+            }
+        }
+    }
+
+    protected function isValidPath($tempRepo, $repoFilename, &$outputs)
+    {
+        $basePath = FileSystemPath::fromString($tempRepo);
+        //array_push($outputs, "$basePath {$basePath}");
+        $repoFilenameItem = FileSystemPath::fromString($repoFilename);
+        //array_push($outputs, "$repoFilenameItem {$repoFilenameItem}");
+
+        $normalizing = $basePath->resolve($repoFilenameItem);
+        //array_push($outputs, "$normalizing {$normalizing}");
+//        array_unshift($outputs, '$normalizing: ' . $normalizing);
+
+        $normalized = FileSystemPath::fromString($normalizing)->normalize();
+        //array_push($outputs, "$normalized {$normalized}");
+//        array_unshift($outputs, '$normalized: ' . $normalized);
+
+//        array_unshift($outputs, '$normalizing type: ' . gettype($normalizing));
+///        array_unshift($outputs, '$normalized type: ' .  gettype($normalized));
+
+        $normalizedRepoFilePath = $normalized->__toString();
+        $validPath = strpos($normalizing->__toString(), $normalizedRepoFilePath) !== false;
+        //array_push($outputs, "$normalizing {$normalizing->__toString()}");
+        //array_push($outputs, "$normalizedRepoFilePath {$normalizedRepoFilePath}");
+        //array_push($outputs, (substr($normalizedRepoFilePath, 0, strlen($basePath)) . " $basePath"));
+        if ($validPath === false || substr($normalizedRepoFilePath, 0, strlen($basePath)) != $basePath) {
+            throw new \Exception("This '{$repoFilename}' path is invalid.");
+        }
+        return $normalizedRepoFilePath;
     }
 
     public function changeFile($cachePath, $repo, $branch, $repoFilename, $value, $name, $email, $comment)

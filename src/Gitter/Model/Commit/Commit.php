@@ -17,6 +17,7 @@ use Gitter\Util\DateTime;
 
 class Commit extends Item
 {
+    public $message;
     protected $shortHash;
     protected $treeHash;
     protected $parentsHash;
@@ -24,7 +25,6 @@ class Commit extends Item
     protected $date;
     protected $commiter;
     protected $commiterDate;
-    public $message;
     protected $body;
 
     /** @var Diff[] */

@@ -1,9 +1,9 @@
 {
     "name": "p3x-gitlist",
-    "version": "2020.4.182",
+    "version": "2020.4.186",
     "corifeus": {
         "prod-dir": "prod",
-        "css-postfix": "367d8f15ce37630f55021bb649494b1fec485e51d5991b8296ae009a7d03a725",
+        "css-postfix": "422fb7cb9a9269c9c924faddcffc49466ae84bda37184540671ebbc0d2fe9b39",
         "prefix": "p3x-",
         "publish": false,
         "type": "p3x",
@@ -11,7 +11,7 @@
         "cdn": true,
         "icon": "fas fa-code",
         "code": "Spawn",
-        "nodejs": "v12.16.3",
+        "nodejs": "v12.17.0",
         "reponame": "gitlist",
         "build": true
     },

@@ -26,9 +26,11 @@ class GitController implements ControllerProviderInterface
         $route->post('{repo}/git-helper/{branch}/{action}', function (Request $request, $repo, $branch = '', $action) use ($app) {
             $repository = ($app['git']->getRepositoryFromName($app['git.repos'], $repo));
 
+
             $hadError = false;
 
             try {
+
                 if ($repository instanceof Repository && $app instanceof GitlistApp) {
                     $filename = trim($request->get('filename'));
                     $value = $request->get('value');
@@ -39,21 +41,32 @@ class GitController implements ControllerProviderInterface
 
                     switch ($action) {
                         case 'save':
+                            if (!$app['enable_editing']) {
+                                throw new \Error('Editing is disabled');
+                            }
                             $objectResult = $repository->changeFile($app->getCachePath(), $repo, $branch, $filename, $value, $name, $email, $comment);
                             return json_encode($objectResult);
 
                         case 'delete':
+                            if (!$app['enable_editing']) {
+                                throw new \Error('Editing is disabled');
+                            }
                             $objectResult = $repository->deleteFile($app->getCachePath(), $repo, $branch, $filename, $name, $email, $comment);
                             return json_encode($objectResult);
                             break;
 
                         case 'new-file-or-directory':
+                            if (!$app['enable_editing']) {
+                                throw new \Error('Editing is disabled');
+                            }
                             $objectResult = $repository->newFileOrDirectory($app->getCachePath(), $repo, $branch, $filename, $name, $email, $comment);
                             return json_encode($objectResult);
                             break;
 
                         case 'file-binary':
-
+                            if (!$app['enable_editing']) {
+                                throw new \Error('Editing is disabled');
+                            }
                             $objectResult = $repository->newFileBinary($app->getCachePath(), $repo, $branch, $filename, $name, $email, $comment, $request->get('override') === '1' ? true : false, $_FILES['upload-file']);
                             return json_encode($objectResult);
 

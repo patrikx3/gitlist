@@ -15,6 +15,7 @@ use Gitter\Model\AbstractModel;
 
 class Diff extends AbstractModel
 {
+    public $lineCount = 0;
     /** @var DiffLine[] */
     protected $lines;
     protected $index;
@@ -22,8 +23,6 @@ class Diff extends AbstractModel
     protected $new;
     protected $file;
     protected $binary = false;
-
-    public $lineCount = 0;
 
     public function addLine($line, $oldNo, $newNo)
     {
@@ -35,19 +34,14 @@ class Diff extends AbstractModel
         return $this->lines;
     }
 
-    public function setIndex($index)
-    {
-        $this->index = $index;
-    }
-
     public function getIndex()
     {
         return $this->index;
     }
 
-    public function setOld($old)
+    public function setIndex($index)
     {
-        $this->old = $old;
+        $this->index = $index;
     }
 
     public function getOld()
@@ -55,9 +49,9 @@ class Diff extends AbstractModel
         return $this->old;
     }
 
-    public function setNew($new)
+    public function setOld($old)
     {
-        $this->new = $new;
+        $this->old = $old;
     }
 
     public function getNew()
@@ -65,9 +59,9 @@ class Diff extends AbstractModel
         return $this->new;
     }
 
-    public function setFile($file)
+    public function setNew($new)
     {
-        $this->file = $file;
+        $this->new = $new;
     }
 
     public function getFile()
@@ -75,13 +69,18 @@ class Diff extends AbstractModel
         return $this->file;
     }
 
-    public function setBinary($bool)
+    public function setFile($file)
     {
-        $this->binary = true;
+        $this->file = $file;
     }
 
     public function getBinary()
     {
         return $this->binary;
+    }
+
+    public function setBinary($bool)
+    {
+        $this->binary = true;
     }
 }

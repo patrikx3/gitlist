@@ -95,7 +95,9 @@ class Application extends SilexApplication
         $this->register(new RepositoryUtilServiceProvider());
         $this->register(new RoutingUtilServiceProvider());
 
-        $this['twig'] = $this->extend('twig', function ($twig, $app) use ($pkg, $config) {
+        $enable_editing = (boolean)$config->get('app', 'enable_editing');
+
+        $this['twig'] = $this->extend('twig', function ($twig, $app) use ($pkg, $config, $enable_editing) {
 
             $twig->addFilter(new TwigFilter('to_id', function ($value) {
                 $value = str_replace(['.', '/', '\\', ' '], '-', $value);
@@ -148,10 +150,11 @@ class Application extends SilexApplication
                 $codemirror_full_limit = 32;
             }
             $twig->addGlobal('codemirror_full_limit', $codemirror_full_limit);
-
+            $twig->addGlobal('enable_editing', $enable_editing ? 1 : 0);
 
             return $twig;
         });
+        $this['enable_editing'] = $enable_editing ? 1 : 0;
 
         $this['escaper.argument'] = $this->factory(function () {
             return new Escaper\ArgumentEscaper();
@@ -174,42 +177,6 @@ class Application extends SilexApplication
                 $fs->remove($app['cache.archives']);
             }
         });
-    }
-
-    public function formatDate($date)
-    {
-        return $date->format($this['date.format']);
-    }
-
-    public function formatSize($bytes, $precision = 0)
-    {
-        $size = ['B','kB','MB','GB','TB','PB','EB','ZB','YB'];
-        $factor = floor((strlen($bytes) - 1) / 3);
-        return sprintf("%.{$precision}f", $bytes / pow(1024, $factor)) . @$size[$factor];
-    }
-
-    public function getAvatar($email, $size)
-    {
-        $url = $this['avatar.url'] ? $this['avatar.url'] : "//gravatar.com/avatar/";
-        $query = array("s=$size");
-        if (is_string($this['avatar.query']))
-            $query[] = $this['avatar.query'];
-        else if (is_array($this['avatar.query']))
-            $query = array_merge($query, $this['avatar.query']);
-        $id = md5(strtolower($email));
-        return $url . $id . "?" . implode('&', $query);
-    }
-
-    public function getPath()
-    {
-        return $this->path . DIRECTORY_SEPARATOR;
-    }
-
-    public function setPath($path)
-    {
-        $this->path = $path;
-
-        return $this;
     }
 
     public function getCachePath()
@@ -238,5 +205,41 @@ class Application extends SilexApplication
             $projects[] = trim(fgets($file));
         fclose($file);
         return $projects;
+    }
+
+    public function formatDate($date)
+    {
+        return $date->format($this['date.format']);
+    }
+
+    public function formatSize($bytes, $precision = 0)
+    {
+        $size = ['B', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+        $factor = floor((strlen($bytes) - 1) / 3);
+        return sprintf("%.{$precision}f", $bytes / pow(1024, $factor)) . @$size[$factor];
+    }
+
+    public function getAvatar($email, $size)
+    {
+        $url = $this['avatar.url'] ? $this['avatar.url'] : "//gravatar.com/avatar/";
+        $query = array("s=$size");
+        if (is_string($this['avatar.query']))
+            $query[] = $this['avatar.query'];
+        else if (is_array($this['avatar.query']))
+            $query = array_merge($query, $this['avatar.query']);
+        $id = md5(strtolower($email));
+        return $url . $id . "?" . implode('&', $query);
+    }
+
+    public function getPath()
+    {
+        return $this->path . DIRECTORY_SEPARATOR;
+    }
+
+    public function setPath($path)
+    {
+        $this->path = $path;
+
+        return $this;
     }
 }

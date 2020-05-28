@@ -6,6 +6,11 @@ class Config
 {
     protected $data;
 
+    public function __construct($data = array())
+    {
+        $this->data = $data;
+    }
+
     public static function fromFile($file)
     {
         if (!file_exists($file)) {
@@ -19,9 +24,28 @@ class Config
         return $config;
     }
 
-    public function __construct($data = array())
+    protected function validateOptions()
     {
-        $this->data = $data;
+        $repositories = $this->get('git', 'repositories');
+
+        $atLeastOneOk = false;
+        $atLeastOneWrong = false;
+
+        foreach ($repositories as $directory) {
+            if (!$directory || !is_dir($directory)) {
+                $atLeastOneWrong = true;
+            } else {
+                $atLeastOneOk = true;
+            }
+        }
+
+        if (!$atLeastOneOk) {
+            die("Please, edit the config file and provide your repositories directory");
+        }
+
+        if ($atLeastOneWrong) {
+            die("One or more of the supplied repository paths appears to be wrong. Please, check the config file");
+        }
     }
 
     public function get($section, $option)
@@ -49,30 +73,6 @@ class Config
     public function set($section, $option, $value)
     {
         $this->data[$section][$option] = $value;
-    }
-
-    protected function validateOptions()
-    {
-        $repositories = $this->get('git', 'repositories');
-
-        $atLeastOneOk = false;
-        $atLeastOneWrong = false;
-
-        foreach ($repositories as $directory) {
-            if (!$directory || !is_dir($directory)) {
-                $atLeastOneWrong = true;
-            } else {
-                $atLeastOneOk = true;
-            }
-        }
-
-        if (!$atLeastOneOk) {
-            die("Please, edit the config file and provide your repositories directory");
-        }
-
-        if ($atLeastOneWrong) {
-            die("One or more of the supplied repository paths appears to be wrong. Please, check the config file");
-        }
     }
 }
 

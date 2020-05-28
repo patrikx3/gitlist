@@ -18,10 +18,12 @@
                     </button>
                 {% endif %}
 
-                <button class="btn btn-sm btn-danger" id="p3x-gitlist-file-delete" style="display: none;">
-                    <span class="fa fa-trash"></span>
-                    Delete
-                </button>
+                {% if enable_editing %}
+                    <button class="btn btn-sm btn-danger" id="p3x-gitlist-file-delete">
+                        <span class="fa fa-trash"></span>
+                        Delete
+                    </button>
+                {% endif %}
 
                 {% embed 'modal/modal-commit.twig' with {type: 'delete', title: 'Delete', bodyTitle: 'Are you sure to delete this file?', wrapForm: true } %}
                     {% block buttons %}
@@ -35,9 +37,13 @@
 
                 <span class="p3x-gitlist-file-svg-toggle">
                 {% if (((fileType != 'image' and fileType != 'markdown' ) or (enforceCodemirror)) and not binary ) %}
-                    <button id="p3x-gitlist-file-button-edit" class="btn btn-sm btn-info">
-                        <span class="fa fa-edit"></span> Edit
-                    </button>
+
+                    {% if enable_editing %}
+                        <button id="p3x-gitlist-file-button-edit" class="btn btn-sm btn-info">
+                            <span class="fa fa-edit"></span> Edit
+                        </button>
+                    {% endif %}
+
                     <button id="p3x-gitlist-file-button-edit-save" class="btn btn-sm btn-info" style="display: none;">
                         <span class="fa fa-save"></span> Save
                     </button>

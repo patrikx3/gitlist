@@ -106,7 +106,8 @@ global.gitGraph = function (canvas, rawGraphList, config) {
     var findFlow = function (id) {
         var i = flows.length;
 
-        while (i-- && flows[i].id !== id) {}
+        while (i-- && flows[i].id !== id) {
+        }
 
         return i;
     };
@@ -114,7 +115,8 @@ global.gitGraph = function (canvas, rawGraphList, config) {
     var findColomn = function (symbol, row) {
         var i = row.length;
 
-        while (i-- && row[i] !== symbol) {}
+        while (i-- && row[i] !== symbol) {
+        }
 
         return i;
     };
@@ -128,7 +130,8 @@ global.gitGraph = function (canvas, rawGraphList, config) {
 
         while (i-- &&
         !(row[i - 1] && row[i] === "/" && row[i - 1] === "|") &&
-        !(row[i - 2] && row[i] === "_" && row[i - 2] === "|")) {}
+        !(row[i - 2] && row[i] === "_" && row[i - 2] === "|")) {
+        }
 
         return i;
     };
@@ -141,7 +144,8 @@ global.gitGraph = function (canvas, rawGraphList, config) {
         var i = row.length;
 
         while (i-- &&
-        !(row[i - 1] && row[i - 2] && row[i] === " " && row[i - 1] === "|" && row[i - 2] === "_")) {}
+        !(row[i - 1] && row[i - 2] && row[i] === " " && row[i - 1] === "|" && row[i - 2] === "_")) {
+        }
 
         return i;
     };
@@ -153,7 +157,7 @@ global.gitGraph = function (canvas, rawGraphList, config) {
             newId = genRandomStr();
         } while (findFlow(newId) !== -1);
 
-        return {id:newId, color: window.gitlist.randomCanvasLaneColors()};
+        return {id: newId, color: window.gitlist.randomCanvasLaneColors()};
     };
 
     //Draw methods
@@ -229,12 +233,12 @@ global.gitGraph = function (canvas, rawGraphList, config) {
             flowSwapPos = -1;
 
             condenseCurrentLength = currentRow.filter(function (val) {
-                return (val !== " "  && val !== "_")
+                return (val !== " " && val !== "_")
             }).length;
 
             if (nextRow) {
                 condenseNextLength = nextRow.filter(function (val) {
-                    return (val !== " "  && val !== "_")
+                    return (val !== " " && val !== "_")
                 }).length;
             } else {
                 condenseNextLength = 0;
@@ -258,7 +262,7 @@ global.gitGraph = function (canvas, rawGraphList, config) {
                             flows[flowSwapPos] = flows[flowSwapPos] || {}
 
 
-                            tempFlow = {id:flows[flowSwapPos].id, color:flows[flowSwapPos].color};
+                            tempFlow = {id: flows[flowSwapPos].id, color: flows[flowSwapPos].color};
 
                             flows[flowSwapPos].id = flows[flowSwapPos + 1].id;
                             flows[flowSwapPos].color = flows[flowSwapPos + 1].color;
@@ -307,7 +311,7 @@ global.gitGraph = function (canvas, rawGraphList, config) {
                     }
                 }
                 //if line break found replace all '/' with '|' after breakIndex in previous row
-                if (breakIndex !== - 1 && colomn === "/" && colomnIndex > breakIndex) {
+                if (breakIndex !== -1 && colomn === "/" && colomnIndex > breakIndex) {
                     currentRow[colomnIndex] = "|";
                     colomn = "|";
                 }
@@ -340,7 +344,8 @@ global.gitGraph = function (canvas, rawGraphList, config) {
                             findColomn("*", currentRow))) !== -1 &&
                             (lastLinePos < colomnIndex - 1)) {
 
-                            while (currentRow[++lastLinePos] === " ") {}
+                            while (currentRow[++lastLinePos] === " ") {
+                            }
 
                             if (lastLinePos === colomnIndex) {
                                 currentRow[colomnIndex] = "|";
@@ -363,7 +368,7 @@ global.gitGraph = function (canvas, rawGraphList, config) {
             }
 
             condenseCurrentLength = currentRow.filter(function (val) {
-                return (val !== " "  && val !== "_")
+                return (val !== " " && val !== "_")
             }).length;
 
             //do some clean up

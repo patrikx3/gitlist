@@ -14,11 +14,6 @@ namespace Gitter;
 class PrettyFormat
 {
 
-    public function escapeXml($output)
-    {
-        return preg_replace('/[\x00-\x1f]/', '?', $output);
-    }
-
     public function parse($output)
     {
         if (empty($output)) {
@@ -34,6 +29,11 @@ class PrettyFormat
         $data = $this->iteratorToArray($xml);
 
         return $data['item'];
+    }
+
+    public function escapeXml($output)
+    {
+        return preg_replace('/[\x00-\x1f]/', '?', $output);
     }
 
     protected function iteratorToArray($iterator)
