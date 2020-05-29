@@ -128,11 +128,11 @@ https://github.com/klaussilveira/gitlist
 
 #### Gitlist
 https://github.com/klaussilveira/gitlist/commits/master  
-July 11, 2019
+May 16, 2020
 
 #### Gitter
 https://github.com/klaussilveira/gitter/commits/master  
-July 11, 2019
+May 16, 2020
 
 # URL links
 
