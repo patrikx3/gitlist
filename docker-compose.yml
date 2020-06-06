@@ -1,0 +1,9 @@
+# docker-compose up
+registry:
+    image: patrikx3/p3x-gitlist:latest
+    ports:
+        - 12345:80
+    volumes:
+        # here you can set your own /home/user/p3x-gitlist/git folder
+        - /home/user/p3x-gitlist/git:/var/git
+
