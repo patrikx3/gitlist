@@ -5,8 +5,8 @@
                         
 [//]: #@corifeus-header:end
 
-## v2020.4.219
-* BUGFIX: Since using fotns instead of svg, had to do some fix-up.
+## v2020.4.218
+* BUGFIX: Since using Fontawesome fonts instead of svg, had to do some fix-up.
 
 ## v2020.4.210
 * BUGFIX: Fontawesome was using SVG, replaced with fonts as it was giving 1.5MB bundle bigger (using SVG)
