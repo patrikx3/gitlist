@@ -36,6 +36,7 @@ const plugins = [
     }),
 ];
 
+/*
 plugins.push(
     new WebpackOnBuildPlugin(async (stats) => {
         try {
@@ -57,6 +58,7 @@ plugins.push(
         }
     }),
 )
+*/
 
 if (minimize) {
 
