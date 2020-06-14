@@ -5,6 +5,9 @@
                         
 [//]: #@corifeus-header:end
 
+## v2020.4.210
+* BUGFIX: Fontawesome was using SVG, replaced with fonts as it was giving 1.5MB bundle bigger (using SVG)
+
 ## v2020.4.188
 * FEATURE: Enable generate a link when clicking on the line number/gutter and scroll to the given line.
 
@@ -372,7 +375,7 @@ All my domains ([patrikx3.com](https://patrikx3.com) and [corifeus.com](https://
 
 ---
 
-[**P3X-GITLIST**](https://corifeus.com/gitlist) Build v2020.4.192
+[**P3X-GITLIST**](https://corifeus.com/gitlist) Build v2020.4.210
 
 [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software)
 

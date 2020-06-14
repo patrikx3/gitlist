@@ -138,8 +138,8 @@ const fileLoader = [
             name: fileAsset,
             outputPath: 'assets',
             context: 'assets',
-//            publicPath: 'webpack/assets',
-//            useRelativePath: true,
+            publicPath: '/prod/webpack/assets',
+            useRelativePath: false,
         }
     }
 ]

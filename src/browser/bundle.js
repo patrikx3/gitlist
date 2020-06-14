@@ -9,7 +9,7 @@ require(`codemirror/theme/dracula.css`)
 
 //require('../less/style.less')
 
-require('@fortawesome/fontawesome-free/js/all')
+require('@fortawesome/fontawesome-free/css/all.css')
 
 /*
 //console.log(fontawesome);
