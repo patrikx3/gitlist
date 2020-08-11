@@ -5,7 +5,7 @@
                         
 [//]: #@corifeus-header:end
 
-## Snapshot
+## v2020.10.102
 * BUGFIX: Missing TypeScript Codemirror mode.
 * BGUFIX: The active line was not highlighting the line number.
 
