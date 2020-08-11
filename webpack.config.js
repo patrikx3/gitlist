@@ -169,8 +169,15 @@ module.exports = {
                 test: /\.less$/,
                 use: [{
                     loader: 'style-loader' ,
-                }, {
+                },  {
                     loader: 'css-loader',
+                    options: {
+                        esModule: false,
+                        sourceMap: true,
+                        // v2 throws error minimze
+                        //minimize: minimize === true
+
+                    }
                 }, {
                     loader: 'less-loader',
                 }],
@@ -213,10 +220,12 @@ module.exports = {
                         {
                             loader: 'css-loader',
                             options: {
-                                // in v2 it throws error
-                              //  minimize: minimize,
-                                sourceMap: true
-                            },
+                                esModule: false,
+                                sourceMap: true,
+                                // v2 throws error minimze
+                                //minimize: minimize === true
+
+                            }
                         }]
                 })
             }

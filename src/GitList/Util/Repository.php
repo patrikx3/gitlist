@@ -41,6 +41,7 @@ class Repository
         'html' => 'htmlmixed',
         'tpl' => 'htmlmixed',
         'js' => 'javascript',
+        'ts' => 'application/typescript',
         'json' => 'javascript',
         'jsx' => 'jsx',
         'less' => 'css',
