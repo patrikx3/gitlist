@@ -51,7 +51,7 @@ $(() => {
                         loaderAjax.hide()
                         loaderWebworker.show()
                         const Worker = require(`./web-worker/commit-diff.worker`);
-                        const worker = new Worker();
+                        const worker = new Worker.default();
                         worker.addEventListener('message', function (event) {
                             loader.hide();
                             scroller.append(event.data)
