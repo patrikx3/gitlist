@@ -1,6 +1,6 @@
 {
     "name": "p3x-gitlist",
-    "version": "2020.10.105",
+    "version": "2020.10.110",
     "corifeus": {
         "prod-dir": "prod",
         "css-postfix": "8940b9c0b13e7fb3feb0a90e8db862ec8ab4763b0b7e8f438de43d7ae7b4145a",
@@ -30,8 +30,8 @@
     "devDependencies": {
         "bootswatch": "^3.4.1",
         "concurrently": "^5.3.0",
-        "corifeus-builder": "^2020.10.100",
-        "corifeus-utils": "^2020.4.206",
+        "corifeus-builder": "^2020.10.105",
+        "corifeus-utils": "^2020.10.104",
         "css-loader": "^4.2.1",
         "extract-text-webpack-plugin": "^4.0.0-beta.0",
         "file-loader": "^6.0.0",
@@ -67,7 +67,7 @@
         "js-cookie": "^2.2.1",
         "js-htmlencode": "^0.3.0",
         "list.js": "^1.5.0",
-        "lodash": "^4.17.19",
+        "lodash": "^4.17.20",
         "marked": "^1.1.1",
         "moment": "^2.27.0",
         "php-date": "^3.0.0",

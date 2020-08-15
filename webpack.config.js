@@ -173,7 +173,7 @@ module.exports = {
                     loader: 'css-loader',
                     options: {
                         esModule: false,
-                        sourceMap: true,
+                        sourceMap: false,
                         // v2 throws error minimze
                         //minimize: minimize === true
 
