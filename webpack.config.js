@@ -2,14 +2,14 @@ const fs = require('fs').promises
 const path = require('path');
 const webpack = require('webpack');
 const utils = require('corifeus-utils')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin')
 const WebpackOnBuildPlugin = require('on-build-webpack');
 
-const fileAsset = `[name].[hash].[ext]`;
-const minimize = process.argv.includes('--production');
+const fileAsset = `[name].[contenthash].[ext]`;
+const minimize = process.argv.includes('--mode=production');
 const mode = minimize ? 'production' : 'development';
 
 let minimizer = undefined;
@@ -22,19 +22,18 @@ let devtool;
 
 const plugins = [
 
-    new ExtractTextPlugin({
-        filename: '[name].[hash].css',
-        disable: false,
-        allChunks: true
-    }),
-
     new HtmlWebpackPlugin({
         template: `${__dirname}/src/browser/layout.tpl.twig`,
         inject: 'body',
         chunks: ['bundle'],
         filename: `${__dirname}/src/twig/layout.twig`,
     }),
-];
+    new MiniCssExtractPlugin({
+        // Options similar to the same options in webpackOptions.output
+        // both options are optional
+        filename: !minimize ? '[name].css' : '[name].[contenthash].css',
+        chunkFilename: !minimize ? '[id].css' : '[id].[contenthash].css',
+    }),];
 
 /*
 plugins.push(
@@ -154,31 +153,33 @@ module.exports = {
     },
     output: {
         path: buildDir,
-        filename: '[name].[hash].js',
-        chunkFilename: '[id].[hash].chunk.js',
+        filename: '[name].[contenthash].js',
+        chunkFilename: '[id].[contenthash].chunk.js',
 //        publicPath: '{{ app.url_subdir }}/webpack/',
         publicPath: `./${prodDir}/webpack/`,
     },
     module: {
         rules: [
             {
+                test: /\.js$/,
+                enforce: 'pre',
+                use: ['source-map-loader'],
+            },
+            {
                 test: /\.worker\.js$/,
                 use: { loader: 'worker-loader' }
             },
             {
-                test: /\.less$/,
-                use: [{
-                    loader: 'style-loader' ,
-                },  {
-                    loader: 'css-loader',
+                test: /\.(css|less)$/,
+                use: [
+                {
+                    loader: MiniCssExtractPlugin.loader,
                     options: {
-                        esModule: false,
-                        sourceMap: false,
-                        // v2 throws error minimze
-                        //minimize: minimize === true
-
-                    }
-                }, {
+                        hmr: !minimize,
+                    },
+                },
+                    'css-loader',
+                {
                     loader: 'less-loader',
                 }],
             },
@@ -212,23 +213,6 @@ module.exports = {
                 test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
                 use: fileLoader
             },
-            {
-                test: /\.css$/,
-                use: ExtractTextPlugin.extract({
-                   // fallback: "style-loader",
-                    use: [
-                        {
-                            loader: 'css-loader',
-                            options: {
-                                esModule: false,
-                                sourceMap: true,
-                                // v2 throws error minimze
-                                //minimize: minimize === true
-
-                            }
-                        }]
-                })
-            }
         ]
     },
     optimization: {
