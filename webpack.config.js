@@ -79,9 +79,7 @@ if (minimize) {
 
     minimizer = [
         new TerserPlugin({
-            sourceMap: true,
             parallel: true,
-            cache: true,
             extractComments: {
                 condition: /^\**!|@preserve|@license|@cc_on/,
 
