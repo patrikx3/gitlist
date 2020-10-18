@@ -1,6 +1,6 @@
 {
     "name": "p3x-gitlist",
-    "version": "2020.10.126",
+    "version": "2020.10.135",
     "corifeus": {
         "prod-dir": "prod",
         "css-postfix": "8940b9c0b13e7fb3feb0a90e8db862ec8ab4763b0b7e8f438de43d7ae7b4145a",
@@ -16,10 +16,10 @@
         "build": true
     },
     "scripts": {
-        "build": "grunt && webpack --mode=production",
+        "build": "grunt",
         "webpack-watch": "webpack --watch",
         "less-watch": "grunt watch:less",
-        "watch": "grunt && concurrently \"webpack --watch\" \"grunt watch:less\" ",
+        "watch": "grunt default-less && concurrently \"webpack --watch\" \"grunt watch:less\" ",
         "postinstall": "node node_modules/corifeus-builder/src/utils/twemoji-install.js"
     },
     "description": "🤖 P3X Gitlist - A decorated enhanced elegant, feature rich and modern private git ui repository viewer",
@@ -30,8 +30,8 @@
     "devDependencies": {
         "bootswatch": "^3.4.1",
         "concurrently": "^5.3.0",
-        "corifeus-builder": "^2020.10.129",
-        "corifeus-utils": "^2020.10.121",
+        "corifeus-builder": "^2020.10.134",
+        "corifeus-utils": "^2020.10.126",
         "css-loader": "^5.0.0",
         "extract-text-webpack-plugin": "^4.0.0-beta.0",
         "file-loader": "^6.1.1",
@@ -50,9 +50,9 @@
         "style-loader": "^2.0.0",
         "terser-webpack-plugin": "^5.0.0",
         "url-loader": "^4.1.1",
-        "webpack": "^5.1.0",
+        "webpack": "^5.1.3",
         "webpack-cli": "^4.0.0",
-        "worker-loader": "^3.0.4"
+        "worker-loader": "^3.0.5"
     },
     "engines": {
         "node": ">=12.13.0"
@@ -62,7 +62,7 @@
         "@fortawesome/fontawesome-free": "^5.15.1",
         "bootstrap": "^3.4.1",
         "codemirror": "^5.58.1",
-        "highlight.js": "^10.2.1",
+        "highlight.js": "^10.3.1",
         "is-string-int": "^1.0.1",
         "jquery": "=3.4.1",
         "jquery.redirect": "^1.1.4",

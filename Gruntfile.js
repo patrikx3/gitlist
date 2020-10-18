@@ -4,6 +4,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-less');
 
     const builder = require(`corifeus-builder`);
+    const gruntUtil = builder.utils;
     const loader = new builder.loader(grunt);
     loader.js({
         replacer: {
@@ -64,8 +65,31 @@ module.exports = function (grunt) {
             }
     });
 
-    grunt.registerTask('default', ['clean', 'less', 'copy', 'cory-npm', 'cory-replace']);
-    grunt.registerTask('build', ['default']);
+    grunt.registerTask('build', async function() {
+        const done = this.async()
+        const cwd = process.cwd()
+
+        try {
+
+            await gruntUtil.spawn({
+                grunt: grunt,
+                gruntThis: this,
+
+            }, {
+                cmd: `${cwd}/node_modules/.bin/webpack${gruntUtil.commandAddon}`,
+                args: [
+                    '--mode=production',
+                ]
+            });
+
+            done()
+        } catch(e) {
+            done(e)
+        }
+    })
+
+    grunt.registerTask('default', ['clean', 'less', 'copy', 'cory-npm', 'cory-replace', 'build']);
+    grunt.registerTask('default-less', ['clean', 'less', 'copy', 'cory-npm', 'cory-replace']);
 
 };
 

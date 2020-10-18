@@ -22,6 +22,19 @@ let devtool;
 
 const plugins = [
 
+    /*
+    not needed, as require or import will import, but it is to stop automatically all, we rather employ the import instead of webpack
+    new webpack.ContextReplacementPlugin(
+        /moment[/\\]locale$/,
+//        /de|fr|hu/
+        /hu/
+    ),
+     */
+    new webpack.IgnorePlugin({
+        resourceRegExp: /^\.\/locale$/,
+        contextRegExp: /moment$/
+    }),
+
     new HtmlWebpackPlugin({
         template: `${__dirname}/src/browser/layout.tpl.twig`,
         inject: 'body',
