@@ -151,7 +151,8 @@ $(function () {
         inputClear.on('click', () => {
             Cookies.remove(cookieName);
             input.val('');
-            list.search('')
+            list.search()
+            $('.p3x-gitlist-index-pagination-container').show()
         })
 
         sort()
