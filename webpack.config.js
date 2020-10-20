@@ -70,7 +70,7 @@ plugins.push(
         }
     }),
 )
-*/
+ */
 
 if (minimize) {
 

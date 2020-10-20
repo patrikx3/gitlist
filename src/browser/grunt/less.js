@@ -116,8 +116,10 @@ module.exports = themes;
 //    grunt.log.writeln(JSON.stringify(filesLess, null, 4))
             }
 
-
             lessFiles = generateLessFiles();
+
+
+
             return lessFiles;
         }
     };

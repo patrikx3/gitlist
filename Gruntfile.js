@@ -1,3 +1,6 @@
+const fsExtra = require('fs-extra');
+const path = require('path');
+
 const prodDir = require('./package').corifeus["prod-dir"]
 module.exports = function (grunt) {
 
@@ -6,6 +9,9 @@ module.exports = function (grunt) {
     const builder = require(`corifeus-builder`);
     const gruntUtil = builder.utils;
     const loader = new builder.loader(grunt);
+
+    const lessConfig =  require('./src/browser/grunt/less').lessSettings(grunt)
+
     loader.js({
         replacer: {
             type: 'p3x',
@@ -49,7 +55,7 @@ module.exports = function (grunt) {
 
                 },
                 less: {
-                    development: require('./src/browser/grunt/less').lessSettings(grunt),
+                    development: lessConfig,
                 },
                 watch: {
                     less: {
@@ -65,6 +71,15 @@ module.exports = function (grunt) {
             }
     });
 
+    grunt.registerTask('wait-empty', async function() {
+        const done = this.async()
+        setTimeout(() => {
+            const deleteMe = path.resolve(`${process.cwd()}/public/prod/webpack`)
+            console.log(deleteMe)
+            fsExtra.emptyDirSync(deleteMe)
+            done()
+        }, 5000)
+    })
     grunt.registerTask('build', async function() {
         const done = this.async()
         const cwd = process.cwd()
@@ -88,8 +103,9 @@ module.exports = function (grunt) {
         }
     })
 
-    grunt.registerTask('default', ['clean', 'less', 'copy', 'cory-npm', 'cory-replace', 'build']);
-    grunt.registerTask('default-less', ['clean', 'less', 'copy', 'cory-npm', 'cory-replace']);
+//    grunt.registerTask('default', ['clean', 'less', 'copy', 'cory-npm', 'cory-replace', 'build']);
+    grunt.registerTask('default', ['cory-npm', 'cory-replace', 'wait-empty', 'clean', 'less', 'copy', 'build']);
+    grunt.registerTask('default-less', [ 'cory-npm', 'clean', 'less', 'copy','cory-replace']);
 
 };
 
