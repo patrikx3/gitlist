@@ -152,7 +152,9 @@ $(function () {
             Cookies.remove(cookieName);
             input.val('');
             list.search()
-            $('.p3x-gitlist-index-pagination-container').show()
+            if (showPaging) {
+                $('.p3x-gitlist-index-pagination-container').show()
+            }
         })
 
         sort()
