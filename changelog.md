@@ -5,6 +5,9 @@
                         
 [//]: #@corifeus-header:end
 
+## v2020.10.136
+* CHORE: List searcher pager elements were hidden after the search clear button click.
+
 ## v2020.10.104
 * CHORE: Upgrade Webpack web worker loader.
 
