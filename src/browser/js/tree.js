@@ -119,9 +119,9 @@ $(() => {
 
     const $messages = $('.p3x-gitlist-tree-table-item-message')
     if ($messages.length > 0) {
-        $messages.each((index, element) => {
+        $messages.each(async(index, element) => {
             // console.log(element.innerHTML)
-            element.innerHTML = window.gitlist.renderMarkdown({
+            element.innerHTML = await window.gitlist.renderMarkdown({
                 markdown: element.innerHTML.trim()
             })
             element.innerHTML = $(element).children().html()

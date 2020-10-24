@@ -1,6 +1,6 @@
-$(() => {
+$(async() => {
 
-    const constructMarkdown = () => {
+    const constructMarkdown = async() => {
         const $commitListTables = $('.p3x-gitlist-commits-list:not(.p3x-gitlist-commits-list-rendered)');
 
         if ($commitListTables.length > 0) {
@@ -14,7 +14,7 @@ $(() => {
                 for (let markedItem of $markedItems) {
                     //console.log(markedItem)
                     const $markedItem = $(markedItem)
-                    const html = window.gitlist.renderMarkdown({
+                    const html = await window.gitlist.renderMarkdown({
                         markdown: $markedItem.html()
                     })
                     //console.log(html)
@@ -24,6 +24,6 @@ $(() => {
         }
     }
 
-    constructMarkdown();
+    await constructMarkdown();
     window.gitlist.constructCommitsListConstructMarkdown = constructMarkdown;
 })

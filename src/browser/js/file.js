@@ -1,4 +1,4 @@
-$(function () {
+$(async function () {
 
     const Cookies = require('js-cookie')
 
@@ -13,6 +13,12 @@ $(function () {
         return;
     }
 
+    await import(
+        /* webpackChunkName: "codemirror" */
+        /* webpackPrefetch: true */
+      '../codemirror'
+    );
+
     const $buttonDelete = $('#p3x-gitlist-file-delete')
     const $buttonDeleteSure = $('#p3x-gitlist-modal-delete-confirm')
     const $formDeleteForm = $('#p3x-gitlist-modal-delete-form')
@@ -26,6 +32,7 @@ $(function () {
         email: $deleteInputEmail,
         comment: $deleteInputComment,
     }
+
 
 
     $buttonDelete.click(() => {

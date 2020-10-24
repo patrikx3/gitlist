@@ -5,7 +5,7 @@ window.gitlist.todo = async () => {
         try {
             const response = await $.ajax('https://raw.githubusercontent.com/patrikx3/gitlist/master/todo.md')
             const $todoModalBody = $('#p3x-gitlist-modal-todo-body')
-            todoHtml = window.gitlist.renderMarkdown({
+            todoHtml = await window.gitlist.renderMarkdown({
                 markdown: response
             })
             $todoModalBody.html(todoHtml);

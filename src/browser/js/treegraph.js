@@ -1,8 +1,8 @@
-$(() => {
+$(async() => {
     const subjects = $('.p3x-gitlist-treegraph-subject')
     if (subjects) {
         for (let subject of subjects) {
-            const html = window.gitlist.renderMarkdown({
+            const html = await window.gitlist.renderMarkdown({
                 markdown: subject.innerHTML
             })
             subject.innerHTML = html

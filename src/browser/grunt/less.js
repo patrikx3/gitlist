@@ -13,7 +13,7 @@ const filesLessCache = `${cwd}/build/less/file-less.json`;
 const lessSettings = (grunt) => {
     return {
         options: {
-            sourceMap: true,
+            sourceMap: false,
             compress: true,
         },
         get files() {

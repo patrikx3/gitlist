@@ -45,7 +45,7 @@ const plugins = [
         // Options similar to the same options in webpackOptions.output
         // both options are optional
         filename: !minimize ? '[name].css' : '[name].[contenthash].css',
-        chunkFilename: !minimize ? '[id].css' : '[id].[contenthash].css',
+        chunkFilename: !minimize ? '[name].css' : '[name].[contenthash].css',
     }),];
 
 /*
@@ -133,12 +133,14 @@ For more information about all licenses, please see ${webpackBanner}
         })
     )
 
+    /*
     plugins.push(
         new webpack.SourceMapDevToolPlugin({
             filename: 'sourcemaps/[file].map',
             append: '\n//# sourceMappingURL=./[url]'
         })
     )
+     */
 
 
 }
@@ -165,7 +167,7 @@ module.exports = {
     output: {
         path: buildDir,
         filename: '[name].[contenthash].js',
-        chunkFilename: '[id].[contenthash].chunk.js',
+        chunkFilename: '[name].[contenthash].js',
 //        publicPath: '{{ app.url_subdir }}/webpack/',
         publicPath: `./${prodDir}/webpack/`,
     },

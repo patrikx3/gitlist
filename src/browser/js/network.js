@@ -351,12 +351,18 @@ function commitDataRetriever(startPage, callback) {
     return that;
 }
 
-window.gitlist.networkRedraw = () => {
+window.gitlist.networkRedraw = async() => {
 
     // initialise network graph only when there is one network graph container on the page
     if ($('div.network-graph').length !== 1) {
         return;
     }
+
+    await import(
+        /* webpackChunkName: "raphael" */
+        /* webpackPrefetch: true */
+        '../raphael'
+        );
 
     // the element into which we will render our graph
     let commitsGraph = $('div.network-graph').first();
