@@ -6,7 +6,7 @@
 [//]: #@corifeus-header:end
 
 ## v2020.10.182
-* BUILD: Splitted vendor modules packages with Webpack using `import` using pre-fetch.  
+* BUILD: Splitted vendor modules packages with Webpack using `import` with pre-fetch.  
 
 ## v2020.10.170
 * BUILD: Kept older versions in the release.
