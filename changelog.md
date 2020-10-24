@@ -5,7 +5,7 @@
                         
 [//]: #@corifeus-header:end
 
-## v2020.10.188
+## v2020.10.187
 * BUGFIX: Fix a layout problem in the log.
 
 ## v2020.10.185
