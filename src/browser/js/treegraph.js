@@ -6,7 +6,6 @@ $(async() => {
                 markdown: subject.innerHTML
             })
             subject.innerHTML = html
-            //   console.log(html)
         }
     }
 })

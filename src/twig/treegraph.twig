@@ -16,19 +16,17 @@
 
     {% endembed %}
 
-
-
-    <div class="network-view">
+    <div style="display:flex; flex-direction: row;">
+        <div id="rel-container">
+            <canvas id="graph-canvas" width="10px">
+                <ul id="graph-raw-list">
+                    {% for item in graphItems %}
+                        <li><span class="node-relation">{{ item.relation }}</span></li>
+                    {% endfor %}
+                </ul>
+            </canvas>
+        </div>
         <div id="git-graph-container">
-            <div id="rel-container">
-                <canvas id="graph-canvas" width="100px">
-                    <ul id="graph-raw-list">
-                        {% for item in graphItems %}
-                            <li><span class="node-relation">{{ item.relation }}</span></li>
-                        {% endfor %}
-                    </ul>
-                </canvas>
-            </div>
             <div id="p3x-gitlist-treegraph-log">
                 <ul id="rev-list">
                     {% for item in graphItems %}
@@ -53,6 +51,7 @@
             <div style="clear:both"><!-- --></div>
         </div>
     </div>
+
 
 
 

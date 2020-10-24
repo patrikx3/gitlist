@@ -1,10 +1,17 @@
-$(() => {
+$(async() => {
 
     const $diffEditors = $('.p3x-gitlist-diff-container');
 
     const $commitMessage = $('#p3x-gitlist-commit-heading');
     //console.log($commitMessage)
     if ($commitMessage.length) {
+
+        await import(
+            /* webpackChunkName: "marked" */
+            /* webpackPrefetch: true */
+            '../marked'
+            )
+
         const html = marked($commitMessage.text().trim(), {
             renderer: window.gitlist.markdownRenderer,
         });

@@ -104,11 +104,11 @@ markdownRenderer.code = (code, language) => {
 
     language = language.toLowerCase()
 
-    if ((hljs.getLanguage(language) === 'undefined' || hljs.getLanguage(language) === undefined) && language !== 'text') {
+    if ((hljs.getLanguage(language) === 'undefined' || hljs.getLanguage(language) === undefined) && language !== 'text' && language !== 'txt') {
         console.error(`Please add highlight.js as a language (could be a marked error as well, sometimes it thinks a language): ${language}
 We are not loading everything, since it is about 500kb`)
     }
-    language = language === 'text' || language === undefined ? 'html' : language;
+    language = language === 'text' || language === 'txt' || language === undefined ? 'html' : language;
     const validLang = !!(language && hljs.getLanguage(language));
     const highlighted = validLang ? hljs.highlight(language, code).value : code;
     return `<pre><code class="hljs ${language}">${highlighted}</code></pre>`;
