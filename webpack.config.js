@@ -167,7 +167,7 @@ module.exports = {
     output: {
         path: buildDir,
         filename: '[name].[contenthash].js',
-        chunkFilename: '[name].[contenthash].js',
+       // chunkFilename: '[name].[contenthash].js',
 //        publicPath: '{{ app.url_subdir }}/webpack/',
         publicPath: `./${prodDir}/webpack/`,
     },

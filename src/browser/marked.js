@@ -5,6 +5,7 @@ global.twemoji.base = `${prodDir}/twemoji/`;
 global.htmlEncode = require('js-htmlencode')
 const hljs = require('highlight.js/lib/core');
 
+hljs.registerLanguage('conf', require('highlight.js/lib/languages/nginx.js'));
 hljs.registerLanguage('xml', require('highlight.js/lib/languages/xml.js'));
 hljs.registerLanguage('css', require('highlight.js/lib/languages/css.js'));
 hljs.registerLanguage('cmake', require('highlight.js/lib/languages/cmake.js'));
