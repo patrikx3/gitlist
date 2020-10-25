@@ -5,7 +5,7 @@
                         
 [//]: #@corifeus-header:end
 
-## v2020.10.187
+## v2020.10.189
 * FEATURE: Add NGINX config to `highlight.js`.
 
 ## v2020.10.187
