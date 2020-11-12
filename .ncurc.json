@@ -1,0 +1,7 @@
+{
+    "reject": [
+        "jquery",
+        "bootswatch",
+        "bootstrap"
+    ]
+}

@@ -1,10 +1,14 @@
-$(function () {
-
-    const List = require('list.js')
+$(async function () {
 
     const id = 'p3x-gitlist-index'
 
     if ($(`#${id}`).length) {
+
+        const { default: List} = await import (
+            /* webpackChunkName: "list" */
+            /* webpackPrefetch: true */
+            '../list'
+            )
 
         let paging = parseInt(window.gitlist.repoPaging)
 

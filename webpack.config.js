@@ -1,3 +1,4 @@
+const config = require('corifeus-builder/src/utils/config').config
 const fs = require('fs').promises
 const path = require('path');
 const webpack = require('webpack');
@@ -6,7 +7,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin')
-const WebpackOnBuildPlugin = require('on-build-webpack');
 
 const fileAsset = `[name].[contenthash].[ext]`;
 const minimize = process.argv.includes('--mode=production');
@@ -19,6 +19,76 @@ const prodDir = require('./package').corifeus["prod-dir"];
 const buildDir = __dirname + `/public/${prodDir}/webpack`;
 
 let devtool;
+
+
+const fileLoader = [
+    {
+        loader: 'file-loader',
+        options: {
+            name: fileAsset,
+            outputPath: 'assets',
+            context: 'assets',
+            publicPath: '/prod/webpack/assets',
+            useRelativePath: false,
+        }
+    }
+]
+
+
+const rules = [
+    {
+        test: /\.js$/,
+        enforce: 'pre',
+        use: ['source-map-loader'],
+    },
+    {
+        test: /\.worker\.js$/,
+        use: { loader: 'worker-loader' }
+    },
+    {
+        test: /\.(css|less)$/,
+        use: [
+            {
+                loader: MiniCssExtractPlugin.loader,
+                options: {
+                },
+            },
+            'css-loader',
+            {
+                loader: 'less-loader',
+            }],
+    },
+    {
+        test: /\.html$/,
+        use: [{
+            loader: 'html-loader',
+            options: {
+                minimize: minimize,
+                //caseSensitive: true
+            }
+        }]
+    },
+    {
+        test: /\.(png|jpe?g|gif|ico)$/,
+        use: fileLoader
+    },
+    {
+        test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
+        use: fileLoader
+    }, {
+        test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,
+        use: fileLoader
+    }, {
+        test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+        use: fileLoader
+    }, {
+        test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+        use: fileLoader
+    }, {
+        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+        use: fileLoader
+    },
+]
 
 const plugins = [
 
@@ -110,14 +180,11 @@ For more information about all licenses, please see ${webpackBanner}
                 compress: {
                     warnings: false
                 },
-                ecma: 2018,
+                ecma: config.ecma,
                 // todo found out if mangle use or not
                 // mangle: false === keep function names
                 // mangle: true === drop function names
                 mangle: true,
-
-                comments: false,
-                beautify: false
             },
         }),
     ]
@@ -142,21 +209,13 @@ For more information about all licenses, please see ${webpackBanner}
     )
      */
 
-
+    rules.unshift({
+        test: /\.js$/,
+        loader: 'webpack-remove-debug'
+    })
 }
 
-const fileLoader = [
-    {
-        loader: 'file-loader',
-        options: {
-            name: fileAsset,
-            outputPath: 'assets',
-            context: 'assets',
-            publicPath: '/prod/webpack/assets',
-            useRelativePath: false,
-        }
-    }
-]
+
 module.exports = {
 //    watch: true,
     devtool: devtool,
@@ -172,61 +231,7 @@ module.exports = {
         publicPath: `./${prodDir}/webpack/`,
     },
     module: {
-        rules: [
-            {
-                test: /\.js$/,
-                enforce: 'pre',
-                use: ['source-map-loader'],
-            },
-            {
-                test: /\.worker\.js$/,
-                use: { loader: 'worker-loader' }
-            },
-            {
-                test: /\.(css|less)$/,
-                use: [
-                {
-                    loader: MiniCssExtractPlugin.loader,
-                    options: {
-                        hmr: !minimize,
-                    },
-                },
-                    'css-loader',
-                {
-                    loader: 'less-loader',
-                }],
-            },
-            {
-                test: /\.html$/,
-                use: [{
-                    loader: 'html-loader',
-                    options: {
-                        minimize: minimize,
-                        //caseSensitive: true
-                    }
-                }]
-            },
-            {
-                test: /\.(png|jpe?g|gif|ico)$/,
-                use: fileLoader
-            },
-            {
-                test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
-                use: fileLoader
-            }, {
-                test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,
-                use: fileLoader
-            }, {
-                test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-                use: fileLoader
-            }, {
-                test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-                use: fileLoader
-            }, {
-                test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-                use: fileLoader
-            },
-        ]
+        rules: rules
     },
     optimization: {
         minimize: minimize,

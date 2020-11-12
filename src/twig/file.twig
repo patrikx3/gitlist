@@ -44,12 +44,12 @@
                         </button>
                     {% endif %}
 
-                    <button id="p3x-gitlist-file-button-edit-save" class="btn btn-sm btn-info" style="display: none;">
-                        <span class="fa fa-save"></span> Save
-                    </button>
                     <button id="p3x-gitlist-file-button-edit-cancel" class="btn btn-sm btn-warning"
                             style="display: none;">
                         <i class="fas fa-eraser"></i> Cancel
+                    </button>
+                    <button id="p3x-gitlist-file-button-edit-save" class="btn btn-sm btn-info" style="display: none;">
+                        <span class="fa fa-save"></span> Save
                     </button>
 
                     {% embed 'modal/modal-commit.twig' with { type: 'commit', title: 'Commit', bodyTitle: 'Are you sure to commit this change?', wrapForm: true } %}

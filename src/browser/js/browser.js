@@ -1,4 +1,4 @@
-$(function () {
+$(async function () {
 
     const menu = $('#p3x-gitlist-branch-list-container');
     if (menu.length > 0) {
@@ -10,7 +10,12 @@ $(function () {
             alwaysCalculate: true,
         })
 
-        const List = require('list.js')
+        const { default: List} = await import (
+            /* webpackChunkName: "list" */
+            /* webpackPrefetch: true */
+            '../list'
+            )
+
 
         const mainId = 'p3x-gitlist-branch-list'
         const branchListId = 'p3x-gitlist-list-branch'
