@@ -28,3 +28,16 @@ jobs:
             - run: npm i -g grunt-cli
             - run: npm install
             - run: grunt
+
+            - uses: shivammathur/setup-php@v2
+                  with:
+                      php-version: '7.4'
+                      coverage: xdebug
+
+                  - name: tests
+                    run: |
+                        composer install --no-progress
+                        XDEBUG_MODE=coverage ./deployment/vendor/bin/phpunit --coverage-text
+                        cd ./deployment/composer-custom/resume-php-common
+                        composer install --no-progress
+                        XDEBUG_MODE=coverage ./vendor/bin/phpunit --coverage-text
