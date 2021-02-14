@@ -1,5 +1,10 @@
 {
     "name": "patrikx3/gitlist",
+    "config": {
+        "platform": {
+            "php": "7.2"
+        }
+    },
     "description": "An elegant git repository viewer",
     "minimum-stability": "stable",
     "autoload": {
