@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit colors="true" bootstrap="vendor/autoload.php">
-    <php>
-        <ini name="error_reporting" value="-1" />
-        <ini name="xdebug.mode" value="coverage" />
-        <env name="XDEBUG_MODE" value="coverage" />
-    </php>
-
     <filter>
         <whitelist>
             <directory suffix=".php">./src/</directory>
         </whitelist>
     </filter>
     <logging>
-        <log type="coverage-html" target="build/phpunit"  />
+        <log type="coverage-html" target="build/phpunit" title="patrikx3/gitlist"  />
         <log type="coverage-text" target="php://stdout" />
         <log type="coverage-clover" target="build/coverage.xml" />
     </logging>
