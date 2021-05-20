@@ -144,23 +144,13 @@ plugins.push(
 
 if (minimize) {
 
-    const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-
-    plugins.push(
-        new OptimizeCssAssetsPlugin({
-            assetNameRegExp: /\.css$/g,
-//            cssProcessor: require('cssnano'),
-//            cssProcessorOptions: { safe: true, discardComments: { removeAll: true } },
-            canPrint: true
-        })
-
-    )
-
+    const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
     devtool = false;
     const bannerText = require('corifeus-builder').utils.license();
 
     minimizer = [
+        new CssMinimizerPlugin(),
         new TerserPlugin({
             parallel: true,
             extractComments: {
