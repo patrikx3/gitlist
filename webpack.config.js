@@ -20,19 +20,7 @@ const buildDir = __dirname + `/public/${prodDir}/webpack`;
 
 let devtool;
 
-
-const fileLoader = [
-    {
-        loader: 'file-loader',
-        options: {
-            name: fileAsset,
-            outputPath: 'assets',
-            context: 'assets',
-            publicPath: '/prod/webpack/assets',
-            useRelativePath: false,
-        }
-    }
-]
+const publicPath = 'prod/webpack/'
 
 
 const rules = [
@@ -70,23 +58,23 @@ const rules = [
     },
     {
         test: /\.(png|jpe?g|gif|ico)$/,
-        use: fileLoader
+        type: 'asset/resource',
     },
     {
         test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
-        use: fileLoader
+        type: 'asset/resource',
     }, {
         test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,
-        use: fileLoader
+        type: 'asset/resource',
     }, {
         test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-        use: fileLoader
+        type: 'asset/resource',
     }, {
         test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-        use: fileLoader
+        type: 'asset/resource',
     }, {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-        use: fileLoader
+        type: 'asset/resource',
     },
 ]
 
@@ -109,6 +97,7 @@ const plugins = [
         template: `${__dirname}/src/browser/layout.tpl.twig`,
         inject: 'body',
         chunks: ['bundle'],
+        publicPath: publicPath,
         filename: `${__dirname}/src/twig/layout.twig`,
     }),
     new MiniCssExtractPlugin({
@@ -219,7 +208,8 @@ module.exports = {
         filename: '[name].[contenthash].js',
        // chunkFilename: '[name].[contenthash].js',
 //        publicPath: '{{ app.url_subdir }}/webpack/',
-        publicPath: `./${prodDir}/webpack/`,
+        publicPath: `auto`,
+        assetModuleFilename: `assets/[hash][ext]`,
     },
     module: {
         rules: rules

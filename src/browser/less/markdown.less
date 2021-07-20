@@ -1,11 +1,23 @@
+
+pre > code {
+    display: block;
+    padding: 8px;
+}
+
 .p3x-gitlist-light {
+
+    pre > code {
+        background-color: rgba(0, 0, 0, 0.01) !important;
+    }
+
     @import (less) '../../../node_modules/highlight.js/styles/github.css';
 
 
 }
 
 .p3x-gitlist-dark {
-    @import (less) '../../../node_modules/highlight.js/styles/base16/dracula.css';
+
+    @import (less) '../../../node_modules/highlight.js/styles/github-dark.css';
 
 }
 
