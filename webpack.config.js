@@ -1,14 +1,10 @@
 const config = require('corifeus-builder/src/utils/config').config
-const fs = require('fs').promises
-const path = require('path');
 const webpack = require('webpack');
-const utils = require('corifeus-utils')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin')
 
-const fileAsset = `[name].[contenthash].[ext]`;
 const minimize = process.argv.includes('--mode=production');
 const mode = minimize ? 'production' : 'development';
 
@@ -103,8 +99,8 @@ const plugins = [
     new MiniCssExtractPlugin({
         // Options similar to the same options in webpackOptions.output
         // both options are optional
-        filename: !minimize ? '[name].css' : '[name].[contenthash].css',
-        chunkFilename: !minimize ? '[name].css' : '[name].[contenthash].css',
+        filename: !minimize ? '[name].css' : '[id].[contenthash].css',
+        chunkFilename: !minimize ? '[name].css' : '[id].[contenthash].css',
     }),];
 
 /*
@@ -205,7 +201,7 @@ module.exports = {
     },
     output: {
         path: buildDir,
-        filename: '[name].[contenthash].js',
+        filename: '[id].[contenthash].js',
        // chunkFilename: '[name].[contenthash].js',
 //        publicPath: '{{ app.url_subdir }}/webpack/',
         publicPath: `auto`,
