@@ -134,11 +134,6 @@ Sept 7, 2021
 https://github.com/klaussilveira/gitter/commits/master  
 Sept 7, 2021
 
-## PHP 8 info
-See in `public/index.php` info.  
-https://github.com/icecave/isolator/issues/20  
-https://github.com/mschop/pathogen/issues/17  
-
 # URL links
 
 [P3X Gitlist playground](https://www.patrikx3.com/en/front/playground/17/p3x-gitlist#PG17)  

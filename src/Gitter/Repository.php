@@ -20,7 +20,6 @@ use Gitter\Statistics\StatisticsInterface;
 
 //use Gitter\PrettyFormat;
 use Symfony\Component\Filesystem\Filesystem;
-use Eloquent\Pathogen\FileSystem\FileSystemPath;
 
 use Spatie\TemporaryDirectory\TemporaryDirectory;
 
@@ -1217,6 +1216,45 @@ class Repository
 
     protected function isValidPath($tempRepo, $repoFilename, &$outputs)
     {
+        function resolvePath($path) {
+            if(DIRECTORY_SEPARATOR !== '/') {
+                $path = str_replace(DIRECTORY_SEPARATOR, '/', $path);
+            }
+            $search = explode('/', $path);
+            $search = array_filter($search, function($part) {
+                return $part !== '.';
+            });
+            $append = array();
+            $match = false;
+            while(count($search) > 0) {
+                $match = realpath(implode('/', $search));
+                if($match !== false) {
+                    break;
+                }
+                array_unshift($append, array_pop($search));
+            };
+            if($match === false) {
+                $match = getcwd();
+            }
+            if(count($append) > 0) {
+                $match .= DIRECTORY_SEPARATOR . implode(DIRECTORY_SEPARATOR, $append);
+            }
+            return $match;
+        }
+
+//        echo 'tempRepo: '. $tempRepo . '<br/>';
+//        echo 'repoFilename: '. $repoFilename . '<br/>';
+        $basePath = $tempRepo;
+        $repoFilenameItem = $repoFilename;
+        $normalizing = $basePath . DIRECTORY_SEPARATOR . $repoFilenameItem;
+//        echo 'normalizing: ' . $normalizing. '<br/>';
+        $normalized = resolvePath($normalizing);
+
+//        echo 'normalized: ' . $normalized ? 'true' : 'false'. '<br/>';
+
+        $normalizedRepoFilePath = $normalized;
+        $validPath = strpos($normalizing, $normalizedRepoFilePath) !== false;
+        /*
         $basePath = FileSystemPath::fromString($tempRepo);
         //array_push($outputs, "$basePath {$basePath}");
         $repoFilenameItem = FileSystemPath::fromString($repoFilename);
@@ -1235,11 +1273,13 @@ class Repository
 
         $normalizedRepoFilePath = $normalized->__toString();
         $validPath = strpos($normalizing->__toString(), $normalizedRepoFilePath) !== false;
+        */
+
         //array_push($outputs, "$normalizing {$normalizing->__toString()}");
         //array_push($outputs, "$normalizedRepoFilePath {$normalizedRepoFilePath}");
         //array_push($outputs, (substr($normalizedRepoFilePath, 0, strlen($basePath)) . " $basePath"));
         if ($validPath === false || substr($normalizedRepoFilePath, 0, strlen($basePath)) != $basePath) {
-            throw new \Exception("This '{$repoFilename}' path is invalid.");
+            throw new \Exception("This '{$repoFilename}' path is invalid." );
         }
         return $normalizedRepoFilePath;
     }

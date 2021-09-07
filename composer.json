@@ -21,8 +21,7 @@
         "silex/silex": ">=2",
         "symfony/process": ">=4",
         "danielstjules/stringy": ">=3",
-        "spatie/temporary-directory": "^1.1",
-        "mschop/pathogen": "^0.6.1"
+        "spatie/temporary-directory": "^1.1"
     },
     "require-dev": {
         "symfony/filesystem": ">=4",
