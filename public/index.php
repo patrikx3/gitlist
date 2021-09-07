@@ -1,5 +1,8 @@
 <?php
-error_reporting(E_ALL);
+//TODO fix mschop/pathogen -> icecave/isolator -> vendor/icecave/isolator/src/Generator.php -> $reflector->isDisabled()
+// PHP 8 ->  /usr/local/bin/compose
+//error_reporting(E_ALL);
+error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
 ini_set('display_errors', 1);
 
 /**

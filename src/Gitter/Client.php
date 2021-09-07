@@ -180,7 +180,7 @@ class Client
 
         $allRepositories = array_unique($allRepositories, SORT_REGULAR);
         uksort($allRepositories, function ($k1, $k2) {
-            return strtolower($k2) < strtolower($k1);
+            return strcasecmp(strtolower($k2), strtolower($k1));
         });
 
         return $allRepositories;

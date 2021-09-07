@@ -9,7 +9,7 @@
 
 
 
-# 🤖 P3X Gitlist - A decorated enhanced elegant, feature rich and modern private git ui repository viewer  v2021.10.143
+# 🤖 P3X Gitlist - A decorated enhanced elegant, feature rich and modern private git ui repository viewer  v2021.10.144
 
 
 
@@ -134,6 +134,11 @@ Sept 7, 2021
 https://github.com/klaussilveira/gitter/commits/master  
 Sept 7, 2021
 
+## PHP 8 info
+See in `public/index.php` info.  
+https://github.com/icecave/isolator/issues/20  
+https://github.com/mschop/pathogen/issues/17  
+
 # URL links
 
 [P3X Gitlist playground](https://www.patrikx3.com/en/front/playground/17/p3x-gitlist#PG17)  
@@ -167,7 +172,7 @@ All my domains ([patrikx3.com](https://patrikx3.com) and [corifeus.com](https://
 
 ---
 
-[**P3X-GITLIST**](https://corifeus.com/gitlist) Build v2021.10.143
+[**P3X-GITLIST**](https://corifeus.com/gitlist) Build v2021.10.144
 
 [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software)
 
