@@ -11,8 +11,8 @@ repo=$TOP/build/$name
 
 pushd $TOP
 npm install
-composer install --no-dev
-composer dump-autoload --optimize
+/usr/local/bin/composer install --no-dev
+/usr/local/bin/composer dump-autoload --optimize
 mkdir -p $TOP/cache
 #npm install
 npm run build
