@@ -45,7 +45,8 @@ So, this is only for testing. You should limit for some max size, that you want 
 ## The last version with Babel
 https://github.com/patrikx3/gitlist/releases/tag/2.0.4-579
 
-The following versions are not using `Babel`!!!! Yikes!
+The following versions are not using `Babel`!!!! Yikes!  
+  
 [//]: #@corifeus-footer
 
 ---
