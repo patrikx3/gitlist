@@ -41,8 +41,6 @@ If you use other, than UTF-8 encoded files, you could get incorrect results, as 
   
 [https://github.com/patrikx3/gitlist/releases](https://github.com/patrikx3/gitlist/releases)  
 
-[Ubuntu prior Bionic PHP 7 version installation](artifacts/php-7.2-ubuntu.md)
-
 
 ### NGINX gitlist.patrikx3.com configs 
 
