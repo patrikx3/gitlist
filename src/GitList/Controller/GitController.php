@@ -23,7 +23,7 @@ class GitController implements ControllerProviderInterface
     {
         $route = $app['controllers_factory'];
 
-        $route->post('{repo}/git-helper/{branch}/{action}', function (Request $request, $repo, $branch = '', $action) use ($app) {
+        $route->post('{repo}/git-helper/{branch}/{action}', function (Request $request, $repo, $branch = '', $action = '') use ($app) {
             $repository = ($app['git']->getRepositoryFromName($app['git.repos'], $repo));
 
 
