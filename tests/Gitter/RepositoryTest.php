@@ -31,7 +31,7 @@ class RepositoryTest extends TestCase
         $fs->mkdir(self::$tmpdir);
 
         if (!is_writable(self::$tmpdir)) {
-            $this->markTestSkipped('There are no write permissions in order to create test repositories.');
+            self::markTestSkipped('There are no write permissions in order to create test repositories.');
         }
     }
 
@@ -55,9 +55,9 @@ class RepositoryTest extends TestCase
         $a = $this->client->createRepository(self::$tmpdir . '/testrepo');
         $b = $this->client->createRepository(self::$tmpdir . '/anothertestrepo');
         $c = $this->client->createRepository(self::$tmpdir . '/bigbadrepo');
-        $this->assertRegExp("/nothing to commit/", $a->getClient()->run($a, 'status'));
-        $this->assertRegExp("/nothing to commit/", $b->getClient()->run($b, 'status'));
-        $this->assertRegExp("/nothing to commit/", $c->getClient()->run($c, 'status'));
+        $this->assertMatchesRegularExpression("/nothing to commit/", $a->getClient()->run($a, 'status'));
+        $this->assertMatchesRegularExpression("/nothing to commit/", $b->getClient()->run($b, 'status'));
+        $this->assertMatchesRegularExpression("/nothing to commit/", $c->getClient()->run($c, 'status'));
     }
 
     public function testIsConfiguratingRepository()
@@ -84,7 +84,7 @@ class RepositoryTest extends TestCase
         $repository = $this->client->getRepository(self::$tmpdir . '/testrepo');
         file_put_contents(self::$tmpdir . '/testrepo/test_file.txt', 'Your mother is so ugly, glCullFace always returns TRUE.');
         $repository->add('test_file.txt');
-        $this->assertRegExp("/new file:   test_file.txt/", $repository->getClient()->run($repository, 'status'));
+        $this->assertMatchesRegularExpression("/new file:   test_file.txt/", $repository->getClient()->run($repository, 'status'));
     }
 
     /**
@@ -100,9 +100,9 @@ class RepositoryTest extends TestCase
 
         $repository->add();
 
-        $this->assertRegExp("/new file:   test_file1.txt/", $repository->getClient()->run($repository, 'status'));
-        $this->assertRegExp("/new file:   test_file2.txt/", $repository->getClient()->run($repository, 'status'));
-        $this->assertRegExp("/new file:   test_file3.txt/", $repository->getClient()->run($repository, 'status'));
+        $this->assertMatchesRegularExpression("/new file:   test_file1.txt/", $repository->getClient()->run($repository, 'status'));
+        $this->assertMatchesRegularExpression("/new file:   test_file2.txt/", $repository->getClient()->run($repository, 'status'));
+        $this->assertMatchesRegularExpression("/new file:   test_file3.txt/", $repository->getClient()->run($repository, 'status'));
     }
 
     /**
@@ -118,9 +118,9 @@ class RepositoryTest extends TestCase
 
         $repository->addAll();
 
-        $this->assertRegExp("/new file:   test_file4.txt/", $repository->getClient()->run($repository, 'status'));
-        $this->assertRegExp("/new file:   test_file5.txt/", $repository->getClient()->run($repository, 'status'));
-        $this->assertRegExp("/new file:   test_file6.txt/", $repository->getClient()->run($repository, 'status'));
+        $this->assertMatchesRegularExpression("/new file:   test_file4.txt/", $repository->getClient()->run($repository, 'status'));
+        $this->assertMatchesRegularExpression("/new file:   test_file5.txt/", $repository->getClient()->run($repository, 'status'));
+        $this->assertMatchesRegularExpression("/new file:   test_file6.txt/", $repository->getClient()->run($repository, 'status'));
     }
 
     /**
@@ -136,9 +136,9 @@ class RepositoryTest extends TestCase
 
         $repository->add(array('test_file7.txt', 'test_file8.txt', 'test_file9.txt'));
 
-        $this->assertRegExp("/new file:   test_file7.txt/", $repository->getClient()->run($repository, 'status'));
-        $this->assertRegExp("/new file:   test_file8.txt/", $repository->getClient()->run($repository, 'status'));
-        $this->assertRegExp("/new file:   test_file9.txt/", $repository->getClient()->run($repository, 'status'));
+        $this->assertMatchesRegularExpression("/new file:   test_file7.txt/", $repository->getClient()->run($repository, 'status'));
+        $this->assertMatchesRegularExpression("/new file:   test_file8.txt/", $repository->getClient()->run($repository, 'status'));
+        $this->assertMatchesRegularExpression("/new file:   test_file9.txt/", $repository->getClient()->run($repository, 'status'));
     }
 
     /**
@@ -148,8 +148,8 @@ class RepositoryTest extends TestCase
     {
         $repository = $this->client->getRepository(self::$tmpdir . '/testrepo');
         $repository->commit("The truth unveiled\n\nThis is a proper commit body");
-        $this->assertRegExp("/The truth unveiled/", $repository->getClient()->run($repository, 'log'));
-        $this->assertRegExp("/This is a proper commit body/", $repository->getClient()->run($repository, 'log'));
+        $this->assertMatchesRegularExpression("/The truth unveiled/", $repository->getClient()->run($repository, 'log'));
+        $this->assertMatchesRegularExpression("/This is a proper commit body/", $repository->getClient()->run($repository, 'log'));
     }
 
     public function testIsCreatingBranches()
@@ -240,9 +240,9 @@ class RepositoryTest extends TestCase
             $this->assertEquals($commit->getParentsHash(), array());
             $this->assertInstanceOf('DateTime', $commit->getDate());
             $this->assertInstanceOf('DateTime', $commit->getCommiterDate());
-            $this->assertRegExp('/[a-f0-9]+/', $commit->getHash());
-            $this->assertRegExp('/[a-f0-9]+/', $commit->getShortHash());
-            $this->assertRegExp('/[a-f0-9]+/', $commit->getTreeHash());
+            $this->assertMatchesRegularExpression('/[a-f0-9]+/', $commit->getHash());
+            $this->assertMatchesRegularExpression('/[a-f0-9]+/', $commit->getShortHash());
+            $this->assertMatchesRegularExpression('/[a-f0-9]+/', $commit->getTreeHash());
         }
     }
 
@@ -272,10 +272,10 @@ class RepositoryTest extends TestCase
         foreach ($files as $file) {
             $this->assertTrue($file->isBlob());
             $this->assertInstanceOf('Gitter\Model\Blob', $file);
-            $this->assertRegExp('/test_file[0-9]*.txt/', $file->getName());
+            $this->assertMatchesRegularExpression('/test_file[0-9]*.txt/', $file->getName());
             $this->assertEquals($file->getSize(), '55');
             $this->assertEquals($file->getMode(), '100644');
-            $this->assertRegExp('/[a-f0-9]+/', $file->getHash());
+            $this->assertMatchesRegularExpression('/[a-f0-9]+/', $file->getHash());
         }
     }
 
@@ -286,10 +286,10 @@ class RepositoryTest extends TestCase
 
         foreach ($files as $file) {
             $this->assertEquals('blob', $file['type']);
-            $this->assertRegExp('/test_file[0-9]*.txt/', $file['name']);
+            $this->assertMatchesRegularExpression('/test_file[0-9]*.txt/', $file['name']);
             $this->assertEquals($file['size'], '55');
             $this->assertEquals($file['mode'], '100644');
-            $this->assertRegExp('/[a-f0-9]+/', $file['hash']);
+            $this->assertMatchesRegularExpression('/[a-f0-9]+/', $file['hash']);
         }
     }
 
@@ -363,10 +363,10 @@ class RepositoryTest extends TestCase
     {
         $repository = $this->client->getRepository(self::$tmpdir . '/testrepo');
         $blob = $repository->getBlob('master:MyFolder/crazy.php')->output();
-        $this->assertEquals('Lorem ipsum dolor sit amet', $blob);
+        $this->assertEquals("Lorem ipsum dolor sit amet", $blob);
 
         $blob = $repository->getBlob('master:test_file4.txt')->output();
-        $this->assertEquals('Your mother is so ugly, glCullFace always returns TRUE.', $blob);
+        $this->assertEquals("Your mother is so ugly, glCullFace always returns TRUE.", $blob);
     }
 
     public function testIsGettingSymlinksWithinTrees()
@@ -443,9 +443,9 @@ class RepositoryTest extends TestCase
             $this->assertEquals($singleCommit->getCommiter()->getEmail(), 'luke@rebel.org');
             $this->assertInstanceOf('DateTime', $singleCommit->getDate());
             $this->assertInstanceOf('DateTime', $singleCommit->getCommiterDate());
-            $this->assertRegExp('/[a-f0-9]+/', $singleCommit->getHash());
-            $this->assertRegExp('/[a-f0-9]+/', $singleCommit->getShortHash());
-            $this->assertRegExp('/[a-f0-9]+/', $singleCommit->getTreeHash());
+            $this->assertMatchesRegularExpression('/[a-f0-9]+/', $singleCommit->getHash());
+            $this->assertMatchesRegularExpression('/[a-f0-9]+/', $singleCommit->getShortHash());
+            $this->assertMatchesRegularExpression('/[a-f0-9]+/', $singleCommit->getTreeHash());
 
             if ($singleCommit->getMessage() == 'The truth unveiled') {
                 $this->assertEquals($singleCommit->getBody(), 'This is a proper commit body');
@@ -462,7 +462,7 @@ class RepositoryTest extends TestCase
     public function testIsGettingBranchTree()
     {
         $repository = $this->client->getRepository(self::$tmpdir . '/testrepo');
-        $this->assertRegExp('/[a-f0-9]+/', $repository->getBranchTree('issue12'));
+        $this->assertMatchesRegularExpression('/[a-f0-9]+/', $repository->getBranchTree('issue12'));
     }
 
     public function testIsGettingBlame()
@@ -479,7 +479,7 @@ class RepositoryTest extends TestCase
         file_put_contents(self::$tmpdir . '/testrepo/test file10.txt', 'Your mother is so ugly, glCullFace always returns TRUE.');
         $repository->add('test file10.txt');
 
-        $this->assertRegExp("/new file:   test file10.txt/", $repository->getClient()->run($repository, 'status'));
+        $this->assertMatchesRegularExpression("/new file:   test file10.txt/", $repository->getClient()->run($repository, 'status'));
     }
 
     public function testCommitWithFileNameWithSpace()

@@ -31,7 +31,7 @@ class MainController implements ControllerProviderInterface
                 $command = 'log --graph --date-order --all -C -M -n 1 --date=rfc ' .
                     '--pretty=format:"B[%D] C[%H] D[%ad] A[%an] E[%ae] H[%h] S[%s]"';
                 $rawRows = $repository->getClient()->run($repository, $command);
-                $rawRows = explode("\n", $rawRows);
+                $rawRows = explode(PHP_EOL, $rawRows);
 
                 foreach ($rawRows as $row) {
                     if (preg_match("/^(.+?)(\s(B\[(.*?)\])? C\[(.+?)\] D\[(.+?)\] A\[(.+?)\] E\[(.+?)\] H\[(.+?)\] S\[(.+?)\])?$/", $row, $output)) {

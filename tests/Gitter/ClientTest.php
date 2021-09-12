@@ -7,6 +7,7 @@ use PHPUnit\Framework\TestCase;
 use Gitter\Client;
 use Gitter\Repository;
 use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Process\ExecutableFinder;
 
 class ClientTest extends TestCase
 {
@@ -29,7 +30,7 @@ class ClientTest extends TestCase
         $fs->mkdir(self::$tmpdir);
 
         if (!is_writable(self::$tmpdir)) {
-            $this->markTestSkipped('There are no write permissions in order to create test repositories.');
+            self::markTestSkipped('There are no write permissions in order to create test repositories.');
         }
     }
 
@@ -64,7 +65,7 @@ class ClientTest extends TestCase
         $repository = $this->client->createRepository(self::$tmpdir . '/testrepo');
         $fs = new Filesystem();
         $fs->remove(self::$tmpdir . '/testrepo/.git/description');
-        $this->assertRegExp("/nothing to commit/", $repository->getClient()->run($repository, 'status'));
+        $this->assertMatchesRegularExpression("/nothing to commit/", $repository->getClient()->run($repository, 'status'));
     }
 
     public function testIsCreatingBareRepository()

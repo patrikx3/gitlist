@@ -49,6 +49,7 @@ class Tree extends Item implements \RecursiveIterator
             }
             $tabSplit = preg_split("/[\t]+/", $line, 2);
             $file = preg_split("/[\s]+/", $tabSplit[0], 4);
+
             $file[] = $tabSplit[1];
             $files[] = $file;
         }
@@ -155,6 +156,7 @@ class Tree extends Item implements \RecursiveIterator
     {
         $command = 'log -1 --pretty=tformat:"%ar%n%s" ' . explode(':', $this->getHash())[0] . ' -- ' . "\"" . $this->path . $filename . "\"";
         //print_r($command);
+        //echo "\n";
         $fileInfo = explode("\n", $this->getRepository()->getClient()->run($this->getRepository(), $command));
         //echo $filename;
         //echo "\n";

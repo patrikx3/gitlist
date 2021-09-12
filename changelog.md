@@ -5,6 +5,9 @@
                         
 [//]: #@corifeus-header:end
 
+## v2021.10.152
+* FEATURE: Move from Silex's Packagist composer and keep the code in the source as it has been upgraded with latest Symfony packages.
+
 ## v202.10.146
 * FEATURE: Works on PHP 8.
 
@@ -416,7 +419,7 @@ All my domains ([patrikx3.com](https://patrikx3.com) and [corifeus.com](https://
 
 ---
 
-[**P3X-GITLIST**](https://corifeus.com/gitlist) Build v2021.10.150
+[**P3X-GITLIST**](https://corifeus.com/gitlist) Build v2021.10.152
 
 [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software)
 

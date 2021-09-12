@@ -4,9 +4,12 @@ use Gitter\Client;
 use Gitter\Repository;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
+use Prophecy\PhpUnit\ProphecyTrait;
 
 class RepositoryTest extends TestCase
 {
+    use ProphecyTrait;
+
     public function testIsSanitizingSearchWithPager()
     {
         $client = $this->prophesize(Client::class);

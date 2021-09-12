@@ -21,7 +21,7 @@ class TreeGraphController implements ControllerProviderInterface
                 $command = 'log --graph --date-order --all -C -M -n 100 --date=iso ' .
                     '--pretty=format:"B[%d] C[%H] D[%ad] A[%an] E[%ae] H[%h] S[%s]"';
                 $rawRows = $repository->getClient()->run($repository, $command);
-                $rawRows = explode("\n", $rawRows);
+                $rawRows = explode(PHP_EOL, $rawRows);
                 $graphItems = array();
 
                 foreach ($rawRows as $row) {

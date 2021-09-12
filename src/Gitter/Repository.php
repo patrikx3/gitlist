@@ -366,13 +366,12 @@ class Repository
     public function getTags()
     {
         static $cache = array();
-
         if (array_key_exists($this->path, $cache)) {
             return $cache[$this->path];
         }
 
-        $tags = $this->getClient()->run($this, "tag");
-        $tags = explode("\n", $tags);
+        $tags = $this->getClient()->run($this, "tag") . PHP_EOL;
+        $tags = explode(PHP_EOL, $tags);
         array_pop($tags);
 
         if (empty($tags[0])) {
@@ -1055,6 +1054,7 @@ class Repository
                     @unlink($normalizedRepoFilePath);
                 }
                 @mkdir(dirname($normalizedRepoFilePath), 0777, true);
+
                 move_uploaded_file($phpUploadFile['tmp_name'], $normalizedRepoFilePath);
 
                 if ($wasItNonExisting) {
