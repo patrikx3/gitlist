@@ -5,6 +5,7 @@
                         
 [//]: #@corifeus-header:end
 ## TODO
+* Maintain Silex
 * Localization (twig, controller, php, js)
 * Sometimes, I try to upload a file like `grub.png` and it does not work, while I upload a different `.png` and it works, weird
 * make sure new functions work with Windows or disable some features is Windows
@@ -15,7 +16,7 @@
 * Basically, the twig "for" is not cheap => expensive, use AJAX and web worker 
   * search.twig
   * blame.twig
-* Search, at work, "fix" string hs 1221 results, use AJAX and pager
+* Search, at work, "fix" string has 1221 results, use AJAX and pager
 * Blames in gitlist on composer.lock has 994 results, use AJAX and pager
 * In submodules, if the "submodule" and "path" is not the same, it chokes (it should work the submodule name and path are not the same)
   * Works
@@ -25,7 +26,6 @@
     * submodule "name"
     * path path/name 
 * In submodules, the url cannot have slash at the end
-* Convert Silex 2 to Symfony 4 - actually this is stays as Silex, Symfony is overcomplicated for a small web site
 
 
 [//]: #@corifeus-footer
