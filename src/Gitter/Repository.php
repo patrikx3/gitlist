@@ -370,7 +370,7 @@ class Repository
             return $cache[$this->path];
         }
 
-        $tags = $this->getClient()->run($this, "tag") . PHP_EOL;
+        $tags = $this->getClient()->run($this, "tag");
         $tags = explode(PHP_EOL, $tags);
         array_pop($tags);
 

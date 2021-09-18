@@ -12,6 +12,7 @@
 namespace Gitter;
 
 use Symfony\Component\Process\ExecutableFinder;
+use Symfony\Component\Process\Process;
 
 class Client
 {
@@ -72,18 +73,16 @@ class Client
 //        echo "<br/>";
 //        echo "<br/>";
 
-        $output = null;
-        $result_code = null;
-        $execCommand = 'cd ' . $repository->getPath() . ' && '. $command . ' 2>&1';
-        exec($execCommand, $output, $result_code );
+        $process = Process::fromShellCommandline($command, $repository->getPath());
+        $process->setTimeout(180);
+        $process->enableOutput();
+        $process->run();
 
-        $output = join(PHP_EOL, $output);
-
-        if ($result_code !== 0) {
-            throw new \RuntimeException($output);
+        if (!$process->isSuccessful()) {
+            throw new \RuntimeException($process->getExitCode() . " - " . $process->getExitCodeText() . " - " . $process->getErrorOutput() . " - " . $process->getOutput());
         }
 
-        return $output;
+        return $process->getOutput();
     }
 
     public function getVersion()
@@ -94,17 +93,14 @@ class Client
             return $version;
         }
 
-        $output = null;
-        $result_code = null;
-        exec($this->getPath() . ' --version' . ' 2>&1' , $output, $result_code );
+        $process = Process::fromShellCommandline($this->getPath() . ' --version');
+        $process->run();
 
-        $output = join("\n", $output);
-
-        if ($result_code !== 0) {
-            throw new \RuntimeException($output);
+        if (!$process->isSuccessful()) {
+            throw new \RuntimeException($process->getErrorOutput());
         }
 
-        $version = trim(substr($output, 12));
+        $version = trim(substr($process->getOutput(), 12));
         return $version;
     }
 
