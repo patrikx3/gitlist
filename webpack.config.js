@@ -192,7 +192,7 @@ For more information about all licenses, please see ${webpackBanner}
 }
 
 
-module.exports = {
+const webpackConfig = {
 //    watch: true,
     devtool: devtool,
 
@@ -217,3 +217,7 @@ module.exports = {
     plugins: plugins,
     mode: mode,
 }
+
+webpackConfig.ignoreWarnings = [/Failed to parse source map/];
+
+module.exports = webpackConfig
