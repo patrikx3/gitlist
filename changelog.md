@@ -5,7 +5,8 @@
                         
 [//]: #@corifeus-header:end
 
-## v2021.10.161 - 9/18/2021
+## v2021.10.161
+Released on 9/18/2021
 * BUGFIX: There was not showing the binary files and pictures, since the total Packagist upgrade. Now it is working.
 
 ## v2021.10.152
