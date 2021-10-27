@@ -1,8 +1,9 @@
 const fsExtra = require('fs-extra');
 const path = require('path');
 
-const prodDir = require('./package').corifeus["prod-dir"]
 module.exports = function (grunt) {
+
+    const prodDir = JSON.parse(require('fs').readFileSync('./package.json')).corifeus["prod-dir"]
 
     grunt.loadNpmTasks('grunt-contrib-less');
 

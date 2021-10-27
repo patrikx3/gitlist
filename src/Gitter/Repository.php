@@ -378,6 +378,7 @@ class Repository
             return $cache[$this->path] = NULL;
         }
 
+        natsort($tags);
         $tags = array_reverse($tags);
 
         return $cache[$this->path] = $tags;
