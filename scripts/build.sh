@@ -26,7 +26,7 @@ do
     cp -R $item $repo/
 done
 
-for item in "$TOP/INSTALL.md" "$TOP/changelog.md" "$TOP/LICENSE" "$TOP/README.md" "$TOP/boot.php" "$TOP/config.example.ini" "$TOP/package.json"
+for item in "$TOP/INSTALL.md" "$TOP/change-log.md" "$TOP/LICENSE" "$TOP/README.md" "$TOP/boot.php" "$TOP/config.example.ini" "$TOP/package.json"
 do
     echo $item
     cp $item $repo/
