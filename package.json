@@ -1,9 +1,9 @@
 {
     "name": "p3x-gitlist",
-    "version": "2021.10.192",
+    "version": "2021.10.194",
     "corifeus": {
         "prod-dir": "prod",
-        "css-postfix": "2603b0fd5c87d6a5f8882dd33db2c21a9a0a217acb2d048e218a986a0368c20f",
+        "css-postfix": "8d59a77c66785183d56e3979c66e5abcfff89ce3fad3a6f7c3ee736ab9448382",
         "prefix": "p3x-",
         "publish": false,
         "type": "p3x",
@@ -38,7 +38,7 @@
         "glob": "^7.2.0",
         "grunt": "^1.4.1",
         "grunt-contrib-less": "^3.0.0",
-        "html-loader": "^3.0.0",
+        "html-loader": "^3.0.1",
         "html-webpack-plugin": "^5.5.0",
         "less-loader": "^10.2.0",
         "mini-css-extract-plugin": "^2.4.3",
@@ -47,7 +47,7 @@
         "style-loader": "^3.3.1",
         "terser-webpack-plugin": "^5.2.4",
         "url-loader": "^4.1.1",
-        "webpack": "^5.60.0",
+        "webpack": "^5.61.0",
         "webpack-cli": "^4.9.1",
         "webpack-remove-debug": "^0.1.0",
         "worker-loader": "^3.0.8"
@@ -68,7 +68,7 @@
         "js-htmlencode": "^0.3.0",
         "list.js": "^2.3.1",
         "lodash": "^4.17.21",
-        "marked": "^3.0.8",
+        "marked": "^4.0.0",
         "moment": "^2.29.1",
         "php-date": "^3.0.1",
         "raphael": "^2.3.0",

@@ -28,7 +28,8 @@ hljs.registerLanguage('ts', require('highlight.js/lib/languages/typescript'));
 hljs.registerLanguage('python', require('highlight.js/lib/languages/python'));
 hljs.registerLanguage('py', require('highlight.js/lib/languages/python'));
 
-global.marked = require('marked')
+const { marked } = require('marked')
+global.marked = marked
 
 
 const markdownRenderer = new marked.Renderer();
@@ -114,7 +115,9 @@ We are not loading everything, since it is about 500kb`)
     const highlighted = validLang ? hljs.highlight(code, {
         language: language,
     }).value : code;
-    return `<pre><code class="hljs ${language}">${highlighted}</code></pre>`;
+
+    return `<div class="p3x-gitlist-markdown-code"><div class="p3x-gitlist-markdown-code-copy-paste" onclick='window.p3xGitlistCopy(${JSON.stringify(code)})'><i class="far fa-copy fa-lg"></i></div><pre><code class="hljs ${language}">${highlighted}</code></pre></div>`
+    //return `<pre><code class="hljs ${language}">${highlighted}</code></pre>`;
 };
 
 markdownRenderer.codespan = (code) => {

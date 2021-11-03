@@ -9,10 +9,47 @@ require('./global/snackbar')
 require('./global/theme')
 require('./global/is-bot')
 
+function copyToClipboard(textToCopy) {
+    // navigator clipboard api needs a secure context (https)
+    if (navigator.clipboard && window.isSecureContext) {
+        // navigator clipboard api method'
+        return navigator.clipboard.writeText(textToCopy);
+    } else {
+        // text area method
+        let textArea = document.createElement("textarea");
+        textArea.value = textToCopy;
+        // make the textarea out of viewport
+        textArea.style.position = "fixed";
+        textArea.style.left = "-999999px";
+        textArea.style.top = "-999999px";
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        return new Promise((resolve, reject) => {
+            // here the magic happens
+            const result = document.execCommand('copy')
+            //console.log('result copy', result)
+            textArea.remove();
+            if (result === true) {
+                resolve()
+            } else {
+                reject(new Error('Could not copy code'))
+            }
+        });
+    }
+}
+
+window.p3xGitlistCopy = async(code) => {
+    try {
+        await copyToClipboard(code);
+        $.snackbar({ content: 'Copied!' })
+    } catch(e) {
+        $.snackbar({ content: 'Error copy code! See the console...' })
+        console.error(e)
+    }
+}
 
 $(function () {
-    const Cookies = require('js-cookie')
-
     currentTheme = window.gitlist.getActualTheme(window.gitlist.loadTheme)
 
     $('.dropdown-toggle').dropdown();

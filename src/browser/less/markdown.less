@@ -1,4 +1,25 @@
 
+.p3x-gitlist-markdown-code {
+    position: relative;
+    .p3x-gitlist-markdown-code-copy-paste {
+        visibility: hidden;
+        position: absolute;
+        top: 12px;
+        right: 10px;
+
+        .far {
+            cursor: pointer;
+        }
+    }
+
+}
+
+.p3x-gitlist-markdown-code:hover {
+    .p3x-gitlist-markdown-code-copy-paste {
+        visibility: visible;
+    }
+}
+
 pre > code {
     display: block;
     padding: 8px;
