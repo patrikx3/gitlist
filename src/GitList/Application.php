@@ -52,7 +52,7 @@ class Application extends SilexApplication
         $this['show_http_remote'] = $config->get('clone_button', 'show_http_remote');
         $this['use_https'] = $config->get('clone_button', 'use_https');
         $this['ssh_clone_subdir'] = $config->get('clone_button', 'ssh_clone_subdir');
-        $this['repo_paging'] = $config->get('app', 'repo_paging') ? $config->get('app', 'repo_paging') : 10;
+        $this['repo_paging'] = $config->get('app', 'repo_paging') !== false ? $config->get('app', 'repo_paging') : 10;
 
         if (!isset($_SERVER['PHP_AUTH_USER'])) {
             $_SERVER['PHP_AUTH_USER'] = '';
