@@ -32,7 +32,10 @@ class GitController implements ControllerProviderInterface
             try {
 
                 if ($repository instanceof Repository && $app instanceof GitlistApp) {
-                    $filename = trim($request->get('filename'));
+                    $filename = $request->get('filename');
+                    if ($filename !== null) {
+                        $filename = trim($filename);
+                    }
                     $value = $request->get('value');
                     $email = $request->get('email');
                     $name = $request->get('name');

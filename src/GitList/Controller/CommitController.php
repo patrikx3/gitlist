@@ -141,12 +141,25 @@ class CommitController implements ControllerProviderInterface
                             //'line' => mb_convert_encoding( $lineInstance->getLine(), 'ISO-8859-2', 'utf-8'),
                         ];
                     }
+
+                    $old = $diffInstance->getOld();
+                    if ($old !== null) {
+                        $old = trim($old);
+                    }
+                    $new = $diffInstance->getNew();
+                    if ($new !== null) {
+                        $new = trim($new);
+                    }
+                    $index = $diffInstance->getIndex();
+                    if ($index !== null) {
+                        $index = trim($index);
+                    }
                     $diffs[] = (object)[
                         'binary' => $diffInstance->getBinary(),
                         'file' => $diffInstance->getFile(),
-                        'old' => trim($diffInstance->getOld()),
-                        'new' => trim($diffInstance->getNew()),
-                        'index' => trim($diffInstance->getIndex()),
+                        'old' => $old,
+                        'new' => $new,
+                        'index' => $index,
                         'lines' => $lines,
                     ];
                 }

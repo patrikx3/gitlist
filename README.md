@@ -9,7 +9,7 @@
 
 
 
-# 🤖 P3X Gitlist - A decorated enhanced elegant, feature rich and modern private git ui repository viewer  v2021.10.209
+# 🤖 P3X Gitlist - A decorated enhanced elegant, feature rich and modern private git ui repository viewer  v2021.10.211
 
 
 
@@ -26,7 +26,7 @@ P3X Enhanced GitList is a fork of the klaussilveira Gitlist. What is different a
  
  You will love it to work it on OpenWrt. Provides multiple themes with dark mode - 11 light and 5 dark. Code editor with syntax highlighting, editable files. All changes in the original fork are synced with the enhanced version. 100% responsive with Bootstrap 3. Latest Fontawesome for icons. The markdown engine uses Emojis with Twitter's Emojis. Besides, the commits and logs are parsed as Markdown and Emojis. 
   
-**Works on PHP 8.**
+**Works on PHP 8.1**
 
 ## Beware
 If you use other, than UTF-8 encoded files, you could get incorrect results, as it does not do converting, it only works with UTF-8.
@@ -167,7 +167,7 @@ All my domains ([patrikx3.com](https://patrikx3.com) and [corifeus.com](https://
 
 ---
 
-[**P3X-GITLIST**](https://corifeus.com/gitlist) Build v2021.10.209
+[**P3X-GITLIST**](https://corifeus.com/gitlist) Build v2021.10.211
 
 [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software)
 

@@ -231,36 +231,43 @@ class Tree extends Item implements \RecursiveIterator
         return $files;
     }
 
+    #[\ReturnTypeWillChange]
     public function valid()
     {
         return isset($this->data[$this->position]);
     }
 
+    #[\ReturnTypeWillChange]
     public function hasChildren()
     {
         return is_array($this->data[$this->position]);
     }
 
+    #[\ReturnTypeWillChange]
     public function next()
     {
         $this->position++;
     }
 
+    #[\ReturnTypeWillChange]
     public function current()
     {
         return $this->data[$this->position];
     }
 
+    #[\ReturnTypeWillChange]
     public function getChildren()
     {
         return $this->data[$this->position];
     }
 
+    #[\ReturnTypeWillChange]
     public function rewind()
     {
         $this->position = 0;
     }
 
+    #[\ReturnTypeWillChange]
     public function key()
     {
         return $this->position;
