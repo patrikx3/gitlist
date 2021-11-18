@@ -19,7 +19,7 @@ jobs:
         strategy:
             matrix:
                 node-version: ['lts/*']
-                php-versions: ['7.4', '8.0']
+                php-versions: ['7.4', '8.0', '8.1']
                 # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
         steps:
@@ -39,5 +39,5 @@ jobs:
 
             - name: tests
               run: |
-                  composer install --no-progress
+                  composer install --no-progress --ignore-platform-reqs
                   XDEBUG_MODE=coverage ./vendor/bin/phpunit --coverage-text
