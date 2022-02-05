@@ -5,7 +5,8 @@
                         
 [//]: #@corifeus-header:end
 
-### v2022.4.106 (02/05/2022)
+### v2022.4.106 
+Released on 02/05/2022
 * CHORE: Upgrade all deps
 
 ### v2021.10.211
