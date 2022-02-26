@@ -1,6 +1,6 @@
 {
     "name": "p3x-gitlist",
-    "version": "2022.4.107",
+    "version": "2022.4.110",
     "corifeus": {
         "prod-dir": "prod",
         "css-postfix": "8d59a77c66785183d56e3979c66e5abcfff89ce3fad3a6f7c3ee736ab9448382",
@@ -11,7 +11,7 @@
         "cdn": true,
         "icon": "fas fa-code",
         "code": "Spawn",
-        "nodejs": "v16.13.2",
+        "nodejs": "v16.14.0",
         "reponame": "gitlist",
         "build": true
     },
@@ -30,11 +30,11 @@
     "devDependencies": {
         "bootswatch": "^3.4.1",
         "concurrently": "^7.0.0",
-        "corifeus-builder": "^2022.4.108",
-        "corifeus-utils": "^2022.4.107",
+        "corifeus-builder": "^2022.4.111",
+        "corifeus-utils": "^2022.4.110",
         "css-loader": "^6.6.0",
         "css-minimizer-webpack-plugin": "^3.4.1",
-        "fs-extra": "^10.0.0",
+        "fs-extra": "^10.0.1",
         "glob": "^7.2.0",
         "grunt": "^1.4.1",
         "grunt-contrib-less": "^3.0.0",
@@ -47,7 +47,7 @@
         "style-loader": "^3.3.1",
         "terser-webpack-plugin": "^5.3.1",
         "url-loader": "^4.1.1",
-        "webpack": "^5.68.0",
+        "webpack": "^5.69.1",
         "webpack-cli": "^4.9.2",
         "webpack-remove-debug": "^0.1.0",
         "worker-loader": "^3.0.8"
@@ -57,9 +57,9 @@
     },
     "homepage": "https://corifeus.com/gitlist",
     "dependencies": {
-        "@fortawesome/fontawesome-free": "^5.15.4",
+        "@fortawesome/fontawesome-free": "^6.0.0",
         "bootstrap": "^3.4.1",
-        "codemirror": "^5.65.1",
+        "codemirror": "^5.65.2",
         "highlight.js": "^11.4.0",
         "is-string-int": "^1.0.1",
         "jquery": "=3.4.1",
