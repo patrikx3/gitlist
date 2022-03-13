@@ -144,8 +144,6 @@ Sept 7, 2021
 
 [Github.io Gitlist](https://patrikx3.github.io/gitlist/)  
 
-[Gitlist.tk](https://gitlist.tk/gitlist.git/blob/master/README.md)  
-
 [Git Wiki Kernel Web Interfaces](https://git.wiki.kernel.org/index.php/Interfaces,_frontends,_and_tools#Web_Interfaces)  
 
 
