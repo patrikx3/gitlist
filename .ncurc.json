@@ -2,6 +2,7 @@
     "reject": [
         "jquery",
         "bootswatch",
-        "bootstrap"
+        "bootstrap",
+        "codemirror"
     ]
 }
