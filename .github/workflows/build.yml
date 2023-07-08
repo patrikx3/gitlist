@@ -41,3 +41,4 @@ jobs:
               run: |
                   composer install --no-progress --ignore-platform-reqs
                   XDEBUG_MODE=coverage ./vendor/bin/phpunit --coverage-text
+
