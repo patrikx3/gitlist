@@ -189,7 +189,7 @@ class Repository
             }
         }
 
-        $logs = $this->getClient()->run($this, 'ls-tree -l -r --name-only ' . $branch);
+        $logs = $this->getClient()->run($this, 'ls-tree -l -r ' . $branch);
         $files = explode("\n", $logs);
         foreach ($files as $file) {
             if (($pos = strrpos($file, '.')) !== false) {
