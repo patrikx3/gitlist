@@ -7,7 +7,7 @@
 
 ### v2023.10.102
 Released on 07/08/2023
-* FIX: `Hangup - error: option `name-only' is incompatible with --long -` error
+* FIX: `Hangup - error: option 'name-only' is incompatible with --long -` error
 
 
 ### v2022.4.106 
