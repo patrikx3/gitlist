@@ -5,7 +5,7 @@
                         
 [//]: #@corifeus-header:end
 
-### v2023.10.103
+### v2023.10.102
 Released on 07/08/2023
 * FIX: `Hangup - error: option `name-only' is incompatible with --long -` error
 
