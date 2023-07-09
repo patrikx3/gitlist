@@ -11,6 +11,8 @@ $(async function () {
 
         const twemojiSettings = require('./settings').twemoji;
         const html = marked(mdContent.text(), {
+            mangle: false,
+            headerIds: false,
             renderer: window.gitlist.markdownRenderer
         });
         mdContent.html(twemoji.parse(html, twemojiSettings));
@@ -28,6 +30,8 @@ window.gitlist.renderMarkdown = async(options) => {
     const {markdown} = options;
     const twemojiSettings = require('./settings').twemoji;
     const markedHtml = marked(markdown, {
+        mangle: false,
+        headerIds: false,
         renderer: window.gitlist.markdownRenderer
     });
     const html = twemoji.parse(markedHtml, twemojiSettings)

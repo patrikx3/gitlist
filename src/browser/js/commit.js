@@ -13,6 +13,8 @@ $(async() => {
             )
 
         const html = marked($commitMessage.text().trim(), {
+            mangle: false,
+            headerIds: false,
             renderer: window.gitlist.markdownRenderer,
         });
         const twemojiSettings = require('./settings').twemoji;
