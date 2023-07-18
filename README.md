@@ -35,7 +35,7 @@ If you use other, than UTF-8 encoded files, you could get incorrect results, as 
 
 # Live demo
 
-[http://gitlist.patrikx3.com/](http://gitlist.patrikx3.com/)
+[https://gitlist.patrikx3.com/](https://gitlist.patrikx3.com/)
 
 [Screenshots](artifacts/screenshots.md)
 
