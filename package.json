@@ -30,7 +30,7 @@
     "devDependencies": {
         "bootswatch": "^3.4.1",
         "concurrently": "^8.2.0",
-        "corifeus-builder": "^2023.10.125",
+        "corifeus-builder": "^2023.10.129",
         "corifeus-utils": "^2023.10.128",
         "css-loader": "^6.8.1",
         "css-minimizer-webpack-plugin": "^5.0.1",
@@ -47,7 +47,7 @@
         "style-loader": "^3.3.3",
         "terser-webpack-plugin": "^5.3.9",
         "url-loader": "^4.1.1",
-        "webpack": "^5.88.1",
+        "webpack": "^5.88.2",
         "webpack-cli": "^5.1.4",
         "webpack-remove-debug": "^0.1.0",
         "worker-loader": "^3.0.8"
