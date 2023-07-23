@@ -3,8 +3,11 @@ let changelogHtml;
 window.gitlist.changeLog = async () => {
     if (changelogHtml === undefined) {
         try {
-            const response = await $.ajax('https://raw.githubusercontent.com/patrikx3/gitlist/master/changelog.md')
+            let response = await $.ajax('https://raw.githubusercontent.com/patrikx3/gitlist/master/change-log.md')
             const $changelogModalBody = $('#p3x-gitlist-modal-changelog-body')
+
+            response = $('<textarea />').html(response).text();
+
             changelogHtml = await window.gitlist.renderMarkdown({
                 markdown: response
             })
@@ -18,3 +21,4 @@ window.gitlist.changeLog = async () => {
 $(async () => {
     $changelogModal = $('#p3x-gitlist-modal-changelog')
 })
+
