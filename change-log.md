@@ -5,6 +5,10 @@
                         
 [//]: #@corifeus-header:end
 
+### v2023.10.119
+Released on 07/23/2023
+* FIX: Changlog bug fix
+
 ### v2023.10.102
 Released on 07/08/2023
 * FIX: `Hangup - error: option name-only is incompatible with --long -` error
