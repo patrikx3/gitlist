@@ -1,0 +1,72 @@
+{% extends 'layout-page.twig' %}
+
+{% set page = 'stats' %}
+
+{% block title %}P3X GitList{% endblock %}
+
+{% block content %}
+    {% include 'breadcrumb.twig' with {breadcrumbs: [{dir: 'Statistics', path:''}, {dir: branch, path:''}]} %}
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong>
+                            <i class="fas fa-file-alt"></i>&nbsp;&nbsp;File extensions
+                        </strong>
+                        <span class="badge pull-right">{{ stats.extensions|length }}</span>
+                    </div>
+                    <ul class="list-group">
+                        {% for ext, amount in stats.extensions %}
+                            <li class="list-group-item">
+                                <strong>{{ ext }}</strong>
+                                <span class="pull-right">{{ amount }}</span>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <span class="badge pull-right">{{ authors|length }}</span>
+                        <strong>
+                            <i class="fas fa-user"></i>&nbsp;&nbsp;Authors with commits
+                        </strong>
+                    </div>
+                    <ul class="list-group">
+                        {% for author in authors %}
+                            <li class="list-group-item">
+                                <strong><a href="mailto:{{ author.email }}">{{ author.name }}</a></strong>
+                                <span class="pull-right">{{ author.commits }}</span>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong>
+                            <i class="far fa-chart-bar"></i>&nbsp;&nbsp;Stats
+                        </strong>
+                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <span class="pull-right">{{ stats.files }}</span>
+                            <strong>Total files</strong>
+                        </li>
+                        <li class="list-group-item">
+                            <strong>{{ stats.size }} bytes</strong>
+                            <span class="pull-right">{{ stats.size | format_size }}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}

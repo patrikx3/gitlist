@@ -1,0 +1,134 @@
+<ol class="breadcrumb" style="margin-bottom: 0;">
+    <li><a href="{{ path('tree', {repo: repo, commitishPath: branch}) }}">{{ repo }}</a></li>
+    {% for breadcrumb in breadcrumbs %}
+        <li{% if loop.last %} class="active"{% endif %}>{% if not loop.last %}<a
+                href="{{ path('tree', {repo: repo, commitishPath: branch ~ '/' ~ breadcrumb.path}) }}">{{ breadcrumb.dir }}</a>{% endif %}{% if loop.last %}{{ breadcrumb.dir }}{% endif %}
+        </li>
+    {% endfor %}
+</ol>
+
+
+<div class="p3x-gitlist-breadcrumb-divider"></div>
+
+<div class="pull-right p3x-gitlist-button" style="text-align: right;">
+    <div>
+        <a href="{{ path('rss', {repo: repo, branch: branch}) }}" class="btn btn-default btn-sm">
+            <i class="fa fa-rss"></i>
+            &nbsp;RSS
+        </a>
+
+        <span class="dropdown">
+            <a class="btn btn-default btn-sm dropdown-toggle" type="button" id="p3x-gitlist-breadcrumb-git"
+               data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                Git
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="p3x-gitlist-breadcrumb-git">
+                <li data-toggle="tooltip" data-placement="bottom"
+                    title="If this repo is already on origin, this action will throw an error otherwise it will fetch from the origin commits.">
+                    <a href="javascript:void(0)" id="p3x-gitlist-breadcrumb-git-fetch">
+                        <i class="fas fa-chevron-down"></i>&nbsp;Fetch origin
+                    </a>
+                </li>
+            </ul>
+        </span>
+
+        <span class="dropdown">
+            <a class="btn btn-default btn-sm dropdown-toggle" type="button" id="p3x-gitlist-breadcrumb-download"
+               data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                Download
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="p3x-gitlist-breadcrumb-download">
+                <li>
+                    <a href="{{ path('archive', {repo: repo, branch: branch, format: 'zip'}) }}"
+                       title="Download '{{ branch }}' as a ZIP archive">
+                        <i class="fas fa-file-archive"></i>&nbsp;ZIP
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('archive', {repo: repo, branch: branch, format: 'tar'}) }}"
+                       title="Download '{{ branch }}' as a TAR archive">
+                        <i class="far fa-file-archive"></i>&nbsp;TAR
+                    </a>
+                </li>
+            </ul>
+        </span>
+
+        {% if app.show_http_remote or app.show_ssh_remote %}
+            <a href="#" class="btn btn-default btn-sm" title="Show remotes to clone this repository."
+               data-toggle="modal" data-target="#p3x-gitlist-modal-clone">
+                <i class="far fa-clone"></i>&nbsp;Clone
+            </a>
+        {% endif %}
+
+        {% block right %}{% endblock %}
+
+    </div>
+</div>
+
+{% block left %}{% endblock %}
+
+
+{% if app.show_http_remote or app.show_ssh_remote %}
+
+    <!-- Modal -->
+    <div id="p3x-gitlist-modal-clone" class="modal fade" role="dialog" tabindex="-1">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i class="fas fa-times"></i></span>
+                    </button>
+                    <h4 class="modal-title"><strong>Clone</strong></h4>
+                </div>
+                <div class="modal-body">
+
+                    <div style="text-align: center">
+                        <div class="btn-group">
+                            {% if app.show_ssh_remote %}
+                                <button type="button"
+                                        class="btn btn-primary{{ app.show_ssh_remote and app.show_http_remote ? ' active' }}"
+                                        id="clone-button-ssh">SSH
+                                </button>
+                            {% endif %}
+                            {% if app.show_http_remote %}
+                                <button type="button" class="btn btn-primary" id="clone-button-http">HTTPS</button>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <br/>
+
+
+                    {% if app.show_ssh_remote %}
+                        <input readonly
+                               type="text" class="form-control{{ app.show_ssh_remote ? ' visible' }}"
+                               id="clone-input-ssh"
+                               value="git clone ssh://{{ app.ssh_user | url_encode }}{{ app.ssh_user ? '@' }}{{ global.request.host }}:{{ app.ssh_clone_subdir }}{{ repo }}">
+                    {% endif %}
+                    {% if app.show_http_remote %}
+                        <input type="text"
+                               readonly
+                               class="form-control{{ app.show_ssh_remote is empty and app.show_http_remote ? ' visible' }}"
+                               id="clone-input-http"
+                               value="git clone http{{ app.use_https ? 's' }}://{{ app.http_user | url_encode }}{{ app.http_user ? '@' }}{{ global.request.host }}{{ app.git_http_subdir_calculated ? app.url_subdir : app.git_http_subdir }}/{{ repo }}">
+                    {% endif %}
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                        <span class="fas fa-times"></span>
+                        Close
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+{% endif %}
+
+<div class="p3x-gitlist-breadcrumb-divider"></div>

@@ -1,0 +1,102 @@
+<div class="navbar navbar-default {{ app.fixed_navbar ? 'navbar-fixed-top' : '' }}" id="p3x-gitlist-navigation"
+     role="navigation">
+    <div class="container">
+        <div class="navbar-header p3x-gitlist-navbar-header">
+            <button type="button" id="p3x-gitlist-navigation-menu-button" class="navbar-toggle" data-toggle="collapse"
+                    data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <a href="{{ path('homepage') }}">
+                <img src="img/gitlist.svg" class="hidden-xs" id="p3x-gitlist-navigation-brand-icon"/>
+                <img src="img/gitlist.svg" class="visible-xs p3x-gitlist-navigation-brand-icon-small"
+                     id="p3x-gitlist-navigation-brand-icon" data-toggle="tooltip" data-placement="bottom"
+                     title="{{ app.title }}"/>
+            </a>
+            <a class="navbar-brand hidden-xs" href="{{ path('homepage') }}">
+                {{ app.title }}
+            </a>
+
+        </div>
+        <div class="navbar-collapse collapse" id="p3x-gitlist-navigation-theme">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">GitHub <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="https://github.com/patrikx3/gitlist" target="p3x-gitlist">Repo</a>
+                        </li>
+
+                        <li>
+                            <a href="javascript:void(0);" onclick="window.gitlist.changeLog()">Changelog</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" onclick="window.gitlist.todo()">To do</a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/patrikx3/gitlist/releases" target="p3x-gitlist-releases">Releases</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle p3x-gitlist-navigation-theme-open" data-toggle="dropdown">Themes
+                        <b class="caret"></b></a>
+                    <ul class="dropdown-menu" id="theme-list">
+                    </ul>
+                </li>
+
+
+            </ul>
+
+
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+
+<div id="p3x-gitlist-modal-changelog" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" style="min-width: 75%;" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true"><i class="fas fa-times"></i></span></button>
+                <h4 class="modal-title">Change log</h4>
+            </div>
+            <div class="modal-body" id="p3x-gitlist-modal-changelog-body">
+                <i class="fas fa-cog fa-spin"></i>&nbsp;Loading change log ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"><span class="fas fa-times"></span>
+                    Close
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div id="p3x-gitlist-modal-todo" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true"><i class="fas fa-times"></i></span></button>
+                <h4 class="modal-title">To do ...</h4>
+            </div>
+            <div class="modal-body" id="p3x-gitlist-modal-todo-body">
+                <i class="fas fa-cog fa-spin"></i>&nbsp;Loading todo ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"><span class="fas fa-times"></span>
+                    Close
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+{% if app.fixed_navbar %}
+    <div class="p3x-gitlist-header-height"></div>
+{% endif %}

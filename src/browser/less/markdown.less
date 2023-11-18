@@ -1,0 +1,59 @@
+
+.p3x-gitlist-markdown-code {
+    position: relative;
+    .p3x-gitlist-markdown-code-copy-paste {
+        visibility: hidden;
+        position: absolute;
+        top: 12px;
+        right: 10px;
+
+        .far {
+            cursor: pointer;
+        }
+    }
+
+}
+
+.p3x-gitlist-markdown-code:hover {
+    .p3x-gitlist-markdown-code-copy-paste {
+        visibility: visible;
+    }
+}
+
+pre > code {
+    display: block;
+    padding: 8px;
+}
+
+.p3x-gitlist-light {
+
+    pre > code {
+        background-color: rgba(0, 0, 0, 0.01) !important;
+    }
+
+    @import (less) '../../../node_modules/highlight.js/styles/github.css';
+
+
+}
+
+.p3x-gitlist-dark {
+
+    @import (less) '../../../node_modules/highlight.js/styles/github-dark.css';
+
+}
+
+#p3x-gitlist-readme, .p3x-gitlist-readme {
+    pre {
+        padding: 0;
+    }
+}
+
+
+.p3x-gitlist-markdown-clear-fix {
+    pre, code {
+        padding: 0;
+        border: none;
+        margin: 0;
+        text-align: left;
+    }
+}

@@ -1,0 +1,48 @@
+[//]: #@corifeus-header
+
+# 🤖 P3X Gitlist - A decorated enhanced elegant, feature rich and modern private git ui repository viewer
+
+                        
+[//]: #@corifeus-header:end
+
+
+![Screenshot 1](https://cdn.corifeus.com/git/gitlist/artifacts/screenshots/p3x-gitlist-1.jpeg)
+
+![Screenshot 2](https://cdn.corifeus.com/git/gitlist/artifacts/screenshots/p3x-gitlist-2.jpeg)
+
+![Screenshot 3](https://cdn.corifeus.com/git/gitlist/artifacts/screenshots/p3x-gitlist-3.jpeg)
+
+![Screenshot 4](https://cdn.corifeus.com/git/gitlist/artifacts/screenshots/p3x-gitlist-4.jpeg)
+
+![Screenshot 5](https://cdn.corifeus.com/git/gitlist/artifacts/screenshots/p3x-gitlist-5.jpeg)
+
+![Screenshot 6](https://cdn.corifeus.com/git/gitlist/artifacts/screenshots/p3x-gitlist-6.jpeg)
+
+![Screenshot 7](https://cdn.corifeus.com/git/gitlist/artifacts/screenshots/p3x-gitlist-7.jpeg)
+
+
+[//]: #@corifeus-footer
+
+---
+
+🙏 This is an open-source project. Star this repository, if you like it, or even donate to maintain the servers and the development. Thank you so much!
+
+Possible, this server, rarely, is down, please, hang on for 15-30 minutes and the server will be back up.
+
+All my domains ([patrikx3.com](https://patrikx3.com) and [corifeus.com](https://corifeus.com)) could have minor errors, since I am developing in my free time. However, it is usually stable.
+
+**Note about versioning:** Versions are cut in Major.Minor.Patch schema. Major is always the current year. Minor is either 4 (January - June) or 10 (July - December). Patch is incremental by every build. If there is a breaking change, it should be noted in the readme.
+
+
+---
+
+[**P3X-GITLIST**](https://corifeus.com/gitlist) Build v2023.10.123
+
+[![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software)
+
+
+
+
+
+
+[//]: #@corifeus-footer:end

@@ -1,0 +1,39 @@
+{% extends 'layout-page.twig' %}
+
+{% set page = 'commits' %}
+
+{% block title %}P3X GitList{% endblock %}
+
+{% block content %}
+    {% embed 'breadcrumb.twig' with {breadcrumbs: breadcrumbs} %}
+
+        {% block left %}
+
+            {% if file != '' %}
+                <div class="p3x-gitlist-button">
+
+                    {% if binary %}
+                        <a href="{{ path('blob_raw', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"
+                           class="btn btn-info btn-sm"><span class="fas fa-download"></span> Download</a>
+                    {% else %}
+                        <a href="{{ path('blob_raw', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"
+                           class="btn btn-info btn-sm"><span class="fas fa-download"></span> Raw</a>
+                    {% endif %}
+
+                    <a href="{{ path('blame', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"
+                       class="btn btn-default btn-sm"><span class="fa fa-fire"></span> Blame</a>
+
+                    <a class="btn btn-default btn-sm"
+                       href="{{ path('blob', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"> <span
+                            class="far fa-file"></span> View</a>
+
+                </div>
+            {% endif %}
+
+        {% endblock %}
+
+    {% endembed %}
+
+    {% include 'commits-list.twig' %}
+
+{% endblock %}

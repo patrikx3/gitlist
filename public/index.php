@@ -1,37 +1,33 @@
 <?php
+error_reporting(E_ALL);
+//error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
+ini_set('display_errors', 1);
 
-declare(strict_types=1);
-
-use GitList\Kernel;
-use Symfony\Component\Dotenv\Dotenv;
-use Symfony\Component\ErrorHandler\Debug;
-use Symfony\Component\HttpFoundation\Request;
-
-require __DIR__ . '/../vendor/autoload.php';
-
-$env = __DIR__ . '/../.env';
-if (is_readable($env)) {
-    (new Dotenv())->load($env);
+/**
+ * P3X GitList: an elegant and modern git repository viewer
+ * http://github.com/patrikx3/gitlist
+ */
+if (!ini_get('date.timezone')) {
+    date_default_timezone_set('UTC');
 }
 
-$env = $_SERVER['APP_ENV'] = $_ENV['APP_ENV'] ?? $_SERVER['APP_ENV'] ?? 'prod';
-$debug = (bool) ($_SERVER['APP_DEBUG'] ?? ('prod' !== $env));
-
-if ($debug) {
-    umask(0000);
-    Debug::enable();
+if (php_sapi_name() == 'cli-server' && file_exists(substr($_SERVER['REQUEST_URI'], 1))) {
+    return false;
 }
 
-if ($trustedProxies = $_SERVER['TRUSTED_PROXIES'] ?? false) {
-    Request::setTrustedProxies(explode(',', $trustedProxies), Request::HEADER_X_FORWARDED_ALL ^ Request::HEADER_X_FORWARDED_HOST);
+$cacheFolder = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'cache';
+if (!is_writable($cacheFolder)) {
+    die(sprintf('The "%s" folder must be writable for GitList to run.', $cacheFolder));
 }
 
-if ($trustedHosts = $_SERVER['TRUSTED_HOSTS'] ?? false) {
-    Request::setTrustedHosts(explode(',', $trustedHosts));
+require '../vendor/autoload.php';
+
+$config = GitList\Config::fromFile('../config.ini');
+
+if ($config->get('date', 'timezone')) {
+    date_default_timezone_set($config->get('date', 'timezone'));
 }
 
-$kernel = new Kernel($env, $debug);
-$request = Request::createFromGlobals();
-$response = $kernel->handle($request);
-$response->send();
-$kernel->terminate($request, $response);
+$app = require '../boot.php';
+$app->run();
+

@@ -1,0 +1,22 @@
+{% extends 'layout-page.twig' %}
+
+{% set page = 'searchcommits' %}
+
+{% block title %}P3X GitList{% endblock %}
+
+{% block content %}
+
+    {% embed 'breadcrumb.twig' with {breadcrumbs: [{dir: 'Commits search results for: ' ~ query, path:''}]} %}
+
+        {% block left %}
+            {% if commits %}
+                <span class="label label-info">Commit: {{ commits | length }}</span>
+            {% endif %}
+        {% endblock %}
+
+    {% endembed %}
+
+
+    {% include 'commits-list.twig' %}
+
+{% endblock %}

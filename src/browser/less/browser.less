@@ -1,0 +1,43 @@
+#p3x-gitlist-branch-list {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 200px;
+    display: inline-block;
+
+    @media only screen and (max-width: 768px) {
+        max-width: 100%;
+        width: 100%;
+    }
+}
+
+.p3x-gitlist-branch-menu-header, .p3x-gitlist-branch-menu-item {
+    padding: @padding-base-vertical;
+}
+
+#p3x-gitlist-branch-list-container {
+
+    .p3x-gitlist-branch-menu-item, a {
+        text-decoration: none;
+        color: @dropdown-link-color;
+    }
+
+
+    .p3x-gitlist-branch-menu-item:hover {
+        cursor: pointer;
+    }
+
+    .p3x-gitlist-branch-menu-item:hover, .p3x-gitlist-branch-menu-item:hover a {
+        background-color: @dropdown-link-hover-bg;
+        color: @dropdown-link-hover-color;
+    }
+
+    .p3x-gitlist-branch-menu-item.active, .p3x-gitlist-branch-menu-item.active a {
+        background-color: @dropdown-link-active-bg;
+        color: @dropdown-link-active-color;
+    }
+}
+
+#p3x-gitlist-branch-list-dropdown-menu {
+    overflow-y: auto;
+}

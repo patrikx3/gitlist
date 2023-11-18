@@ -1,0 +1,104 @@
+{% extends 'layout-page.twig' %}
+
+{% set page = 'commits' %}
+
+{% block title %}P3X GitList{% endblock %}
+
+{% block content %}
+
+    <script type="text/javascript">
+        window.gitlist.lastload = Date.now();
+    </script>
+    <div class="p3x-gitlist-overlay">
+        <div>
+            <i class="fas fa-cog fa-spin fa-3x"></i>
+        </div>
+        <br/>
+        <div>
+            Loading a big commit ...
+        </div>
+    </div>
+
+
+    {% embed 'breadcrumb.twig' with {breadcrumbs: [{dir: "Commit #{commit.hash}", path:''}]} %}
+        {% block left %}
+            <span class="label label-primary">File changed: {{ commit.changedFiles }}</span>
+        {% endblock %}
+        {% block right %}
+            <a class="btn btn-info btn-sm" href="{{ path('branch', {repo: repo, branch: commit.hash}) }}"
+               title="Browse code at this point in history"><span class="fa fa-list-alt"></span> Browse code</a>
+        {% endblock %}
+    {% endembed %}
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="media">
+                <div class="media-left">
+                    <a>
+                        <img class="media-object" src="{{ avatar(commit.author.email, 32) }}"/>
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading p3x-gitlist-markdown-clear-fix"
+                        id="p3x-gitlist-commit-heading">{{ commit.message }}{% if commit.body is not empty %}}
+                            <br/>{{ commit.body }}{% endif %}
+                    </h4>
+                    <a href="mailto:{{ commit.author.email }}">{{ commit.author.name }}</a> authored
+                    on {{ commit.date | format_date }}
+                    {% if commit.author.email != commit.commiter.email %}
+                        &bull; <a
+                        href="mailto:{{ commit.commiter.email }}">{{ commit.commiter.name }}</a> committed on {{ commit.commiterDate | format_date }}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <ul class="list-group">
+            {% for diff in commit.diffs %}
+                <li class="list-group-item" id="p3x-gitlist-diff-{{ loop.index }}" title="Index {{ loop.index }}">
+                    <div class="pull-left">
+                        <i class="fas fa-file-alt"></i>&nbsp;&nbsp;
+                        <span id="{{ diff.file | to_id }}"
+                              href="#p3x-gitlist-diff-{{ loop.index }}">{{ diff.file }}</span>
+                        <div style="opacity: 0.5;">
+                            Diff lines: {{ diff.lineCount }} Type: {{ diff.binary ? 'binary' : 'text' }}
+                        </div>
+                    </div>
+                    <div class="pull-right p3x-gitlist-button">
+                        <a id="p3x-gitlist-diff-data-{{ loop.index }}"
+                           class="btn btn-primary btn-sm p3x-gitlist-diff-button"><i class="fas fa-dumbbell"></i>&nbsp;&nbsp;Diff</a>
+                        &nbsp;
+                        <a href="{{ path('commits', {repo: repo, commitishPath: commit.hash ~ '/' ~ diff.file}) }}"
+                           class="btn btn-primary btn-sm"><i class="fas fa-history"></i>&nbsp;&nbsp;History</a>
+                        &nbsp;
+
+                        <a href="{{ path('blob', {repo: repo, commitishPath: commit.hash ~'/' ~ diff.file}) }}"
+                           class="btn btn-primary btn-sm"><i class="fas fa-edit"></i>&nbsp;&nbsp;View
+                        </a>
+                    </div>
+                    <div style="clear: both;"></div>
+                </li>
+                <li class="list-group-item p3x-gitlist-diff-container"
+                    data-diff-id="p3x-gitlist-diff-data-{{ loop.index }}" style="display: none;"
+                    data-filename="{{ diff.file }}" data-loop-index="{{ loop.index }}">
+                    <div class="p3x-gitlist-diff" id="p3x-gitlist-diff-ajax-{{ loop.index }}">
+                        <div class="p3x-gitlist-commit-diff-loader"
+                             id="p3x-gitlist-commit-diff-loader-{{ loop.index }}">
+                                <span id="p3x-gitlist-commit-diff-loader-ajax-{{ loop.index }}">
+                                    <i class="fas fa-cog fa-spin"></i> Hang on, loading the diffs via AJAX
+                                </span>
+                            <span id="p3x-gitlist-commit-diff-loader-webworker-{{ loop.index }}" style="display: none;">
+                                    <i class="fas fa-cog fa-spin"></i> Hang on, rendering the diffs with web worker
+                                </span>
+                        </div>
+                        <div style="overflow-y: auto;" id="p3x-gitlist-commit-diff-scroller-{{ loop.index }}">
+                        </div>
+
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+{% endblock %}
+

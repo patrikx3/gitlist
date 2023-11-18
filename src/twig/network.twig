@@ -1,0 +1,20 @@
+{% extends 'layout-page.twig' %}
+
+{% set page = 'network' %}
+
+{% block title %}P3X GitList{% endblock %}
+
+{% block content %}
+    {% include 'breadcrumb.twig' with {breadcrumbs: [{dir: 'Network Graph ', path: ''}, {dir: commitishPath, path: ''}]} %}
+
+    <div class="network-view">
+        <div class="network-graph" data-source="{{ path('networkData', {repo: repo, commitishPath: commitishPath}) }}">
+            {#<div class="network-graph" data-source="/dummynetwork.json">#}
+
+        </div>
+    </div>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,113 @@
+{% extends 'layout.twig' %}
+{% block title %}P3X GitList{% endblock %}
+
+{% block body %}
+    {% include 'navigation.twig' %}
+
+
+    <div class="container" id="p3x-gitlist-index">
+
+        <div id="p3x-gitlist-index-flex">
+            <div class="search form-group" id="p3x-gitlist-index-flex-search">
+                <div class="input-group">
+                    <input class="search form-control" name="query-repo" placeholder="Search repositories" autofocus
+                           value=""/>
+                    <span class="input-group-btn">
+                <button class="btn btn-default" type="button" id="p3x-gitlist-index-list-clear">
+                    <i class="fas fa-times"></i>
+                </button>
+
+            </span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-group">
+                    <select class="form-control" id="p3x-gitlist-index-list-sort-select">
+                        <option value="p3x-gitlist-index-name">
+                            Sort by name
+                        </option>
+                        <option value="p3x-gitlist-index-repo-last-commit-timestamp">
+                            Sort by last commit
+                        </option>
+                    </select>
+                    <span class="input-group-btn">
+                <button class="btn btn-default" type="button" id="p3x-gitlist-index-list-sort-order"></button>
+            </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="p3x-gitlist-index-pagination-container">
+            <ul class="pagination p3x-gitlist-index-pagination p3x-gitlist-index-pagination-top"
+                id="p3x-gitlist-index-pagination-top">
+            </ul>
+        </div>
+
+
+        <div class="list">
+            {% for repository in repositories %}
+                <table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <th>
+                            <a class="btn btn-link btn-sm p3x-gitlist-index-reponame"
+                               href="{{ path('repository', {repo: repository.name}) }}">
+                                <span class="p3x-gitlist-index-name">{{ repository.name | remove_extension }}</span>
+                            </a>
+                            <a class="btn btn-primary btn-sm pull-right"
+                               href="{{ path('rss', {repo: repository.name, branch: 'master'}) }}"><i
+                                    class="fa fa-rss pull-right"></i></a>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <a class="btn btn-link btn-sm pull-right p3x-gitlist-index-repo-last-commit"
+                               href="{{ path('commits', {repo: repository.name}) }}">
+                                <span
+                                    class="p3x-gitlist-index-repo-last-commit-timestamp">{{ repository.timestamp }}</span>
+                                <span class="p3x-gitlist-index-repo-last-commit-time">{{ repository.time }}</span>
+                                by
+                                <span class="p3x-gitlist-index-repo-last-commit-user">{{ repository.user }}</span>
+                                on
+                                {{ repository.branch }}
+                            </a>
+                            <div class="p3x-gitlist-index-repo-last-commit-empty" style="display: none;">
+                                <strong>
+                                    This repo is empty. Please, create a GIT commit push to make it to be usable.
+                                </strong>
+                            </div>
+                            <div class="p3x-gitlist-index-description">
+                                {% if repository.description %}
+                                    {{ repository.description }}
+                                {% else %}
+                                    There is no repository description file. Please, create one to remove this message.
+                                {% endif %}
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            {% endfor %}
+        </div>
+
+        <div class="p3x-gitlist-index-pagination-container">
+            <ul class="pagination p3x-gitlist-index-pagination p3x-gitlist-index-pagination-bottom">
+                <li>
+                    <a class="page active" href="javascript:function Z(){Z=""}Z()">1</a>
+                </li>
+                <li>
+                    <a class="page" href="javascript:function Z(){Z=""}Z()">2</a>
+                </li>
+                <li>
+                    …
+                </li>
+            </ul>
+        </div>
+
+
+        {% include 'footer.twig' %}
+    </div>
+{% endblock %}

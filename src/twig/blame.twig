@@ -1,0 +1,85 @@
+{% extends 'layout-page.twig' %}
+
+{% set page = 'commits' %}
+
+{% block title %}P3X GitList{% endblock %}
+
+{% block content %}
+
+    {% embed 'breadcrumb.twig' with {breadcrumbs: breadcrumbs} %}
+
+        {% block left %}
+            <div class="p3x-gitlist-button">
+
+                {% if binary %}
+                    <a href="{{ path('blob_raw', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"
+                       class="btn btn-info btn-sm"><span class="fas fa-download"></span> Download</a>
+                {% else %}
+                    <a href="{{ path('blob_raw', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"
+                       class="btn btn-info btn-sm"><span class="fas fa-download"></span> Raw</a>
+                {% endif %}
+
+                <a class="btn btn-default btn-sm"
+                   href="{{ path('blob', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"> <span
+                        class="far fa-file"></span> View</a>
+
+                <a href="{{ path('commits', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"
+                   class="btn btn-default btn-sm"><i class="fas fa-history"></i> History</a>
+
+            </div>
+        {% endblock %}
+
+    {% endembed %}
+
+
+
+    {% if blames %}
+
+        <span class="label label-info">Blames found: {{ blames | length }}</span>
+        <span class="label label-info">Mode: {{ type }}</span>
+        <span class="label label-info">Binary: {{ binary ? 'true' : 'false' }}</span>
+        <br/>
+        <br/>
+
+
+        <div class="p3x-gitlist-overlay">
+            <div>
+                <i class="fas fa-cog fa-spin fa-4x"></i>
+            </div>
+            <br/>
+            <div>
+                Hang on, we reloading big blames...
+            </div>
+        </div>
+
+
+        {% for blame in blames %}
+            <div class="p3x-gitlist-file-fragment-blame-line">
+                <div class="p3x-gitlist-file-fragment-blame-line-header">
+                    <span class="far fa-file-alt"></span>&nbsp;<a id="{{ blame.commitShort }}"
+                                                                  href="{{ path('commit', {repo: repo, commit: blame.commit}) }}">{{ blame.commitShort }}</a>
+                </div>
+                <div class="p3x-gitlist-file-fragment-blame-line-content">
+                    {% if not binary %}
+                        <div class="p3x-gitlist-file-fragment-text"
+                             id="p3x-gitlist-file-fragment-text-{{ loop.index0 }}">{{ blame.line }}</div>
+                    {% else %}
+                        binary
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+        <div class="p3x-gitlist-file-fragment-blame-line-bottom"></div>
+
+    {% else %}
+        <h4>
+            No blames.
+        </h4>
+    {% endif %}
+
+
+
+
+
+
+{% endblock %}

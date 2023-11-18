@@ -1,0 +1,51 @@
+<script type="text/javascript">
+    window.gitlist.browse_type = '{{ browse_type }}';
+    window.gitlist.branches = {{ branches | json_encode | raw }}
+</script>
+
+
+<div class="dropdown" id="p3x-gitlist-branch-list-container">
+    <button class="btn btn-default btn dropdown-toggle" type="button" id="p3x-gitlist-branch-list"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        browsing: <strong title="{{ branch }}">{{ branch }}</strong>
+        <span class="caret"></span>
+    </button>
+    <div role="menu" class="dropdown-menu" id="p3x-gitlist-branch-list-dropdown-menu">
+        <form class="form-group-sm" style="margin: 5px;">
+            <input id="p3x-gitlist-branch-list-search" class="form-control" placeholder="Search" autofocus>
+        </form>
+
+        <div class="p3x-list-item-header p3x-gitlist-branch-menu-header">
+            Branches
+        </div>
+        <div id="p3x-gitlist-list-branch">
+                <span class="list">
+                    {% for item in branches %}
+                        <div class="p3x-gitlist-branch-menu-item {{ item == branch ? 'active' : '' }}"
+                             onclick="window.gitlist.browserClick({ checkout: '{{ item }}', type: 'branch'})"><a
+                                onclick="return false;" href="{{ path('branch', {repo: repo, branch: item}) }}"><span
+                                    class="item">{{ item }}</span></a></div>
+                    {% endfor %}
+                </span>
+        </div>
+
+        {% if tags %}
+            <div role="separator" class="divider"></div>
+            <div class="p3x-list-item-header p3x-gitlist-branch-menu-header">
+                Tags
+            </div>
+
+            <div id="p3x-gitlist-list-tag">
+                    <span class="list">
+                        {% for item in tags %}
+                            <div class="p3x-gitlist-branch-menu-item {{ item == branch ? 'active' : '' }}"
+                                 onclick="window.gitlist.browserClick({ checkout: '{{ item }}', type: 'tag'})"><a
+                                    href="{{ path('branch', {repo: repo, branch: item}) }}"
+                                    onclick="return false;"><span class="item">{{ item }}</span></a></div>
+                        {% endfor %}
+                    </span>
+            </div>
+        {% endif %}
+    </div>
+</div>
+

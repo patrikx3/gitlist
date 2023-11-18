@@ -1,0 +1,31 @@
+{% extends 'layout.twig' %}
+{% block title %}P3X GitList{% endblock %}
+
+{% block body %}
+    {% include 'navigation.twig' %}
+
+    <div class="container">
+
+        <div class="alert alert-danger">
+            <strong>Oops!</strong> {{ message }}
+        </div>
+
+        {% if error %}
+            <div class="alert alert-info">
+                It is possible, that for huge commits, you need to increase the <strong>PHP memory limit</strong>, or
+                sometimes, reloading is working, when you are not using lot's of many <strong>PHP</strong> processes. I
+                tried to make huge commits to work with <strong>128MB</strong>, but given, my server is using many
+                <strong>PHP</strong> processes, sometimes the <strong>128MB</strong> is not enough.
+            </div>
+            <div>
+                {{ error | raw }}
+            </div>
+            <br/>
+        {% endif %}
+
+        <a class="btn btn-info btn-block" href="#" onclick="location = document.referrer">You may go back to previous
+            page.</a>
+
+        {% include 'footer.twig' %}
+    </div>
+{% endblock %}
