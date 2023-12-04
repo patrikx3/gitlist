@@ -39,8 +39,9 @@ function copyToClipboard(textToCopy) {
     }
 }
 
-window.p3xGitlistCopy = async(code) => {
+window.p3xGitlistCopy = async(codeId) => {
     try {
+        const code = document.getElementById(`markdown-code-${codeId}`).innerText;
         await copyToClipboard(code);
         $.snackbar({ content: 'Copied!' })
     } catch(e) {

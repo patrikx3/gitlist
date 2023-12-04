@@ -99,6 +99,8 @@ markdownRenderer.image = function (href, title, text) {
     return result;
 };
 
+let codeIndex = 0;
+
 markdownRenderer.code = (code, language) => {
     if (language === undefined) {
         language = 'text';
@@ -116,7 +118,9 @@ We are not loading everything, since it is about 500kb`)
         language: language,
     }).value : code;
 
-    return `<div class="p3x-gitlist-markdown-code"><div class="p3x-gitlist-markdown-code-copy-paste" onclick='window.p3xGitlistCopy(${JSON.stringify(code)})'><i class="far fa-copy fa-lg"></i></div><pre><code class="hljs ${language}">${highlighted}</code></pre></div>`
+    codeIndex++;
+
+    return `<div class="p3x-gitlist-markdown-code"><div class="p3x-gitlist-markdown-code-copy-paste" onclick='window.p3xGitlistCopy(${codeIndex})'><i class="far fa-copy fa-lg"></i></div><pre><code class="hljs ${language}" id="markdown-code-${codeIndex}">${highlighted}</code></pre></div>`
     //return `<pre><code class="hljs ${language}">${highlighted}</code></pre>`;
 };
 
