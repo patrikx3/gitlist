@@ -16,8 +16,7 @@ module.exports = function (grunt) {
     loader.js({
         replacer: {
             type: 'p3x',
-            node: false,
-            npmio: false,
+            node: false,         
         },
         config:
             {
