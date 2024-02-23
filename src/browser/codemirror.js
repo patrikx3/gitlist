@@ -47,3 +47,4 @@ require('codemirror/mode/vue/vue');
 require('codemirror/mode/xml/xml');
 require('codemirror/mode/xquery/xquery');
 require('codemirror/mode/yaml/yaml');
+require('codemirror/mode/protobuf/protobuf');

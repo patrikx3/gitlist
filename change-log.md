@@ -5,6 +5,10 @@
                         
 [//]: #@corifeus-header:end
 
+### v2024.4.105
+Released on 02/23/2024
+* FEATURE: For the editor is works with Proto Buffer (.proto file extension).
+
 ### v2023.10.119
 Released on 07/23/2023
 * FIX: Changlog bug fix
@@ -469,7 +473,7 @@ All my domains ([patrikx3.com](https://patrikx3.com) and [corifeus.com](https://
 
 ---
 
-[**P3X-GITLIST**](https://corifeus.com/gitlist) Build v2024.4.103
+[**P3X-GITLIST**](https://corifeus.com/gitlist) Build v2024.4.105
 
 [![Donate for Corifeus / P3X](https://img.shields.io/badge/Donate-Corifeus-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software)
 

@@ -110,6 +110,7 @@ class Repository
         'bmp' => 'image',
         'csproj' => 'xml',
         'iml' => 'xml',
+        'proto' => 'text/x-protobuf',
     ];
 
     public function __construct(Application $app)
