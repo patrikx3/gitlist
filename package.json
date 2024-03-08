@@ -1,6 +1,6 @@
 {
     "name": "p3x-gitlist",
-    "version": "2024.4.106",
+    "version": "2024.4.110",
     "corifeus": {
         "prod-dir": "prod",
         "css-postfix": "49127d5e63e7892020d8e4a89ccb3096753eedde10ae84df1b002c027fb40698",
@@ -30,8 +30,8 @@
     "devDependencies": {
         "bootswatch": "^3.4.1",
         "concurrently": "^8.2.2",
-        "corifeus-builder": "^2024.4.106",
-        "corifeus-utils": "^2024.4.106",
+        "corifeus-builder": "^2024.4.123",
+        "corifeus-utils": "^2024.4.115",
         "css-loader": "^6.10.0",
         "css-minimizer-webpack-plugin": "^6.0.0",
         "fs-extra": "^11.2.0",
@@ -41,13 +41,13 @@
         "html-loader": "^5.0.0",
         "html-webpack-plugin": "^5.6.0",
         "less-loader": "^12.2.0",
-        "mini-css-extract-plugin": "^2.8.0",
+        "mini-css-extract-plugin": "^2.8.1",
         "postcss-safe-parser": "^7.0.0",
         "source-map-loader": "^5.0.0",
         "style-loader": "^3.3.4",
         "terser-webpack-plugin": "^5.3.10",
         "url-loader": "^4.1.1",
-        "webpack": "^5.90.2",
+        "webpack": "^5.90.3",
         "webpack-cli": "^5.1.4",
         "webpack-remove-debug": "^0.1.0",
         "worker-loader": "^3.0.8"
@@ -68,7 +68,7 @@
         "js-htmlencode": "^0.3.0",
         "list.js": "^2.3.1",
         "lodash": "^4.17.21",
-        "marked": "^12.0.0",
+        "marked": "^12.0.1",
         "moment": "^2.30.1",
         "php-date": "^4.0.1",
         "raphael": "^2.3.0",
