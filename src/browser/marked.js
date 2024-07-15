@@ -20,6 +20,7 @@ hljs.registerLanguage('javascript', require('highlight.js/lib/languages/javascri
 hljs.registerLanguage('js', require('highlight.js/lib/languages/javascript'));
 hljs.registerLanguage('json', require('highlight.js/lib/languages/json'));
 hljs.registerLanguage('bash', require('highlight.js/lib/languages/shell'));
+hljs.registerLanguage('sh', require('highlight.js/lib/languages/shell'));
 hljs.registerLanguage('php', require('highlight.js/lib/languages/php'));
 hljs.registerLanguage('shell', require('highlight.js/lib/languages/shell'));
 hljs.registerLanguage('cmd', require('highlight.js/lib/languages/shell'));
@@ -36,19 +37,52 @@ const markdownRenderer = new marked.Renderer();
 global.gitlist.markdownRenderer = markdownRenderer;
 
 const kebabCase = require('lodash/kebabCase')
-markdownRenderer.heading = function (text, level, raw) {
+markdownRenderer.heading = (token) => {
+    //console.log('token heading', token)
+    //            console.log('text', text,)
+    //            console.log('raw', raw)
+    
+    // text, level, raw
+    const text = token.text;
+    let level = token.depth;
+    const raw = token.raw
+
     level = level + 2;
     const ref = kebabCase(text).replace(/[^\x00-\xFF]/g, "");
     const id = ref + '-parent';
     const hover = ` onmouseenter="document.getElementById('${ref}').style.display = 'inline'"  onmouseleave="document.getElementById('${ref}').style.display = 'none'" `;
 
-    const element = `<div ${hover} class="p3x-gitlist-markdown-heading-container"><h${level} id="${id}" class="p3x-gitlist-markdown-heading">${text}&nbsp;<a class="p3x-gitlist-markdown-heading-link" id="${ref}" href="${location.origin}${location.pathname}#${ref}" onclick="return window.gitlist.scrollHash(this, event)">#</a></h${level}></div>`;
+    const element = `<div ${hover} class="p3x-gitlist-markdown-heading-container"><h${level} id="${id}" class="p3x-gitlist-markdown-heading">${text}&nbsp;<a class="p3x-gitlist-markdown-heading-link" id="${ref}" href="${location.origin}${location.pathname}#${ref}" onclick="return window.gitlist.scrollHash(this, event);">#</a></h${level}></div>`;
 
     return element
 }
 
 
-markdownRenderer.link = function (href, title, text) {
+markdownRenderer.strong = (token) => {
+    return `<font style="font-weight: bold;">${token.text}</font>`;
+}
+
+markdownRenderer.link = (token) => {
+    console.log('token link', token)
+
+    const title = token.title
+    let href = token.href
+    let text = token.text
+
+
+    if (token.tokens.length === 1) {
+        if (token.tokens[0].type === 'image') {
+            const imageToken = token.tokens[0]
+            //console.log('image token', imageToken)
+            text = markdownRenderer.image(imageToken);
+        } else if (token.tokens[0].type === 'strong') {
+            const strongToken = token.tokens[0]
+            //console.log('strong token', strongToken)
+            text = markdownRenderer.strong(strongToken);
+        }
+    }
+
+
     let a;
     if (href.startsWith('https:/') || href.startsWith('http:/')) {
         a = '<a target="_blank" href="' + href + '">' + text + '</a>';
@@ -70,7 +104,12 @@ markdownRenderer.link = function (href, title, text) {
     return a;
 }
 
-markdownRenderer.image = function (href, title, text) {
+markdownRenderer.image = (token) => {
+    //console.log('token image', token)
+
+    // href, title, text
+    let {href, title, text} = token;
+
     title = title || '';
     text = text || '';
     let resultText = title;
@@ -96,12 +135,21 @@ markdownRenderer.image = function (href, title, text) {
 
     const result = '<img class="p3x-gitlist-markdown-image" alt="' + htmlEncode(resultText) + '" title="' + htmlEncode(resultText) + '" src="' + href + '"/>';
 
+    //console.warn('result image', result)
     return result;
 };
 
 let codeIndex = 0;
 
-markdownRenderer.code = (code, language) => {
+markdownRenderer.code = (token) => {
+    //console.log('token code', token)
+
+    // code, language
+    //console.warn('code', token)
+
+    const code = token.text;
+    let language = token.lang;
+
     if (language === undefined) {
         language = 'text';
     }
@@ -124,7 +172,12 @@ We are not loading everything, since it is about 500kb`)
     //return `<pre><code class="hljs ${language}">${highlighted}</code></pre>`;
 };
 
-markdownRenderer.codespan = (code) => {
+markdownRenderer.codespan = (token) => {
+    //console.log('token codespan', token)
+    
+    //console.warn('codespan', token)
+
+    const code = token.text
     const lang = 'html';
     const highlighted = hljs.highlight(code, {
         language: lang,

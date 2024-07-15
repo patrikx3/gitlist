@@ -19,6 +19,13 @@ window.gitlist.scrollHash = function (element, event) {
     }
     window.gitlist.scrollIntoView(elfind || elfind2);
 
+    setTimeout(() => {
+        window.scrollBy({
+            top: -60,
+            behavior: 'smooth'
+        });
+    }, 300); // Adjust the timeout duration as necessary
+
     if (event !== undefined) {
         event.preventDefault()
         window.gitlist.pushHash(url.hash)
