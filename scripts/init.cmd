@@ -23,4 +23,4 @@ for %%r in ("https://github.com/patrikx3/angular-compile" "https://github.com/pa
 popd
 
 composer install
-npm install
+yarn install

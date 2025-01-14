@@ -10,7 +10,7 @@ name=$pkg_name-v$version
 repo=$TOP/build/$name
 
 pushd $TOP
-npm install
+yarn install 
 
 if [ "$HOSTNAME" = "workstation" ];
 then

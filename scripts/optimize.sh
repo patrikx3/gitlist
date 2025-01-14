@@ -10,7 +10,7 @@ chmod 0770 ./cache
 composer install
 composer install --no-dev
 composer dump-autoload --optimize
-npm install --unsafe-perm
+yarn install --unsafe-perm
 npm run build --verbose
 rm -rf ./node_modules
 popd

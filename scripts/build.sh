@@ -10,7 +10,7 @@ name=$pkg_name
 repo=$TOP/build/$name
 
 pushd $TOP
-npm install
+yarn install
 composer install --no-dev
 composer dump-autoload --optimize
 mkdir -p $TOP/cache

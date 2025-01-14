@@ -30,7 +30,7 @@ jobs:
               with:
                   node-version: ${{ matrix.node-version }}
             - run: npm i -g grunt-cli
-            - run: npm install
+            - run: yarn install
             - run: grunt
 
             - uses: shivammathur/setup-php@v2
