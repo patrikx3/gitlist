@@ -32,9 +32,7 @@ P3X Enhanced GitList is a fork of the klaussilveira Gitlist. What is different a
 ## Beware
 If you use other, than UTF-8 encoded files, you could get incorrect results, as it does not do converting, it only works with UTF-8.
 
-# Live demo
-
-[https://gitlist.patrikx3.com/](https://gitlist.patrikx3.com/)
+# Demo
 
 [Screenshots](artifacts/screenshots.md)
 
