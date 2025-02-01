@@ -1,6 +1,6 @@
 {
     "name": "p3x-gitlist",
-    "version": "2025.4.111",
+    "version": "2025.4.113",
     "corifeus": {
         "prod-dir": "prod",
         "css-postfix": "49127d5e63e7892020d8e4a89ccb3096753eedde10ae84df1b002c027fb40698",
@@ -11,7 +11,7 @@
         "cdn": true,
         "icon": "fas fa-code",
         "code": "Spawn",
-        "nodejs": "v22.13.0",
+        "nodejs": "v22.13.1",
         "reponame": "gitlist",
         "build": true
     },
@@ -30,8 +30,8 @@
     "devDependencies": {
         "bootswatch": "^3.4.1",
         "concurrently": "^9.1.2",
-        "corifeus-builder": "^2025.4.128",
-        "corifeus-utils": "^2025.4.120",
+        "corifeus-builder": "^2025.4.135",
+        "corifeus-utils": "^2025.4.123",
         "css-loader": "^7.1.2",
         "css-minimizer-webpack-plugin": "^7.0.0",
         "fs-extra": "^11.3.0",
