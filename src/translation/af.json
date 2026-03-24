@@ -21,7 +21,7 @@
   "index.sort.by_name": "Sorteer volgens naam",
   "index.sort.by_last_commit": "Sorteer volgens laaste commit",
   "index.repo.by": "deur",
-  "index.repo.on": "op",
+  "index.repo.branch": "tak",
   "index.repo.empty": "Hierdie repo is leeg. Skep asseblief 'n Git-commit en stoot dit om dit bruikbaar te maak.",
   "index.repo.no_description": "Daar is geen bewaarplekbeskrywingslêer nie. Skep asseblief een om hierdie boodskap te verwyder.",
 

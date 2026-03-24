@@ -21,7 +21,7 @@
   "index.sort.by_name": "Ordenar per nom",
   "index.sort.by_last_commit": "Ordenar per darrer commit",
   "index.repo.by": "per",
-  "index.repo.on": "el",
+  "index.repo.branch": "branca",
   "index.repo.empty": "Aquest repo està buit. Si us plau, creeu un commit Git i feu push per fer-lo utilitzable.",
   "index.repo.no_description": "No hi ha fitxer de descripció del repositori. Si us plau, creeu-ne un per eliminar aquest missatge.",
 

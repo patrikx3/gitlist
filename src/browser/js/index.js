@@ -25,6 +25,17 @@ $(async function () {
 
 
         const moment = require('moment')
+        const lang = Cookies.get('p3x-gitlist-language') || 'en'
+        const momentLocaleMap = { 'no': 'nb', 'zh': 'zh-cn' }
+        const momentLocale = momentLocaleMap[lang] || lang
+        if (momentLocale !== 'en') {
+            try {
+                require(`moment/locale/${momentLocale}`)
+            } catch (e) {
+                // locale not available, fall back to English
+            }
+        }
+        moment.locale(momentLocale)
         const times = $('.p3x-gitlist-index-repo-last-commit > .p3x-gitlist-index-repo-last-commit-time')
         const timesStamp = $('.p3x-gitlist-index-repo-last-commit > .p3x-gitlist-index-repo-last-commit-timestamp')
         const timesContainer = $('.p3x-gitlist-index-repo-last-commit')

@@ -21,7 +21,7 @@
   "index.sort.by_name": "Seřadit podle názvu",
   "index.sort.by_last_commit": "Seřadit podle posledního commitu",
   "index.repo.by": "od",
-  "index.repo.on": "dne",
+  "index.repo.branch": "větev",
   "index.repo.empty": "Tento repozitář je prázdný. Vytvořte prosím Git commit a proveďte push, aby byl použitelný.",
   "index.repo.no_description": "Chybí soubor s popisem repozitáře. Vytvořte prosím jeden pro odstranění této zprávy.",
 

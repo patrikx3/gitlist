@@ -21,7 +21,7 @@
   "index.sort.by_name": "Ada göre sırala",
   "index.sort.by_last_commit": "Son commit'e göre sırala",
   "index.repo.by": "tarafından",
-  "index.repo.on": "tarihinde",
+  "index.repo.branch": "dal",
   "index.repo.empty": "Bu depo boş. Kullanılabilir hale getirmek için lütfen bir Git commit'i oluşturun ve push yapın.",
   "index.repo.no_description": "Depo açıklama dosyası yok. Bu mesajı kaldırmak için lütfen bir tane oluşturun.",
 

@@ -21,7 +21,7 @@
   "index.sort.by_name": "Nach Name sortieren",
   "index.sort.by_last_commit": "Nach letztem Commit sortieren",
   "index.repo.by": "von",
-  "index.repo.on": "am",
+  "index.repo.branch": "Branch",
   "index.repo.empty": "Dieses Repository ist leer. Bitte erstelle einen GIT-Commit und pushe ihn, um es nutzbar zu machen.",
   "index.repo.no_description": "Es gibt keine Repository-Beschreibungsdatei. Bitte erstelle eine, um diese Nachricht zu entfernen.",
 

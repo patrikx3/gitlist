@@ -21,7 +21,7 @@
   "index.sort.by_name": "নাম অনুসারে সাজান",
   "index.sort.by_last_commit": "শেষ কমিট অনুসারে সাজান",
   "index.repo.by": "দ্বারা",
-  "index.repo.on": "তারিখে",
+  "index.repo.branch": "শাখা",
   "index.repo.empty": "এই রিপো খালি। অনুগ্রহ করে একটি Git কমিট তৈরি করুন এবং পুশ করুন যাতে এটি ব্যবহারযোগ্য হয়।",
   "index.repo.no_description": "কোনো রিপোজিটরি বিবরণ ফাইল নেই। এই বার্তা সরাতে অনুগ্রহ করে একটি তৈরি করুন।",
 

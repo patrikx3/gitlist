@@ -21,7 +21,7 @@
   "index.sort.by_name": "Sorter etter navn",
   "index.sort.by_last_commit": "Sorter etter siste commit",
   "index.repo.by": "av",
-  "index.repo.on": "den",
+  "index.repo.branch": "gren",
   "index.repo.empty": "Dette repoet er tomt. Opprett en Git-commit og push for a gjore det brukbart.",
   "index.repo.no_description": "Det finnes ingen repositorybeskrivelse. Opprett en for a fjerne denne meldingen.",
 

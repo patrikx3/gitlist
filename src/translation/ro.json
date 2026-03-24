@@ -21,7 +21,7 @@
   "index.sort.by_name": "Sortare după nume",
   "index.sort.by_last_commit": "Sortare după ultimul commit",
   "index.repo.by": "de",
-  "index.repo.on": "pe",
+  "index.repo.branch": "ramură",
   "index.repo.empty": "Acest depozit este gol. Vă rugăm să creați un commit Git și să faceți push pentru a-l face utilizabil.",
   "index.repo.no_description": "Nu există fișier de descriere a depozitului. Vă rugăm să creați unul pentru a elimina acest mesaj.",
 

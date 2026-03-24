@@ -21,7 +21,7 @@
   "index.sort.by_name": "Sắp xếp theo tên",
   "index.sort.by_last_commit": "Sắp xếp theo commit gần nhất",
   "index.repo.by": "bởi",
-  "index.repo.on": "vào",
+  "index.repo.branch": "nhánh",
   "index.repo.empty": "Kho lưu trữ này trống. Vui lòng tạo một Git commit và push để có thể sử dụng.",
   "index.repo.no_description": "Không có tệp mô tả kho lưu trữ. Vui lòng tạo một tệp để xóa thông báo này.",
 

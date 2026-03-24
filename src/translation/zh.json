@@ -21,7 +21,7 @@
   "index.sort.by_name": "按名称排序",
   "index.sort.by_last_commit": "按最近提交排序",
   "index.repo.by": "作者",
-  "index.repo.on": "于",
+  "index.repo.branch": "分支",
   "index.repo.empty": "此仓库为空。请创建一个 GIT 提交并推送，以使其可用。",
   "index.repo.no_description": "没有仓库描述文件。请创建一个以移除此消息。",
 

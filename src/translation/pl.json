@@ -21,7 +21,7 @@
   "index.sort.by_name": "Sortuj wg nazwy",
   "index.sort.by_last_commit": "Sortuj wg ostatniego commitu",
   "index.repo.by": "przez",
-  "index.repo.on": "dnia",
+  "index.repo.branch": "gałąź",
   "index.repo.empty": "To repozytorium jest puste. Utwórz commit Git i wypchnij, aby było użyteczne.",
   "index.repo.no_description": "Brak pliku opisu repozytorium. Utwórz go, aby usunąć tę wiadomość.",
 

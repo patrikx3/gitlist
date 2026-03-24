@@ -21,7 +21,7 @@
   "index.sort.by_name": "Sorteren op naam",
   "index.sort.by_last_commit": "Sorteren op laatste commit",
   "index.repo.by": "door",
-  "index.repo.on": "op",
+  "index.repo.branch": "tak",
   "index.repo.empty": "Deze repo is leeg. Maak een Git-commit en push om het bruikbaar te maken.",
   "index.repo.no_description": "Er is geen repository-beschrijvingsbestand. Maak er een aan om dit bericht te verwijderen.",
 

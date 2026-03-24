@@ -21,7 +21,7 @@
   "index.sort.by_name": "מיון לפי שם",
   "index.sort.by_last_commit": "מיון לפי קומיט אחרון",
   "index.repo.by": "מאת",
-  "index.repo.on": "בתאריך",
+  "index.repo.branch": "ענף",
   "index.repo.empty": "מאגר זה ריק. אנא צור קומיט Git ובצע push כדי להפוך אותו לשמיש.",
   "index.repo.no_description": "אין קובץ תיאור למאגר. אנא צור אחד כדי להסיר הודעה זו.",
 

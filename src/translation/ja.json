@@ -21,7 +21,7 @@
   "index.sort.by_name": "名前順",
   "index.sort.by_last_commit": "最終コミット順",
   "index.repo.by": "作成者",
-  "index.repo.on": "日付",
+  "index.repo.branch": "ブランチ",
   "index.repo.empty": "このリポジトリは空です。Git コミットを作成してプッシュしてください。",
   "index.repo.no_description": "リポジトリの説明ファイルがありません。このメッセージを消すには作成してください。",
 

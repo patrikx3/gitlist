@@ -21,7 +21,7 @@
   "index.sort.by_name": "이름순 정렬",
   "index.sort.by_last_commit": "최근 커밋순 정렬",
   "index.repo.by": "작성자",
-  "index.repo.on": "날짜",
+  "index.repo.branch": "브랜치",
   "index.repo.empty": "이 저장소는 비어 있습니다. Git 커밋을 생성하고 푸시하여 사용 가능하게 만들어 주세요.",
   "index.repo.no_description": "저장소 설명 파일이 없습니다. 이 메시지를 제거하려면 하나를 만들어 주세요.",
 

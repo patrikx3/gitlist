@@ -21,7 +21,7 @@
   "index.sort.by_name": "ترتيب حسب الاسم",
   "index.sort.by_last_commit": "ترتيب حسب آخر إيداع",
   "index.repo.by": "بواسطة",
-  "index.repo.on": "في",
+  "index.repo.branch": "فرع",
   "index.repo.empty": "هذا المستودع فارغ. يرجى إنشاء إيداع Git ودفعه لجعله قابلا للاستخدام.",
   "index.repo.no_description": "لا يوجد ملف وصف للمستودع. يرجى إنشاء واحد لإزالة هذه الرسالة.",
 

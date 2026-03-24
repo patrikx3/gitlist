@@ -21,7 +21,7 @@
   "index.sort.by_name": "Ordenar por nome",
   "index.sort.by_last_commit": "Ordenar por ultimo commit",
   "index.repo.by": "por",
-  "index.repo.on": "em",
+  "index.repo.branch": "ramo",
   "index.repo.empty": "Este repositorio esta vazio. Por favor, crie um commit Git e faca push para o tornar utilizavel.",
   "index.repo.no_description": "Nao existe ficheiro de descricao do repositorio. Por favor, crie um para remover esta mensagem.",
 

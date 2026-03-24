@@ -21,7 +21,7 @@
   "index.sort.by_name": "Sort by name",
   "index.sort.by_last_commit": "Sort by last commit",
   "index.repo.by": "by",
-  "index.repo.on": "on",
+  "index.repo.branch": "branch",
   "index.repo.empty": "This repo is empty. Please, create a GIT commit push to make it to be usable.",
   "index.repo.no_description": "There is no repository description file. Please, create one to remove this message.",
 

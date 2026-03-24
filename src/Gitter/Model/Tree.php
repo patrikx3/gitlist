@@ -12,8 +12,6 @@
 namespace Gitter\Model;
 
 use Gitter\Repository;
-use function Stringy\create;
-use Stringy\Stringy as S;
 
 class Tree extends Item implements \RecursiveIterator
 {
@@ -75,9 +73,8 @@ class Tree extends Item implements \RecursiveIterator
                 //              exit;
                 $url = $submodules["submodule $submoduleName"]['url'];
                 if (preg_match('/^https?:\/\/(www\.)?github.com\//i', $url)) {
-                    $s = S::create($url);
-                    if ($s->endsWith('.git')) {
-                        $url = substr($url, 0, strlen($url) - 4);
+                    if (str_ends_with($url, '.git')) {
+                        $url = substr($url, 0, -4);
                     }
                 }
                 $tree->setUrl($url);

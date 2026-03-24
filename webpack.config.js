@@ -73,18 +73,10 @@ const rules = [
 
 const plugins = [
 
-    /*
-    not needed, as require or import will import, but it is to stop automatically all, we rather employ the import instead of webpack
     new webpack.ContextReplacementPlugin(
         /moment[/\\]locale$/,
-//        /de|fr|hu/
-        /hu/
+        /af|ar|bn|ca|cs|da|de|el|es|fi|fr|he|hi|hu|id|it|ja|ko|ms|nb|nl|pl|pt|ro|ru|sk|sv|tr|uk|vi|zh-cn/
     ),
-     */
-    new webpack.IgnorePlugin({
-        resourceRegExp: /^\.\/locale$/,
-        contextRegExp: /moment$/
-    }),
 
     new HtmlWebpackPlugin({
         template: `${__dirname}/src/browser/layout.tpl.twig`,

@@ -21,7 +21,7 @@
   "index.sort.by_name": "Trier par nom",
   "index.sort.by_last_commit": "Trier par dernier commit",
   "index.repo.by": "par",
-  "index.repo.on": "le",
+  "index.repo.branch": "branche",
   "index.repo.empty": "Ce dépôt est vide. Veuillez créer un commit GIT et le pousser pour le rendre utilisable.",
   "index.repo.no_description": "Il n'y a pas de fichier de description du dépôt. Veuillez en créer un pour supprimer ce message.",
 

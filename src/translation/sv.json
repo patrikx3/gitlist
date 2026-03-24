@@ -21,7 +21,7 @@
   "index.sort.by_name": "Sortera efter namn",
   "index.sort.by_last_commit": "Sortera efter senaste commit",
   "index.repo.by": "av",
-  "index.repo.on": "den",
+  "index.repo.branch": "gren",
   "index.repo.empty": "Det här förrådet är tomt. Skapa en Git-commit och pusha för att göra det användbart.",
   "index.repo.no_description": "Det finns ingen beskrivningsfil för förrådet. Skapa en för att ta bort detta meddelande.",
 

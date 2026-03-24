@@ -21,7 +21,7 @@
   "index.sort.by_name": "Rendezés név szerint",
   "index.sort.by_last_commit": "Rendezés utolsó commit szerint",
   "index.repo.by": "szerző",
-  "index.repo.on": "dátum",
+  "index.repo.branch": "ág",
   "index.repo.empty": "Ez a tároló üres. Kérlek, hozz létre egy GIT commitot és pushold, hogy használható legyen.",
   "index.repo.no_description": "Nincs tárolóleírás fájl. Kérlek, hozz létre egyet, hogy eltűnjön ez az üzenet.",
 

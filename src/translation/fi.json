@@ -21,7 +21,7 @@
   "index.sort.by_name": "Järjestä nimen mukaan",
   "index.sort.by_last_commit": "Järjestä viimeisen commitin mukaan",
   "index.repo.by": "tekijä",
-  "index.repo.on": "päivänä",
+  "index.repo.branch": "haara",
   "index.repo.empty": "Tämä tietovarasto on tyhjä. Luo Git-commit ja tee push, jotta se on käyttökelpoinen.",
   "index.repo.no_description": "Tietovaraston kuvaustiedostoa ei ole. Luo sellainen poistaaksesi tämän viestin.",
 
