@@ -3,7 +3,7 @@
 {% block body %}
     {% include 'navigation.twig' %}
 
-    <div class="container">
+    <div class="container mt-3">
 
         {% if page in ['commits', 'searchcommits'] %}
             <form class="mb-3" action="{{ repo }}/commits/{{ branch }}/search" method="POST">
