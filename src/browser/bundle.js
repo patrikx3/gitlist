@@ -28,10 +28,12 @@ global.$ = global.jQuery;
         const toastEl = document.createElement('div');
         toastEl.className = 'toast show';
         toastEl.setAttribute('role', 'alert');
+        const isDark = window.gitlist.isDark();
+        toastEl.className = 'toast show ' + (isDark ? 'text-bg-light' : 'text-bg-dark');
         toastEl.innerHTML = `
             <div class="toast-body d-flex align-items-center justify-content-between">
                 <span>${htmlAllowed ? content : $('<span>').text(content).html()}</span>
-                <button type="button" class="btn-close btn-close-white ms-2" data-bs-dismiss="toast"></button>
+                <button type="button" class="btn-close ${isDark ? '' : 'btn-close-white'} ms-2" data-bs-dismiss="toast"></button>
             </div>`;
 
         ensureContainer().appendChild(toastEl);

@@ -63,7 +63,7 @@ markdownRenderer.strong = (token) => {
 }
 
 markdownRenderer.link = (token) => {
-    console.log('token link', token)
+    //console.log('token link', token)
 
     const title = token.title
     let href = token.href
