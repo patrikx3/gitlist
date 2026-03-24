@@ -4,8 +4,8 @@ namespace GitList\Controller;
 
 use GitList\Git\Repository;
 use Gitter\Model\Commit\Commit;
-use Silex\Application;
-use Silex\Api\ControllerProviderInterface;
+use Framework\Application;
+use Framework\ControllerProviderInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 class NetworkController implements ControllerProviderInterface

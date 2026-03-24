@@ -161,7 +161,7 @@
     {% else %}
         <p>This repository is empty.</p>
     {% endif %}
-    {% if readme is defined and readme is not empty %}
+    {% if readme is not empty %}
         {% include 'markdown.twig' with {'filename': readme.filename, 'data': readme.content} %}
     {% endif %}
 

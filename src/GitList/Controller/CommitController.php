@@ -2,8 +2,8 @@
 
 namespace GitList\Controller;
 
-use Silex\Application;
-use Silex\Api\ControllerProviderInterface;
+use Framework\Application;
+use Framework\ControllerProviderInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 

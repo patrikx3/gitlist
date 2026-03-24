@@ -31,7 +31,7 @@
                 <ul id="rev-list">
                     {% for item in graphItems %}
                         <li>
-                            {% if item.rev is defined %}
+                            {% if item.rev is not empty %}
                                 <a id="{{ item.short_rev }}" class="treegraph-button"
                                    href="{{ path('commit', {repo: repo, commit: item.rev}) }}"> {{ item.short_rev }}</a>
                                 <strong> {{ item.branch }} </strong>

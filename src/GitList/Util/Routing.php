@@ -2,7 +2,7 @@
 
 namespace GitList\Util;
 
-use Silex\Application;
+use Framework\Application;
 use GitList\Exception\EmptyRepositoryException;
 
 class Routing

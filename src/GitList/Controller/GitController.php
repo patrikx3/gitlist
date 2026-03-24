@@ -12,8 +12,8 @@ namespace GitList\Controller;
 
 use Gitlist\Application as GitlistApp;
 use Gitter\Repository;
-use Silex\Application;
-use Silex\Api\ControllerProviderInterface;
+use Framework\Application;
+use Framework\ControllerProviderInterface;
 use Symfony\Component\HttpFoundation\Request;
 use TheSeer\Tokenizer\Exception;
 

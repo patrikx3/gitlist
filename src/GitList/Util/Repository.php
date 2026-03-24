@@ -2,7 +2,7 @@
 
 namespace GitList\Util;
 
-use Silex\Application;
+use Framework\Application;
 
 class Repository
 {
@@ -42,6 +42,7 @@ class Repository
         'htm' => 'htmlmixed',
         'tpl' => 'htmlmixed',
         'js' => 'javascript',
+        'mjs' => 'javascript',
         'ts' => 'application/typescript',
         'json' => 'javascript',
         'jsx' => 'jsx',

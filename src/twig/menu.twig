@@ -1,6 +1,6 @@
 <div>
     <div id="p3x-gitlist-main-tabs-browser">
-        {% if branches is defined %}
+        {% if branches is not empty %}
             {% include 'browser.twig' %}
         {% endif %}
     </div>

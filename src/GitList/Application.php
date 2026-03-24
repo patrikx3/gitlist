@@ -2,9 +2,8 @@
 
 namespace GitList;
 
-use Silex\Application as SilexApplication;
-use Silex\Provider\TwigServiceProvider;
-use Silex\Provider\UrlGeneratorServiceProvider;
+use Framework\Application as FrameworkApplication;
+use Framework\Provider\TwigServiceProvider;
 use GitList\Provider\GitServiceProvider;
 use GitList\Provider\RepositoryUtilServiceProvider;
 use GitList\Provider\ViewUtilServiceProvider;
@@ -16,7 +15,7 @@ use Twig\TwigFunction;
 /**
  * GitList application.
  */
-class Application extends SilexApplication
+class Application extends FrameworkApplication
 {
     protected $path;
 
