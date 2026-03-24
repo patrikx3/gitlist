@@ -66,6 +66,35 @@ $(async function () {
         }
         input.val(value);
 
+        const searchColumns = ['p3x-gitlist-index-name', 'p3x-gitlist-index-description', 'p3x-gitlist-index-repo-last-commit-user'];
+        const customSearch = function(searchString, columns) {
+            // List.js escapes special chars for regex, but uses indexOf - so we unescape
+            const query = searchString.replace(/\\(.)/g, '$1').toLowerCase().trim();
+            if (!query) return;
+            const words = query.split(/\s+/);
+            for (let k = 0; k < list.items.length; k++) {
+                const item = list.items[k];
+                item.found = false;
+                let allWordsFound = true;
+                for (let i = 0; i < words.length; i++) {
+                    let wordFound = false;
+                    const values = item.values();
+                    for (let j = 0; j < columns.length; j++) {
+                        const val = values[columns[j]];
+                        if (val != null) {
+                            const text = (typeof val !== 'string' ? val.toString() : val).toLowerCase();
+                            if (text.indexOf(words[i]) !== -1) {
+                                wordFound = true;
+                                break;
+                            }
+                        }
+                    }
+                    if (!wordFound) { allWordsFound = false; break; }
+                }
+                item.found = allWordsFound;
+            }
+        };
+
         const listOptions = {
             valueNames: ['p3x-gitlist-index-name', 'p3x-gitlist-index-description', 'p3x-gitlist-index-repo-last-commit-timestamp', 'p3x-gitlist-index-repo-last-commit-user', 'p3x-gitlist-index-repo-last-commit-time'],
             indexAsync: false,
@@ -94,6 +123,24 @@ $(async function () {
         }
 
         const list = new List(id, listOptions);
+
+        // Custom search handler to fix List.js bug where special chars like - are regex-escaped
+        const debounce = require('lodash/debounce');
+        const searchHandler = debounce(() => {
+            const val = input.val();
+            if (val) {
+                list.search(val, searchColumns, customSearch);
+            } else {
+                list.search();
+            }
+        }, 200);
+        input.on('keyup', searchHandler);
+        input.on('input', function() {
+            if (input.val() === '') {
+                list.search();
+            }
+        });
+
         const $pager = $('#p3x-gitlist-index-pagination-top')
         list.on('updated', () => {
             if (showPaging) {
@@ -166,7 +213,7 @@ $(async function () {
         //setInputSortSelect()
 
         if (value !== undefined) {
-            list.search(value);
+            list.search(value, searchColumns, customSearch);
         }
     }
 })
