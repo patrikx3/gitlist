@@ -15,7 +15,7 @@ const sassSettings = (grunt) => {
         options: {
             implementation: require('sass'),
             sourceMap: false,
-            outputStyle: 'compressed',
+            style: 'compressed',
         },
         get files() {
             let files = glob.sync(`${cwd}/src/browser/scss/**/*.*`)

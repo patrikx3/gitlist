@@ -1,5 +1,5 @@
 window.gitlist.codemirrorTheme = {
-    light: 'idea',
+    light: 'light',
     dark: 'dracula',
 }
 
