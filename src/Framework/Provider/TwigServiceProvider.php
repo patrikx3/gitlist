@@ -55,6 +55,18 @@ class TwigServiceProvider implements ServiceProviderInterface
                 $twig->addExtension(new RoutingExtension($app['url_generator']));
             }
 
+            $twig->addGlobal('app', $app);
+            $twig->addGlobal('global', new class($app) {
+                private $app;
+                public function __construct($app) { $this->app = $app; }
+                public function __get($name) {
+                    if ($name === 'request') {
+                        return $this->app['request_stack']->getCurrentRequest();
+                    }
+                    return null;
+                }
+            });
+
             return $twig;
         };
     }

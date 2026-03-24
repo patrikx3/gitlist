@@ -12,7 +12,11 @@ repo=$TOP/build/$name
 pushd $TOP
 yarn install 
 
-COMPOSER_ALLOW_SUPERUSER=1 composer install --no-dev --optimize-autoloader --ignore-platform-reqs
+if command -v composer &> /dev/null; then
+    COMPOSER_ALLOW_SUPERUSER=1 composer install --no-dev --optimize-autoloader --ignore-platform-reqs
+else
+    docker run --rm -v $TOP:/app composer install --no-dev --optimize-autoloader --ignore-platform-reqs
+fi
 mkdir -p $TOP/cache
 #npm install
 npm run build
