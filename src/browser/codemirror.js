@@ -108,16 +108,23 @@ function getLanguageExtension(mode) {
     return [];
 }
 
-// Light theme (similar to 'idea')
+// Light theme - uses semi-transparent background to inherit from Bootswatch theme
 const lightTheme = EditorView.theme({
-    '&': { backgroundColor: '#ffffff', color: '#000000' },
-    '.cm-gutters': { backgroundColor: '#f5f5f5', color: '#999', borderRight: '1px solid #ddd' },
-    '.cm-activeLineGutter': { backgroundColor: '#e8f2ff' },
-    '&.cm-focused .cm-activeLine': { backgroundColor: '#e8f2ff' },
+    '&': { backgroundColor: 'rgba(255, 255, 255, 0.6)', color: 'inherit' },
+    '.cm-gutters': { backgroundColor: 'rgba(245, 245, 245, 0.6)', color: '#999', borderRight: '1px solid rgba(0,0,0,0.1)', cursor: 'pointer' },
+    '.cm-activeLineGutter': { backgroundColor: 'rgba(200, 220, 255, 0.4)' },
+    '&.cm-focused .cm-activeLine': { backgroundColor: 'rgba(200, 220, 255, 0.3)' },
 }, {dark: false});
 
-// Dark theme extension
-const darkThemeExt = oneDark;
+// Dark theme - uses semi-transparent background to inherit from Bootswatch theme
+const darkThemeExt = EditorView.theme({
+    '&': { backgroundColor: 'rgba(0, 0, 0, 0.6)', color: '#e0e0e0' },
+    '.cm-gutters': { backgroundColor: 'rgba(0, 0, 0, 0.6)', color: '#666', borderRight: '1px solid rgba(255,255,255,0.1)', cursor: 'pointer' },
+    '.cm-activeLineGutter': { backgroundColor: 'rgba(255, 255, 255, 0.08)' },
+    '&.cm-focused .cm-activeLine': { backgroundColor: 'rgba(255, 255, 255, 0.06)' },
+    '.cm-cursor': { borderLeftColor: '#fff' },
+    '.cm-selectionBackground, &.cm-focused .cm-selectionBackground': { backgroundColor: 'rgba(100, 150, 255, 0.3)' },
+}, {dark: true});
 
 // Compartments for dynamic reconfiguration
 const readOnlyComp = new Compartment();
