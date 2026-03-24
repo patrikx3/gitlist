@@ -15,30 +15,12 @@
     }
 }
 
-// Bootstrap 5 global fixes
-a {
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-// BS5 navbar fixes
-.navbar-brand {
+// Bootstrap 5 global fixes - force no underlines everywhere
+a, a:hover, a:focus, a:active,
+.navbar-brand, .nav-link, .dropdown-item,
+.list-group-item a, .breadcrumb-item a,
+.page-link, .btn {
     text-decoration: none !important;
-}
-
-.nav-link {
-    text-decoration: none !important;
-}
-
-.dropdown-item {
-    text-decoration: none !important;
-}
-
-.list-group-item a {
-    text-decoration: none;
 }
 
 
