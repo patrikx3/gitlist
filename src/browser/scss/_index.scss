@@ -29,6 +29,21 @@
     .p3x-gitlist-index-pagination {
         margin-top: 0;
         text-align: center;
+
+        // BS5 pagination compat for List.js generated items
+        li {
+            @extend .page-item;
+
+            a {
+                @extend .page-link;
+            }
+        }
+
+        li.active a {
+            background-color: var(--bs-primary);
+            border-color: var(--bs-primary);
+            color: #fff;
+        }
     }
 
     .p3x-gitlist-index-pagination-container {
