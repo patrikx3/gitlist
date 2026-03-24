@@ -6,7 +6,7 @@
 
 
 
-# 🛠️ 🤖 P3X Gitlist - A decorated enhanced elegant, feature rich and modern private git ui repository viewer  v2026.4.259
+# 🛠️ 🤖 P3X Gitlist - A decorated enhanced elegant, feature rich and modern private git ui repository viewer  v2026.4.260
 
 
   
@@ -23,11 +23,17 @@
 
 P3X Enhanced GitList is a fork of the klaussilveira Gitlist. What is different about is, that it requires/uses the latest PHP version, works with sub-modules. With big git repos/commits, it works with 64Mb memory (some Twig templates are removed and moved to the client and web workers - eg. huge diffs).  
  
- You will love it to work it on OpenWrt. Provides multiple themes with dark mode - 11 light and 5 dark. Code editor with syntax highlighting, editable files. All changes in the original fork are synced with the enhanced version. 100% responsive with Bootstrap 3. Latest Fontawesome for icons. The markdown engine uses Emojis with Twitter's Emojis. Besides, the commits and logs are parsed as Markdown and Emojis. 
+ You will love it to work it on OpenWrt. Provides multiple themes with dark mode - 22 light and 5 dark. Code editor with syntax highlighting, editable files. All changes in the original fork are synced with the enhanced version. 100% responsive with Bootstrap 5 LTS. Latest Fontawesome for icons. The markdown engine uses Emojis with Twitter's Emojis. Besides, the commits and logs are parsed as Markdown and Emojis. 
   
 **Works starting from PHP 8.3 LTS**
   
-**It works on CodeMirror 6 LTS, Bootstrap 5 LTS, jQuery 4 LTS**
+**It works on CodeMirror 6 LTS code editor, Bootstrap 5 LTS, jQuery 4 LTS**
+
+## Demo
+
+[https://demo.gitlist.patrikx3.com](https://demo.gitlist.patrikx3.com)  
+
+
 
 ## Localization / i18n
 
@@ -35,17 +41,9 @@ P3X GitList supports multiple languages. The language can be switched via the **
 
 ### Supported languages
 
-| Code | Language |
-|------|----------|
-| `en` | English |
-| `hu` | Magyar (Hungarian) |
-| `de` | Deutsch (German) |
-| `fr` | Français (French) |
-| `it` | Italiano (Italian) |
-| `es` | Español (Spanish) |
-| `zh` | 中文 (Chinese Simplified) |
+29 languages supported: Afrikaans, العربية (Arabic), বাংলা (Bengali), Català, Čeština, Dansk, Deutsch, Ελληνικά, English, Español, Suomi, Français, עברית (Hebrew), Magyar, Italiano, 日本語, 한국어, Nederlands, Norsk, Polski, Português, Română, Русский, Српски, Svenska, Türkçe, Українська, Tiếng Việt, 中文.
 
-Translation files are located in `src/translation/` as JSON files. To add a new language, create a new JSON file (e.g. `ja.json`) with the same keys as `en.json`, and add the language code to the `$allowedLangs` array in `src/GitList/Application.php`.
+Translation files are located in `src/translation/` as JSON files. To add a new language, create a new JSON file (e.g. `th.json`) with the same keys as `en.json`, and add the language code to the `$langNames` array in `src/GitList/Application.php`.
 
 ## Beware
 If you use other, than UTF-8 encoded files, you could get incorrect results, as it does not do converting, it only works with UTF-8.
@@ -83,7 +81,7 @@ By now `composer` is not enough. We are using `webpack`, `less`, `grunt` ...
 
 For the build on your workstation (less, Bootstrap themes,  and webpack):
 
-* ```NodeJs``` >= 12
+* ```NodeJs``` >= LTS
   * https://nodejs.org/en/download/package-manager/
 * ```Grunt``` (npm install -g npm grunt-cli)
 * `Composer`
@@ -212,7 +210,7 @@ All my domains, including [patrikx3.com](https://patrikx3.com), [corifeus.eu](ht
 ---
 
 
-[**P3X-GITLIST**](https://corifeus.com/gitlist) Build v2026.4.259
+[**P3X-GITLIST**](https://corifeus.com/gitlist) Build v2026.4.260
 
  [![Donate for PatrikX3 / P3X](https://img.shields.io/badge/Donate-PatrikX3-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software)
 

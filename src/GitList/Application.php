@@ -119,11 +119,20 @@ class Application extends FrameworkApplication
 
             // Language - follows same cookie pattern as theme
             $currentLang = isset($_COOKIE['p3x-gitlist-language']) ? $_COOKIE['p3x-gitlist-language'] : 'en';
-            $allowedLangs = ['en', 'hu', 'de', 'fr', 'it', 'es', 'zh'];
+            $langNames = [
+                'af' => 'Afrikaans', 'ar' => 'العربية', 'bn' => 'বাংলা', 'ca' => 'Català',
+                'cs' => 'Čeština', 'da' => 'Dansk', 'de' => 'Deutsch', 'el' => 'Ελληνικά',
+                'en' => 'English', 'es' => 'Español', 'fi' => 'Suomi', 'fr' => 'Français',
+                'he' => 'עברית', 'hu' => 'Magyar', 'it' => 'Italiano', 'ja' => '日本語',
+                'ko' => '한국어', 'nl' => 'Nederlands', 'no' => 'Norsk', 'pl' => 'Polski',
+                'pt' => 'Português', 'ro' => 'Română', 'ru' => 'Русский', 'sr' => 'Српски',
+                'sv' => 'Svenska', 'tr' => 'Türkçe', 'uk' => 'Українська', 'vi' => 'Tiếng Việt',
+                'zh' => '中文',
+            ];
+            $allowedLangs = array_keys($langNames);
             if (!in_array($currentLang, $allowedLangs)) {
                 $currentLang = 'en';
             }
-            $langNames = ['en' => 'English', 'hu' => 'Magyar', 'de' => 'Deutsch', 'fr' => 'Français', 'it' => 'Italiano', 'es' => 'Español', 'zh' => '中文'];
 
             $translationFile = $app->path . '/src/translation/' . $currentLang . '.json';
             $fallbackFile = $app->path . '/src/translation/en.json';
