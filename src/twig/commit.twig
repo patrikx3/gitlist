@@ -22,7 +22,7 @@
 
     {% embed 'breadcrumb.twig' with {breadcrumbs: [{dir: "Commit #{commit.hash}", path:''}]} %}
         {% block left %}
-            <span class="label label-primary">{{ 'commit.files_changed'|t }} {{ commit.changedFiles }}</span>
+            <span class="badge bg-primary">{{ 'commit.files_changed'|t }} {{ commit.changedFiles }}</span>
         {% endblock %}
         {% block right %}
             <a class="btn btn-info btn-sm" href="{{ path('branch', {repo: repo, branch: commit.hash}) }}"
@@ -30,8 +30,8 @@
         {% endblock %}
     {% endembed %}
 
-    <div class="panel panel-default">
-        <div class="panel-heading">
+    <div class="card">
+        <div class="card-header">
             <div class="media">
                 <div class="media-left">
                     <a>
@@ -56,7 +56,7 @@
         <ul class="list-group">
             {% for diff in commit.diffs %}
                 <li class="list-group-item" id="p3x-gitlist-diff-{{ loop.index }}" title="Index {{ loop.index }}">
-                    <div class="pull-left">
+                    <div class="float-start">
                         <i class="fas fa-file-alt"></i>&nbsp;&nbsp;
                         <span id="{{ diff.file | to_id }}"
                               href="#p3x-gitlist-diff-{{ loop.index }}">{{ diff.file }}{% if diff.renamedFile %} &rarr; {{ diff.renamedFile }}{% endif %}</span>
@@ -64,7 +64,7 @@
                             Diff lines: {{ diff.lineCount }} Type: {{ diff.binary ? 'binary' : 'text' }}
                         </div>
                     </div>
-                    <div class="pull-right p3x-gitlist-button">
+                    <div class="float-end p3x-gitlist-button">
                         <a id="p3x-gitlist-diff-data-{{ loop.index }}"
                            class="btn btn-primary btn-sm p3x-gitlist-diff-button"><i class="fas fa-dumbbell"></i>&nbsp;&nbsp;Diff</a>
                         &nbsp;

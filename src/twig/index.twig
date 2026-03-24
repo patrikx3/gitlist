@@ -13,7 +13,7 @@
                     <input class="p3x-gitlist-search form-control" name="query-repo" placeholder="{{ 'index.search.placeholder'|t }}" autofocus
                            value=""/>
                     <span class="input-group-btn">
-                <button class="btn btn-default" type="button" id="p3x-gitlist-index-list-clear">
+                <button class="btn btn-secondary" type="button" id="p3x-gitlist-index-list-clear">
                     <i class="fas fa-times"></i>
                 </button>
 
@@ -32,7 +32,7 @@
                         </option>
                     </select>
                     <span class="input-group-btn">
-                <button class="btn btn-default" type="button" id="p3x-gitlist-index-list-sort-order"></button>
+                <button class="btn btn-secondary" type="button" id="p3x-gitlist-index-list-sort-order"></button>
             </span>
                 </div>
             </div>
@@ -55,16 +55,16 @@
                                href="{{ path('repository', {repo: repository.name}) }}">
                                 <span class="p3x-gitlist-index-name">{{ repository.name | remove_extension }}</span>
                             </a>
-                            <a class="btn btn-primary btn-sm pull-right"
+                            <a class="btn btn-primary btn-sm float-end"
                                href="{{ path('rss', {repo: repository.name, branch: 'master'}) }}"><i
-                                    class="fa fa-rss pull-right"></i></a>
+                                    class="fa fa-rss float-end"></i></a>
                         </th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
                         <td>
-                            <a class="btn btn-link btn-sm pull-right p3x-gitlist-index-repo-last-commit"
+                            <a class="btn btn-link btn-sm float-end p3x-gitlist-index-repo-last-commit"
                                href="{{ path('commits', {repo: repository.name}) }}">
                                 <span
                                     class="p3x-gitlist-index-repo-last-commit-timestamp">{{ repository.timestamp }}</span>

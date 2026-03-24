@@ -53,8 +53,7 @@ window.p3xGitlistCopy = async(codeId) => {
 $(function () {
     currentTheme = window.gitlist.getActualTheme(window.gitlist.loadTheme)
 
-    $('.dropdown-toggle').dropdown();
-    $('[data-toggle="tooltip"]').tooltip()
+    document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => new bootstrap.Tooltip(el));
 
     window.gitlist.$body = $('body');
 

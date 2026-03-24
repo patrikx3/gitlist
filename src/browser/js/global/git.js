@@ -83,7 +83,7 @@ window.gitlist.gitHelperAjax = async (options) => {
     }
     data.filename = filename
 
-    modal.modal('hide')
+    bootstrap.Modal.getOrCreateInstance(modal[0]).hide()
 
     const url = `${window.gitlist.basepath}/${window.gitlist.repo}/git-helper/${window.gitlist.branch}/${action}`
 

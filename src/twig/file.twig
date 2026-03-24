@@ -96,10 +96,10 @@
                 {% endif %}
 
                 <a href="{{ path('blame', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"
-                   class="btn btn-default btn-sm"><span class="fa fa-fire"></span> {{ 'file.blame'|t }}</a>
+                   class="btn btn-secondary btn-sm"><span class="fa fa-fire"></span> {{ 'file.blame'|t }}</a>
 
                 <a href="{{ path('commits', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"
-                   class="btn btn-default btn-sm"><i class="fas fa-history"></i> {{ 'file.history'|t }}</a>
+                   class="btn btn-secondary btn-sm"><i class="fas fa-history"></i> {{ 'file.history'|t }}</a>
 
                 <div class="p3x-gitlist-file-svg-toggle">
 
@@ -107,9 +107,9 @@
                         <span id="p3x-gitlist-file-codemirror" style="display: none;">
                         <div class="btn-group btn-toggle">
                             <button id="p3x-gitlist-file-button-scroll"
-                                    class="btn btn-sm btn-default">{{ 'file.scroll_mode'|t }}</button>
+                                    class="btn btn-sm btn-secondary">{{ 'file.scroll_mode'|t }}</button>
                             <button id="p3x-gitlist-file-button-full"
-                                    class="btn btn-sm btn-default">{{ 'file.full_height'|t }}</button>
+                                    class="btn btn-sm btn-secondary">{{ 'file.full_height'|t }}</button>
                         </div>
                     </span>
 
@@ -119,22 +119,22 @@
 
                         {% if enforceCodemirror %}
                             <a href="{{ path('blob', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"
-                               class="btn btn-default btn-sm"><span class="fa fa-code"></span> {{ 'file.markdown_rendered'|t }}</a>
+                               class="btn btn-secondary btn-sm"><span class="fa fa-code"></span> {{ 'file.markdown_rendered'|t }}</a>
                         {% else %}
                             <a title="{{ 'file.markdown_code.tooltip'|t }}"
                                href="{{ path('blob', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}?codemirror=1"
-                               class="btn btn-default btn-sm"><span class="fa fa-code"></span> {{ 'file.markdown_code'|t }}</a>
+                               class="btn btn-secondary btn-sm"><span class="fa fa-code"></span> {{ 'file.markdown_code'|t }}</a>
                         {% endif %}
 
                     {% elseif isHtml %}
 
                         {% if enforceCodemirror %}
                             <a href="{{ path('blob', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"
-                               class="btn btn-default btn-sm"><span class="fas fa-globe"></span> {{ 'file.html_rendered'|t }}</a>
+                               class="btn btn-secondary btn-sm"><span class="fas fa-globe"></span> {{ 'file.html_rendered'|t }}</a>
                         {% else %}
                             <a title="{{ 'file.markdown_code.tooltip'|t }}"
                                href="{{ path('blob', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}?codemirror=1"
-                               class="btn btn-default btn-sm"><span class="fa fa-code"></span> {{ 'file.html_code'|t }}</a>
+                               class="btn btn-secondary btn-sm"><span class="fa fa-code"></span> {{ 'file.html_code'|t }}</a>
                         {% endif %}
 
                     {% endif %}
@@ -149,8 +149,7 @@
     {% endembed %}
 
     <div id="p3x-gitlist-file-codemirror-exceeded" role="alert" class="alert-dismissable alert alert-warning">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
-                aria-hidden="true">&times;</span></button>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         This file ( {{ fileSize | format_size }} ) exceeds the allowed full mode ({{ codemirror_full_limit }} kb) size.
         The editor full hight is disabled, only scrolling is allowed..
     </div>
@@ -158,8 +157,7 @@
 
     <div id="p3x-gitlist-file-codemirror-full-height" role="alert" class="alert-dismissable alert alert-info"
          style="display: none;">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
-                aria-hidden="true">&times;</span></button>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         If you wish to edit a file, it is recommended to use the scroll mode as some users do not like the full height
         mode, although some users like it.
     </div>

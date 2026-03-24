@@ -5,10 +5,9 @@
 
 
 <div class="dropdown" id="p3x-gitlist-branch-list-container">
-    <button class="btn btn-default btn dropdown-toggle" type="button" id="p3x-gitlist-branch-list"
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    <button class="btn btn-secondary btn dropdown-toggle" type="button" id="p3x-gitlist-branch-list"
+            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
         {{ 'browser.browsing'|t }} <strong title="{{ branch }}">{{ branch }}</strong>
-        <span class="caret"></span>
     </button>
     <div role="menu" class="dropdown-menu" id="p3x-gitlist-branch-list-dropdown-menu">
         <form class="form-group-sm" style="margin: 5px;">
@@ -30,7 +29,7 @@
         </div>
 
         {% if tags %}
-            <div role="separator" class="divider"></div>
+            <hr class="dropdown-divider">
             <div class="p3x-list-item-header p3x-gitlist-branch-menu-header">
                 {{ 'browser.tags'|t }}
             </div>

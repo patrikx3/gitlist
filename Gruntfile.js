@@ -5,13 +5,13 @@ module.exports = function (grunt) {
 
     const prodDir = JSON.parse(require('fs').readFileSync('./package.json')).corifeus["prod-dir"]
 
-    grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-sass');
 
     const builder = require(`corifeus-builder`);
     const gruntUtil = builder.utils;
     const loader = new builder.loader(grunt);
 
-    const lessConfig =  require('./src/browser/grunt/less').lessSettings(grunt)
+    const sassConfig =  require('./src/browser/grunt/sass').sassSettings(grunt)
 
     loader.js({
         replacer: {
@@ -54,13 +54,13 @@ module.exports = function (grunt) {
                     },
 
                 },
-                less: {
-                    development: lessConfig,
+                sass: {
+                    development: sassConfig,
                 },
                 watch: {
-                    less: {
-                        files: ['src/browser/less/*.*'],
-                        tasks: ['clean:css', 'less'],
+                    sass: {
+                        files: ['src/browser/scss/**/*.*'],
+                        tasks: ['clean:css', 'sass'],
                         options: {
                             atBegin: true,
                             //spawn: false,
@@ -76,7 +76,13 @@ module.exports = function (grunt) {
         setTimeout(() => {
             const deleteMe = path.resolve(`${process.cwd()}/public/prod/webpack`)
             console.log(deleteMe)
-            fsExtra.emptyDirSync(deleteMe)
+            try {
+                fsExtra.emptyDirSync(deleteMe)
+            } catch(e) {
+                // Fix Docker root-owned files
+                require('child_process').execSync(`sudo chown -R $(id -u):$(id -g) "${deleteMe}" 2>/dev/null || true`)
+                fsExtra.emptyDirSync(deleteMe)
+            }
             done()
         }, 5000)
     })
@@ -104,8 +110,14 @@ module.exports = function (grunt) {
     })
 
 //    grunt.registerTask('default', ['clean', 'less', 'copy', 'cory-npm', 'cory-replace', 'build']);
-    grunt.registerTask('default', ['cory-npm', 'cory-replace', 'wait-empty', 'clean', 'less', 'copy', 'build']);
-    grunt.registerTask('default-less', [ 'cory-npm', 'clean', 'less', 'copy','cory-replace']);
+    grunt.registerTask('fix-perms', function() {
+        const cwd = process.cwd()
+        try {
+            require('child_process').execSync(`sudo chown -R $(id -u):$(id -g) "${cwd}/public/prod" "${cwd}/build" 2>/dev/null || true`)
+        } catch(e) {}
+    });
+    grunt.registerTask('default', ['fix-perms', 'cory-npm', 'cory-replace', 'wait-empty', 'clean', 'sass', 'copy', 'build']);
+    grunt.registerTask('default-sass', [ 'cory-npm', 'clean', 'sass', 'copy','cory-replace']);
 
 };
 

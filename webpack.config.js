@@ -30,17 +30,14 @@ const rules = [
         use: { loader: 'worker-loader' }
     },
     {
-        test: /\.(css|less)$/,
+        test: /\.css$/,
         use: [
             {
                 loader: MiniCssExtractPlugin.loader,
                 options: {
                 },
             },
-            'css-loader',
-            {
-                loader: 'less-loader',
-            }],
+            'css-loader'],
     },
     {
         test: /\.html$/,

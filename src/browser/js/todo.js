@@ -13,7 +13,7 @@ window.gitlist.todo = async () => {
             window.gitlist.ajaxErrorHandler(e)
         }
     }
-    $todoModal.modal('show')
+    bootstrap.Modal.getOrCreateInstance($todoModal[0]).show()
 }
 $(async () => {
     $todoModal = $('#p3x-gitlist-modal-todo')

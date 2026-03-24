@@ -19,12 +19,12 @@
                        class="btn btn-info btn-sm"><span class="fas fa-download"></span> {{ 'common.raw'|t }}</a>
                 {% endif %}
 
-                <a class="btn btn-default btn-sm"
+                <a class="btn btn-secondary btn-sm"
                    href="{{ path('blob', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"> <span
                         class="far fa-file"></span> {{ 'common.view'|t }}</a>
 
                 <a href="{{ path('commits', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"
-                   class="btn btn-default btn-sm"><i class="fas fa-history"></i> {{ 'common.history'|t }}</a>
+                   class="btn btn-secondary btn-sm"><i class="fas fa-history"></i> {{ 'common.history'|t }}</a>
 
             </div>
         {% endblock %}
@@ -35,9 +35,9 @@
 
     {% if blames %}
 
-        <span class="label label-info">{{ 'blame.blames_found'|t }} {{ blames | length }}</span>
-        <span class="label label-info">{{ 'blame.mode'|t }} {{ type }}</span>
-        <span class="label label-info">{{ 'blame.binary'|t }} {{ binary ? 'true' : 'false' }}</span>
+        <span class="badge bg-info">{{ 'blame.blames_found'|t }} {{ blames | length }}</span>
+        <span class="badge bg-info">{{ 'blame.mode'|t }} {{ type }}</span>
+        <span class="badge bg-info">{{ 'blame.binary'|t }} {{ binary ? 'true' : 'false' }}</span>
         <br/>
         <br/>
 

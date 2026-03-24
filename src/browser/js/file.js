@@ -39,7 +39,7 @@ $(async function () {
         if (!window.gitlist.changeableCommit()) {
             return
         }
-        $modalDelete.modal('show')
+        bootstrap.Modal.getOrCreateInstance($modalDelete[0]).show()
     })
 
     $formDeleteForm[0].addEventListener('submit', async (ev) => {
@@ -185,7 +185,7 @@ $(async function () {
                 if (validateCodeIsSame()) {
                     return;
                 }
-                $commitModal.modal('show')
+                bootstrap.Modal.getOrCreateInstance($commitModal[0]).show()
             })
             const $commitInputName = $('#p3x-gitlist-modal-commit-name');
             const $commitInputEmail = $('#p3x-gitlist-modal-commit-email');

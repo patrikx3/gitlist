@@ -1,32 +1,32 @@
-<ol class="breadcrumb" style="margin-bottom: 0;">
-    <li><a href="{{ path('tree', {repo: repo, commitishPath: branch}) }}">{{ repo }}</a></li>
-    {% for breadcrumb in breadcrumbs %}
-        <li{% if loop.last %} class="active"{% endif %}>{% if not loop.last %}<a
-                href="{{ path('tree', {repo: repo, commitishPath: branch ~ '/' ~ breadcrumb.path}) }}">{{ breadcrumb.dir }}</a>{% endif %}{% if loop.last %}{{ breadcrumb.dir }}{% endif %}
-        </li>
-    {% endfor %}
-</ol>
+<nav aria-label="breadcrumb" style="margin-bottom: 0;">
+    <ol class="breadcrumb mb-0">
+        <li class="breadcrumb-item"><a href="{{ path('tree', {repo: repo, commitishPath: branch}) }}">{{ repo }}</a></li>
+        {% for breadcrumb in breadcrumbs %}
+            <li class="breadcrumb-item{% if loop.last %} active{% endif %}">{% if not loop.last %}<a
+                    href="{{ path('tree', {repo: repo, commitishPath: branch ~ '/' ~ breadcrumb.path}) }}">{{ breadcrumb.dir }}</a>{% endif %}{% if loop.last %}{{ breadcrumb.dir }}{% endif %}
+            </li>
+        {% endfor %}
+    </ol>
+</nav>
 
 
 <div class="p3x-gitlist-breadcrumb-divider"></div>
 
-<div class="pull-right p3x-gitlist-button" style="text-align: right;">
+<div class="float-end p3x-gitlist-button" style="text-align: right;">
     <div>
-        <a href="{{ path('rss', {repo: repo, branch: branch}) }}" class="btn btn-default btn-sm">
+        <a href="{{ path('rss', {repo: repo, branch: branch}) }}" class="btn btn-secondary btn-sm">
             <i class="fa fa-rss"></i>
             &nbsp;{{ 'breadcrumb.rss'|t }}
         </a>
 
         <span class="dropdown">
-            <a class="btn btn-default btn-sm dropdown-toggle" type="button" id="p3x-gitlist-breadcrumb-git"
-               data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                {{ 'breadcrumb.git'|t }}
-                <span class="caret"></span>
-            </a>
+            <a class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="p3x-gitlist-breadcrumb-git"
+               data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                {{ 'breadcrumb.git'|t }}            </a>
             <ul class="dropdown-menu" aria-labelledby="p3x-gitlist-breadcrumb-git">
-                <li data-toggle="tooltip" data-placement="bottom"
+                <li data-bs-toggle="tooltip" data-bs-placement="bottom"
                     title="{{ 'breadcrumb.git.fetch_origin.tooltip'|t }}">
-                    <a href="javascript:void(0)" id="p3x-gitlist-breadcrumb-git-fetch">
+                    <a class="dropdown-item" href="javascript:void(0)" id="p3x-gitlist-breadcrumb-git-fetch">
                         <i class="fas fa-chevron-down"></i>&nbsp;{{ 'breadcrumb.git.fetch_origin'|t }}
                     </a>
                 </li>
@@ -34,20 +34,18 @@
         </span>
 
         <span class="dropdown">
-            <a class="btn btn-default btn-sm dropdown-toggle" type="button" id="p3x-gitlist-breadcrumb-download"
-               data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                {{ 'breadcrumb.download'|t }}
-                <span class="caret"></span>
-            </a>
+            <a class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="p3x-gitlist-breadcrumb-download"
+               data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                {{ 'breadcrumb.download'|t }}            </a>
             <ul class="dropdown-menu" aria-labelledby="p3x-gitlist-breadcrumb-download">
                 <li>
-                    <a href="{{ path('archive', {repo: repo, branch: branch, format: 'zip'}) }}"
+                    <a class="dropdown-item" href="{{ path('archive', {repo: repo, branch: branch, format: 'zip'}) }}"
                        title="Download '{{ branch }}' as a ZIP archive">
                         <i class="fas fa-file-archive"></i>&nbsp;{{ 'breadcrumb.download.zip'|t }}
                     </a>
                 </li>
                 <li>
-                    <a href="{{ path('archive', {repo: repo, branch: branch, format: 'tar'}) }}"
+                    <a class="dropdown-item" href="{{ path('archive', {repo: repo, branch: branch, format: 'tar'}) }}"
                        title="Download '{{ branch }}' as a TAR archive">
                         <i class="far fa-file-archive"></i>&nbsp;{{ 'breadcrumb.download.tar'|t }}
                     </a>
@@ -56,8 +54,8 @@
         </span>
 
         {% if app.show_http_remote or app.show_ssh_remote %}
-            <a href="#" class="btn btn-default btn-sm" title="{{ 'breadcrumb.clone.tooltip'|t }}"
-               data-toggle="modal" data-target="#p3x-gitlist-modal-clone">
+            <a href="#" class="btn btn-secondary btn-sm" title="{{ 'breadcrumb.clone.tooltip'|t }}"
+               data-bs-toggle="modal" data-bs-target="#p3x-gitlist-modal-clone">
                 <i class="far fa-clone"></i>&nbsp;{{ 'breadcrumb.clone'|t }}
             </a>
         {% endif %}
@@ -79,9 +77,7 @@
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true"><i class="fas fa-times"></i></span>
-                    </button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     <h4 class="modal-title"><strong>{{ 'breadcrumb.clone'|t }}</strong></h4>
                 </div>
                 <div class="modal-body">
@@ -119,7 +115,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                         <span class="fas fa-times"></span>
                         {{ 'common.close'|t }}
                     </button>

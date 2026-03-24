@@ -16,7 +16,7 @@ window.gitlist.changeLog = async () => {
             window.gitlist.ajaxErrorHandler(e)
         }
     }
-    $changelogModal.modal('show')
+    bootstrap.Modal.getOrCreateInstance($changelogModal[0]).show()
 }
 $(async () => {
     $changelogModal = $('#p3x-gitlist-modal-changelog')

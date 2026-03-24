@@ -19,7 +19,7 @@ $(() => {
         if (!window.gitlist.changeableCommit()) {
             return
         }
-        $buttonNewFileModal.modal('show')
+        bootstrap.Modal.getOrCreateInstance($buttonNewFileModal[0]).show()
     })
 
     $formNewfile[0].addEventListener('submit', async (ev) => {
@@ -72,7 +72,7 @@ $(() => {
         if (!window.gitlist.changeableCommit()) {
             return
         }
-        $buttonNewBinaryModal.modal('show')
+        bootstrap.Modal.getOrCreateInstance($buttonNewBinaryModal[0]).show()
     })
 
     $inputNewfileBinaryUpload.change(() => {

@@ -7,9 +7,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true"><i class="fas fa-times"></i></span>
-                    </button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     <h4 class="modal-title"><strong>{{ title }}</strong></h4>
                 </div>
                 <div class="modal-body">
@@ -24,7 +22,7 @@
                         {% block form %}{% endblock %}
 
                         <div class="input-group">
-                                            <span class="input-group-addon" id="p3x-gitlist-modal-{{ type }}-name-aria"><i
+                                            <span class="input-group-text" id="p3x-gitlist-modal-{{ type }}-name-aria"><i
                                                     class="fas fa-user"></i></span>
                             <input type="text" class="form-control" placeholder="{{ 'modal.placeholder.name'|t }}" required
                                    aria-describedby="p3x-gitlist-modal-{{ type }}-name-aria"
@@ -33,7 +31,7 @@
                         </div>
                         <br/>
                         <div class="input-group">
-                                            <span class="input-group-addon"
+                                            <span class="input-group-text"
                                                   id="p3x-gitlist-modal-{{ type }}-email-aria"><i
                                                     class="fas fa-at"></i></span>
                             <input required type="email" id="p3x-gitlist-modal-{{ type }}-email"
@@ -44,7 +42,7 @@
 
                         <br/>
                         <div class="input-group">
-                                            <span class="input-group-addon"
+                                            <span class="input-group-text"
                                                   id="p3x-gitlist-modal-{{ type }}-comment-aria"><i
                                                     class="far fa-comment"></i></span>
                             <input required type="text" class="form-control" placeholder="{{ 'modal.placeholder.comment'|t }}"
@@ -60,7 +58,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                         <span class="fas fa-times"></span>
                         {{ 'modal.cancel'|t }}
                     </button>

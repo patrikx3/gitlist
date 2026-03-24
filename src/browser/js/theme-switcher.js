@@ -30,7 +30,7 @@ $(function () {
     const lightMenu = []
     for (let key in themes) {
         const actualTheme = key.substring(10)
-        const menu = '<li class="' + (currentCookie === key ? 'active' : '') + '" style="text-transform: capitalize"><a href="#" data-theme="' + key + '" class="theme-link">' + actualTheme + '</a></li>';
+        const menu = '<li><a href="#" data-theme="' + key + '" class="dropdown-item theme-link ' + (currentCookie === key ? 'active' : '') + '" style="text-transform: capitalize">' + actualTheme + '</a></li>';
         if (window.gitlist.isDark(actualTheme)) {
             darkMenu.push(menu)
         } else {
@@ -40,7 +40,7 @@ $(function () {
     for (let menu of lightMenu) {
         themeList.append(menu);
     }
-    themeList.append('<li class="divider"></li>')
+    themeList.append('<li><hr class="dropdown-divider"></li>')
     for (let menu of darkMenu) {
         themeList.append(menu);
     }
@@ -56,7 +56,7 @@ $(function () {
             debounceResize();
             themeList.find('.active').removeClass('active');
             const $this = $(this);
-            $this.parent().addClass('active');
+            $this.addClass('active');
             const themeurl = themes[$this.attr('data-theme')];
             setThemeCookie($this.attr('data-theme'));
             const href = themeurl;

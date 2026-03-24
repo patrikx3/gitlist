@@ -1,86 +1,74 @@
-<div class="navbar navbar-default {{ app.fixed_navbar ? 'navbar-fixed-top' : '' }}" id="p3x-gitlist-navigation"
-     role="navigation">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark {{ app.fixed_navbar ? 'fixed-top' : '' }}" id="p3x-gitlist-navigation">
     <div class="container">
-        <div class="navbar-header p3x-gitlist-navbar-header">
-            <button type="button" id="p3x-gitlist-navigation-menu-button" class="navbar-toggle" data-toggle="collapse"
-                    data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
+        <a href="{{ path('homepage') }}">
+            <img src="img/gitlist.svg" id="p3x-gitlist-navigation-brand-icon" class="d-none d-sm-inline-block"/>
+            <img src="img/gitlist.svg" class="d-inline-block d-sm-none p3x-gitlist-navigation-brand-icon-small"
+                 data-bs-toggle="tooltip" data-bs-placement="bottom"
+                 title="{{ app.title }}"/>
+        </a>
+        <a class="navbar-brand d-none d-sm-inline-block" href="{{ path('homepage') }}">
+            {{ app.title }}
+        </a>
 
-            <a href="{{ path('homepage') }}">
-                <img src="img/gitlist.svg" class="hidden-xs" id="p3x-gitlist-navigation-brand-icon"/>
-                <img src="img/gitlist.svg" class="visible-xs p3x-gitlist-navigation-brand-icon-small"
-                     id="p3x-gitlist-navigation-brand-icon" data-toggle="tooltip" data-placement="bottom"
-                     title="{{ app.title }}"/>
-            </a>
-            <a class="navbar-brand hidden-xs" href="{{ path('homepage') }}">
-                {{ app.title }}
-            </a>
+        <button type="button" id="p3x-gitlist-navigation-menu-button" class="navbar-toggler" data-bs-toggle="collapse"
+                data-bs-target="#p3x-gitlist-navigation-theme">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-        </div>
-        <div class="navbar-collapse collapse" id="p3x-gitlist-navigation-theme">
-            <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ 'nav.github'|t }} <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
+        <div class="collapse navbar-collapse" id="p3x-gitlist-navigation-theme">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">{{ 'nav.github'|t }}</a>
+                    <ul class="dropdown-menu dropdown-menu-end">
                         <li>
-                            <a href="https://github.com/patrikx3/gitlist" target="p3x-gitlist">{{ 'nav.github.repo'|t }}</a>
-                        </li>
-
-                        <li>
-                            <a href="javascript:void(0);" onclick="window.gitlist.changeLog()">{{ 'nav.github.changelog'|t }}</a>
+                            <a class="dropdown-item" href="https://github.com/patrikx3/gitlist" target="p3x-gitlist">{{ 'nav.github.repo'|t }}</a>
                         </li>
                         <li>
-                            <a href="javascript:void(0);" onclick="window.gitlist.todo()">{{ 'nav.github.todo'|t }}</a>
+                            <a class="dropdown-item" href="javascript:void(0);" onclick="window.gitlist.changeLog()">{{ 'nav.github.changelog'|t }}</a>
                         </li>
                         <li>
-                            <a href="https://github.com/patrikx3/gitlist/releases" target="p3x-gitlist-releases">{{ 'nav.github.releases'|t }}</a>
+                            <a class="dropdown-item" href="javascript:void(0);" onclick="window.gitlist.todo()">{{ 'nav.github.todo'|t }}</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="https://github.com/patrikx3/gitlist/releases" target="p3x-gitlist-releases">{{ 'nav.github.releases'|t }}</a>
                         </li>
                     </ul>
                 </li>
 
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle p3x-gitlist-navigation-theme-open" data-toggle="dropdown">{{ 'nav.themes'|t }}
-                        <b class="caret"></b></a>
-                    <ul class="dropdown-menu" id="theme-list">
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle p3x-gitlist-navigation-theme-open" data-bs-toggle="dropdown">{{ 'nav.themes'|t }}</a>
+                    <ul class="dropdown-menu dropdown-menu-end" id="theme-list">
                     </ul>
                 </li>
 
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ 'nav.language'|t }}
-                        <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">{{ 'nav.language'|t }}</a>
+                    <ul class="dropdown-menu dropdown-menu-end">
                         {% for lang in allowed_langs %}
-                            <li class="{{ current_lang == lang ? 'active' : '' }}">
-                                <a href="#" data-lang="{{ lang }}" class="p3x-gitlist-language-link">{{ lang_names[lang] }}</a>
+                            <li>
+                                <a href="#" data-lang="{{ lang }}" class="dropdown-item p3x-gitlist-language-link {{ current_lang == lang ? 'active' : '' }}">{{ lang_names[lang] }}</a>
                             </li>
                         {% endfor %}
                     </ul>
                 </li>
 
             </ul>
-
-
-        </div><!--/.nav-collapse -->
+        </div>
     </div>
-</div>
+</nav>
 
 <div id="p3x-gitlist-modal-changelog" class="modal fade" tabindex="-1" role="dialog">
     <div class="modal-dialog" style="min-width: 75%;" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true"><i class="fas fa-times"></i></span></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 <h4 class="modal-title">{{ 'nav.modal.changelog.title'|t }}</h4>
             </div>
             <div class="modal-body" id="p3x-gitlist-modal-changelog-body">
                 <i class="fas fa-cog fa-spin"></i>&nbsp;{{ 'nav.modal.changelog.loading'|t }}
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal"><span class="fas fa-times"></span>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><span class="fas fa-times"></span>
                     {{ 'common.close'|t }}
                 </button>
             </div>
@@ -92,15 +80,14 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true"><i class="fas fa-times"></i></span></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 <h4 class="modal-title">{{ 'nav.modal.todo.title'|t }}</h4>
             </div>
             <div class="modal-body" id="p3x-gitlist-modal-todo-body">
                 <i class="fas fa-cog fa-spin"></i>&nbsp;{{ 'nav.modal.todo.loading'|t }}
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal"><span class="fas fa-times"></span>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><span class="fas fa-times"></span>
                     {{ 'common.close'|t }}
                 </button>
             </div>

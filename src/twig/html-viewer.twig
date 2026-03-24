@@ -1,6 +1,6 @@
-<div class="panel panel-default">
-    <div class="panel-heading"><i class="fas fa-globe"></i>&nbsp;&nbsp;{{ filename }}</div>
-    <div class="panel-body" style="padding: 0;">
+<div class="card">
+    <div class="card-header"><i class="fas fa-globe"></i>&nbsp;&nbsp;{{ filename }}</div>
+    <div class="card-body" style="padding: 0;">
         <iframe id="p3x-gitlist-html-viewer" style="width: 100%; min-height: 200px; border: none; display: block;" sandbox="allow-same-origin"></iframe>
         <textarea id="p3x-gitlist-html-viewer-data" style="display: none;">{{ data|e('html') }}</textarea>
         <script>

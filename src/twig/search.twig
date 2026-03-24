@@ -31,9 +31,9 @@
 
         {% for result in results %}
 
-            <div class="panel panel-default p3x-gitlist-file-fragment-panel" data-index="{{ loop.index0 }}"
+            <div class="card p3x-gitlist-file-fragment-panel" data-index="{{ loop.index0 }}"
                  data-mode="{{ result.type }}">
-                <div class="panel-heading">
+                <div class="card-header">
                     <table style="width: 100%; background-color: transparent;"
                            id="p3x-gitlilst-file-fragment-heading-table-{{ loop.index0 }}">
                         <tr>
@@ -56,7 +56,7 @@
                     </table>
 
                 </div>
-                <div class="panel-body">
+                <div class="card-body">
                     <div class="p3x-gitlist-file-fragment-text"
                          id="p3x-gitlist-file-fragment-text-{{ loop.index0 }}">{{ result.match }}</div>
                     <textarea class="hidden"
