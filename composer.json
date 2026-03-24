@@ -1,7 +1,10 @@
 {
     "name": "patrikx3/gitlist",
     "config": {
-        "platform-check": false
+        "platform-check": false,
+        "platform": {
+            "php": "8.3.0"
+        }
     },
     "description": "An elegant git repository viewer",
     "minimum-stability": "stable",
