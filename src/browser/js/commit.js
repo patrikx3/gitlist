@@ -51,10 +51,17 @@ $(async() => {
                 $.ajax(url.toString()).then(function (diffsResponseJson) {
                     if (typeof diffsResponseJson !== 'object') {
                         const sendErrorMessage = `${window.gitlist.basepath}/json-error`;
-                        console.log(sendErrorMessage);
-                        $.redirect(sendErrorMessage, {
-                            error: diffsResponseJson,
-                        })
+                        //console.log(sendErrorMessage);
+                        const form = document.createElement('form');
+                        form.method = 'POST';
+                        form.action = sendErrorMessage;
+                        const input = document.createElement('input');
+                        input.type = 'hidden';
+                        input.name = 'error';
+                        input.value = diffsResponseJson;
+                        form.appendChild(input);
+                        document.body.appendChild(form);
+                        form.submit();
                     } else {
                         const diffs = diffsResponseJson[0];
                         loaderAjax.hide()

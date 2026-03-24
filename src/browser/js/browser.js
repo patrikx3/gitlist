@@ -77,7 +77,7 @@ $(async function () {
             if (!result.hasOwnProperty('post')) {
                 location = result.url;
             } else {
-                $.redirect(result.url);
+                location = result.url;
             }
         }
 

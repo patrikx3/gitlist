@@ -42,7 +42,6 @@ global.$ = global.jQuery;
         toastEl.addEventListener('hidden.bs.toast', () => toastEl.remove());
     };
 })(jQuery);
-require('jquery.redirect');
 const bootstrap = require('bootstrap');
 window.bootstrap = bootstrap;
 

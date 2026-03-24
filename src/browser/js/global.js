@@ -114,7 +114,7 @@ $(function () {
 
     $("#p3x-gitlist-to-top").click(function (event) {
         event.preventDefault();
-        $("html, body").animate({scrollTop: 0}, "slow");
+        $("html, body").animate({scrollTop: 0}, "fast");
         return false;
     });
 
