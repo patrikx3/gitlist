@@ -8,19 +8,23 @@
  */
 // global config
 const cfg = {
+    get navbarBg() {
+        const nav = document.getElementById('p3x-gitlist-navigation');
+        if (nav) {
+            return getComputedStyle(nav).backgroundColor;
+        }
+        return window.gitlist.isDark() ? '#343a40' : '#f8f9fa';
+    },
     get laneColors() {
+        const bg = cfg.navbarBg;
         if (window.gitlist.isDark()) {
-            return ['#BDBDBD', '#BBDEFB', '#03A9F4', '#2196F3', '#BDBDBD', '#FFFFFF'];
+            return [bg, '#BBDEFB', '#03A9F4', '#2196F3', bg, '#FFFFFF'];
         } else {
-            return ['#455A64', '#607D8B', '#757575', '#9E9E9E', '#CFD8DC', '#BDBDBD'];
+            return [bg, '#607D8B', '#757575', '#9E9E9E', bg, '#BDBDBD'];
         }
     },
     get dotColor() {
-        if (window.gitlist.isDark()) {
-            return '#ffffff88';
-        } else {
-            return '#00000088';
-        }
+        return cfg.navbarBg;
     },
     laneHeight: 20,
     columnWidth: 42,
