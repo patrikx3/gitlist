@@ -59,7 +59,7 @@
                     <div class="pull-left">
                         <i class="fas fa-file-alt"></i>&nbsp;&nbsp;
                         <span id="{{ diff.file | to_id }}"
-                              href="#p3x-gitlist-diff-{{ loop.index }}">{{ diff.file }}</span>
+                              href="#p3x-gitlist-diff-{{ loop.index }}">{{ diff.file }}{% if diff.renamedFile %} &rarr; {{ diff.renamedFile }}{% endif %}</span>
                         <div style="opacity: 0.5;">
                             Diff lines: {{ diff.lineCount }} Type: {{ diff.binary ? 'binary' : 'text' }}
                         </div>
@@ -68,11 +68,11 @@
                         <a id="p3x-gitlist-diff-data-{{ loop.index }}"
                            class="btn btn-primary btn-sm p3x-gitlist-diff-button"><i class="fas fa-dumbbell"></i>&nbsp;&nbsp;Diff</a>
                         &nbsp;
-                        <a href="{{ path('commits', {repo: repo, commitishPath: commit.hash ~ '/' ~ diff.file}) }}"
+                        <a href="{{ path('commits', {repo: repo, commitishPath: commit.hash ~ '/' ~ (diff.renamedFile ?? diff.file)}) }}"
                            class="btn btn-primary btn-sm"><i class="fas fa-history"></i>&nbsp;&nbsp;History</a>
                         &nbsp;
 
-                        <a href="{{ path('blob', {repo: repo, commitishPath: commit.hash ~'/' ~ diff.file}) }}"
+                        <a href="{{ path('blob', {repo: repo, commitishPath: commit.hash ~'/' ~ (diff.renamedFile ?? diff.file)}) }}"
                            class="btn btn-primary btn-sm"><i class="fas fa-edit"></i>&nbsp;&nbsp;View
                         </a>
                     </div>

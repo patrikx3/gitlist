@@ -23,6 +23,7 @@ class Diff extends AbstractModel
     protected $new;
     protected $file;
     protected $binary = false;
+    protected $renamedFile = null;
 
     public function addLine($line, $oldNo, $newNo)
     {
@@ -82,5 +83,15 @@ class Diff extends AbstractModel
     public function setBinary($bool)
     {
         $this->binary = true;
+    }
+
+    public function getRenamedFile()
+    {
+        return $this->renamedFile;
+    }
+
+    public function setRenamedFile($renamedFile)
+    {
+        $this->renamedFile = $renamedFile;
     }
 }

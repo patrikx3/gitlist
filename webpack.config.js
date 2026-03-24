@@ -201,7 +201,7 @@ const webpackConfig = {
     },
     output: {
         path: buildDir,
-        filename: '[id].[contenthash].js',
+        filename: !minimize ? '[id].js' : '[id].[contenthash].js',
        // chunkFilename: '[name].[contenthash].js',
 //        publicPath: '{{ app.url_subdir }}/webpack/',
         publicPath: `auto`,

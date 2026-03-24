@@ -47,6 +47,8 @@ class BlobController implements ControllerProviderInterface
                 $extension = $pathinfo['extension'];
             }
 
+            $isHtml = in_array(strtolower($extension), ['html', 'htm']);
+
             return $app['twig']->render('file.twig', array(
                 'binary' => $binary,
                 'fileSize' => strlen($output),
@@ -60,7 +62,8 @@ class BlobController implements ControllerProviderInterface
                 'branches' => $repository->getBranches(),
                 'browse_type' => 'blob',
                 'tags' => $repository->getTags(),
-                'enforceCodemirror' => isset($_GET['codemirror'])
+                'enforceCodemirror' => isset($_GET['codemirror']),
+                'isHtml' => $isHtml,
             ));
         })->assert('repo', $app['util.routing']->getRepositoryRegex())
             ->assert('commitishPath', '.+')
@@ -82,7 +85,40 @@ class BlobController implements ControllerProviderInterface
                 $headers['Content-Disposition'] = 'attachment; filename="' . $file . '"';
                 $headers['Content-Type'] = 'application/octet-stream';
             } else {
-                $headers['Content-Type'] = 'text/plain';
+                $mimeMap = [
+                    // HTML
+                    'html' => 'text/html; charset=UTF-8',
+                    'htm' => 'text/html; charset=UTF-8',
+                    // CSS / JS
+                    'css' => 'text/css; charset=UTF-8',
+                    'js' => 'application/javascript; charset=UTF-8',
+                    'mjs' => 'application/javascript; charset=UTF-8',
+                    // Data
+                    'json' => 'application/json; charset=UTF-8',
+                    'xml' => 'application/xml; charset=UTF-8',
+                    'svg' => 'image/svg+xml; charset=UTF-8',
+                    // PDF
+                    'pdf' => 'application/pdf',
+                    // Video
+                    'mp4' => 'video/mp4',
+                    'webm' => 'video/webm',
+                    'ogv' => 'video/ogg',
+                    // Audio
+                    'mp3' => 'audio/mpeg',
+                    'ogg' => 'audio/ogg',
+                    'wav' => 'audio/wav',
+                    'flac' => 'audio/flac',
+                    // Images
+                    'png' => 'image/png',
+                    'jpg' => 'image/jpeg',
+                    'jpeg' => 'image/jpeg',
+                    'gif' => 'image/gif',
+                    'webp' => 'image/webp',
+                    'ico' => 'image/x-icon',
+                    'bmp' => 'image/bmp',
+                ];
+                $extension = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+                $headers['Content-Type'] = $mimeMap[$extension] ?? 'text/plain';
             }
 
             return new Response($blob, 200, $headers);

@@ -1,46 +1,74 @@
-#docker login
-#docker build -t patrikx3/p3x-gitlist .
-##docker tag IMAGE_ID patrikx3/p3x-gitlist:latest
-#docker push patrikx3/p3x-gitlist:latest
-#docker tag IMAGE_ID patrikx3/p3x-gitlist:2019.10.525
-#docker push patrikx3/p3x-gitlist
-#docker images
-#docker rmi -f IMAGE_ID
-FROM ubuntu:latest
-MAINTAINER patrikx3/p3x-gitlist - Patrik Laszlo
-ENV COMPOSER_PROCESS_TIMEOUT=3600
+## Base
+FROM php:8.4-fpm
+
+## Non-interactive apt
 ENV DEBIAN_FRONTEND=noninteractive
-#ENV P3XRS_DOCKER_HOME=/settings
 
-RUN apt-get -y update
-RUN apt-get -y install git
-RUN apt-get -y install php --allow-unauthenticated
-RUN apt-get -y install php-fpm --allow-unauthenticated
-RUN apt-get -y install nginx
-RUN apt-get -y install curl
-RUN apt-get -y install git
-RUN apt-get -y install composer
-#RUN apt-get install -y build-essential
+## System deps and PHP build deps
+RUN set -eux; \
+    apt-get update; \
+    apt-get install -y --no-install-recommends \
+      curl \
+      git \
+      zip \
+      unzip \
+      net-tools \
+      iputils-ping \
+      telnet \
+      mc \
+      nano \
+      lsb-release \
+      ca-certificates \
+      apt-transport-https \
+      build-essential; \
+    rm -rf /var/lib/apt/lists/*
 
-# node
-RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
-RUN apt-get -y install nodejs
-RUN node -v
+## Node.js + yarn + grunt-cli + bower
+RUN set -eux; \
+    curl -fsSL https://deb.nodesource.com/setup_lts.x | bash -; \
+    apt-get install -y --no-install-recommends nodejs; \
+    npm install -g yarn grunt-cli bower --unsafe-perm=true --allow-root; \
+    rm -rf /var/lib/apt/lists/*
 
+## Xdebug (install and basic config)
+RUN set -eux; \
+    apt-get update; \
+    apt-get install -y --no-install-recommends $PHPIZE_DEPS; \
+    pecl install xdebug; \
+    docker-php-ext-enable xdebug; \
+    rm -rf /tmp/pear; \
+    apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false $PHPIZE_DEPS; \
+    { \
+      echo "xdebug.mode=debug"; \
+      echo "xdebug.start_with_request=yes"; \
+      echo "xdebug.client_host=host.docker.internal"; \
+      echo "xdebug.client_port=9003"; \
+      echo "xdebug.log=/tmp/xdebug.log"; \
+      echo "xdebug.log_level=3"; \
+    } > /usr/local/etc/php/conf.d/99-xdebug.ini
 
-ADD ./build/p3x-gitlist /gitlist
+## Composer (from official image)
+COPY --from=composer:2 /usr/bin/composer /usr/local/bin/composer
 
+## Xdebug environment defaults
+ENV XDEBUG_MODE=debug \
+    XDEBUG_CONFIG="client_host=host.docker.internal client_port=9003" \
+    PHP_IDE_CONFIG="serverName=local.docker"
 
-RUN mkdir -p /run/php
-RUN echo "cgi.fix_pathinfo = 0;" >> /etc/php/7.4/fpm/php.ini
-RUN echo "max_input_vars = 10000;" >> /etc/php/7.4/fpm/php.ini
-RUN echo "max_execution_time = 10000;" >> /etc/php/7.4/fpm/php.ini
-RUN echo "date.timezone = Europe/Budapest;" >> /etc/php/7.4/fpm/php.ini
-RUN sed -i 's/;daemonize = yes/daemonize = no/g' /etc/php/7.4/fpm/php-fpm.conf
+## Pass-through envs in FPM pool
+RUN set -eux; \
+    { \
+      echo ""; \
+      echo "clear_env = yes"; \
+      echo "env[APP_ENV] = \$APP_ENV"; \
+      echo "env[XDEBUG_CONFIG] = \$XDEBUG_CONFIG"; \
+      echo "env[XDEBUG_MODE] = \$XDEBUG_MODE"; \
+      echo "env[PHP_IDE_CONFIG] = \$PHP_IDE_CONFIG"; \
+    } >> /usr/local/etc/php-fpm.d/www.conf
 
-RUN chown -R www-data:www-data /gitlist
-RUN chown -R www-data:www-data /var/git
+## Workdir and permissions
+WORKDIR /app
+RUN chown -R www-data:www-data /app
 
-
-EXPOSE 12345
-#CMD p3x-redis
+## Entrypoint
+CMD ["php-fpm"]

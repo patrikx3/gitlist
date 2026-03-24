@@ -1,0 +1,27 @@
+<div class="panel panel-default">
+    <div class="panel-heading"><i class="fas fa-globe"></i>&nbsp;&nbsp;{{ filename }}</div>
+    <div class="panel-body" style="padding: 0;">
+        <iframe id="p3x-gitlist-html-viewer" style="width: 100%; min-height: 200px; border: none; display: block;" sandbox="allow-same-origin"></iframe>
+        <textarea id="p3x-gitlist-html-viewer-data" style="display: none;">{{ data|e('html') }}</textarea>
+        <script>
+        (function() {
+            var iframe = document.getElementById('p3x-gitlist-html-viewer');
+            var dataEl = document.getElementById('p3x-gitlist-html-viewer-data');
+            var doc = iframe.contentDocument || iframe.contentWindow.document;
+            doc.open();
+            doc.write(dataEl.value);
+            doc.close();
+            dataEl.remove();
+            var resize = function() {
+                try {
+                    var h = Math.max(doc.body.scrollHeight, doc.documentElement.scrollHeight);
+                    iframe.style.height = Math.max(h, 200) + 'px';
+                } catch(e) {}
+            };
+            iframe.addEventListener('load', resize);
+            setTimeout(resize, 100);
+            setTimeout(resize, 500);
+        })();
+        </script>
+    </div>
+</div>

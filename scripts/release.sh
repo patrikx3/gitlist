@@ -12,14 +12,7 @@ repo=$TOP/build/$name
 pushd $TOP
 yarn install 
 
-if [ "$HOSTNAME" = "workstation" ];
-then
-    /usr/local/bin/composer install --no-dev
-    /usr/local/bin/composer dump-autoload --optimize
-else
-    composer install --no-dev
-    composer dump-autoload --optimize
-fi
+docker run --rm -v $TOP:/app composer install --no-dev --optimize-autoloader
 mkdir -p $TOP/cache
 #npm install
 npm run build

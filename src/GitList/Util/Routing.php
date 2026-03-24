@@ -30,6 +30,7 @@ class Routing
         $app = $this->app;
         $repository = $app['git']->getRepositoryFromName($app['git.repos'], $repo);
 
+        $commitishPath = $commitishPath ?? '';
         $commitish = null;
         $path = null;
 

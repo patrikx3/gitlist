@@ -39,6 +39,7 @@ class Repository
         'asp' => 'htmlembedded',
         'aspx' => 'htmlembedded',
         'html' => 'htmlmixed',
+        'htm' => 'htmlmixed',
         'tpl' => 'htmlmixed',
         'js' => 'javascript',
         'ts' => 'application/typescript',

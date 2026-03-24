@@ -530,6 +530,10 @@ class Repository
                 continue;
             }
 
+            if ('rename to ' === substr($log, 0, 10)) {
+                $diff->setRenamedFile(substr($log, 10));
+            }
+
             if ('index' === substr($log, 0, 5)) {
                 $diff->setIndex($log);
                 continue;
