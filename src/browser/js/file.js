@@ -143,7 +143,7 @@ $(async function () {
                 originalCode = gitlist.viewer.getValue()
                 gitlist.viewer.focus();
                 $.snackbar({
-                    content: `Editing`,
+                    content: window.gitlist.t('js.editing'),
                 })
             })
 
@@ -152,7 +152,7 @@ $(async function () {
                 if (originalCode === value) {
                     if (snack) {
                         $.snackbar({
-                            content: 'The code has not changed. No saving.',
+                            content: window.gitlist.t('js.code_not_changed'),
                         })
                     }
                     return true;
@@ -173,7 +173,7 @@ $(async function () {
                     gitlist.viewer.setValue(originalCode)
                     $.snackbar({
                         htmlAllowed: true,
-                        content: 'The changes are reverted.',
+                        content: window.gitlist.t('js.changes_reverted'),
                     })
                 }
                 close();
@@ -234,7 +234,7 @@ $(async function () {
                     close();
                     $.snackbar({
                         htmlAllowed: true,
-                        content: '<i class="fas fa-check"></i>&nbsp;&nbsp;The file is saved.',
+                        content: '<i class="fas fa-check"></i>&nbsp;&nbsp;' + window.gitlist.t('js.file_saved'),
                     })
                 } catch (e) {
                     errorHandler(e);

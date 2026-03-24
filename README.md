@@ -6,7 +6,7 @@
 
 
 
-# 🛠️ 🤖 P3X Gitlist - A decorated enhanced elegant, feature rich and modern private git ui repository viewer  v2026.4.153
+# 🛠️ 🤖 P3X Gitlist - A decorated enhanced elegant, feature rich and modern private git ui repository viewer  v2026.4.166
 
 
   
@@ -28,6 +28,24 @@ P3X Enhanced GitList is a fork of the klaussilveira Gitlist. What is different a
 **Works on PHP 8.1**
   
 **It works on CodeMirror 5**
+
+## Localization / i18n
+
+P3X GitList supports multiple languages. The language can be switched via the **Language** dropdown in the navigation bar. The selected language is stored in a cookie.
+
+### Supported languages
+
+| Code | Language |
+|------|----------|
+| `en` | English |
+| `hu` | Magyar (Hungarian) |
+| `de` | Deutsch (German) |
+| `fr` | Français (French) |
+| `it` | Italiano (Italian) |
+| `es` | Español (Spanish) |
+| `zh` | 中文 (Chinese Simplified) |
+
+Translation files are located in `src/translation/` as JSON files. To add a new language, create a new JSON file (e.g. `ja.json`) with the same keys as `en.json`, and add the language code to the `$allowedLangs` array in `src/GitList/Application.php`.
 
 ## Beware
 If you use other, than UTF-8 encoded files, you could get incorrect results, as it does not do converting, it only works with UTF-8.
@@ -194,7 +212,7 @@ All my domains, including [patrikx3.com](https://patrikx3.com), [corifeus.eu](ht
 ---
 
 
-[**P3X-GITLIST**](https://corifeus.com/gitlist) Build v2026.4.153
+[**P3X-GITLIST**](https://corifeus.com/gitlist) Build v2026.4.166
 
  [![Donate for PatrikX3 / P3X](https://img.shields.io/badge/Donate-PatrikX3-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software)
 

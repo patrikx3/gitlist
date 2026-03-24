@@ -1,5 +1,5 @@
 window.gitlist.invalidSnackbarCommit = () => {
     $.snackbar({
-        content: 'The commit form data is invalid..'
+        content: window.gitlist.t('js.invalid_commit_form')
     })
 }

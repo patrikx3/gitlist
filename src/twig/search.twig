@@ -10,7 +10,7 @@
 
         {% block left %}
             {% if results %}
-                <span class="C">File: {{ results | length }}</span>
+                <span class="C">{{ 'search.file'|t }} {{ results | length }}</span>
             {% endif %}
         {% endblock %}
 
@@ -25,7 +25,7 @@
             </div>
             <br/>
             <div>
-                Hang on, we are loading a big search...
+                {{ 'search.loading'|t }}
             </div>
         </div>
 
@@ -67,7 +67,7 @@
         {% endfor %}
     {% else %}
         <h4>
-            No result.
+            {{ 'search.no_result'|t }}
         </h4>
     {% endif %}
 

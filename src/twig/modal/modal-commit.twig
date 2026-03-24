@@ -26,7 +26,7 @@
                         <div class="input-group">
                                             <span class="input-group-addon" id="p3x-gitlist-modal-{{ type }}-name-aria"><i
                                                     class="fas fa-user"></i></span>
-                            <input type="text" class="form-control" placeholder="Name" required
+                            <input type="text" class="form-control" placeholder="{{ 'modal.placeholder.name'|t }}" required
                                    aria-describedby="p3x-gitlist-modal-{{ type }}-name-aria"
                                    id="p3x-gitlist-modal-{{ type }}-name" minlength="3" maxlength="64"
                                    autofocus>
@@ -37,7 +37,7 @@
                                                   id="p3x-gitlist-modal-{{ type }}-email-aria"><i
                                                     class="fas fa-at"></i></span>
                             <input required type="email" id="p3x-gitlist-modal-{{ type }}-email"
-                                   class="form-control" placeholder="E-mail"
+                                   class="form-control" placeholder="{{ 'modal.placeholder.email'|t }}"
                                    aria-describedby="p3x-gitlist-modal-{{ type }}-email-aria" maxlength="64"
                                    minlength="3">
                         </div>
@@ -47,7 +47,7 @@
                                             <span class="input-group-addon"
                                                   id="p3x-gitlist-modal-{{ type }}-comment-aria"><i
                                                     class="far fa-comment"></i></span>
-                            <input required type="text" class="form-control" placeholder="Comment"
+                            <input required type="text" class="form-control" placeholder="{{ 'modal.placeholder.comment'|t }}"
                                    aria-describedby="p3x-gitlist-modal-{{ type }}-email-aria"
                                    id="p3x-gitlist-modal-{{ type }}-comment" minlength="3" maxlength="64"
                                    value="P3X Gitlist Commit {{ title }}">
@@ -62,7 +62,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">
                         <span class="fas fa-times"></span>
-                        Cancel
+                        {{ 'modal.cancel'|t }}
                     </button>
                     {% block buttons %}{% endblock %}
                 </div>

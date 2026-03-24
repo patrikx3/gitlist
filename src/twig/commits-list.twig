@@ -10,11 +10,11 @@
                         <div class="pull-right p3x-gitlist-button" style="text-align: right;">
                             <a class="btn btn-primary btn-sm"
                                href="{{ path('branch', {repo: repo, branch: item.hash}) }}"
-                               title="Browse code at this point in history"><span class="fa fa-list-alt"></span>&nbsp;Browse</a>
+                               title="{{ 'commit.list.browse.tooltip'|t }}"><span class="fa fa-list-alt"></span>&nbsp;{{ 'commit.list.browse'|t }}</a>
 
                             <a class="btn btn-primary default btn-sm"
                                href="{{ path('commit', {repo: repo, commit: item.hash}) }}"><i
-                                    class="far fa-chart-bar"></i>&nbsp;Changes</a>
+                                    class="far fa-chart-bar"></i>&nbsp;{{ 'commit.list.changes'|t }}</a>
 
                         </div>
 
@@ -36,11 +36,11 @@
                         </div>
 
                         <div class="pull-left">
-                            <a href="mailto:{{ item.author.email }}">{{ item.author.name }}</a> authored
-                            on {{ item.date | format_date }}
+                            <a href="mailto:{{ item.author.email }}">{{ item.author.name }}</a> {{ 'commit.authored'|t }}
+                            {{ 'commit.on'|t }} {{ item.date | format_date }}
                             {% if item.author.email != item.commiter.email %}
                                 &bull; <a
-                                href="mailto:{{ item.commiter.email }}">{{ item.commiter.name }}</a> committed on {{ item.commiterDate | format_date }}
+                                href="mailto:{{ item.commiter.email }}">{{ item.commiter.name }}</a> {{ 'commit.committed_on'|t }} {{ item.commiterDate | format_date }}
                             {% endif %}
                         </div>
                         <div class="clearfix"></div>
@@ -52,7 +52,7 @@
 {% else %}
 
     <h4 class="p3x-gitlist-commit-list-no-more-commit">
-        No more commits.
+        {{ 'commit.list.no_more'|t }}
     </h4>
 
 {% endif %}
@@ -61,7 +61,7 @@
     <div id="p3x-gitlist-pager-bottom">
         {% if pager.current < pager.last - 1 %}
             <a id="p3x-gitlist-commit-list-next" class="btn btn-default" href="?page={{ pager.next }}">
-                Older / Next <i class="fas fa-chevron-right"></i>
+                {{ 'commit.list.older_next'|t }} <i class="fas fa-chevron-right"></i>
             </a>
         {% endif %}
     </div>

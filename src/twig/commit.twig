@@ -15,18 +15,18 @@
         </div>
         <br/>
         <div>
-            Loading a big commit ...
+            {{ 'commit.loading'|t }}
         </div>
     </div>
 
 
     {% embed 'breadcrumb.twig' with {breadcrumbs: [{dir: "Commit #{commit.hash}", path:''}]} %}
         {% block left %}
-            <span class="label label-primary">File changed: {{ commit.changedFiles }}</span>
+            <span class="label label-primary">{{ 'commit.files_changed'|t }} {{ commit.changedFiles }}</span>
         {% endblock %}
         {% block right %}
             <a class="btn btn-info btn-sm" href="{{ path('branch', {repo: repo, branch: commit.hash}) }}"
-               title="Browse code at this point in history"><span class="fa fa-list-alt"></span> Browse code</a>
+               title="{{ 'commit.list.browse.tooltip'|t }}"><span class="fa fa-list-alt"></span> {{ 'commit.browse_code'|t }}</a>
         {% endblock %}
     {% endembed %}
 
@@ -43,11 +43,11 @@
                         id="p3x-gitlist-commit-heading">{{ commit.message }}{% if commit.body is not empty %}}
                             <br/>{{ commit.body }}{% endif %}
                     </h4>
-                    <a href="mailto:{{ commit.author.email }}">{{ commit.author.name }}</a> authored
-                    on {{ commit.date | format_date }}
+                    <a href="mailto:{{ commit.author.email }}">{{ commit.author.name }}</a> {{ 'commit.authored'|t }}
+                    {{ 'commit.on'|t }} {{ commit.date | format_date }}
                     {% if commit.author.email != commit.commiter.email %}
                         &bull; <a
-                        href="mailto:{{ commit.commiter.email }}">{{ commit.commiter.name }}</a> committed on {{ commit.commiterDate | format_date }}
+                        href="mailto:{{ commit.commiter.email }}">{{ commit.commiter.name }}</a> {{ 'commit.committed_on'|t }} {{ commit.commiterDate | format_date }}
                     {% endif %}
                 </div>
             </div>
@@ -85,10 +85,10 @@
                         <div class="p3x-gitlist-commit-diff-loader"
                              id="p3x-gitlist-commit-diff-loader-{{ loop.index }}">
                                 <span id="p3x-gitlist-commit-diff-loader-ajax-{{ loop.index }}">
-                                    <i class="fas fa-cog fa-spin"></i> Hang on, loading the diffs via AJAX
+                                    <i class="fas fa-cog fa-spin"></i> {{ 'commit.diff_loading_ajax'|t }}
                                 </span>
                             <span id="p3x-gitlist-commit-diff-loader-webworker-{{ loop.index }}" style="display: none;">
-                                    <i class="fas fa-cog fa-spin"></i> Hang on, rendering the diffs with web worker
+                                    <i class="fas fa-cog fa-spin"></i> {{ 'commit.diff_loading_webworker'|t }}
                                 </span>
                         </div>
                         <div style="overflow-y: auto;" id="p3x-gitlist-commit-diff-scroller-{{ loop.index }}">

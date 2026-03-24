@@ -43,9 +43,9 @@ window.p3xGitlistCopy = async(codeId) => {
     try {
         const code = document.getElementById(`markdown-code-${codeId}`).innerText;
         await copyToClipboard(code);
-        $.snackbar({ content: 'Copied!' })
+        $.snackbar({ content: window.gitlist.t('js.copied') })
     } catch(e) {
-        $.snackbar({ content: 'Error copy code! See the console...' })
+        $.snackbar({ content: window.gitlist.t('js.error_copy') })
         console.error(e)
     }
 }

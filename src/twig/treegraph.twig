@@ -6,12 +6,12 @@
 
 {% block content %}
 
-    {% embed 'breadcrumb.twig' with {breadcrumbs: [{dir: 'Log graph', path:''}]} %}
+    {% embed 'breadcrumb.twig' with {breadcrumbs: [{dir: 'treegraph.title'|t, path:''}]} %}
         {% block right %}
         {% endblock %}
 
         {% block left %}
-            <span class="label label-info">Hover over the log to see the full commit message.</span>
+            <span class="label label-info">{{ 'treegraph.hover_hint'|t }}</span>
         {% endblock %}
 
     {% endembed %}

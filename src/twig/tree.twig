@@ -13,17 +13,17 @@
 
                 <div class="p3x-gitlist-button">
                     <button type="button" class="btn btn-sm btn-info" id="p3x-gitlist-tree-new-file">
-                        <i class="far fa-file-alt"></i> New file or directory
+                        <i class="far fa-file-alt"></i> {{ 'tree.new_file_button'|t }}
                     </button>
 
-                    {% embed 'modal/modal-commit.twig' with {type: 'new', title: 'New file', bodyTitle: 'Are you sure to add a new file or directory?<br/><strong>If you add a slash to the end of the "filename", you create a directory, otherwise you create a file. <br/>Please, make sure you use a relative path.</strong><br/><br/><span style="text-decoration: underline;">Note:</span> The filename is not created on the current tree browser you are, but that actual root of the repo.', wrapForm: true } %}
+                    {% embed 'modal/modal-commit.twig' with {type: 'new', title: 'New file', bodyTitle: ('tree.new_file.body_title'|t) ~ '<br/><strong>' ~ ('tree.new_file.body_detail'|t) ~ '</strong><br/><br/><span style="text-decoration: underline;">Note:</span> ' ~ ('tree.new_file.body_note'|t), wrapForm: true } %}
                         {% block form %}
 
                             <div class="input-group">
                                             <span class="input-group-addon"
                                                   id="p3x-gitlist-modal-{{ type }}-filename-aria"><i
                                                     class="far fa-file-alt"></i></span>
-                                <input required type="text" class="form-control" placeholder="New filename or directory"
+                                <input required type="text" class="form-control" placeholder="{{ 'tree.new_file.placeholder'|t }}"
                                        aria-describedby="p3x-gitlist-modal-{{ type }}-filename-aria"
                                        id="p3x-gitlist-modal-{{ type }}-filename" minlength="1" maxlength="128"
                                        value="">
@@ -35,34 +35,34 @@
 
                             <button id="p3x-gitlist-modal-new-filename-confirm" type="submit" class="btn btn-info">
                                 <span class="far fa-file-alt"></span>
-                                New file or directory
+                                {{ 'tree.new_file_button'|t }}
                             </button>
                         {% endblock %}
                     {% endembed %}
 
 
                     <button type="button" class="btn btn-sm btn-info" id="p3x-gitlist-tree-new-binary">
-                        <i class="far fa-file"></i> Upload file and/or override/binary
+                        <i class="far fa-file"></i> {{ 'tree.upload_button'|t }}
                     </button>
 
-                    {% embed 'modal/modal-commit.twig' with {enctype: 'multipart/form-data', type: 'new-binary', title: 'New binary', bodyTitle: 'Are you sure to add a new binary file?', wrapForm: true } %}
+                    {% embed 'modal/modal-commit.twig' with {enctype: 'multipart/form-data', type: 'new-binary', title: 'New binary', bodyTitle: 'tree.upload.body_title'|t, wrapForm: true } %}
                         {% block form %}
                             <div class="input-group">
 
-                                <input required type="file" class="form-control-file" placeholder="New binary filename"
+                                <input required type="file" class="form-control-file" placeholder="{{ 'tree.upload.placeholder'|t }}"
                                        aria-describedby="p3x-gitlist-modal-{{ type }}-filename-binary-upload-aria"
                                        id="p3x-gitlist-modal-{{ type }}-filename-binary-upload">
                             </div>
                             <div class="checkbox">
                                 <label><input id="p3x-gitlist-modal-{{ type }}-filename-binary-override" type="checkbox"
-                                              value="1">Allow override existing</label>
+                                              value="1">{{ 'tree.upload.allow_override'|t }}</label>
                             </div>
 
                             <div class="input-group">
                                             <span class="input-group-addon"
                                                   id="p3x-gitlist-modal-{{ type }}-filename-binary-aria"><i
                                                     class="far fa-file"></i></span>
-                                <input required type="text" class="form-control" placeholder="New binary filename"
+                                <input required type="text" class="form-control" placeholder="{{ 'tree.upload.placeholder'|t }}"
                                        aria-describedby="p3x-gitlist-modal-{{ type }}-filename-binary-aria"
                                        id="p3x-gitlist-modal-{{ type }}-filename-binary" minlength="1" maxlength="128"
                                        value="">
@@ -77,7 +77,7 @@
                             <button id="p3x-gitlist-modal-new-filename-binary-confirm" type="submit"
                                     class="btn btn-info">
                                 <span class="far fa-file"></span>
-                                Upload file and/or override/binary
+                                {{ 'tree.upload_button'|t }}
                             </button>
 
                         {% endblock %}
@@ -159,7 +159,7 @@
             </tbody>
         </table>
     {% else %}
-        <p>This repository is empty.</p>
+        <p>{{ 'tree.empty'|t }}</p>
     {% endif %}
     {% if readme is not empty %}
         {% include 'markdown.twig' with {'filename': readme.filename, 'data': readme.content} %}

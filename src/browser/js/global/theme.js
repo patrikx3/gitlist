@@ -93,7 +93,7 @@ window.gitlist.setTheme = () => {
 
     if (diffButtons.length > 0) {
         $.snackbar({
-            content: `We hid the shown diffs, to make the theme switching faster.`,
+            content: window.gitlist.t('js.theme_diffs_hidden'),
             timeout: window.gitlist.snapckbarLongTimeout,
         });
         window.scrollTo(0, 0);

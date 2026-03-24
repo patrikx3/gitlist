@@ -6,7 +6,7 @@
 
 {% block content %}
 
-    {% embed 'breadcrumb.twig' with {breadcrumbs: [{dir: 'Commits search results for: ' ~ query, path:''}]} %}
+    {% embed 'breadcrumb.twig' with {breadcrumbs: [{dir: 'searchcommits.title'|t ~ ' ' ~ query, path:''}]} %}
 
         {% block left %}
             {% if commits %}

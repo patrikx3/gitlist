@@ -116,6 +116,34 @@ class Application extends FrameworkApplication
             $twig->addFilter(new TwigFilter('format_size', array($app, 'formatSize')));
             $twig->addFunction(new TwigFunction('avatar', array($app, 'getAvatar')));
 
+            // Language - follows same cookie pattern as theme
+            $currentLang = isset($_COOKIE['p3x-gitlist-language']) ? $_COOKIE['p3x-gitlist-language'] : 'en';
+            $allowedLangs = ['en', 'hu', 'de', 'fr', 'it', 'es', 'zh'];
+            if (!in_array($currentLang, $allowedLangs)) {
+                $currentLang = 'en';
+            }
+            $langNames = ['en' => 'English', 'hu' => 'Magyar', 'de' => 'Deutsch', 'fr' => 'Français', 'it' => 'Italiano', 'es' => 'Español', 'zh' => '中文'];
+
+            $translationFile = $app->path . '/src/translation/' . $currentLang . '.json';
+            $fallbackFile = $app->path . '/src/translation/en.json';
+            $translations = [];
+            if (file_exists($translationFile)) {
+                $translations = json_decode(file_get_contents($translationFile), true) ?: [];
+            }
+            if ($currentLang !== 'en' && file_exists($fallbackFile)) {
+                $fallback = json_decode(file_get_contents($fallbackFile), true) ?: [];
+                $translations = array_merge($fallback, $translations);
+            }
+
+            $twig->addFilter(new TwigFilter('t', function ($key) use ($translations) {
+                return $translations[$key] ?? $key;
+            }));
+
+            $twig->addGlobal('i18n_json', json_encode($translations, JSON_UNESCAPED_UNICODE));
+            $twig->addGlobal('current_lang', $currentLang);
+            $twig->addGlobal('allowed_langs', $allowedLangs);
+            $twig->addGlobal('lang_names', $langNames);
+
             $currentTheme = !isset($_COOKIE['gitlist-bootstrap-theme']) ? 'bootstrap-cosmo' : $_COOKIE['gitlist-bootstrap-theme'];
             $themeDark = [
                 'cyborg',

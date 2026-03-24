@@ -13,18 +13,18 @@
 
                 {% if binary %}
                     <a href="{{ path('blob_raw', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"
-                       class="btn btn-info btn-sm"><span class="fas fa-download"></span> Download</a>
+                       class="btn btn-info btn-sm"><span class="fas fa-download"></span> {{ 'common.download'|t }}</a>
                 {% else %}
                     <a href="{{ path('blob_raw', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"
-                       class="btn btn-info btn-sm"><span class="fas fa-download"></span> Raw</a>
+                       class="btn btn-info btn-sm"><span class="fas fa-download"></span> {{ 'common.raw'|t }}</a>
                 {% endif %}
 
                 <a class="btn btn-default btn-sm"
                    href="{{ path('blob', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"> <span
-                        class="far fa-file"></span> View</a>
+                        class="far fa-file"></span> {{ 'common.view'|t }}</a>
 
                 <a href="{{ path('commits', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"
-                   class="btn btn-default btn-sm"><i class="fas fa-history"></i> History</a>
+                   class="btn btn-default btn-sm"><i class="fas fa-history"></i> {{ 'common.history'|t }}</a>
 
             </div>
         {% endblock %}
@@ -35,9 +35,9 @@
 
     {% if blames %}
 
-        <span class="label label-info">Blames found: {{ blames | length }}</span>
-        <span class="label label-info">Mode: {{ type }}</span>
-        <span class="label label-info">Binary: {{ binary ? 'true' : 'false' }}</span>
+        <span class="label label-info">{{ 'blame.blames_found'|t }} {{ blames | length }}</span>
+        <span class="label label-info">{{ 'blame.mode'|t }} {{ type }}</span>
+        <span class="label label-info">{{ 'blame.binary'|t }} {{ binary ? 'true' : 'false' }}</span>
         <br/>
         <br/>
 
@@ -48,7 +48,7 @@
             </div>
             <br/>
             <div>
-                Hang on, we reloading big blames...
+                {{ 'blame.loading'|t }}
             </div>
         </div>
 
@@ -73,7 +73,7 @@
 
     {% else %}
         <h4>
-            No blames.
+            {{ 'blame.no_blames'|t }}
         </h4>
     {% endif %}
 

@@ -24,31 +24,42 @@
         <div class="navbar-collapse collapse" id="p3x-gitlist-navigation-theme">
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">GitHub <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ 'nav.github'|t }} <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="https://github.com/patrikx3/gitlist" target="p3x-gitlist">Repo</a>
+                            <a href="https://github.com/patrikx3/gitlist" target="p3x-gitlist">{{ 'nav.github.repo'|t }}</a>
                         </li>
 
                         <li>
-                            <a href="javascript:void(0);" onclick="window.gitlist.changeLog()">Changelog</a>
+                            <a href="javascript:void(0);" onclick="window.gitlist.changeLog()">{{ 'nav.github.changelog'|t }}</a>
                         </li>
                         <li>
-                            <a href="javascript:void(0);" onclick="window.gitlist.todo()">To do</a>
+                            <a href="javascript:void(0);" onclick="window.gitlist.todo()">{{ 'nav.github.todo'|t }}</a>
                         </li>
                         <li>
-                            <a href="https://github.com/patrikx3/gitlist/releases" target="p3x-gitlist-releases">Releases</a>
+                            <a href="https://github.com/patrikx3/gitlist/releases" target="p3x-gitlist-releases">{{ 'nav.github.releases'|t }}</a>
                         </li>
                     </ul>
                 </li>
 
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle p3x-gitlist-navigation-theme-open" data-toggle="dropdown">Themes
+                    <a href="#" class="dropdown-toggle p3x-gitlist-navigation-theme-open" data-toggle="dropdown">{{ 'nav.themes'|t }}
                         <b class="caret"></b></a>
                     <ul class="dropdown-menu" id="theme-list">
                     </ul>
                 </li>
 
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ 'nav.language'|t }}
+                        <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        {% for lang in allowed_langs %}
+                            <li class="{{ current_lang == lang ? 'active' : '' }}">
+                                <a href="#" data-lang="{{ lang }}" class="p3x-gitlist-language-link">{{ lang_names[lang] }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </li>
 
             </ul>
 
@@ -63,14 +74,14 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true"><i class="fas fa-times"></i></span></button>
-                <h4 class="modal-title">Change log</h4>
+                <h4 class="modal-title">{{ 'nav.modal.changelog.title'|t }}</h4>
             </div>
             <div class="modal-body" id="p3x-gitlist-modal-changelog-body">
-                <i class="fas fa-cog fa-spin"></i>&nbsp;Loading change log ...
+                <i class="fas fa-cog fa-spin"></i>&nbsp;{{ 'nav.modal.changelog.loading'|t }}
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal"><span class="fas fa-times"></span>
-                    Close
+                    {{ 'common.close'|t }}
                 </button>
             </div>
         </div><!-- /.modal-content -->
@@ -83,14 +94,14 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true"><i class="fas fa-times"></i></span></button>
-                <h4 class="modal-title">To do ...</h4>
+                <h4 class="modal-title">{{ 'nav.modal.todo.title'|t }}</h4>
             </div>
             <div class="modal-body" id="p3x-gitlist-modal-todo-body">
-                <i class="fas fa-cog fa-spin"></i>&nbsp;Loading todo ...
+                <i class="fas fa-cog fa-spin"></i>&nbsp;{{ 'nav.modal.todo.loading'|t }}
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal"><span class="fas fa-times"></span>
-                    Close
+                    {{ 'common.close'|t }}
                 </button>
             </div>
         </div><!-- /.modal-content -->

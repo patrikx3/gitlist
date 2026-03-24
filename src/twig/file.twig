@@ -14,23 +14,23 @@
                 {% if extension == 'svg' %}
                     <button class="btn btn-sm btn-primary" id="p3x-gitlist-file-svg-show">
                         <span class="fas fa-image"></span>
-                        Toggle SVG
+                        {{ 'file.toggle_svg'|t }}
                     </button>
                 {% endif %}
 
                 {% if enable_editing %}
                     <button class="btn btn-sm btn-danger" id="p3x-gitlist-file-delete">
                         <span class="fa fa-trash"></span>
-                        Delete
+                        {{ 'file.delete'|t }}
                     </button>
                 {% endif %}
 
-                {% embed 'modal/modal-commit.twig' with {type: 'delete', title: 'Delete', bodyTitle: 'Are you sure to delete this file?', wrapForm: true } %}
+                {% embed 'modal/modal-commit.twig' with {type: 'delete', title: 'Delete', bodyTitle: 'file.delete.confirm'|t, wrapForm: true } %}
                     {% block buttons %}
                         <button id="p3x-gitlist-modal-delete-confirm" type="submit" class="btn btn-danger">
                             <span class="fa fa-trash"></span>
                             &nbsp;
-                            Delete
+                            {{ 'file.delete'|t }}
                         </button>
                     {% endblock %}
                 {% endembed %}
@@ -40,24 +40,24 @@
 
                     {% if enable_editing %}
                         <button id="p3x-gitlist-file-button-edit" class="btn btn-sm btn-info">
-                            <span class="fa fa-edit"></span> Edit
+                            <span class="fa fa-edit"></span> {{ 'file.edit'|t }}
                         </button>
                     {% endif %}
 
                     <button id="p3x-gitlist-file-button-edit-cancel" class="btn btn-sm btn-warning"
                             style="display: none;">
-                        <i class="fas fa-eraser"></i> Cancel
+                        <i class="fas fa-eraser"></i> {{ 'file.cancel'|t }}
                     </button>
                     <button id="p3x-gitlist-file-button-edit-save" class="btn btn-sm btn-info" style="display: none;">
-                        <span class="fa fa-save"></span> Save
+                        <span class="fa fa-save"></span> {{ 'file.save'|t }}
                     </button>
 
-                    {% embed 'modal/modal-commit.twig' with { type: 'commit', title: 'Commit', bodyTitle: 'Are you sure to commit this change?', wrapForm: true } %}
+                    {% embed 'modal/modal-commit.twig' with { type: 'commit', title: 'Commit', bodyTitle: 'file.commit.confirm'|t, wrapForm: true } %}
                     {% block buttons %}
                         <button id="p3x-gitlist-modal-commit-push" type="submit" class="btn btn-info">
                             <span class="fas fa-caret-right"></span>
                             &nbsp;
-                            Save
+                            {{ 'file.save'|t }}
                         </button>
                     {% endblock %}
 
@@ -66,12 +66,12 @@
                 {% elseif fileType == 'markdown' %}
                     <a href="{{ path('blob', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}?codemirror=1"
                        class="btn btn-sm btn-info">
-                        <span class="far fa-file-code"></span> Editor
+                        <span class="far fa-file-code"></span> {{ 'file.editor'|t }}
                     </a>
                 {% elseif isHtml and not enforceCodemirror %}
                     <a href="{{ path('blob', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}?codemirror=1"
                        class="btn btn-sm btn-info">
-                        <span class="far fa-file-code"></span> Editor
+                        <span class="far fa-file-code"></span> {{ 'file.editor'|t }}
                     </a>
                 {% endif %}
 
@@ -89,17 +89,17 @@
 
                 {% if binary %}
                     <a href="{{ path('blob_raw', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"
-                       class="btn btn-info btn-sm"><span class="fas fa-download"></span> Download</a>
+                       class="btn btn-info btn-sm"><span class="fas fa-download"></span> {{ 'file.download'|t }}</a>
                 {% else %}
                     <a href="{{ path('blob_raw', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"
-                       class="btn btn-info btn-sm"><span class="fas fa-download"></span> Raw</a>
+                       class="btn btn-info btn-sm"><span class="fas fa-download"></span> {{ 'file.raw'|t }}</a>
                 {% endif %}
 
                 <a href="{{ path('blame', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"
-                   class="btn btn-default btn-sm"><span class="fa fa-fire"></span> Blame</a>
+                   class="btn btn-default btn-sm"><span class="fa fa-fire"></span> {{ 'file.blame'|t }}</a>
 
                 <a href="{{ path('commits', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"
-                   class="btn btn-default btn-sm"><i class="fas fa-history"></i> History</a>
+                   class="btn btn-default btn-sm"><i class="fas fa-history"></i> {{ 'file.history'|t }}</a>
 
                 <div class="p3x-gitlist-file-svg-toggle">
 
@@ -107,9 +107,9 @@
                         <span id="p3x-gitlist-file-codemirror" style="display: none;">
                         <div class="btn-group btn-toggle">
                             <button id="p3x-gitlist-file-button-scroll"
-                                    class="btn btn-sm btn-default">Scroll mode</button>
+                                    class="btn btn-sm btn-default">{{ 'file.scroll_mode'|t }}</button>
                             <button id="p3x-gitlist-file-button-full"
-                                    class="btn btn-sm btn-default">Full height</button>
+                                    class="btn btn-sm btn-default">{{ 'file.full_height'|t }}</button>
                         </div>
                     </span>
 
@@ -119,22 +119,22 @@
 
                         {% if enforceCodemirror %}
                             <a href="{{ path('blob', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"
-                               class="btn btn-default btn-sm"><span class="fa fa-code"></span> Markdown rendered</a>
+                               class="btn btn-default btn-sm"><span class="fa fa-code"></span> {{ 'file.markdown_rendered'|t }}</a>
                         {% else %}
-                            <a title="Click this button and you can edit/save this code."
+                            <a title="{{ 'file.markdown_code.tooltip'|t }}"
                                href="{{ path('blob', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}?codemirror=1"
-                               class="btn btn-default btn-sm"><span class="fa fa-code"></span> Markdown code</a>
+                               class="btn btn-default btn-sm"><span class="fa fa-code"></span> {{ 'file.markdown_code'|t }}</a>
                         {% endif %}
 
                     {% elseif isHtml %}
 
                         {% if enforceCodemirror %}
                             <a href="{{ path('blob', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"
-                               class="btn btn-default btn-sm"><span class="fas fa-globe"></span> HTML rendered</a>
+                               class="btn btn-default btn-sm"><span class="fas fa-globe"></span> {{ 'file.html_rendered'|t }}</a>
                         {% else %}
-                            <a title="Click this button and you can edit/save this code."
+                            <a title="{{ 'file.markdown_code.tooltip'|t }}"
                                href="{{ path('blob', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}?codemirror=1"
-                               class="btn btn-default btn-sm"><span class="fa fa-code"></span> HTML code</a>
+                               class="btn btn-default btn-sm"><span class="fa fa-code"></span> {{ 'file.html_code'|t }}</a>
                         {% endif %}
 
                     {% endif %}

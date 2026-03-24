@@ -73,7 +73,7 @@ $(function () {
         </div>
         <br/>
         <div>
-            Hang on, we are not reloading the server ...
+            ${window.gitlist.t('js.theme_loading')}
         </div>
 </div>        
         `)

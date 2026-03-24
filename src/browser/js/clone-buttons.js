@@ -12,9 +12,7 @@ $(function () {
         document.execCommand("Copy");
         $.snackbar({
             htmlAllowed: true,
-            content: `
-<strong>This URL is in your clipboard:</strong><br/>            
-${input.value}`
+            content: `<strong>${window.gitlist.t('js.clipboard_url')}</strong><br/>${input.value}`
         });
     }, 250);
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ current_lang }}">
 <head>
     <base href="{{ app.url_subdir }}/"/>
     <meta charset="UTF-8"/>
@@ -45,7 +45,11 @@
             $body: undefined,
             scrollIntoViewOptions: undefined,
             scrollIntoView: undefined,
-            repoPaging: {{ app.repo_paging }} }</script>
+            repoPaging: {{ app.repo_paging }},
+            i18n: {{ i18n_json|raw }},
+            lang: '{{ current_lang }}',
+            t: function(key) { return (window.gitlist.i18n && window.gitlist.i18n[key]) || key; }
+            }</script>
 </head>
 <body class="{{ theme_type }}" id="p3x-gitlist-body">
 

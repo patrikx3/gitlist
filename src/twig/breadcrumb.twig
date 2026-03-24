@@ -14,20 +14,20 @@
     <div>
         <a href="{{ path('rss', {repo: repo, branch: branch}) }}" class="btn btn-default btn-sm">
             <i class="fa fa-rss"></i>
-            &nbsp;RSS
+            &nbsp;{{ 'breadcrumb.rss'|t }}
         </a>
 
         <span class="dropdown">
             <a class="btn btn-default btn-sm dropdown-toggle" type="button" id="p3x-gitlist-breadcrumb-git"
                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                Git
+                {{ 'breadcrumb.git'|t }}
                 <span class="caret"></span>
             </a>
             <ul class="dropdown-menu" aria-labelledby="p3x-gitlist-breadcrumb-git">
                 <li data-toggle="tooltip" data-placement="bottom"
-                    title="If this repo is already on origin, this action will throw an error otherwise it will fetch from the origin commits.">
+                    title="{{ 'breadcrumb.git.fetch_origin.tooltip'|t }}">
                     <a href="javascript:void(0)" id="p3x-gitlist-breadcrumb-git-fetch">
-                        <i class="fas fa-chevron-down"></i>&nbsp;Fetch origin
+                        <i class="fas fa-chevron-down"></i>&nbsp;{{ 'breadcrumb.git.fetch_origin'|t }}
                     </a>
                 </li>
             </ul>
@@ -36,29 +36,29 @@
         <span class="dropdown">
             <a class="btn btn-default btn-sm dropdown-toggle" type="button" id="p3x-gitlist-breadcrumb-download"
                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                Download
+                {{ 'breadcrumb.download'|t }}
                 <span class="caret"></span>
             </a>
             <ul class="dropdown-menu" aria-labelledby="p3x-gitlist-breadcrumb-download">
                 <li>
                     <a href="{{ path('archive', {repo: repo, branch: branch, format: 'zip'}) }}"
                        title="Download '{{ branch }}' as a ZIP archive">
-                        <i class="fas fa-file-archive"></i>&nbsp;ZIP
+                        <i class="fas fa-file-archive"></i>&nbsp;{{ 'breadcrumb.download.zip'|t }}
                     </a>
                 </li>
                 <li>
                     <a href="{{ path('archive', {repo: repo, branch: branch, format: 'tar'}) }}"
                        title="Download '{{ branch }}' as a TAR archive">
-                        <i class="far fa-file-archive"></i>&nbsp;TAR
+                        <i class="far fa-file-archive"></i>&nbsp;{{ 'breadcrumb.download.tar'|t }}
                     </a>
                 </li>
             </ul>
         </span>
 
         {% if app.show_http_remote or app.show_ssh_remote %}
-            <a href="#" class="btn btn-default btn-sm" title="Show remotes to clone this repository."
+            <a href="#" class="btn btn-default btn-sm" title="{{ 'breadcrumb.clone.tooltip'|t }}"
                data-toggle="modal" data-target="#p3x-gitlist-modal-clone">
-                <i class="far fa-clone"></i>&nbsp;Clone
+                <i class="far fa-clone"></i>&nbsp;{{ 'breadcrumb.clone'|t }}
             </a>
         {% endif %}
 
@@ -82,7 +82,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true"><i class="fas fa-times"></i></span>
                     </button>
-                    <h4 class="modal-title"><strong>Clone</strong></h4>
+                    <h4 class="modal-title"><strong>{{ 'breadcrumb.clone'|t }}</strong></h4>
                 </div>
                 <div class="modal-body">
 
@@ -91,11 +91,11 @@
                             {% if app.show_ssh_remote %}
                                 <button type="button"
                                         class="btn btn-primary{{ app.show_ssh_remote and app.show_http_remote ? ' active' }}"
-                                        id="clone-button-ssh">SSH
+                                        id="clone-button-ssh">{{ 'breadcrumb.clone.ssh'|t }}
                                 </button>
                             {% endif %}
                             {% if app.show_http_remote %}
-                                <button type="button" class="btn btn-primary" id="clone-button-http">HTTPS</button>
+                                <button type="button" class="btn btn-primary" id="clone-button-http">{{ 'breadcrumb.clone.https'|t }}</button>
                             {% endif %}
                         </div>
                     </div>
@@ -121,7 +121,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">
                         <span class="fas fa-times"></span>
-                        Close
+                        {{ 'common.close'|t }}
                     </button>
                 </div>
             </div>

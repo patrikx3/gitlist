@@ -19,7 +19,7 @@ $(function () {
             if (!noMore) {
                 $.snackbar({
                     htmlAllowed: true,
-                    content: `No more commits.`
+                    content: window.gitlist.t('js.no_more_commits')
                 });
                 noMore = true;
             }

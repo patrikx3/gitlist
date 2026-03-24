@@ -10,7 +10,7 @@
         <div id="p3x-gitlist-index-flex">
             <div class="search form-group" id="p3x-gitlist-index-flex-search">
                 <div class="input-group">
-                    <input class="p3x-gitlist-search form-control" name="query-repo" placeholder="Search repositories" autofocus
+                    <input class="p3x-gitlist-search form-control" name="query-repo" placeholder="{{ 'index.search.placeholder'|t }}" autofocus
                            value=""/>
                     <span class="input-group-btn">
                 <button class="btn btn-default" type="button" id="p3x-gitlist-index-list-clear">
@@ -25,10 +25,10 @@
                 <div class="input-group">
                     <select class="form-control" id="p3x-gitlist-index-list-sort-select">
                         <option value="p3x-gitlist-index-name">
-                            Sort by name
+                            {{ 'index.sort.by_name'|t }}
                         </option>
                         <option value="p3x-gitlist-index-repo-last-commit-timestamp">
-                            Sort by last commit
+                            {{ 'index.sort.by_last_commit'|t }}
                         </option>
                     </select>
                     <span class="input-group-btn">
@@ -69,21 +69,21 @@
                                 <span
                                     class="p3x-gitlist-index-repo-last-commit-timestamp">{{ repository.timestamp }}</span>
                                 <span class="p3x-gitlist-index-repo-last-commit-time">{{ repository.time }}</span>
-                                by
+                                {{ 'index.repo.by'|t }}
                                 <span class="p3x-gitlist-index-repo-last-commit-user">{{ repository.user }}</span>
-                                on
+                                {{ 'index.repo.on'|t }}
                                 {{ repository.branch }}
                             </a>
                             <div class="p3x-gitlist-index-repo-last-commit-empty" style="display: none;">
                                 <strong>
-                                    This repo is empty. Please, create a GIT commit push to make it to be usable.
+                                    {{ 'index.repo.empty'|t }}
                                 </strong>
                             </div>
                             <div class="p3x-gitlist-index-description">
                                 {% if repository.description %}
                                     {{ repository.description }}
                                 {% else %}
-                                    There is no repository description file. Please, create one to remove this message.
+                                    {{ 'index.repo.no_description'|t }}
                                 {% endif %}
                             </div>
                         </td>

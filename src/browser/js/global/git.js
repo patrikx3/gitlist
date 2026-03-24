@@ -2,7 +2,7 @@ const Cookies = require('js-cookie')
 
 window.gitlist.gitNewPush = (json) => {
     if (typeof json === 'object' && json.hasOwnProperty('last-commit')) {
-        const newLocation = `${window.gitlist.basepath}/${window.gitlist.repo}/commit/${json['last-commit']}?snack=` + encodeURIComponent(`The new push is executed. You are switched to the page where you can see the last commit.`) + `&delete-branch=${window.gitlist.branch}`
+        const newLocation = `${window.gitlist.basepath}/${window.gitlist.repo}/commit/${json['last-commit']}?snack=` + encodeURIComponent(window.gitlist.t('js.new_push_snack')) + `&delete-branch=${window.gitlist.branch}`
         // console.log(json, newLocation)
 
         location = newLocation
@@ -15,16 +15,14 @@ window.gitlist.changeableCommit = (opts = {snack: true}) => {
     if (!window.gitlist.branches.includes(window.gitlist.branch)) {
         let branchInfo;
         if (window.gitlist.branches.length === 1) {
-            branchInfo = `Only the <strong>${window.gitlist.branches.join(', ')}</strong> branch is changeable.`
+            branchInfo = window.gitlist.t('js.only_branches_changeable').replace('{{ branches }}', `<strong>${window.gitlist.branches.join(', ')}</strong>`)
         } else {
-            branchInfo = `Only the <strong>${window.gitlist.branches.join(', ')}</strong> branches are changeable.`
+            branchInfo = window.gitlist.t('js.only_branches_changeable').replace('{{ branches }}', `<strong>${window.gitlist.branches.join(', ')}</strong>`)
         }
         if (opts.snack) {
             $.snackbar({
                 htmlAllowed: true,
-                content: `This commit <strong>${window.gitlist.branch}</strong> is not changeable.<br/>
-${branchInfo}
-`,
+                content: window.gitlist.t('js.branch_not_changeable').replace('{{ branch }}', `<strong>${window.gitlist.branch}</strong>`) + `<br/>${branchInfo}`,
                 timeout: window.gitlist.snapckbarLongTimeout,
             })
         }

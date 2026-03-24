@@ -5,7 +5,7 @@
 {% block title %}P3X GitList{% endblock %}
 
 {% block content %}
-    {% include 'breadcrumb.twig' with {breadcrumbs: [{dir: 'Statistics', path:''}, {dir: branch, path:''}]} %}
+    {% include 'breadcrumb.twig' with {breadcrumbs: [{dir: 'stats.title'|t, path:''}, {dir: branch, path:''}]} %}
 
     <div class="container-fluid">
         <div class="row">
@@ -13,7 +13,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <strong>
-                            <i class="fas fa-file-alt"></i>&nbsp;&nbsp;File extensions
+                            <i class="fas fa-file-alt"></i>&nbsp;&nbsp;{{ 'stats.file_extensions'|t }}
                         </strong>
                         <span class="badge pull-right">{{ stats.extensions|length }}</span>
                     </div>
@@ -32,7 +32,7 @@
                     <div class="panel-heading">
                         <span class="badge pull-right">{{ authors|length }}</span>
                         <strong>
-                            <i class="fas fa-user"></i>&nbsp;&nbsp;Authors with commits
+                            <i class="fas fa-user"></i>&nbsp;&nbsp;{{ 'stats.authors_with_commits'|t }}
                         </strong>
                     </div>
                     <ul class="list-group">
@@ -49,13 +49,13 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <strong>
-                            <i class="far fa-chart-bar"></i>&nbsp;&nbsp;Stats
+                            <i class="far fa-chart-bar"></i>&nbsp;&nbsp;{{ 'stats.stats'|t }}
                         </strong>
                     </div>
                     <ul class="list-group">
                         <li class="list-group-item">
                             <span class="pull-right">{{ stats.files }}</span>
-                            <strong>Total files</strong>
+                            <strong>{{ 'stats.total_files'|t }}</strong>
                         </li>
                         <li class="list-group-item">
                             <strong>{{ stats.size }} bytes</strong>
