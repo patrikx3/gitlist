@@ -42,7 +42,8 @@ class Application extends FrameworkApplication
         $this['date.format'] = $config->get('date', 'format') ? $config->get('date', 'format') : 'd/m/Y H:i:s';
         $this['theme'] = 'bootstrap';
 
-        $this['title'] = $config->get('app', 'title') ? $config->get('app', 'title') : 'P3X GitList ' . $pkg['version'];
+        $titleBase = $config->get('app', 'title') ? $config->get('app', 'title') : 'P3X GitList';
+        $this['title'] = $titleBase . ' ' . $pkg['version'];
         $this['filetypes'] = $config->getSection('filetypes');
         $this['binary_filetypes'] = $config->getSection('binary_filetypes');
         $this['cache.archives'] = $this->getCachePath() . 'archives';
