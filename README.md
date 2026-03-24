@@ -29,7 +29,7 @@ P3X Enhanced GitList is a fork of the klaussilveira Gitlist. What is different a
   
 **It works on CodeMirror 6 LTS code editor, Bootstrap 5 LTS, jQuery 4 LTS**
 
-## Demo
+## Demo 1
 
 [https://demo.gitlist.patrikx3.com](https://demo.gitlist.patrikx3.com)  
 
@@ -48,7 +48,7 @@ Translation files are located in `src/translation/` as JSON files. To add a new 
 ## Beware
 If you use other, than UTF-8 encoded files, you could get incorrect results, as it does not do converting, it only works with UTF-8.
 
-# Demo
+# Demo 2
 
 [Screenshots](artifacts/screenshots.md)
 
