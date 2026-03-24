@@ -13,6 +13,13 @@ class TreeController implements ControllerProviderInterface
     {
         $route = $app['controllers_factory'];
 
+        // Redirect tree URLs without trailing slash to the canonical URL with trailing slash
+        $route->get('{repo}/tree/{commitishPath}', function ($repo, $commitishPath = '') use ($app) {
+            return $app->redirect($app['url_subdir'] . '/' . $repo . '/tree/' . $commitishPath . '/');
+        })->assert('repo', $app['util.routing']->getRepositoryRegex())
+            ->assert('commitishPath', '.+(?<!/)$')
+            ->convert('commitishPath', 'escaper.argument:escape');
+
         $route->get('{repo}/tree/{commitishPath}/', $treeController = function ($repo, $commitishPath = '') use ($app) {
             $repository = $app['git']->getRepositoryFromName($app['git.repos'], $repo);
             $head = $repository->getHead();

@@ -6,6 +6,7 @@ use Pimple\Container;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpKernel\Controller\ArgumentResolver;
@@ -183,6 +184,11 @@ class Application extends Container implements HttpKernelInterface
         $this['dispatcher']->addListener(KernelEvents::TERMINATE, function (TerminateEvent $event) use ($callback) {
             $callback($event->getRequest(), $event->getResponse());
         }, $priority);
+    }
+
+    public function json($data = [], $status = 200, array $headers = [])
+    {
+        return new JsonResponse($data, $status, $headers);
     }
 
     public function redirect($url, $status = 302)
