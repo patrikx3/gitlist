@@ -6,7 +6,7 @@
 
 
 
-# 🛠️ 🤖 P3X Gitlist - A decorated enhanced elegant, feature rich and modern private git ui repository viewer  v2026.4.271
+# 🛠️ 🤖 P3X Gitlist - A decorated enhanced elegant, feature rich and modern private git ui repository viewer  v2026.4.272
 
 
   
@@ -21,148 +21,105 @@
                         
 [//]: #@corifeus-header:end
 
-P3X Enhanced GitList is a fork of the klaussilveira Gitlist. What is different about is, that it requires/uses the latest PHP version, works with sub-modules. With big git repos/commits, it works with 64Mb memory (some Twig templates are removed and moved to the client and web workers - eg. huge diffs).  
- 
- You will love it to work it on OpenWrt. Provides multiple themes with dark mode - 22 light and 5 dark. Code editor with syntax highlighting, editable files. All changes in the original fork are synced with the enhanced version. 100% responsive with Bootstrap 5 LTS. Latest Fontawesome for icons. The markdown engine uses Emojis with Twitter's Emojis. Besides, the commits and logs are parsed as Markdown and Emojis. 
-  
-**Works starting from PHP 8.3 LTS**
-  
-**It works on CodeMirror 6 LTS code editor, Bootstrap 5 LTS, jQuery 4 LTS**
+P3X GitList is an enhanced fork of [klaussilveira/gitlist](https://github.com/klaussilveira/gitlist), rebuilt for modern PHP and designed for performance. It handles large repositories and commits within 64 MB of memory by offloading heavy work (e.g. huge diffs) to the client via web workers. Sub-modules are fully supported.
 
-## Demo 1
+**Key features:**
+- 27 themes (22 light, 5 dark)
+- CodeMirror 6 code editor with syntax highlighting and file editing
+- 100% responsive with Bootstrap 5 LTS, jQuery 4 LTS, and FontAwesome icons
+- Markdown rendering with Twitter Emojis in commits and logs
+- Runs on OpenWrt
 
-[https://demo.gitlist.patrikx3.com](https://demo.gitlist.patrikx3.com)  
+**Requires PHP >= 8.3 LTS**
 
+> **Note:** Only UTF-8 encoded files are supported. Non-UTF-8 files may produce incorrect results.
 
+## Demo
+
+[Live demo](https://demo.gitlist.patrikx3.com) | [Screenshots](artifacts/screenshots.md)
+
+## Releases
+
+[GitHub Releases](https://github.com/patrikx3/gitlist/releases)
 
 ## Localization / i18n
 
-P3X GitList supports multiple languages. The language can be switched via the **Language** dropdown in the navigation bar. The selected language is stored in a cookie.
+P3X GitList supports multiple languages, switchable via the **Language** dropdown in the navigation bar. The selected language is stored in a cookie.
 
-### Supported languages
-
-29 languages supported: Afrikaans, العربية (Arabic), বাংলা (Bengali), Català, Čeština, Dansk, Deutsch, Ελληνικά, English, Español, Suomi, Français, עברית (Hebrew), Magyar, Italiano, 日本語, 한국어, Nederlands, Norsk, Polski, Português, Română, Русский, Српски, Svenska, Türkçe, Українська, Tiếng Việt, 中文.
+**29 languages supported:** Afrikaans, العربية (Arabic), বাংলা (Bengali), Català, Čeština, Dansk, Deutsch, Ελληνικά, English, Español, Suomi, Français, עברית (Hebrew), Magyar, Italiano, 日本語, 한국어, Nederlands, Norsk, Polski, Português, Română, Русский, Српски, Svenska, Türkçe, Українська, Tiếng Việt, 中文.
 
 Translation files are located in `src/translation/` as JSON files. To add a new language, create a new JSON file (e.g. `th.json`) with the same keys as `en.json`, and add the language code to the `$langNames` array in `src/GitList/Application.php`.
 
-## Beware
-If you use other, than UTF-8 encoded files, you could get incorrect results, as it does not do converting, it only works with UTF-8.
+## NGINX Configuration
 
-# Demo 2
-
-[Screenshots](artifacts/screenshots.md)
-
-# Releases
-  
-[https://github.com/patrikx3/gitlist/releases](https://github.com/patrikx3/gitlist/releases)  
-
-
-### NGINX gitlist.patrikx3.com configs 
-
-This is a complete config that uses NGINX, LETSENCRYPT (using https://acme.sh) and the **git-http-backend**.
-This parse only the `public/index.php` file, no other PHP files, so that they are editable in `Decorated P3X GitList` as in the live demo.
+A complete config using NGINX, Let's Encrypt (via [acme.sh](https://acme.sh)), and `git-http-backend`. Only `public/index.php` is parsed — all other PHP files remain editable in the GitList UI.
 
 [gitlist.patrikx3.com.conf](artifacts/gitlist.patrikx3.com.conf)
 
-## FYI
-[Change log](change-log.md)  
-  
-[TODO](todo.md)  
-  
-[Change breaking code](change-break.md)
+## Additional Documentation
+
+- [Change log](change-log.md)
+- [TODO](todo.md)
+- [Breaking changes](change-break.md)
+- [Original install guide](INSTALL.md)
 
 # Development
 
-To make it easier to develop Gitter and GitList, we unified the two code into one.  
+Gitter and GitList are unified into a single codebase for easier development.
 
-## Requirements
+## Build Requirements
 
-By now `composer` is not enough. We are using `webpack`, `less`, `grunt` ...
-
-For the build on your workstation (less, Bootstrap themes,  and webpack):
-
-* ```NodeJs``` >= LTS
-  * https://nodejs.org/en/download/package-manager/
-* ```Grunt``` (npm install -g npm grunt-cli)
+* [Node.js](https://nodejs.org/en/download/package-manager/) >= LTS
+* `grunt-cli` (`npm install -g grunt-cli`)
 * `Composer`
 
-In order to run GitList on your server, you'll need:
+## Server Requirements
 
-* ```git```
-* ```Apache``` with ```mod_rewrite``` enabled or ```nginx``` - preferred
-* ```PHP``` >= 7.1 
+* `git`
+* `Apache` with `mod_rewrite` enabled or `nginx` (preferred)
+* `PHP` >= 8.3
 
-## So, by hand
-
-If you have Composer in your path, things get easier. But you know the drill.
-
-If want to get the project dependencies, and build everything:
+## Building from Source
 
 ```bash
-# ubuntu
-# https://github.com/nodesource/distributions/blob/master/README.md#debinstall
+# Install Node.js (Ubuntu)
 curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
 sudo apt-get install -y nodejs
 
+# Clone and install dependencies
 git clone https://github.com/patrikx3/gitlist.git
 curl -s http://getcomposer.org/installer | php
 php composer.phar install
 
-# i use Node latest usually and NPM
 sudo npm install -g npm grunt-cli
 yarn install
 
-# create some simple GIT repos
-# create a test config.ini
+# Initialize test repos and config
 ./scripts/init.sh
 
-# if you do not want to create a release
-# just work on it
-# now the js and css is built on the fly
-# in the ./public folder
+# Development mode (watches for changes)
 npm run watch
 
-# you might need the zip program
-# to create release
+# Create a release build (requires zip)
 sudo apt install -y zip
-
-# if you have bash and want to create a full release
-# and strip all unneeded files,
-# optimize the packagist vendor folder
-# you might need zip from linux
-# and the zip is in the ./build/p3x-gitlist-a.b.c.zip file
 ./scripts/release.sh
 ```
 
-# Old info
-[Original install information, although some new info is included](INSTALL.md) - here.
+# Origin
 
-https://github.com/klaussilveira/gitlist
+Forked from [klaussilveira/gitlist](https://github.com/klaussilveira/gitlist).
 
-### Last merge from `klaussilveira`
+**Last merge from upstream:** September 7, 2021
+- [Gitlist commits](https://github.com/klaussilveira/gitlist/commits/master)
+- [Gitter commits](https://github.com/klaussilveira/gitter/commits/master)
 
-#### Gitlist
-https://github.com/klaussilveira/gitlist/commits/master  
-Sept 7, 2021
+# Links
 
-#### Gitter
-https://github.com/klaussilveira/gitter/commits/master  
-Sept 7, 2021
-
-# URL links
-
-[P3X Gitlist playground](https://www.patrikx3.com/en/front/playground/17/p3x-gitlist#PG17)  
-
-[Corifeus P3X Gitlist](https://corifeus.com/gitlist/)  
-  
-[AlternativeTo Gitlist](https://alternativeto.net/software/p3x-gitlist/)  
-
-[Github.io Gitlist](https://patrikx3.github.io/gitlist/)  
-
-[Git Wiki Kernel Web Interfaces](https://git.wiki.kernel.org/index.php/Interfaces,_frontends,_and_tools#Web_Interfaces)  
-
-
-[//]: https://betapage.co/startup/p3x-gitlist
+- [P3X GitList playground](https://www.patrikx3.com/en/front/playground/17/p3x-gitlist#PG17)
+- [Corifeus P3X GitList](https://corifeus.com/gitlist/)
+- [AlternativeTo](https://alternativeto.net/software/p3x-gitlist/)
+- [GitHub Pages](https://patrikx3.github.io/gitlist/)
+- [Git Wiki - Web Interfaces](https://git.wiki.kernel.org/index.php/Interfaces,_frontends,_and_tools#Web_Interfaces)
 
 
 [//]: #@corifeus-footer
@@ -210,7 +167,7 @@ All my domains, including [patrikx3.com](https://patrikx3.com), [corifeus.eu](ht
 ---
 
 
-[**P3X-GITLIST**](https://corifeus.com/gitlist) Build v2026.4.271
+[**P3X-GITLIST**](https://corifeus.com/gitlist) Build v2026.4.272
 
  [![Donate for PatrikX3 / P3X](https://img.shields.io/badge/Donate-PatrikX3-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software)
 
