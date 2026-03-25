@@ -6,19 +6,19 @@
 [//]: #@corifeus-header:end
 
 
-![Screenshot 1](https://cdn.corifeus.com/git/gitlist/artifacts/screenshots/p3x-gitlist-1.jpeg)
+![Screenshot 1](https://cdn.corifeus.com/git/gitlist/artifacts/screenshots/p3x-gitlist-1.png)
 
-![Screenshot 2](https://cdn.corifeus.com/git/gitlist/artifacts/screenshots/p3x-gitlist-2.jpeg)
+![Screenshot 2](https://cdn.corifeus.com/git/gitlist/artifacts/screenshots/p3x-gitlist-2.png)
 
-![Screenshot 3](https://cdn.corifeus.com/git/gitlist/artifacts/screenshots/p3x-gitlist-3.jpeg)
+![Screenshot 3](https://cdn.corifeus.com/git/gitlist/artifacts/screenshots/p3x-gitlist-3.png)
 
-![Screenshot 4](https://cdn.corifeus.com/git/gitlist/artifacts/screenshots/p3x-gitlist-4.jpeg)
+![Screenshot 4](https://cdn.corifeus.com/git/gitlist/artifacts/screenshots/p3x-gitlist-4.png)
 
-![Screenshot 5](https://cdn.corifeus.com/git/gitlist/artifacts/screenshots/p3x-gitlist-5.jpeg)
+![Screenshot 5](https://cdn.corifeus.com/git/gitlist/artifacts/screenshots/p3x-gitlist-5.png)
 
-![Screenshot 6](https://cdn.corifeus.com/git/gitlist/artifacts/screenshots/p3x-gitlist-6.jpeg)
+![Screenshot 6](https://cdn.corifeus.com/git/gitlist/artifacts/screenshots/p3x-gitlist-6.png)
 
-![Screenshot 7](https://cdn.corifeus.com/git/gitlist/artifacts/screenshots/p3x-gitlist-7.jpeg)
+![Screenshot 7](https://cdn.corifeus.com/git/gitlist/artifacts/screenshots/p3x-gitlist-7.png)
 
 
 [//]: #@corifeus-footer
