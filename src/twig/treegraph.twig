@@ -36,7 +36,7 @@
                                    href="{{ path('commit', {repo: repo, commit: item.rev}) }}"> {{ item.short_rev }}</a>
                                 <strong> {{ item.branch }} </strong>
                                 <span>{{ item.date | date(gitlist_date_format) }}</span>
-                                by
+                                {{ 'index.repo.by'|t }}
                                 <span class="author"><a class="treegraph-link"
                                                         href="mailto:{{ item.author_email }}">{{ item.author }}</a></span>
                                 &nbsp;
@@ -51,6 +51,15 @@
             <div style="clear:both"><!-- --></div>
         </div>
     </div>
+
+    {% if hasMore %}
+        <div class="text-center mt-3 mb-3" id="p3x-gitlist-treegraph-load-more-container">
+            <button class="btn btn-secondary" id="p3x-gitlist-treegraph-load-more"
+                    data-repo="{{ repo }}" data-branch="{{ branch }}" data-page="1">
+                <i class="fas fa-chevron-down"></i> {{ 'commit.list.older_next'|t }}
+            </button>
+        </div>
+    {% endif %}
 
 
 
