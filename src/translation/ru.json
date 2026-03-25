@@ -141,5 +141,26 @@
   "js.theme_loading": "Подождите, мы не перезагружаем сервер ...",
   "js.code_not_changed": "Код не изменён. Сохранение не выполняется.",
   "js.changes_reverted": "Изменения отменены.",
-  "js.file_saved": "Файл сохранён."
+  "js.file_saved": "Файл сохранён.",
+
+  "cm.find": "Найти",
+  "cm.replace": "Заменить",
+  "cm.next": "следующий",
+  "cm.previous": "предыдущий",
+  "cm.all": "все",
+  "cm.match_case": "учитывать регистр",
+  "cm.by_word": "по словам",
+  "cm.regexp": "regexp",
+  "cm.replace_all": "заменить все",
+  "cm.close": "закрыть",
+  "cm.go_to_line": "Перейти к строке",
+  "cm.go": "перейти",
+  "cm.replaced_matches": "заменено $ совпадений",
+  "cm.replaced_match_on_line": "заменено совпадение в строке $",
+  "cm.on_line": "в строке",
+  "cm.current_match": "текущее совпадение",
+  "cm.control_character": "Управляющий символ",
+  "cm.selection_deleted": "Выделение удалено",
+  "cm.diagnostics": "Диагностика",
+  "cm.no_diagnostics": "Нет диагностики"
 }

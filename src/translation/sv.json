@@ -141,5 +141,26 @@
   "js.theme_loading": "Vänta, vi laddar inte om servern ...",
   "js.code_not_changed": "Koden har inte ändrats. Ingen sparning.",
   "js.changes_reverted": "Ändringarna har återställts.",
-  "js.file_saved": "Filen har sparats."
+  "js.file_saved": "Filen har sparats.",
+
+  "cm.find": "Sök",
+  "cm.replace": "Ersätt",
+  "cm.next": "nästa",
+  "cm.previous": "föregående",
+  "cm.all": "alla",
+  "cm.match_case": "skilj på versaler",
+  "cm.by_word": "per ord",
+  "cm.regexp": "regexp",
+  "cm.replace_all": "ersätt alla",
+  "cm.close": "stäng",
+  "cm.go_to_line": "Gå till rad",
+  "cm.go": "gå",
+  "cm.replaced_matches": "ersatte $ träffar",
+  "cm.replaced_match_on_line": "ersatte träff på rad $",
+  "cm.on_line": "på rad",
+  "cm.current_match": "aktuell träff",
+  "cm.control_character": "Styrtecken",
+  "cm.selection_deleted": "Markering borttagen",
+  "cm.diagnostics": "Diagnostik",
+  "cm.no_diagnostics": "Ingen diagnostik"
 }

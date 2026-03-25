@@ -141,5 +141,26 @@
   "js.theme_loading": "请稍候，我们没有重新加载服务器 ...",
   "js.code_not_changed": "代码未更改，无需保存。",
   "js.changes_reverted": "更改已还原。",
-  "js.file_saved": "文件已保存。"
+  "js.file_saved": "文件已保存。",
+
+  "cm.find": "查找",
+  "cm.replace": "替换",
+  "cm.next": "下一个",
+  "cm.previous": "上一个",
+  "cm.all": "全部",
+  "cm.match_case": "区分大小写",
+  "cm.by_word": "按单词",
+  "cm.regexp": "regexp",
+  "cm.replace_all": "全部替换",
+  "cm.close": "关闭",
+  "cm.go_to_line": "跳转到行",
+  "cm.go": "跳转",
+  "cm.replaced_matches": "已替换 $ 个匹配",
+  "cm.replaced_match_on_line": "已替换第 $ 行的匹配",
+  "cm.on_line": "在第",
+  "cm.current_match": "当前匹配",
+  "cm.control_character": "控制字符",
+  "cm.selection_deleted": "选区已删除",
+  "cm.diagnostics": "诊断",
+  "cm.no_diagnostics": "无诊断"
 }

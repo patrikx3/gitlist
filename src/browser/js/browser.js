@@ -102,7 +102,7 @@ $(async function () {
                 }
             }, 250)
 
-            input.keyup(debouncedKeyup)
+            input.on('keyup', debouncedKeyup)
 
 
         }

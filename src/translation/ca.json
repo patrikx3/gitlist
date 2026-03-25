@@ -141,5 +141,26 @@
   "js.theme_loading": "Espereu, no estem recarregant el servidor ...",
   "js.code_not_changed": "El codi no ha canviat. No es desa.",
   "js.changes_reverted": "Els canvis s'han revertit.",
-  "js.file_saved": "El fitxer s'ha desat."
+  "js.file_saved": "El fitxer s'ha desat.",
+
+  "cm.find": "Cerca",
+  "cm.replace": "Substitueix",
+  "cm.next": "següent",
+  "cm.previous": "anterior",
+  "cm.all": "tot",
+  "cm.match_case": "distingir majúscules",
+  "cm.by_word": "per paraula",
+  "cm.regexp": "regexp",
+  "cm.replace_all": "substitueix tot",
+  "cm.close": "tanca",
+  "cm.go_to_line": "Vés a la línia",
+  "cm.go": "vés",
+  "cm.replaced_matches": "$ coincidències substituïdes",
+  "cm.replaced_match_on_line": "coincidència substituïda a la línia $",
+  "cm.on_line": "a la línia",
+  "cm.current_match": "coincidència actual",
+  "cm.control_character": "Caràcter de control",
+  "cm.selection_deleted": "Selecció suprimida",
+  "cm.diagnostics": "Diagnòstics",
+  "cm.no_diagnostics": "Sense diagnòstics"
 }

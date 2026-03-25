@@ -141,5 +141,26 @@
   "js.theme_loading": "অপেক্ষা করুন, আমরা সার্ভার রিলোড করছি না ...",
   "js.code_not_changed": "কোড পরিবর্তন হয়নি। সংরক্ষণ হবে না।",
   "js.changes_reverted": "পরিবর্তনগুলি ফিরিয়ে আনা হয়েছে।",
-  "js.file_saved": "ফাইল সংরক্ষিত হয়েছে।"
+  "js.file_saved": "ফাইল সংরক্ষিত হয়েছে।",
+
+  "cm.find": "খুঁজুন",
+  "cm.replace": "প্রতিস্থাপন",
+  "cm.next": "পরবর্তী",
+  "cm.previous": "পূর্ববর্তী",
+  "cm.all": "সব",
+  "cm.match_case": "বড়/ছোট হাতের অক্ষর মেলান",
+  "cm.by_word": "শব্দ অনুযায়ী",
+  "cm.regexp": "regexp",
+  "cm.replace_all": "সব প্রতিস্থাপন",
+  "cm.close": "বন্ধ",
+  "cm.go_to_line": "লাইনে যান",
+  "cm.go": "যান",
+  "cm.replaced_matches": "$ টি মিল প্রতিস্থাপিত",
+  "cm.replaced_match_on_line": "লাইন $-এ মিল প্রতিস্থাপিত",
+  "cm.on_line": "লাইনে",
+  "cm.current_match": "বর্তমান মিল",
+  "cm.control_character": "নিয়ন্ত্রণ অক্ষর",
+  "cm.selection_deleted": "নির্বাচন মুছে ফেলা হয়েছে",
+  "cm.diagnostics": "ডায়াগনস্টিকস",
+  "cm.no_diagnostics": "কোনো ডায়াগনস্টিকস নেই"
 }

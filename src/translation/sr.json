@@ -141,5 +141,26 @@
   "js.theme_loading": "Сачекајте, не учитавамо поново сервер ...",
   "js.code_not_changed": "Код није промењен. Нема чувања.",
   "js.changes_reverted": "Промене су враћене.",
-  "js.file_saved": "Датотека је сачувана."
+  "js.file_saved": "Датотека је сачувана.",
+
+  "cm.find": "Пронађи",
+  "cm.replace": "Замени",
+  "cm.next": "следећи",
+  "cm.previous": "претходни",
+  "cm.all": "све",
+  "cm.match_case": "разликуј велика/мала",
+  "cm.by_word": "по речи",
+  "cm.regexp": "regexp",
+  "cm.replace_all": "замени све",
+  "cm.close": "затвори",
+  "cm.go_to_line": "Иди на ред",
+  "cm.go": "иди",
+  "cm.replaced_matches": "замењено $ подударања",
+  "cm.replaced_match_on_line": "замењено подударање у реду $",
+  "cm.on_line": "у реду",
+  "cm.current_match": "тренутно подударање",
+  "cm.control_character": "Контролни знак",
+  "cm.selection_deleted": "Избор обрисан",
+  "cm.diagnostics": "Дијагностика",
+  "cm.no_diagnostics": "Нема дијагностике"
 }

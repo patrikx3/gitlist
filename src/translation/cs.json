@@ -141,5 +141,26 @@
   "js.theme_loading": "Čekejte, neprovádíme opětovné načtení serveru ...",
   "js.code_not_changed": "Kód se nezměnil. Neukládá se.",
   "js.changes_reverted": "Změny byly vráceny.",
-  "js.file_saved": "Soubor byl uložen."
+  "js.file_saved": "Soubor byl uložen.",
+
+  "cm.find": "Najít",
+  "cm.replace": "Nahradit",
+  "cm.next": "další",
+  "cm.previous": "předchozí",
+  "cm.all": "vše",
+  "cm.match_case": "rozlišovat velikost",
+  "cm.by_word": "celá slova",
+  "cm.regexp": "regexp",
+  "cm.replace_all": "nahradit vše",
+  "cm.close": "zavřít",
+  "cm.go_to_line": "Přejít na řádek",
+  "cm.go": "přejít",
+  "cm.replaced_matches": "nahrazeno $ shod",
+  "cm.replaced_match_on_line": "nahrazena shoda na řádku $",
+  "cm.on_line": "na řádku",
+  "cm.current_match": "aktuální shoda",
+  "cm.control_character": "Řídicí znak",
+  "cm.selection_deleted": "Výběr smazán",
+  "cm.diagnostics": "Diagnostika",
+  "cm.no_diagnostics": "Žádná diagnostika"
 }

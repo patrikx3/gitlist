@@ -141,5 +141,26 @@
   "js.theme_loading": "Even geduld, we herladen de server niet ...",
   "js.code_not_changed": "De code is niet gewijzigd. Niet opgeslagen.",
   "js.changes_reverted": "De wijzigingen zijn teruggedraaid.",
-  "js.file_saved": "Het bestand is opgeslagen."
+  "js.file_saved": "Het bestand is opgeslagen.",
+
+  "cm.find": "Zoeken",
+  "cm.replace": "Vervangen",
+  "cm.next": "volgende",
+  "cm.previous": "vorige",
+  "cm.all": "alle",
+  "cm.match_case": "hoofdlettergevoelig",
+  "cm.by_word": "per woord",
+  "cm.regexp": "regexp",
+  "cm.replace_all": "alles vervangen",
+  "cm.close": "sluiten",
+  "cm.go_to_line": "Ga naar regel",
+  "cm.go": "ga",
+  "cm.replaced_matches": "$ overeenkomsten vervangen",
+  "cm.replaced_match_on_line": "overeenkomst vervangen op regel $",
+  "cm.on_line": "op regel",
+  "cm.current_match": "huidige overeenkomst",
+  "cm.control_character": "Stuurteken",
+  "cm.selection_deleted": "Selectie verwijderd",
+  "cm.diagnostics": "Diagnostiek",
+  "cm.no_diagnostics": "Geen diagnostiek"
 }

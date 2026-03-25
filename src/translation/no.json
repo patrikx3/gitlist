@@ -141,5 +141,26 @@
   "js.theme_loading": "Vent, vi laster ikke serveren pa nytt ...",
   "js.code_not_changed": "Koden er ikke endret. Ingen lagring.",
   "js.changes_reverted": "Endringene er tilbakestilt.",
-  "js.file_saved": "Filen er lagret."
+  "js.file_saved": "Filen er lagret.",
+
+  "cm.find": "Finn",
+  "cm.replace": "Erstatt",
+  "cm.next": "neste",
+  "cm.previous": "forrige",
+  "cm.all": "alle",
+  "cm.match_case": "skill store/små",
+  "cm.by_word": "per ord",
+  "cm.regexp": "regexp",
+  "cm.replace_all": "erstatt alle",
+  "cm.close": "lukk",
+  "cm.go_to_line": "Gå til linje",
+  "cm.go": "gå",
+  "cm.replaced_matches": "erstattet $ treff",
+  "cm.replaced_match_on_line": "erstattet treff på linje $",
+  "cm.on_line": "på linje",
+  "cm.current_match": "nåværende treff",
+  "cm.control_character": "Kontrolltegn",
+  "cm.selection_deleted": "Utvalg slettet",
+  "cm.diagnostics": "Diagnostikk",
+  "cm.no_diagnostics": "Ingen diagnostikk"
 }

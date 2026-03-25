@@ -141,5 +141,26 @@
   "js.theme_loading": "Aguarde, nao estamos a recarregar o servidor ...",
   "js.code_not_changed": "O codigo nao foi alterado. Nao guardado.",
   "js.changes_reverted": "As alteracoes foram revertidas.",
-  "js.file_saved": "O ficheiro foi guardado."
+  "js.file_saved": "O ficheiro foi guardado.",
+
+  "cm.find": "Procurar",
+  "cm.replace": "Substituir",
+  "cm.next": "seguinte",
+  "cm.previous": "anterior",
+  "cm.all": "todos",
+  "cm.match_case": "diferenciar maiúsculas",
+  "cm.by_word": "por palavra",
+  "cm.regexp": "regexp",
+  "cm.replace_all": "substituir todos",
+  "cm.close": "fechar",
+  "cm.go_to_line": "Ir para a linha",
+  "cm.go": "ir",
+  "cm.replaced_matches": "$ correspondências substituídas",
+  "cm.replaced_match_on_line": "correspondência substituída na linha $",
+  "cm.on_line": "na linha",
+  "cm.current_match": "correspondência atual",
+  "cm.control_character": "Caractere de controlo",
+  "cm.selection_deleted": "Seleção eliminada",
+  "cm.diagnostics": "Diagnósticos",
+  "cm.no_diagnostics": "Sem diagnósticos"
 }

@@ -141,5 +141,26 @@
   "js.theme_loading": "Bekleyin, sunucuyu yeniden yüklemiyoruz ...",
   "js.code_not_changed": "Kod değişmedi. Kayıt yapılmıyor.",
   "js.changes_reverted": "Değişiklikler geri alındı.",
-  "js.file_saved": "Dosya kaydedildi."
+  "js.file_saved": "Dosya kaydedildi.",
+
+  "cm.find": "Bul",
+  "cm.replace": "Değiştir",
+  "cm.next": "sonraki",
+  "cm.previous": "önceki",
+  "cm.all": "tümü",
+  "cm.match_case": "büyük/küçük harf",
+  "cm.by_word": "kelime bazında",
+  "cm.regexp": "regexp",
+  "cm.replace_all": "tümünü değiştir",
+  "cm.close": "kapat",
+  "cm.go_to_line": "Satıra git",
+  "cm.go": "git",
+  "cm.replaced_matches": "$ eşleşme değiştirildi",
+  "cm.replaced_match_on_line": "satır $'deki eşleşme değiştirildi",
+  "cm.on_line": "satırda",
+  "cm.current_match": "mevcut eşleşme",
+  "cm.control_character": "Kontrol karakteri",
+  "cm.selection_deleted": "Seçim silindi",
+  "cm.diagnostics": "Tanılama",
+  "cm.no_diagnostics": "Tanılama yok"
 }

@@ -221,6 +221,33 @@ function createCM5Wrapper(view, options) {
 }
 
 // Main factory function - replaces global CodeMirror()
+// Build CM6 phrases from our i18n system
+function getCM6Phrases() {
+    const t = window.gitlist.t;
+    return {
+        "Find": t("cm.find"),
+        "Replace": t("cm.replace"),
+        "next": t("cm.next"),
+        "previous": t("cm.previous"),
+        "all": t("cm.all"),
+        "match case": t("cm.match_case"),
+        "by word": t("cm.by_word"),
+        "regexp": t("cm.regexp"),
+        "replace all": t("cm.replace_all"),
+        "close": t("cm.close"),
+        "Go to line": t("cm.go_to_line"),
+        "go": t("cm.go"),
+        "replaced $ matches": t("cm.replaced_matches"),
+        "replaced match on line $": t("cm.replaced_match_on_line"),
+        "on line": t("cm.on_line"),
+        "current match": t("cm.current_match"),
+        "Control character": t("cm.control_character"),
+        "Selection deleted": t("cm.selection_deleted"),
+        "Diagnostics": t("cm.diagnostics"),
+        "No diagnostics": t("cm.no_diagnostics"),
+    };
+}
+
 global.CodeMirror = function(callback, options) {
     const isDark = window.gitlist.isDark();
     const langExt = getLanguageExtension(options.mode);
@@ -238,6 +265,7 @@ global.CodeMirror = function(callback, options) {
         readOnlyComp.of(EditorState.readOnly.of(options.readOnly !== false)),
         themeComp.of(getThemeExtension(isDark)),
         languageComp.of(langExt),
+        EditorState.phrases.of(getCM6Phrases()),
     ];
 
     const state = EditorState.create({

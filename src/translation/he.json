@@ -141,5 +141,26 @@
   "js.theme_loading": "המתן, אנחנו לא טוענים מחדש את השרת ...",
   "js.code_not_changed": "הקוד לא השתנה. לא שומר.",
   "js.changes_reverted": "השינויים הוחזרו.",
-  "js.file_saved": "הקובץ נשמר."
+  "js.file_saved": "הקובץ נשמר.",
+
+  "cm.find": "חיפוש",
+  "cm.replace": "החלפה",
+  "cm.next": "הבא",
+  "cm.previous": "הקודם",
+  "cm.all": "הכל",
+  "cm.match_case": "התאמת רישיות",
+  "cm.by_word": "לפי מילה",
+  "cm.regexp": "regexp",
+  "cm.replace_all": "החלף הכל",
+  "cm.close": "סגור",
+  "cm.go_to_line": "עבור לשורה",
+  "cm.go": "עבור",
+  "cm.replaced_matches": "הוחלפו $ התאמות",
+  "cm.replaced_match_on_line": "הוחלפה התאמה בשורה $",
+  "cm.on_line": "בשורה",
+  "cm.current_match": "התאמה נוכחית",
+  "cm.control_character": "תו בקרה",
+  "cm.selection_deleted": "הבחירה נמחקה",
+  "cm.diagnostics": "אבחונים",
+  "cm.no_diagnostics": "אין אבחונים"
 }

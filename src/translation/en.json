@@ -141,5 +141,26 @@
   "js.theme_loading": "Hang on, we are not reloading the server ...",
   "js.code_not_changed": "The code has not changed. No saving.",
   "js.changes_reverted": "The changes are reverted.",
-  "js.file_saved": "The file is saved."
+  "js.file_saved": "The file is saved.",
+
+  "cm.find": "Find",
+  "cm.replace": "Replace",
+  "cm.next": "next",
+  "cm.previous": "previous",
+  "cm.all": "all",
+  "cm.match_case": "match case",
+  "cm.by_word": "by word",
+  "cm.regexp": "regexp",
+  "cm.replace_all": "replace all",
+  "cm.close": "close",
+  "cm.go_to_line": "Go to line",
+  "cm.go": "go",
+  "cm.replaced_matches": "replaced $ matches",
+  "cm.replaced_match_on_line": "replaced match on line $",
+  "cm.on_line": "on line",
+  "cm.current_match": "current match",
+  "cm.control_character": "Control character",
+  "cm.selection_deleted": "Selection deleted",
+  "cm.diagnostics": "Diagnostics",
+  "cm.no_diagnostics": "No diagnostics"
 }

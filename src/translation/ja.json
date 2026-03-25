@@ -141,5 +141,26 @@
   "js.theme_loading": "お待ちください、サーバーの再読み込みは行いません ...",
   "js.code_not_changed": "コードは変更されていません。保存しません。",
   "js.changes_reverted": "変更が元に戻されました。",
-  "js.file_saved": "ファイルが保存されました。"
+  "js.file_saved": "ファイルが保存されました。",
+
+  "cm.find": "検索",
+  "cm.replace": "置換",
+  "cm.next": "次へ",
+  "cm.previous": "前へ",
+  "cm.all": "すべて",
+  "cm.match_case": "大文字小文字を区別",
+  "cm.by_word": "単語単位",
+  "cm.regexp": "regexp",
+  "cm.replace_all": "すべて置換",
+  "cm.close": "閉じる",
+  "cm.go_to_line": "指定行へ移動",
+  "cm.go": "移動",
+  "cm.replaced_matches": "$ 件の一致を置換",
+  "cm.replaced_match_on_line": "行 $ の一致を置換",
+  "cm.on_line": "行",
+  "cm.current_match": "現在の一致",
+  "cm.control_character": "制御文字",
+  "cm.selection_deleted": "選択範囲を削除",
+  "cm.diagnostics": "診断",
+  "cm.no_diagnostics": "診断なし"
 }

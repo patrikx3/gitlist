@@ -141,5 +141,26 @@
   "js.theme_loading": "Wag, ons herlaai nie die bediener nie ...",
   "js.code_not_changed": "Die kode het nie verander nie. Geen stoor nie.",
   "js.changes_reverted": "Die wysigings is teruggestel.",
-  "js.file_saved": "Die lêer is gestoor."
+  "js.file_saved": "Die lêer is gestoor.",
+
+  "cm.find": "Soek",
+  "cm.replace": "Vervang",
+  "cm.next": "volgende",
+  "cm.previous": "vorige",
+  "cm.all": "alles",
+  "cm.match_case": "hooflettersensitief",
+  "cm.by_word": "per woord",
+  "cm.regexp": "regexp",
+  "cm.replace_all": "vervang alles",
+  "cm.close": "sluit",
+  "cm.go_to_line": "Gaan na reël",
+  "cm.go": "gaan",
+  "cm.replaced_matches": "$ passings vervang",
+  "cm.replaced_match_on_line": "passing op reël $ vervang",
+  "cm.on_line": "op reël",
+  "cm.current_match": "huidige passing",
+  "cm.control_character": "Beheerkarakter",
+  "cm.selection_deleted": "Seleksie verwyder",
+  "cm.diagnostics": "Diagnostiek",
+  "cm.no_diagnostics": "Geen diagnostiek"
 }

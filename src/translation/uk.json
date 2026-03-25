@@ -141,5 +141,26 @@
   "js.theme_loading": "Зачекайте, ми не перезавантажуємо сервер ...",
   "js.code_not_changed": "Код не змінено. Збереження не виконується.",
   "js.changes_reverted": "Зміни скасовано.",
-  "js.file_saved": "Файл збережено."
+  "js.file_saved": "Файл збережено.",
+
+  "cm.find": "Знайти",
+  "cm.replace": "Замінити",
+  "cm.next": "наступний",
+  "cm.previous": "попередній",
+  "cm.all": "усі",
+  "cm.match_case": "враховувати регістр",
+  "cm.by_word": "за словами",
+  "cm.regexp": "regexp",
+  "cm.replace_all": "замінити все",
+  "cm.close": "закрити",
+  "cm.go_to_line": "Перейти до рядка",
+  "cm.go": "перейти",
+  "cm.replaced_matches": "замінено $ збігів",
+  "cm.replaced_match_on_line": "замінено збіг у рядку $",
+  "cm.on_line": "у рядку",
+  "cm.current_match": "поточний збіг",
+  "cm.control_character": "Керуючий символ",
+  "cm.selection_deleted": "Виділення видалено",
+  "cm.diagnostics": "Діагностика",
+  "cm.no_diagnostics": "Немає діагностики"
 }

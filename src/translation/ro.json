@@ -141,5 +141,26 @@
   "js.theme_loading": "Așteptați, nu reîncărcăm serverul ...",
   "js.code_not_changed": "Codul nu a fost modificat. Nu se salvează.",
   "js.changes_reverted": "Modificările au fost anulate.",
-  "js.file_saved": "Fișierul a fost salvat."
+  "js.file_saved": "Fișierul a fost salvat.",
+
+  "cm.find": "Caută",
+  "cm.replace": "Înlocuiește",
+  "cm.next": "următorul",
+  "cm.previous": "anteriorul",
+  "cm.all": "toate",
+  "cm.match_case": "potrivire majuscule",
+  "cm.by_word": "cuvânt întreg",
+  "cm.regexp": "regexp",
+  "cm.replace_all": "înlocuiește tot",
+  "cm.close": "închide",
+  "cm.go_to_line": "Mergi la linia",
+  "cm.go": "mergi",
+  "cm.replaced_matches": "$ potriviri înlocuite",
+  "cm.replaced_match_on_line": "potrivire înlocuită pe linia $",
+  "cm.on_line": "pe linia",
+  "cm.current_match": "potrivirea curentă",
+  "cm.control_character": "Caracter de control",
+  "cm.selection_deleted": "Selecția ștearsă",
+  "cm.diagnostics": "Diagnostice",
+  "cm.no_diagnostics": "Fără diagnostice"
 }

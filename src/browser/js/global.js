@@ -121,7 +121,7 @@ $(function () {
 });
 
 
-$(window).scroll(function () {
+$(window).on('scroll', function () {
     var height = $(window).scrollTop();
     if (height > 100) {
         $('#p3x-gitlist-to-top').fadeIn();

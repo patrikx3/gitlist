@@ -75,7 +75,7 @@ $(() => {
         bootstrap.Modal.getOrCreateInstance($buttonNewBinaryModal[0]).show()
     })
 
-    $inputNewfileBinaryUpload.change(() => {
+    $inputNewfileBinaryUpload.on('change', () => {
         if ($inputNewfileBinaryUpload[0].files.length === 0) {
             $inputNewfileBinaryFile.val(`${path}`)
         } else {

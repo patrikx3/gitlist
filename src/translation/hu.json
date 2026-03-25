@@ -141,5 +141,26 @@
   "js.theme_loading": "Várj, nem töltjük újra a szervert ...",
   "js.code_not_changed": "A kód nem változott. Nincs mentés.",
   "js.changes_reverted": "A változások visszaállítva.",
-  "js.file_saved": "A fájl mentve."
+  "js.file_saved": "A fájl mentve.",
+
+  "cm.find": "Keresés",
+  "cm.replace": "Csere",
+  "cm.next": "következő",
+  "cm.previous": "előző",
+  "cm.all": "összes",
+  "cm.match_case": "kis-/nagybetű",
+  "cm.by_word": "teljes szó",
+  "cm.regexp": "regexp",
+  "cm.replace_all": "összes cseréje",
+  "cm.close": "bezárás",
+  "cm.go_to_line": "Ugrás sorra",
+  "cm.go": "ugrás",
+  "cm.replaced_matches": "$ találat lecserélve",
+  "cm.replaced_match_on_line": "találat lecserélve a(z) $. sorban",
+  "cm.on_line": "sorban",
+  "cm.current_match": "aktuális találat",
+  "cm.control_character": "Vezérlőkarakter",
+  "cm.selection_deleted": "Kijelölés törölve",
+  "cm.diagnostics": "Diagnosztika",
+  "cm.no_diagnostics": "Nincs diagnosztika"
 }

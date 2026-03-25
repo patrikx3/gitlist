@@ -141,5 +141,26 @@
   "js.theme_loading": "Attendi, non stiamo ricaricando il server ...",
   "js.code_not_changed": "Il codice non è stato modificato. Niente da salvare.",
   "js.changes_reverted": "Le modifiche sono state annullate.",
-  "js.file_saved": "Il file è stato salvato."
+  "js.file_saved": "Il file è stato salvato.",
+
+  "cm.find": "Cerca",
+  "cm.replace": "Sostituisci",
+  "cm.next": "successivo",
+  "cm.previous": "precedente",
+  "cm.all": "tutti",
+  "cm.match_case": "maiuscole/minuscole",
+  "cm.by_word": "parola intera",
+  "cm.regexp": "regexp",
+  "cm.replace_all": "sostituisci tutto",
+  "cm.close": "chiudi",
+  "cm.go_to_line": "Vai alla riga",
+  "cm.go": "vai",
+  "cm.replaced_matches": "$ corrispondenze sostituite",
+  "cm.replaced_match_on_line": "corrispondenza sostituita alla riga $",
+  "cm.on_line": "alla riga",
+  "cm.current_match": "corrispondenza attuale",
+  "cm.control_character": "Carattere di controllo",
+  "cm.selection_deleted": "Selezione eliminata",
+  "cm.diagnostics": "Diagnostica",
+  "cm.no_diagnostics": "Nessuna diagnostica"
 }

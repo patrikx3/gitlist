@@ -141,5 +141,26 @@
   "js.theme_loading": "Poczekaj, nie przeładowujemy serwera ...",
   "js.code_not_changed": "Kod nie został zmieniony. Nie zapisano.",
   "js.changes_reverted": "Zmiany zostały cofnięte.",
-  "js.file_saved": "Plik został zapisany."
+  "js.file_saved": "Plik został zapisany.",
+
+  "cm.find": "Znajdź",
+  "cm.replace": "Zamień",
+  "cm.next": "następny",
+  "cm.previous": "poprzedni",
+  "cm.all": "wszystkie",
+  "cm.match_case": "wielkość liter",
+  "cm.by_word": "całe słowa",
+  "cm.regexp": "regexp",
+  "cm.replace_all": "zamień wszystkie",
+  "cm.close": "zamknij",
+  "cm.go_to_line": "Przejdź do wiersza",
+  "cm.go": "przejdź",
+  "cm.replaced_matches": "zamieniono $ dopasowań",
+  "cm.replaced_match_on_line": "zamieniono dopasowanie w wierszu $",
+  "cm.on_line": "w wierszu",
+  "cm.current_match": "bieżące dopasowanie",
+  "cm.control_character": "Znak sterujący",
+  "cm.selection_deleted": "Zaznaczenie usunięte",
+  "cm.diagnostics": "Diagnostyka",
+  "cm.no_diagnostics": "Brak diagnostyki"
 }

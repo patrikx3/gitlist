@@ -45,7 +45,7 @@ See `secure/server-access.md` for server IPs, ports, SSH scripts, and webhook co
 ## Architecture
 
 - **PHP Backend**: Custom Framework layer (replaced Silex), Pimple container, Symfony components
-- **Frontend**: Webpack + Grunt, Bootstrap 5 + Bootswatch 5 (SCSS), jQuery 3.7, CodeMirror 5
+- **Frontend**: Webpack + Grunt, Bootstrap 5 + Bootswatch 5 (SCSS), jQuery 4.0, CodeMirror 6
 - **Templates**: Twig with `|t` filter for i18n (7 languages: en, hu, de, fr, it, es, zh)
 - **Localization**: JSON files in `src/translation/`, language selector in navbar, cookie-based
 
@@ -57,6 +57,8 @@ See `secure/server-access.md` for server IPs, ports, SSH scripts, and webhook co
 - **Bootstrap/Bootswatch**: Now on BS5. Old BS3 classes must not be used. See `docs/migration-all-packages.md` for full migration details.
 - **snackbarjs**: Removed. Replaced with BS5 native Toast via `$.snackbar()` compatibility shim in `bundle.js`.
 - **Docker permissions**: Docker composer run creates root-owned files in `vendor/`, `node_modules/`, `public/prod/`. Always fix with `sudo chown` before building.
+- **Raphaël SVG (network.js)**: The network graph uses Raphaël library for SVG rendering. Raphaël elements (e.g. `commit.dot`) have their own `.mouseover()`, `.mouseout()`, `.click()`, `.data()` methods — these are NOT jQuery methods. Do NOT refactor them to `.on('click', ...)` — they will break. Only jQuery DOM elements need the `.on()` pattern.
+- **jQuery 4.0**: All jQuery event shorthands (`.click()`, `.scroll()`, `.change()`, `.keyup()`, etc.) have been replaced with `.on('event', fn)` and `.trigger('event')`. Native DOM methods like `.focus()`, `.submit()` on raw elements are unaffected.
 
 ## Translation / i18n
 
@@ -111,7 +113,7 @@ All my domains, including [patrikx3.com](https://patrikx3.com), [corifeus.eu](ht
 ---
 
 
-[**P3X-GITLIST**](https://corifeus.com/gitlist) Build v2026.4.301
+[**P3X-GITLIST**](https://corifeus.com/gitlist) Build v2026.4.302
 
  [![Donate for PatrikX3 / P3X](https://img.shields.io/badge/Donate-PatrikX3-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software)
 

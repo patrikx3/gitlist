@@ -16,15 +16,19 @@ const cfg = {
         return window.gitlist.isDark() ? '#343a40' : '#f8f9fa';
     },
     get laneColors() {
-        const bg = cfg.navbarBg;
-        if (window.gitlist.isDark()) {
-            return [bg, '#BBDEFB', '#03A9F4', '#2196F3', bg, '#FFFFFF'];
-        } else {
-            return [bg, '#607D8B', '#757575', '#9E9E9E', bg, '#BDBDBD'];
-        }
+        const s = getComputedStyle(document.body);
+        const get = (v, fb) => s.getPropertyValue(v).trim() || fb;
+        return [
+            get('--bs-info', '#0dcaf0'),
+            get('--bs-success', '#198754'),
+            get('--bs-warning', '#ffc107'),
+            get('--bs-danger', '#dc3545'),
+            get('--bs-secondary', '#6c757d'),
+            '#e040fb',
+        ];
     },
     get dotColor() {
-        return cfg.navbarBg;
+        return getComputedStyle(document.body).getPropertyValue('--bs-info').trim() || '#0dcaf0';
     },
     laneHeight: 20,
     columnWidth: 42,
@@ -60,57 +64,72 @@ const $ = require('jquery')
 const phpDate = require('php-date')
 
 /**
- * DragScrollr is a custom made x/y-Drag Scroll Plugin for Gitlist
- *
- * TODO: Make this touch-scrollable
+ * DragScrollr - x/y drag scroll plugin with touch, wheel, and momentum support
  */
 $.fn.dragScrollr = function () {
-    let lastX,
-        lastY,
+    let lastX, lastY, velocityX = 0, velocityY = 0, animFrame = null, isDragging = false,
         hotZone = 50,
         container = this.first(),
-        domElement = container[0]; // so basically container without the jQuery stuff
+        domElement = container[0];
 
-    function handleMouseDown(evt) {
+    // Enable native overflow scrolling
+    domElement.style.overflow = 'auto';
+    domElement.style.cursor = 'grab';
 
-        container.on('mousemove', handleMouseMove);
-        container.on('mouseup', handleMouseUp);
-        container.on('mouseleave', handleMouseUp);
-        lastX = evt.pageX;
-        lastY = evt.pageY;
+    function startDrag(x, y) {
+        isDragging = true;
+        domElement.style.cursor = 'grabbing';
+        if (animFrame) { cancelAnimationFrame(animFrame); animFrame = null; }
+        velocityX = 0; velocityY = 0;
+        lastX = x; lastY = y;
     }
 
-    function handleMouseMove(evt) {
-
+    function moveDrag(x, y, evt) {
+        if (!isDragging) return;
         evt.preventDefault();
-
-        // save the last scroll position to figure out whether the scroll event has entered the hot zone
+        const dx = lastX - x, dy = lastY - y;
         const lastScrollLeft = domElement.scrollLeft;
-        domElement.scrollLeft = domElement.scrollLeft + lastX - evt.pageX;
-        domElement.scrollTop = domElement.scrollTop + lastY - evt.pageY;
-
-        //console.log(lastScrollLeft, hotZone, domElement)
-        // WARNING: hotZone !!!!
+        domElement.scrollLeft += dx;
+        domElement.scrollTop += dy;
+        velocityX = dx; velocityY = dy;
         if (lastScrollLeft > hotZone && domElement.scrollLeft <= hotZone) {
             container.trigger('enterHotZone');
         }
-
-        // when we move into the hot zone
-
-        lastX = evt.pageX;
-        lastY = evt.pageY;
+        lastX = x; lastY = y;
     }
 
-    function handleMouseUp(evt) {
-        container.off('mousemove', handleMouseMove)
-            .off('mouseup', handleMouseUp)
-            .off('mouseleave', handleMouseUp);
+    function endDrag() {
+        if (!isDragging) return;
+        isDragging = false;
+        domElement.style.cursor = 'grab';
+        // Momentum/inertia
+        if (Math.abs(velocityX) > 1 || Math.abs(velocityY) > 1) {
+            (function coast() {
+                velocityX *= 0.92; velocityY *= 0.92;
+                domElement.scrollLeft += velocityX;
+                domElement.scrollTop += velocityY;
+                if (Math.abs(velocityX) > 0.5 || Math.abs(velocityY) > 0.5) {
+                    animFrame = requestAnimationFrame(coast);
+                }
+            })();
+        }
     }
 
-    // now bind the initial event
-    container.on('mousedown', handleMouseDown);
+    // Mouse events
+    container.on('mousedown', function(e) { startDrag(e.pageX, e.pageY); });
+    container.on('mousemove', function(e) { moveDrag(e.pageX, e.pageY, e); });
+    container.on('mouseup mouseleave', endDrag);
 
-    // return this instead of container, because of the .first() we applied - remember?
+    // Touch events
+    domElement.addEventListener('touchstart', function(e) {
+        const t = e.touches[0]; startDrag(t.pageX, t.pageY);
+    }, { passive: false });
+    domElement.addEventListener('touchmove', function(e) {
+        const t = e.touches[0]; moveDrag(t.pageX, t.pageY, e);
+    }, { passive: false });
+    domElement.addEventListener('touchend', endDrag);
+    domElement.addEventListener('touchcancel', endDrag);
+
     return this;
 };
 
@@ -515,7 +534,7 @@ window.gitlist.networkRedraw = async() => {
             .data('commit', commit)
             .mouseover(handleCommitMouseover)
             .mouseout(handleCommitMouseout)
-            .on('click', handleCommitClick);
+            .click(handleCommitClick);
 
         // maybe we have not enough space for the lane yet
         if (commit.lane.centerY + cfg.laneHeight > paper.height) {

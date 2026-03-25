@@ -53,7 +53,7 @@ window.gitlist.preloadCommitValues = (options) => {
         if (cookie) {
             input.val(cookie.trim());
         }
-        input.change(() => {
+        input.on('change', () => {
             const val = input.val().trim();
             Cookies.set(cookieName, val, window.gitlist.cookieSettings);
             input.val(val);

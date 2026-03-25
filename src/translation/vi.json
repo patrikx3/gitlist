@@ -141,5 +141,26 @@
   "js.theme_loading": "Vui lòng đợi, chúng tôi không tải lại máy chủ ...",
   "js.code_not_changed": "Mã không thay đổi. Không lưu.",
   "js.changes_reverted": "Các thay đổi đã được hoàn tác.",
-  "js.file_saved": "Tệp đã được lưu."
+  "js.file_saved": "Tệp đã được lưu.",
+
+  "cm.find": "Tìm",
+  "cm.replace": "Thay thế",
+  "cm.next": "tiếp theo",
+  "cm.previous": "trước đó",
+  "cm.all": "tất cả",
+  "cm.match_case": "phân biệt hoa thường",
+  "cm.by_word": "theo từ",
+  "cm.regexp": "regexp",
+  "cm.replace_all": "thay thế tất cả",
+  "cm.close": "đóng",
+  "cm.go_to_line": "Đi đến dòng",
+  "cm.go": "đi",
+  "cm.replaced_matches": "đã thay thế $ kết quả",
+  "cm.replaced_match_on_line": "đã thay thế kết quả trên dòng $",
+  "cm.on_line": "trên dòng",
+  "cm.current_match": "kết quả hiện tại",
+  "cm.control_character": "Ký tự điều khiển",
+  "cm.selection_deleted": "Vùng chọn đã xóa",
+  "cm.diagnostics": "Chẩn đoán",
+  "cm.no_diagnostics": "Không có chẩn đoán"
 }

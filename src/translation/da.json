@@ -141,5 +141,26 @@
   "js.theme_loading": "Vent, vi genindlæser ikke serveren ...",
   "js.code_not_changed": "Koden er ikke ændret. Ingen gemning.",
   "js.changes_reverted": "Ændringerne er tilbageført.",
-  "js.file_saved": "Filen er gemt."
+  "js.file_saved": "Filen er gemt.",
+
+  "cm.find": "Find",
+  "cm.replace": "Erstat",
+  "cm.next": "næste",
+  "cm.previous": "forrige",
+  "cm.all": "alle",
+  "cm.match_case": "forskel på store/små",
+  "cm.by_word": "helt ord",
+  "cm.regexp": "regexp",
+  "cm.replace_all": "erstat alle",
+  "cm.close": "luk",
+  "cm.go_to_line": "Gå til linje",
+  "cm.go": "gå",
+  "cm.replaced_matches": "erstattede $ forekomster",
+  "cm.replaced_match_on_line": "erstattet forekomst på linje $",
+  "cm.on_line": "på linje",
+  "cm.current_match": "aktuel forekomst",
+  "cm.control_character": "Kontroltegn",
+  "cm.selection_deleted": "Markering slettet",
+  "cm.diagnostics": "Diagnostik",
+  "cm.no_diagnostics": "Ingen diagnostik"
 }

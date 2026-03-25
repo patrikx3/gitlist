@@ -141,5 +141,26 @@
   "js.theme_loading": "انتظر، نحن لا نعيد تحميل الخادم ...",
   "js.code_not_changed": "لم يتغير الكود. لن يتم الحفظ.",
   "js.changes_reverted": "تم التراجع عن التغييرات.",
-  "js.file_saved": "تم حفظ الملف."
+  "js.file_saved": "تم حفظ الملف.",
+
+  "cm.find": "بحث",
+  "cm.replace": "استبدال",
+  "cm.next": "التالي",
+  "cm.previous": "السابق",
+  "cm.all": "الكل",
+  "cm.match_case": "مطابقة الحالة",
+  "cm.by_word": "حسب الكلمة",
+  "cm.regexp": "regexp",
+  "cm.replace_all": "استبدال الكل",
+  "cm.close": "إغلاق",
+  "cm.go_to_line": "انتقل إلى سطر",
+  "cm.go": "انتقل",
+  "cm.replaced_matches": "تم استبدال $ تطابقات",
+  "cm.replaced_match_on_line": "تم استبدال التطابق في السطر $",
+  "cm.on_line": "في السطر",
+  "cm.current_match": "التطابق الحالي",
+  "cm.control_character": "حرف تحكم",
+  "cm.selection_deleted": "تم حذف التحديد",
+  "cm.diagnostics": "التشخيصات",
+  "cm.no_diagnostics": "لا توجد تشخيصات"
 }

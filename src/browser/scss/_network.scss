@@ -13,10 +13,13 @@
 
     .network-graph {
         height: 400px;
-        overflow: hidden;
-        cursor: move;
+        overflow: auto;
+        cursor: grab;
         position: relative;
         border: 1px solid $table-border-color;
+        scrollbar-width: none; // Firefox
+        -ms-overflow-style: none; // IE/Edge
+        &::-webkit-scrollbar { display: none; } // Chrome/Safari
 
 
         .network-commit-overlay {
@@ -27,20 +30,32 @@
             padding: 8px;
             margin: 0 0 $line-height-base;
             list-style: none;
-            background-color: $navbar-default-bg;
-            color: $navbar-default-color;
+            border-radius: 0.375rem;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            z-index: 10;
 
-            a, a:active {
-                background-color: $navbar-default-bg;
-                color: $navbar-inverse-color;
+            .p3x-gitlist-dark & {
+                background-color: $white;
+                color: $gray-800;
+
+                a, a:active {
+                    color: $primary;
+                }
+            }
+
+            .p3x-gitlist-light & {
+                background-color: $gray-900;
+                color: $gray-200;
+                border-color: rgba(255, 255, 255, 0.15);
+
+                a, a:active {
+                    color: lighten($primary, 20%);
+                }
             }
 
             img {
                 float: left;
                 margin-right: 10px;
-            }
-
-            div {
             }
         }
 

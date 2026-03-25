@@ -141,5 +141,26 @@
   "js.theme_loading": "Περιμένετε, δεν επαναφορτώνουμε τον διακομιστή ...",
   "js.code_not_changed": "Ο κώδικας δεν άλλαξε. Δεν αποθηκεύεται.",
   "js.changes_reverted": "Οι αλλαγές επαναφέρθηκαν.",
-  "js.file_saved": "Το αρχείο αποθηκεύτηκε."
+  "js.file_saved": "Το αρχείο αποθηκεύτηκε.",
+
+  "cm.find": "Εύρεση",
+  "cm.replace": "Αντικατάσταση",
+  "cm.next": "επόμενο",
+  "cm.previous": "προηγούμενο",
+  "cm.all": "όλα",
+  "cm.match_case": "ταίριασμα πεζών/κεφαλαίων",
+  "cm.by_word": "ανά λέξη",
+  "cm.regexp": "regexp",
+  "cm.replace_all": "αντικατάσταση όλων",
+  "cm.close": "κλείσιμο",
+  "cm.go_to_line": "Μετάβαση σε γραμμή",
+  "cm.go": "μετάβαση",
+  "cm.replaced_matches": "αντικαταστάθηκαν $ αντιστοιχίες",
+  "cm.replaced_match_on_line": "αντικαταστάθηκε αντιστοιχία στη γραμμή $",
+  "cm.on_line": "στη γραμμή",
+  "cm.current_match": "τρέχουσα αντιστοιχία",
+  "cm.control_character": "Χαρακτήρας ελέγχου",
+  "cm.selection_deleted": "Η επιλογή διαγράφηκε",
+  "cm.diagnostics": "Διαγνωστικά",
+  "cm.no_diagnostics": "Χωρίς διαγνωστικά"
 }

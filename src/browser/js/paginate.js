@@ -65,7 +65,7 @@ $(function () {
     paginate();
 
     if ($button.length > 0) {
-        $(window).scroll(function () {
+        $(window).on('scroll', function () {
             if ($(window).scrollTop() >= document.documentElement.scrollHeight - $(window).height() - 10) {
                 nextCommitListItem();
             }

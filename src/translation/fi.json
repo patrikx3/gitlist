@@ -141,5 +141,26 @@
   "js.theme_loading": "Odota, emme lataa palvelinta uudelleen ...",
   "js.code_not_changed": "Koodi ei ole muuttunut. Ei tallenneta.",
   "js.changes_reverted": "Muutokset on palautettu.",
-  "js.file_saved": "Tiedosto on tallennettu."
+  "js.file_saved": "Tiedosto on tallennettu.",
+
+  "cm.find": "Etsi",
+  "cm.replace": "Korvaa",
+  "cm.next": "seuraava",
+  "cm.previous": "edellinen",
+  "cm.all": "kaikki",
+  "cm.match_case": "erota isot/pienet",
+  "cm.by_word": "sanoittain",
+  "cm.regexp": "regexp",
+  "cm.replace_all": "korvaa kaikki",
+  "cm.close": "sulje",
+  "cm.go_to_line": "Siirry riville",
+  "cm.go": "siirry",
+  "cm.replaced_matches": "korvattu $ osumaa",
+  "cm.replaced_match_on_line": "korvattu osuma rivillä $",
+  "cm.on_line": "rivillä",
+  "cm.current_match": "nykyinen osuma",
+  "cm.control_character": "Ohjausmerkki",
+  "cm.selection_deleted": "Valinta poistettu",
+  "cm.diagnostics": "Diagnostiikka",
+  "cm.no_diagnostics": "Ei diagnostiikkaa"
 }
