@@ -94,7 +94,7 @@ $(async() => {
             if (loading) return;
             if (!$loadMore.is(':visible')) return;
             const scrollBottom = $(window).scrollTop() + $(window).height();
-            const docHeight = $(document).height();
+            const docHeight = document.documentElement.scrollHeight;
             if (scrollBottom >= docHeight - 300) {
                 loadMore();
             }

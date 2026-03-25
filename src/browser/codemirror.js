@@ -132,7 +132,7 @@ const themeComp = new Compartment();
 const languageComp = new Compartment();
 
 function getThemeExtension(isDark) {
-    return isDark ? darkThemeExt : lightTheme;
+    return isDark ? [darkThemeExt, oneDark] : lightTheme;
 }
 
 // CM5-compatible wrapper around CM6 EditorView

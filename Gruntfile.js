@@ -12,6 +12,7 @@ module.exports = function (grunt) {
     const loader = new builder.loader(grunt);
 
     const sassConfig =  require('./src/browser/grunt/sass').sassSettings(grunt)
+    const sassConfigDev =  require('./src/browser/grunt/sass').sassSettingsDev(grunt)
 
     loader.js({
         replacer: {
@@ -56,14 +57,21 @@ module.exports = function (grunt) {
                 },
                 sass: {
                     development: sassConfig,
+                    dev: sassConfigDev,
                 },
                 watch: {
                     sass: {
                         files: ['src/browser/scss/**/*.*'],
-                        tasks: ['clean:css', 'sass'],
+                        tasks: ['clean:css', 'sass:development'],
                         options: {
                             atBegin: true,
-                            //spawn: false,
+                        },
+                    },
+                    'sass-dev': {
+                        files: ['src/browser/scss/**/*.*'],
+                        tasks: ['sass:dev'],
+                        options: {
+                            atBegin: true,
                         },
                     },
 

@@ -23,7 +23,7 @@ services:
     volumes:
       - ./:/app
     working_dir: /app
-    command: bash -c "git config --system --add safe.directory '*' && npm run watch"
+    command: bash -c "git config --system --add safe.directory '*' && npm run watch:dev"
     depends_on:
       - php-fpm
 

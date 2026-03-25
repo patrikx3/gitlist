@@ -48,7 +48,7 @@ $(function () {
     const themesheet = $('#bootstrap-theme');
 
     let deferredSwitchTheme;
-    $('.theme-link').click(function (event) {
+    $('.theme-link').on('click', function (event) {
 
         event.preventDefault();
 

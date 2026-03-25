@@ -77,7 +77,7 @@ const sassSettings = (grunt) => {
 
                     if (theme === 'default') {
                         fs.writeFileSync(scss, `@import "../../../../node_modules/bootstrap/scss/bootstrap";
-@import "../bs3-compat";
+@import "../variables";
 @import "../default";
 `)
                     } else {
@@ -85,7 +85,7 @@ const sassSettings = (grunt) => {
 @import "../../../../node_modules/bootswatch/dist/${theme}/variables";
 @import "../../../../node_modules/bootstrap/scss/bootstrap";
 @import "../../../../node_modules/bootswatch/dist/${theme}/bootswatch";
-@import "../bs3-compat";
+@import "../variables";
 @import "../default";
 `)
 
@@ -113,4 +113,23 @@ module.exports = themes;
     };
 }
 
+// Dev-only sass config: compiles only cosmo + slate for fast iteration (~2s vs ~35s)
+const sassSettingsDev = (grunt) => {
+    const full = sassSettings(grunt);
+    return {
+        options: full.options,
+        get files() {
+            const allFiles = full.files;
+            const devFiles = {};
+            for (const [output, input] of Object.entries(allFiles)) {
+                if (output.includes('bootstrap-cosmo.') || output.includes('bootstrap-slate.')) {
+                    devFiles[output] = input;
+                }
+            }
+            return devFiles;
+        },
+    };
+};
+
 module.exports.sassSettings = sassSettings;
+module.exports.sassSettingsDev = sassSettingsDev;

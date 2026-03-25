@@ -1,9 +1,9 @@
 {
     "name": "p3x-gitlist",
-    "version": "2026.4.291",
+    "version": "2026.4.299",
     "corifeus": {
         "prod-dir": "prod",
-        "css-postfix": "68ce64f42cd7b592328dd77524f38cb31f5cded726909ef1cfa5fab1f0f3514c",
+        "css-postfix": "829757678b501e96b6100cd441affe2c03df746a87a1117f278059341a50d106",
         "prefix": "p3x-",
         "publish": false,
         "type": "p3x",
@@ -20,6 +20,7 @@
         "webpack-watch": "webpack --watch",
         "sass-watch": "grunt watch:sass",
         "watch": "grunt default-sass && concurrently \"webpack --watch\" \"grunt watch:sass\" ",
+        "watch:dev": "concurrently \"webpack --watch\" \"grunt watch:sass-dev\" ",
         "postinstall": "node node_modules/corifeus-builder/src/utils/twemoji-install.js"
     },
     "description": "🤖 P3X Gitlist - A decorated enhanced elegant, feature rich and modern private git ui repository viewer",

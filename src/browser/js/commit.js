@@ -97,7 +97,7 @@ $(async() => {
             const diffButton = $(`#p3x-gitlist-diff-data-${diff}`)
             setTimeout(() => {
                 window.gitlist.scrollIntoView(element)
-                diffButton.click()
+                diffButton.trigger('click')
             }, 500)
         }
     }

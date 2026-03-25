@@ -23,12 +23,12 @@ $(function () {
         copy(cloneInputHTTP)
     }
 
-    cloneInputSSH.click(copyCloneInputSSH)
+    cloneInputSSH.on('click', copyCloneInputSSH)
 
-    cloneInputHTTP.click(copyCloneInputHTTP)
+    cloneInputHTTP.on('click', copyCloneInputHTTP)
 
     let cloneButtonSSHInit = false;
-    cloneButtonSSH.click(function () {
+    cloneButtonSSH.on('click', function () {
         if (cloneButtonSSH.hasClass('active')) {
             return;
         }
@@ -45,7 +45,7 @@ $(function () {
     });
 
     let cloneButtonHTTPInit = false;
-    cloneButtonHTTP.click(function () {
+    cloneButtonHTTP.on('click', function () {
         if (cloneButtonHTTP.hasClass('active')) {
             return;
         }
@@ -60,6 +60,6 @@ $(function () {
         cloneButtonSSH.removeClass('active');
         cloneInputSSH.hide();
     });
-    cloneButtonSSH.click();
-    cloneButtonHTTP.click();
+    cloneButtonSSH.trigger('click');
+    cloneButtonHTTP.trigger('click');
 })

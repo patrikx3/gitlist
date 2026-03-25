@@ -515,7 +515,7 @@ window.gitlist.networkRedraw = async() => {
             .data('commit', commit)
             .mouseover(handleCommitMouseover)
             .mouseout(handleCommitMouseout)
-            .click(handleCommitClick);
+            .on('click', handleCommitClick);
 
         // maybe we have not enough space for the lane yet
         if (commit.lane.centerY + cfg.laneHeight > paper.height) {

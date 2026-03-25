@@ -112,7 +112,7 @@ $(function () {
     }
     */
 
-    $("#p3x-gitlist-to-top").click(function (event) {
+    $("#p3x-gitlist-to-top").on('click', function (event) {
         event.preventDefault();
         $("html, body").animate({scrollTop: 0}, "fast");
         return false;

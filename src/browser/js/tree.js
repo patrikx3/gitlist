@@ -15,7 +15,7 @@ $(() => {
     const $inputNewfile = $('#p3x-gitlist-modal-new-filename')
     $inputNewfile.val(path)
 
-    $buttonNewFile.click(() => {
+    $buttonNewFile.on('click', () => {
         if (!window.gitlist.changeableCommit()) {
             return
         }
@@ -68,7 +68,7 @@ $(() => {
 
     let uploadBinaryFilename = ''
 
-    $buttonNewBinary.click(() => {
+    $buttonNewBinary.on('click', () => {
         if (!window.gitlist.changeableCommit()) {
             return
         }

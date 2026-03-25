@@ -66,7 +66,7 @@ $(function () {
 
     if ($button.length > 0) {
         $(window).scroll(function () {
-            if ($(window).scrollTop() >= $(document).height() - $(window).height() - 10) {
+            if ($(window).scrollTop() >= document.documentElement.scrollHeight - $(window).height() - 10) {
                 nextCommitListItem();
             }
         });

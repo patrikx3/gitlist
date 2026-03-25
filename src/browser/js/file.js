@@ -35,7 +35,7 @@ $(async function () {
 
 
 
-    $buttonDelete.click(() => {
+    $buttonDelete.on('click', () => {
         if (!window.gitlist.changeableCommit()) {
             return
         }
@@ -128,7 +128,7 @@ $(async function () {
             }
              */
 
-            $buttonEdit.click(() => {
+            $buttonEdit.on('click', () => {
 
                 if (!window.gitlist.changeableCommit()) {
                     return
@@ -168,7 +168,7 @@ $(async function () {
                 gitlist.viewer.setOption('readOnly', true)
             }
 
-            $buttonEditCancel.click(() => {
+            $buttonEditCancel.on('click', () => {
                 if (!validateCodeIsSame(false)) {
                     gitlist.viewer.setValue(originalCode)
                     $.snackbar({
@@ -181,7 +181,7 @@ $(async function () {
 
 
             const $commitModal = $('#p3x-gitlist-modal-commit');
-            $buttonEditSave.click(async () => {
+            $buttonEditSave.on('click', async () => {
                 if (validateCodeIsSame()) {
                     return;
                 }
@@ -258,7 +258,7 @@ $(async function () {
                 }
             }
 
-            $buttonScroll.click(setScroll)
+            $buttonScroll.on('click', setScroll)
 
             const setFull = () => {
                 $codeCodeMirrorFullHeight.show()
@@ -273,7 +273,7 @@ $(async function () {
                 Cookies.set(cookieName, 'full', window.gitlist.cookieSettings)
             }
 
-            $buttonFull.click(setFull)
+            $buttonFull.on('click', setFull)
 
             cm = CodeMirror(function (elt) {
                 pre.parentNode.replaceChild(elt, pre);
@@ -332,7 +332,7 @@ $(async function () {
 
             if (location.search.includes('edit=1')) {
                 setTimeout(() => {
-                    $buttonEdit.click();
+                    $buttonEdit.trigger('click');
                     scrollToEditor();
                 }, 500)
             } else {
@@ -347,7 +347,7 @@ $(async function () {
             const $svgElements = $('.p3x-gitlist-file-svg-toggle')
             const $cmWrapper = $(cm.getWrapperElement())
             const $svgContentWrapper = $('#p3x-gitlist-file-svg-content')
-            $showSvgButton.click(() => {
+            $showSvgButton.on('click', () => {
                 if ($showSvgButton.hasClass('active')) {
                     $svgContentWrapper.empty()
                 } else {

@@ -40,7 +40,7 @@ window.gitlist.setTheme = () => {
     const diffButtons = $('.p3x-gitlist-diff-button.active');
     //console.log(diffButtons)
     for (let diffButton of diffButtons) {
-        diffButton.click();
+        $(diffButton).trigger('click');
     }
 
     const switchThemeActually = () => {

@@ -163,6 +163,8 @@ class Application extends FrameworkApplication
                 'slate',
                 'superhero',
                 'solar',
+                'vapor',
+                'quartz',
             ];
 
             $twig->addGlobal('theme_type', !in_array(substr($currentTheme, strlen('bootstrap-')), $themeDark) ? 'p3x-gitlist-light' : 'p3x-gitlist-dark');

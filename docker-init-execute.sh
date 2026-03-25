@@ -12,10 +12,10 @@ yarn install
 export COMPOSER_PROCESS_TIMEOUT=6000
 composer install --ignore-platform-reqs
 
-# Build frontend assets (less + webpack)
+# Build initial frontend assets (dev sass only - webpack runs in watch container)
 # Fix ownership of prod dir so grunt can clean/write it
 chown -R 1000:1000 public/prod 2>/dev/null || true
-grunt
+chown -R 1000:1000 build 2>/dev/null || true
 
 # Copy Docker config if config.ini does not exist
 if [ ! -f config.ini ]; then
