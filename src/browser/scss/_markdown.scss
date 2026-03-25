@@ -25,6 +25,20 @@ pre > code {
     padding: 8px;
 }
 
+// Override BS5 purple inline code color to be theme-aware
+code {
+    color: inherit;
+    background-color: rgba(var(--bs-emphasis-color-rgb), 0.2);
+    padding: 0.15em 0.4em;
+    border-radius: 0.25rem;
+    font-size: 0.875em;
+}
+
+pre > code {
+    background-color: transparent;
+    padding: 0;
+}
+
 .p3x-gitlist-light {
 
     pre > code {
