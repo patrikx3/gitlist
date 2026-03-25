@@ -5,6 +5,10 @@
                         
 [//]: #@corifeus-header:end
 
+### v2024.4.261
+Released on 02/23/2024
+* FEATURE: Upgraded all packages in Composer and NPM and upgraded to Bootsrap 3 -> 5, jQuery 3 -> 4, Codemirror 5 -> 6
+
 ### v2024.4.105
 Released on 02/23/2024
 * FEATURE: For the editor is works with Proto Buffer (.proto file extension).
@@ -503,7 +507,7 @@ All my domains, including [patrikx3.com](https://patrikx3.com), [corifeus.eu](ht
 ---
 
 
-[**P3X-GITLIST**](https://corifeus.com/gitlist) Build v2026.4.265
+[**P3X-GITLIST**](https://corifeus.com/gitlist) Build v2026.4.268
 
  [![Donate for PatrikX3 / P3X](https://img.shields.io/badge/Donate-PatrikX3-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software)
 

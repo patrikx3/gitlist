@@ -68,9 +68,9 @@
                                href="{{ path('commits', {repo: repository.name}) }}">
                                 <span
                                     class="p3x-gitlist-index-repo-last-commit-timestamp">{{ repository.timestamp }}</span>
-                                <span class="p3x-gitlist-index-repo-last-commit-time">{{ repository.time }}</span>
+                                <span class="p3x-gitlist-index-repo-last-commit-time">{{ repository.time }}</span>,
                                 {{ 'index.repo.by'|t }}
-                                <span class="p3x-gitlist-index-repo-last-commit-user">{{ repository.user }}</span>
+                                <span class="p3x-gitlist-index-repo-last-commit-user">{{ repository.user }}</span>,
                                 {{ 'index.repo.branch'|t }}
                                 {{ repository.branch }}
                             </a>

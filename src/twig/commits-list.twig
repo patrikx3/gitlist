@@ -36,7 +36,7 @@
                         </div>
 
                         <div class="float-start">
-                            <a href="mailto:{{ item.author.email }}">{{ item.author.name }}</a> {{ 'commit.authored'|t }}
+                            <a href="mailto:{{ item.author.email }}">{{ item.author.name }}</a> {{ 'commit.authored'|t }},
                             {{ 'commit.on'|t }} {{ item.date | format_date }}
                             {% if item.author.email != item.commiter.email %}
                                 &bull; <a
