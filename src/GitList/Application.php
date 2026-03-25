@@ -114,6 +114,7 @@ class Application extends FrameworkApplication
             $twig->addFilter(new TwigFilter('htmlentities', 'htmlentities'));
             $twig->addFilter(new TwigFilter('md5', 'md5'));
             $twig->addFilter(new TwigFilter('format_date', array($app, 'formatDate')));
+            $twig->addFilter(new TwigFilter('format_date_long', array($app, 'formatDateLong')));
             $twig->addFilter(new TwigFilter('format_size', array($app, 'formatSize')));
             $twig->addFunction(new TwigFunction('avatar', array($app, 'getAvatar')));
 
@@ -133,6 +134,7 @@ class Application extends FrameworkApplication
             if (!in_array($currentLang, $allowedLangs)) {
                 $currentLang = 'en';
             }
+            $app['current_lang'] = $currentLang;
 
             $translationFile = $app->path . '/src/translation/' . $currentLang . '.json';
             $fallbackFile = $app->path . '/src/translation/en.json';
@@ -247,7 +249,72 @@ class Application extends FrameworkApplication
 
     public function formatDate($date)
     {
+        $lang = $this['current_lang'] ?? 'en';
+        if (class_exists('IntlDateFormatter')) {
+            $formatter = new \IntlDateFormatter(
+                $lang,
+                \IntlDateFormatter::MEDIUM,
+                \IntlDateFormatter::MEDIUM,
+                $this['date.timezone'] ?? null
+            );
+            return $formatter->format($date);
+        }
         return $date->format($this['date.format']);
+    }
+
+    private static $monthNames = [
+        'en' => ['January','February','March','April','May','June','July','August','September','October','November','December'],
+        'hu' => ['január','február','március','április','május','június','július','augusztus','szeptember','október','november','december'],
+        'de' => ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'],
+        'fr' => ['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'],
+        'es' => ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'],
+        'it' => ['gennaio','febbraio','marzo','aprile','maggio','giugno','luglio','agosto','settembre','ottobre','novembre','dicembre'],
+        'pt' => ['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'],
+        'nl' => ['januari','februari','maart','april','mei','juni','juli','augustus','september','oktober','november','december'],
+        'da' => ['januar','februar','marts','april','maj','juni','juli','august','september','oktober','november','december'],
+        'sv' => ['januari','februari','mars','april','maj','juni','juli','augusti','september','oktober','november','december'],
+        'no' => ['januar','februar','mars','april','mai','juni','juli','august','september','oktober','november','desember'],
+        'fi' => ['tammikuu','helmikuu','maaliskuu','huhtikuu','toukokuu','kesäkuu','heinäkuu','elokuu','syyskuu','lokakuu','marraskuu','joulukuu'],
+        'pl' => ['stycznia','lutego','marca','kwietnia','maja','czerwca','lipca','sierpnia','września','października','listopada','grudnia'],
+        'cs' => ['ledna','února','března','dubna','května','června','července','srpna','září','října','listopadu','prosince'],
+        'ro' => ['ianuarie','februarie','martie','aprilie','mai','iunie','iulie','august','septembrie','octombrie','noiembrie','decembrie'],
+        'ru' => ['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'],
+        'uk' => ['січня','лютого','березня','квітня','травня','червня','липня','серпня','вересня','жовтня','листопада','грудня'],
+        'tr' => ['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'],
+        'el' => ['Ιανουαρίου','Φεβρουαρίου','Μαρτίου','Απριλίου','Μαΐου','Ιουνίου','Ιουλίου','Αυγούστου','Σεπτεμβρίου','Οκτωβρίου','Νοεμβρίου','Δεκεμβρίου'],
+        'ja' => ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
+        'ko' => ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+        'zh' => ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
+        'ar' => ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'],
+        'he' => ['ינואר','פברואר','מרץ','אפריל','מאי','יוני','יולי','אוגוסט','ספטמבר','אוקטובר','נובמבר','דצמבר'],
+        'vi' => ['tháng 1','tháng 2','tháng 3','tháng 4','tháng 5','tháng 6','tháng 7','tháng 8','tháng 9','tháng 10','tháng 11','tháng 12'],
+        'bn' => ['জানুয়ারি','ফেব্রুয়ারি','মার্চ','এপ্রিল','মে','জুন','জুলাই','আগস্ট','সেপ্টেম্বর','অক্টোবর','নভেম্বর','ডিসেম্বর'],
+        'ca' => ['gener','febrer','març','abril','maig','juny','juliol','agost','setembre','octubre','novembre','desembre'],
+        'sr' => ['јануар','фебруар','март','април','мај','јун','јул','август','септембар','октобар','новембар','децембар'],
+        'af' => ['Januarie','Februarie','Maart','April','Mei','Junie','Julie','Augustus','September','Oktober','November','Desember'],
+    ];
+
+    public function formatDateLong($date)
+    {
+        $lang = $this['current_lang'] ?? 'en';
+        if (is_string($date)) {
+            $date = new \DateTime($date);
+        }
+        $month = (int)$date->format('n') - 1;
+        $day = $date->format('j');
+        $year = $date->format('Y');
+        $months = self::$monthNames[$lang] ?? self::$monthNames['en'];
+        $monthName = $months[$month];
+
+        // Language-specific date formats
+        if (in_array($lang, ['hu'])) {
+            return "$year. $monthName $day.";
+        } elseif (in_array($lang, ['ja', 'ko', 'zh'])) {
+            return "{$year}年{$monthName}{$day}日";
+        } elseif (in_array($lang, ['de'])) {
+            return "$day. $monthName $year";
+        }
+        return "$monthName $day, $year";
     }
 
     public function formatSize($bytes, $precision = 0)
