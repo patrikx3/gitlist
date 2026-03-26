@@ -1,5 +1,18 @@
 
-#p3x-gitlist-main-tabs-browser {
+#p3x-gitlist-main-tabs-container {
+    @media only screen and (min-width: 768px) {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        #p3x-gitlist-main-tabs-browser {
+            margin-bottom: 0 !important;
+        }
+
+        #p3x-gitlist-main-tabs {
+            flex-grow: 1;
+        }
+    }
 }
 
 #p3x-gitlist-main-tabs {
@@ -14,9 +27,21 @@
     .nav-link {
         padding: 0.375rem 0.75rem;
 
-        @media only screen and (max-width: 576px) {
-            font-size: 0.8rem;
+        @media only screen and (max-width: 991px) {
             padding: 0.3rem 0.5rem;
+            font-size: 0.85rem;
+        }
+    }
+
+    @media only screen and (max-width: 767px) {
+        flex-direction: column !important;
+
+        .nav-item {
+            width: 100%;
+        }
+
+        .nav-link {
+            text-align: left;
         }
     }
 
@@ -30,4 +55,3 @@
         top: 2px;
     }
 }
-

@@ -46,8 +46,14 @@ See `secure/server-access.md` for server IPs, ports, SSH scripts, and webhook co
 
 - **PHP Backend**: Custom Framework layer (replaced Silex), Pimple container, Symfony components
 - **Frontend**: Webpack + Grunt, Bootstrap 5 + Bootswatch 5 (SCSS), jQuery 4.0, CodeMirror 6
-- **Templates**: Twig with `|t` filter for i18n (7 languages: en, hu, de, fr, it, es, zh)
-- **Localization**: JSON files in `src/translation/`, language selector in navbar, cookie-based
+- **Templates**: Twig with `|t` filter for i18n (29 languages)
+- **Localization**: JSON files in `src/translation/`, language selector in navbar, cookie-based. CodeMirror 6 also has translated phrases via `EditorState.phrases.of()`
+
+## Known Issues / TODO
+
+- **Nav pills on small screens**: The menu pills (Files, Commits, Log, Graph, Stats) must always stay in a single horizontal row at all screen sizes. They shrink text/padding to fit, never wrap. On very small screens they use `flex-wrap: nowrap` with `overflow-x: auto`. The pills and the "browsing: master" dropdown should be vertically centered (`align-items: center`). See `_menu.scss` for the implementation.
+- **Nav pills height alignment**: The pills row and the "browsing: branch" dropdown should be the same height and vertically aligned. If they look misaligned, check `_menu.scss` for `align-items: center` on the flex container.
+- **Dark/light theme awareness**: All new UI components must support both light and dark Bootswatch themes. Use `.p3x-gitlist-light &` and `.p3x-gitlist-dark &` SCSS selectors for theme-specific styles. Use `var(--bs-border-color)` and other BS5 CSS variables where possible.
 
 ## Key Constraints
 
@@ -113,7 +119,7 @@ All my domains, including [patrikx3.com](https://patrikx3.com), [corifeus.eu](ht
 ---
 
 
-[**P3X-GITLIST**](https://corifeus.com/gitlist) Build v2026.4.303
+[**P3X-GITLIST**](https://corifeus.com/gitlist) Build v2026.4.305
 
  [![Donate for PatrikX3 / P3X](https://img.shields.io/badge/Donate-PatrikX3-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software)
 
