@@ -45,8 +45,6 @@ pre > code {
         background-color: rgba(0, 0, 0, 0.1) !important;
         border-radius: 0.25rem;
     }
-
-    @import '../../../node_modules/highlight.js/styles/github.css';
 }
 
 .p3x-gitlist-dark {
@@ -55,8 +53,6 @@ pre > code {
         background-color: rgba(255, 255, 255, 0.1) !important;
         border-radius: 0.25rem;
     }
-
-    @import '../../../node_modules/highlight.js/styles/github-dark.css';
 }
 
 #p3x-gitlist-readme, .p3x-gitlist-readme {

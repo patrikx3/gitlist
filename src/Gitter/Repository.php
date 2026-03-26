@@ -739,29 +739,51 @@ class Repository
     public function getBlame($file)
     {
         $blame = [];
-        $logs = $this->getClient()->run($this, "blame --root -sl $file");
-        $logs = explode("\n", $logs);
+        $logs = $this->getClient()->run($this, "blame --root --porcelain $file");
+        $lines = explode("\n", $logs);
 
+        // First pass: collect commit metadata and lines
+        $commitMeta = [];
+        $currentHash = '';
+        $allLines = [];
+
+        foreach ($lines as $line) {
+            if ($line === '') continue;
+
+            if (preg_match('/^([a-f0-9]{40})\s+(\d+)\s+(\d+)/', $line, $m)) {
+                $currentHash = $m[1];
+            } elseif (str_starts_with($line, 'author ')) {
+                $commitMeta[$currentHash]['author'] = substr($line, 7);
+            } elseif (str_starts_with($line, 'author-mail ')) {
+                $commitMeta[$currentHash]['authorMail'] = trim(substr($line, 12), '<>');
+            } elseif (str_starts_with($line, 'author-time ')) {
+                $commitMeta[$currentHash]['authorTime'] = (int)substr($line, 12);
+            } elseif (str_starts_with($line, 'summary ')) {
+                $commitMeta[$currentHash]['summary'] = substr($line, 8);
+            } elseif ($line[0] === "\t") {
+                $allLines[] = ['hash' => $currentHash, 'code' => substr($line, 1)];
+            }
+        }
+
+        // Second pass: group consecutive lines by commit (original approach)
         $i = 0;
         $previousCommit = '';
-        foreach ($logs as $log) {
-            if ($log == '') {
-                continue;
-            }
-
-            preg_match_all("/([a-zA-Z0-9]{40})\s+.*?([0-9]+)\)(.+)/", $log, $match);
-
-            $currentCommit = $match[1][0];
+        foreach ($allLines as $entry) {
+            $currentCommit = $entry['hash'];
             if ($currentCommit != $previousCommit) {
                 ++$i;
+                $meta = $commitMeta[$currentCommit] ?? [];
                 $blame[$i] = [
                     'line' => '',
                     'commit' => $currentCommit,
                     'commitShort' => substr($currentCommit, 0, 8),
+                    'author' => $meta['author'] ?? '',
+                    'authorMail' => $meta['authorMail'] ?? '',
+                    'authorTime' => $meta['authorTime'] ?? 0,
+                    'summary' => $meta['summary'] ?? '',
                 ];
             }
-
-            $blame[$i]['line'] .= $match[3][0] . PHP_EOL;
+            $blame[$i]['line'] .= $entry['code'] . PHP_EOL;
             $previousCommit = $currentCommit;
         }
 

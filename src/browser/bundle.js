@@ -49,6 +49,8 @@ global.twemoji = require('twemoji').default
 const prodDir = require('../../package').corifeus["prod-dir"];
 global.twemoji.base = `${prodDir}/twemoji/`;
 
+global.hljs = require('./js/hljs-loader');
+
 require('./js/network.js')
 
 require('./js/gitgraph.js/gitgraph.css')
@@ -69,6 +71,7 @@ require('./js/commit')
 require('./js/breadcrumb')
 require('./js/commits-list')
 require('./js/file-fragment')
+require('./js/blame')
 require('./js/change-log')
 require('./js/todo')
 require('./js/global')

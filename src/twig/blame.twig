@@ -6,8 +6,6 @@
 
 {% block content %}
 
-
-
     {% embed 'breadcrumb.twig' with {breadcrumbs: breadcrumbs} %}
 
         {% block left %}
@@ -51,24 +49,22 @@
             </div>
         </div>
 
-        <div class="p3x-gitlist-blame-container card">
-            {% for blame in blames %}
-                <div class="p3x-gitlist-blame-row {{ loop.index is odd ? 'p3x-gitlist-blame-odd' : '' }}">
-                    <div class="p3x-gitlist-blame-hash">
-                        <a href="{{ path('commit', {repo: repo, commit: blame.commit}) }}"
-                           title="{{ blame.commit }}">{{ blame.commitShort }}</a>
-                    </div>
-                    <div class="p3x-gitlist-blame-line-num">{{ loop.index }}</div>
-                    <div class="p3x-gitlist-blame-content">
-                        {% if not binary %}
-                            <pre class="p3x-gitlist-blame-code" id="p3x-gitlist-file-fragment-text-{{ loop.index0 }}">{{ blame.line }}</pre>
-                        {% else %}
-                            <span class="text-muted">binary</span>
-                        {% endif %}
-                    </div>
+        {% for blame in blames %}
+            <div class="p3x-gitlist-file-fragment-blame-line">
+                <div class="p3x-gitlist-file-fragment-blame-line-header" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ blame.summary }}">
+                    <a href="{{ path('commit', {repo: repo, commit: blame.commit}) }}">{{ blame.commitShort }}</a> {{ blame.author }} {{ blame.authorTime | date("m/d") }}
                 </div>
-            {% endfor %}
-        </div>
+                <div class="p3x-gitlist-file-fragment-blame-line-content">
+                    {% if not binary %}
+                        <div class="p3x-gitlist-file-fragment-text"
+                             id="p3x-gitlist-file-fragment-text-{{ loop.index0 }}">{{ blame.line }}</div>
+                    {% else %}
+                        binary
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+        <div class="p3x-gitlist-file-fragment-blame-line-bottom"></div>
 
     {% else %}
         <h4>

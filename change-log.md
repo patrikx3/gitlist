@@ -5,6 +5,14 @@
                         
 [//]: #@corifeus-header:end
 
+### v2026.4.309
+Released on 03/26/2026
+* FEATURE: Redesign blame view with livereload support and improve menu pills layout
+* FEATURE: Upgrade jQuery to 4.0 with fast development watch, multiple theme support, and CodeMirror dark syntax highlighting
+* FIX: Use targeted chown for Docker file permissions instead of find
+* FIX: Stack navigation pills vertically on small screens and add footer spacing to pager
+* CHORE: Update documentation with changelog entries, README restructuring, screenshot cleanup, and remove obsolete artifacts
+
 ### v2026.4.307
 Released on 03/26/2026
 * FEATURE: Upgraded Bootstrap 3 to 5, Bootswatch 3 to 5, jQuery 3.7 to 4.0, CodeMirror 5 to 6
@@ -533,7 +541,7 @@ All my domains, including [patrikx3.com](https://patrikx3.com), [corifeus.eu](ht
 ---
 
 
-[**P3X-GITLIST**](https://corifeus.com/gitlist) Build v2026.4.308
+[**P3X-GITLIST**](https://corifeus.com/gitlist) Build v2026.4.309
 
  [![Donate for PatrikX3 / P3X](https://img.shields.io/badge/Donate-PatrikX3-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software)
 

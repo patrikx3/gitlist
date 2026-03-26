@@ -1,3 +1,15 @@
-/*
-they are using the file-fragment.less file
- */
+// highlight.js themes - shared by markdown and blame
+// Import without .css extension so Sass inlines them into nested selectors
+.p3x-gitlist-light {
+    @import '../../../node_modules/highlight.js/styles/github';
+}
+
+.p3x-gitlist-dark {
+    @import '../../../node_modules/highlight.js/styles/github-dark';
+}
+
+// Blame view - override hljs background to be transparent
+.p3x-gitlist-file-fragment-text.hljs {
+    background: transparent !important;
+    padding: 0;
+}

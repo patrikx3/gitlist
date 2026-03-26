@@ -3,31 +3,8 @@ const prodDir = require('../../package').corifeus["prod-dir"];
 global.twemoji.base = `${prodDir}/twemoji/`;
 
 global.htmlEncode = require('js-htmlencode')
-const hljs = require('highlight.js/lib/core');
-
-hljs.registerLanguage('conf', require('highlight.js/lib/languages/nginx'));
-hljs.registerLanguage('xml', require('highlight.js/lib/languages/xml'));
-hljs.registerLanguage('css', require('highlight.js/lib/languages/css'));
-hljs.registerLanguage('cmake', require('highlight.js/lib/languages/cmake'));
-hljs.registerLanguage('dockerfile', require('highlight.js/lib/languages/dockerfile'));
-hljs.registerLanguage('Dockerfile', require('highlight.js/lib/languages/dockerfile'));
-hljs.registerLanguage('less', require('highlight.js/lib/languages/less'));
-hljs.registerLanguage('scss', require('highlight.js/lib/languages/scss'));
-hljs.registerLanguage('yaml', require('highlight.js/lib/languages/yaml'));
-hljs.registerLanguage('yml', require('highlight.js/lib/languages/yaml'));
-hljs.registerLanguage('powershell', require('highlight.js/lib/languages/powershell'));
-hljs.registerLanguage('javascript', require('highlight.js/lib/languages/javascript'));
-hljs.registerLanguage('js', require('highlight.js/lib/languages/javascript'));
-hljs.registerLanguage('json', require('highlight.js/lib/languages/json'));
-hljs.registerLanguage('bash', require('highlight.js/lib/languages/shell'));
-hljs.registerLanguage('sh', require('highlight.js/lib/languages/shell'));
-hljs.registerLanguage('php', require('highlight.js/lib/languages/php'));
-hljs.registerLanguage('shell', require('highlight.js/lib/languages/shell'));
-hljs.registerLanguage('cmd', require('highlight.js/lib/languages/shell'));
-hljs.registerLanguage('typescript', require('highlight.js/lib/languages/typescript'));
-hljs.registerLanguage('ts', require('highlight.js/lib/languages/typescript'));
-hljs.registerLanguage('python', require('highlight.js/lib/languages/python'));
-hljs.registerLanguage('py', require('highlight.js/lib/languages/python'));
+const hljs = require('./js/hljs-loader');
+global.hljs = hljs;
 
 const { marked } = require('marked')
 global.marked = marked
