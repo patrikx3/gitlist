@@ -5,6 +5,32 @@
                         
 [//]: #@corifeus-header:end
 
+### v2026.4.307
+Released on 03/26/2026
+* FEATURE: Upgraded Bootstrap 3 to 5, Bootswatch 3 to 5, jQuery 3.7 to 4.0, CodeMirror 5 to 6
+* FEATURE: Replaced vendored Silex with lightweight custom Framework layer using Symfony 7.x
+* FEATURE: Added i18n/localization support with 29 languages including CodeMirror UI translation
+* FEATURE: Added HTML viewer functionality
+* FEATURE: Enabled .mjs file extension for CodeMirror syntax highlighting
+* FEATURE: Redesigned blame view with BS5 theme-aware styling
+* FEATURE: Added livereload support for development (auto-refresh on twig/scss/js changes)
+* FEATURE: Fast dev watch mode (2 themes only, ~2s vs ~35s for all 27 themes)
+* FEATURE: Network graph with touch support, momentum scrolling, and BS5 theme-aware colors
+* FEATURE: Treegraph infinite scroll (auto-load more commits on scroll)
+* FEATURE: CodeMirror dark/light theme with oneDark syntax highlighting
+* FEATURE: Repository search fix for special characters (hyphens) by replacing List.js default search
+* FEATURE: Commit date localization using built-in month translations
+* FEATURE: Auto-generated changelog via Claude CLI in publish script
+* FIX: CI upgraded PHP to 8.3 and GitHub Actions to v4
+* FIX: Twig 3.24 compatibility (removed 'is defined' tests)
+* FIX: Nav pills responsive layout (horizontal on desktop, vertical stacked on mobile)
+* FIX: PHP opcache auto-restart after webhook deploy
+* FIX: Docker file permission handling in build and deploy scripts
+* CHORE: LESS to SCSS migration, removed snackbarjs (replaced with BS5 Toast)
+* CHORE: Docker setup with Nginx, PHP-FPM, and automated deployment scripts
+* CHORE: Removed danielstjules/stringy dependency (replaced with native PHP)
+* CHORE: Removed all jQuery deprecated shorthands for jQuery 4.0 compatibility
+
 ### v2024.4.261
 Released on 02/23/2024
 * FEATURE: Upgraded all packages in Composer and NPM and upgraded to Bootsrap 3 -> 5, jQuery 3 -> 4, Codemirror 5 -> 6
@@ -507,7 +533,7 @@ All my domains, including [patrikx3.com](https://patrikx3.com), [corifeus.eu](ht
 ---
 
 
-[**P3X-GITLIST**](https://corifeus.com/gitlist) Build v2026.4.307
+[**P3X-GITLIST**](https://corifeus.com/gitlist) Build v2026.4.308
 
  [![Donate for PatrikX3 / P3X](https://img.shields.io/badge/Donate-PatrikX3-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software)
 
