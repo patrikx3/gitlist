@@ -62,6 +62,13 @@
   "commit.authored": "كتبه",
   "commit.on": "في",
   "commit.committed_on": "تم الإيداع في",
+  "commit.diff_lines": "أسطر الفرق:",
+  "commit.diff_type": "النوع:",
+  "commit.diff_type_binary": "ثنائي",
+  "commit.diff_type_text": "نص",
+  "commit.diff": "Diff",
+  "commit.diff_old": "قديم",
+  "commit.diff_new": "جديد",
   "commit.diff_loading_ajax": "انتظر، جاري تحميل الفروقات عبر AJAX",
   "commit.diff_loading_webworker": "انتظر، جاري عرض الفروقات باستخدام web worker",
 

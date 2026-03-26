@@ -62,6 +62,13 @@
   "commit.authored": "autor",
   "commit.on": "pe",
   "commit.committed_on": "commit pe",
+  "commit.diff_lines": "Linii diff:",
+  "commit.diff_type": "Tip:",
+  "commit.diff_type_binary": "binar",
+  "commit.diff_type_text": "text",
+  "commit.diff": "Diff",
+  "commit.diff_old": "Vechi",
+  "commit.diff_new": "Nou",
   "commit.diff_loading_ajax": "Așteptați, se încarcă diferențele prin AJAX",
   "commit.diff_loading_webworker": "Așteptați, se randează diferențele cu web worker",
 

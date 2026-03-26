@@ -62,6 +62,13 @@
   "commit.authored": "作成",
   "commit.on": "日付",
   "commit.committed_on": "コミット日",
+  "commit.diff_lines": "差分行数:",
+  "commit.diff_type": "種類:",
+  "commit.diff_type_binary": "バイナリ",
+  "commit.diff_type_text": "テキスト",
+  "commit.diff": "Diff",
+  "commit.diff_old": "旧",
+  "commit.diff_new": "新",
   "commit.diff_loading_ajax": "お待ちください、AJAX で差分を読み込み中",
   "commit.diff_loading_webworker": "お待ちください、web worker で差分をレンダリング中",
 

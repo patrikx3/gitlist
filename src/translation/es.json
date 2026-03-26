@@ -62,6 +62,13 @@
   "commit.authored": "escrito",
   "commit.on": "el",
   "commit.committed_on": "committeado el",
+  "commit.diff_lines": "Líneas de diff:",
+  "commit.diff_type": "Tipo:",
+  "commit.diff_type_binary": "binario",
+  "commit.diff_type_text": "texto",
+  "commit.diff": "Diff",
+  "commit.diff_old": "Antiguo",
+  "commit.diff_new": "Nuevo",
   "commit.diff_loading_ajax": "Espera, cargando los diffs mediante AJAX",
   "commit.diff_loading_webworker": "Espera, renderizando los diffs con web worker",
 

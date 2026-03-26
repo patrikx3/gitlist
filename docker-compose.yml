@@ -24,6 +24,8 @@ services:
       - ./:/app
     working_dir: /app
     command: bash -c "git config --system --add safe.directory '*' && npm run watch:dev"
+    ports:
+      - "35729:35729"
     depends_on:
       - php-fpm
 

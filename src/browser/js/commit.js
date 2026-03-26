@@ -82,6 +82,8 @@ $(async() => {
                         worker.postMessage({
                             diffs: diffs,
                             basepath: window.gitlist.basepath,
+                            labelOld: window.gitlist.t('commit.diff_old'),
+                            labelNew: window.gitlist.t('commit.diff_new'),
                         });
                     }
                 }).catch(window.gitlist.ajaxErrorHandler)

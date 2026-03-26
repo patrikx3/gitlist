@@ -62,6 +62,13 @@
   "commit.authored": "автор",
   "commit.on": "від",
   "commit.committed_on": "зафіксовано",
+  "commit.diff_lines": "Рядки diff:",
+  "commit.diff_type": "Тип:",
+  "commit.diff_type_binary": "бінарний",
+  "commit.diff_type_text": "текст",
+  "commit.diff": "Diff",
+  "commit.diff_old": "Старий",
+  "commit.diff_new": "Новий",
   "commit.diff_loading_ajax": "Зачекайте, завантажуємо відмінності через AJAX",
   "commit.diff_loading_webworker": "Зачекайте, рендеримо відмінності за допомогою web worker",
 

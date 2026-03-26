@@ -62,6 +62,13 @@
   "commit.authored": "yazan",
   "commit.on": "tarihinde",
   "commit.committed_on": "commit tarihi",
+  "commit.diff_lines": "Diff satırları:",
+  "commit.diff_type": "Tür:",
+  "commit.diff_type_binary": "ikili",
+  "commit.diff_type_text": "metin",
+  "commit.diff": "Diff",
+  "commit.diff_old": "Eski",
+  "commit.diff_new": "Yeni",
   "commit.diff_loading_ajax": "Bekleyin, farklar AJAX ile yükleniyor",
   "commit.diff_loading_webworker": "Bekleyin, farklar web worker ile işleniyor",
 

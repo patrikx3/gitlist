@@ -62,6 +62,13 @@
   "commit.authored": "skrevet",
   "commit.on": "den",
   "commit.committed_on": "committet den",
+  "commit.diff_lines": "Diff-linjer:",
+  "commit.diff_type": "Type:",
+  "commit.diff_type_binary": "binær",
+  "commit.diff_type_text": "tekst",
+  "commit.diff": "Diff",
+  "commit.diff_old": "Gammel",
+  "commit.diff_new": "Ny",
   "commit.diff_loading_ajax": "Vent, indlæser forskelle via AJAX",
   "commit.diff_loading_webworker": "Vent, gengiver forskelle med web worker",
 

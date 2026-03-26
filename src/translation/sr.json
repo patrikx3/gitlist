@@ -62,6 +62,13 @@
   "commit.authored": "аутор",
   "commit.on": "дана",
   "commit.committed_on": "комитовано дана",
+  "commit.diff_lines": "Diff редови:",
+  "commit.diff_type": "Тип:",
+  "commit.diff_type_binary": "бинарно",
+  "commit.diff_type_text": "текст",
+  "commit.diff": "Diff",
+  "commit.diff_old": "Стари",
+  "commit.diff_new": "Нови",
   "commit.diff_loading_ajax": "Сачекајте, учитавамо разлике преко AJAX",
   "commit.diff_loading_webworker": "Сачекајте, рендерујемо разлике са web worker",
 

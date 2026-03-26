@@ -62,6 +62,13 @@
   "commit.authored": "skriven",
   "commit.on": "den",
   "commit.committed_on": "commitad den",
+  "commit.diff_lines": "Diff-rader:",
+  "commit.diff_type": "Typ:",
+  "commit.diff_type_binary": "binär",
+  "commit.diff_type_text": "text",
+  "commit.diff": "Diff",
+  "commit.diff_old": "Gammal",
+  "commit.diff_new": "Ny",
   "commit.diff_loading_ajax": "Vänta, laddar skillnader via AJAX",
   "commit.diff_loading_webworker": "Vänta, renderar skillnader med web worker",
 

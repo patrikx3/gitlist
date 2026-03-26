@@ -62,6 +62,13 @@
   "commit.authored": "נכתב",
   "commit.on": "בתאריך",
   "commit.committed_on": "בוצע קומיט בתאריך",
+  "commit.diff_lines": "שורות הבדל:",
+  "commit.diff_type": "סוג:",
+  "commit.diff_type_binary": "בינארי",
+  "commit.diff_type_text": "טקסט",
+  "commit.diff": "Diff",
+  "commit.diff_old": "ישן",
+  "commit.diff_new": "חדש",
   "commit.diff_loading_ajax": "המתן, טוען הבדלים דרך AJAX",
   "commit.diff_loading_webworker": "המתן, מעבד הבדלים עם web worker",
 

@@ -62,6 +62,13 @@
   "commit.authored": "geschreven",
   "commit.on": "op",
   "commit.committed_on": "gecommit op",
+  "commit.diff_lines": "Diff-regels:",
+  "commit.diff_type": "Type:",
+  "commit.diff_type_binary": "binair",
+  "commit.diff_type_text": "tekst",
+  "commit.diff": "Diff",
+  "commit.diff_old": "Oud",
+  "commit.diff_new": "Nieuw",
   "commit.diff_loading_ajax": "Even geduld, verschillen laden via AJAX",
   "commit.diff_loading_webworker": "Even geduld, verschillen renderen met web worker",
 

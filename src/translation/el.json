@@ -62,6 +62,13 @@
   "commit.authored": "συγγραφέας",
   "commit.on": "στις",
   "commit.committed_on": "commit στις",
+  "commit.diff_lines": "Γραμμές diff:",
+  "commit.diff_type": "Τύπος:",
+  "commit.diff_type_binary": "δυαδικό",
+  "commit.diff_type_text": "κείμενο",
+  "commit.diff": "Diff",
+  "commit.diff_old": "Παλιό",
+  "commit.diff_new": "Νέο",
   "commit.diff_loading_ajax": "Περιμένετε, φόρτωση διαφορών μέσω AJAX",
   "commit.diff_loading_webworker": "Περιμένετε, απεικόνιση διαφορών με web worker",
 

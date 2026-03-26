@@ -62,6 +62,13 @@
   "commit.authored": "লিখেছেন",
   "commit.on": "তারিখে",
   "commit.committed_on": "কমিট করা হয়েছে",
+  "commit.diff_lines": "Diff লাইন:",
+  "commit.diff_type": "ধরন:",
+  "commit.diff_type_binary": "বাইনারি",
+  "commit.diff_type_text": "টেক্সট",
+  "commit.diff": "Diff",
+  "commit.diff_old": "পুরোনো",
+  "commit.diff_new": "নতুন",
   "commit.diff_loading_ajax": "অপেক্ষা করুন, AJAX এর মাধ্যমে পার্থক্য লোড হচ্ছে",
   "commit.diff_loading_webworker": "অপেক্ষা করুন, web worker দিয়ে পার্থক্য রেন্ডার হচ্ছে",
 

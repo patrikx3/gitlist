@@ -61,12 +61,12 @@
                         <span id="{{ diff.file | to_id }}"
                               href="#p3x-gitlist-diff-{{ loop.index }}">{{ diff.file }}{% if diff.renamedFile %} &rarr; {{ diff.renamedFile }}{% endif %}</span>
                         <div style="opacity: 0.5;">
-                            Diff lines: {{ diff.lineCount }} Type: {{ diff.binary ? 'binary' : 'text' }}
+                            {{ 'commit.diff_lines'|t }} {{ diff.lineCount }} {{ 'commit.diff_type'|t }} {{ diff.binary ? 'commit.diff_type_binary'|t : 'commit.diff_type_text'|t }}
                         </div>
                     </div>
                     <div class="float-end p3x-gitlist-button">
                         <a id="p3x-gitlist-diff-data-{{ loop.index }}"
-                           class="btn btn-primary btn-sm p3x-gitlist-diff-button"><i class="fas fa-dumbbell"></i>&nbsp;&nbsp;Diff</a>
+                           class="btn btn-primary btn-sm p3x-gitlist-diff-button"><i class="fas fa-dumbbell"></i>&nbsp;&nbsp;{{ 'commit.diff'|t }}</a>
                         &nbsp;
                         <a href="{{ path('commits', {repo: repo, commitishPath: commit.hash ~ '/' ~ (diff.renamedFile ?? diff.file)}) }}"
                            class="btn btn-primary btn-sm"><i class="fas fa-history"></i>&nbsp;&nbsp;History</a>

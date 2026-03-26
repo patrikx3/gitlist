@@ -62,6 +62,13 @@
   "commit.authored": "작성",
   "commit.on": "날짜",
   "commit.committed_on": "커밋 날짜",
+  "commit.diff_lines": "Diff 줄:",
+  "commit.diff_type": "유형:",
+  "commit.diff_type_binary": "바이너리",
+  "commit.diff_type_text": "텍스트",
+  "commit.diff": "Diff",
+  "commit.diff_old": "이전",
+  "commit.diff_new": "새로운",
   "commit.diff_loading_ajax": "잠시만요, AJAX로 차이점 로드 중",
   "commit.diff_loading_webworker": "잠시만요, web worker로 차이점 렌더링 중",
 

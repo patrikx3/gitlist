@@ -7,6 +7,8 @@ const htmlEncode = require('js-htmlencode')
 
 const construct = (data) => {
     const diffs = data.diffs
+    const labelOld = data.labelOld || 'Old'
+    const labelNew = data.labelNew || 'New'
 
     for (let diffLineIndex in diffs.lines) {
         diffs.lines[diffLineIndex].line = htmlEncode(diffs.lines[diffLineIndex].line)
@@ -15,13 +17,13 @@ const construct = (data) => {
     let result = `
      <table id="p3x-gitlist-commit-diff-ng-table" style="min-width: 100%; max-width: 100%">
         <tr>
-            <td class="lineNo">Old</td>
+            <td class="lineNo">${labelOld}</td>
             <td class="lineNo">&nbsp;&nbsp;</td>
             <td class="old">${diffs.old}</td>
         </tr>
         <tr>
             <td class="lineNo">&nbsp;&nbsp;</td>
-            <td class="lineNo">New</td>
+            <td class="lineNo">${labelNew}</td>
             <td class="new">${diffs.new}</td>
         </tr>
     `

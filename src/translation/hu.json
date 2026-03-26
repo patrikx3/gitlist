@@ -62,6 +62,13 @@
   "commit.authored": "szerző",
   "commit.on": "dátum",
   "commit.committed_on": "commitolva",
+  "commit.diff_lines": "Diff sorok:",
+  "commit.diff_type": "Típus:",
+  "commit.diff_type_binary": "bináris",
+  "commit.diff_type_text": "szöveg",
+  "commit.diff": "Diff",
+  "commit.diff_old": "Régi",
+  "commit.diff_new": "Új",
   "commit.diff_loading_ajax": "Várj, a diffek betöltése AJAX-szal folyamatban",
   "commit.diff_loading_webworker": "Várj, a diffek renderelése web workerrel folyamatban",
 

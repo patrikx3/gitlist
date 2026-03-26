@@ -62,6 +62,13 @@
   "commit.authored": "kirjoittanut",
   "commit.on": "päivänä",
   "commit.committed_on": "commitoitu",
+  "commit.diff_lines": "Diff-rivit:",
+  "commit.diff_type": "Tyyppi:",
+  "commit.diff_type_binary": "binääri",
+  "commit.diff_type_text": "teksti",
+  "commit.diff": "Diff",
+  "commit.diff_old": "Vanha",
+  "commit.diff_new": "Uusi",
   "commit.diff_loading_ajax": "Odota, ladataan eroja AJAX:lla",
   "commit.diff_loading_webworker": "Odota, renderöidään eroja web workerilla",
 

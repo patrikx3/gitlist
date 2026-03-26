@@ -32,6 +32,85 @@ $fontSize: 12px;
     font-size: $fontSize;
 }
 
+// Blame view
+.p3x-gitlist-blame-container {
+    overflow: hidden;
+    font-family: monospace;
+    font-size: $fontSize;
+}
+
+.p3x-gitlist-blame-row {
+    display: flex;
+    align-items: stretch;
+    border-bottom: 1px solid var(--bs-border-color, #{$list-group-border});
+
+    &:last-child {
+        border-bottom: none;
+    }
+
+    .p3x-gitlist-dark & {
+        &.p3x-gitlist-blame-odd {
+            background-color: rgba(255, 255, 255, 0.03);
+        }
+    }
+
+    .p3x-gitlist-light & {
+        &.p3x-gitlist-blame-odd {
+            background-color: rgba(0, 0, 0, 0.02);
+        }
+    }
+}
+
+.p3x-gitlist-blame-hash {
+    width: 80px;
+    min-width: 80px;
+    padding: 2px 8px;
+    border-right: 1px solid var(--bs-border-color, #{$list-group-border});
+    display: flex;
+    align-items: center;
+
+    .p3x-gitlist-dark & {
+        background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    .p3x-gitlist-light & {
+        background-color: rgba(0, 0, 0, 0.03);
+    }
+
+    a {
+        font-size: 11px;
+    }
+}
+
+.p3x-gitlist-blame-line-num {
+    width: 45px;
+    min-width: 45px;
+    padding: 2px 8px 2px 0;
+    text-align: right;
+    opacity: 0.5;
+    border-right: 1px solid var(--bs-border-color, #{$list-group-border});
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.p3x-gitlist-blame-content {
+    flex: 1;
+    min-width: 0;
+    overflow-x: auto;
+}
+
+.p3x-gitlist-blame-code {
+    margin: 0;
+    padding: 2px 8px;
+    border: none;
+    background: transparent;
+    font-size: $fontSize;
+    white-space: pre;
+}
+
+// Legacy blame classes (keep for backwards compat)
 .p3x-gitlist-file-fragment-blame-line {
     font-family: monospace;
     font-size: $fontSize;
@@ -48,7 +127,6 @@ $fontSize: 12px;
     border-bottom: 1px solid $list-group-border;
 }
 
-
 .p3x-gitlist-file-fragment-blame-line-header {
     $width: 100px;
     border-right: 1px solid $list-group-border;
@@ -57,8 +135,4 @@ $fontSize: 12px;
     float: left;
     width: $width;
     min-width: $width;
-}
-
-.p3x-gitlist-file-fragment-blame-line-content {
-
 }

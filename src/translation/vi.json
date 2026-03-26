@@ -62,6 +62,13 @@
   "commit.authored": "tác giả",
   "commit.on": "vào",
   "commit.committed_on": "commit vào",
+  "commit.diff_lines": "Dòng diff:",
+  "commit.diff_type": "Loại:",
+  "commit.diff_type_binary": "nhị phân",
+  "commit.diff_type_text": "văn bản",
+  "commit.diff": "Diff",
+  "commit.diff_old": "Cũ",
+  "commit.diff_new": "Mới",
   "commit.diff_loading_ajax": "Vui lòng đợi, đang tải khác biệt qua AJAX",
   "commit.diff_loading_webworker": "Vui lòng đợi, đang kết xuất khác biệt với web worker",
 

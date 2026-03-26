@@ -62,6 +62,13 @@
   "commit.authored": "escrit",
   "commit.on": "el",
   "commit.committed_on": "fet commit el",
+  "commit.diff_lines": "Línies de diff:",
+  "commit.diff_type": "Tipus:",
+  "commit.diff_type_binary": "binari",
+  "commit.diff_type_text": "text",
+  "commit.diff": "Diff",
+  "commit.diff_old": "Antic",
+  "commit.diff_new": "Nou",
   "commit.diff_loading_ajax": "Espereu, carregant les diferències via AJAX",
   "commit.diff_loading_webworker": "Espereu, renderitzant les diferències amb web worker",
 

@@ -68,10 +68,11 @@ module.exports = function (grunt) {
                         },
                     },
                     'sass-dev': {
-                        files: ['src/browser/scss/**/*.*'],
+                        files: ['src/**/*.*'],
                         tasks: ['sass:dev'],
                         options: {
                             atBegin: true,
+                            livereload: 35729,
                         },
                     },
 

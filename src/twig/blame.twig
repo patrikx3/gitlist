@@ -6,6 +6,8 @@
 
 {% block content %}
 
+
+
     {% embed 'breadcrumb.twig' with {breadcrumbs: breadcrumbs} %}
 
         {% block left %}
@@ -31,16 +33,13 @@
 
     {% endembed %}
 
-
-
     {% if blames %}
 
-        <span class="badge bg-info">{{ 'blame.blames_found'|t }} {{ blames | length }}</span>
-        <span class="badge bg-info">{{ 'blame.mode'|t }} {{ type }}</span>
-        <span class="badge bg-info">{{ 'blame.binary'|t }} {{ binary ? 'true' : 'false' }}</span>
-        <br/>
-        <br/>
-
+        <div class="d-flex gap-2 flex-wrap mb-3">
+            <span class="badge bg-info">{{ 'blame.blames_found'|t }} {{ blames | length }}</span>
+            <span class="badge bg-info">{{ 'blame.mode'|t }} {{ type }}</span>
+            <span class="badge bg-info">{{ 'blame.binary'|t }} {{ binary ? 'true' : 'false' }}</span>
+        </div>
 
         <div class="p3x-gitlist-overlay">
             <div>
@@ -52,34 +51,29 @@
             </div>
         </div>
 
-
-        {% for blame in blames %}
-            <div class="p3x-gitlist-file-fragment-blame-line">
-                <div class="p3x-gitlist-file-fragment-blame-line-header">
-                    <span class="far fa-file-alt"></span>&nbsp;<a id="{{ blame.commitShort }}"
-                                                                  href="{{ path('commit', {repo: repo, commit: blame.commit}) }}">{{ blame.commitShort }}</a>
+        <div class="p3x-gitlist-blame-container card">
+            {% for blame in blames %}
+                <div class="p3x-gitlist-blame-row {{ loop.index is odd ? 'p3x-gitlist-blame-odd' : '' }}">
+                    <div class="p3x-gitlist-blame-hash">
+                        <a href="{{ path('commit', {repo: repo, commit: blame.commit}) }}"
+                           title="{{ blame.commit }}">{{ blame.commitShort }}</a>
+                    </div>
+                    <div class="p3x-gitlist-blame-line-num">{{ loop.index }}</div>
+                    <div class="p3x-gitlist-blame-content">
+                        {% if not binary %}
+                            <pre class="p3x-gitlist-blame-code" id="p3x-gitlist-file-fragment-text-{{ loop.index0 }}">{{ blame.line }}</pre>
+                        {% else %}
+                            <span class="text-muted">binary</span>
+                        {% endif %}
+                    </div>
                 </div>
-                <div class="p3x-gitlist-file-fragment-blame-line-content">
-                    {% if not binary %}
-                        <div class="p3x-gitlist-file-fragment-text"
-                             id="p3x-gitlist-file-fragment-text-{{ loop.index0 }}">{{ blame.line }}</div>
-                    {% else %}
-                        binary
-                    {% endif %}
-                </div>
-            </div>
-        {% endfor %}
-        <div class="p3x-gitlist-file-fragment-blame-line-bottom"></div>
+            {% endfor %}
+        </div>
 
     {% else %}
         <h4>
             {{ 'blame.no_blames'|t }}
         </h4>
     {% endif %}
-
-
-
-
-
 
 {% endblock %}
