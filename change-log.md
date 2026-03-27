@@ -5,6 +5,17 @@
                         
 [//]: #@corifeus-header:end
 
+### v2026.4.318
+Released on 03/27/2026
+* FEATURE: Redesign blame view with syntax highlighting, rich metadata, and livereload support
+* FEATURE: Upgrade jQuery to 4.0 with improved dev watch for multiple themes and CodeMirror dark syntax highlighting
+* FEATURE: Improve navigation pills layout and localize "time ago" strings
+* FIX: Enhance footer layout with proper div structure and pager bottom margin
+* FIX: Guard against missing submodule config when resolving URLs
+* FIX: Stack navigation pills vertically on small screens and optimize Docker file permissions
+* CHORE: Simplify changelog generation and update documentation
+* CHORE: Refactor branch naming, upgrade PHP to 8.3.0, and remove obsolete dependencies
+
 ### v2026.4.317
 Released on 03/27/2026
 * FEATURE: Redesign blame view with syntax highlighting, rich metadata, and livereload support
@@ -574,7 +585,7 @@ All my domains, including [patrikx3.com](https://patrikx3.com), [corifeus.eu](ht
 ---
 
 
-[**P3X-GITLIST**](https://corifeus.com/gitlist) Build v2026.4.317
+[**P3X-GITLIST**](https://corifeus.com/gitlist) Build v2026.4.318
 
  [![Donate for PatrikX3 / P3X](https://img.shields.io/badge/Donate-PatrikX3-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software)
 

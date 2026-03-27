@@ -35,7 +35,9 @@ a, a:hover, a:focus, a:active,
 }
 
 .p3x-gitlist-dark {
-    color-scheme: dark;
+    &, html:has(&) {
+        color-scheme: dark;
+    }
 
     .CodeMirror {
         border: 1px solid $navbar-default-bg !important;
@@ -43,7 +45,9 @@ a, a:hover, a:focus, a:active,
 }
 
 .p3x-gitlist-light {
-    color-scheme: light;
+    &, html:has(&) {
+        color-scheme: light;
+    }
 }
 
 code, pre {

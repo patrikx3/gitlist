@@ -42,5 +42,12 @@
     #p3x-gitlist-navigation-theme {
         max-height: calc(100vh - 60px);
         overflow-y: auto;
+
+        // Disable dropdown's own scroll - let navbar container scroll instead
+        #theme-list,
+        #p3x-gitlist-language-list {
+            max-height: none !important;
+            overflow-y: visible !important;
+        }
     }
 }
