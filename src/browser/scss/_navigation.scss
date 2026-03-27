@@ -31,15 +31,8 @@
     transform: scale(1.1) rotate(360deg);
 }
 
-.p3x-gitlist-dropdown-scroll {
-    max-height: calc(100vh - 80px);
-    overflow-y: auto;
-
-    .p3x-gitlist-dark & {
-        color-scheme: dark;
-    }
-
-    .p3x-gitlist-light & {
-        color-scheme: light;
-    }
+#theme-list,
+#p3x-gitlist-language-list {
+    max-height: calc(100vh - 80px) !important;
+    overflow-y: auto !important;
 }

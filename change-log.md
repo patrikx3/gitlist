@@ -5,23 +5,6 @@
                         
 [//]: #@corifeus-header:end
 
-### v2026.4.314
-Released on 03/27/2026
-
-### v2026.4.313
-Released on 03/27/2026
-
-### v2026.4.312
-Released on 03/26/2026
-* FIX: Add missing div for clear fix in footer layout
-
-### v2026.4.311
-Released on 03/26/2026
-* FIX: Guard against missing submodule config when resolving URLs
-
-### v2026.4.310
-Released on 03/26/2026
-* FEATURE: add syntax highlighting and rich metadata to blame view
 
 ### v2026.4.309
 Released on 03/26/2026
@@ -559,7 +542,7 @@ All my domains, including [patrikx3.com](https://patrikx3.com), [corifeus.eu](ht
 ---
 
 
-[**P3X-GITLIST**](https://corifeus.com/gitlist) Build v2026.4.314
+[**P3X-GITLIST**](https://corifeus.com/gitlist) Build v2026.4.315
 
  [![Donate for PatrikX3 / P3X](https://img.shields.io/badge/Donate-PatrikX3-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software)
 

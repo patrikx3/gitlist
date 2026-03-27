@@ -43,7 +43,7 @@
 
                 <li class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">{{ 'nav.language'|t }}</a>
-                    <ul class="dropdown-menu dropdown-menu-end p3x-gitlist-dropdown-scroll">
+                    <ul class="dropdown-menu dropdown-menu-end p3x-gitlist-dropdown-scroll" id="p3x-gitlist-language-list">
                         {% for lang in allowed_langs %}
                             <li>
                                 <a href="#" data-lang="{{ lang }}" class="dropdown-item p3x-gitlist-language-link {{ current_lang == lang ? 'active' : '' }}">{{ lang_names[lang] }}</a>
