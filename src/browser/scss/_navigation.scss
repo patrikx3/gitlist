@@ -36,3 +36,11 @@
     max-height: calc(100vh - 80px) !important;
     overflow-y: auto !important;
 }
+
+// Make collapsed navbar scrollable on small screens
+@media only screen and (max-width: 991px) {
+    #p3x-gitlist-navigation-theme {
+        max-height: calc(100vh - 60px);
+        overflow-y: auto;
+    }
+}

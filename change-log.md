@@ -5,6 +5,23 @@
                         
 [//]: #@corifeus-header:end
 
+### v2026.4.317
+Released on 03/27/2026
+* FEATURE: Redesign blame view with syntax highlighting, rich metadata, and livereload support
+* FEATURE: jQuery 4.0 migration with fast dev watch for multiple themes and CodeMirror dark syntax highlighting
+* FEATURE: Improve navigation pills layout
+* FIX: Fix footer layout with missing div for clear fix
+* FIX: Guard against missing submodule config when resolving URLs
+* FIX: Use targeted chown instead of find for Docker file permissions
+* FIX: Stack navigation pills vertically on small screens (BS3-style)
+* FIX: Add bottom margin to pager for footer spacing
+* CHORE: Simplify changelog generation and remove redundant tagging
+* CHORE: Remove obsolete screenshot artifacts and update migration guide
+* CHORE: Streamline and reorganize README structure
+* CHORE: Rename index.repo.on to index.repo.branch with correct translations
+* CHORE: Localize moment.js "time ago" strings based on language cookie
+* CHORE: Update PHP requirement to 8.3.0 and remove danielstjules/stringy dependency
+
 ### v2026.4.316
 Released on 03/27/2026
 * FEATURE: Redesign blame view with syntax highlighting, rich metadata, and livereload support
@@ -557,7 +574,7 @@ All my domains, including [patrikx3.com](https://patrikx3.com), [corifeus.eu](ht
 ---
 
 
-[**P3X-GITLIST**](https://corifeus.com/gitlist) Build v2026.4.316
+[**P3X-GITLIST**](https://corifeus.com/gitlist) Build v2026.4.317
 
  [![Donate for PatrikX3 / P3X](https://img.shields.io/badge/Donate-PatrikX3-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software)
 
