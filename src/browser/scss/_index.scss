@@ -1,0 +1,55 @@
+#p3x-gitlist-index {
+    .p3x-gitlist-index-description {
+        //    padding-left: $padding-base-vertical;
+        padding-right: $padding-base-vertical;
+    }
+
+    .p3x-gitlist-index-reponame {
+        padding-left: 0px;
+    }
+
+    .p3x-gitlist-index-repo-last-commit-timestamp {
+        visibility: hidden;
+    }
+
+    #p3x-gitlist-index-flex {
+        margin-bottom: 0.75rem;
+    }
+
+    @media only screen and (min-width: $screen-xs-min) {
+        #p3x-gitlist-index-flex {
+            display: flex;
+        }
+
+        #p3x-gitlist-index-flex-search {
+            flex-grow: 1;
+        }
+    }
+
+    .p3x-gitlist-index-pagination {
+        margin-top: 0;
+        text-align: center;
+
+        // BS5 pagination compat for List.js generated items
+        li {
+            @extend .page-item;
+
+            a {
+                @extend .page-link;
+            }
+        }
+
+        li.active a {
+            background-color: var(--bs-primary);
+            border-color: var(--bs-primary);
+            color: #fff;
+        }
+    }
+
+    .p3x-gitlist-index-pagination-container {
+        display: flex;
+        justify-content: center;
+    }
+
+
+}

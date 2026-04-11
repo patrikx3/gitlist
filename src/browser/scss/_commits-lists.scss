@@ -1,0 +1,18 @@
+.p3x-gitlist-commits-list {
+    max-width: 100% !important;
+
+    td {
+        display: inline-block;
+        word-wrap: break-word;
+    }
+}
+
+.p3x-gitlist-copy-hash {
+    opacity: 0.4;
+    cursor: pointer;
+    text-decoration: none;
+
+    &:hover {
+        opacity: 1;
+    }
+}

@@ -1,0 +1,77 @@
+/*
+.p3x-gitlilst-file-fragment-heading-right {
+
+  float: right;
+
+}
+
+.p3x-gitlist-file-fragment-panel {
+  .panel-body {
+    padding: 0 !important;
+    .p3x-gitlist-file-fragment-text {
+      padding: $panel-body-padding !important;
+    }
+    .CodeMirror-wrap {
+      border: none !important;
+
+    }
+
+
+  }
+}
+*/
+$fontSize: 12px;
+
+.p3x-gitlist-file-fragment-text {
+    overflow-x: auto;
+    white-space: pre;
+    margin: 0;
+    padding-bottom: 0;
+    padding-top: 0;
+    font-family: monospace;
+    font-size: $fontSize;
+}
+
+.p3x-gitlist-blame-meta {
+    font-size: 10px;
+    opacity: 0.6;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+// Legacy blame classes (keep for backwards compat)
+.p3x-gitlist-file-fragment-blame-line {
+    font-family: monospace;
+    font-size: $fontSize;
+    display: flex;
+    max-width: 100%;
+    overflow-x: auto;
+    clear: both;
+    border-top: 1px solid $list-group-border;
+    border-left: 1px solid $list-group-border;
+    border-right: 1px solid $list-group-border;
+}
+
+.p3x-gitlist-file-fragment-blame-line-bottom {
+    border-bottom: 1px solid $list-group-border;
+}
+
+.p3x-gitlist-file-fragment-blame-line-header {
+    flex: 0 0 250px;
+    max-width: 250px;
+    border-right: 1px solid $list-group-border;
+    padding: 2px $padding-base-vertical;
+    background-color: rgba($list-group-border, 0.4);
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    font-size: 11px;
+    line-height: 1.3;
+}
+
+.p3x-gitlist-file-fragment-blame-line-content {
+    flex: 1;
+    min-width: 0;
+    overflow-x: auto;
+}

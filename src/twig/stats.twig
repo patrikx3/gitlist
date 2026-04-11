@@ -1,0 +1,72 @@
+{% extends 'layout-page.twig' %}
+
+{% set page = 'stats' %}
+
+{% block title %}{{ 'stats.title'|t }} - {{ repo }} - {{ app.title }}{% endblock %}
+
+{% block content %}
+    {% include 'breadcrumb.twig' with {breadcrumbs: [{dir: 'stats.title'|t, path:''}, {dir: branch, path:''}]} %}
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-header">
+                        <strong>
+                            <i class="fas fa-file-alt"></i>&nbsp;&nbsp;{{ 'stats.file_extensions'|t }}
+                        </strong>
+                        <span class="badge float-end">{{ stats.extensions|length }}</span>
+                    </div>
+                    <ul class="list-group">
+                        {% for ext, amount in stats.extensions %}
+                            <li class="list-group-item">
+                                <strong>{{ ext }}</strong>
+                                <span class="float-end">{{ amount }}</span>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-header">
+                        <span class="badge float-end">{{ authors|length }}</span>
+                        <strong>
+                            <i class="fas fa-user"></i>&nbsp;&nbsp;{{ 'stats.authors_with_commits'|t }}
+                        </strong>
+                    </div>
+                    <ul class="list-group">
+                        {% for author in authors %}
+                            <li class="list-group-item">
+                                <strong><a href="mailto:{{ author.email }}">{{ author.name }}</a></strong>
+                                <span class="float-end">{{ author.commits }}</span>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-header">
+                        <strong>
+                            <i class="far fa-chart-bar"></i>&nbsp;&nbsp;{{ 'stats.stats'|t }}
+                        </strong>
+                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <span class="float-end">{{ stats.files }}</span>
+                            <strong>{{ 'stats.total_files'|t }}</strong>
+                        </li>
+                        <li class="list-group-item">
+                            <strong>{{ stats.size }} {{ 'stats.bytes'|t }}</strong>
+                            <span class="float-end">{{ stats.size | format_size }}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}

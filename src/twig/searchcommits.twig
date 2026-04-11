@@ -1,0 +1,22 @@
+{% extends 'layout-page.twig' %}
+
+{% set page = 'searchcommits' %}
+
+{% block title %}{{ 'searchcommits.title'|t }} {{ query }} - {{ repo }} - {{ app.title }}{% endblock %}
+
+{% block content %}
+
+    {% embed 'breadcrumb.twig' with {breadcrumbs: [{dir: 'searchcommits.title'|t ~ ' ' ~ query, path:''}]} %}
+
+        {% block left %}
+            {% if commits %}
+                <span class="badge bg-info">{{ 'title.commit'|t }}: {{ commits | length }}</span>
+            {% endif %}
+        {% endblock %}
+
+    {% endembed %}
+
+
+    {% include 'commits-list.twig' %}
+
+{% endblock %}

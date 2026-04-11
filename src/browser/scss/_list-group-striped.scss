@@ -1,0 +1,7 @@
+ul.list-group.list-group-striped li:nth-of-type(even) {
+    background-color: rgba(var(--bs-emphasis-color-rgb), 0.04);
+}
+
+ul.list-group.list-group-hover li:hover {
+    background-color: var(--bs-secondary-bg);
+}

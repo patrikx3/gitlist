@@ -1,0 +1,75 @@
+{% extends 'layout-page.twig' %}
+
+{% set page = 'commits' %}
+
+{% block title %}{{ 'common.blame'|t }}: {{ file }} - {{ repo }} - {{ app.title }}{% endblock %}
+
+{% block content %}
+
+    {% embed 'breadcrumb.twig' with {breadcrumbs: breadcrumbs} %}
+
+        {% block left %}
+            <div class="p3x-gitlist-button">
+
+                {% if binary %}
+                    <a href="{{ path('blob_raw', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"
+                       class="btn btn-info btn-sm"><span class="fas fa-download"></span> {{ 'common.download'|t }}</a>
+                {% else %}
+                    <a href="{{ path('blob_raw', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"
+                       class="btn btn-info btn-sm"><span class="fas fa-download"></span> {{ 'common.raw'|t }}</a>
+                {% endif %}
+
+                <a class="btn btn-secondary btn-sm"
+                   href="{{ path('blob', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"> <span
+                        class="far fa-file"></span> {{ 'common.view'|t }}</a>
+
+                <a href="{{ path('commits', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"
+                   class="btn btn-secondary btn-sm"><i class="fas fa-history"></i> {{ 'common.history'|t }}</a>
+
+            </div>
+        {% endblock %}
+
+    {% endembed %}
+
+    {% if blames %}
+
+        <div class="d-flex gap-2 flex-wrap mb-3">
+            <span class="badge bg-info">{{ 'blame.blames_found'|t }} {{ blames | length }}</span>
+            <span class="badge bg-info">{{ 'blame.mode'|t }} {{ type }}</span>
+            <span class="badge bg-info">{{ 'blame.binary'|t }} {{ binary ? 'true' : 'false' }}</span>
+        </div>
+
+        <div class="p3x-gitlist-overlay">
+            <div>
+                <i class="fas fa-cog fa-spin fa-4x"></i>
+            </div>
+            <br/>
+            <div>
+                {{ 'blame.loading'|t }}
+            </div>
+        </div>
+
+        {% for blame in blames %}
+            <div class="p3x-gitlist-file-fragment-blame-line">
+                <div class="p3x-gitlist-file-fragment-blame-line-header" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ blame.summary }}">
+                    <a href="{{ path('commit', {repo: repo, commit: blame.commit}) }}">{{ blame.commitShort }}</a> {{ blame.author }} {{ blame.authorTime | date("m/d") }}
+                </div>
+                <div class="p3x-gitlist-file-fragment-blame-line-content">
+                    {% if not binary %}
+                        <div class="p3x-gitlist-file-fragment-text"
+                             id="p3x-gitlist-file-fragment-text-{{ loop.index0 }}">{{ blame.line }}</div>
+                    {% else %}
+                        binary
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+        <div class="p3x-gitlist-file-fragment-blame-line-bottom"></div>
+
+    {% else %}
+        <h4>
+            {{ 'blame.no_blames'|t }}
+        </h4>
+    {% endif %}
+
+{% endblock %}

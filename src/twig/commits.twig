@@ -1,0 +1,39 @@
+{% extends 'layout-page.twig' %}
+
+{% set page = 'commits' %}
+
+{% block title %}{{ repo }} - {{ 'menu.commits'|t }} - {{ app.title }}{% endblock %}
+
+{% block content %}
+    {% embed 'breadcrumb.twig' with {breadcrumbs: breadcrumbs} %}
+
+        {% block left %}
+
+            {% if file != '' %}
+                <div class="p3x-gitlist-button">
+
+                    {% if binary %}
+                        <a href="{{ path('blob_raw', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"
+                           class="btn btn-info btn-sm"><span class="fas fa-download"></span> {{ 'common.download'|t }}</a>
+                    {% else %}
+                        <a href="{{ path('blob_raw', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"
+                           class="btn btn-info btn-sm"><span class="fas fa-download"></span> {{ 'common.raw'|t }}</a>
+                    {% endif %}
+
+                    <a href="{{ path('blame', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"
+                       class="btn btn-secondary btn-sm"><span class="fa fa-fire"></span> {{ 'common.blame'|t }}</a>
+
+                    <a class="btn btn-secondary btn-sm"
+                       href="{{ path('blob', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"> <span
+                            class="far fa-file"></span> {{ 'common.view'|t }}</a>
+
+                </div>
+            {% endif %}
+
+        {% endblock %}
+
+    {% endembed %}
+
+    {% include 'commits-list.twig' %}
+
+{% endblock %}

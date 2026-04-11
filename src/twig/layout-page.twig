@@ -1,0 +1,52 @@
+{% extends 'layout.twig' %}
+
+{% block body %}
+    {% include 'navigation.twig' %}
+
+    <div class="container mt-3">
+
+        {% if page in ['commits', 'searchcommits'] %}
+            <form class="mb-3" action="{{ repo }}/commits/{{ branch }}/search" method="POST" role="search" aria-label="{{ 'layout.search_commits.placeholder'|t }}">
+                <div class="input-group">
+                    <input type="text" minlength="3" required value="{{ search_query }}" name="query"
+                           class="form-control input-sm" placeholder="{{ 'layout.search_commits.placeholder'|t }}"
+                           aria-label="{{ 'layout.search_commits.placeholder'|t }}"
+                           onkeypress="window.gitlist.setInputQuery('query')" autofocus>
+                    <button class="btn btn-secondary btn-sm" type="button"
+                            onclick="window.gitlist.clearInput('query')">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    <button class="btn btn-secondary btn-sm" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </form>
+        {% else %}
+            <form class="mb-3" action="{{ repo }}/tree/{{ branch }}/search" method="POST" role="search" aria-label="{{ 'layout.search_tree.placeholder'|t }}">
+                <div class="input-group">
+                    <input type="text" minlength="3" required value="{{ search_query }}" name="query"
+                           class="form-control input-sm" placeholder="{{ 'layout.search_tree.placeholder'|t }}"
+                           aria-label="{{ 'layout.search_tree.placeholder'|t }}"
+                           onkeypress="window.gitlist.setInputQuery('query')" autofocus>
+                    <button class="btn btn-secondary btn-sm" type="button"
+                            onclick="window.gitlist.clearInput('query')">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    <button class="btn btn-secondary btn-sm" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </form>
+        {% endif %}
+
+
+
+        {% include 'menu.twig' %}
+
+
+        {% block content %}{% endblock %}
+
+    </div>
+
+    {% include 'footer.twig' %}
+{% endblock %}

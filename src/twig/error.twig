@@ -1,0 +1,27 @@
+{% extends 'layout.twig' %}
+{% block title %}{{ 'error.oops'|t }} - {{ app.title }}{% endblock %}
+
+{% block body %}
+    {% include 'navigation.twig' %}
+
+    <div class="container">
+
+        <div class="alert alert-danger">
+            <strong>{{ 'error.oops'|t }}</strong> {{ message }}
+        </div>
+
+        {% if error %}
+            <div class="alert alert-info">
+                {{ 'error.memory_hint'|t }}
+            </div>
+            <div>
+                {{ error | raw }}
+            </div>
+            <br/>
+        {% endif %}
+
+        <a class="btn btn-info btn-block" href="#" onclick="location = document.referrer">{{ 'error.go_back'|t }}</a>
+
+        {% include 'footer.twig' %}
+    </div>
+{% endblock %}

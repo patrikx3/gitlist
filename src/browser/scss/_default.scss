@@ -1,0 +1,196 @@
+// Toast styling (BS5 native replacement for snackbarjs)
+.toast-container {
+    .toast {
+        border-radius: 0.25rem;
+        min-width: 280px;
+        margin-bottom: 0.5rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+
+        .toast-body {
+            padding: 0.75rem 1rem;
+        }
+    }
+}
+
+// Bootstrap 5 global fixes - force no underlines everywhere
+a, a:hover, a:focus, a:active,
+.navbar-brand, .nav-link, .dropdown-item,
+.list-group-item a, .breadcrumb-item a,
+.page-link, .btn {
+    text-decoration: none !important;
+}
+
+
+.p3x-gitlist-button {
+    .btn {
+        margin-bottom: $padding-base-vertical !important;
+    }
+}
+
+
+.p3x-gitlist-light {
+    .CodeMirror {
+        border: 1px solid $gray-lighter;
+    }
+}
+
+.p3x-gitlist-dark {
+    &, html:has(&) {
+        color-scheme: dark;
+    }
+
+    .CodeMirror {
+        border: 1px solid $navbar-default-bg !important;
+    }
+}
+
+.p3x-gitlist-light {
+    &, html:has(&) {
+        color-scheme: light;
+    }
+}
+
+code, pre {
+    overflow-x: auto;
+    //white-space:pre-wrap;
+    font-family: monospace;
+}
+
+
+.p3x-gitlist-dark {
+
+    #snackbar-container > div {
+        border: 1px solid $table-bg-accent;
+    }
+
+    code.p3x-gitlist-code, pre.p3x-gitlist-code {
+        background-color: lighten($navbar-inverse-bg, 5%);
+        color: $navbar-inverse-color;
+        border-color: $navbar-inverse-border;
+    }
+}
+
+.p3x-gitlist-markdown-heading-container {
+    position: relative;
+}
+
+a.p3x-gitlist-markdown-heading-link {
+    display: none;
+    font-size: inherit;
+    text-decoration: none !important;
+}
+
+.p3x-gitlist-markdown-image {
+    max-width: 100%;
+}
+
+.p3x-gitlist-breadcrumb-divider {
+    min-height: $padding-base-vertical;
+    display: block;
+    clear: both;
+    margin-bottom: 0.5rem;
+}
+
+// BS5 spacing fixes - BS3 had default margins on these
+.p3x-gitlist-button {
+    margin-bottom: 0.5rem;
+}
+
+.breadcrumb {
+    margin-bottom: 0.25rem;
+    background-color: var(--bs-tertiary-bg);
+    padding: 0.35rem 0.75rem;
+    border-radius: 0.25rem;
+    font-size: 0.85rem;
+}
+
+.list-group {
+    margin-bottom: 1rem;
+}
+
+.card {
+    margin-bottom: 1rem;
+}
+
+img.emoji {
+    height: 1em;
+    width: 1em;
+    margin: 0 .05em 0 .1em;
+    vertical-align: -0.1em;
+}
+
+.p3x-list-item-header {
+    font-weight: bold !important;
+}
+
+.breadcrumb {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.p3x-gitlist-max-width {
+    max-width: 100%;
+    max-height: auto;
+}
+
+.modal {
+    text-align: left;
+}
+
+.media-body {
+    text-overflow: ellipsis;
+}
+
+
+.modal-dialog {
+    ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: $state-danger-text;
+    }
+
+    input:invalid {
+        color: $state-danger-text;
+        background-color: $state-danger-bg;
+        border-color: $state-danger-border;
+    }
+}
+
+.btn:hover .fa, .btn:hover .fas, .btn:hover .fab {
+    transition-duration: 250ms;
+    transition-property: transform;
+    transform: scale(1.1) rotate(360deg);
+}
+
+#p3x-gitlist-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: none;
+}
+
+.p3x-gitlist-relative-time {
+    opacity: 0.6;
+    font-size: 0.9em;
+}
+
+@import "index";
+@import "clone-button";
+@import "footer";
+@import "menu";
+@import "treegraph";
+@import "file";
+@import "markdown";
+@import "html-viewer";
+@import "browser";
+@import "overlay";
+@import "codemirror";
+@import "commit";
+@import "tree";
+@import "navigation";
+@import "blame";
+@import "search";
+@import "file-fragment";
+@import "commits-lists";
+@import "list-group-striped";
+@import "pager";
+@import "network";

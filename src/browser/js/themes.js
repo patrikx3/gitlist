@@ -1,0 +1,31 @@
+
+const themes = {
+    "bootstrap-default": "prod/css/bootstrap-default.d93f2dafd38042c965c076f7336f97eadfd1ef69913c607b2b89f6c62ec65022.css",
+    "bootstrap-brite": "prod/css/bootstrap-brite.d93f2dafd38042c965c076f7336f97eadfd1ef69913c607b2b89f6c62ec65022.css",
+    "bootstrap-cerulean": "prod/css/bootstrap-cerulean.d93f2dafd38042c965c076f7336f97eadfd1ef69913c607b2b89f6c62ec65022.css",
+    "bootstrap-cosmo": "prod/css/bootstrap-cosmo.d93f2dafd38042c965c076f7336f97eadfd1ef69913c607b2b89f6c62ec65022.css",
+    "bootstrap-cyborg": "prod/css/bootstrap-cyborg.d93f2dafd38042c965c076f7336f97eadfd1ef69913c607b2b89f6c62ec65022.css",
+    "bootstrap-darkly": "prod/css/bootstrap-darkly.d93f2dafd38042c965c076f7336f97eadfd1ef69913c607b2b89f6c62ec65022.css",
+    "bootstrap-flatly": "prod/css/bootstrap-flatly.d93f2dafd38042c965c076f7336f97eadfd1ef69913c607b2b89f6c62ec65022.css",
+    "bootstrap-journal": "prod/css/bootstrap-journal.d93f2dafd38042c965c076f7336f97eadfd1ef69913c607b2b89f6c62ec65022.css",
+    "bootstrap-litera": "prod/css/bootstrap-litera.d93f2dafd38042c965c076f7336f97eadfd1ef69913c607b2b89f6c62ec65022.css",
+    "bootstrap-lumen": "prod/css/bootstrap-lumen.d93f2dafd38042c965c076f7336f97eadfd1ef69913c607b2b89f6c62ec65022.css",
+    "bootstrap-lux": "prod/css/bootstrap-lux.d93f2dafd38042c965c076f7336f97eadfd1ef69913c607b2b89f6c62ec65022.css",
+    "bootstrap-materia": "prod/css/bootstrap-materia.d93f2dafd38042c965c076f7336f97eadfd1ef69913c607b2b89f6c62ec65022.css",
+    "bootstrap-minty": "prod/css/bootstrap-minty.d93f2dafd38042c965c076f7336f97eadfd1ef69913c607b2b89f6c62ec65022.css",
+    "bootstrap-morph": "prod/css/bootstrap-morph.d93f2dafd38042c965c076f7336f97eadfd1ef69913c607b2b89f6c62ec65022.css",
+    "bootstrap-pulse": "prod/css/bootstrap-pulse.d93f2dafd38042c965c076f7336f97eadfd1ef69913c607b2b89f6c62ec65022.css",
+    "bootstrap-quartz": "prod/css/bootstrap-quartz.d93f2dafd38042c965c076f7336f97eadfd1ef69913c607b2b89f6c62ec65022.css",
+    "bootstrap-sandstone": "prod/css/bootstrap-sandstone.d93f2dafd38042c965c076f7336f97eadfd1ef69913c607b2b89f6c62ec65022.css",
+    "bootstrap-simplex": "prod/css/bootstrap-simplex.d93f2dafd38042c965c076f7336f97eadfd1ef69913c607b2b89f6c62ec65022.css",
+    "bootstrap-sketchy": "prod/css/bootstrap-sketchy.d93f2dafd38042c965c076f7336f97eadfd1ef69913c607b2b89f6c62ec65022.css",
+    "bootstrap-slate": "prod/css/bootstrap-slate.d93f2dafd38042c965c076f7336f97eadfd1ef69913c607b2b89f6c62ec65022.css",
+    "bootstrap-solar": "prod/css/bootstrap-solar.d93f2dafd38042c965c076f7336f97eadfd1ef69913c607b2b89f6c62ec65022.css",
+    "bootstrap-spacelab": "prod/css/bootstrap-spacelab.d93f2dafd38042c965c076f7336f97eadfd1ef69913c607b2b89f6c62ec65022.css",
+    "bootstrap-superhero": "prod/css/bootstrap-superhero.d93f2dafd38042c965c076f7336f97eadfd1ef69913c607b2b89f6c62ec65022.css",
+    "bootstrap-united": "prod/css/bootstrap-united.d93f2dafd38042c965c076f7336f97eadfd1ef69913c607b2b89f6c62ec65022.css",
+    "bootstrap-vapor": "prod/css/bootstrap-vapor.d93f2dafd38042c965c076f7336f97eadfd1ef69913c607b2b89f6c62ec65022.css",
+    "bootstrap-yeti": "prod/css/bootstrap-yeti.d93f2dafd38042c965c076f7336f97eadfd1ef69913c607b2b89f6c62ec65022.css",
+    "bootstrap-zephyr": "prod/css/bootstrap-zephyr.d93f2dafd38042c965c076f7336f97eadfd1ef69913c607b2b89f6c62ec65022.css"
+};
+module.exports = themes;

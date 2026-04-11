@@ -1,0 +1,35 @@
+// GitList design tokens - project-specific variables derived from Bootstrap 5
+
+$padding-base-vertical: $spacer * .375 !default;
+$padding-base-horizontal: $spacer * .75 !default;
+$navbar-height: 3.5rem !default;
+$navbar-padding-horizontal: $navbar-padding-x !default;
+$screen-xs-min: map-get($grid-breakpoints, "sm") !default;
+$screen-sm-min: map-get($grid-breakpoints, "md") !default;
+$gray-lighter: $gray-200 !default;
+$navbar-default-bg: $gray-200 !default;
+$navbar-default-border: $gray-300 !default;
+$navbar-default-color: $gray-700 !default;
+$navbar-default-link-hover-color: $gray-900 !default;
+$navbar-inverse-bg: $gray-900 !default;
+$navbar-inverse-color: $gray-300 !default;
+$navbar-inverse-border: $gray-800 !default;
+$navbar-inverse-link-hover-color: $white !default;
+$text-color: $body-color !default;
+$table-bg-accent: rgba(0, 0, 0, 0.05) !default;
+$table-bg-hover: rgba(0, 0, 0, 0.075) !default;
+// These BS5 variables have the same names, no mapping needed:
+// $table-border-color, $dropdown-link-color, $dropdown-link-hover-bg,
+// $dropdown-link-hover-color, $dropdown-link-active-bg, $dropdown-link-active-color
+$state-danger-text: #a94442 !default;
+$state-danger-bg: #f2dede !default;
+$state-danger-border: #ebccd1 !default;
+$list-group-border: $list-group-border-color !default;
+$brand-primary: $primary !default;
+// $line-height-base has the same name in BS5
+$alert-success-bg: #d4edda !default;
+$alert-success-text: #155724 !default;
+$alert-danger-bg: #f8d7da !default;
+$alert-danger-text: #721c24 !default;
+$alert-info-bg: #d1ecf1 !default;
+$alert-info-text: #0c5460 !default;

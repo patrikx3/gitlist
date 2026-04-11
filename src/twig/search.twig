@@ -1,0 +1,75 @@
+{% extends 'layout-page.twig' %}
+
+{% set page = 'files' %}
+
+{% block title %}{{ 'title.search'|t }} - {{ repo }} - {{ app.title }}{% endblock %}
+
+{% block content %}
+
+    {% embed 'breadcrumb.twig' with {breadcrumbs: breadcrumbs} %}
+
+        {% block left %}
+            {% if results %}
+                <span class="C">{{ 'search.file'|t }} {{ results | length }}</span>
+            {% endif %}
+        {% endblock %}
+
+    {% endembed %}
+
+
+    {% if results %}
+
+        <div class="p3x-gitlist-overlay">
+            <div>
+                <i class="fas fa-cog fa-spin fa-4x"></i>
+            </div>
+            <br/>
+            <div>
+                {{ 'search.loading'|t }}
+            </div>
+        </div>
+
+        {% for result in results %}
+
+            <div class="card p3x-gitlist-file-fragment-panel" data-index="{{ loop.index0 }}"
+                 data-mode="{{ result.type }}">
+                <div class="card-header">
+                    <table style="width: 100%; background-color: transparent;"
+                           id="p3x-gitlilst-file-fragment-heading-table-{{ loop.index0 }}">
+                        <tr>
+                            <td>
+                                <span class="far fa-file-alt"></span>&nbsp;&nbsp;<a
+                                    href="{{ path('blob', {repo: repo, branch: branch, file: result.file, commitishPath: branch ~ '/' ~ result.file}) }}&codemirror=1&query={{ search_query }}#L{{ result.line }}">{{ result.file }}</a>
+                                {{ 'search.on_line'|t }} {{ result.line }}
+                            </td>
+                            <td style="text-align: right;" class="p3x-gitlist-button">
+
+                                <button class="btn btn-sm btn-primary"
+                                        id="p3x-gitlilst-file-fragment-heading-button-edit-{{ loop.index0 }}"
+                                        onclick="location ='{{ path('blob', {repo: repo, branch: branch, file: result.file, commitishPath: branch ~ '/' ~ result.file}) }}&codemirror=1&query={{ search_query }}#L{{ result.line }}'"
+                                        style=" text-transform: capitalize;">
+                                    <span class="fas fa-file"></span>&nbsp; {{ 'common.view'|t }} {{ result.type }}
+                                </button>
+
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div class="card-body">
+                    <div class="p3x-gitlist-file-fragment-text"
+                         id="p3x-gitlist-file-fragment-text-{{ loop.index0 }}">{{ result.match }}</div>
+                    <textarea class="hidden"
+                              id="p3x-gitlist-file-fragment-codemirror-{{ loop.index0 }}">{{ result.match }}</textarea>
+                </div>
+
+            </div>
+        {% endfor %}
+    {% else %}
+        <h4>
+            {{ 'search.no_result'|t }}
+        </h4>
+    {% endif %}
+
+
+{% endblock %}

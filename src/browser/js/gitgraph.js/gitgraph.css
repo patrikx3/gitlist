@@ -1,0 +1,34 @@
+em {
+    font-style: normal;
+}
+
+#git-graph-container, #rel-container {
+    float: left;
+}
+
+#git-graph-container {
+}
+
+#git-graph-container li {
+    list-style-type: none;
+    height: 20px;
+    line-height: 20px;
+    overflow: hidden;
+}
+
+#git-graph-container li .node-relation {
+    font-family: 'Bitstream Vera Sans Mono', 'Courier', monospace;
+}
+
+#git-graph-container li .time {
+    font-size: 80%
+}
+
+#rev-list {
+    margin: 0;
+    padding: 0 5px 0 0;
+}
+
+#graph-raw-list {
+    margin: 0px;
+}

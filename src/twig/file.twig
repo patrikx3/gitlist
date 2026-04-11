@@ -1,0 +1,194 @@
+{% extends 'layout-page.twig' %}
+
+{% set page = 'files' %}
+
+{% block title %}{{ file }} - {{ repo }} - {{ app.title }}{% endblock %}
+
+{% block content %}
+
+    {% embed 'breadcrumb.twig' with {breadcrumbs: breadcrumbs} %}
+        {% block right %}
+
+            <div style="text-align: right;">
+
+                {% if extension == 'svg' %}
+                    <button class="btn btn-sm btn-primary" id="p3x-gitlist-file-svg-show">
+                        <span class="fas fa-image"></span>
+                        {{ 'file.toggle_svg'|t }}
+                    </button>
+                {% endif %}
+
+                {% if enable_editing %}
+                    <button class="btn btn-sm btn-danger" id="p3x-gitlist-file-delete">
+                        <span class="fa fa-trash"></span>
+                        {{ 'file.delete'|t }}
+                    </button>
+                {% endif %}
+
+                {% embed 'modal/modal-commit.twig' with {type: 'delete', title: 'Delete', bodyTitle: 'file.delete.confirm'|t, wrapForm: true } %}
+                    {% block buttons %}
+                        <button id="p3x-gitlist-modal-delete-confirm" type="submit" class="btn btn-danger">
+                            <span class="fa fa-trash"></span>
+                            &nbsp;
+                            {{ 'file.delete'|t }}
+                        </button>
+                    {% endblock %}
+                {% endembed %}
+
+                <span class="p3x-gitlist-file-svg-toggle">
+                {% if (((fileType != 'image' and fileType != 'markdown' and not isHtml) or (enforceCodemirror)) and not binary ) %}
+
+                    {% if enable_editing %}
+                        <button id="p3x-gitlist-file-button-edit" class="btn btn-sm btn-info">
+                            <span class="fa fa-edit"></span> {{ 'file.edit'|t }}
+                        </button>
+                    {% endif %}
+
+                    <button id="p3x-gitlist-file-button-edit-cancel" class="btn btn-sm btn-warning"
+                            style="display: none;">
+                        <i class="fas fa-eraser"></i> {{ 'file.cancel'|t }}
+                    </button>
+                    <button id="p3x-gitlist-file-button-edit-save" class="btn btn-sm btn-info" style="display: none;">
+                        <span class="fa fa-save"></span> {{ 'file.save'|t }}
+                    </button>
+
+                    {% embed 'modal/modal-commit.twig' with { type: 'commit', title: 'Commit', bodyTitle: 'file.commit.confirm'|t, wrapForm: true } %}
+                    {% block buttons %}
+                        <button id="p3x-gitlist-modal-commit-push" type="submit" class="btn btn-info">
+                            <span class="fas fa-caret-right"></span>
+                            &nbsp;
+                            {{ 'file.save'|t }}
+                        </button>
+                    {% endblock %}
+
+                {% endembed %}
+
+                {% elseif fileType == 'markdown' %}
+                    <a href="{{ path('blob', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}?codemirror=1"
+                       class="btn btn-sm btn-info">
+                        <span class="far fa-file-code"></span> {{ 'file.editor'|t }}
+                    </a>
+                {% elseif isHtml and not enforceCodemirror %}
+                    <a href="{{ path('blob', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}?codemirror=1"
+                       class="btn btn-sm btn-info">
+                        <span class="far fa-file-code"></span> {{ 'file.editor'|t }}
+                    </a>
+                {% endif %}
+
+
+                </span>
+
+
+            </div>
+
+        {% endblock %}
+
+        {% block left %}
+
+            <div class="p3x-gitlist-button">
+
+                {% if binary %}
+                    <a href="{{ path('blob_raw', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"
+                       class="btn btn-info btn-sm"><span class="fas fa-download"></span> {{ 'file.download'|t }}</a>
+                {% else %}
+                    <a href="{{ path('blob_raw', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"
+                       class="btn btn-info btn-sm"><span class="fas fa-download"></span> {{ 'file.raw'|t }}</a>
+                {% endif %}
+
+                <a href="{{ path('blame', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"
+                   class="btn btn-secondary btn-sm"><span class="fa fa-fire"></span> {{ 'file.blame'|t }}</a>
+
+                <a href="{{ path('commits', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"
+                   class="btn btn-secondary btn-sm"><i class="fas fa-history"></i> {{ 'file.history'|t }}</a>
+
+                <span class="badge bg-secondary" title="{{ 'file.size'|t }}"><i class="fas fa-weight-hanging"></i> {{ fileSize | format_size }}</span>
+                {% if lineCount is defined and lineCount > 0 %}
+                    <span class="badge bg-secondary" title="{{ 'file.lines'|t }}"><i class="fas fa-list-ol"></i> {{ lineCount }} {{ 'file.lines'|t }}</span>
+                {% endif %}
+
+                <div class="p3x-gitlist-file-svg-toggle">
+
+                    {% if (((fileType != 'image' and fileType != 'markdown' and not isHtml) or enforceCodemirror) and not binary) %}
+                        <span id="p3x-gitlist-file-codemirror" style="display: none;">
+                        <div class="btn-group btn-toggle">
+                            <button id="p3x-gitlist-file-button-scroll"
+                                    class="btn btn-sm btn-secondary">{{ 'file.scroll_mode'|t }}</button>
+                            <button id="p3x-gitlist-file-button-full"
+                                    class="btn btn-sm btn-secondary">{{ 'file.full_height'|t }}</button>
+                        </div>
+                    </span>
+
+                    {% endif %}
+
+                    {% if fileType == 'markdown' %}
+
+                        {% if enforceCodemirror %}
+                            <a href="{{ path('blob', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"
+                               class="btn btn-secondary btn-sm"><span class="fa fa-code"></span> {{ 'file.markdown_rendered'|t }}</a>
+                        {% else %}
+                            <a title="{{ 'file.markdown_code.tooltip'|t }}"
+                               href="{{ path('blob', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}?codemirror=1"
+                               class="btn btn-secondary btn-sm"><span class="fa fa-code"></span> {{ 'file.markdown_code'|t }}</a>
+                        {% endif %}
+
+                    {% elseif isHtml %}
+
+                        {% if enforceCodemirror %}
+                            <a href="{{ path('blob', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"
+                               class="btn btn-secondary btn-sm"><span class="fas fa-globe"></span> {{ 'file.html_rendered'|t }}</a>
+                        {% else %}
+                            <a title="{{ 'file.markdown_code.tooltip'|t }}"
+                               href="{{ path('blob', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}?codemirror=1"
+                               class="btn btn-secondary btn-sm"><span class="fa fa-code"></span> {{ 'file.html_code'|t }}</a>
+                        {% endif %}
+
+                    {% endif %}
+
+                </div>
+
+
+            </div>
+
+        {% endblock %}
+
+    {% endembed %}
+
+    <div id="p3x-gitlist-file-codemirror-exceeded" role="alert" class="alert-dismissable alert alert-warning">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        {{ 'file.codemirror_exceeded'|t | replace({'%size%': fileSize | format_size, '%limit%': codemirror_full_limit}) }}
+    </div>
+
+
+    <div id="p3x-gitlist-file-codemirror-full-height" role="alert" class="alert-dismissable alert alert-info"
+         style="display: none;">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        {{ 'file.codemirror_full_height_hint'|t }}
+    </div>
+
+
+
+    <div>
+
+        {% if fileType == 'image' %}
+            <div class="text-center"><img style="max-width: 100%; max-height: auto;"
+                                          src="{{ path('blob_raw', {repo: repo, commitishPath: branch ~ '/' ~ file}) }}"
+                                          alt="{{ file }}" class="image-blob"/></div>
+
+        {% elseif fileType == 'markdown' and enforceCodemirror != true %}
+            {% include 'markdown.twig' with {'filename': file, 'data': blob} %}
+        {% elseif isHtml and enforceCodemirror != true %}
+            {% include 'html-viewer.twig' with {'filename': file, 'data': blob} %}
+        {% elseif not binary %}
+            <pre class="p3x-gitlist-code" id="p3x-gitlist-file-editor"
+                 language="{{ fileType }}">{{ blob|htmlentities|raw }}</pre>
+        {% endif %}
+
+        {% if extension == 'svg' %}
+            <div id="p3x-gitlist-file-svg-content" style="display: none;"
+                 class="p3x-gitlist-file-svg-toggle p3x-gitlist-max-width"></div>
+        {% endif %}
+    </div>
+
+
+
+{% endblock %}

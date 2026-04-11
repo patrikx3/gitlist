@@ -1,0 +1,90 @@
+
+.p3x-gitlist-markdown-code {
+    position: relative;
+    .p3x-gitlist-markdown-code-copy-paste {
+        visibility: hidden;
+        position: absolute;
+        top: 12px;
+        right: 10px;
+
+        .far {
+            cursor: pointer;
+        }
+    }
+
+}
+
+.p3x-gitlist-markdown-code:hover {
+    .p3x-gitlist-markdown-code-copy-paste {
+        visibility: visible;
+    }
+}
+
+pre > code {
+    display: block;
+    padding: 8px;
+}
+
+// Override BS5 purple inline code color to be theme-aware
+code {
+    color: inherit;
+    background-color: rgba(var(--bs-emphasis-color-rgb), 0.2);
+    padding: 0.15em 0.4em;
+    border-radius: 0.25rem;
+    font-size: 0.875em;
+}
+
+pre > code {
+    background-color: transparent;
+    padding: 0;
+}
+
+.p3x-gitlist-light {
+
+    pre > code {
+        background-color: rgba(0, 0, 0, 0.1) !important;
+        border-radius: 0.25rem;
+    }
+}
+
+.p3x-gitlist-dark {
+
+    pre > code {
+        background-color: rgba(255, 255, 255, 0.1) !important;
+        border-radius: 0.25rem;
+    }
+}
+
+#p3x-gitlist-readme, .p3x-gitlist-readme {
+    pre {
+        padding: 0;
+    }
+
+    table {
+        @extend .table;
+        @extend .table-striped;
+        @extend .table-bordered;
+    }
+}
+
+.p3x-gitlist-light {
+    code.hljs {
+        background-color: rgba(0, 0, 0, 0.1) !important;
+    }
+}
+
+.p3x-gitlist-dark {
+    code.hljs {
+        background-color: rgba(255, 255, 255, 0.1) !important;
+    }
+}
+
+
+.p3x-gitlist-markdown-clear-fix {
+    pre, code {
+        padding: 0;
+        border: none;
+        margin: 0;
+        text-align: left;
+    }
+}

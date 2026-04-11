@@ -1,0 +1,81 @@
+{% if wrapForm %}
+<form id="p3x-gitlist-modal-{{ type }}-form" name="p3x-gitlist-modal-{{ type }}-form" method="post"
+      enctype="{{ enctype| default('application/x-www-form-urlencoded') }}" style="display: inline-block;">
+    {% endif %}
+
+    <div id="p3x-gitlist-modal-{{ type }}" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title"><strong>{{ title }}</strong></h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <strong>{{ bodyTitle | raw }}</strong>
+
+                    {% if not wrapForm %}
+                    <form id="p3x-gitlist-modal-{{ type }}-form" name="p3x-gitlist-modal-{{ type }}-form" method="post"
+                          enctype="{{ enctype| default('application/x-www-form-urlencoded') }}">
+                        {% endif %}
+
+
+                        {% block form %}{% endblock %}
+
+                        <div class="input-group">
+                                            <span class="input-group-text" id="p3x-gitlist-modal-{{ type }}-name-aria"><i
+                                                    class="fas fa-user"></i></span>
+                            <input type="text" class="form-control" placeholder="{{ 'modal.placeholder.name'|t }}" required
+                                   aria-describedby="p3x-gitlist-modal-{{ type }}-name-aria"
+                                   id="p3x-gitlist-modal-{{ type }}-name" minlength="3" maxlength="64"
+                                   autofocus>
+                        </div>
+                        <br/>
+                        <div class="input-group">
+                                            <span class="input-group-text"
+                                                  id="p3x-gitlist-modal-{{ type }}-email-aria"><i
+                                                    class="fas fa-at"></i></span>
+                            <input required type="email" id="p3x-gitlist-modal-{{ type }}-email"
+                                   class="form-control" placeholder="{{ 'modal.placeholder.email'|t }}"
+                                   aria-describedby="p3x-gitlist-modal-{{ type }}-email-aria" maxlength="64"
+                                   minlength="3">
+                        </div>
+
+                        <br/>
+                        <div class="input-group">
+                                            <span class="input-group-text"
+                                                  id="p3x-gitlist-modal-{{ type }}-comment-aria"><i
+                                                    class="far fa-comment"></i></span>
+                            <input required type="text" class="form-control" placeholder="{{ 'modal.placeholder.comment'|t }}"
+                                   aria-describedby="p3x-gitlist-modal-{{ type }}-email-aria"
+                                   id="p3x-gitlist-modal-{{ type }}-comment" minlength="3" maxlength="64"
+                                   value="P3X Gitlist Commit {{ title }}">
+                        </div>
+
+
+                        {% if not wrapForm %}
+                    </form>
+                    {% endif %}
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        <span class="fas fa-times"></span>
+                        {{ 'modal.cancel'|t }}
+                    </button>
+                    {% block buttons %}{% endblock %}
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+
+    {% if wrapForm %}
+</form>
+{% endif %}
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        window.gitlist.preloadCommitValues({type: '{{ type }}'})
+    }, false);
+</script>

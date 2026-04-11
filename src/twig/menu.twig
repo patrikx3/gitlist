@@ -1,0 +1,23 @@
+<div id="p3x-gitlist-main-tabs-container" class="mb-2">
+    <div id="p3x-gitlist-main-tabs-browser" class="mb-2">
+        {% if branches is not empty %}
+            {% include 'browser.twig' %}
+        {% endif %}
+    </div>
+    <ul class="nav nav-pills nav-justified" id="p3x-gitlist-main-tabs">
+        <li class="nav-item"><a class="nav-link{{ page == 'files' ? ' active' : '' }}"
+                href="{{ path('branch', {repo: repo, branch: branch}) }}"><i class="fas fa-file"></i> {{ 'menu.files'|t }}</a></li>
+        <li class="nav-item"><a class="nav-link{{ page in ['commits', 'searchcommits'] ? ' active' : '' }}"
+                href="{{ path('commits', {repo: repo, commitishPath: branch}) }}"><i class="fas fa-code-branch"></i>
+                {{ 'menu.commits'|t }}</a></li>
+        <li class="nav-item"><a class="nav-link{{ page == 'treegraph' ? ' active' : '' }}"
+                href="{{ path('treegraph', {repo: repo, commitishPath: branch}) }}"><i class="fas fa-chart-bar"></i> {{ 'menu.log'|t }}</a>
+        </li>
+        <li class="nav-item"><a class="nav-link{{ page == 'network' ? ' active' : '' }}"
+                href="{{ path('network', {repo: repo, commitishPath: branch}) }}"><i class="fas fa-chart-pie"></i> {{ 'menu.graph'|t }}</a>
+        </li>
+        <li class="nav-item"><a class="nav-link{{ page == 'stats' ? ' active' : '' }}"
+                href="{{ path('stats', {repo: repo, branch: branch}) }}"><i class="fas fa-star"></i> {{ 'menu.stats'|t }}</a></li>
+    </ul>
+</div>
+

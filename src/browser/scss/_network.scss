@@ -1,0 +1,63 @@
+.network-view {
+    width: 100%;
+    margin-bottom: $line-height-base;
+    position: relative;
+    overflow: hidden;
+
+
+    pre {
+        margin: 0;
+        padding: 12px;
+        border: none;
+    }
+
+    .network-graph {
+        height: 400px;
+        overflow: auto;
+        cursor: grab;
+        position: relative;
+        border: 1px solid $table-border-color;
+        scrollbar-width: none; // Firefox
+        -ms-overflow-style: none; // IE/Edge
+        &::-webkit-scrollbar { display: none; } // Chrome/Safari
+
+
+        .network-commit-overlay {
+            position: absolute;
+            width: 400px;
+            top: 0;
+            left: 0;
+            padding: 8px;
+            margin: 0 0 $line-height-base;
+            list-style: none;
+            border-radius: 0.375rem;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            z-index: 10;
+
+            .p3x-gitlist-dark & {
+                background-color: $white;
+                color: $gray-800;
+
+                a, a:active {
+                    color: $primary;
+                }
+            }
+
+            .p3x-gitlist-light & {
+                background-color: $gray-900;
+                color: $gray-200;
+                border-color: rgba(255, 255, 255, 0.15);
+
+                a, a:active {
+                    color: lighten($primary, 20%);
+                }
+            }
+
+            img {
+                float: left;
+                margin-right: 10px;
+            }
+        }
+
+    }
+}
