@@ -235,7 +235,7 @@ class Application extends Container implements HttpKernelInterface
         return $this['kernel']->handle($request, $type, $catch);
     }
 
-    public function run(Request $request = null)
+    public function run(?Request $request = null)
     {
         if ($request === null) {
             $request = Request::createFromGlobals();

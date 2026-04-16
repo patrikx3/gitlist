@@ -54,8 +54,6 @@ else
     RELEASE=$TOP/build/release
     rm -rf $RELEASE || true
     mv $repo $RELEASE
-    cp $TOP/config.ini $RELEASE || true
-    cp -R $TOP/git-test $RELEASE/ || true
 fi
 
 popd
