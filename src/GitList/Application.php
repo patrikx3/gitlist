@@ -217,6 +217,7 @@ class Application extends FrameworkApplication
 
             $twig->addGlobal('version', $pkg['version']);
             $twig->addGlobal('gitlist_date_format', $this['date.format']);
+            $twig->addGlobal('debug', $this['debug'] ? 1 : 0);
 
 
             $codemirror_full_limit = (int)$config->get('app', 'codemirror_full_limit');

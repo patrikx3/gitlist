@@ -65,7 +65,8 @@
                     <tr>
                         <td>
                             <a class="btn btn-link btn-sm float-end p3x-gitlist-index-repo-last-commit"
-                               href="{{ path('commits', {repo: repository.name}) }}">
+                               href="{{ path('commits', {repo: repository.name}) }}"
+                               {% if repository.timestamp is not defined or not repository.timestamp %}style="display: none;"{% endif %}>
                                 <span
                                     class="p3x-gitlist-index-repo-last-commit-timestamp">{{ repository.timestamp }}</span>
                                 <span class="p3x-gitlist-index-repo-last-commit-time">{{ repository.time }}</span>,
@@ -74,7 +75,8 @@
                                 {{ 'index.repo.branch'|t }}
                                 {{ repository.branch }}
                             </a>
-                            <div class="p3x-gitlist-index-repo-last-commit-empty" style="display: none;">
+                            <div class="p3x-gitlist-index-repo-last-commit-empty"
+                                 {% if repository.timestamp is defined and repository.timestamp %}style="display: none;"{% endif %}>
                                 <strong>
                                     {{ 'index.repo.empty'|t }}
                                 </strong>

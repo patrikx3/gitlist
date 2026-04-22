@@ -1,6 +1,6 @@
 {
     "name": "p3x-gitlist",
-    "version": "2026.4.1000",
+    "version": "2026.4.999",
     "corifeus": {
         "prod-dir": "prod",
         "css-postfix": "d93f2dafd38042c965c076f7336f97eadfd1ef69913c607b2b89f6c62ec65022",
@@ -38,6 +38,10 @@
         "fs-extra": "^11.3.4",
         "glob": "^13.0.6",
         "grunt": "^1.6.1",
+        "grunt-contrib-clean": "^2.0.1",
+        "grunt-contrib-copy": "^1.0.0",
+        "grunt-contrib-htmlmin": "^3.1.0",
+        "grunt-contrib-watch": "^1.1.0",
         "grunt-sass": "^4.1.0",
         "html-loader": "^5.1.0",
         "html-webpack-plugin": "^5.6.6",

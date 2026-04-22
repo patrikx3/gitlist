@@ -30,8 +30,9 @@ $(async function () {
         const timesContainerEmpty = $('.p3x-gitlist-index-repo-last-commit-empty')
 
         timesStamp.each((timeindex, time) => {
-            const txt = parseInt($(time).text())
-            if (String(txt).trim() === '') {
+            const raw = $(time).text().trim()
+            const txt = parseInt(raw, 10)
+            if (raw === '' || !Number.isFinite(txt) || txt <= 0) {
                 $(timesContainer[timeindex]).hide();
                 $(timesContainerEmpty[timeindex]).show();
             } else {
