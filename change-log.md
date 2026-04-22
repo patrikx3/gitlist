@@ -5,10 +5,13 @@
                         
 [//]: #@corifeus-header:end
 
-### v2026.4.999
+### v2026.4.1000
 Released on 04/22/2026
 * BUGFIX: Fix empty-repo render and toISOString crash on index page.
+* BUGFIX: Gate livereload script to debug-only so production no longer logs ERR_CONNECTION_REFUSED on :35729.
 * BUGFIX: Render nested inline markdown in headings, strong, and link elements.
+* CHORE: Hoist grunt-contrib-clean/copy/htmlmin/watch as direct devDependencies so jit-grunt resolves them on a fresh yarn install.
+* CHORE: Clean up English wording on index.repo.empty translation.
 
 ### v2026.4.999
 Released on 04/20/2026
@@ -252,7 +255,7 @@ All my domains, including [patrikx3.com](https://patrikx3.com), [corifeus.eu](ht
 **🚨 Important Changes:** Any breaking changes are prominently noted in the readme to keep you informed.
 
 
-[**P3X-GITLIST**](https://corifeus.com/gitlist) Build v2026.4.999
+[**P3X-GITLIST**](https://corifeus.com/gitlist) Build v2026.4.1000
 
  [![Donate for PatrikX3 / P3X](https://img.shields.io/badge/Donate-PatrikX3-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software)
 

@@ -32,7 +32,7 @@ class DateTime extends \DateTime
      * @return DateTime A new DateTime instance.
      * @link http://php.net/manual/en/datetime.construct.php
      */
-    public function __construct($time = 'now', \DateTimeZone $timezone = null)
+    public function __construct($time = 'now', ?\DateTimeZone $timezone = null)
     {
         if ($timezone) {
             parent::__construct($time, $timezone);
