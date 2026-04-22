@@ -15,49 +15,33 @@ global.gitlist.markdownRenderer = markdownRenderer;
 
 const kebabCase = require('lodash/kebabCase')
 markdownRenderer.heading = (token) => {
-    //console.log('token heading', token)
-    //            console.log('text', text,)
-    //            console.log('raw', raw)
-    
-    // text, level, raw
     const text = token.text;
     let level = token.depth;
-    const raw = token.raw
 
     level = level + 2;
     const ref = kebabCase(text).replace(/[^\x00-\xFF]/g, "");
     const id = ref + '-parent';
     const hover = ` onmouseenter="document.getElementById('${ref}').style.display = 'inline'"  onmouseleave="document.getElementById('${ref}').style.display = 'none'" `;
 
-    const element = `<div ${hover} class="p3x-gitlist-markdown-heading-container"><h${level} id="${id}" class="p3x-gitlist-markdown-heading">${text}&nbsp;<a class="p3x-gitlist-markdown-heading-link" id="${ref}" href="${location.origin}${location.pathname}#${ref}" onclick="return window.gitlist.scrollHash(this, event);">#</a></h${level}></div>`;
+    const content = token.tokens ? markdownRenderer.parser.parseInline(token.tokens) : text;
+
+    const element = `<div ${hover} class="p3x-gitlist-markdown-heading-container"><h${level} id="${id}" class="p3x-gitlist-markdown-heading">${content}&nbsp;<a class="p3x-gitlist-markdown-heading-link" id="${ref}" href="${location.origin}${location.pathname}#${ref}" onclick="return window.gitlist.scrollHash(this, event);">#</a></h${level}></div>`;
 
     return element
 }
 
 
 markdownRenderer.strong = (token) => {
-    return `<font style="font-weight: bold;">${token.text}</font>`;
+    const content = token.tokens ? markdownRenderer.parser.parseInline(token.tokens) : token.text;
+    return `<font style="font-weight: bold;">${content}</font>`;
 }
 
 markdownRenderer.link = (token) => {
-    //console.log('token link', token)
-
     const title = token.title
     let href = token.href
-    let text = token.text
-
-
-    if (token.tokens.length === 1) {
-        if (token.tokens[0].type === 'image') {
-            const imageToken = token.tokens[0]
-            //console.log('image token', imageToken)
-            text = markdownRenderer.image(imageToken);
-        } else if (token.tokens[0].type === 'strong') {
-            const strongToken = token.tokens[0]
-            //console.log('strong token', strongToken)
-            text = markdownRenderer.strong(strongToken);
-        }
-    }
+    let text = token.tokens && token.tokens.length
+        ? markdownRenderer.parser.parseInline(token.tokens)
+        : token.text
 
 
     let a;
@@ -127,7 +111,7 @@ markdownRenderer.code = (token) => {
     const code = token.text;
     let language = token.lang;
 
-    if (language === undefined) {
+    if (!language) {
         language = 'text';
     }
 
@@ -137,7 +121,7 @@ markdownRenderer.code = (token) => {
         console.error(`Please add highlight.js as a language (could be a marked error as well, sometimes it thinks a language): ${language}
 We are not loading everything, since it is about 500kb`)
     }
-    language = language === 'text' || language === 'txt' || language === undefined ? 'html' : language;
+    language = language === 'text' || language === 'txt' ? 'html' : language;
     const validLang = !!(language && hljs.getLanguage(language));
     const highlighted = validLang ? hljs.highlight(code, {
         language: language,

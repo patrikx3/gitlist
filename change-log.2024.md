@@ -4,22 +4,13 @@
 
                         
 [//]: #@corifeus-header:end
+### v2024.4.261
+Released on 02/23/2024
+* FEATURE: Upgraded all packages in Composer and NPM and upgraded to Bootsrap 3 -> 5, jQuery 3 -> 4, Codemirror 5 -> 6
 
-
-![Screenshot 1](https://cdn.corifeus.com/git/gitlist/artifacts/screenshots/p3x-gitlist-1.png)
-
-![Screenshot 2](https://cdn.corifeus.com/git/gitlist/artifacts/screenshots/p3x-gitlist-2.png)
-
-![Screenshot 3](https://cdn.corifeus.com/git/gitlist/artifacts/screenshots/p3x-gitlist-3.png)
-
-![Screenshot 4](https://cdn.corifeus.com/git/gitlist/artifacts/screenshots/p3x-gitlist-4.png)
-
-![Screenshot 5](https://cdn.corifeus.com/git/gitlist/artifacts/screenshots/p3x-gitlist-5.png)
-
-![Screenshot 6](https://cdn.corifeus.com/git/gitlist/artifacts/screenshots/p3x-gitlist-6.png)
-
-![Screenshot 7](https://cdn.corifeus.com/git/gitlist/artifacts/screenshots/p3x-gitlist-7.png)
-
+### v2024.4.105
+Released on 02/23/2024
+* FEATURE: For the editor is works with Proto Buffer (.proto file extension).
 
 [//]: #@corifeus-footer
 

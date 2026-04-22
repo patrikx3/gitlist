@@ -4,22 +4,14 @@
 
                         
 [//]: #@corifeus-header:end
+### v2023.10.119
+Released on 07/23/2023
+* FIX: Changlog bug fix
 
-
-![Screenshot 1](https://cdn.corifeus.com/git/gitlist/artifacts/screenshots/p3x-gitlist-1.png)
-
-![Screenshot 2](https://cdn.corifeus.com/git/gitlist/artifacts/screenshots/p3x-gitlist-2.png)
-
-![Screenshot 3](https://cdn.corifeus.com/git/gitlist/artifacts/screenshots/p3x-gitlist-3.png)
-
-![Screenshot 4](https://cdn.corifeus.com/git/gitlist/artifacts/screenshots/p3x-gitlist-4.png)
-
-![Screenshot 5](https://cdn.corifeus.com/git/gitlist/artifacts/screenshots/p3x-gitlist-5.png)
-
-![Screenshot 6](https://cdn.corifeus.com/git/gitlist/artifacts/screenshots/p3x-gitlist-6.png)
-
-![Screenshot 7](https://cdn.corifeus.com/git/gitlist/artifacts/screenshots/p3x-gitlist-7.png)
-
+### v2023.10.102
+Released on 07/08/2023
+* FIX: `Hangup - error: option name-only is incompatible with --long -` error
+* CHORE: Upgrade all deps
 
 [//]: #@corifeus-footer
 
