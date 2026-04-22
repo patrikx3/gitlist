@@ -6,6 +6,11 @@
 [//]: #@corifeus-header:end
 
 ### v2026.4.999
+Released on 04/22/2026
+* BUGFIX: Fix empty-repo render and toISOString crash on index page.
+* BUGFIX: Render nested inline markdown in headings, strong, and link elements.
+
+### v2026.4.999
 Released on 04/20/2026
 * CHORE: Routine maintenance release.
 
