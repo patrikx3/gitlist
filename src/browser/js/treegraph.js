@@ -14,11 +14,53 @@ $(async() => {
         }
     }
 
+    const Cookies = require('js-cookie');
+    const dateModeCookie = 'p3x-gitlist-treegraph-date-mode';
+
+    // Apply chosen date display mode to all date cells in the table
+    const applyDateMode = function(mode) {
+        document.querySelectorAll('.p3x-gitlist-treegraph-date').forEach(function(el) {
+            const iso = el.dataset.iso;
+            const abs = el.dataset.absolute;
+            if (!iso || !abs) return;
+            if (mode === 'relative') {
+                el.textContent = window.gitlist.formatRelativeTime(iso);
+                el.title = abs;
+            } else {
+                el.textContent = abs;
+                el.title = window.gitlist.formatRelativeTime(iso);
+            }
+        });
+    };
+
+    // Render git's "%D" ref-list string into colored badges
+    const renderRefs = function(raw) {
+        if (!raw) return '';
+        const cleaned = raw.trim().replace(/^\(/, '').replace(/\)$/, '').trim();
+        if (!cleaned) return '';
+        const escapeRef = (s) => $('<span>').text(s == null ? '' : s).html();
+        return cleaned.split(',').map(p => p.trim()).filter(Boolean).map(part => {
+            if (part.startsWith('HEAD ->')) {
+                const br = part.substring(7).trim();
+                return '<span class="p3x-gitlist-treegraph-ref p3x-gitlist-treegraph-ref-head">HEAD</span>'
+                     + '<span class="p3x-gitlist-treegraph-ref p3x-gitlist-treegraph-ref-branch">' + escapeRef(br) + '</span>';
+            }
+            if (part === 'HEAD') {
+                return '<span class="p3x-gitlist-treegraph-ref p3x-gitlist-treegraph-ref-head">HEAD</span>';
+            }
+            if (part.startsWith('tag:')) {
+                const tg = part.substring(4).trim();
+                return '<span class="p3x-gitlist-treegraph-ref p3x-gitlist-treegraph-ref-tag"><i class="fas fa-tag"></i>' + escapeRef(tg) + '</span>';
+            }
+            return '<span class="p3x-gitlist-treegraph-ref p3x-gitlist-treegraph-ref-branch">' + escapeRef(part) + '</span>';
+        }).join('');
+    };
+
     // Load more button + auto-load on scroll
     const $loadMore = $('#p3x-gitlist-treegraph-load-more');
     if ($loadMore.length) {
         let loading = false;
-        let totalItems = $('#rev-list li').length;
+        let totalItems = $('#graph-raw-list li').length;
 
         const loadMore = async function() {
             if (loading) return;
@@ -43,49 +85,68 @@ $(async() => {
                 const response = await $.ajax({ url: url, dataType: 'json' });
 
                 if (response.graphItems && response.graphItems.length > 0) {
-                    const $revList = $('#rev-list');
+                    const $revList = $('#rev-list > tbody');
                     const $rawList = $('#graph-raw-list');
 
                     // Cap items to not exceed canvas limit
                     const remaining = TREEGRAPH_MAX_ITEMS - totalItems;
                     const items = response.graphItems.slice(0, remaining);
+                    const escape = (s) => $('<span>').text(s == null ? '' : s).html();
 
                     for (const item of items) {
-                        // Add to raw list for canvas
-                        $rawList.append('<li><span class="node-relation">' + $('<span>').text(item.relation).html() + '</span></li>');
+                        $rawList.append('<li><span class="node-relation">' + escape(item.relation) + '</span></li>');
 
-                        // Add to visible list
-                        let li = '<li>';
+                        let rows = '';
                         if (item.rev) {
                             const commitUrl = window.gitlist.basepath + '/' + repo + '/commit/' + item.rev;
-                            li += '<a id="' + item.short_rev + '" class="treegraph-button" href="' + commitUrl + '"> ' + item.short_rev + '</a>';
-                            li += ' <a href="javascript:void(0)" class="p3x-gitlist-copy-hash" data-hash="' + item.rev + '" title="' + window.gitlist.t('js.copy_hash') + '"><i class="far fa-copy p3x-gitlist-treegraph-copy"></i></a>';
-                            li += ' <strong> ' + $('<strong>').text(item.branch).html() + ' </strong>';
-                            li += ' <span>' + $('<span>').text(item.date).html() + '</span>';
-                            li += ' ' + window.gitlist.t('index.repo.by') + ' ';
-                            li += '<span class="author"><a class="treegraph-link" href="mailto:' + item.author_email + '">' + $('<span>').text(item.author).html() + '</a></span>';
-                            li += '&nbsp;<span class="p3x-gitlist-treegraph-subject">' + item.subject + '</span>';
+                            const branchHtml = renderRefs(item.branch);
+                            rows += '<tr class="p3x-gitlist-treegraph-row-info">';
+                            rows += '<td class="p3x-gitlist-treegraph-hash">';
+                            rows += '<a id="' + escape(item.short_rev) + '" class="treegraph-button" href="' + commitUrl + '">' + escape(item.short_rev) + '</a>';
+                            rows += ' <a href="javascript:void(0)" class="p3x-gitlist-copy-hash" data-hash="' + escape(item.rev) + '" title="' + window.gitlist.t('js.copy_hash') + '"><i class="far fa-copy p3x-gitlist-treegraph-copy"></i></a>';
+                            rows += '</td>';
+                            rows += '<td class="p3x-gitlist-treegraph-date" data-iso="' + escape(item.date_iso) + '" data-absolute="' + escape(item.date) + '">' + escape(item.date) + '</td>';
+                            rows += '<td class="p3x-gitlist-treegraph-branch">' + branchHtml + '</td>';
+                            rows += '<td class="p3x-gitlist-treegraph-author">' + window.gitlist.t('index.repo.by') + ' <a class="treegraph-link" href="mailto:' + escape(item.author_email) + '">' + escape(item.author) + '</a></td>';
+                            rows += '<td class="p3x-gitlist-treegraph-spacer"></td>';
+                            rows += '</tr>';
+                            rows += '<tr class="p3x-gitlist-treegraph-row-subject">';
+                            rows += '<td colspan="5"><span class="p3x-gitlist-treegraph-subject">' + item.subject + '</span></td>';
+                            rows += '</tr>';
                         } else {
-                            li += '<span></span>';
+                            rows += '<tr class="p3x-gitlist-treegraph-row-relation"><td colspan="5"></td></tr>';
+                            rows += '<tr class="p3x-gitlist-treegraph-row-relation"><td colspan="5"></td></tr>';
                         }
-                        li += '</li>';
-                        $revList.append(li);
+                        $revList.append(rows);
                     }
 
                     totalItems += items.length;
 
-                    // Render markdown for new subjects
-                    const newSubjects = $revList.find('.p3x-gitlist-treegraph-subject').slice(-items.length);
+                    // Render markdown for new subjects (2 rows per item, subject in 2nd)
+                    const newSubjects = $('#rev-list .p3x-gitlist-treegraph-subject').slice(-items.length);
                     for (let subject of newSubjects) {
                         const html = await window.gitlist.renderMarkdown({ markdown: subject.innerHTML });
                         subject.innerHTML = html;
                     }
 
-                    // Set titles on new items
-                    $revList.find('li').slice(-items.length).each(function() {
-                        const text = $(this).find('.p3x-gitlist-treegraph-subject').text();
+                    // Set titles on the info rows for new items (2 trs per item)
+                    $('#rev-list > tbody > tr.p3x-gitlist-treegraph-row-info').slice(-items.length).each(function() {
+                        const text = $(this).next('.p3x-gitlist-treegraph-row-subject').find('.p3x-gitlist-treegraph-subject').text();
                         if (text) $(this).attr('title', text);
                     });
+
+                    // Alternating stripe per commit block (info + subject pair)
+                    let stripeIdx = 0;
+                    $('#rev-list > tbody > tr.p3x-gitlist-treegraph-row-info').each(function() {
+                        const $info = $(this);
+                        const odd = stripeIdx % 2 === 1;
+                        $info.toggleClass('p3x-gitlist-treegraph-stripe', odd);
+                        $info.next('.p3x-gitlist-treegraph-row-subject').toggleClass('p3x-gitlist-treegraph-stripe', odd);
+                        stripeIdx++;
+                    });
+
+                    // Apply current date display mode to newly added rows
+                    applyDateMode(Cookies.get(dateModeCookie) || 'absolute');
 
                     // Re-render canvas with all data
                     window.gitlist.treegraph();
@@ -113,6 +174,32 @@ $(async() => {
 
         $loadMore.on('click', loadMore);
 
+        // Date mode toggle (absolute date ↔ relative "X ago")
+        const $dateToggle = $('#p3x-gitlist-treegraph-date-toggle');
+        if ($dateToggle.length) {
+            const updateToggleLabel = function(mode) {
+                const labelKey = mode === 'relative'
+                    ? 'treegraph.date_toggle_to_absolute'
+                    : 'treegraph.date_toggle_to_relative';
+                $dateToggle.find('.p3x-gitlist-treegraph-date-toggle-label').text(window.gitlist.t(labelKey));
+            };
+            const initialMode = Cookies.get(dateModeCookie) || 'absolute';
+            updateToggleLabel(initialMode);
+
+            $dateToggle.on('click', function() {
+                const current = Cookies.get(dateModeCookie) || 'absolute';
+                const next = current === 'relative' ? 'absolute' : 'relative';
+                Cookies.set(dateModeCookie, next, window.gitlist.cookieSettings);
+                applyDateMode(next);
+                updateToggleLabel(next);
+            });
+        }
+
+        // Auto-load first page on mount when nothing rendered server-side
+        if (totalItems === 0) {
+            loadMore();
+        }
+
         // Auto-load when scrolling near bottom
         $(window).on('scroll', function() {
             if (loading) return;
@@ -138,14 +225,21 @@ window.gitlist.treegraph = () => {
         $("#graph-raw-list li span.node-relation").each(function () {
             graphList.push($(this).text().trim());
         })
-        const $li = $('#rev-list li');
-        $li.each(function () {
+        const $rows = $('#rev-list > tbody > tr');
+        $rows.each(function () {
             const $this = $(this)
             const text = $this.find('.p3x-gitlist-treegraph-subject').text()
             if (text !== undefined && text !== '') {
                 $this.attr('title', text)
             }
         })
-        global.gitGraph(document.getElementById('graph-canvas'), graphList);
+        if (graphList.length === 0) {
+            return;
+        }
+        global.gitGraph(document.getElementById('graph-canvas'), graphList, {
+            unitSize: 40,
+            lineWidth: 3,
+            nodeRadius: 4
+        });
     }
 }

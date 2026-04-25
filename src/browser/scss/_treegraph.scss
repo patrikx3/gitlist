@@ -3,68 +3,251 @@
 }
 
 .treegraph-button {
-    padding: $padding-base-vertical !important;
+    padding: 0 5px !important;
     font-family: monospace;
+    font-weight: 500;
+    border-radius: 3px;
+    font-size: 0.95em;
+    letter-spacing: 0.02em;
 }
 
-#rev-list {
-    li {
+// Ref badges: HEAD / branch / tag — colored pills, render git's %D in human form
+.p3x-gitlist-treegraph-ref {
+    display: inline-block;
+    padding: 0 6px;
+    margin-right: 3px;
+    border-radius: 3px;
+    font-size: 0.85em;
+    font-weight: 600;
+    line-height: 16px;
+    vertical-align: middle;
+    white-space: nowrap;
+
+    i {
+        margin-right: 3px;
+        font-size: 0.9em;
+    }
+}
+
+.p3x-gitlist-treegraph-ref-head {
+    background: rgba(220, 53, 69, 0.18);
+    color: #b21f2d;
+}
+.p3x-gitlist-treegraph-ref-branch {
+    background: rgba(40, 167, 69, 0.18);
+    color: #1e7e34;
+}
+.p3x-gitlist-treegraph-ref-tag {
+    background: rgba(255, 145, 0, 0.20);
+    color: #b45309;
+}
+
+#git-graph-container {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow-x: auto;
+}
+
+.p3x-gitlist-treegraph-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0;
+
+    > tbody > tr {
+        height: 20px;
+        line-height: 20px;
         // native paint virtualization - browser skips rendering off-screen rows
         content-visibility: auto;
         contain-intrinsic-height: 20px;
     }
+
+    > tbody > tr > td {
+        padding: 0 6px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        vertical-align: middle;
+    }
+
+    // every fixed-info column shrinks to its content; spacer absorbs leftover
+    .p3x-gitlist-treegraph-row-info {
+        > .p3x-gitlist-treegraph-hash,
+        > .p3x-gitlist-treegraph-date,
+        > .p3x-gitlist-treegraph-author {
+            width: 1%;
+        }
+        > .p3x-gitlist-treegraph-branch {
+            width: 1%;
+            max-width: 16em;
+        }
+        > .p3x-gitlist-treegraph-spacer {
+            width: auto;
+            padding: 0;
+        }
+    }
+
+    // subject row: PRIMARY content — bold + slightly larger so it dominates the row
+    .p3x-gitlist-treegraph-row-subject > td {
+        width: auto;
+        max-width: 0;
+        padding-left: 28px;
+        font-weight: 700;
+        font-size: 1.02em;
+    }
+
+    // info row: SECONDARY metadata — smaller + dimmed so subject visually leads
+    .p3x-gitlist-treegraph-row-info {
+        opacity: 0.62;
+        transition: opacity 0.15s ease;
+    }
+    // restore full visibility when hovering the commit block
+    .p3x-gitlist-treegraph-row-info:hover,
+    .p3x-gitlist-treegraph-row-info:has(+ .p3x-gitlist-treegraph-row-subject:hover) {
+        opacity: 1;
+    }
+    .p3x-gitlist-treegraph-row-info > td {
+        font-size: 0.92em;
+    }
+
+    // visual grouping: thin separator above each new commit's info row
+    .p3x-gitlist-treegraph-row-info {
+        border-top: 1px solid rgba(128, 128, 128, 0.18);
+    }
+    // first info row has no border to avoid stray top line
+    > tbody > tr.p3x-gitlist-treegraph-row-info:first-child {
+        border-top: 0;
+    }
+    // relation rows: no separator (they're graph filler, not commits)
+    .p3x-gitlist-treegraph-row-relation {
+        border: 0;
+    }
+
+    // hover: highlight info + subject as one logical block
+    .p3x-gitlist-treegraph-row-info:hover,
+    .p3x-gitlist-treegraph-row-info:hover + .p3x-gitlist-treegraph-row-subject,
+    .p3x-gitlist-treegraph-row-subject:hover,
+    .p3x-gitlist-treegraph-row-info:has(+ .p3x-gitlist-treegraph-row-subject:hover) {
+        background-color: rgba(128, 128, 128, 0.07);
+    }
+
+    // small visual cue for hash column (monospace already on .treegraph-button)
+    .p3x-gitlist-treegraph-hash {
+        font-family: monospace;
+    }
+    .p3x-gitlist-treegraph-date {
+        font-variant-numeric: tabular-nums;
+    }
+}
+
+// Phone: hide canvas + author column, tighten branch
+@media (max-width: 575.98px) {
+    #rel-container {
+        display: none;
+    }
+    .p3x-gitlist-treegraph-table {
+        .p3x-gitlist-treegraph-author {
+            display: none;
+        }
+        .p3x-gitlist-treegraph-branch {
+            max-width: 7em;
+        }
+        .p3x-gitlist-treegraph-row-subject > td {
+            padding-left: 12px;
+        }
+    }
+}
+
+// Small tablet
+@media (max-width: 767.98px) and (min-width: 576px) {
+    .p3x-gitlist-treegraph-table .p3x-gitlist-treegraph-branch {
+        max-width: 10em;
+    }
 }
 
 .p3x-gitlist-light {
+    .p3x-gitlist-treegraph-table > tbody > tr.p3x-gitlist-treegraph-stripe > td {
+        background-color: rgba(0, 0, 0, 0.04);
+    }
+
     .treegraph-button {
-        background-color: $navbar-default-bg !important;
-        color: $navbar-default-link-hover-color !important;
+        background-color: rgba(0, 0, 0, 0.06) !important;
+        color: #1f2933 !important;
+        border: 0;
     }
 
     .treegraph-link {
         color: $brand-primary !important;
+    }
+
+    .p3x-gitlist-treegraph-table {
+        .p3x-gitlist-treegraph-row-info {
+            border-top-color: rgba(0, 0, 0, 0.08);
+        }
     }
 }
 
 .p3x-gitlist-dark {
+    .p3x-gitlist-treegraph-table > tbody > tr.p3x-gitlist-treegraph-stripe > td {
+        background-color: rgba(255, 255, 255, 0.04);
+    }
+
     .treegraph-button {
-        background-color: $navbar-inverse-bg !important;
-        color: $navbar-inverse-link-hover-color !important;
+        background-color: rgba(255, 255, 255, 0.08) !important;
+        color: #f4f6f8 !important;
+        border: 0;
+    }
+
+    // Ref badges in dark mode — brighter text against translucent bg
+    .p3x-gitlist-treegraph-ref-head {
+        background: rgba(255, 100, 110, 0.22);
+        color: #ff8b95;
+    }
+    .p3x-gitlist-treegraph-ref-branch {
+        background: rgba(120, 220, 130, 0.18);
+        color: #8be695;
+    }
+    .p3x-gitlist-treegraph-ref-tag {
+        background: rgba(255, 180, 70, 0.20);
+        color: #ffc36b;
     }
 
     .treegraph-link {
-        color: $brand-primary !important;
+        color: lighten($brand-primary, 20%) !important;
     }
 
     // fix: original gitgraph.css hardcoded #000 on links, invisible in dark mode
     #git-graph-container {
-        color: #ccc;
+        color: #e3e3e3;
 
-        li a {
+        td a:not(.treegraph-button):not(.p3x-gitlist-copy-hash) {
             color: lighten($brand-primary, 20%) !important;
         }
+    }
 
-        .author {
-            color: #bbb;
+    .p3x-gitlist-treegraph-table {
+        .p3x-gitlist-treegraph-row-info {
+            border-top-color: rgba(255, 255, 255, 0.10);
+        }
+        .p3x-gitlist-treegraph-row-subject > td {
+            color: #f4f4f4;
         }
     }
 }
 
 
 .p3x-gitlist-treegraph-subject {
-   // white-space: nowrap;
-
     p {
         display: inline;
-        text-overflow: ellipsis;
+        margin: 0;
+    }
+
+    p:not(:first-of-type) {
+        display: none;
     }
 
     a, a:active {
         color: $brand-primary !important;
     }
-}
-
-#rev-list {
 }
 
 .p3x-gitlist-treegraph-copy {

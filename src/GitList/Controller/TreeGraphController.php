@@ -11,7 +11,7 @@ class TreeGraphController implements ControllerProviderInterface
 {
     private static $pageSize = 100;
 
-    private static function parseGraphLog($repository, $skip = 0, $limit = 100)
+    private static function parseGraphLog($repository, $skip = 0, $limit = 100, $dateFormat = null)
     {
         $command = 'log --graph --date-order --all -C -M'
             . ' --skip=' . (int)$skip
@@ -30,11 +30,24 @@ class TreeGraphController implements ControllerProviderInterface
                     );
                     continue;
                 }
+                $rawDate = $output[6];
+                $formattedDate = $rawDate;
+                $isoDate = $rawDate;
+                try {
+                    $dt = new \DateTime($rawDate);
+                    $isoDate = $dt->format(\DateTime::ATOM);
+                    if ($dateFormat) {
+                        $formattedDate = $dt->format($dateFormat);
+                    }
+                } catch (\Exception $e) {
+                    // fall back to raw values
+                }
                 $graphItems[] = array(
                     "relation" => $output[1],
                     "branch" => $output[4],
                     "rev" => $output[5],
-                    "date" => $output[6],
+                    "date" => $formattedDate,
+                    "date_iso" => $isoDate,
                     "author" => $output[7],
                     "author_email" => $output[8],
                     "short_rev" => $output[9],
@@ -57,7 +70,7 @@ class TreeGraphController implements ControllerProviderInterface
                 $skip = $page * self::$pageSize;
 
                 $repository = $app['git']->getRepositoryFromName($app['git.repos'], $repo);
-                $graphItems = self::parseGraphLog($repository, $skip, self::$pageSize);
+                $graphItems = self::parseGraphLog($repository, $skip, self::$pageSize, $app['date.format']);
 
                 return new JsonResponse(array(
                     'graphItems' => $graphItems,
@@ -76,7 +89,6 @@ class TreeGraphController implements ControllerProviderInterface
             function ($repo, $commitishPath) use ($app) {
 
                 $repository = $app['git']->getRepositoryFromName($app['git.repos'], $repo);
-                $graphItems = self::parseGraphLog($repository, 0, self::$pageSize);
 
                 if ($commitishPath === null) {
                     $commitishPath = $repository->getHead();
@@ -94,8 +106,8 @@ class TreeGraphController implements ControllerProviderInterface
                         'tags' => $repository->getTags(),
                         'browse_type' => 'treegraph',
                         'commitishPath' => $commitishPath,
-                        'graphItems' => $graphItems,
-                        'hasMore' => count($graphItems) >= self::$pageSize,
+                        'graphItems' => array(),
+                        'hasMore' => true,
                     )
                 );
             }

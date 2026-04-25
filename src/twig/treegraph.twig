@@ -7,7 +7,11 @@
 {% block content %}
 
     {% embed 'breadcrumb.twig' with {breadcrumbs: [{dir: 'treegraph.title'|t, path:''}]} %}
-        {% block right %}
+        {% block right_first %}
+            <button id="p3x-gitlist-treegraph-date-toggle" class="btn btn-secondary btn-sm" type="button">
+                <i class="far fa-clock"></i>
+                <span class="p3x-gitlist-treegraph-date-toggle-label">{{ 'treegraph.date_toggle_to_relative'|t }}</span>
+            </button>
         {% endblock %}
 
         {% block left %}
@@ -28,26 +32,31 @@
         </div>
         <div id="git-graph-container">
             <div id="p3x-gitlist-treegraph-log">
-                <ul id="rev-list">
+                <table id="rev-list" class="p3x-gitlist-treegraph-table">
+                    <tbody>
                     {% for item in graphItems %}
-                        <li>
-                            {% if item.rev is not empty %}
-                                <a id="{{ item.short_rev }}" class="treegraph-button"
-                                   href="{{ path('commit', {repo: repo, commit: item.rev}) }}">{{ item.short_rev }}</a>
-                                <a href="javascript:void(0)" class="p3x-gitlist-copy-hash" data-hash="{{ item.rev }}" title="{{ 'js.copy_hash'|t }}"><i class="far fa-copy p3x-gitlist-treegraph-copy"></i></a>
-                                <strong> {{ item.branch }} </strong>
-                                <span>{{ item.date | date(gitlist_date_format) }}</span>
-                                {{ 'index.repo.by'|t }}
-                                <span class="author"><a class="treegraph-link"
-                                                        href="mailto:{{ item.author_email }}">{{ item.author }}</a></span>
-                                &nbsp;
-                                <span class="p3x-gitlist-treegraph-subject">{{ item.subject }}</span>
-                            {% else %}
-                                <span></span>
-                            {% endif %}
-                        </li>
+                        {% if item.rev is not empty %}
+                            <tr class="p3x-gitlist-treegraph-row-info">
+                                <td class="p3x-gitlist-treegraph-hash">
+                                    <a id="{{ item.short_rev }}" class="treegraph-button"
+                                       href="{{ path('commit', {repo: repo, commit: item.rev}) }}">{{ item.short_rev }}</a>
+                                    <a href="javascript:void(0)" class="p3x-gitlist-copy-hash" data-hash="{{ item.rev }}" title="{{ 'js.copy_hash'|t }}"><i class="far fa-copy p3x-gitlist-treegraph-copy"></i></a>
+                                </td>
+                                <td class="p3x-gitlist-treegraph-date">{{ item.date }}</td>
+                                <td class="p3x-gitlist-treegraph-branch">{% if item.branch is not empty %}<strong>{{ item.branch }}</strong>{% endif %}</td>
+                                <td class="p3x-gitlist-treegraph-author">{{ 'index.repo.by'|t }} <a class="treegraph-link" href="mailto:{{ item.author_email }}">{{ item.author }}</a></td>
+                                <td class="p3x-gitlist-treegraph-spacer"></td>
+                            </tr>
+                            <tr class="p3x-gitlist-treegraph-row-subject">
+                                <td colspan="5"><span class="p3x-gitlist-treegraph-subject">{{ item.subject }}</span></td>
+                            </tr>
+                        {% else %}
+                            <tr class="p3x-gitlist-treegraph-row-relation"><td colspan="5"></td></tr>
+                            <tr class="p3x-gitlist-treegraph-row-relation"><td colspan="5"></td></tr>
+                        {% endif %}
                     {% endfor %}
-                </ul>
+                    </tbody>
+                </table>
             </div>
             <div style="clear:both"><!-- --></div>
         </div>
@@ -56,7 +65,7 @@
     {% if hasMore %}
         <div class="text-center mt-3 mb-3" id="p3x-gitlist-treegraph-load-more-container">
             <button class="btn btn-secondary" id="p3x-gitlist-treegraph-load-more"
-                    data-repo="{{ repo }}" data-branch="{{ branch }}" data-page="1">
+                    data-repo="{{ repo }}" data-branch="{{ branch }}" data-page="0">
                 <i class="fas fa-chevron-down"></i> {{ 'commit.list.older_next'|t }}
             </button>
         </div>

@@ -24,22 +24,88 @@ $(async function () {
         const inputClear = $('#p3x-gitlist-index-list-clear');
 
 
-        const times = $('.p3x-gitlist-index-repo-last-commit > .p3x-gitlist-index-repo-last-commit-time')
-        const timesStamp = $('.p3x-gitlist-index-repo-last-commit > .p3x-gitlist-index-repo-last-commit-timestamp')
-        const timesContainer = $('.p3x-gitlist-index-repo-last-commit')
-        const timesContainerEmpty = $('.p3x-gitlist-index-repo-last-commit-empty')
-
-        timesStamp.each((timeindex, time) => {
-            const raw = $(time).text().trim()
-            const txt = parseInt(raw, 10)
-            if (raw === '' || !Number.isFinite(txt) || txt <= 0) {
-                $(timesContainer[timeindex]).hide();
-                $(timesContainerEmpty[timeindex]).show();
-            } else {
-                const dateIso = new Date(txt * 1000).toISOString();
-                times[timeindex].innerText = window.gitlist.formatRelativeTime(dateIso)
+        const repoCache = new Map();
+        const populateRow = (tableEl, data) => {
+            const link = tableEl.querySelector('.p3x-gitlist-index-repo-last-commit');
+            const empty = tableEl.querySelector('.p3x-gitlist-index-repo-last-commit-empty');
+            const loading = tableEl.querySelector('.p3x-gitlist-index-repo-last-commit-loading');
+            if (loading) loading.style.display = 'none';
+            if (!data || data.empty || !data.timestamp) {
+                if (link) link.style.display = 'none';
+                if (empty) empty.style.display = '';
+                return;
             }
-        })
+            const ts = parseInt(data.timestamp, 10);
+            const tsSpan = tableEl.querySelector('.p3x-gitlist-index-repo-last-commit-timestamp');
+            const timeSpan = tableEl.querySelector('.p3x-gitlist-index-repo-last-commit-time');
+            const userSpan = tableEl.querySelector('.p3x-gitlist-index-repo-last-commit-user');
+            const branchSpan = tableEl.querySelector('.p3x-gitlist-index-repo-last-commit-branch');
+            if (tsSpan) tsSpan.textContent = ts;
+            if (timeSpan && Number.isFinite(ts) && ts > 0) {
+                const iso = new Date(ts * 1000).toISOString();
+                timeSpan.textContent = window.gitlist.formatRelativeTime(iso);
+            }
+            if (userSpan) userSpan.textContent = data.user || '';
+            if (branchSpan) branchSpan.textContent = data.branch || '';
+            if (empty) empty.style.display = 'none';
+            if (link) link.style.display = '';
+        };
+        const fetchRepoHead = (repoName) => {
+            if (repoCache.has(repoName)) return Promise.resolve(repoCache.get(repoName));
+            const base = window.gitlist.basepath || '';
+            const url = `${base}/api/repo-head/${encodeURIComponent(repoName).replace(/%2F/g, '/')}`;
+            const promise = fetch(url, { credentials: 'same-origin' })
+                .then((resp) => {
+                    if (!resp.ok) throw new Error('HTTP ' + resp.status);
+                    return resp.json();
+                })
+                .then((data) => {
+                    repoCache.set(repoName, data);
+                    return data;
+                })
+                .catch((err) => {
+                    repoCache.delete(repoName);
+                    throw err;
+                });
+            repoCache.set(repoName, promise);
+            return promise;
+        };
+        const populateVisible = async () => {
+            const tables = Array.from(document.querySelectorAll('#p3x-gitlist-index [data-repo]'));
+            const queue = [];
+            for (const tableEl of tables) {
+                const repoName = tableEl.dataset.repo;
+                if (!repoName) continue;
+                if (repoCache.has(repoName)) {
+                    populateRow(tableEl, repoCache.get(repoName));
+                    continue;
+                }
+                const tsSpan = tableEl.querySelector('.p3x-gitlist-index-repo-last-commit-timestamp');
+                if (tsSpan && tsSpan.textContent.trim() !== '') continue;
+                queue.push({ tableEl, repoName });
+            }
+            if (queue.length === 0) return;
+            let updatedAny = false;
+            const concurrency = 6;
+            const workers = Array.from({ length: concurrency }, async () => {
+                while (queue.length) {
+                    const job = queue.shift();
+                    try {
+                        const data = await fetchRepoHead(job.repoName);
+                        populateRow(job.tableEl, data);
+                        updatedAny = true;
+                    } catch (e) {
+                        const loading = job.tableEl.querySelector('.p3x-gitlist-index-repo-last-commit-loading');
+                        if (loading) loading.textContent = '—';
+                    }
+                }
+            });
+            await Promise.all(workers);
+            if (updatedAny) {
+                list.reIndex();
+                sort();
+            }
+        };
         const inputHandler = () => {
             Cookies.set(cookieName, input.val(), window.gitlist.cookieSettings)
         }
@@ -83,8 +149,9 @@ $(async function () {
 //            sortClass: 'p3x-gitlist-index-sort',
         };
 
+        const totalRepos = document.querySelectorAll('#p3x-gitlist-index [data-repo]').length;
         let showPaging = false;
-        if (paging !== 0 && times.length > paging) {
+        if (paging !== 0 && totalRepos > paging) {
             showPaging = true;
             listOptions.page = paging
             listOptions.pagination = [{
@@ -133,6 +200,7 @@ $(async function () {
                     $('.p3x-gitlist-index-pagination-container').show()
                 }
             }
+            populateVisible();
         })
 
         const inputSortOrder = $('#p3x-gitlist-index-list-sort-order')
@@ -197,5 +265,7 @@ $(async function () {
         if (value !== undefined) {
             list.search(value, searchColumns, customSearch);
         }
+
+        populateVisible();
     }
 })

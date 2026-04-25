@@ -47,7 +47,7 @@
 
         <div class="list">
             {% for repository in repositories %}
-                <table class="table table-bordered table-striped">
+                <table class="table table-bordered table-striped" data-repo="{{ repository.name }}">
                     <thead>
                     <tr>
                         <th>
@@ -66,20 +66,21 @@
                         <td>
                             <a class="btn btn-link btn-sm float-end p3x-gitlist-index-repo-last-commit"
                                href="{{ path('commits', {repo: repository.name}) }}"
-                               {% if repository.timestamp is not defined or not repository.timestamp %}style="display: none;"{% endif %}>
-                                <span
-                                    class="p3x-gitlist-index-repo-last-commit-timestamp">{{ repository.timestamp }}</span>
-                                <span class="p3x-gitlist-index-repo-last-commit-time">{{ repository.time }}</span>,
+                               style="display: none;">
+                                <span class="p3x-gitlist-index-repo-last-commit-timestamp"></span>
+                                <span class="p3x-gitlist-index-repo-last-commit-time"></span>,
                                 {{ 'index.repo.by'|t }}
-                                <span class="p3x-gitlist-index-repo-last-commit-user">{{ repository.user }}</span>,
+                                <span class="p3x-gitlist-index-repo-last-commit-user"></span>,
                                 {{ 'index.repo.branch'|t }}
-                                {{ repository.branch }}
+                                <span class="p3x-gitlist-index-repo-last-commit-branch"></span>
                             </a>
-                            <div class="p3x-gitlist-index-repo-last-commit-empty"
-                                 {% if repository.timestamp is defined and repository.timestamp %}style="display: none;"{% endif %}>
+                            <div class="p3x-gitlist-index-repo-last-commit-empty" style="display: none;">
                                 <strong>
                                     {{ 'index.repo.empty'|t }}
                                 </strong>
+                            </div>
+                            <div class="p3x-gitlist-index-repo-last-commit-loading text-muted">
+                                <em>{{ 'index.repo.loading'|t }}</em>
                             </div>
                             <div class="p3x-gitlist-index-description">
                                 {% if repository.description %}

@@ -25,6 +25,7 @@
   "index.repo.branch": "branch",
   "index.repo.empty": "This repository is empty. Please create a Git commit and push it to make the repository usable.",
   "index.repo.no_description": "There is no repository description file. Please, create one to remove this message.",
+  "index.repo.loading": "Loading…",
 
   "tree.new_file_button": "New file or directory",
   "tree.new_file.body_title": "Are you sure to add a new file or directory?",
@@ -116,6 +117,8 @@
 
   "treegraph.title": "Log graph",
   "treegraph.hover_hint": "Hover over the log to see the full commit message.",
+  "treegraph.date_toggle_to_relative": "Show relative time",
+  "treegraph.date_toggle_to_absolute": "Show absolute date",
 
   "blame.blames_found": "Blames found:",
   "blame.mode": "Mode:",

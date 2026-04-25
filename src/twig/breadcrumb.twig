@@ -15,6 +15,8 @@
 
 <div class="float-end p3x-gitlist-button" style="text-align: right;">
     <div>
+        {% block right_first %}{% endblock %}
+
         <a href="{{ path('rss', {repo: repo, branch: branch}) }}" class="btn btn-secondary btn-sm">
             <i class="fa fa-rss"></i>
             &nbsp;{{ 'breadcrumb.rss'|t }}

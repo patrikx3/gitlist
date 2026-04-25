@@ -115,6 +115,8 @@
 
   "treegraph.title": "Napló gráf",
   "treegraph.hover_hint": "Vidd az egeret a napló fölé a teljes commit üzenet megjelenítéséhez.",
+  "treegraph.date_toggle_to_relative": "Relatív idő",
+  "treegraph.date_toggle_to_absolute": "Pontos dátum",
 
   "blame.blames_found": "Talált blame-ek:",
   "blame.mode": "Mód:",
