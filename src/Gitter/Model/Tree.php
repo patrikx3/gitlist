@@ -19,6 +19,7 @@ class Tree extends Item implements \RecursiveIterator
     protected $data;
     protected $position = 0;
     private $submodules = null;
+    private $decorationCache = null;
 
     public function __construct($hash, Repository $repository)
     {
@@ -153,20 +154,72 @@ class Tree extends Item implements \RecursiveIterator
         return $this->submodules;
     }
 
+    private function buildDecorationCache()
+    {
+        if ($this->decorationCache !== null) {
+            return;
+        }
+        $this->decorationCache = [];
+        $branch = explode(':', $this->getHash())[0];
+        // One git log over the whole directory; we walk newest-to-oldest and
+        // record the FIRST occurrence of each filename. ASCII record sep \x1e
+        // separates commits, unit sep \x1f separates fields.
+        $sep = "\x1e";
+        $usep = "\x1f";
+        $pathArg = $this->path !== '' ? ' -- ' . escapeshellarg(rtrim($this->path, '/') . '/') : '';
+        $command = 'log --name-only -z --pretty=tformat:"' . $sep . '%ar' . $usep . '%s"' . ' ' . escapeshellarg($branch) . $pathArg;
+        $out = $this->getRepository()->getClient()->run($this->getRepository(), $command);
+        if ($out === '' || $out === null) {
+            return;
+        }
+        $blocks = explode($sep, $out);
+        foreach ($blocks as $block) {
+            $block = ltrim($block, "\n\0");
+            if ($block === '') {
+                continue;
+            }
+            // First line is "ar\x1fsubject", remaining lines are filenames separated by \0
+            [$header, $rest] = array_pad(explode("\n", $block, 2), 2, '');
+            [$ar, $subject] = array_pad(explode($usep, $header, 2), 2, '');
+            if ($rest === '') {
+                continue;
+            }
+            $files = explode("\0", $rest);
+            foreach ($files as $f) {
+                if ($f === '') {
+                    continue;
+                }
+                // Strip the directory prefix so the cache key matches $filename in decorateItem
+                if ($this->path !== '' && str_starts_with($f, $this->path)) {
+                    $rel = substr($f, strlen($this->path));
+                } else {
+                    $rel = $f;
+                }
+                // Only the immediate child (first path segment) — match decorateItem's filename arg
+                $slash = strpos($rel, '/');
+                $key = $slash === false ? $rel : substr($rel, 0, $slash);
+                if ($key === '' || isset($this->decorationCache[$key])) {
+                    continue;
+                }
+                $this->decorationCache[$key] = [$ar, $subject];
+            }
+        }
+    }
+
     public function decorateItem($filename, $item)
     {
-        $command = 'log -1 --pretty=tformat:"%ar%n%s" ' . explode(':', $this->getHash())[0] . ' -- ' . "\"" . $this->path . $filename . "\"";
-        //print_r($command);
-        //echo "\n";
+        $this->buildDecorationCache();
+        if (isset($this->decorationCache[$filename])) {
+            [$ar, $subject] = $this->decorationCache[$filename];
+            $item->setLastModified($ar);
+            $item->message = $subject;
+            return;
+        }
+        // Fallback: file not found in cache (very rare); single git log
+        $command = 'log -1 --pretty=tformat:"%ar%n%s" ' . escapeshellarg(explode(':', $this->getHash())[0]) . ' -- ' . escapeshellarg($this->path . $filename);
         $fileInfo = explode("\n", $this->getRepository()->getClient()->run($this->getRepository(), $command));
-        //echo $filename;
-        //echo "\n";
-        //print_r($fileInfo);
-        //echo "\n";
-        //echo "\n";
-
-        $item->setLastModified($fileInfo[0]);
-        $item->message = $fileInfo[1];
+        $item->setLastModified($fileInfo[0] ?? '');
+        $item->message = $fileInfo[1] ?? '';
     }
 
     public function output()

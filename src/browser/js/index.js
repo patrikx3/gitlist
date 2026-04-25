@@ -70,19 +70,52 @@ $(async function () {
             repoCache.set(repoName, promise);
             return promise;
         };
+        // Update both the row's DOM (for the visible page) AND the item's
+        // List.js values (so sort works for items off the current page).
+        const applyToItem = (item, data) => {
+            if (item && item.elm) {
+                populateRow(item.elm, data);
+            }
+            if (item && typeof item.values === 'function') {
+                if (!data || data.empty || !data.timestamp) {
+                    item.values({ 'p3x-gitlist-index-repo-last-commit-timestamp': '0' });
+                    return;
+                }
+                const ts = parseInt(data.timestamp, 10);
+                const iso = Number.isFinite(ts) && ts > 0 ? new Date(ts * 1000).toISOString() : '';
+                item.values({
+                    'p3x-gitlist-index-repo-last-commit-timestamp': String(ts),
+                    'p3x-gitlist-index-repo-last-commit-user': data.user || '',
+                    'p3x-gitlist-index-repo-last-commit-time': iso ? window.gitlist.formatRelativeTime(iso) : '',
+                });
+            }
+        };
+
+        // Iterate list.items (all repos, including off-page) — pagination removes
+        // off-page items from the DOM, so a querySelectorAll-based loop would miss
+        // 60/70 of them and the sort key (timestamp) would stay empty for them.
         const populateVisible = async () => {
-            const tables = Array.from(document.querySelectorAll('#p3x-gitlist-index [data-repo]'));
+            if (!list || !list.items || !list.items.length) return;
             const queue = [];
-            for (const tableEl of tables) {
-                const repoName = tableEl.dataset.repo;
+            for (const item of list.items) {
+                let repoName = null;
+                if (item.elm && item.elm.dataset && item.elm.dataset.repo) {
+                    repoName = item.elm.dataset.repo;
+                } else if (item.values) {
+                    const v = item.values();
+                    const name = v && v['p3x-gitlist-index-name'];
+                    // strip_dot_git=false → DOM data-repo carries the .git suffix
+                    if (name) repoName = name.endsWith('.git') ? name : name + '.git';
+                }
                 if (!repoName) continue;
                 if (repoCache.has(repoName)) {
-                    populateRow(tableEl, repoCache.get(repoName));
+                    const cached = repoCache.get(repoName);
+                    if (cached && typeof cached.then !== 'function') {
+                        applyToItem(item, cached);
+                    }
                     continue;
                 }
-                const tsSpan = tableEl.querySelector('.p3x-gitlist-index-repo-last-commit-timestamp');
-                if (tsSpan && tsSpan.textContent.trim() !== '') continue;
-                queue.push({ tableEl, repoName });
+                queue.push({ item, repoName });
             }
             if (queue.length === 0) return;
             let updatedAny = false;
@@ -92,17 +125,24 @@ $(async function () {
                     const job = queue.shift();
                     try {
                         const data = await fetchRepoHead(job.repoName);
-                        populateRow(job.tableEl, data);
+                        applyToItem(job.item, data);
                         updatedAny = true;
                     } catch (e) {
-                        const loading = job.tableEl.querySelector('.p3x-gitlist-index-repo-last-commit-loading');
-                        if (loading) loading.textContent = '—';
+                        if (job.item && job.item.elm) {
+                            const loading = job.item.elm.querySelector('.p3x-gitlist-index-repo-last-commit-loading');
+                            if (loading) loading.textContent = '—';
+                        }
+                        if (job.item && typeof job.item.values === 'function') {
+                            job.item.values({ 'p3x-gitlist-index-repo-last-commit-timestamp': '0' });
+                        }
                     }
                 }
             });
             await Promise.all(workers);
             if (updatedAny) {
-                list.reIndex();
+                // Resort with the now-correct timestamps. Avoid list.reIndex():
+                // with pagination enabled List.js only keeps the current page in
+                // DOM, and reIndex() rescans → drops off-page items.
                 sort();
             }
         };
@@ -190,14 +230,15 @@ $(async function () {
             }
         });
 
-        const $pager = $('#p3x-gitlist-index-pagination-top')
         list.on('updated', () => {
             if (showPaging) {
-                const items = $pager.find('li')
-                if (items.length < 2) {
-                    $('.p3x-gitlist-index-pagination-container').hide()
-                } else {
+                // Use list.matchingItems (search-filtered) instead of querying the DOM —
+                // querying right after List.js rerenders is racy; matchingItems is canonical.
+                const matching = (list.matchingItems && list.matchingItems.length) || list.size();
+                if (matching > paging) {
                     $('.p3x-gitlist-index-pagination-container').show()
+                } else {
+                    $('.p3x-gitlist-index-pagination-container').hide()
                 }
             }
             populateVisible();

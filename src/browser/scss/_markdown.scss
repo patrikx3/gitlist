@@ -86,5 +86,8 @@ pre > code {
         border: none;
         margin: 0;
         text-align: left;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        overflow-wrap: anywhere;
     }
 }

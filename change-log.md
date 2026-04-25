@@ -5,6 +5,21 @@
                         
 [//]: #@corifeus-header:end
 
+### v2026.4.1003
+Released on 04/25/2026
+* BUGFIX: Fix PHP 8.5 non-canonical (boolean) cast deprecation.
+* PERF: Batch decorateItem with one git log per directory (was N+1).
+* BUGFIX: Preserve paginated items after lazy-load by skipping List.js reIndex.
+* BUGFIX: Pager visibility now uses list.matchingItems instead of a racy DOM query.
+* BUGFIX: Remove hardcoded 1/2/... placeholder from bottom pager.
+* BUGFIX: Pager visibility check now looks at all pagination uls, not just the top one.
+* BUGFIX: Fix index pager visibility and markdown code wrapping.
+
+### v2026.4.1002
+Released on 04/25/2026
+* FEATURE: Lazy-load index and treegraph for faster initial page rendering.
+* FEATURE: Redesign treegraph as a 2-row table layout.
+
 ### v2026.4.1001
 Released on 04/22/2026
 * BUGFIX: Use explicit nullable type for PHP 8.4+ compatibility.
@@ -259,7 +274,7 @@ All my domains, including [patrikx3.com](https://patrikx3.com), [corifeus.eu](ht
 **🚨 Important Changes:** Any breaking changes are prominently noted in the readme to keep you informed.
 
 
-[**P3X-GITLIST**](https://corifeus.com/gitlist) Build v2026.4.1001
+[**P3X-GITLIST**](https://corifeus.com/gitlist) Build v2026.4.1003
 
  [![Donate for PatrikX3 / P3X](https://img.shields.io/badge/Donate-PatrikX3-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software)
 

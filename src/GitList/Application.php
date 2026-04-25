@@ -97,7 +97,7 @@ class Application extends FrameworkApplication
         $this->register(new RepositoryUtilServiceProvider());
         $this->register(new RoutingUtilServiceProvider());
 
-        $enable_editing = (boolean)$config->get('app', 'enable_editing');
+        $enable_editing = (bool)$config->get('app', 'enable_editing');
 
         $this['twig'] = $this->extend('twig', function ($twig, $app) use ($pkg, $config, $enable_editing) {
 
