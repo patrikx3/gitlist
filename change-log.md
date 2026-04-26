@@ -5,6 +5,10 @@
                         
 [//]: #@corifeus-header:end
 
+### v2026.4.1004
+Released on 04/25/2026
+* BUGFIX: Lazy-load now updates List.js values for off-page items so sort works.
+
 ### v2026.4.1003
 Released on 04/25/2026
 * BUGFIX: Fix PHP 8.5 non-canonical (boolean) cast deprecation.
@@ -274,7 +278,7 @@ All my domains, including [patrikx3.com](https://patrikx3.com), [corifeus.eu](ht
 **🚨 Important Changes:** Any breaking changes are prominently noted in the readme to keep you informed.
 
 
-[**P3X-GITLIST**](https://corifeus.com/gitlist) Build v2026.4.1003
+[**P3X-GITLIST**](https://corifeus.com/gitlist) Build v2026.4.1004
 
  [![Donate for PatrikX3 / P3X](https://img.shields.io/badge/Donate-PatrikX3-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software)
 
