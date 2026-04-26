@@ -110,12 +110,14 @@
     }
 
     // visual grouping: thin separator above each new commit's info row
-    .p3x-gitlist-treegraph-row-info {
-        border-top: 1px solid rgba(128, 128, 128, 0.18);
+    // box-shadow (not border) so the row stays exactly 20px and the gitgraph
+    // canvas (unitSize: 40 = 2 × 20px) stays aligned with the table over many commits
+    .p3x-gitlist-treegraph-row-info > td {
+        box-shadow: inset 0 1px 0 rgba(128, 128, 128, 0.18);
     }
-    // first info row has no border to avoid stray top line
-    > tbody > tr.p3x-gitlist-treegraph-row-info:first-child {
-        border-top: 0;
+    // first info row has no separator to avoid stray top line
+    > tbody > tr.p3x-gitlist-treegraph-row-info:first-child > td {
+        box-shadow: none;
     }
     // relation rows: no separator (they're graph filler, not commits)
     .p3x-gitlist-treegraph-row-relation {
@@ -180,8 +182,11 @@
     }
 
     .p3x-gitlist-treegraph-table {
-        .p3x-gitlist-treegraph-row-info {
-            border-top-color: rgba(0, 0, 0, 0.08);
+        .p3x-gitlist-treegraph-row-info > td {
+            box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.08);
+        }
+        > tbody > tr.p3x-gitlist-treegraph-row-info:first-child > td {
+            box-shadow: none;
         }
     }
 }
@@ -225,8 +230,11 @@
     }
 
     .p3x-gitlist-treegraph-table {
-        .p3x-gitlist-treegraph-row-info {
-            border-top-color: rgba(255, 255, 255, 0.10);
+        .p3x-gitlist-treegraph-row-info > td {
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10);
+        }
+        > tbody > tr.p3x-gitlist-treegraph-row-info:first-child > td {
+            box-shadow: none;
         }
         .p3x-gitlist-treegraph-row-subject > td {
             color: #f4f4f4;
