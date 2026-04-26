@@ -5,6 +5,10 @@
                         
 [//]: #@corifeus-header:end
 
+### v2026.4.1009
+Released on 04/26/2026
+* DOCS: Promote Meet Assistant SaaS (meeting.corifeus.com).
+
 ### v2026.4.1005
 Released on 04/26/2026
 * BUGFIX: Align gitgraph canvas with 2-row commit blocks in treegraph.
