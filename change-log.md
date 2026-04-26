@@ -5,6 +5,10 @@
                         
 [//]: #@corifeus-header:end
 
+### v2026.4.1005
+Released on 04/26/2026
+* BUGFIX: Align gitgraph canvas with 2-row commit blocks in treegraph.
+
 ### v2026.4.1004
 Released on 04/25/2026
 * BUGFIX: Lazy-load now updates List.js values for off-page items so sort works.
