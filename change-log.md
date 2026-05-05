@@ -5,6 +5,10 @@
                         
 [//]: #@corifeus-header:end
 
+### v2026.4.1010
+Released on 04/30/2026
+* BUGFIX: Handle # comments in .gitmodules and strip .git from any host.
+
 ### v2026.4.1009
 Released on 04/26/2026
 * DOCS: Promote Meet Assistant SaaS (meeting.corifeus.com).
@@ -306,7 +310,7 @@ All my domains, including [patrikx3.com](https://patrikx3.com), [corifeus.eu](ht
 **🚨 Important Changes:** Any breaking changes are prominently noted in the readme to keep you informed.
 
 
-[**P3X-GITLIST**](https://corifeus.com/gitlist) Build v2026.4.1009
+[**P3X-GITLIST**](https://corifeus.com/gitlist) Build v2026.4.1010
 
  [![Donate for PatrikX3 / P3X](https://img.shields.io/badge/Donate-PatrikX3-003087.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZVM4V6HVZJW6)  [![Contact Corifeus / P3X](https://img.shields.io/badge/Contact-P3X-ff9900.svg)](https://www.patrikx3.com/en/front/contact) [![Like Corifeus @ Facebook](https://img.shields.io/badge/LIKE-Corifeus-3b5998.svg)](https://www.facebook.com/corifeus.software)
 

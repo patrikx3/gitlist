@@ -76,10 +76,8 @@ class Tree extends Item implements \RecursiveIterator
                 $url = '';
                 if (is_array($submodules) && isset($submodules[$submoduleKey]['url'])) {
                     $url = $submodules[$submoduleKey]['url'];
-                    if (preg_match('/^https?:\/\/(www\.)?github.com\//i', $url)) {
-                        if (str_ends_with($url, '.git')) {
-                            $url = substr($url, 0, -4);
-                        }
+                    if (preg_match('/^https?:\/\//i', $url) && str_ends_with($url, '.git')) {
+                        $url = substr($url, 0, -4);
                     }
                 }
                 $tree->setUrl($url);
@@ -129,7 +127,11 @@ class Tree extends Item implements \RecursiveIterator
                 if ($file[4] === '.gitmodules') {
                     $branch = $hash;
                     $gitsubmodule = $this->getRepository()->getBlob("$branch:\"$file[4]\"")->output();
-                    $this->submodules = parse_ini_string($gitsubmodule, true);
+                    // Strip `#` comment lines — PHP 8 removed `#` as a valid INI comment char,
+                    // but `.gitmodules` files commonly have them (git treats `#` as a comment).
+                    $cleaned = preg_replace('/^[ \t]*#[^\n]*/m', '', $gitsubmodule);
+                    $parsed = @parse_ini_string($cleaned, true);
+                    $this->submodules = is_array($parsed) ? $parsed : [];
                 }
             }
 
