@@ -171,6 +171,11 @@ class TreeController implements ControllerProviderInterface
         })->assert('repo', $app['util.routing']->getRepositoryRegex())
             ->bind('repository');
 
+        $route->get('{repo}', function ($repo) use ($app) {
+            return $app->redirect($app['url_subdir'] . '/' . $repo . '/');
+        })->assert('repo', $app['util.routing']->getRepositoryRegex())
+            ->bind('repository_no_slash');
+
         return $route;
     }
 }
