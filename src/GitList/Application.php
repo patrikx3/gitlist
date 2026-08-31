@@ -62,9 +62,11 @@ class Application extends FrameworkApplication
         $this['http_user'] = $config->get('clone_button', 'http_user_dynamic') ? $_SERVER['PHP_AUTH_USER'] : $config->get('clone_button', 'http_user');
 
         $this['show_ssh_remote'] = $config->get('clone_button', 'show_ssh_remote');
+        $this['ssh_host'] = $config->get('clone_button', 'ssh_host') ? $config->get('clone_button', 'ssh_host') : '';
 
         $this['ssh_user'] = $config->get('clone_button', 'ssh_user_dynamic') ? $_SERVER['PHP_AUTH_USER'] : $config->get('clone_button', 'ssh_user');
 
+        $this['http_host'] = $config->get('clone_button', 'http_host') ? $config->get('clone_button', 'http_host') : '';
         $this['git_http_subdir_calculated'] = $config->get('clone_button', 'git_http_subdir_calculated') ? $config->get('clone_button', 'git_http_subdir_calculated') : true;
         $this['git_http_subdir'] = $config->get('clone_button', 'git_http_subdir') ? $config->get('clone_button', 'git_http_subdir') : '';
         $this['fixed_navbar'] = $config->get('app', 'fixed_navbar') ? $config->get('app', 'fixed_navbar') : true;
